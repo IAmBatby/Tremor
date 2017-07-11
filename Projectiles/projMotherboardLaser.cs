@@ -62,7 +62,7 @@ namespace Tremor.Projectiles
             {
                 Vector2 drawPos = projectile.Center + unit * k - Main.screenPosition;
                 Color alpha = new Color(LaserColor.R, LaserColor.G, LaserColor.B, projectile.alpha);
-                spriteBatch.Draw(Main.projectileTexture[projectile.type], drawPos, null, alpha, Helper.RadtoGrad(Main.rand.Next(0, 181)), new Vector2(2, 2), 1f, SpriteEffects.None, 0f);
+                spriteBatch.Draw(Main.projectileTexture[projectile.type], drawPos, null, alpha, MathHelper.ToDegrees(Main.rand.Next(0, 181)), new Vector2(2, 2), 1f, SpriteEffects.None, 0f);
             }
             return false;
         }

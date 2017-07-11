@@ -29,15 +29,14 @@ namespace Tremor.Projectiles
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Ball n Chain");
-
 		}
 
 
 		public override void AI()
 		{
 			Rotation += RotationSpeed;
-			projectile.Center = Helper.PolarPos(Main.LocalPlayer.Center, Distanse, Helper.GradtoRad(Rotation));
-			projectile.rotation = Helper.rotateBetween2Points(Main.LocalPlayer.Center, projectile.Center) - Helper.GradtoRad(90);
+			projectile.Center = Helper.PolarPos(Main.LocalPlayer.Center, Distanse, MathHelper.ToRadians(Rotation));
+			projectile.rotation = Helper.rotateBetween2Points(Main.LocalPlayer.Center, projectile.Center) - MathHelper.ToRadians(90);
 		}
 
 		public override bool? CanHitNPC(NPC target)
@@ -56,9 +55,7 @@ namespace Tremor.Projectiles
 			float num1 = texture.Height;
 			Vector2 vector2_4 = mountedCenter - position;
 			float rotation = (float)Math.Atan2(vector2_4.Y, vector2_4.X) - 1.57f;
-			bool flag = true;
-			if (float.IsNaN(position.X) && float.IsNaN(position.Y))
-				flag = false;
+			bool flag = !(float.IsNaN(position.X) && float.IsNaN(position.Y));
 			if (float.IsNaN(vector2_4.X) && float.IsNaN(vector2_4.Y))
 				flag = false;
 			while (flag)

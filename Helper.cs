@@ -10,16 +10,6 @@ namespace Tremor
 	public delegate void ExtraAction();
 	public static class Helper
 	{
-		/// <summary>
-		/// *Используется для перевода градусов в радианы*
-		/// </summary>
-		/// <param name="Grad">Градусов</param>
-		/// <returns>Возвращяет радианы</returns>
-		public static float GradtoRad(float Grad)
-		{
-			return Grad * (float)Math.PI / 180.0f;
-		}
-
 		public static Vector2 RandomPositin(Vector2 pos1, Vector2 pos2)
 		{
 			Random rnd = new Random();
@@ -46,16 +36,6 @@ namespace Tremor
 			Vector2 move = pos2 - pos1;
 			//speed2 = speed * 0.5;
 			return move * (speed / (float)Math.Sqrt(move.X * move.X + move.Y * move.Y));
-		}
-
-		/// <summary>
-		/// *Используется для перевода радиан в градусы*
-		/// </summary>
-		/// <param name="Rad">Радианов</param>
-		/// <returns>Возвращяет градусы</returns>
-		public static float RadtoGrad(float Rad)
-		{
-			return Rad * 180.0f / (float)Math.PI;
 		}
 
 		/// <summary>
@@ -176,10 +156,12 @@ namespace Tremor
 		/// <returns>Возвращяет точку смещённую по заданым параметрам</returns>
 		public static Vector2 PolarPos(Vector2 Point, float Distance, float Angle, int XOffset = 0, int YOffset = 0)
 		{
-			Vector2 ReturnedValue = new Vector2();
-			ReturnedValue.X = (Distance * (float)Math.Sin(RadtoGrad(Angle)) + Point.X) + XOffset;
-			ReturnedValue.Y = (Distance * (float)Math.Cos(RadtoGrad(Angle)) + Point.Y) + YOffset;
-			return ReturnedValue;
+			Vector2 returnedValue = new Vector2
+			{
+				X = (Distance * (float)Math.Sin(MathHelper.ToDegrees(Angle)) + Point.X) + XOffset,
+				Y = (Distance * (float)Math.Cos(MathHelper.ToDegrees(Angle)) + Point.Y) + YOffset
+			};
+			return returnedValue;
 		}
 
 		/// <summary>*Вычисления того, произойдёт ли событие с заданым шансом в этот раз, или нет*</summary>

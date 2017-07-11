@@ -1,4 +1,5 @@
-﻿using Terraria;
+﻿using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.ModLoader;
 
 namespace Tremor.Projectiles
@@ -12,7 +13,6 @@ namespace Tremor.Projectiles
 
 		public override void SetDefaults()
 		{
-
 			projectile.width = 18;
 			projectile.height = 34;
 			projectile.timeLeft = 6;
@@ -26,15 +26,14 @@ namespace Tremor.Projectiles
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Berserker Sword");
-
 		}
 
 
 		public override void AI()
 		{
 			Rotation += RotationSpeed;
-			projectile.Center = Helper.PolarPos(Main.player[(int)projectile.ai[0]].Center, Distanse, Helper.GradtoRad(Rotation));
-			projectile.rotation = Helper.rotateBetween2Points(Main.player[(int)projectile.ai[0]].Center, projectile.Center) - Helper.GradtoRad(90);
+			projectile.Center = Helper.PolarPos(Main.player[(int)projectile.ai[0]].Center, Distanse, MathHelper.ToRadians(Rotation));
+			projectile.rotation = Helper.rotateBetween2Points(Main.player[(int)projectile.ai[0]].Center, projectile.Center) - MathHelper.ToRadians(90);
 		}
 
 		public override bool? CanHitNPC(NPC target)

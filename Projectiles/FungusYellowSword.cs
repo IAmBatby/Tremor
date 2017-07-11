@@ -35,8 +35,8 @@ namespace Tremor.Projectiles
 		public override void AI()
 		{
 			Rotation += RotationSpeed;
-			projectile.Center = Helper.PolarPos(Main.LocalPlayer.Center, Distanse, Helper.GradtoRad(Rotation));
-			projectile.rotation = Helper.rotateBetween2Points(Main.LocalPlayer.Center, projectile.Center) - Helper.GradtoRad(90);
+			projectile.Center = Helper.PolarPos(Main.LocalPlayer.Center, Distanse, MathHelper.ToRadians(Rotation));
+			projectile.rotation = Helper.rotateBetween2Points(Main.LocalPlayer.Center, projectile.Center) - MathHelper.ToRadians(90);
 		}
 
 		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)

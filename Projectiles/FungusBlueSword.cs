@@ -13,7 +13,6 @@ namespace Tremor.Projectiles
 
 		public override void SetDefaults()
 		{
-
 			projectile.width = 18;
 			projectile.height = 44;
 			projectile.timeLeft = 6;
@@ -27,15 +26,12 @@ namespace Tremor.Projectiles
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Fungus Blue Sword");
-
 		}
-
 
 		public override Color? GetAlpha(Color lightColor)
 		{
 			return Color.White;
 		}
-
 
 		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
 		{
@@ -44,11 +40,12 @@ namespace Tremor.Projectiles
 				target.AddBuff(31, 180, false);
 			}
 		}
+
 		public override void AI()
 		{
 			Rotation += RotationSpeed;
-			projectile.Center = Helper.PolarPos(Main.LocalPlayer.Center, Distanse, Helper.GradtoRad(Rotation));
-			projectile.rotation = Helper.rotateBetween2Points(Main.LocalPlayer.Center, projectile.Center) - Helper.GradtoRad(90);
+			projectile.Center = Helper.PolarPos(Main.LocalPlayer.Center, Distanse, MathHelper.ToRadians(Rotation));
+			projectile.rotation = Helper.rotateBetween2Points(Main.LocalPlayer.Center, projectile.Center) - MathHelper.ToRadians(90);
 		}
 
 		public override bool? CanHitNPC(NPC target)
