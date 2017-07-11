@@ -7,25 +7,31 @@ namespace Tremor
 {
 	public abstract class AlchemistItem : ModItem
 	{
+		public override void GetWeaponDamage(Player player, ref int damage)
+		{
+			MPlayer modPlayer = player.GetModPlayer<MPlayer>(mod);
+			// We want to multiply the damage we do by our alchemistDamage modifier.
+			damage = (int)(damage * modPlayer.alchemistDamage);
+		}
 
 		public override void ModifyTooltips(List<TooltipLine> tooltips)
 		{
-			for (int i = 0; i < tooltips.Count; ++i)
+			MPlayer modPlayer = Main.LocalPlayer.GetModPlayer<MPlayer>(mod);
+
+			foreach (TooltipLine tooltip in tooltips)
 			{
-				if (tooltips[i].Name == "Damage")
+				if (tooltip.Name == "Damage")
 				{
-					MPlayer mp = Main.LocalPlayer.GetModPlayer<MPlayer>(mod);
-					tooltips[i].text = ((int)(item.damage * mp.alchemistDamage)) + " alchemic damage";
+					tooltip.text = ((int)(item.damage * modPlayer.alchemistDamage)) + " alchemic damage";
 				}
 
-				if (tooltips[i].Name == "CritChance")
+				if (tooltip.Name == "CritChance")
 				{
-					MPlayer mp = Main.LocalPlayer.GetModPlayer<MPlayer>(mod);
-					tooltips[i].text = (item.crit + mp.alchemistCrit) + "% critical strike chance";
+					tooltip.text = (item.crit + modPlayer.alchemistCrit) + "% critical strike chance";
 				}
 			}
-			MPlayer mp2 = Main.LocalPlayer.GetModPlayer<MPlayer>(mod);
-			TooltipLine tip = new TooltipLine(mod, "Tremor:Tooltip", (item.crit + mp2.alchemistCrit) + "% critical strike chance");
+
+			TooltipLine tip = new TooltipLine(mod, "Tremor:Tooltip", (item.crit + modPlayer.alchemistCrit) + "% critical strike chance");
 			tooltips.Insert(2, tip);
 		}
 

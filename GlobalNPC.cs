@@ -3,7 +3,7 @@ using Terraria.ModLoader;
 
 namespace Tremor
 {
-	public class GlobalNPCRule : GlobalNPC
+	public class TremorGlobalNPC : GlobalNPC
 	{
 		public override void AI(NPC npc)
 		{

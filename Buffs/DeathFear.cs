@@ -23,7 +23,7 @@ namespace Tremor.Buffs
 
 		public override void Update(NPC npc, ref int buffIndex)
 		{
-			npc.GetGlobalNPC<TremorGlobalNPC>(mod).dFear = true;
+			npc.GetGlobalNPC<NPCs.TremorGlobalNPC>(mod).dFear = true;
 		}
 
 	}

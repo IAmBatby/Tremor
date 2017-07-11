@@ -241,7 +241,7 @@ namespace Tremor
 				Filters.Scene["Tremor:Nova"] = new Filter(new NovaData("FilterMiniTower").UseColor(0.8f, 0.7f, 0.3f).UseOpacity(0.82f), EffectPriority.VeryHigh);
 				SkyManager.Instance["Tremor:Nova"] = new NovaSky();
 
-				AddGlobalNPC("GlobalNPCRule", new GlobalNPCRule());
+				AddGlobalNPC("TremorGlobalNPC", new TremorGlobalNPC());
 
 				if (ModLoader.GetLoadedMods().Contains("Elerium"))
 				{
