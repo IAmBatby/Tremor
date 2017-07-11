@@ -1,0 +1,46 @@
+using Terraria.ID;
+using System;
+using Microsoft.Xna.Framework;
+using Terraria;
+using Terraria.ID;
+using Terraria.ModLoader;
+
+namespace Tremor.Items
+{
+	public class DrippingSaddle : ModItem
+	{
+		public override void SetDefaults()
+		{
+			item.name = "Dripping Saddle";
+			item.width = 14;
+			item.height = 36;
+			item.toolTip = "Summons Drippler mount";
+			item.useTime = 30;
+			item.useAnimation = 30;
+			item.useStyle = 1;
+			item.value = 8000;
+			item.rare = 3;
+			item.UseSound = SoundID.Item44;
+			item.noMelee = true;
+			item.mountType = mod.MountType("DripplerMount");
+		}
+
+    public override void AddRecipes()
+    {
+        ModRecipe recipe = new ModRecipe(mod);
+        recipe.AddIngredient(ItemID.GoldBar, 5);
+        recipe.AddIngredient(null, "AtisBlood", 10);
+        recipe.AddIngredient(null, "DrippingRoot", 15);
+        recipe.SetResult(this);
+        recipe.AddTile(134);
+        recipe.AddRecipe();    
+
+        recipe = new ModRecipe(mod);
+        recipe.AddIngredient(ItemID.PlatinumBar, 5);
+        recipe.AddIngredient(null, "AtisBlood", 10);
+        recipe.AddIngredient(null, "DrippingRoot", 15);
+        recipe.SetResult(this);
+        recipe.AddTile(134);
+        recipe.AddRecipe();
+    }
+}}
