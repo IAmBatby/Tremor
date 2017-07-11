@@ -21,7 +21,7 @@ namespace Tremor
 
 		public static void Load()
 		{
-			vanillaCount=Main.glowMaskTexture.Length;
+			vanillaCount=(ushort)Main.glowMaskTexture.Length;
 			Array.Resize(ref Main.glowMaskTexture, vanillaCount + Count);
 			short i = (short)vanillaCount;
 			Main.glowMaskTexture[i] = ModLoader.GetTexture("Tremor/Items/DesertExplorerVisage_HeadGlow");
