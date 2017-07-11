@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -20,6 +21,8 @@ namespace Tremor
 
 		public const string wallshadow1 = "Tremor/NPCs/WallOfShadow_Head_Boss2";
 		public const string wallshadow2 = "Tremor/NPCs/WallOfShadow_Head_Boss1";
+
+		internal static Tremor instance;
 
 		public Tremor()
 		{
@@ -194,6 +197,8 @@ namespace Tremor
 
 		public override void Load()
 		{
+			instance = this;
+
 			Filters.Scene["Tremor:Invasion"] = new Filter(new InvasionData("FilterMiniTower").UseColor(0.2f, 0.4f, 0.5f).UseOpacity(0.9f), EffectPriority.VeryHigh);
 			SkyManager.Instance["Tremor:Invasion"] = new ZombieSky();
 			Filters.Scene["Tremor:Zombie"] = new Filter(new ZombieScreenShaderData("FilterMiniTower").UseColor(1.1f, 0.3f, 0.3f).UseOpacity(0.6f), EffectPriority.VeryHigh);
@@ -205,28 +210,25 @@ namespace Tremor
 
 			if (!Main.dedServ)
 			{
-				AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/CogLord"), ItemType("CogLordMusicBox"),
-					TileType("CogLordMusicBox"));
-				AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/SlimeRain"), ItemType("SlimeRainMusicBox"),
-					TileType("SlimeRainMusicBox"));
-				AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/Boss6"), ItemType("Boss6MusicBox"),
-					TileType("Boss6MusicBox"));
-				AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/Trinity"), ItemType("TrinityMusicBox"),
-					TileType("TrinityMusicBox"));
-				AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/TikiTotem"), ItemType("TikiTotemMusicBox"),
-					TileType("TikiTotemMusicBox"));
-				AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/EvilCorn"), ItemType("EvilCornMusicBox"),
-					TileType("EvilCornMusicBox"));
-				AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/CyberKing"), ItemType("CyberKingMusicBox"),
-					TileType("CyberKingMusicBox"));
-				AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/Snow2"), ItemType("BlizzardMusicBox"),
-					TileType("BlizzardMusicBox"));
-				AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/CyberWrath"), ItemType("ParadoxCohortMusicBox"),
-					TileType("ParadoxCohortMusicBoxTile"));
-				AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/NightOfUndead"), ItemType("DeathHordeMusicBox"),
-					TileType("DeathHordeMusicBoxTile"));
-				AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/Granite"), ItemType("GraniteMusicBox"),
-					TileType("GraniteMusicBox"));
+				string[,] musicBoxes =
+				{
+					{ "CogLord", "CogLordMusicBox", "CogLordMusicBox" },
+					{ "SlimeRain", "SlimeRainMusicBox", "SlimeRainMusicBox" },
+					{ "Boss6", "Boss6MusicBox", "Boss6MusicBox" },
+					{ "Trinity", "TrinityMusicBox", "TrinityMusicBox" },
+					{ "TikiTotem", "TikiTotemMusicBox", "TikiTotemMusicBox" },
+					{ "EvilCorn", "EvilCornMusicBox", "EvilCornMusicBox" },
+					{ "CyberKing", "CyberKingMusicBox", "CyberKingMusicBox" },
+					{ "Snow2", "BlizzardMusicBox", "BlizzardMusicBox" },
+					{ "CyberWrath", "ParadoxCohortMusicBoxTile", "ParadoxCohortMusicBoxTile" },
+					{ "NightOfUndead", "DeathHordeMusicBox", "DeathHordeMusicBox" },
+					{ "Granite", "GraniteMusicBox", "GraniteMusicBox" },
+				};
+
+				for (int i = 0; i < musicBoxes.Length; i++)
+				{
+					AddMusicBox(GetSoundSlot(SoundType.Music, $"Sounds/Music/{musicBoxes[i, 0]}"), ItemType(musicBoxes[i, 1]), TileType(musicBoxes[i, 2]));
+				}
 
 				TremorGlowMask.Load();
 				GameShaders.Armor.BindShader(ItemType("NovaDye"), new ArmorShaderData(Main.PixelShaderRef, "ArmorSolar")).UseColor(0.8f, 0.7f, 0.3f).UseSecondaryColor(0.8f, 0.7f, 0.3f);
@@ -234,21 +236,13 @@ namespace Tremor
 				Filters.Scene["Tremor:Nova"] = new Filter(new NovaData("FilterMiniTower").UseColor(0.8f, 0.7f, 0.3f).UseOpacity(0.82f), EffectPriority.VeryHigh);
 				SkyManager.Instance["Tremor:Nova"] = new NovaSky();
 
-				AddGlobalNPC("TremorGlobalNPC", new TremorGlobalNPC());
-
-				if (ModLoader.GetLoadedMods().Contains("Elerium"))
-				{
-					Main.itemTexture[3601] = ModLoader.GetTexture("Tremor/Resprites/CelestialSigil2");
-				}
-				if (!ModLoader.GetLoadedMods().Contains("Elerium"))
-				{
-					Main.itemTexture[3601] = ModLoader.GetTexture("Tremor/Resprites/CelestialSigil");
-				}
+				// Replace celestial sigil?
+				Main.itemTexture[3601] = GetTexture($"Resprites/{(ModLoader.GetLoadedMods().Contains("Elerium") ? "CelestialSigil2" : "CelesialSigil")}");
 
 				// Replace vanilla buff sprites with resprites
 				for (int i = 1; i < 206; i++)
 				{
-					Main.buffTexture[i] = ModLoader.GetTexture($"Tremor/Resprites/Buff_{i}");
+					Main.buffTexture[i] = GetTexture($"Resprites/Buff_{i}");
 				}
 			}
 		}
