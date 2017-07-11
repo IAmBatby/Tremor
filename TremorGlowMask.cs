@@ -15,50 +15,34 @@ namespace Tremor
 
 		//Count items
 		const short Count = 4;
-
-		//Start - Final
-		static short End;
+		static ushort vanillaCount;
+		
 		public static bool Loaded;
 
 		public static void Load()
 		{
-			Array.Resize(ref Main.glowMaskTexture, Main.glowMaskTexture.Length + Count);
-			short i = (short)(Main.glowMaskTexture.Length - Count);
+			vanillaCount=Main.glowMaskTexture.Length;
+			Array.Resize(ref Main.glowMaskTexture, vanillaCount + Count);
+			short i = (short)vanillaCount;
 			Main.glowMaskTexture[i] = ModLoader.GetTexture("Tremor/Items/DesertExplorerVisage_HeadGlow");
-			DEH = i;
-			i++;
+			DEH = i++;
 			Main.glowMaskTexture[i] = ModLoader.GetTexture("Tremor/Items/DesertExplorerGreaves_LegsGlow");
-			DEG = i;
-			i++;
+			DEG = i++;
 			Main.glowMaskTexture[i] = ModLoader.GetTexture("Tremor/NovaPillar/NovaPickaxe_Glow");
-			NovaPick = i;
-			i++;
+			NovaPick = i++;
 			Main.glowMaskTexture[i] = ModLoader.GetTexture("Tremor/NovaPillar/NovaHamaxe_Glow");
-			NovaHamaxe = i;
-			i++;
-			End = i;
+			NovaHamaxe = i++;
 			Loaded = true;
 		}
 
 		public static void Unload()
 		{
-			if (Main.glowMaskTexture.Length == End)
-			{
-				Array.Resize(ref Main.glowMaskTexture, Main.glowMaskTexture.Length - Count);
-			}
-			else if (Main.glowMaskTexture.Length > End && Main.glowMaskTexture.Length > Count)
-			{
-				for (int i = End - Count; i < End; i++)
-				{
-					Main.glowMaskTexture[i] = ModLoader.GetTexture("Terraria/Item_0");
-				}
-			}
+			Array.Resize(ref Main.glowMaskTexture,vanillaCount);
 			Loaded = false;
 			DEH = 0;
 			DEG = 0;
 			NovaPick = 0;
 			NovaHamaxe = 0;
-			End = 0;
 		}
 
 	}
