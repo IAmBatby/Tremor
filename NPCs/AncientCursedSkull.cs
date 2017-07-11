@@ -46,7 +46,7 @@ namespace Tremor.NPCs
 			int x = spawnInfo.spawnTileX;
 			int y = spawnInfo.spawnTileY;
 			int tile = Main.tile[x, y].type;
-			return (Tremor.NoZoneAllowWater(spawnInfo)) && spawnInfo.player.ZoneDungeon && NPC.downedMoonlord && Main.hardMode && y > Main.rockLayer ? 0.008f : 0f;
+			return (Helper.NoZoneAllowWater(spawnInfo)) && spawnInfo.player.ZoneDungeon && NPC.downedMoonlord && Main.hardMode && y > Main.rockLayer ? 0.008f : 0f;
 		}
 
 		public override void HitEffect(int hitDirection, double damage)

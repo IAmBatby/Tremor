@@ -33,15 +33,13 @@ namespace Tremor
 
 		public static void Log(object message)
 		{
-			ErrorLogger.Log(String.Format("[Tremor][{0}] {1}", DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss"), message));
+			ErrorLogger.Log($"[Tremor][{DateTime.Now:yyyy-MM-dd hh:mm:ss}] {message}");
 		}
 
 		public static void Log(string format, params object[] args)
 		{
-			ErrorLogger.Log(String.Format("[Tremor][{0}] {1}", DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss"), String.Format(format, args)));
+			ErrorLogger.Log($"[Tremor][{DateTime.Now:yyyy-MM-dd hh:mm:ss}] {string.Format(format, args)}");
 		}
-
-		private Mod mod => ModLoader.GetMod("Tremor");
 
 		public override void AddRecipeGroups()
 		{
@@ -49,13 +47,11 @@ namespace Tremor
 			RecipeGroup.RegisterGroup("Tremor:GemStaves", group);
 		}
 
-
 		public override void UpdateMusic(ref int music)
 		{
 			if (Main.myPlayer != -1 && !Main.gameMenu)
 			{
 				Mod mod = ModLoader.GetMod("Tremor");
-				TremorPlayer modPlayer = Main.player[Main.myPlayer].GetModPlayer<TremorPlayer>(mod);
 				int[] NoOverride = {MusicID.Boss1, MusicID.Boss2, MusicID.Boss3, MusicID.Boss4, MusicID.Boss5,
 				MusicID.LunarBoss, MusicID.PumpkinMoon, MusicID.TheTowers, MusicID.FrostMoon, MusicID.GoblinInvasion, MusicID.Eclipse, MusicID.MartianMadness,
 				MusicID.PirateInvasion, GetSoundSlot(SoundType.Music, "Sounds/Music/CyberKing"), GetSoundSlot(SoundType.Music, "Sounds/Music/Boss6"), GetSoundSlot(SoundType.Music, "Sounds/Music/Trinity"),
@@ -198,8 +194,6 @@ namespace Tremor
 
 		public override void Load()
 		{
-
-
 			Filters.Scene["Tremor:Invasion"] = new Filter(new InvasionData("FilterMiniTower").UseColor(0.2f, 0.4f, 0.5f).UseOpacity(0.9f), EffectPriority.VeryHigh);
 			SkyManager.Instance["Tremor:Invasion"] = new ZombieSky();
 			Filters.Scene["Tremor:Zombie"] = new Filter(new ZombieScreenShaderData("FilterMiniTower").UseColor(1.1f, 0.3f, 0.3f).UseOpacity(0.6f), EffectPriority.VeryHigh);
@@ -211,7 +205,6 @@ namespace Tremor
 
 			if (!Main.dedServ)
 			{
-
 				AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/CogLord"), ItemType("CogLordMusicBox"),
 					TileType("CogLordMusicBox"));
 				AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/SlimeRain"), ItemType("SlimeRainMusicBox"),
@@ -252,228 +245,33 @@ namespace Tremor
 					Main.itemTexture[3601] = ModLoader.GetTexture("Tremor/Resprites/CelestialSigil");
 				}
 
-				Main.buffTexture[1] = ModLoader.GetTexture("Tremor/Resprites/Buff_1");
-				Main.buffTexture[2] = ModLoader.GetTexture("Tremor/Resprites/Buff_2");
-				Main.buffTexture[3] = ModLoader.GetTexture("Tremor/Resprites/Buff_3");
-				Main.buffTexture[4] = ModLoader.GetTexture("Tremor/Resprites/Buff_4");
-				Main.buffTexture[5] = ModLoader.GetTexture("Tremor/Resprites/Buff_5");
-				Main.buffTexture[6] = ModLoader.GetTexture("Tremor/Resprites/Buff_6");
-				Main.buffTexture[7] = ModLoader.GetTexture("Tremor/Resprites/Buff_7");
-				Main.buffTexture[8] = ModLoader.GetTexture("Tremor/Resprites/Buff_8");
-				Main.buffTexture[9] = ModLoader.GetTexture("Tremor/Resprites/Buff_9");
-				Main.buffTexture[10] = ModLoader.GetTexture("Tremor/Resprites/Buff_10");
-				Main.buffTexture[11] = ModLoader.GetTexture("Tremor/Resprites/Buff_11");
-				Main.buffTexture[12] = ModLoader.GetTexture("Tremor/Resprites/Buff_12");
-				Main.buffTexture[13] = ModLoader.GetTexture("Tremor/Resprites/Buff_13");
-				Main.buffTexture[14] = ModLoader.GetTexture("Tremor/Resprites/Buff_14");
-				Main.buffTexture[15] = ModLoader.GetTexture("Tremor/Resprites/Buff_15");
-				Main.buffTexture[16] = ModLoader.GetTexture("Tremor/Resprites/Buff_16");
-				Main.buffTexture[17] = ModLoader.GetTexture("Tremor/Resprites/Buff_17");
-				Main.buffTexture[18] = ModLoader.GetTexture("Tremor/Resprites/Buff_18");
-				Main.buffTexture[19] = ModLoader.GetTexture("Tremor/Resprites/Buff_19");
-				Main.buffTexture[20] = ModLoader.GetTexture("Tremor/Resprites/Buff_20");
-				Main.buffTexture[21] = ModLoader.GetTexture("Tremor/Resprites/Buff_21");
-				Main.buffTexture[23] = ModLoader.GetTexture("Tremor/Resprites/Buff_23");
-				Main.buffTexture[24] = ModLoader.GetTexture("Tremor/Resprites/Buff_24");
-				Main.buffTexture[25] = ModLoader.GetTexture("Tremor/Resprites/Buff_25");
-				Main.buffTexture[26] = ModLoader.GetTexture("Tremor/Resprites/Buff_26");
-				Main.buffTexture[27] = ModLoader.GetTexture("Tremor/Resprites/Buff_27");
-				Main.buffTexture[28] = ModLoader.GetTexture("Tremor/Resprites/Buff_28");
-				Main.buffTexture[29] = ModLoader.GetTexture("Tremor/Resprites/Buff_29");
-				Main.buffTexture[30] = ModLoader.GetTexture("Tremor/Resprites/Buff_30");
-				Main.buffTexture[31] = ModLoader.GetTexture("Tremor/Resprites/Buff_31");
-				Main.buffTexture[32] = ModLoader.GetTexture("Tremor/Resprites/Buff_32");
-				Main.buffTexture[33] = ModLoader.GetTexture("Tremor/Resprites/Buff_33");
-				Main.buffTexture[34] = ModLoader.GetTexture("Tremor/Resprites/Buff_34");
-				Main.buffTexture[35] = ModLoader.GetTexture("Tremor/Resprites/Buff_35");
-				Main.buffTexture[36] = ModLoader.GetTexture("Tremor/Resprites/Buff_36");
-				Main.buffTexture[37] = ModLoader.GetTexture("Tremor/Resprites/Buff_37");
-				Main.buffTexture[38] = ModLoader.GetTexture("Tremor/Resprites/Buff_38");
-				Main.buffTexture[39] = ModLoader.GetTexture("Tremor/Resprites/Buff_39");
-				Main.buffTexture[40] = ModLoader.GetTexture("Tremor/Resprites/Buff_40");
-				Main.buffTexture[41] = ModLoader.GetTexture("Tremor/Resprites/Buff_41");
-				Main.buffTexture[42] = ModLoader.GetTexture("Tremor/Resprites/Buff_42");
-				Main.buffTexture[43] = ModLoader.GetTexture("Tremor/Resprites/Buff_43");
-				Main.buffTexture[44] = ModLoader.GetTexture("Tremor/Resprites/Buff_44");
-				Main.buffTexture[45] = ModLoader.GetTexture("Tremor/Resprites/Buff_45");
-				Main.buffTexture[46] = ModLoader.GetTexture("Tremor/Resprites/Buff_46");
-				Main.buffTexture[47] = ModLoader.GetTexture("Tremor/Resprites/Buff_47");
-				Main.buffTexture[48] = ModLoader.GetTexture("Tremor/Resprites/Buff_48");
-				Main.buffTexture[49] = ModLoader.GetTexture("Tremor/Resprites/Buff_49");
-				Main.buffTexture[50] = ModLoader.GetTexture("Tremor/Resprites/Buff_50");
-				Main.buffTexture[51] = ModLoader.GetTexture("Tremor/Resprites/Buff_51");
-				Main.buffTexture[53] = ModLoader.GetTexture("Tremor/Resprites/Buff_53");
-				Main.buffTexture[54] = ModLoader.GetTexture("Tremor/Resprites/Buff_54");
-				Main.buffTexture[55] = ModLoader.GetTexture("Tremor/Resprites/Buff_55");
-				Main.buffTexture[56] = ModLoader.GetTexture("Tremor/Resprites/Buff_56");
-				Main.buffTexture[57] = ModLoader.GetTexture("Tremor/Resprites/Buff_57");
-				Main.buffTexture[58] = ModLoader.GetTexture("Tremor/Resprites/Buff_58");
-				Main.buffTexture[59] = ModLoader.GetTexture("Tremor/Resprites/Buff_59");
-				Main.buffTexture[60] = ModLoader.GetTexture("Tremor/Resprites/Buff_60");
-				Main.buffTexture[61] = ModLoader.GetTexture("Tremor/Resprites/Buff_61");
-				Main.buffTexture[62] = ModLoader.GetTexture("Tremor/Resprites/Buff_62");
-				Main.buffTexture[63] = ModLoader.GetTexture("Tremor/Resprites/Buff_63");
-				Main.buffTexture[64] = ModLoader.GetTexture("Tremor/Resprites/Buff_64");
-				Main.buffTexture[65] = ModLoader.GetTexture("Tremor/Resprites/Buff_65");
-				Main.buffTexture[66] = ModLoader.GetTexture("Tremor/Resprites/Buff_66");
-				Main.buffTexture[67] = ModLoader.GetTexture("Tremor/Resprites/Buff_67");
-				Main.buffTexture[68] = ModLoader.GetTexture("Tremor/Resprites/Buff_68");
-				Main.buffTexture[69] = ModLoader.GetTexture("Tremor/Resprites/Buff_69");
-				Main.buffTexture[70] = ModLoader.GetTexture("Tremor/Resprites/Buff_70");
-				Main.buffTexture[71] = ModLoader.GetTexture("Tremor/Resprites/Buff_71");
-				Main.buffTexture[72] = ModLoader.GetTexture("Tremor/Resprites/Buff_72");
-				Main.buffTexture[73] = ModLoader.GetTexture("Tremor/Resprites/Buff_73");
-				Main.buffTexture[74] = ModLoader.GetTexture("Tremor/Resprites/Buff_74");
-				Main.buffTexture[75] = ModLoader.GetTexture("Tremor/Resprites/Buff_75");
-				Main.buffTexture[76] = ModLoader.GetTexture("Tremor/Resprites/Buff_76");
-				Main.buffTexture[76] = ModLoader.GetTexture("Tremor/Resprites/Buff_77");
-				Main.buffTexture[78] = ModLoader.GetTexture("Tremor/Resprites/Buff_78");
-				Main.buffTexture[79] = ModLoader.GetTexture("Tremor/Resprites/Buff_79");
-				Main.buffTexture[80] = ModLoader.GetTexture("Tremor/Resprites/Buff_80");
-				Main.buffTexture[81] = ModLoader.GetTexture("Tremor/Resprites/Buff_81");
-				Main.buffTexture[82] = ModLoader.GetTexture("Tremor/Resprites/Buff_82");
-				Main.buffTexture[83] = ModLoader.GetTexture("Tremor/Resprites/Buff_83");
-				Main.buffTexture[84] = ModLoader.GetTexture("Tremor/Resprites/Buff_84");
-				Main.buffTexture[85] = ModLoader.GetTexture("Tremor/Resprites/Buff_85");
-				Main.buffTexture[86] = ModLoader.GetTexture("Tremor/Resprites/Buff_86");
-				Main.buffTexture[87] = ModLoader.GetTexture("Tremor/Resprites/Buff_87");
-				Main.buffTexture[88] = ModLoader.GetTexture("Tremor/Resprites/Buff_88");
-				Main.buffTexture[89] = ModLoader.GetTexture("Tremor/Resprites/Buff_89");
-				Main.buffTexture[90] = ModLoader.GetTexture("Tremor/Resprites/Buff_90");
-				Main.buffTexture[91] = ModLoader.GetTexture("Tremor/Resprites/Buff_91");
-				Main.buffTexture[93] = ModLoader.GetTexture("Tremor/Resprites/Buff_93");
-				Main.buffTexture[94] = ModLoader.GetTexture("Tremor/Resprites/Buff_94");
-				Main.buffTexture[95] = ModLoader.GetTexture("Tremor/Resprites/Buff_95");
-				Main.buffTexture[96] = ModLoader.GetTexture("Tremor/Resprites/Buff_96");
-				Main.buffTexture[97] = ModLoader.GetTexture("Tremor/Resprites/Buff_97");
-				Main.buffTexture[98] = ModLoader.GetTexture("Tremor/Resprites/Buff_98");
-				Main.buffTexture[99] = ModLoader.GetTexture("Tremor/Resprites/Buff_99");
-				Main.buffTexture[100] = ModLoader.GetTexture("Tremor/Resprites/Buff_100");
-				Main.buffTexture[101] = ModLoader.GetTexture("Tremor/Resprites/Buff_101");
-				Main.buffTexture[102] = ModLoader.GetTexture("Tremor/Resprites/Buff_102");
-				Main.buffTexture[103] = ModLoader.GetTexture("Tremor/Resprites/Buff_103");
-				Main.buffTexture[104] = ModLoader.GetTexture("Tremor/Resprites/Buff_104");
-				Main.buffTexture[105] = ModLoader.GetTexture("Tremor/Resprites/Buff_105");
-				Main.buffTexture[106] = ModLoader.GetTexture("Tremor/Resprites/Buff_106");
-				Main.buffTexture[107] = ModLoader.GetTexture("Tremor/Resprites/Buff_107");
-				Main.buffTexture[108] = ModLoader.GetTexture("Tremor/Resprites/Buff_108");
-				Main.buffTexture[109] = ModLoader.GetTexture("Tremor/Resprites/Buff_109");
-				Main.buffTexture[110] = ModLoader.GetTexture("Tremor/Resprites/Buff_110");
-				Main.buffTexture[111] = ModLoader.GetTexture("Tremor/Resprites/Buff_111");
-				Main.buffTexture[112] = ModLoader.GetTexture("Tremor/Resprites/Buff_112");
-				Main.buffTexture[113] = ModLoader.GetTexture("Tremor/Resprites/Buff_113");
-				Main.buffTexture[114] = ModLoader.GetTexture("Tremor/Resprites/Buff_114");
-				Main.buffTexture[115] = ModLoader.GetTexture("Tremor/Resprites/Buff_115");
-				Main.buffTexture[116] = ModLoader.GetTexture("Tremor/Resprites/Buff_116");
-				Main.buffTexture[117] = ModLoader.GetTexture("Tremor/Resprites/Buff_117");
-				Main.buffTexture[118] = ModLoader.GetTexture("Tremor/Resprites/Buff_118");
-				Main.buffTexture[119] = ModLoader.GetTexture("Tremor/Resprites/Buff_119");
-				Main.buffTexture[120] = ModLoader.GetTexture("Tremor/Resprites/Buff_120");
-				Main.buffTexture[121] = ModLoader.GetTexture("Tremor/Resprites/Buff_121");
-				Main.buffTexture[123] = ModLoader.GetTexture("Tremor/Resprites/Buff_123");
-				Main.buffTexture[124] = ModLoader.GetTexture("Tremor/Resprites/Buff_124");
-				Main.buffTexture[125] = ModLoader.GetTexture("Tremor/Resprites/Buff_125");
-				Main.buffTexture[126] = ModLoader.GetTexture("Tremor/Resprites/Buff_126");
-				Main.buffTexture[127] = ModLoader.GetTexture("Tremor/Resprites/Buff_127");
-				Main.buffTexture[128] = ModLoader.GetTexture("Tremor/Resprites/Buff_128");
-				Main.buffTexture[129] = ModLoader.GetTexture("Tremor/Resprites/Buff_129");
-				Main.buffTexture[130] = ModLoader.GetTexture("Tremor/Resprites/Buff_130");
-				Main.buffTexture[131] = ModLoader.GetTexture("Tremor/Resprites/Buff_131");
-				Main.buffTexture[132] = ModLoader.GetTexture("Tremor/Resprites/Buff_132");
-				Main.buffTexture[134] = ModLoader.GetTexture("Tremor/Resprites/Buff_134");
-				Main.buffTexture[135] = ModLoader.GetTexture("Tremor/Resprites/Buff_135");
-				Main.buffTexture[136] = ModLoader.GetTexture("Tremor/Resprites/Buff_136");
-				Main.buffTexture[137] = ModLoader.GetTexture("Tremor/Resprites/Buff_137");
-				Main.buffTexture[138] = ModLoader.GetTexture("Tremor/Resprites/Buff_138");
-				Main.buffTexture[139] = ModLoader.GetTexture("Tremor/Resprites/Buff_139");
-				Main.buffTexture[140] = ModLoader.GetTexture("Tremor/Resprites/Buff_140");
-				Main.buffTexture[141] = ModLoader.GetTexture("Tremor/Resprites/Buff_141");
-				Main.buffTexture[142] = ModLoader.GetTexture("Tremor/Resprites/Buff_142");
-				Main.buffTexture[144] = ModLoader.GetTexture("Tremor/Resprites/Buff_144");
-				Main.buffTexture[145] = ModLoader.GetTexture("Tremor/Resprites/Buff_145");
-				Main.buffTexture[146] = ModLoader.GetTexture("Tremor/Resprites/Buff_146");
-				Main.buffTexture[147] = ModLoader.GetTexture("Tremor/Resprites/Buff_147");
-				Main.buffTexture[148] = ModLoader.GetTexture("Tremor/Resprites/Buff_148");
-				Main.buffTexture[149] = ModLoader.GetTexture("Tremor/Resprites/Buff_149");
-				Main.buffTexture[150] = ModLoader.GetTexture("Tremor/Resprites/Buff_150");
-				Main.buffTexture[151] = ModLoader.GetTexture("Tremor/Resprites/Buff_151");
-				Main.buffTexture[152] = ModLoader.GetTexture("Tremor/Resprites/Buff_152");
-				Main.buffTexture[153] = ModLoader.GetTexture("Tremor/Resprites/Buff_153");
-				Main.buffTexture[154] = ModLoader.GetTexture("Tremor/Resprites/Buff_154");
-				Main.buffTexture[155] = ModLoader.GetTexture("Tremor/Resprites/Buff_155");
-				Main.buffTexture[156] = ModLoader.GetTexture("Tremor/Resprites/Buff_156");
-				Main.buffTexture[157] = ModLoader.GetTexture("Tremor/Resprites/Buff_157");
-				Main.buffTexture[158] = ModLoader.GetTexture("Tremor/Resprites/Buff_158");
-				Main.buffTexture[159] = ModLoader.GetTexture("Tremor/Resprites/Buff_159");
-				Main.buffTexture[160] = ModLoader.GetTexture("Tremor/Resprites/Buff_160");
-				Main.buffTexture[161] = ModLoader.GetTexture("Tremor/Resprites/Buff_161");
-				Main.buffTexture[162] = ModLoader.GetTexture("Tremor/Resprites/Buff_162");
-				Main.buffTexture[163] = ModLoader.GetTexture("Tremor/Resprites/Buff_163");
-				Main.buffTexture[164] = ModLoader.GetTexture("Tremor/Resprites/Buff_164");
-				Main.buffTexture[165] = ModLoader.GetTexture("Tremor/Resprites/Buff_165");
-				Main.buffTexture[166] = ModLoader.GetTexture("Tremor/Resprites/Buff_166");
-				Main.buffTexture[167] = ModLoader.GetTexture("Tremor/Resprites/Buff_167");
-				Main.buffTexture[168] = ModLoader.GetTexture("Tremor/Resprites/Buff_168");
-				Main.buffTexture[169] = ModLoader.GetTexture("Tremor/Resprites/Buff_169");
-				Main.buffTexture[170] = ModLoader.GetTexture("Tremor/Resprites/Buff_170");
-				Main.buffTexture[171] = ModLoader.GetTexture("Tremor/Resprites/Buff_171");
-				Main.buffTexture[172] = ModLoader.GetTexture("Tremor/Resprites/Buff_172");
-				Main.buffTexture[174] = ModLoader.GetTexture("Tremor/Resprites/Buff_173");
-				Main.buffTexture[174] = ModLoader.GetTexture("Tremor/Resprites/Buff_174");
-				Main.buffTexture[175] = ModLoader.GetTexture("Tremor/Resprites/Buff_175");
-				Main.buffTexture[176] = ModLoader.GetTexture("Tremor/Resprites/Buff_176");
-				Main.buffTexture[177] = ModLoader.GetTexture("Tremor/Resprites/Buff_177");
-				Main.buffTexture[178] = ModLoader.GetTexture("Tremor/Resprites/Buff_178");
-				Main.buffTexture[179] = ModLoader.GetTexture("Tremor/Resprites/Buff_179");
-				Main.buffTexture[180] = ModLoader.GetTexture("Tremor/Resprites/Buff_180");
-				Main.buffTexture[181] = ModLoader.GetTexture("Tremor/Resprites/Buff_181");
-				Main.buffTexture[182] = ModLoader.GetTexture("Tremor/Resprites/Buff_182");
-				Main.buffTexture[184] = ModLoader.GetTexture("Tremor/Resprites/Buff_184");
-				Main.buffTexture[185] = ModLoader.GetTexture("Tremor/Resprites/Buff_185");
-				Main.buffTexture[186] = ModLoader.GetTexture("Tremor/Resprites/Buff_186");
-				Main.buffTexture[187] = ModLoader.GetTexture("Tremor/Resprites/Buff_187");
-				Main.buffTexture[188] = ModLoader.GetTexture("Tremor/Resprites/Buff_188");
-				Main.buffTexture[189] = ModLoader.GetTexture("Tremor/Resprites/Buff_189");
-				Main.buffTexture[190] = ModLoader.GetTexture("Tremor/Resprites/Buff_190");
-
-				Main.buffTexture[191] = ModLoader.GetTexture("Tremor/Resprites/Buff_191");
-				Main.buffTexture[192] = ModLoader.GetTexture("Tremor/Resprites/Buff_192");
-				Main.buffTexture[193] = ModLoader.GetTexture("Tremor/Resprites/Buff_193");
-				Main.buffTexture[194] = ModLoader.GetTexture("Tremor/Resprites/Buff_194");
-				Main.buffTexture[195] = ModLoader.GetTexture("Tremor/Resprites/Buff_195");
-				Main.buffTexture[196] = ModLoader.GetTexture("Tremor/Resprites/Buff_196");
-				Main.buffTexture[197] = ModLoader.GetTexture("Tremor/Resprites/Buff_197");
-				Main.buffTexture[198] = ModLoader.GetTexture("Tremor/Resprites/Buff_198");
-				Main.buffTexture[199] = ModLoader.GetTexture("Tremor/Resprites/Buff_199");
-				Main.buffTexture[200] = ModLoader.GetTexture("Tremor/Resprites/Buff_200");
-				Main.buffTexture[201] = ModLoader.GetTexture("Tremor/Resprites/Buff_201");
-				Main.buffTexture[202] = ModLoader.GetTexture("Tremor/Resprites/Buff_202");
-				Main.buffTexture[203] = ModLoader.GetTexture("Tremor/Resprites/Buff_203");
-				Main.buffTexture[204] = ModLoader.GetTexture("Tremor/Resprites/Buff_204");
-				Main.buffTexture[205] = ModLoader.GetTexture("Tremor/Resprites/Buff_205");
+				// Replace vanilla buff sprites with resprites
+				for (int i = 1; i < 206; i++)
+				{
+					Main.buffTexture[i] = ModLoader.GetTexture($"Tremor/Resprites/Buff_{i}");
+				}
 			}
 		}
 
 		public override void AddRecipes()
 		{
-			List<Tuple<int, int[]>> recipesToDelete = new List<Tuple<int, int[]>>();
-			recipesToDelete.Add(new Tuple<int, int[]>(ItemID.NightsEdge, new int[] { ItemID.BloodButcherer }));
-			recipesToDelete.Add(new Tuple<int, int[]>(ItemID.MechanicalWorm, new int[] { ItemID.Vertebrae }));
-
-			recipesToDelete.Add(new Tuple<int, int[]>(3544, new int[0])); // Super Healing Potion
-			recipesToDelete.Add(new Tuple<int, int[]>(3601, new int[0])); // Celestial Sigil
-			recipesToDelete.Add(new Tuple<int, int[]>(3456, new int[0])); // Celestial Sigil
-			recipesToDelete.Add(new Tuple<int, int[]>(3457, new int[0])); // Celestial Sigil
-			recipesToDelete.Add(new Tuple<int, int[]>(3458, new int[0])); // Celestial Sigil
-			recipesToDelete.Add(new Tuple<int, int[]>(3459, new int[0])); // Celestial Sigil
-
-
-			RecipeFinder finder;
-			foreach (var recipeTuple in recipesToDelete)
+			List<Tuple<int, int[]>> recipesToDelete = new List<Tuple<int, int[]>>
 			{
-				finder = new RecipeFinder();
-				finder.SetResult(recipeTuple.Item1);
-				foreach (var ingredient in recipeTuple.Item2)
+				new Tuple<int, int[]>(ItemID.NightsEdge, new int[] {ItemID.BloodButcherer}),
+				new Tuple<int, int[]>(ItemID.MechanicalWorm, new int[] {ItemID.Vertebrae}),
+				new Tuple<int, int[]>(3544, new int[0]),// Super Healing Potion
+				new Tuple<int, int[]>(3601, new int[0]),// Celestial Sigil
+				new Tuple<int, int[]>(3456, new int[0]),// Celestial Sigil
+				new Tuple<int, int[]>(3457, new int[0]),// Celestial Sigil
+				new Tuple<int, int[]>(3458, new int[0]),// Celestial Sigil
+				new Tuple<int, int[]>(3459, new int[0])// Celestial Sigil
+			};
+
+			foreach (var toDeleteRecipe in recipesToDelete)
+			{
+				var finder = new RecipeFinder();
+				finder.SetResult(toDeleteRecipe.Item1);
+				foreach (var ingredient in toDeleteRecipe.Item2)
 				{
 					finder.AddIngredient(ingredient);
 				}
@@ -483,8 +281,8 @@ namespace Tremor
 					editor.DeleteRecipe();
 				}
 			}
-			////////////////////////// Pillars Recipes
 
+			// Pillars Recipes
 			ModRecipe recipe = new ModRecipe(this);
 			recipe.AddIngredient(3456, 1);
 			recipe.AddIngredient(3457, 1);
@@ -755,8 +553,6 @@ namespace Tremor
 			recipe.SetResult(607);
 			recipe.AddRecipe();
 
-			//вот   тут   начинаются новые крафты
-
 			recipe = new ModRecipe(this);
 			recipe.AddIngredient(ItemID.PalladiumOre, 3);
 			recipe.SetResult(ItemID.CobaltOre, 2);
@@ -902,47 +698,6 @@ namespace Tremor
 			recipe.SetResult(1293);
 			recipe.AddTile(134);
 			recipe.AddRecipe();
-		}
-
-		public static bool NoInvasion(NPCSpawnInfo spawnInfo)
-		{
-			return !spawnInfo.invasion && ((!Main.pumpkinMoon && !Main.snowMoon) || spawnInfo.spawnTileY > Main.worldSurface || Main.dayTime) && (!Main.eclipse || spawnInfo.spawnTileY > Main.worldSurface || !Main.dayTime);
-		}
-
-		public static bool NoBiome(NPCSpawnInfo spawnInfo)
-		{
-			Player player = spawnInfo.player;
-			return !player.ZoneJungle && !player.ZoneDungeon && !player.ZoneCorrupt && !player.ZoneCrimson && !player.ZoneHoly && !player.ZoneSnow && !player.ZoneUndergroundDesert;
-		}
-
-		public static bool NoZoneAllowWater(NPCSpawnInfo spawnInfo)
-		{
-			return !spawnInfo.sky && !spawnInfo.player.ZoneMeteor && !spawnInfo.spiderCave;
-		}
-
-		public static bool NoZone(NPCSpawnInfo spawnInfo)
-		{
-			return NoZoneAllowWater(spawnInfo) && !spawnInfo.water;
-		}
-
-		public static bool NormalSpawn(NPCSpawnInfo spawnInfo)
-		{
-			return !spawnInfo.playerInTown && NoInvasion(spawnInfo);
-		}
-
-		public static bool NoZoneNormalSpawn(NPCSpawnInfo spawnInfo)
-		{
-			return NormalSpawn(spawnInfo) && NoZone(spawnInfo);
-		}
-
-		public static bool NoZoneNormalSpawnAllowWater(NPCSpawnInfo spawnInfo)
-		{
-			return NormalSpawn(spawnInfo) && NoZoneAllowWater(spawnInfo);
-		}
-
-		public static bool NoBiomeNormalSpawn(NPCSpawnInfo spawnInfo)
-		{
-			return NormalSpawn(spawnInfo) && NoBiome(spawnInfo) && NoZone(spawnInfo);
 		}
 
 		public override void ModifyInterfaceLayers(List<GameInterfaceLayer> layers)

@@ -226,7 +226,7 @@ namespace Tremor.NPCs
 				if (Rotation != 0.0f)
 				{
 					Rotation -= (RotationSpeed * 2.0f);
-					Vector2 velocity = Helper.VelocityFPTP(npc.Center, Helper.RandomPositin(new Vector2(npc.Center.X - 250, npc.Center.Y - 250), new Vector2(npc.Center.X + 250, npc.Center.Y + 250)), PowerLaserSpeed);
+					Vector2 velocity = Helper.VelocityFPTP(npc.Center, Helper.RandomPosition(new Vector2(npc.Center.X - 250, npc.Center.Y - 250), new Vector2(npc.Center.X + 250, npc.Center.Y + 250)), PowerLaserSpeed);
 					int i = Projectile.NewProjectile(npc.Center.X, npc.Center.Y, velocity.X, velocity.Y, ShootType, PowerLaserDamage, PowerLaserKB);
 					Main.projectile[i].tileCollide = false;
 				}

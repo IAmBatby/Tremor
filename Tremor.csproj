@@ -187,7 +187,6 @@
     <Compile Include="Buffs\ZootalooBuff.cs" />
     <Compile Include="CheckMobs.cs" />
     <Compile Include="CustomDrop.cs" />
-    <Compile Include="CustomWorldData.cs" />
     <Compile Include="DungeonGenn\DungeonWorld.cs" />
     <Compile Include="Dusts\Ball.cs" />
     <Compile Include="Dusts\ClusterFlame.cs" />
@@ -200,7 +199,7 @@
     <Compile Include="Dusts\SoulofHopeDust.cs" />
     <Compile Include="Dusts\SoulofTrustDust.cs" />
     <Compile Include="Dusts\SoulofTruthDust.cs" />
-    <Compile Include="GItem.cs" />
+    <Compile Include="TremorGlobalItem.cs" />
     <Compile Include="GlobalNPC.cs" />
     <Compile Include="Gores\IceDroplet.cs" />
     <Compile Include="Helper.cs" />
@@ -7159,7 +7158,6 @@
     <Content Include="ZombieEvent\Tiles\RupicideBar.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Buffs\Thumbs.db" />
     <None Include="Gores\Thumbs.db" />
     <None Include="Items\DrippingSaddle.csNotWork" />
   </ItemGroup>

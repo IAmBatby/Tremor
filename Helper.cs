@@ -4,13 +4,58 @@ using System.Linq;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
+using Terraria.ModLoader;
 
 namespace Tremor
 {
 	public delegate void ExtraAction();
+
 	public static class Helper
 	{
-		public static Vector2 RandomPositin(Vector2 pos1, Vector2 pos2)
+		#region Spawn helpers
+		public static bool NoInvasion(NPCSpawnInfo spawnInfo)
+		{
+			return !spawnInfo.invasion && ((!Main.pumpkinMoon && !Main.snowMoon) || spawnInfo.spawnTileY > Main.worldSurface || Main.dayTime) && (!Main.eclipse || spawnInfo.spawnTileY > Main.worldSurface || !Main.dayTime);
+		}
+
+		public static bool NoBiome(NPCSpawnInfo spawnInfo)
+		{
+			Player player = spawnInfo.player;
+			return !player.ZoneJungle && !player.ZoneDungeon && !player.ZoneCorrupt && !player.ZoneCrimson && !player.ZoneHoly && !player.ZoneSnow && !player.ZoneUndergroundDesert;
+		}
+
+		public static bool NoZoneAllowWater(NPCSpawnInfo spawnInfo)
+		{
+			return !spawnInfo.sky && !spawnInfo.player.ZoneMeteor && !spawnInfo.spiderCave;
+		}
+
+		public static bool NoZone(NPCSpawnInfo spawnInfo)
+		{
+			return NoZoneAllowWater(spawnInfo) && !spawnInfo.water;
+		}
+
+		public static bool NormalSpawn(NPCSpawnInfo spawnInfo)
+		{
+			return !spawnInfo.playerInTown && NoInvasion(spawnInfo);
+		}
+
+		public static bool NoZoneNormalSpawn(NPCSpawnInfo spawnInfo)
+		{
+			return NormalSpawn(spawnInfo) && NoZone(spawnInfo);
+		}
+
+		public static bool NoZoneNormalSpawnAllowWater(NPCSpawnInfo spawnInfo)
+		{
+			return NormalSpawn(spawnInfo) && NoZoneAllowWater(spawnInfo);
+		}
+
+		public static bool NoBiomeNormalSpawn(NPCSpawnInfo spawnInfo)
+		{
+			return NormalSpawn(spawnInfo) && NoBiome(spawnInfo) && NoZone(spawnInfo);
+		}
+		#endregion
+
+		public static Vector2 RandomPosition(Vector2 pos1, Vector2 pos2)
 		{
 			Random rnd = new Random();
 			return new Vector2(rnd.Next((int)pos1.X, (int)pos2.X) + 1, rnd.Next((int)pos1.Y, (int)pos2.Y) + 1);

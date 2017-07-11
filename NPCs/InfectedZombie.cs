@@ -42,7 +42,7 @@ namespace Tremor.NPCs
 			int x = spawnInfo.spawnTileX;
 			int y = spawnInfo.spawnTileY;
 			int tile = Main.tile[x, y].type;
-			return (Tremor.NormalSpawn(spawnInfo) && Tremor.NoZoneAllowWater(spawnInfo)) && !Main.dayTime && NPC.downedBoss2 && spawnInfo.player.ZoneCrimson && y < Main.worldSurface ? 0.02f : 0;
+			return (Helper.NormalSpawn(spawnInfo) && Helper.NoZoneAllowWater(spawnInfo)) && !Main.dayTime && NPC.downedBoss2 && spawnInfo.player.ZoneCrimson && y < Main.worldSurface ? 0.02f : 0;
 		}
 	}
 }

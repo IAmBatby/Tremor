@@ -64,7 +64,7 @@ namespace Tremor.NPCs
 			int x = spawnInfo.spawnTileX;
 			int y = spawnInfo.spawnTileY;
 			int tile = Main.tile[x, y].type;
-			return (Tremor.NormalSpawn(spawnInfo) && (tile == 70)) && y < Main.rockLayer ? 0.03f : 0f;
+			return (Helper.NormalSpawn(spawnInfo) && (tile == 70)) && y < Main.rockLayer ? 0.03f : 0f;
 		}
 	}
 }

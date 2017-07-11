@@ -76,7 +76,7 @@ namespace Tremor.NPCs
 			int x = spawnInfo.spawnTileX;
 			int y = spawnInfo.spawnTileY;
 			int tile = Main.tile[x, y].type;
-			return Tremor.NormalSpawn(spawnInfo) && spawnInfo.spawnTileY < Main.rockLayer && NPC.downedMoonlord && Main.eclipse ? 0.01f : 0f;
+			return Helper.NormalSpawn(spawnInfo) && spawnInfo.spawnTileY < Main.rockLayer && NPC.downedMoonlord && Main.eclipse ? 0.01f : 0f;
 		}
 	}
 }

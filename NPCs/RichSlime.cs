@@ -55,7 +55,7 @@ namespace Tremor.NPCs
 
 		public override float SpawnChance(NPCSpawnInfo spawnInfo)
 		{
-			return spawnInfo.spawnTileY < Main.rockLayer && Main.hardMode && Tremor.NoInvasion(spawnInfo) && NPC.downedMoonlord && Main.dayTime ? 0.005f : 0f;
+			return spawnInfo.spawnTileY < Main.rockLayer && Main.hardMode && Helper.NoInvasion(spawnInfo) && NPC.downedMoonlord && Main.dayTime ? 0.005f : 0f;
 		}
 
 		public override void NPCLoot()

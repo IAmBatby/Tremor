@@ -61,7 +61,7 @@ namespace Tremor.NPCs
 			int x = spawnInfo.spawnTileX;
 			int y = spawnInfo.spawnTileY;
 			int tile = Main.tile[x, y].type;
-			return (Tremor.NormalSpawn(spawnInfo) && Tremor.NoZoneAllowWater(spawnInfo)) && Main.hardMode && Main.expertMode && Main.bloodMoon && y < Main.worldSurface ? 0.002f : 0f;
+			return (Helper.NormalSpawn(spawnInfo) && Helper.NoZoneAllowWater(spawnInfo)) && Main.hardMode && Main.expertMode && Main.bloodMoon && y < Main.worldSurface ? 0.002f : 0f;
 		}
 		public override void HitEffect(int hitDirection, double damage)
 		{

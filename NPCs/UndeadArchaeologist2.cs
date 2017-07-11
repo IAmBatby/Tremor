@@ -65,7 +65,7 @@ namespace Tremor.NPCs
 
 			int tile = Main.tile[x, y].type;
 
-			return (Tremor.NormalSpawn(spawnInfo) && !Main.dayTime && Tremor.NoZoneAllowWater(spawnInfo)) && spawnInfo.player.ZoneDesert ? 0.04f : 0f;
+			return (Helper.NormalSpawn(spawnInfo) && !Main.dayTime && Helper.NoZoneAllowWater(spawnInfo)) && spawnInfo.player.ZoneDesert ? 0.04f : 0f;
 		}
 	}
 }
