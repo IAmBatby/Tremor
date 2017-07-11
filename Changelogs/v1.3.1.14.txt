@@ -1,0 +1,37 @@
+TML 0.10.0.2 support
+
+New items:
+White Master Hood
+White Master Chestplate
+White Master Greaves
+
+New mobs:
+Nova Bat
+
+Fixes:
+Fixed some misspells
+Fixed Cyber King showing "Use a 0" in Boss Checklist
+Fixed Cyber King not checking off in Boss Checklist
+Fixed modded Work Benches not having solid tops
+Fixed Shadow Master Chestplte and Pants being crafted on Divine Forge instead of Ancient Manipulator
+Fixed Space Whale not spawning sometimes
+Fixed Heater of Worlds not showing in Boss Checklist
+
+New boss minions:
+Tiki Soul
+
+Changes:
+Lowered Desert Princess spawnrate
+Increases Shadow Master armor bonuses
+Warkee now transform to Yuwarkees that can't spawn more Warkees, preventing infinite spawns
+Increased amount of Icicle Ore in Glacier
+Changed Desert Princess & Wasp sprites
+Martian Communicator now starts Martian Madness instead of spawning Martian Probe
+Transistor now shoots energetical waves in different directions on swing
+Void Knife now spawns explosions when hitting an enemy and has chance to restore some health if player is below 50% of health
+Abyss Armor setbonus also makes Shadow Arm minion inflict Shadowflame debuff on enemies
+Fungus Beetle is much slower and spawns minions less often
+Tiki Totem now has 2 forms, spawns with 3 Tiki Souls defending it, goes to 2nd form when player kills all Souls
+Anger, Happy and Indifference Souls no longer spawn after beating Tiki Totem, they now spawn during fight
+Tiki Totem can now teleport to the player (Like King Slime)
+Renamed Anger Soul to Soul of Anger, Happy Soul to Soul of Happiness, Indifferent Soul to Soul of Indifference

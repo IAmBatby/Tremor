@@ -1,0 +1,22 @@
+New boss minions:
+Magma Leech
+
+Fixes:
+Fixed music boxes not playing any music
+Fixed Fragile Condition, Day Hunting and Night Hunting having infinite duration time
+Fixed Great Anvil, Flesh Workstation and Altar of Enchantments not showing in recipes
+Fixed Ancient Dragon not dropping Treasure Bag
+Fixed Key Fish and Wooden Piranha quests showing that they can be catched anywhere
+Fixed Zootaloo spawn rate
+Fixed Narsil dropping before hardmode
+Fixed Post-Plantera Skeletons in Dungeon drop Warp Pad instead of Bottled Spirit
+Fixed Glacier Wood Chest not opening in Multiplayer
+Fixed Violeum Mask dropping from Paradox Titan Treasure Bag
+Fixed Ruin Chest and Glacier Chest not opening in Multiplayer
+
+Changes:
+Changed Flower of Antimony, Mini Gun, Stigmata, Dragon Spear sprites
+Relayx is now Paradox Titan expert item
+Rukh now summons Sandnados
+Heater of Worlds now summons Magma Leeches
+Storm Jellyfish moves faster, shoots electric bolts more often and spawns electrical spheres

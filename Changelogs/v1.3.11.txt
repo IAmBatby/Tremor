@@ -1,0 +1,19 @@
+Fixes:
+Fixed Ice Chest being opened without Ice Keys
+Fixed True Hero Pants not equpping
+Fixed Night's Watch and Bloodshed having Light Red rarity instead of Orange
+Fixed Cog Lord not checking in Boss Checklist
+Fixed Super Healing Flasks not throwing anything
+Fixed modded doors spawning dirt blocks when opened
+Fixed mod crash when playing with Item Checklist mod
+Fixed items not crafting on modded crafting stations
+Fixed crafting stations not showing in item recipes
+Fixed Conglomeration having wrong value
+Fixed Shadow Relic not summoning Wall of Shadows
+
+Changes:
+Ruin Keys & Lanterns now drop with 33% chance
+Changed Wrath of Wraith sprite
+Conglomeration now grants higher bonuses
+Silk Banner now grants 15 defense instead of 33
+Increased spawnrate of Squoma, Phobos and Deimos

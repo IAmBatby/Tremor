@@ -1,0 +1,6 @@
+Fixes:
+ - Removed many redundant code, effectively reducing the .tmod filesize by an amount
+ - Reformatted most of the code
+ 
+Other:
+ - Tremor is now publicly available on github: https://github.com/Jofairden/Tremor

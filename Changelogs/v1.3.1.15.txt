@@ -1,0 +1,29 @@
+
+New items:
+Mana Stim Pack
+Health Stim Pack
+Aquamarine Crystal
+
+Fixes:
+Fixed Nightmare Arrows being thrown by player
+Fixed item's glowmasks being broken
+Fixed Andas sometimes flying to surface and disappearing 
+Fixed some accessories that grants spinning minion being broken in Multiplayer
+Fixed Brass Greaves and Red Steel Guardian not equipping
+Fixed Cursed Souls not dropping in normal mode
+
+Changes:
+Brutallisk now drops Aquamarine Crystal as Expert item
+Chef now uses Butcher Axe as weapon
+Archer now uses Demon Bow & Flaming Arrows as weapon in Pre-Hardmode and uses Shadowflame Bow & Shadowflame Arrows in Hardmode
+Professor now uses Alien Blaster as weapon
+Increased Alphaplasm drop chance
+Increased amount of Cluster Shards dropped from Suspicious Bags
+Changed Void Blade rarity
+Updated Corruptor Gun, Flaming Tooth, Dead Head, Knight Helmet and Vertebrow sprite
+Increased Fallen Snake damage
+Lowered Vulture Wings maximum flight time
+Phoenix Shotgun now shoots fireballs instead of bullets
+Wall of Shadows can now move it's eye vertically and follow the player 
+Glacier now has Snow biome background
+Lowered Flying Dutchman mount stats

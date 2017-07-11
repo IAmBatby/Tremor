@@ -1,0 +1,105 @@
+New buffs:
+Bottled Spirit
+Big Bottled Spirit
+Enchantment Solution
+Amplified Enchantment Solution
+Master Alchemist Glove
+
+New tiles:
+Ancient Dragon Trophy
+
+New items:
+Gurumaster
+Bramble Staff
+Crawler Hook
+Antlion Fury
+Key of Sands
+The Hurricane
+Squid Tentacle
+The Tide
+True Tident
+Shark Rage
+Ocean Amulet
+Key of Ocean
+Desert Sigil
+Husky Staff
+Shadow Relic
+Emerald Stone
+True Death Sickle
+Rusty Lantern
+Decayed
+Antique Stave
+Rusty Slasher
+Firebender Tome
+Flask of Shadows
+Ancient Dragon Mask
+Dragon Head
+Swordstorm
+Ancient Soul
+Ancient Dragon Treasure Bag
+Alchemist Emblem
+Thrower Emblem
+Warp Pad
+Heart Amulet
+Magus Tome
+Cobalt Visage
+Mythril Visage
+Adamantite Visage
+Palladium Visage
+Orichalcum Visage
+Titanium Visage
+Bottled Spirit
+Big Bottled Spirit
+Enchantment Solution
+Amplified Enchantment Solution
+Master Alchemist Glove
+
+New bosses:
+Ancient Dragon
+
+New boss minions:
+Baby Dragon
+
+New mobs:
+Magus
+Gobling Standart Bearer
+Goblin Assassin
+Goblin Bomber
+Ruin Ghost (1)
+Ruin Ghost (2)
+Desert Mimic
+Ocean Mimic
+
+Fixes:
+Hallowed Greaves can be properly crafted
+Chlorophyte Bars can be properly crafted
+Fixed some Flasks spawning wrong clouds
+Fixed Healing Flasks giving 0 health
+Fixed Glacier Mobs not spawning in Multiplayer
+Fixed Glacier Mobs spawn overlapping other mobs spawn
+Fixed some Events Mobs disappearing after one hit in Multiplayer
+Fixed Paradox Titan staying in it's first form even after defeating the Paradox Cohort
+Fixed Comet Head, Galasquid and Astrofly not spawning in Comet
+Alchemaster flasks no longer gain bonuses from player alchemic accessories
+Fixed some bosses not spawning in Multiplayer
+Fixed Cog Lord and Trinity getting damage from their projectiles in Multiplayer
+Fixed Glacier Walls overlapping player walls
+Fixed new player spawning without Adventurer Spark
+Fixed Argite ore not spawning
+Fixed some Flasks not showing any info when hovering over them with cursor
+
+Others:
+New "Ruins" structure that spawns underground
+Blizzard, Granite, Night of Undead, Slime Rain tracks no longer overlap other tracks
+Lowered Dev items drop chance a bit
+Removed Hunger System
+Modded minions can attack monsters targeted via RMB
+Wall of Shadows is no longer a Wall of Flesh alternative
+Changed Wall of Shadows items stats
+Changed Wall of Shadows AI
+Flasks now have Critical Strikes
+Removed vanilla recipes changes
+Tremode Bosses now have bigger stats
+Changed Trinity AI
+Changed Cog Lord AI
+Changed Cog Lord Sprites

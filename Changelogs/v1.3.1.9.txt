@@ -1,0 +1,103 @@
+Main:
+TML 0.10 support
+
+New buffs:
+Lil' Snatcher
+Birb
+Nova Power
+Molten Watcher
+Warkee
+The Cadence
+Chaos Element
+
+New tiles:
+Nova Fragment Block
+Andas Trophy
+
+New items:
+Rich Mahogany Seed
+Basic Sprayer
+Mecha Sprayer
+Martian Sprayer
+Nightmare Sprayer
+Desert Explorer Visage
+Desert Explorer Breastplate
+Desert Explorer Greaves
+Duke Flask
+Birb Staff
+Inferno Skull
+Pandemonium
+Inferno
+Hell Storm
+Vulcan Blade
+Gehenna Staff
+Treasure Bag (Andas)
+Andas Mask
+Andas Trophy
+Hades Helmet
+Hades Breastplate
+Hades Greaves
+Andas Core
+Nova Fragment
+Nova Pickaxe
+Nova Hamaxe
+Nova Dye
+Nova Monolith
+Nova Flask
+Nova Sprayer
+Nova Helmet
+Nova Breastplate
+Nova Leggings
+Nova Fragment Block
+Nova Band
+Nova Ring
+Nova Wings
+Brass Chip
+The Cadence
+Chaos Element
+
+New mobs:
+Nova Alchemist
+Warkee
+Yuwarkee
+Nova Flier
+Nova Kamikaze
+Desert Princess
+Desert Wasp
+
+New minibosses:
+Nova Pillar
+
+New bosses:
+Andas
+
+New boss minions:
+Molten Spirit
+Undead Wyrm
+
+Fixes:
+Fixed Glacier mobs inflicting Frostburn for 8 seconds not for 1
+Fixed Stone items having wrong value
+Fixed Ancient Dragon not summoning in Singleplayer
+Fixed wrong minimap colors of placed Gloomstone items
+Fixed Alchemist not selling Health Support Flask
+Fixed new Goblins overlapping vanilla Goblins spawn
+Fixed new Goblins not giving points to Progress Bar on death
+Glacier Mobs no longer spawn if a Celestial Pillar is active
+Fixed Ruin Ghosts not spawning after beating Tiki Totem
+Fixed Book of Revelations spawning a lot of hearts and mana
+Fixed Book of Revelations cooldown not working
+
+Others:
+Changed Glacier biome blocks & sizes
+You no longer gain Chill debuff when entering Glacier
+Changed Stone of Knowledge recipe
+Vanilla items which grant all damage / critical strike chance bonuses now grant alchemist bonuses too
+You can no longer explode Cometite and Hard Cometite Ore
+Items which are obtained after beating Trinity now have new rarity
+Nova Pillar also spawns after beating Ancient Cultist
+Luxorius Armor set bonus also grants Dangersense
+Ruin Altar and blocks beneat it can be no longer destroyed
+Weapons have their damage line colored according to sparks/souls/focuses colors
+Increased drop rate of Ruin Keys and Rusty Lanterns
+Changed Heater of Worlds sprite

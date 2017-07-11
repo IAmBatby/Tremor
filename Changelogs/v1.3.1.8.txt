@@ -1,0 +1,17 @@
+New items:
+Hallowed Visage
+Chlorophyte Visage
+
+Fixes:
+Fixed Goblin Standard Bearer infinitely spawning himself on death
+Fixed Frost King trophy having broken texture when placed
+Fixed Glacier Mobs having wrong stats and drops
+Fixed Ruin Chest spawning Ruin Ghosts infinitely
+Fixed Ruin Chest consuming keys even if opened
+Fixed Ancient Soul disappearing in a quick time
+Fixed Pwnhammer not dropping from Wall of Flesh with 100% chance
+Fixed Ruin Ghosts spawning after EoW/BoC but not Tiki Totem
+
+Others:
+Ancient Dragon can be now summoned by using Ancient Lantern near Ruin Altar
+Ruin Altar no longer break when summoning Ancient Dragon

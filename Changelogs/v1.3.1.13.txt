@@ -1,0 +1,39 @@
+New items:
+Hero Potion
+Vindicator
+
+New buffs:
+Hero
+
+Fixes:
+Fixed Shadow Steed being named Ancient Dragon
+Fixed Shadow Steed not having animation
+Fixed Paradox Titan not having minimap icon
+Fixed guns not using Ice Bullets as ammo
+Fixed Duke Flasks and Nova Flasks having wrong sell value
+Fixed Berserker Greaves not equipping
+Fixed Desert Princess & Desert Wasp dropping 1 Platinum Coin
+Fixed Cog Lord Drone healing beam dealing a lot of damage
+Fixed Crystal Armor not having set bonus
+Fixed True Blades Buffs having broken descriptions
+Fixed Power Shield decreasing movement speed
+Fixed all Hades armor items being crafted of Magmonium Helmet
+Fixed Ruin Ghosts not spawning in Multiplayer
+Fixed Glacier Wood Lantern dropping Sandstone Candle
+Fixed Paradox Bats not spawning during Paradox Cohort
+Fixed Cog Lord not spawning sometimes
+Fixed Collapsium and Angelite Ore spawning on surface and breaking player's buildings
+
+Changes:
+Lowered Ice Wolf and Coldtrap stats
+Changed Gem Blades and Tremor sprites
+Desert Princess now drops only 1 of 3 Desert Explorer set items
+Increases Sea, Fire and Earth fragment drop chance
+Endless Pain now shoots a shadowflame orb that shoots shadowflames at nearby enemies (Acts like Magnet Sphere)
+Burning Fist now shoots a fist projectile that explodes on contact and summons fiery bolts
+Meat Shield can be now crafted in Corruption worlds
+Blue Candles no longer spawn in Ruins, preventing NPCs to settle in Ruins
+Toxic Flask can be now crafted into alchemist damage Flask
+
+Others:
+Added modded bosses descriptions for Boss Checklist

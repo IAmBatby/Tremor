@@ -1,0 +1,18 @@
+Fixes:
+Fixed Andas not appearing in Boss Checklist
+Fixed Nova Pillar not appearing in Boss Checklist
+Fixed Rukh named Meteorite Golem
+Fixed Desert Explorer Greaves not equipping
+Fixed Vile Helmet not equipping
+Fixed Brilliant Behemoth dealing melee damage instead of throwing
+Fixed some bosses not spawning on first use of summoning items
+Fixed Mechanical Brain still dropping from mobs after beating Motherboard
+Fixed Motherboard not checking in Boss Checklist
+Fixed Ocean, Desert and Jungle Key not summoning Big Mimics
+Fixed Flasks having 0 critical strike chance
+
+Changes:
+Diamond Beam now shoots a constant beam
+Updated Light Bulb, Diamond Beam and Magium Rod sprites
+Frost Wind projectile now disappears after 2 seconds
+Increased Leather and Chain items droprate from Thieves
