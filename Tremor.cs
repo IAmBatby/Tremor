@@ -220,12 +220,12 @@ namespace Tremor
 					{ "EvilCorn", "EvilCornMusicBox", "EvilCornMusicBox" },
 					{ "CyberKing", "CyberKingMusicBox", "CyberKingMusicBox" },
 					{ "Snow2", "BlizzardMusicBox", "BlizzardMusicBox" },
-					{ "CyberWrath", "ParadoxCohortMusicBoxTile", "ParadoxCohortMusicBoxTile" },
-					{ "NightOfUndead", "DeathHordeMusicBox", "DeathHordeMusicBox" },
+					{ "CyberWrath", "ParadoxCohortMusicBox", "ParadoxCohortMusicBoxTile" },
+					{ "NightOfUndead", "DeathHordeMusicBox", "DeathHordeMusicBoxTile" },
 					{ "Granite", "GraniteMusicBox", "GraniteMusicBox" },
 				};
 
-				for (int i = 0; i < musicBoxes.Length; i++)
+				for (int i = 0; i < musicBoxes.GetUpperBound(0) + 1; i++)
 				{
 					AddMusicBox(GetSoundSlot(SoundType.Music, $"Sounds/Music/{musicBoxes[i, 0]}"), ItemType(musicBoxes[i, 1]), TileType(musicBoxes[i, 2]));
 				}
@@ -237,7 +237,7 @@ namespace Tremor
 				SkyManager.Instance["Tremor:Nova"] = new NovaSky();
 
 				// Replace celestial sigil?
-				Main.itemTexture[3601] = GetTexture($"Resprites/{(ModLoader.GetLoadedMods().Contains("Elerium") ? "CelestialSigil2" : "CelesialSigil")}");
+				Main.itemTexture[3601] = GetTexture($"Resprites/{(ModLoader.GetLoadedMods().Contains("Elerium") ? "CelestialSigil2" : "CelestialSigil")}");
 
 				// Replace vanilla buff sprites with resprites
 				for (int i = 1; i < 206; i++)
