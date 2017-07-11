@@ -1,4 +1,3 @@
-using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
@@ -7,7 +6,7 @@ using Terraria.ModLoader;
 
 namespace Tremor.Projectiles
 {
-    public class PandemoniumBullet : ModProjectile
+	public class PandemoniumBullet : ModProjectile
     {
         public override void SetDefaults()
         {

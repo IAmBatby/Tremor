@@ -1,11 +1,9 @@
 using Terraria.ID;
-using System;
-using Terraria;
-using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace Tremor.ZombieEvent.Items {
-public class DreadLance : ModItem
+namespace Tremor.ZombieEvent.Items
+{
+	public class DreadLance : ModItem
 {
     public override void SetDefaults()
     {

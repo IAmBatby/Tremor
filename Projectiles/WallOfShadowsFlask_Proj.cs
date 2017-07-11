@@ -1,4 +1,3 @@
-using System;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
@@ -7,7 +6,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace Tremor.Projectiles
 {
-    public class WallOfShadowsFlask_Proj : ModProjectile
+	public class WallOfShadowsFlask_Proj : ModProjectile
     {
         public override void SetDefaults()
         {

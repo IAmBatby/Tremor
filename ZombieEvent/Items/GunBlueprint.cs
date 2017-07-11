@@ -1,10 +1,8 @@
-using System;
-using Terraria;
-using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace Tremor.ZombieEvent.Items {
-public class GunBlueprint : ModItem
+namespace Tremor.ZombieEvent.Items
+{
+	public class GunBlueprint : ModItem
 {
     public override void SetDefaults()
     {

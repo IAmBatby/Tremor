@@ -1,12 +1,9 @@
-using Terraria.ID;
-using System;
-using System.Collections.Generic;
 using Terraria;
-using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace Tremor.ZombieEvent.Items {
-[AutoloadEquip(EquipType.Wings)]
+namespace Tremor.ZombieEvent.Items
+{
+	[AutoloadEquip(EquipType.Wings)]
 public class TornWings : ModItem
 {
 

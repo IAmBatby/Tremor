@@ -1,12 +1,11 @@
-using System;
 using Microsoft.Xna.Framework;
 using Terraria;
-using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 
-namespace Tremor.Tiles {
-public class NanoBar : ModTile
+namespace Tremor.Tiles
+{
+	public class NanoBar : ModTile
 {
     public override void SetDefaults()
     {

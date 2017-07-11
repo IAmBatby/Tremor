@@ -1,13 +1,11 @@
 ﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.ID;
-using System;
 using Terraria.ModLoader;
 
 namespace Tremor.Projectiles
 {
-    public class OmnikronBeast : ModProjectile
+	public class OmnikronBeast : ModProjectile
     {
         const int ShootRate = 15; // Частота выстрела (1 секунда = 60ед.)
         const float ShootDistance = 300f; // Дальность стрельбы

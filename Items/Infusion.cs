@@ -1,8 +1,5 @@
 ﻿using Terraria.ID;
-using Terraria;
 using Terraria.ModLoader;
-using Terraria.ID;
-using System.IO;
 
 namespace Tremor.Items
 {

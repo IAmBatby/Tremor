@@ -1,12 +1,10 @@
-using System;
-using Microsoft.Xna.Framework;
 using Terraria;
-using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace Tremor.Projectiles {
+namespace Tremor.Projectiles
+{
 
-public class NanoSawPro : ModProjectile
+	public class NanoSawPro : ModProjectile
 {
     public override void SetDefaults()
     {

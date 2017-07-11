@@ -1,13 +1,12 @@
-using System;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace Tremor.ZombieEvent.Mobs  {
+namespace Tremor.ZombieEvent.Mobs
+{
 
-public class Cryptomage : ModNPC
+	public class Cryptomage : ModNPC
 {
 		public override void SetStaticDefaults()
 		{

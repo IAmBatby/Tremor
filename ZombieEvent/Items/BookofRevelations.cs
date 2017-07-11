@@ -1,14 +1,10 @@
 using Terraria.ID;
-using System;
-using Microsoft.Xna.Framework;
 using Terraria;
-using System.Linq;
-using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace Tremor.ZombieEvent.Items
 {
-    public class BookofRevelations : ModItem
+	public class BookofRevelations : ModItem
     {
         public override void SetDefaults()
         {

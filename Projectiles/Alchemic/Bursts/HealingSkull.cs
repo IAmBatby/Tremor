@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Terraria;
 using System.Linq;
@@ -7,7 +6,7 @@ using Terraria.ModLoader;
 
 namespace Tremor.Projectiles.Alchemic.Bursts
 {
-    public class HealingSkull : ModProjectile
+	public class HealingSkull : ModProjectile
     {
     	
         public override void SetDefaults()

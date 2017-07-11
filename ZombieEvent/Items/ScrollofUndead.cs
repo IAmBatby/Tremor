@@ -1,14 +1,10 @@
-using System;
-using Microsoft.Xna.Framework;
 using Terraria;
-using Terraria.DataStructures;
 using Terraria.ID;
-using Tremor.ZombieEvent;
 using Terraria.ModLoader;
 
 namespace Tremor.ZombieEvent.Items
 {
-    public class ScrollofUndead : ModItem
+	public class ScrollofUndead : ModItem
     {
         public override void SetDefaults()
         {

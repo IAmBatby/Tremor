@@ -1,12 +1,5 @@
 using Terraria.ID;
-using System;
-using System.Collections.Generic;
-using Microsoft.Xna.Framework;
-using Terraria;
-using Terraria.DataStructures;
-using Terraria.ID;
 using Terraria.ModLoader;
-using Tremor.Items;
 
 namespace Tremor.Items
 {

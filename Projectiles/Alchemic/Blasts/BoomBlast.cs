@@ -1,12 +1,10 @@
-using System;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using Terraria;
-using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace Tremor.Projectiles.Alchemic.Blasts {
-public class BoomBlast : ModProjectile
+namespace Tremor.Projectiles.Alchemic.Blasts
+{
+	public class BoomBlast : ModProjectile
 {
     public override void SetDefaults()
     {

@@ -2,7 +2,6 @@ using Terraria.ID;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Microsoft.Xna.Framework.Graphics;
-using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace Tremor.NPCs

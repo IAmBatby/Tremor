@@ -1,14 +1,11 @@
-using System;
-using System.Collections.Generic;
-using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
- 
-namespace  Tremor.Projectiles.Minions
- 
+
+namespace Tremor.Projectiles.Minions
+
 {
-    public class Bramble : ModProjectile
+	public class Bramble : ModProjectile
     {
  
         public override void SetDefaults()

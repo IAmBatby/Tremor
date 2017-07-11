@@ -1,12 +1,9 @@
-using Terraria.ID;
-using System;
-using System.Collections.Generic;
 using Terraria;
-using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace Tremor.ZombieEvent.Items {
-public class ScaryCloak : ModItem
+namespace Tremor.ZombieEvent.Items
+{
+	public class ScaryCloak : ModItem
 {
 
     public override void SetDefaults()

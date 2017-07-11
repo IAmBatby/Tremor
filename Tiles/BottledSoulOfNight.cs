@@ -1,12 +1,11 @@
-using System;
 using Microsoft.Xna.Framework;
 using Terraria;
-using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 
-namespace Tremor.Tiles {
-public class BottledSoulOfNight : ModTile
+namespace Tremor.Tiles
+{
+	public class BottledSoulOfNight : ModTile
 {
     public override void SetDefaults()
     {

@@ -1,5 +1,4 @@
 ﻿using Terraria.ModLoader;
-using Microsoft.Xna.Framework;
 using Terraria;
 
 namespace Tremor.Projectiles

@@ -1,11 +1,11 @@
-using System;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace Tremor.Projectiles {
-public class SpectreFlower : ModProjectile
+namespace Tremor.Projectiles
+{
+	public class SpectreFlower : ModProjectile
 {
     public override void SetDefaults()
     {

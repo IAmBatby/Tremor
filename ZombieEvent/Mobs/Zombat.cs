@@ -1,15 +1,12 @@
 using Terraria.ID;
-using System;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using Terraria;
-using Terraria.ID;
 using Terraria.ModLoader;
 
 
-namespace Tremor.ZombieEvent.Mobs {
-  
-public class Zombat : ModNPC
+namespace Tremor.ZombieEvent.Mobs
+{
+
+	public class Zombat : ModNPC
 {
 		public override void SetStaticDefaults()
 		{

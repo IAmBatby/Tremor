@@ -1,5 +1,4 @@
 using Terraria.ModLoader;
-using Terraria.ID;
 
 namespace Tremor.Buffs
 {

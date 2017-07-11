@@ -1,8 +1,5 @@
-﻿using System;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
+﻿using Microsoft.Xna.Framework;
 using Terraria;
-using Terraria.ID;
 using Terraria.Enums;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
@@ -10,7 +7,7 @@ using Terraria.DataStructures;
 
 namespace Tremor.Tiles
 {
-    public class RuinAltar : ModTile
+	public class RuinAltar : ModTile
     {
         public override void SetDefaults()
         {

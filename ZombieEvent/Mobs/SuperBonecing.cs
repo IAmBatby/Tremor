@@ -1,13 +1,11 @@
-using System;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace Tremor.ZombieEvent.Mobs  {
-  
-public class SuperBonecing : ModNPC
+namespace Tremor.ZombieEvent.Mobs
+{
+
+	public class SuperBonecing : ModNPC
 {
 		public override void SetStaticDefaults()
 		{

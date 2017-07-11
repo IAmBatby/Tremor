@@ -1,19 +1,5 @@
-using System;
-using System.Diagnostics;
-using System.Collections.Generic;
-using System.IO;
-using System.Runtime.InteropServices;
-using System.Text;
-using System.Linq;
-using System.Threading;
-using System.Windows.Forms;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using Terraria;
-using Terraria.DataStructures;
-using Terraria.ID;
 using Terraria.ModLoader;
-using Tremor.ZombieEvent;
 //using Terraria.Content.Fonts;
 
 namespace Tremor.NPCs

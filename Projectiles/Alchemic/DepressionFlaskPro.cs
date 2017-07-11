@@ -1,11 +1,11 @@
-using System;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace Tremor.Projectiles.Alchemic {
-public class DepressionFlaskPro : ModProjectile
+namespace Tremor.Projectiles.Alchemic
+{
+	public class DepressionFlaskPro : ModProjectile
 {
     public override void SetDefaults()
     {

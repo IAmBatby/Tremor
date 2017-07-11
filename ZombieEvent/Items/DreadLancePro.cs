@@ -1,12 +1,9 @@
-using System;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using Terraria;
-using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace Tremor.ZombieEvent.Items {
-public class DreadLancePro : ModProjectile
+namespace Tremor.ZombieEvent.Items
+{
+	public class DreadLancePro : ModProjectile
 {
     public override void SetDefaults()
     {

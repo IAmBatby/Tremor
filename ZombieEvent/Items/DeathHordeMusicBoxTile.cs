@@ -1,12 +1,11 @@
-using System;
 using Microsoft.Xna.Framework;
 using Terraria;
-using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 using Terraria.DataStructures;
 
-namespace Tremor.ZombieEvent.Items {
+namespace Tremor.ZombieEvent.Items
+{
 
 	class DeathHordeMusicBoxTile : ModTile
 	{

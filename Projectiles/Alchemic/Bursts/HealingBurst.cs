@@ -1,13 +1,11 @@
-using System;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using Terraria;
-using Terraria.ID;
 using System.Linq;
 using Terraria.ModLoader;
 
-namespace Tremor.Projectiles.Alchemic.Bursts {
-public class HealingBurst : ModProjectile
+namespace Tremor.Projectiles.Alchemic.Bursts
+{
+	public class HealingBurst : ModProjectile
 {
     public override void SetDefaults()
     {

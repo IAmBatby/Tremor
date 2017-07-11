@@ -1,11 +1,9 @@
-using System;
-using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ModLoader;
 
 namespace Tremor.Projectiles.Alchemic
 {
-    public class ToxicFlaskCloud : ModProjectile
+	public class ToxicFlaskCloud : ModProjectile
     {
         public override void SetDefaults()
         {

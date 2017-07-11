@@ -1,10 +1,8 @@
-using System;
-using Terraria;
-using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace Tremor.ZombieEvent.Items {
-public class TornPapyrus : ModItem
+namespace Tremor.ZombieEvent.Items
+{
+	public class TornPapyrus : ModItem
 {
     public override void SetDefaults()
     {

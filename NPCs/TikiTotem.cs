@@ -5,10 +5,6 @@ using System;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Terraria.DataStructures;
-using Terraria.Graphics;
-using Terraria.Graphics.Effects;
-using Terraria.Graphics.Shaders;
 
 namespace Tremor.NPCs
 {

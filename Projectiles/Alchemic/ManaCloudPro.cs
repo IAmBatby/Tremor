@@ -1,11 +1,9 @@
-using System;
-using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ModLoader;
 
 namespace Tremor.Projectiles.Alchemic
 {
-    public class ManaCloudPro : ModProjectile
+	public class ManaCloudPro : ModProjectile
     {
         public override void SetDefaults()
         {

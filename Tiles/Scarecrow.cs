@@ -1,13 +1,12 @@
-using System;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.Enums;
-using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 
-namespace Tremor.Tiles {
-public class Scarecrow : ModTile
+namespace Tremor.Tiles
+{
+	public class Scarecrow : ModTile
 {
     public override void SetDefaults()
     {

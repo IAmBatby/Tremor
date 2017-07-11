@@ -1,12 +1,11 @@
-using System;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace Tremor.Projectiles {
-public class OrichalcumBolt : ModProjectile
+namespace Tremor.Projectiles
+{
+	public class OrichalcumBolt : ModProjectile
 {
     public override void SetDefaults()
     {

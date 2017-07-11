@@ -1,10 +1,5 @@
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using Terraria;
-using Terraria.Graphics.Effects;
-using Tremor.ZombieEvent;
 using Terraria.Graphics.Shaders;
-using Terraria.ModLoader;
 
 namespace Tremor.ZombieEvent
 {

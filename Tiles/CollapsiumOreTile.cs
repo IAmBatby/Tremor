@@ -1,11 +1,10 @@
-using System;
 using Microsoft.Xna.Framework;
 using Terraria;
-using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace Tremor.Tiles {
-public class CollapsiumOreTile : ModTile
+namespace Tremor.Tiles
+{
+	public class CollapsiumOreTile : ModTile
 {
     public override void SetDefaults()
     {

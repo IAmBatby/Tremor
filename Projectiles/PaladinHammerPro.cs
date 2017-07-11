@@ -1,12 +1,11 @@
-﻿using System;
-using Terraria.ModLoader;
+﻿using Terraria.ModLoader;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
 using Terraria;
 
 namespace Tremor.Projectiles
 {
-    public class PaladinHammerPro : ModProjectile
+	public class PaladinHammerPro : ModProjectile
     {
         const float RotationSpeed = 0.05f;
         const float Distanse = 48;

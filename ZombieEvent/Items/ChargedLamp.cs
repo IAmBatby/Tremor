@@ -1,15 +1,12 @@
 using Terraria.ID;
 using System;
-using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Terraria;
-using Terraria.DataStructures;
-using Terraria.ID;
 using Terraria.ModLoader;
-using Tremor.Items;
 
-namespace Tremor.ZombieEvent.Items {
-public class ChargedLamp : ModItem
+namespace Tremor.ZombieEvent.Items
+{
+	public class ChargedLamp : ModItem
 {
 	
     public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)

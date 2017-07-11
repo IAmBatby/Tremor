@@ -1,11 +1,8 @@
-using System;
-using System.Collections.Generic;
-using Terraria;
-using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace Tremor.ZombieEvent.Items {
-[AutoloadEquip(EquipType.Head)]
+namespace Tremor.ZombieEvent.Items
+{
+	[AutoloadEquip(EquipType.Head)]
 public class CryptomageSkull : ModItem
 {
     public override void SetDefaults()

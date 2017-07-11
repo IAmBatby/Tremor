@@ -1,13 +1,11 @@
 using System;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.ModLoader;
-using Terraria.IO;
 
 namespace Tremor.Projectiles
 {
-    public class ShadowR : ModProjectile
+	public class ShadowR : ModProjectile
     {
         public override void SetDefaults()
         {

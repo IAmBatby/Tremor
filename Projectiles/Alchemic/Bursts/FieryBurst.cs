@@ -1,12 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ModLoader;
 
 namespace Tremor.Projectiles.Alchemic.Bursts
 {
-    public class FieryBurst : ModProjectile
+	public class FieryBurst : ModProjectile
     {
     	
         public override void SetDefaults()

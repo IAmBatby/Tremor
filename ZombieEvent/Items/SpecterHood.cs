@@ -1,12 +1,11 @@
-using System;
-using System.Collections.Generic;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
 
-namespace Tremor.ZombieEvent.Items {
-[AutoloadEquip(EquipType.Head)]
+namespace Tremor.ZombieEvent.Items
+{
+	[AutoloadEquip(EquipType.Head)]
 public class SpecterHood : ModItem
 {
         const int ShootType = ProjectileID.HeatRay; // ��� ��������

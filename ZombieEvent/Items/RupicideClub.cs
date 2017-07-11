@@ -1,12 +1,11 @@
 using Terraria.ID;
-using System;
 using Microsoft.Xna.Framework;
 using Terraria;
-using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace Tremor.ZombieEvent.Items {
-public class RupicideClub : ModItem
+namespace Tremor.ZombieEvent.Items
+{
+	public class RupicideClub : ModItem
 {
     public override void SetDefaults()
     {

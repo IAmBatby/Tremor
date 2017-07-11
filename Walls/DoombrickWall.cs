@@ -1,11 +1,10 @@
-using System;
 using Microsoft.Xna.Framework;
 using Terraria;
-using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace Tremor.Walls {
-public class DoombrickWall : ModWall
+namespace Tremor.Walls
+{
+	public class DoombrickWall : ModWall
 {
     public override void SetDefaults()
     {

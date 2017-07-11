@@ -1,11 +1,9 @@
-using System;
-using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ModLoader;
 
 namespace Tremor.Projectiles.Alchemic
 {
-    public class ZellariumCloudPro : ModProjectile
+	public class ZellariumCloudPro : ModProjectile
     {
         public override void SetDefaults()
         {

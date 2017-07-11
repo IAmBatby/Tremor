@@ -1,15 +1,10 @@
-using System;
 using Terraria;
-using Terraria.ID;
 using Terraria.ModLoader;
-using System.Collections.Generic;
-using System.Linq;
 using Microsoft.Xna.Framework;
-using System.IO;
 
 namespace Tremor.Projectiles
 {
-    public class TremorProjectiles : GlobalProjectile
+	public class TremorProjectiles : GlobalProjectile
     {
 
         public override void SetDefaults(Projectile projectile)

@@ -1,14 +1,11 @@
-using Terraria.ID;
-using System;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.DataStructures;
-using Terraria.ID;
 using Terraria.ModLoader;
-using System.Collections.Generic;
 
-namespace Tremor.ZombieEvent.Items {
-public class PoisonousPhylactery : ModItem
+namespace Tremor.ZombieEvent.Items
+{
+	public class PoisonousPhylactery : ModItem
 {
 
         const int ShootType = 95; // ��� ����५�

@@ -1,12 +1,11 @@
-using System;
 using Microsoft.Xna.Framework;
 using Terraria;
-using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 
-namespace Tremor.Tiles {
-public class WallofShadowTrophy : ModTile
+namespace Tremor.Tiles
+{
+	public class WallofShadowTrophy : ModTile
 {
     public override void SetDefaults()
     {

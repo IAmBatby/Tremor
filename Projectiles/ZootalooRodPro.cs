@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Terraria;
-using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace Tremor.Projectiles
 {
-    public class ZootalooRodPro : ModProjectile
+	public class ZootalooRodPro : ModProjectile
     {
         public override void SetDefaults()
         {

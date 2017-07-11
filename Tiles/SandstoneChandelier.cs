@@ -1,12 +1,12 @@
-using System;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 
-namespace Tremor.Tiles {
-public class SandstoneChandelier : ModTile
+namespace Tremor.Tiles
+{
+	public class SandstoneChandelier : ModTile
 {
     public override void SetDefaults()
     {

@@ -1,12 +1,11 @@
-using System;
-using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace Tremor.Projectiles {
-//ported from my tAPI mod because I don't want to make artwork
-public class ToxicRazorknifePro : ModProjectile
+namespace Tremor.Projectiles
+{
+	//ported from my tAPI mod because I don't want to make artwork
+	public class ToxicRazorknifePro : ModProjectile
 {
     public override void SetDefaults()
     {

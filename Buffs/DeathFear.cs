@@ -1,8 +1,5 @@
-using System;
 using Terraria;
-using Terraria.ID;
 using Terraria.ModLoader;
-using Tremor;
 using Tremor.NPCs;
 
 namespace Tremor.Buffs

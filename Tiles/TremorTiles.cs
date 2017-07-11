@@ -1,11 +1,10 @@
 using Terraria;
 using Terraria.ModLoader;
 using Terraria.ID;
-using Microsoft.Xna.Framework;
 
 namespace Tremor
 {
-    class TremorTiles : GlobalTile
+	class TremorTiles : GlobalTile
     {
         public override bool Drop(int i, int j, int type)
         {

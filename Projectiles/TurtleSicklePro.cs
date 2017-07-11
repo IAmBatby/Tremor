@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using Microsoft.Xna.Framework;
-using Terraria;
-using Terraria.ID;
-using Terraria.ModLoader;
+﻿using Terraria.ModLoader;
 
 namespace Tremor.Projectiles
 {
-    public class TurtleSicklePro : ModProjectile
+	public class TurtleSicklePro : ModProjectile
     {
         public override void SetStaticDefaults()
         {

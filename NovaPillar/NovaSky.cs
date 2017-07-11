@@ -3,10 +3,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.Graphics.Effects;
-using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria.Graphics;
-using Terraria.Graphics.Effects;
 
 namespace Tremor.NovaPillar
 {

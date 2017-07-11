@@ -1,12 +1,12 @@
-using System; 
-using Microsoft.Xna.Framework; 
-using Terraria; 
-using Terraria.ID; 
-using Terraria.ModLoader; 
+using Microsoft.Xna.Framework;
+using Terraria;
+using Terraria.ID;
+using Terraria.ModLoader;
 using System.Linq;
 
-namespace Tremor.Projectiles.Alchemic {
-public class HealthSupportFlaskPro : ModProjectile
+namespace Tremor.Projectiles.Alchemic
+{
+	public class HealthSupportFlaskPro : ModProjectile
 {
     public override void SetDefaults()
     {
