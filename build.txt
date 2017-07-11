@@ -1,5 +1,5 @@
-author = Zadum4ivii, Bogdan3456, DaKkharn, Obesedog, Zerokk, Liniqes, CursedKnight
-version = 1.3.1.15
+author = Jofairden, Zadum4ivii, Bogdan3456, DaKkharn, Obesedog, Zerokk, Liniqes, CursedKnight
+version = 1.3.2
 displayName = Tremor Mod Remastered
 homepage = http://forums.terraria.org/index.php?threads/tremor-remastered.28695
 hideCode = true
@@ -7,3 +7,4 @@ hideResources = true
 includeSource = false
 buildIgnore = *.csproj, *.user, obj\*, bin\*, .vs\*, .git\*,
 includePDB = true
+languageVersion = 6
