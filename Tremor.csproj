@@ -204,7 +204,6 @@
     <Compile Include="GlobalNPC.cs" />
     <Compile Include="Gores\IceDroplet.cs" />
     <Compile Include="Helper.cs" />
-    <Compile Include="Helper2.cs" />
     <Compile Include="Ice\Dungeon\DungeonBlock.cs" />
     <Compile Include="Ice\Dungeon\DungeonBlockItem.cs" />
     <Compile Include="Ice\Dungeon\DungeonWall.cs" />
