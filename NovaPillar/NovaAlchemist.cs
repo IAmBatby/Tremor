@@ -11,12 +11,12 @@ namespace Tremor.NovaPillar
 
 		//Int variables
 		int AnimationRate = 8;
-		int CountFrame = 0;
+		int CountFrame;
 		int TimeToAnimation = 8;
-		int Timer = 0;
+		int Timer;
 
 		//Bool variables
-		bool TimeToPortals = false;
+		bool TimeToPortals;
 		public override void SetDefaults()
 		{
 			npc.lifeMax = 2500;
@@ -40,8 +40,8 @@ namespace Tremor.NovaPillar
 
 		public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
 		{
-			npc.lifeMax = (int)(npc.lifeMax * 1);
-			npc.damage = (int)(npc.damage * 1);
+			npc.lifeMax = npc.lifeMax * 1;
+			npc.damage = npc.damage * 1;
 		}
 
 		public override void HitEffect(int hitDirection, double damage)
@@ -77,13 +77,13 @@ namespace Tremor.NovaPillar
 			{
 				Main.PlaySound(SoundID.NPCDeath51, npc.Center);
 			}
-			this.Timer++;
-			this.NovaAnimation();
-			if (this.Timer >= 600)
+			Timer++;
+			NovaAnimation();
+			if (Timer >= 600)
 			{
-				this.TimeToPortals = true;
+				TimeToPortals = true;
 			}
-			if (this.Timer >= 600 && this.Timer % 200 == 0)
+			if (Timer >= 600 && Timer % 200 == 0)
 			{
 				if (Main.netMode != 1)
 				{
@@ -92,15 +92,15 @@ namespace Tremor.NovaPillar
 					NPC.NewNPC((int)npc.Center.X - 25, (int)npc.Center.Y, mod.NPCType("NovaAlchemistC"));
 				}
 			}
-			if (this.Timer < 600)
+			if (Timer < 600)
 			{
-				this.TimeToPortals = false;
+				TimeToPortals = false;
 			}
-			if (this.Timer >= 800)
+			if (Timer >= 800)
 			{
-				this.Timer = 0;
+				Timer = 0;
 			}
-			if (this.TimeToPortals)
+			if (TimeToPortals)
 			{
 				npc.velocity.X = 0f;
 				npc.velocity.Y += 5f;
@@ -114,18 +114,18 @@ namespace Tremor.NovaPillar
 
 		public void NovaAnimation()
 		{
-			if (!this.TimeToPortals)
+			if (!TimeToPortals)
 			{
-				if (--this.TimeToAnimation <= 0)
+				if (--TimeToAnimation <= 0)
 				{
-					if (++this.CountFrame > 3)
-						this.CountFrame = 1;
-					this.TimeToAnimation = this.AnimationRate;
-					npc.frame = this.GetFrame(this.CountFrame);
+					if (++CountFrame > 3)
+						CountFrame = 1;
+					TimeToAnimation = AnimationRate;
+					npc.frame = GetFrame(CountFrame);
 				}
 			}
 			else
-				npc.frame = this.GetFrame(4);
+				npc.frame = GetFrame(4);
 		}
 
 		Rectangle GetFrame(int Num)

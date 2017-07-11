@@ -1,7 +1,7 @@
 using System;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ModLoader;
-using Microsoft.Xna.Framework;
 
 namespace Tremor.Items
 {

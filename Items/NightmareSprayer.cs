@@ -1,6 +1,6 @@
-using Terraria.ID;
 using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace Tremor.Items
@@ -93,7 +93,7 @@ namespace Tremor.Items
 			}
 		}
 
-		public override bool Shoot(Player player, ref Microsoft.Xna.Framework.Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
+		public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
 		{
 			MPlayer modPlayer = player.GetModPlayer<MPlayer>(mod);
 			if (modPlayer.glove)

@@ -42,7 +42,7 @@ namespace Tremor.NPCs
 			return new Rectangle(0, npc.frame.Height * (Number - 1), npc.frame.Width, npc.frame.Height);
 		}
 
-		int CurrentFrame = 0;
+		int CurrentFrame;
 		int TimeToAnimation = 4;
 		public override void AI()
 		{
@@ -147,7 +147,7 @@ namespace Tremor.NPCs
 				npc.ai[1] += 1f;
 				if (npc.justHit)
 				{
-					npc.ai[1] += (float)Main.rand.Next(10, 30);
+					npc.ai[1] += Main.rand.Next(10, 30);
 				}
 				if (npc.ai[1] >= 180f && Main.netMode != 1)
 				{
@@ -171,7 +171,6 @@ namespace Tremor.NPCs
 							npc.ai[0] = 4f;
 						}
 					}
-					return;
 				}
 			}
 			else
@@ -212,7 +211,7 @@ namespace Tremor.NPCs
 				}
 				if (npc.ai[0] == 2f)
 				{
-					npc.damage = (int)((double)npc.defDamage * 0.85);
+					npc.damage = (int)(npc.defDamage * 0.85);
 					if (npc.target < 0 || !player.active || player.dead)
 					{
 						npc.TargetClosest(true);
@@ -274,7 +273,6 @@ namespace Tremor.NPCs
 						npc.ai[1] = 0f;
 						npc.ai[2] = 0f;
 						npc.ai[3] = 0f;
-						return;
 					}
 				}
 				else
@@ -349,15 +347,14 @@ namespace Tremor.NPCs
 							}
 							npc.ai[0] = 3.2f;
 							npc.ai[1] = 0f;
-							npc.ai[1] = (float)npc.direction;
-							return;
+							npc.ai[1] = npc.direction;
 						}
 					}
 					else
 					{
 						if (npc.ai[0] == 3.2f)
 						{
-							npc.damage = (int)((double)npc.defDamage * 1.3);
+							npc.damage = (int)(npc.defDamage * 1.3);
 							npc.collideX = false;
 							npc.collideY = false;
 							npc.noTileCollide = true;
@@ -401,15 +398,15 @@ namespace Tremor.NPCs
 									num1314 += Main.rand.Next(-num1316, num1316 + 1);
 									if (!WorldGen.SolidTile(num1313, num1314))
 									{
-										while (!WorldGen.SolidTile(num1313, num1314) && (double)num1314 < Main.worldSurface)
+										while (!WorldGen.SolidTile(num1313, num1314) && num1314 < Main.worldSurface)
 										{
 											num1314++;
 										}
-										if ((new Vector2((float)(num1313 * 16 + 8), (float)(num1314 * 16 + 8)) - player.Center).Length() < 600f)
+										if ((new Vector2(num1313 * 16 + 8, num1314 * 16 + 8) - player.Center).Length() < 600f)
 										{
 											npc.ai[0] = 4.1f;
-											npc.ai[1] = (float)num1313;
-											npc.ai[2] = (float)num1314;
+											npc.ai[1] = num1313;
+											npc.ai[2] = num1314;
 											break;
 										}
 									}
@@ -433,8 +430,8 @@ namespace Tremor.NPCs
 							npc.noTileCollide = true;
 							int num1317 = (int)npc.ai[1];
 							int num1318 = (int)npc.ai[2];
-							float x2 = (float)(num1317 * 16 + 8);
-							float y2 = (float)(num1318 * 16 - 20);
+							float x2 = num1317 * 16 + 8;
+							float y2 = num1318 * 16 - 20;
 							Vector2 vector207 = new Vector2(x2, y2);
 							vector207 -= npc.Center;
 							float num1319 = 6f + vector207.Length() / 150f;
@@ -458,8 +455,8 @@ namespace Tremor.NPCs
 							npc.noTileCollide = true;
 							int num1321 = (int)npc.ai[1];
 							int num1322 = (int)npc.ai[2];
-							float x3 = (float)(num1321 * 16 + 8);
-							float y3 = (float)(num1322 * 16 - 20);
+							float x3 = num1321 * 16 + 8;
+							float y3 = num1322 * 16 - 20;
 							Vector2 vector208 = new Vector2(x3, y3);
 							vector208 -= npc.Center;
 							float num1323 = 4f;
@@ -469,14 +466,14 @@ namespace Tremor.NPCs
 								int num1325 = 70;
 								if (Main.expertMode)
 								{
-									num1325 = (int)((double)num1325 * 0.75);
+									num1325 = (int)(num1325 * 0.75);
 								}
 								npc.ai[3] += 1f;
-								if (npc.ai[3] == (float)num1325)
+								if (npc.ai[3] == num1325)
 								{
 									NPC.NewNPC(num1321 * 16 + 8, num1322 * 16, mod.NPCType("DesertPrincess2"), npc.whoAmI, 0f, 0f, 0f, 0f, 255);
 								}
-								else if (npc.ai[3] == (float)(num1325 * 2))
+								else if (npc.ai[3] == num1325 * 2)
 								{
 									npc.ai[0] = 0f;
 									npc.ai[1] = 0f;
@@ -498,7 +495,6 @@ namespace Tremor.NPCs
 								vector208 *= num1323;
 							}
 							npc.velocity = (npc.velocity * (num1324 - 1f) + vector208) / num1324;
-							return;
 						}
 					}
 				}
@@ -521,8 +517,8 @@ namespace Tremor.NPCs
 		{
 			if (Main.netMode != 1)
 			{
-				int centerX = (int)(npc.position.X + (float)(npc.width / 2)) / 16;
-				int centerY = (int)(npc.position.Y + (float)(npc.height / 2)) / 16;
+				int centerX = (int)(npc.position.X + npc.width / 2) / 16;
+				int centerY = (int)(npc.position.Y + npc.height / 2) / 16;
 				int halfLength = npc.width / 2 / 16 + 1;
 				Helper.DropItem(new Rectangle((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height), new Drop(mod.ItemType("DesertExplorerVisage"), 1, 1), new Drop(mod.ItemType("DesertExplorerGreaves"), 1, 2), new Drop(mod.ItemType("DesertExplorerBreastplate"), 1, 2));
 				Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, 500, Main.rand.Next(5, 15));

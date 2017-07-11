@@ -1,6 +1,6 @@
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ModLoader;
-using Microsoft.Xna.Framework;
 
 namespace Tremor.NovaPillar
 {
@@ -36,7 +36,7 @@ namespace Tremor.NovaPillar
 			player.GetModPlayer<MPlayer>(mod).alchemistDamage += 0.18f;
 			player.GetModPlayer<MPlayer>(mod).alchemistCrit += 12;
 			player.moveSpeed += 0.14f;
-			Lighting.AddLight((int)((player.position.X + (float)(player.width / 2)) / 16f), (int)((player.position.Y + (float)(player.height / 2)) / 16f), 0.8f, 0.7f, 0.3f);
+			Lighting.AddLight((int)((player.position.X + player.width / 2) / 16f), (int)((player.position.Y + player.height / 2) / 16f), 0.8f, 0.7f, 0.3f);
 		}
 
 		public override void AddRecipes()

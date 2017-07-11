@@ -43,7 +43,7 @@ namespace Tremor.NPCs
 			return false;
 		}
 
-		int time = 0;
+		int time;
 		public override void AI()
 		{
 			if (!Main.npc[(int)npc.ai[1]].active)
@@ -63,7 +63,7 @@ namespace Tremor.NPCs
 			if (npc.life < npc.lifeMax / 2 && Main.netMode != 1 && time == 0 && Main.rand.Next(9000) == 0)
 			{
 				time = 1;
-				int i = NPC.NewNPC((int)(npc.position.X + (float)(npc.width / 2)), (int)(npc.position.Y + (float)npc.height), mod.NPCType("DragonMini"), 0, 0f, 0f, 0f, 0f, 255);
+				int i = NPC.NewNPC((int)(npc.position.X + npc.width / 2), (int)(npc.position.Y + npc.height), mod.NPCType("DragonMini"), 0, 0f, 0f, 0f, 0f, 255);
 				npc.frame = GetFrame(2);
 				if (Main.netMode == 2 && i < 200)
 				{

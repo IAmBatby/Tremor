@@ -1,6 +1,7 @@
-using Terraria.ID;
 using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
+
 namespace Tremor.NPCs
 {
 
@@ -52,8 +53,8 @@ namespace Tremor.NPCs
 		{
 			if (Main.netMode != 1)
 			{
-				int centerX = (int)(npc.position.X + (float)(npc.width / 2)) / 16;
-				int centerY = (int)(npc.position.Y + (float)(npc.height / 2)) / 16;
+				int centerX = (int)(npc.position.X + npc.width / 2) / 16;
+				int centerY = (int)(npc.position.Y + npc.height / 2) / 16;
 				int halfLength = npc.width / 2 / 16 + 1;
 				if (Main.rand.Next(1) == 0)
 				{
@@ -67,7 +68,7 @@ namespace Tremor.NPCs
 		{
 			int x = spawnInfo.spawnTileX;
 			int y = spawnInfo.spawnTileY;
-			int tile = (int)Main.tile[x, y].type;
+			int tile = Main.tile[x, y].type;
 			return (Tremor.NoZoneAllowWater(spawnInfo)) && spawnInfo.player.ZoneJungle && y > Main.rockLayer ? 0.01f : 0f;
 		}
 	}

@@ -1,9 +1,9 @@
-﻿using Terraria.ID;
-using Terraria;
-using System;
-using Terraria.ModLoader;
+﻿using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Terraria;
+using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace Tremor.NPCs
 {
@@ -20,13 +20,10 @@ namespace Tremor.NPCs
 		Vector2 CogHands = new Vector2(-1, -1);
 
 		//Bool variables
-		bool Ram
-		{
-			get { return ((this.CogHands.X == -1 && this.CogHands.Y == -1) || npc.ai[1] == 1); }
-		}
+		bool Ram => ((CogHands.X == -1 && CogHands.Y == -1) || npc.ai[1] == 1);
 		bool FirstAI = true;
 		bool SecondAI = true;
-		bool NeedCheck = false;
+		bool NeedCheck;
 		bool Flag = true;
 		bool Flag1 = true;
 		bool Flag2 = true;
@@ -35,25 +32,22 @@ namespace Tremor.NPCs
 		//Float variables
 		float DistanseBlood = 150f;
 		float RotationSpeed = 0.3f;
-		float Rotation = 0.0f;
+		float Rotation;
 		float LaserRotation = MathHelper.PiOver2;
 		float NewRotation = MathHelper.PiOver2;
 
 		//Int variables
-		int GetLaserDamage
-		{
-			get { return 30; }
-		}
+		int GetLaserDamage => 30;
 		int AnimationRate = 6;
-		int CurrentFrame = 0;
+		int CurrentFrame;
 		int TimeToAnimation = 6;
-		int Timer = 0;
+		int Timer;
 		int Timer2 = 0;
 		int ShootType = ProjectileID.HeatRay;
 		int LaserPosition = 20;
 		int ShootRate = 10;
 		int TimeToShoot = 4;
-		float PreviousRageRotation = 0;
+		float PreviousRageRotation;
 
 		//String variables
 		string LeftHandName = "CogLordHand";
@@ -100,7 +94,7 @@ namespace Tremor.NPCs
 			npc.TargetClosest();
 			if (Main.dayTime)
 			{
-				this.Timer = 0;
+				Timer = 0;
 			}
 			if (NPC.AnyNPCs(mod.NPCType("CogLordProbe")))
 			{
@@ -112,11 +106,11 @@ namespace Tremor.NPCs
 				npc.position += npc.velocity * 1.7f;
 			else
 				npc.position += npc.velocity * 1.02f;
-			this.Timer++;
-			this.Animation();
+			Timer++;
+			Animation();
 			for (int i = 0; i < Main.dust.Length; i++)
 			{
-				if (Main.dust[i].type == DustID.Blood && npc.Distance(Main.dust[i].position) < this.DistanseBlood)
+				if (Main.dust[i].type == DustID.Blood && npc.Distance(Main.dust[i].position) < DistanseBlood)
 				{
 					Main.dust[i].scale /= 1000000f;
 					Main.dust[i].active = false;
@@ -142,9 +136,9 @@ namespace Tremor.NPCs
 			{
 				Flag = false;
 				if (Main.expertMode)
-					this.CogMessage("Low health is detected. Launching support drones.");
+					CogMessage("Low health is detected. Launching support drones.");
 				else
-					this.CogMessage("Low health is detected. Launching support drone.");
+					CogMessage("Low health is detected. Launching support drone.");
 				if (Main.expertMode)
 					NPC.NewNPC((int)npc.Center.X - 100, (int)npc.Center.Y - 100, mod.NPCType("CogLordProbe"), 0, npc.whoAmI, 0, 200);
 				NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("CogLordProbe"), 0, npc.whoAmI, 0, 200);
@@ -153,9 +147,9 @@ namespace Tremor.NPCs
 			{
 				Flag1 = false;
 				if (Main.expertMode)
-					this.CogMessage("Low health is detected. Launching support drones.");
+					CogMessage("Low health is detected. Launching support drones.");
 				else
-					this.CogMessage("Low health is detected. Launching support drone.");
+					CogMessage("Low health is detected. Launching support drone.");
 				if (Main.expertMode)
 					NPC.NewNPC((int)npc.Center.X - 100, (int)npc.Center.Y - 100, mod.NPCType("CogLordProbe"), 0, npc.whoAmI, 0, 200);
 				NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("CogLordProbe"), 0, npc.whoAmI, 0, 200);
@@ -164,84 +158,83 @@ namespace Tremor.NPCs
 			{
 				Flag2 = false;
 				if (Main.expertMode)
-					this.CogMessage("Low health is detected. Launching support drones.");
+					CogMessage("Low health is detected. Launching support drones.");
 				else
-					this.CogMessage("Low health is detected. Launching support drone.");
+					CogMessage("Low health is detected. Launching support drone.");
 				if (Main.expertMode)
 					NPC.NewNPC((int)npc.Center.X - 100, (int)npc.Center.Y - 100, mod.NPCType("CogLordProbe"), 0, npc.whoAmI, 0, 200);
 				NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("CogLordProbe"), 0, npc.whoAmI, 0, 200);
 			}
-			if (this.FirstAI)
+			if (FirstAI)
 			{
-				this.FirstAI = false;
+				FirstAI = false;
 			}
 			else
 			{
-				if (this.SecondAI)
+				if (SecondAI)
 				{
-					this.MakeHands();
-					this.SecondAI = false;
-					this.NeedCheck = true;
+					MakeHands();
+					SecondAI = false;
+					NeedCheck = true;
 				}
 			}
-			if (!this.Ram)
+			if (!Ram)
 			{
-				if (this.NeedCheck)
-					this.CheckHands();
-				if (this.CogHands.Y != -1 && this.NeedCheck)
+				if (NeedCheck)
+					CheckHands();
+				if (CogHands.Y != -1 && NeedCheck)
 				{
-					Main.npc[(int)this.CogHands.Y].localAI[3] = 0;
+					Main.npc[(int)CogHands.Y].localAI[3] = 0;
 				}
 			}
 			else
 			{
-				if (this.Rockets)
+				if (Rockets)
 				{
-					this.Rockets = false;
-					this.CogMessage("Protocol 10 is activated: Preparing for rocket storm.");
+					Rockets = false;
+					CogMessage("Protocol 10 is activated: Preparing for rocket storm.");
 				}
 				npc.frame = GetFrame(5);
-				this.Rotation += this.RotationSpeed;
-				npc.rotation = this.Rotation;
+				Rotation += RotationSpeed;
+				npc.rotation = Rotation;
 				if ((int)(Main.time % 120) == 0)
 				{
 					for (int k = 0; k < ((Main.expertMode) ? 2 : 1); k++)
 					{
 						Vector2 Velocity = Helper.VelocityToPoint(npc.Center, Helper.RandomPointInArea(new Vector2(Main.player[Main.myPlayer].Center.X - 10, Main.player[Main.myPlayer].Center.Y - 10), new Vector2(Main.player[Main.myPlayer].Center.X + 20, Main.player[Main.myPlayer].Center.Y + 20)), 20);
-						int i = Projectile.NewProjectile(npc.Center.X, npc.Center.Y, Velocity.X, Velocity.Y, 134, (int)(this.GetLaserDamage * ((Main.expertMode) ? 3 : 2)), 1f);
+						int i = Projectile.NewProjectile(npc.Center.X, npc.Center.Y, Velocity.X, Velocity.Y, 134, GetLaserDamage * ((Main.expertMode) ? 3 : 2), 1f);
 						Main.projectile[i].hostile = true;
 						Main.projectile[i].tileCollide = true;
 						Main.projectile[i].friendly = false;
 					}
 				}
-				if (this.NeedCheck)
-					this.CheckHands();
-				if (this.CogHands.Y != -1 && this.NeedCheck)
+				if (NeedCheck)
+					CheckHands();
+				if (CogHands.Y != -1 && NeedCheck)
 				{
-					Main.npc[(int)this.CogHands.Y].localAI[3] = 1;
+					Main.npc[(int)CogHands.Y].localAI[3] = 1;
 				}
 			}
-			if (this.Timer == 400)
+			if (Timer == 400)
 			{
-				this.CogMessage("Protocol 11 is activated: Clockwork laser cutter is being enabled.");
+				CogMessage("Protocol 11 is activated: Clockwork laser cutter is being enabled.");
 			}
-			if (this.Timer >= 500 && this.Timer < 800)
+			if (Timer >= 500 && Timer < 800)
 			{
-				this.PreviousRageRotation = 0f;
+				PreviousRageRotation = 0f;
 				if (Main.netMode != 1)
 				{
-					this.LaserRotation += 0.01f;
-					if (--this.TimeToShoot <= 0)
+					LaserRotation += 0.01f;
+					if (--TimeToShoot <= 0)
 					{
-						this.TimeToShoot = this.ShootRate;
+						TimeToShoot = ShootRate;
 						var ShootPos = npc.Center + new Vector2(0, 17);
 						var ShootVel = new Vector2(0, 7).RotatedBy(LaserRotation);
-						int[] i = new int[]
-						{
-							Projectile.NewProjectile(ShootPos, ShootVel, this.ShootType, this.GetLaserDamage, 1f),
-							Projectile.NewProjectile(ShootPos, ShootVel.RotatedBy(MathHelper.PiOver2), this.ShootType, this.GetLaserDamage, 1f),
-							Projectile.NewProjectile(ShootPos, ShootVel.RotatedBy(MathHelper.Pi), this.ShootType, this.GetLaserDamage, 1f),
-							Projectile.NewProjectile(ShootPos, ShootVel.RotatedBy(-MathHelper.PiOver2), this.ShootType, this.GetLaserDamage, 1f)
+						int[] i = {
+							Projectile.NewProjectile(ShootPos, ShootVel, ShootType, GetLaserDamage, 1f),
+							Projectile.NewProjectile(ShootPos, ShootVel.RotatedBy(MathHelper.PiOver2), ShootType, GetLaserDamage, 1f),
+							Projectile.NewProjectile(ShootPos, ShootVel.RotatedBy(MathHelper.Pi), ShootType, GetLaserDamage, 1f),
+							Projectile.NewProjectile(ShootPos, ShootVel.RotatedBy(-MathHelper.PiOver2), ShootType, GetLaserDamage, 1f)
 						};
 						for (int l = 0; l < i.Length; l++)
 						{
@@ -251,7 +244,7 @@ namespace Tremor.NPCs
 					}
 				}
 			}
-			if (this.Timer >= 800 && this.Timer < 1200)
+			if (Timer >= 800 && Timer < 1200)
 			{
 				npc.velocity.X *= 2.00f;
 				npc.velocity.Y *= 2.00f;
@@ -262,53 +255,53 @@ namespace Tremor.NPCs
 					npc.velocity.Y = (float)(Math.Sin(CLRad) * 4) * -1;
 				}
 			}
-			if (this.Timer == 1100)
+			if (Timer == 1100)
 			{
-				this.CogMessage("Protocol 12 is activated: Summoning gears.");
+				CogMessage("Protocol 12 is activated: Summoning gears.");
 			}
-			if (this.Timer > 1200 && this.Timer < 1700)
+			if (Timer > 1200 && Timer < 1700)
 			{
 				if ((int)(Main.time % 15) == 0)
 					NPC.NewNPC((int)((Main.player[npc.target].position.X - 500) + Main.rand.Next(1000)), (int)((Main.player[npc.target].position.Y - 500) + Main.rand.Next(1000)), mod.NPCType("GogLordGog"));
 			}
-			if (this.Timer == 1600)
+			if (Timer == 1600)
 			{
-				this.CogMessage("Protocol 13 is activated: Rocket attack incoming.");
+				CogMessage("Protocol 13 is activated: Rocket attack incoming.");
 			}
-			if (this.Timer >= 1700 && this.Timer < 1775)
+			if (Timer >= 1700 && Timer < 1775)
 			{
 				if (Helper.Chance(0.3f))
 				{
 					var ShootPos = Main.player[npc.target].position + new Vector2(Main.rand.Next(-1000, 1000), -1000);
 					var ShootVel = new Vector2(Main.rand.NextFloat(-3f, 3f), Main.rand.NextFloat(15f, 20f));
-					int i = Projectile.NewProjectile(ShootPos, ShootVel, 134, (int)(this.GetLaserDamage * ((Main.expertMode) ? 3 : 2)), 1f);
+					int i = Projectile.NewProjectile(ShootPos, ShootVel, 134, GetLaserDamage * ((Main.expertMode) ? 3 : 2), 1f);
 					Main.projectile[i].hostile = true;
 					Main.projectile[i].tileCollide = true;
 					Main.projectile[i].friendly = false;
 				}
 			}
-			if (this.Timer > 1775)
+			if (Timer > 1775)
 			{
-				this.Rockets = true;
-				this.Timer = 0;
+				Rockets = true;
+				Timer = 0;
 			}
-			this.Rotation = 0;
+			Rotation = 0;
 		}
 
 		public void CheckHands()
 		{
-			if (this.CogHands.X != -1)
-				if (!((Main.npc[(int)this.CogHands.X].type == mod.NPCType(this.LeftHandName) && Main.npc[(int)this.CogHands.X].ai[1] == npc.whoAmI) && Main.npc[(int)this.CogHands.X].active))
-					this.CogHands.X = -1;
-			if (this.CogHands.Y != -1)
-				if (!((Main.npc[(int)this.CogHands.Y].type == mod.NPCType(this.RightHandName) && Main.npc[(int)this.CogHands.Y].ai[1] == npc.whoAmI) && Main.npc[(int)this.CogHands.Y].active))
-					this.CogHands.Y = -1;
+			if (CogHands.X != -1)
+				if (!((Main.npc[(int)CogHands.X].type == mod.NPCType(LeftHandName) && Main.npc[(int)CogHands.X].ai[1] == npc.whoAmI) && Main.npc[(int)CogHands.X].active))
+					CogHands.X = -1;
+			if (CogHands.Y != -1)
+				if (!((Main.npc[(int)CogHands.Y].type == mod.NPCType(RightHandName) && Main.npc[(int)CogHands.Y].ai[1] == npc.whoAmI) && Main.npc[(int)CogHands.Y].active))
+					CogHands.Y = -1;
 		}
 
 		public void MakeHands()
 		{
-			this.CogHands.X = NPC.NewNPC((int)npc.Center.X - 50, (int)npc.Center.Y, mod.NPCType(LeftHandName), 0, 1, npc.whoAmI);
-			this.CogHands.Y = NPC.NewNPC((int)npc.Center.X + 50, (int)npc.Center.Y, mod.NPCType(RightHandName), 0, -1, npc.whoAmI);
+			CogHands.X = NPC.NewNPC((int)npc.Center.X - 50, (int)npc.Center.Y, mod.NPCType(LeftHandName), 0, 1, npc.whoAmI);
+			CogHands.Y = NPC.NewNPC((int)npc.Center.X + 50, (int)npc.Center.Y, mod.NPCType(RightHandName), 0, -1, npc.whoAmI);
 		}
 
 		public void Animation()
@@ -333,10 +326,6 @@ namespace Tremor.NPCs
 			if (Main.netMode != 2)
 			{
 				Main.NewText("[CL-AI]: " + Message, 208, 137, 55);
-			}
-			else
-			{
-				//NetMessage.SendData(25, -1, -1, Text, 208, 137, 55, 150);
 			}
 		}
 		public override void NPCLoot()

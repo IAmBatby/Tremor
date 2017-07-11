@@ -4,7 +4,6 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 
-
 namespace Tremor.Tiles
 {
 	public class MinersLampTile : ModTile

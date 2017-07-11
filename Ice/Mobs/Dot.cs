@@ -33,8 +33,8 @@ namespace Tremor.Ice.Mobs
 
 		public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
 		{
-			npc.lifeMax = (int)(npc.lifeMax * 1);
-			npc.damage = (int)(npc.damage * 1);
+			npc.lifeMax = npc.lifeMax * 1;
+			npc.damage = npc.damage * 1;
 		}
 
 		public override float SpawnChance(NPCSpawnInfo spawnInfo)
@@ -61,7 +61,7 @@ namespace Tremor.Ice.Mobs
 					ColdtrapChain arm = Main.projectile[proj].modProjectile as ColdtrapChain;
 					arm.arm = npc.whoAmI;
 					arm.width = 16f;
-					arm.length = Ice.Mobs.ColdtrapChain.minLength;
+					arm.length = ColdtrapChain.minLength;
 					arm.minAngle = (k - 0.05f) * (float)Math.PI / 3f;
 					arm.maxAngle = (k + 0.25f) * (float)Math.PI / 3f;
 					Main.projectile[proj].rotation = (arm.minAngle + arm.maxAngle) / 3f;

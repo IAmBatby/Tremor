@@ -1,6 +1,6 @@
-using Terraria.ID;
 using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace Tremor.NPCs
@@ -32,8 +32,8 @@ namespace Tremor.NPCs
 
 		public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
 		{
-			npc.lifeMax = (int)(npc.lifeMax * 1);
-			npc.damage = (int)(npc.damage * 1);
+			npc.lifeMax = npc.lifeMax * 1;
+			npc.damage = npc.damage * 1;
 		}
 
 		public override void AI()
@@ -85,21 +85,21 @@ namespace Tremor.NPCs
 					}
 				}
 			}
-			if (npc.directionY == -1 && (double)npc.velocity.Y > -1.5)
+			if (npc.directionY == -1 && npc.velocity.Y > -1.5)
 			{
 				npc.velocity.Y = npc.velocity.Y - 0.05f;
 
-				if ((double)npc.velocity.Y < -1.5)
+				if (npc.velocity.Y < -1.5)
 				{
 					npc.velocity.Y = -1.5f;
 				}
 			}
 			else
 			{
-				if (npc.directionY == 1 && (double)npc.velocity.Y < 1.5)
+				if (npc.directionY == 1 && npc.velocity.Y < 1.5)
 				{
 					npc.velocity.Y = npc.velocity.Y + 0.05f;
-					if ((double)npc.velocity.Y > 1.5)
+					if (npc.velocity.Y > 1.5)
 					{
 						npc.velocity.Y = 1.5f;
 					}
@@ -107,7 +107,7 @@ namespace Tremor.NPCs
 			}
 		}
 
-		int Frame = 0;
+		int Frame;
 		int TimeToAnimation = 6;
 		public void PlayAnimation()
 		{
@@ -129,7 +129,7 @@ namespace Tremor.NPCs
 		{
 			int x = spawnInfo.spawnTileX;
 			int y = spawnInfo.spawnTileY;
-			int tile = (int)Main.tile[x, y].type;
+			int tile = Main.tile[x, y].type;
 			return (NPC.AnyNPCs(26) || NPC.AnyNPCs(27) || NPC.AnyNPCs(28) || NPC.AnyNPCs(29)) && NPC.downedBoss3 && y < Main.worldSurface ? 0.3f : 0f;
 		}
 

@@ -15,7 +15,7 @@ namespace Tremor.Tiles
 			Main.tileTable[Type] = true;
 			Main.tileLavaDeath[Type] = true;
 			TileObjectData.newTile.CopyFrom(TileObjectData.Style2x2);
-			TileObjectData.newTile.CoordinateHeights = new int[]{ 16, 16 };
+			TileObjectData.newTile.CoordinateHeights = new[]{ 16, 16 };
 			TileObjectData.addTile(Type);
 			AddToArray(ref TileID.Sets.RoomNeeds.CountsAsTable);
 			AddMapEntry(new Color(200, 200, 200));

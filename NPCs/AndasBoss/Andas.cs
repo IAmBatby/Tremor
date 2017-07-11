@@ -1,7 +1,7 @@
-using Terraria;
 using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -46,7 +46,7 @@ namespace Tremor.NPCs.AndasBoss
 		const int ShootDirection = 7;
 		const float Speed = 14f;
 		const float Acceleration = 0.1f;
-		int Timer = 0;
+		int Timer;
 		#endregion
 		public override void AI()
 		{
@@ -66,8 +66,8 @@ namespace Tremor.NPCs.AndasBoss
 					Vector2 Velocity = Helper2.VelocityFPTP(npc.Center, new Vector2(Main.player[npc.target].Center.X, Main.player[npc.target].Center.Y + 20), 10);
 					int Spread = 65;
 					float SpreadMult = 0.05f;
-					Velocity.X = Velocity.X + (float)Main.rand.Next(-Spread, Spread + 1) * SpreadMult;
-					Velocity.Y = Velocity.Y + (float)Main.rand.Next(-Spread, Spread + 1) * SpreadMult;
+					Velocity.X = Velocity.X + Main.rand.Next(-Spread, Spread + 1) * SpreadMult;
+					Velocity.Y = Velocity.Y + Main.rand.Next(-Spread, Spread + 1) * SpreadMult;
 					int i = Projectile.NewProjectile(npc.Center.X, npc.Center.Y + 20, Velocity.X, Velocity.Y, 258, ShootDamage, ShootKnockback);
 					Main.projectile[i].hostile = true;
 					Main.projectile[i].friendly = true;
@@ -76,9 +76,9 @@ namespace Tremor.NPCs.AndasBoss
 			}
 			if (Timer >= 0 && Timer <= 1000) //flight
 			{
-				Vector2 StartPosition = new Vector2(npc.position.X + (float)npc.width * 0.5f, npc.position.Y + (float)npc.height * 0.5f);
-				float DirectionX = Main.player[npc.target].position.X + (float)(Main.player[npc.target].width / 2) - StartPosition.X;
-				float DirectionY = (float)(Main.player[npc.target].position.Y + (Main.player[npc.target].height / 2) - 120) - StartPosition.Y;
+				Vector2 StartPosition = new Vector2(npc.position.X + npc.width * 0.5f, npc.position.Y + npc.height * 0.5f);
+				float DirectionX = Main.player[npc.target].position.X + Main.player[npc.target].width / 2 - StartPosition.X;
+				float DirectionY = Main.player[npc.target].position.Y + (Main.player[npc.target].height / 2) - 120 - StartPosition.Y;
 				float Length = (float)Math.Sqrt(DirectionX * DirectionX + DirectionY * DirectionY);
 				float Num = Speed / Length;
 				DirectionX = DirectionX * Num;

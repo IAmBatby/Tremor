@@ -1,5 +1,6 @@
 using Terraria;
 using Terraria.ModLoader;
+
 //using Terraria.Content.Fonts;
 
 namespace Tremor.NPCs

@@ -1,6 +1,6 @@
-using Terraria.ID;
-using Terraria;
 using System.Linq;
+using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace Tremor.Items
@@ -39,7 +39,7 @@ namespace Tremor.Items
 
 		public override void UpdateInventory(Player player)
 		{
-			if (Main.player[Main.myPlayer].buffType.Contains<int>(mod.BuffType("LongFuseBuff")))
+			if (Main.player[Main.myPlayer].buffType.Contains(mod.BuffType("LongFuseBuff")))
 			{
 				item.shootSpeed = 11f;
 			}

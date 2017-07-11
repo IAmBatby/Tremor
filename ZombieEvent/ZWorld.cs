@@ -1,17 +1,17 @@
-using System.IO;
 using System.Collections.Generic;
+using System.IO;
 using Terraria;
 using Terraria.ModLoader;
-using Terraria.World.Generation;
 using Terraria.ModLoader.IO;
+using Terraria.World.Generation;
 
 namespace Tremor.ZombieEvent
 {
 	public class ZWorld : ModWorld
 	{
 	    private const int saveVersion = 0;
-        public static int ZPoints = 0;
-        public static bool ZInvasion = false;
+        public static int ZPoints;
+        public static bool ZInvasion;
 		public override void ModifyWorldGenTasks(List<GenPass> tasks, ref float totalWeight)
 		{
 			

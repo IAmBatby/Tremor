@@ -1,6 +1,6 @@
-using Terraria.ID;
 using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace Tremor.Items
@@ -34,8 +34,8 @@ namespace Tremor.Items
 
 		public override void OnHitNPC(Player player, NPC target, int damage, float knockback, bool crit)
 		{
-			player.statMana += (int)damage / 6;
-			player.ManaEffect((int)damage / 6);
+			player.statMana += damage / 6;
+			player.ManaEffect(damage / 6);
 		}
 
 		public override void MeleeEffects(Player player, Rectangle hitbox)

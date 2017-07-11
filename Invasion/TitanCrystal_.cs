@@ -9,7 +9,7 @@ namespace Tremor.Invasion
 {
 	public class TitanCrystal_ : ModProjectile
 	{
-		private int timer = 0;
+		private int timer;
 
 		public override void SetStaticDefaults()
 		{

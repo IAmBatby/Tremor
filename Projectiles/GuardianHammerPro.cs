@@ -1,3 +1,4 @@
+using System;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ModLoader;
@@ -40,7 +41,7 @@ namespace Tremor.Projectiles
 
 		public override void AI()
 		{
-			projectile.rotation = (float)System.Math.Atan2((double)projectile.velocity.Y, (double)projectile.velocity.X) + 1.57f;
+			projectile.rotation = (float)Math.Atan2(projectile.velocity.Y, projectile.velocity.X) + 1.57f;
 			if (Main.rand.Next(1) == 0)
 			{
 				Dust.NewDust(projectile.position + projectile.velocity, projectile.width, projectile.height, 62, projectile.velocity.X * 0.9f, projectile.velocity.Y * 0.9f);

@@ -16,7 +16,7 @@ namespace Tremor.Tiles
         TileObjectData.newTile.CopyFrom(TileObjectData.Style3x3);
         TileObjectData.addTile(Type);
         animationFrameHeight = 56;
-        TileObjectData.newTile.CoordinateHeights = new int[]{ 16, 16, 18};
+        TileObjectData.newTile.CoordinateHeights = new[]{ 16, 16, 18};
         AddToArray(ref TileID.Sets.RoomNeeds.CountsAsTable);
 	AddMapEntry(new Color(117, 117, 117));
     }

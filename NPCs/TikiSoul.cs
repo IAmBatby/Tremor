@@ -1,8 +1,8 @@
-﻿using Terraria.ID;
-using System;
+﻿using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace Tremor.NPCs
@@ -49,9 +49,9 @@ namespace Tremor.NPCs
 			npc.position.X = parent.Center.X - (int)(Math.Cos(rad) * dist) - npc.width / 2;
 			npc.position.Y = parent.Center.Y - (int)(Math.Sin(rad) * dist) - npc.height / 2;
 			npc.ai[1] += 2f;
-			if (--this.TimeToShoot <= 0)
+			if (--TimeToShoot <= 0)
 			{
-				this.TimeToShoot = this.ShootRate;
+				TimeToShoot = ShootRate;
 				NPC parent2 = Main.npc[NPC.FindFirstNPC(mod.NPCType("TikiTotem"))];
 				Vector2 Velocity = Helper.VelocityToPoint(npc.Center, parent2.Center, 20);
 				//int k = Projectile.NewProjectile(npc.Center.X, npc.Center.Y, Velocity.X, Velocity.Y, mod.ProjectileType("TikiSoulPro"), 0, 1f);

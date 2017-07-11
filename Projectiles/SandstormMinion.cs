@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using System;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.ModLoader;
@@ -23,11 +24,11 @@ namespace Tremor.Projectiles
         // Если же:
         // ShootType = -1 а ShootTypeMod = "projVultureFeather" - стрелять будет пером вультура
 
-        int Frame = 0;
+        int Frame;
         int TimeToAnimation = AnimationRate;
         int TimeToShoot = ShootRate;
 
-        Rectangle FrameRect = new Rectangle();
+        Rectangle FrameRect;
 
         public override void SetDefaults()
         {
@@ -102,7 +103,7 @@ namespace Tremor.Projectiles
             {
                 if (!dust.active)
                     break;
-                if (projectile.Distance(dust.position) > System.Math.Max(projectile.width, projectile.height))
+                if (projectile.Distance(dust.position) > Math.Max(projectile.width, projectile.height))
                     continue;
                 if (dust.type == 217)
                 {

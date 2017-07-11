@@ -2,8 +2,8 @@ using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
-using Terraria.ModLoader;
 using Terraria.Enums;
+using Terraria.ModLoader;
 
 namespace Tremor.Projectiles
 {
@@ -225,7 +225,7 @@ namespace Tremor.Projectiles
 
 			//Add lights
 			DelegateMethods.v3_1 = new Vector3(0.8f, 0.8f, 1f);
-			Utils.PlotTileLine(projectile.Center, projectile.Center + projectile.velocity * (Distance - MOVE_DISTANCE), 26, new Utils.PerLinePoint(DelegateMethods.CastLight));
+			Utils.PlotTileLine(projectile.Center, projectile.Center + projectile.velocity * (Distance - MOVE_DISTANCE), 26, DelegateMethods.CastLight);
 		}
 
 		public override bool ShouldUpdatePosition()
@@ -237,7 +237,7 @@ namespace Tremor.Projectiles
 		{
 			DelegateMethods.tilecut_0 = TileCuttingContext.AttackProjectile;
 			Vector2 unit = projectile.velocity;
-			Utils.PlotTileLine(projectile.Center, projectile.Center + unit * Distance, (projectile.width + 16) * projectile.scale, new Utils.PerLinePoint(DelegateMethods.CutTiles));
+			Utils.PlotTileLine(projectile.Center, projectile.Center + unit * Distance, (projectile.width + 16) * projectile.scale, DelegateMethods.CutTiles);
 		}
 	}
 }

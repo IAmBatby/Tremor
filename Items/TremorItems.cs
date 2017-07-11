@@ -1,5 +1,5 @@
-using Terraria.ID;
 using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace Tremor.Items
@@ -123,11 +123,11 @@ namespace Tremor.Items
 
 		public override void SetDefaults(Item item)
 		{
-			if (item.ranged == true && Main.player[Main.myPlayer].active && Main.player[Main.myPlayer].FindBuffIndex(mod.BuffType("ShotSpeedBuff")) != -1)
+			if (item.ranged && Main.player[Main.myPlayer].active && Main.player[Main.myPlayer].FindBuffIndex(mod.BuffType("ShotSpeedBuff")) != -1)
 			{
 				item.shootSpeed *= 2f;
 			}
-			if (item.ranged == true && Main.player[Main.myPlayer].active && Main.player[Main.myPlayer].FindBuffIndex(mod.BuffType("ShotSpeedBuff")) != -1)
+			if (item.ranged && Main.player[Main.myPlayer].active && Main.player[Main.myPlayer].FindBuffIndex(mod.BuffType("ShotSpeedBuff")) != -1)
 			{
 				item.shootSpeed *= 2f;
 			}

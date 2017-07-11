@@ -1,7 +1,8 @@
-using Terraria;
-using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Terraria;
+using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace Tremor.Projectiles
 {
@@ -11,7 +12,7 @@ namespace Tremor.Projectiles
         const int XOffsetStep = 10; 
         const int DustCount = 5;
         Color LaserColor = Color.Purple;
-        int XOffsetNow = 0;
+        int XOffsetNow;
 
         Vector2 endPoint { get {
                 float X = Main.npc[(int)projectile.ai[0]].Center.X + XOffsetNow;
@@ -55,7 +56,7 @@ namespace Tremor.Projectiles
             }
             projectile.Center = new Vector2(Main.npc[(int)projectile.ai[0]].Center.X - 4, Main.npc[(int)projectile.ai[0]].Center.Y + 88f);
             for (int i = 0; i < DustCount; i++)
-                Dust.NewDust(new Vector2(endPoint.X - 10, endPoint.Y + 10), 20, 20, Terraria.ID.DustID.Shadowflame);
+                Dust.NewDust(new Vector2(endPoint.X - 10, endPoint.Y + 10), 20, 20, DustID.Shadowflame);
             if (projectile.ai[1] != 0)
             {
                 XOffsetNow -= XOffsetStep;

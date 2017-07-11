@@ -1,8 +1,8 @@
-using Terraria.ID;
 using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace Tremor.NPCs
@@ -47,13 +47,13 @@ namespace Tremor.NPCs
 		bool runAway = false;
 		#endregion
 
-		int timer = 0;
-		int timer2 = 0;
-		int timer3 = 0;
-		int timer4 = 0;
+		int timer;
+		int timer2;
+		int timer3;
+		int timer4;
 		bool SpawnMinion = false;
-		public static bool phase2 = false;
-		public static bool phase3 = false;
+		public static bool phase2;
+		public static bool phase3;
 
 
 		public override void SetStaticDefaults()
@@ -131,8 +131,8 @@ namespace Tremor.NPCs
 			if (timer >= 650 && timer <= 1000)
 			{
 				Shoot();
-				int currentLifeP2 = (int)(npc.lifeMax * (2 / 3));
-				int currentLifeP3 = (int)(npc.lifeMax * (1 / 3));
+				int currentLifeP2 = npc.lifeMax * (2 / 3);
+				int currentLifeP3 = npc.lifeMax * (1 / 3);
 				if (npc.life <= currentLifeP2)
 				{
 					phase2 = true;
@@ -164,11 +164,11 @@ namespace Tremor.NPCs
 				{
 					npc.TargetClosest(false);
 					npc.velocity.Y = npc.velocity.Y + 1f;
-					if ((double)npc.position.Y > Main.worldSurface * 16.0)
+					if (npc.position.Y > Main.worldSurface * 16.0)
 					{
 						npc.velocity.Y = npc.velocity.Y + 1f;
 					}
-					if ((double)npc.position.Y > Main.rockLayer * 16.0)
+					if (npc.position.Y > Main.rockLayer * 16.0)
 					{
 						for (int num957 = 0; num957 < 200; num957++)
 						{
@@ -197,8 +197,8 @@ namespace Tremor.NPCs
 								num1042 = 3;
 							}
 						}
-						while ((float)num1042 == num1041);
-						npc.ai[0] = (float)num1042;
+						while (num1042 == num1041);
+						npc.ai[0] = num1042;
 						npc.ai[1] = 0f;
 						npc.ai[2] = 0f;
 						return;
@@ -219,7 +219,7 @@ namespace Tremor.NPCs
 					{
 						num1043++;
 					}
-					if (npc.ai[1] > (float)(2 * num1043) && npc.ai[1] % 2f == 0f)
+					if (npc.ai[1] > 2 * num1043 && npc.ai[1] % 2f == 0f)
 					{
 						npc.ai[0] = -1f;
 						npc.ai[1] = 0f;
@@ -230,32 +230,32 @@ namespace Tremor.NPCs
 					if (npc.ai[1] % 2f == 0f)
 					{
 						npc.TargetClosest(true);
-						if (Math.Abs(npc.position.Y + (float)(npc.height / 2) - (Main.player[npc.target].position.Y + (float)(Main.player[npc.target].height / 2))) < 20f)
+						if (Math.Abs(npc.position.Y + npc.height / 2 - (Main.player[npc.target].position.Y + Main.player[npc.target].height / 2)) < 20f)
 						{
 							npc.localAI[0] = 1f;
 							npc.ai[1] += 1f;
 							npc.ai[2] = 0f;
 							float num1044 = 16f; //16
-							if ((double)npc.life < (double)npc.lifeMax * 0.75)
+							if (npc.life < npc.lifeMax * 0.75)
 							{
 								num1044 += 2f; //2 not a prob
 							}
-							if ((double)npc.life < (double)npc.lifeMax * 0.5)
+							if (npc.life < npc.lifeMax * 0.5)
 							{
 								num1044 += 2f; //2 not a prob
 							}
-							if ((double)npc.life < (double)npc.lifeMax * 0.25)
+							if (npc.life < npc.lifeMax * 0.25)
 							{
 								num1044 += 2f; //2 not a prob
 							}
-							if ((double)npc.life < (double)npc.lifeMax * 0.1)
+							if (npc.life < npc.lifeMax * 0.1)
 							{
 								num1044 += 2f; //2 not a prob
 							}
-							Vector2 vector117 = new Vector2(npc.position.X + (float)npc.width * 0.5f, npc.position.Y + (float)npc.height * 0.5f);
-							float num1045 = Main.player[npc.target].position.X + (float)(Main.player[npc.target].width / 2) - vector117.X;
-							float num1046 = Main.player[npc.target].position.Y + (float)(Main.player[npc.target].height / 2) - vector117.Y;
-							float num1047 = (float)Math.Sqrt((double)(num1045 * num1045 + num1046 * num1046));
+							Vector2 vector117 = new Vector2(npc.position.X + npc.width * 0.5f, npc.position.Y + npc.height * 0.5f);
+							float num1045 = Main.player[npc.target].position.X + Main.player[npc.target].width / 2 - vector117.X;
+							float num1046 = Main.player[npc.target].position.Y + Main.player[npc.target].height / 2 - vector117.Y;
+							float num1047 = (float)Math.Sqrt(num1045 * num1045 + num1046 * num1046);
 							num1047 = num1044 / num1047;
 							npc.velocity.X = num1045 * num1047;
 							npc.velocity.Y = num1046 * num1047;
@@ -266,27 +266,27 @@ namespace Tremor.NPCs
 						npc.localAI[0] = 0f;
 						float num1048 = 12f; //12 not a prob
 						float num1049 = 0.15f; //0.15 not a prob
-						if ((double)npc.life < (double)npc.lifeMax * 0.75)
+						if (npc.life < npc.lifeMax * 0.75)
 						{
 							num1048 += 1f; //1 not a prob
 							num1049 += 0.05f; //0.05 not a prob
 						}
-						if ((double)npc.life < (double)npc.lifeMax * 0.5)
+						if (npc.life < npc.lifeMax * 0.5)
 						{
 							num1048 += 1f; //1 not a prob
 							num1049 += 0.05f; //0.05 not a prob
 						}
-						if ((double)npc.life < (double)npc.lifeMax * 0.25)
+						if (npc.life < npc.lifeMax * 0.25)
 						{
 							num1048 += 2f; //2 not a prob
 							num1049 += 0.05f; //0.05 not a prob
 						}
-						if ((double)npc.life < (double)npc.lifeMax * 0.1)
+						if (npc.life < npc.lifeMax * 0.1)
 						{
 							num1048 += 2f; //2 not a prob
 							num1049 += 0.1f; //0.1 not a prob
 						}
-						if (npc.position.Y + (float)(npc.height / 2) < Main.player[npc.target].position.Y + (float)(Main.player[npc.target].height / 2))
+						if (npc.position.Y + npc.height / 2 < Main.player[npc.target].position.Y + Main.player[npc.target].height / 2)
 						{
 							npc.velocity.Y = npc.velocity.Y + num1049;
 						}
@@ -302,13 +302,13 @@ namespace Tremor.NPCs
 						{
 							npc.velocity.Y = num1048;
 						}
-						if (Math.Abs(npc.position.X + (float)(npc.width / 2) - (Main.player[npc.target].position.X + (float)(Main.player[npc.target].width / 2))) > 600f)
+						if (Math.Abs(npc.position.X + npc.width / 2 - (Main.player[npc.target].position.X + Main.player[npc.target].width / 2)) > 600f)
 						{
-							npc.velocity.X = npc.velocity.X + 0.15f * (float)npc.direction;
+							npc.velocity.X = npc.velocity.X + 0.15f * npc.direction;
 						}
-						else if (Math.Abs(npc.position.X + (float)(npc.width / 2) - (Main.player[npc.target].position.X + (float)(Main.player[npc.target].width / 2))) < 300f)
+						else if (Math.Abs(npc.position.X + npc.width / 2 - (Main.player[npc.target].position.X + Main.player[npc.target].width / 2)) < 300f)
 						{
-							npc.velocity.X = npc.velocity.X - 0.15f * (float)npc.direction;
+							npc.velocity.X = npc.velocity.X - 0.15f * npc.direction;
 						}
 						else
 						{
@@ -325,82 +325,79 @@ namespace Tremor.NPCs
 						npc.spriteDirection = npc.direction;
 						return;
 					}
+					if (npc.velocity.X < 0f)
+					{
+						npc.direction = -1;
+					}
 					else
 					{
-						if (npc.velocity.X < 0f)
+						npc.direction = 1;
+					}
+					npc.spriteDirection = npc.direction;
+					int num1050 = 600; //600 not a prob
+					if (!playerWet)
+					{
+						num1050 = 350;
+					}
+					else
+					{
+						num1050 = 600;
+						if (npc.life < npc.lifeMax * 0.1)
 						{
-							npc.direction = -1;
+							num1050 = 800; //300 not a prob
 						}
-						else
+						else if (npc.life < npc.lifeMax * 0.25)
 						{
-							npc.direction = 1;
+							num1050 = 750; //450 not a prob
 						}
-						npc.spriteDirection = npc.direction;
-						int num1050 = 600; //600 not a prob
-						if (!playerWet)
+						else if (npc.life < npc.lifeMax * 0.5)
 						{
-							num1050 = 350;
+							num1050 = 700; //500 not a prob
 						}
-						else
+						else if (npc.life < npc.lifeMax * 0.75)
 						{
-							num1050 = 600;
-							if ((double)npc.life < (double)npc.lifeMax * 0.1)
-							{
-								num1050 = 800; //300 not a prob
-							}
-							else if ((double)npc.life < (double)npc.lifeMax * 0.25)
-							{
-								num1050 = 750; //450 not a prob
-							}
-							else if ((double)npc.life < (double)npc.lifeMax * 0.5)
-							{
-								num1050 = 700; //500 not a prob
-							}
-							else if ((double)npc.life < (double)npc.lifeMax * 0.75)
-							{
-								num1050 = 650; //550 not a prob
-							}
+							num1050 = 650; //550 not a prob
 						}
-						int num1051 = 1;
-						if (npc.position.X + (float)(npc.width / 2) < Main.player[npc.target].position.X + (float)(Main.player[npc.target].width / 2))
-						{
-							num1051 = -1;
-						}
-						if (npc.direction == num1051 && Math.Abs(npc.position.X + (float)(npc.width / 2) - (Main.player[npc.target].position.X + (float)(Main.player[npc.target].width / 2))) > (float)num1050)
-						{
-							npc.ai[2] = 1f;
-						}
-						if (npc.ai[2] != 1f)
-						{
-							npc.localAI[0] = 1f;
-							return;
-						}
-						npc.TargetClosest(true);
-						npc.spriteDirection = npc.direction;
-						npc.localAI[0] = 0f;
+					}
+					int num1051 = 1;
+					if (npc.position.X + npc.width / 2 < Main.player[npc.target].position.X + Main.player[npc.target].width / 2)
+					{
+						num1051 = -1;
+					}
+					if (npc.direction == num1051 && Math.Abs(npc.position.X + npc.width / 2 - (Main.player[npc.target].position.X + Main.player[npc.target].width / 2)) > num1050)
+					{
+						npc.ai[2] = 1f;
+					}
+					if (npc.ai[2] != 1f)
+					{
+						npc.localAI[0] = 1f;
+						return;
+					}
+					npc.TargetClosest(true);
+					npc.spriteDirection = npc.direction;
+					npc.localAI[0] = 0f;
+					npc.velocity *= 0.9f;
+					float num1052 = 0.1f; //0.1
+					if (npc.life < npc.lifeMax / 2)
+					{
 						npc.velocity *= 0.9f;
-						float num1052 = 0.1f; //0.1
-						if (npc.life < npc.lifeMax / 2)
-						{
-							npc.velocity *= 0.9f;
-							num1052 += 0.05f; //0.05
-						}
-						if (npc.life < npc.lifeMax / 3)
-						{
-							npc.velocity *= 0.9f;
-							num1052 += 0.05f; //0.05
-						}
-						if (npc.life < npc.lifeMax / 5)
-						{
-							npc.velocity *= 0.9f;
-							num1052 += 0.05f; //0.05
-						}
-						if (Math.Abs(npc.velocity.X) + Math.Abs(npc.velocity.Y) < num1052)
-						{
-							npc.ai[2] = 0f;
-							npc.ai[1] += 1f;
-							return;
-						}
+						num1052 += 0.05f; //0.05
+					}
+					if (npc.life < npc.lifeMax / 3)
+					{
+						npc.velocity *= 0.9f;
+						num1052 += 0.05f; //0.05
+					}
+					if (npc.life < npc.lifeMax / 5)
+					{
+						npc.velocity *= 0.9f;
+						num1052 += 0.05f; //0.05
+					}
+					if (Math.Abs(npc.velocity.X) + Math.Abs(npc.velocity.Y) < num1052)
+					{
+						npc.ai[2] = 0f;
+						npc.ai[1] += 1f;
+						return;
 					}
 				}
 				else if (npc.ai[0] == 2f)
@@ -409,10 +406,10 @@ namespace Tremor.NPCs
 					npc.spriteDirection = npc.direction;
 					float num1053 = 12f; //12 found one!  dictates speed during bee spawn
 					float num1054 = 0.1f; //0.1 found one!  dictates speed during bee spawn
-					Vector2 vector118 = new Vector2(npc.position.X + (float)npc.width * 0.5f, npc.position.Y + (float)npc.height * 0.5f);
-					float num1055 = Main.player[npc.target].position.X + (float)(Main.player[npc.target].width / 2) - vector118.X;
-					float num1056 = Main.player[npc.target].position.Y + (float)(Main.player[npc.target].height / 2) - 200f - vector118.Y;
-					float num1057 = (float)Math.Sqrt((double)(num1055 * num1055 + num1056 * num1056));
+					Vector2 vector118 = new Vector2(npc.position.X + npc.width * 0.5f, npc.position.Y + npc.height * 0.5f);
+					float num1055 = Main.player[npc.target].position.X + Main.player[npc.target].width / 2 - vector118.X;
+					float num1056 = Main.player[npc.target].position.Y + Main.player[npc.target].height / 2 - 200f - vector118.Y;
+					float num1057 = (float)Math.Sqrt(num1055 * num1055 + num1056 * num1056);
 					if (num1057 < 800f)
 					{
 						npc.ai[0] = 1f;
@@ -460,26 +457,26 @@ namespace Tremor.NPCs
 				{
 					npc.localAI[0] = 0f;
 					npc.TargetClosest(true);
-					Vector2 vector119 = new Vector2(npc.position.X + (float)(npc.width / 2) + (float)(Main.rand.Next(20) * npc.direction), npc.position.Y + (float)npc.height * 0.8f);
-					Vector2 vector120 = new Vector2(npc.position.X + (float)npc.width * 0.5f, npc.position.Y + (float)npc.height * 0.5f);
-					float num1058 = Main.player[npc.target].position.X + (float)(Main.player[npc.target].width / 2) - vector120.X;
-					float num1059 = Main.player[npc.target].position.Y + (float)(Main.player[npc.target].height / 2) - vector120.Y;
-					float num1060 = (float)Math.Sqrt((double)(num1058 * num1058 + num1059 * num1059));
+					Vector2 vector119 = new Vector2(npc.position.X + npc.width / 2 + Main.rand.Next(20) * npc.direction, npc.position.Y + npc.height * 0.8f);
+					Vector2 vector120 = new Vector2(npc.position.X + npc.width * 0.5f, npc.position.Y + npc.height * 0.5f);
+					float num1058 = Main.player[npc.target].position.X + Main.player[npc.target].width / 2 - vector120.X;
+					float num1059 = Main.player[npc.target].position.Y + Main.player[npc.target].height / 2 - vector120.Y;
+					float num1060 = (float)Math.Sqrt(num1058 * num1058 + num1059 * num1059);
 					npc.ai[1] += 1f;
-					npc.ai[1] += (float)(num1038 / 2);
-					if ((double)npc.life < (double)npc.lifeMax * 0.75)
+					npc.ai[1] += num1038 / 2;
+					if (npc.life < npc.lifeMax * 0.75)
 					{
 						npc.ai[1] += 0.25f; //0.25 not a prob
 					}
-					if ((double)npc.life < (double)npc.lifeMax * 0.5)
+					if (npc.life < npc.lifeMax * 0.5)
 					{
 						npc.ai[1] += 0.25f; //0.25 not a prob
 					}
-					if ((double)npc.life < (double)npc.lifeMax * 0.25)
+					if (npc.life < npc.lifeMax * 0.25)
 					{
 						npc.ai[1] += 0.25f; //0.25 not a prob
 					}
-					if ((double)npc.life < (double)npc.lifeMax * 0.1)
+					if (npc.life < npc.lifeMax * 0.1)
 					{
 						npc.ai[1] += 0.25f; //0.25 not a prob
 					}
@@ -505,8 +502,8 @@ namespace Tremor.NPCs
 								num1061 = mod.NPCType("Parasea");
 							}
 							int num1062 = NPC.NewNPC((int)vector119.X, (int)vector119.Y, num1061, 0, 0f, 0f, 0f, 0f, 255);
-							Main.npc[num1062].velocity.X = (float)Main.rand.Next(-200, 201) * 0.01f;
-							Main.npc[num1062].velocity.Y = (float)Main.rand.Next(-200, 201) * 0.01f;
+							Main.npc[num1062].velocity.X = Main.rand.Next(-200, 201) * 0.01f;
+							Main.npc[num1062].velocity.Y = Main.rand.Next(-200, 201) * 0.01f;
 							Main.npc[num1062].localAI[0] = 60f;
 							Main.npc[num1062].netUpdate = true;
 						}
@@ -516,9 +513,9 @@ namespace Tremor.NPCs
 						float num1063 = 14f; //changed from 14 not a prob
 						float num1064 = 0.1f; //changed from 0.1 not a prob
 						vector120 = vector119;
-						num1058 = Main.player[npc.target].position.X + (float)(Main.player[npc.target].width / 2) - vector120.X;
-						num1059 = Main.player[npc.target].position.Y + (float)(Main.player[npc.target].height / 2) - vector120.Y;
-						num1060 = (float)Math.Sqrt((double)(num1058 * num1058 + num1059 * num1059));
+						num1058 = Main.player[npc.target].position.X + Main.player[npc.target].width / 2 - vector120.X;
+						num1059 = Main.player[npc.target].position.Y + Main.player[npc.target].height / 2 - vector120.Y;
+						num1060 = (float)Math.Sqrt(num1058 * num1058 + num1059 * num1059);
 						num1060 = num1063 / num1060;
 						if (npc.velocity.X < num1058)
 						{
@@ -648,20 +645,20 @@ namespace Tremor.NPCs
 			{
 				for (int k = 0; k < 20; k++)
 				{
-					Dust.NewDust(npc.position, npc.width, npc.height, 57, 2.5f * (float)hitDirection, -2.5f, 0, default(Color), 0.7f);
+					Dust.NewDust(npc.position, npc.width, npc.height, 57, 2.5f * hitDirection, -2.5f, 0, default(Color), 0.7f);
 				}
 
-				Dust.NewDust(npc.position, npc.width, npc.height, 57, 2.5f * (float)hitDirection, -2.5f, 0, default(Color), 0.7f);
-				Dust.NewDust(npc.position, npc.width, npc.height, 57, 2.5f * (float)hitDirection, -2.5f, 0, default(Color), 0.7f);
-				Dust.NewDust(npc.position, npc.width, npc.height, 57, 2.5f * (float)hitDirection, -2.5f, 0, default(Color), 0.7f);
-				Dust.NewDust(npc.position, npc.width, npc.height, 57, 2.5f * (float)hitDirection, -2.5f, 0, default(Color), 0.7f);
-				Dust.NewDust(npc.position, npc.width, npc.height, 57, 2.5f * (float)hitDirection, -2.5f, 0, default(Color), 0.7f);
-				Dust.NewDust(npc.position, npc.width, npc.height, 57, 2.5f * (float)hitDirection, -2.5f, 0, default(Color), 0.7f);
-				Dust.NewDust(npc.position, npc.width, npc.height, 57, 2.5f * (float)hitDirection, -2.5f, 0, default(Color), 0.7f);
-				Dust.NewDust(npc.position, npc.width, npc.height, 57, 2.5f * (float)hitDirection, -2.5f, 0, default(Color), 0.7f);
-				Dust.NewDust(npc.position, npc.width, npc.height, 57, 2.5f * (float)hitDirection, -2.5f, 0, default(Color), 0.7f);
-				Dust.NewDust(npc.position, npc.width, npc.height, 57, 2.5f * (float)hitDirection, -2.5f, 0, default(Color), 0.7f);
-				Dust.NewDust(npc.position, npc.width, npc.height, 57, 2.5f * (float)hitDirection, -2.5f, 0, default(Color), 0.7f);
+				Dust.NewDust(npc.position, npc.width, npc.height, 57, 2.5f * hitDirection, -2.5f, 0, default(Color), 0.7f);
+				Dust.NewDust(npc.position, npc.width, npc.height, 57, 2.5f * hitDirection, -2.5f, 0, default(Color), 0.7f);
+				Dust.NewDust(npc.position, npc.width, npc.height, 57, 2.5f * hitDirection, -2.5f, 0, default(Color), 0.7f);
+				Dust.NewDust(npc.position, npc.width, npc.height, 57, 2.5f * hitDirection, -2.5f, 0, default(Color), 0.7f);
+				Dust.NewDust(npc.position, npc.width, npc.height, 57, 2.5f * hitDirection, -2.5f, 0, default(Color), 0.7f);
+				Dust.NewDust(npc.position, npc.width, npc.height, 57, 2.5f * hitDirection, -2.5f, 0, default(Color), 0.7f);
+				Dust.NewDust(npc.position, npc.width, npc.height, 57, 2.5f * hitDirection, -2.5f, 0, default(Color), 0.7f);
+				Dust.NewDust(npc.position, npc.width, npc.height, 57, 2.5f * hitDirection, -2.5f, 0, default(Color), 0.7f);
+				Dust.NewDust(npc.position, npc.width, npc.height, 57, 2.5f * hitDirection, -2.5f, 0, default(Color), 0.7f);
+				Dust.NewDust(npc.position, npc.width, npc.height, 57, 2.5f * hitDirection, -2.5f, 0, default(Color), 0.7f);
+				Dust.NewDust(npc.position, npc.width, npc.height, 57, 2.5f * hitDirection, -2.5f, 0, default(Color), 0.7f);
 				Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("NPCs/PixieQueenGore1"), 1f);
 				Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("NPCs/PixieQueenGore2"), 1f);
 				Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("NPCs/PixieQueenGore3"), 1f);
@@ -761,8 +758,8 @@ namespace Tremor.NPCs
 			}
 			if (Main.netMode != 1)
 			{
-				int centerX = (int)(npc.position.X + (float)(npc.width / 2)) / 16;
-				int centerY = (int)(npc.position.Y + (float)(npc.height / 2)) / 16;
+				int centerX = (int)(npc.position.X + npc.width / 2) / 16;
+				int centerY = (int)(npc.position.Y + npc.height / 2) / 16;
 				int halfLength = npc.width / 2 / 16 + 1;
 
 				if (!Main.expertMode && Main.rand.Next(7) == 0)

@@ -1,6 +1,6 @@
-using Terraria.ID;
-using Terraria;
 using Microsoft.Xna.Framework;
+using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace Tremor.NPCs
@@ -33,8 +33,8 @@ namespace Tremor.NPCs
 		{
 			if (Main.netMode != 1)
 			{
-				int centerX = (int)(npc.position.X + (float)(npc.width / 2)) / 16;
-				int centerY = (int)(npc.position.Y + (float)(npc.height / 2)) / 16;
+				int centerX = (int)(npc.position.X + npc.width / 2) / 16;
+				int centerY = (int)(npc.position.Y + npc.height / 2) / 16;
 				int halfLength = npc.width / 2 / 16 + 1;
 				Helper.DropItem(new Rectangle((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height), new Drop(mod.ItemType("TheTide"), 1, 1), new Drop(mod.ItemType("TrueTrident"), 1, 1), new Drop(mod.ItemType("SharkRage"), 1, 1), new Drop(mod.ItemType("OceanAmulet"), 1, 1), new Drop(mod.ItemType("SquidTentacle"), 1, 1));
 				Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, 500, Main.rand.Next(10));
@@ -46,7 +46,7 @@ namespace Tremor.NPCs
 		{
 			int x = spawnInfo.spawnTileX;
 			int y = spawnInfo.spawnTileY;
-			int tile = (int)Main.tile[x, y].type;
+			int tile = Main.tile[x, y].type;
 			return (Tremor.NormalSpawn(spawnInfo) && (tile == 53 || tile == 112 || tile == 116 || tile == 234) && Tremor.NoZoneAllowWater(spawnInfo) && spawnInfo.water) && Main.hardMode && y < Main.rockLayer && (x < 250 || x > Main.maxTilesX - 250) && !spawnInfo.playerSafe ? 0.01f : 0f;
 		}
 	}

@@ -1,6 +1,6 @@
-using Terraria.ID;
 using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace Tremor.NPCs
@@ -40,8 +40,8 @@ namespace Tremor.NPCs
 
 		public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
 		{
-			npc.lifeMax = (int)(npc.lifeMax * 1);
-			npc.damage = (int)(npc.damage * 1);
+			npc.lifeMax = npc.lifeMax * 1;
+			npc.damage = npc.damage * 1;
 		}
 		public override void AI()
 		{
@@ -56,17 +56,17 @@ namespace Tremor.NPCs
 		{
 			if (npc.life <= 0)
 			{
-				Dust.NewDust(npc.position, npc.width, npc.height, 6, 2.5f * (float)hitDirection, -2.5f, 0, default(Color), 1.7f);
-				Dust.NewDust(npc.position, npc.width, npc.height, 6, 2.5f * (float)hitDirection, -2.5f, 0, default(Color), 2.7f);
-				Dust.NewDust(npc.position, npc.width, npc.height, 6, 2.5f * (float)hitDirection, -2.5f, 0, default(Color), 0.7f);
+				Dust.NewDust(npc.position, npc.width, npc.height, 6, 2.5f * hitDirection, -2.5f, 0, default(Color), 1.7f);
+				Dust.NewDust(npc.position, npc.width, npc.height, 6, 2.5f * hitDirection, -2.5f, 0, default(Color), 2.7f);
+				Dust.NewDust(npc.position, npc.width, npc.height, 6, 2.5f * hitDirection, -2.5f, 0, default(Color), 0.7f);
 				Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/HellgronGore1"), 1f);
 				Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/HellgronGore1"), 1f);
 				Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/HellgronGore2"), 1f);
 				Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/HellgronGore3"), 1f);
 				for (int k = 0; k < 20; k++)
 				{
-					Dust.NewDust(npc.position, npc.width, npc.height, 6, 2.5f * (float)hitDirection, -2.5f, 0, default(Color), 1.7f);
-					Dust.NewDust(npc.position, npc.width, npc.height, 6, 2.5f * (float)hitDirection, -2.5f, 0, default(Color), 1.6f);
+					Dust.NewDust(npc.position, npc.width, npc.height, 6, 2.5f * hitDirection, -2.5f, 0, default(Color), 1.7f);
+					Dust.NewDust(npc.position, npc.width, npc.height, 6, 2.5f * hitDirection, -2.5f, 0, default(Color), 1.6f);
 				}
 			}
 		}
@@ -76,7 +76,7 @@ namespace Tremor.NPCs
 		{
 			int x = spawnInfo.spawnTileX;
 			int y = spawnInfo.spawnTileY;
-			int tile = (int)Main.tile[x, y].type;
+			int tile = Main.tile[x, y].type;
 			return (Tremor.NormalSpawn(spawnInfo) && Tremor.NoZoneAllowWater(spawnInfo)) && spawnInfo.spawnTileY > Main.maxTilesY - 200 ? 0.03f : 0;
 		}
 	}

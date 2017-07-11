@@ -24,7 +24,7 @@ namespace Tremor.Tiles
         TileObjectData.newAlternate.CopyFrom(TileObjectData.newTile);
         TileObjectData.newAlternate.Direction = TileObjectDirection.PlaceRight; //allows me to place example chairs facing the same way as the player
         TileObjectData.addAlternate(1); //facing right will use the second texture style
-			TileObjectData.newTile.CoordinateHeights = new int[]{ 16, 16 };
+			TileObjectData.newTile.CoordinateHeights = new[]{ 16, 16 };
 			TileObjectData.addTile(Type);
 			AddToArray(ref TileID.Sets.RoomNeeds.CountsAsTable);
 			AddMapEntry(new Color(181, 166, 124));

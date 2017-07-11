@@ -1,8 +1,8 @@
+using System.Linq;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using System.Linq;
 
 namespace Tremor.Projectiles.Alchemic
 {
@@ -29,7 +29,7 @@ namespace Tremor.Projectiles.Alchemic
 
     public override void Kill(int timeLeft)
     {
-                if (Main.player[Main.myPlayer].buffType.Contains<int>(mod.BuffType("DesertEmperorSetBuff")))
+                if (Main.player[Main.myPlayer].buffType.Contains(mod.BuffType("DesertEmperorSetBuff")))
                 {
                     int a = Projectile.NewProjectile(projectile.position.X, projectile.position.Y, 0, 0, mod.ProjectileType("FlaskWasp"), projectile.damage * 2, 1.5f, projectile.owner);
                     int b = Projectile.NewProjectile(projectile.position.X, projectile.position.Y, 0, 0, mod.ProjectileType("FlaskWasp"), projectile.damage * 2, 1.5f, projectile.owner);
@@ -42,10 +42,10 @@ namespace Tremor.Projectiles.Alchemic
 			int num220 = Main.rand.Next(3, 6);
 			for (int num221 = 0; num221 < num220; num221++)
 			{
-				Vector2 value17 = new Vector2((float)Main.rand.Next(-100, 101), (float)Main.rand.Next(-100, 101));
+				Vector2 value17 = new Vector2(Main.rand.Next(-100, 101), Main.rand.Next(-100, 101));
 				value17.Normalize();
-				value17 *= (float)Main.rand.Next(10, 201) * 0.01f;
-				Projectile.NewProjectile(projectile.position.X, projectile.position.Y, value17.X, value17.Y, mod.ProjectileType("ManaSupportCloudPro"), projectile.damage, 1f, projectile.owner, 0f, (float)Main.rand.Next(-45, 1));
+				value17 *= Main.rand.Next(10, 201) * 0.01f;
+				Projectile.NewProjectile(projectile.position.X, projectile.position.Y, value17.X, value17.Y, mod.ProjectileType("ManaSupportCloudPro"), projectile.damage, 1f, projectile.owner, 0f, Main.rand.Next(-45, 1));
 			}
 		}
     }

@@ -1,9 +1,9 @@
 ﻿using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.DataStructures;
 using Terraria.Enums;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
-using Terraria.DataStructures;
 
 namespace Tremor.Tiles
 {
@@ -23,11 +23,11 @@ namespace Tremor.Tiles
             TileObjectData.newTile.AnchorBottom = new AnchorData(AnchorType.SolidTile, TileObjectData.newTile.Width, 0);
             TileObjectData.newTile.UsesCustomCanPlace = true;
             TileObjectData.newTile.LavaDeath = false;
-            TileObjectData.newTile.CoordinateHeights = new int[] { 16, 16 };
+            TileObjectData.newTile.CoordinateHeights = new[] { 16, 16 };
             TileObjectData.newTile.CoordinateWidth = 16;
             TileObjectData.newTile.CoordinatePadding = 2;
             TileObjectData.addTile(Type);
-            this.AddMapEntry(Color.White);
+            AddMapEntry(Color.White);
         }
 
         public override bool CanKillTile(int i, int j, ref bool blockDamaged)

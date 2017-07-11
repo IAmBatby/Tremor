@@ -7,7 +7,7 @@ namespace Tremor.Projectiles
     public class projManaDagger : ModProjectile
     {
         const int ManaPerHit = 2; // Маны за удар по мобу
-        int Mana = 0; // Сколько маны уже собрано
+        int Mana; // Сколько маны уже собрано
         int Hits = 3; // Лимит ударов с кражей маны
         bool NeedAddMana = true; // Системная переменная
 

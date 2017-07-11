@@ -1,6 +1,7 @@
 ﻿using System;
-using System.IO;
 using System.Collections.Generic;
+using System.IO;
+using System.Text;
 using Terraria;
 
 namespace Tremor
@@ -13,7 +14,7 @@ namespace Tremor
 		public static Dictionary<string, bool> Switch = new Dictionary<string, bool>();
 		public static Dictionary<string, string> String = new Dictionary<string, string>();
 
-		public static string WorldName { get { return Main.worldPathName.Split(new char[] { '/', '\\' })[Main.worldPathName.Split(new char[] { '/', '\\' }).Length - 1].Remove(Main.worldPathName.Split(new char[] { '/', '\\' })[Main.worldPathName.Split(new char[] { '/', '\\' }).Length - 1].Length - 4); } }
+		public static string WorldName => Main.worldPathName.Split('/', '\\')[Main.worldPathName.Split('/', '\\').Length - 1].Remove(Main.worldPathName.Split('/', '\\')[Main.worldPathName.Split('/', '\\').Length - 1].Length - 4);
 		public static string LastLoadedWorld = "";
 
 		public static void SetNumber(string Key, float Value)
@@ -82,7 +83,7 @@ namespace Tremor
 			{
 				string FileName = Main.WorldPath + "\\" + WorldName + ".tnu";
 				FileStream FS = new FileStream(FileName, FileMode.Create);
-				StreamWriter SW = new StreamWriter(FS, System.Text.Encoding.Default);
+				StreamWriter SW = new StreamWriter(FS, Encoding.Default);
 				foreach (string Key in Number.Keys)
 					SW.WriteLine(Key + SpaceChar + Number[Key]);
 				SW.Close();
@@ -92,7 +93,7 @@ namespace Tremor
 			{
 				string FileName = Main.WorldPath + "\\" + WorldName + ".tsw";
 				FileStream FS = new FileStream(FileName, FileMode.Create);
-				StreamWriter SW = new StreamWriter(FS, System.Text.Encoding.Default);
+				StreamWriter SW = new StreamWriter(FS, Encoding.Default);
 				foreach (string Key in Switch.Keys)
 					SW.WriteLine(Key + SpaceChar + Switch[Key]);
 				SW.Close();
@@ -102,7 +103,7 @@ namespace Tremor
 			{
 				string FileName = Main.WorldPath + "\\" + WorldName + ".tst";
 				FileStream FS = new FileStream(FileName, FileMode.Create);
-				StreamWriter SW = new StreamWriter(FS, System.Text.Encoding.Default);
+				StreamWriter SW = new StreamWriter(FS, Encoding.Default);
 				foreach (string Key in String.Keys)
 					SW.WriteLine(Key + SpaceChar + String[Key]);
 				SW.Close();
@@ -120,7 +121,7 @@ namespace Tremor
 			{
 				string FileName = Main.WorldPath + "\\" + WorldName + ".tnu";
 				FileStream FS = new FileStream(FileName, FileMode.OpenOrCreate);
-				StreamReader SR = new StreamReader(FS, System.Text.Encoding.Default);
+				StreamReader SR = new StreamReader(FS, Encoding.Default);
 				while (!SR.EndOfStream)
 				{
 					try
@@ -137,7 +138,7 @@ namespace Tremor
 			{
 				string FileName = Main.WorldPath + "\\" + WorldName + ".tsw";
 				FileStream FS = new FileStream(FileName, FileMode.OpenOrCreate);
-				StreamReader SR = new StreamReader(FS, System.Text.Encoding.Default);
+				StreamReader SR = new StreamReader(FS, Encoding.Default);
 				while (!SR.EndOfStream)
 				{
 					try
@@ -154,7 +155,7 @@ namespace Tremor
 			{
 				string FileName = Main.WorldPath + "\\" + WorldName + ".tst";
 				FileStream FS = new FileStream(FileName, FileMode.OpenOrCreate);
-				StreamReader SR = new StreamReader(FS, System.Text.Encoding.Default);
+				StreamReader SR = new StreamReader(FS, Encoding.Default);
 				while (!SR.EndOfStream)
 				{
 					try

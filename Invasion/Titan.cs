@@ -4,6 +4,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+
 namespace Tremor.Invasion
 {
 	[AutoloadBossHead]
@@ -61,7 +62,7 @@ namespace Tremor.Invasion
 			//spriteBatch.Draw(mod.GetTexture("Invasion/Titan"), new Vector2(npc.Center.X, npc.Center.Y), null, Color.White, 0.0f, new Vector2(-10, -25), 1f, SpriteEffects.None, 1);				
 		}
 
-		int CurrentFrame = 0;
+		int CurrentFrame;
 		int TimeToAnimation = 6;
 		const int AnimationRate = 6;
 		bool FirstState_ = true;
@@ -164,7 +165,7 @@ namespace Tremor.Invasion
 				for (int num36 = 0; num36 < 10; num36++)
 				{
 					Color color = new Color();
-					int dust = Dust.NewDust(new Vector2((float)npc.position.X, (float)npc.position.Y), npc.width, npc.height, mod.DustType("CyberDust"), npc.velocity.X + Main.rand.Next(-10, 10), npc.velocity.Y + Main.rand.Next(-10, 10), 200, color, 1f);
+					int dust = Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, mod.DustType("CyberDust"), npc.velocity.X + Main.rand.Next(-10, 10), npc.velocity.Y + Main.rand.Next(-10, 10), 200, color, 1f);
 					Main.dust[dust].noGravity = true;
 				}
 				npc.ai[3] = (float)(Main.rand.Next(360) * (Math.PI / 180));
@@ -192,7 +193,7 @@ namespace Tremor.Invasion
 				for (int num36 = 0; num36 < 10; num36++)
 				{
 					Color color = new Color();
-					int dust = Dust.NewDust(new Vector2((float)npc.position.X, (float)npc.position.Y), npc.width, npc.height, mod.DustType("CyberDust"), npc.velocity.X + Main.rand.Next(-10, 10), npc.velocity.Y + Main.rand.Next(-10, 10), 200, color, 1f);
+					int dust = Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, mod.DustType("CyberDust"), npc.velocity.X + Main.rand.Next(-10, 10), npc.velocity.Y + Main.rand.Next(-10, 10), 200, color, 1f);
 					Main.dust[dust].noGravity = true;
 				}
 				npc.ai[3] = (float)(Main.rand.Next(360) * (Math.PI / 180));
@@ -289,7 +290,6 @@ namespace Tremor.Invasion
 					npc.velocity.X = (float)(Math.Cos(rotation) * 28) * -1;
 					npc.velocity.Y = (float)(Math.Sin(rotation) * 28) * -1;
 				}
-				return;
 			}
 		}
 
@@ -297,8 +297,8 @@ namespace Tremor.Invasion
 		{
 			if (Main.netMode != 1)
 			{
-				int centerX = (int)(npc.position.X + (float)(npc.width / 2)) / 16;
-				int centerY = (int)(npc.position.Y + (float)(npc.height / 2)) / 16;
+				int centerX = (int)(npc.position.X + npc.width / 2) / 16;
+				int centerY = (int)(npc.position.Y + npc.height / 2) / 16;
 				int halfLength = npc.width / 2 / 16 + 1;
 
 				if (Main.expertMode)

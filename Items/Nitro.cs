@@ -10,7 +10,7 @@ namespace Tremor.Items
 			for (int i = 0; i < player.armor.Length; i++)
 			{
 				MPlayer modPlayer = (MPlayer)player.GetModPlayer(mod, "MPlayer");
-				if (modPlayer.nitro == true)
+				if (modPlayer.nitro)
 				{
 					return false;
 				}

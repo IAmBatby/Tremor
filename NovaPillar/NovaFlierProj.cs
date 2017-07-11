@@ -1,3 +1,4 @@
+using System;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ModLoader;
@@ -26,7 +27,7 @@ namespace Tremor.NovaPillar
 
 		public override void AI()
 		{
-			projectile.rotation = (float)System.Math.Atan2((double)projectile.velocity.Y, (double)projectile.velocity.X) + 1.57f;
+			projectile.rotation = (float)Math.Atan2(projectile.velocity.Y, projectile.velocity.X) + 1.57f;
 		}
 
 
@@ -38,10 +39,10 @@ namespace Tremor.NovaPillar
 			}
 			for (int k = 0; k < 5; k++)
 			{
-				Vector2 Vector = new Vector2((float)Main.rand.Next(-100, 101), (float)Main.rand.Next(-100, 101));
+				Vector2 Vector = new Vector2(Main.rand.Next(-100, 101), Main.rand.Next(-100, 101));
 				Vector.Normalize();
-				Vector *= (float)Main.rand.Next(10, 201) * 0.01f;
-				int i = Projectile.NewProjectile(projectile.position.X, projectile.position.Y, Vector.X, Vector.Y, mod.ProjectileType("NovaAlchemistCloud"), 14, 1f, Main.myPlayer, 0f, (float)Main.rand.Next(-45, 1));
+				Vector *= Main.rand.Next(10, 201) * 0.01f;
+				int i = Projectile.NewProjectile(projectile.position.X, projectile.position.Y, Vector.X, Vector.Y, mod.ProjectileType("NovaAlchemistCloud"), 14, 1f, Main.myPlayer, 0f, Main.rand.Next(-45, 1));
 				Main.projectile[i].friendly = false;
 			}
 		}

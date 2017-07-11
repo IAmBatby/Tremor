@@ -1,7 +1,7 @@
 using Microsoft.Xna.Framework;
 using Terraria;
-using Terraria.ModLoader;
 using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace Tremor.Projectiles
 {
@@ -67,10 +67,9 @@ namespace Tremor.Projectiles
 
         int GetDamage()
         {
-            if (STATIC_DAMAGE == -1)
+	        if (STATIC_DAMAGE == -1)
                 return (10 * ((int)Main.player[projectile.owner].magicDamage + (int)Main.player[projectile.owner].meleeDamage + (int)Main.player[projectile.owner].minionDamage + (int)Main.player[projectile.owner].rangedDamage + (int)Main.player[projectile.owner].thrownDamage)) + 15;
-            else
-                return STATIC_DAMAGE;
+	        return STATIC_DAMAGE;
         }
 
         void Shoot(int Target, int Damage)
@@ -78,8 +77,8 @@ namespace Tremor.Projectiles
             Vector2 velocity = Helper.VelocityToPoint(projectile.Center, Main.npc[Target].Center, ShootSpeed);
             for (int l = 0; l < ShootCount; l++)
             {
-                velocity.X = velocity.X + (float)Main.rand.Next(-spread, spread + 1) * spreadMult;
-                velocity.Y = velocity.Y + (float)Main.rand.Next(-spread, spread + 1) * spreadMult;
+                velocity.X = velocity.X + Main.rand.Next(-spread, spread + 1) * spreadMult;
+                velocity.Y = velocity.Y + Main.rand.Next(-spread, spread + 1) * spreadMult;
                 int i = Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, velocity.X, velocity.Y, ShootType, Damage, ShootKN, projectile.owner);
             }
         }

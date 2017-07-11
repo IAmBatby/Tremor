@@ -52,10 +52,10 @@ namespace Tremor.Projectiles
                         Vector2 vector = player.RotatedRelativePoint(player.MountedCenter, true);
                         float scaleFactor = player.inventory[player.selectedItem].shootSpeed * projectile.scale;
                         Vector2 value2 = vector;
-                        Vector2 value3 = Main.screenPosition + new Vector2((float)Main.mouseX, (float)Main.mouseY) - value2;
+                        Vector2 value3 = Main.screenPosition + new Vector2(Main.mouseX, Main.mouseY) - value2;
                         if (player.gravDir == -1f)
                         {
-                            value3.Y = (float)(Main.screenHeight - Main.mouseY) + Main.screenPosition.Y - value2.Y;
+                            value3.Y = Main.screenHeight - Main.mouseY + Main.screenPosition.Y - value2.Y;
                         }
                         Vector2 vector3 = Vector2.Normalize(value3);
                         if (float.IsNaN(vector3.X) || float.IsNaN(vector3.Y))
@@ -71,7 +71,7 @@ namespace Tremor.Projectiles
                         int num6 = 274;
                         float scaleFactor2 = 14f;
                         int num7 = 7;
-                        value2 = projectile.Center + new Vector2((float)Main.rand.Next(-num7, num7 + 1), (float)Main.rand.Next(-num7, num7 + 1));
+                        value2 = projectile.Center + new Vector2(Main.rand.Next(-num7, num7 + 1), Main.rand.Next(-num7, num7 + 1));
                         Vector2 spinningpoint = Vector2.Normalize(projectile.velocity) * scaleFactor2;
                         spinningpoint = spinningpoint.RotatedBy(Main.rand.NextDouble() * 0.19634954631328583 - 0.098174773156642914, default(Vector2));
                         if (float.IsNaN(spinningpoint.X) || float.IsNaN(spinningpoint.Y))

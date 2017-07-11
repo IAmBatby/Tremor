@@ -13,9 +13,9 @@ namespace Tremor.Tiles
 			Main.tileCut[Type] = true;
 			Main.tileNoFail[Type] = true;
 			TileObjectData.newTile.CopyFrom(TileObjectData.StyleAlch);
-			TileObjectData.newTile.AnchorValidTiles = new int[]
+			TileObjectData.newTile.AnchorValidTiles = new[]
 			{
-				2, 
+				2 
 			};
 			TileObjectData.addTile(Type);
 		}

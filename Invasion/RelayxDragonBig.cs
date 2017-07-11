@@ -1,8 +1,8 @@
 using System;
-using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace Tremor.Invasion
 {
@@ -58,9 +58,9 @@ namespace Tremor.Invasion
 			{
 				if (Main.npc[MobCounts].CanBeChasedBy(projectile, false) && Collision.CanHit(projectile.Center, 1, 1, Main.npc[MobCounts].Center, 1, 1))
 				{
-					float Position1 = Main.npc[MobCounts].position.X + (float)(Main.npc[MobCounts].width / 2);
-					float Position2 = Main.npc[MobCounts].position.Y + (float)(Main.npc[MobCounts].height / 2);
-					float Position3 = Math.Abs(projectile.position.X + (float)(projectile.width / 2) - Position1) + Math.Abs(projectile.position.Y + (float)(projectile.height / 2) - Position2);
+					float Position1 = Main.npc[MobCounts].position.X + Main.npc[MobCounts].width / 2;
+					float Position2 = Main.npc[MobCounts].position.Y + Main.npc[MobCounts].height / 2;
+					float Position3 = Math.Abs(projectile.position.X + projectile.width / 2 - Position1) + Math.Abs(projectile.position.Y + projectile.height / 2 - Position2);
 					if (Position3 < Distanse)
 					{
 						Distanse = Position3;
@@ -73,16 +73,15 @@ namespace Tremor.Invasion
 			if (CheckDistanse)
 			{
 				float Speed = 8f;
-				Vector2 FinalPos = new Vector2(projectile.position.X + (float)projectile.width * 0.5f, projectile.position.Y + (float)projectile.height * 0.5f);
+				Vector2 FinalPos = new Vector2(projectile.position.X + projectile.width * 0.5f, projectile.position.Y + projectile.height * 0.5f);
 				float NewPosX = CenterX - FinalPos.X;
 				float NewPosY = CenterY - FinalPos.Y;
-				float FinPos = (float)Math.Sqrt((double)(NewPosX * NewPosX + NewPosY * NewPosY));
+				float FinPos = (float)Math.Sqrt(NewPosX * NewPosX + NewPosY * NewPosY);
 				FinPos = Speed / FinPos;
 				NewPosX *= FinPos;
 				NewPosY *= FinPos;
 				projectile.velocity.X = (projectile.velocity.X * 20f + NewPosX) / 21f;
 				projectile.velocity.Y = (projectile.velocity.Y * 20f + NewPosY) / 21f;
-				return;
 			}
 		}
 

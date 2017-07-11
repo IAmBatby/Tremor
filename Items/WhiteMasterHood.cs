@@ -40,12 +40,12 @@ namespace Tremor.Items
 		public override void UpdateArmorSet(Player player)
 		{
 			player.setBonus = "Creates alchemical bubbles to attack enemies\nBubbles heal you";
-			if (--this.TimeToShoot <= 0)
+			if (--TimeToShoot <= 0)
 			{
-				this.TimeToShoot = ShootRate;
-				int Target = this.GetTarget();
+				TimeToShoot = ShootRate;
+				int Target = GetTarget();
 				if (Target != -1)
-					Shoot(Target, this.GetDamage());
+					Shoot(Target, GetDamage());
 			}
 		}
 
@@ -73,8 +73,8 @@ namespace Tremor.Items
 			Vector2 velocity = Helper.VelocityToPoint(Main.player[item.owner].Center, Main.npc[Target].Center, ShootSpeed);
 			for (int l = 0; l < ShootCount; l++)
 			{
-				velocity.X = velocity.X + (float)Main.rand.Next(-spread, spread + 1) * spreadMult;
-				velocity.Y = velocity.Y + (float)Main.rand.Next(-spread, spread + 1) * spreadMult;
+				velocity.X = velocity.X + Main.rand.Next(-spread, spread + 1) * spreadMult;
+				velocity.Y = velocity.Y + Main.rand.Next(-spread, spread + 1) * spreadMult;
 				int i = Projectile.NewProjectile(Main.player[item.owner].Center.X, Main.player[item.owner].Center.Y, velocity.X, velocity.Y, mod.ProjectileType("AlchemicBubbleZellarium"), 115, ShootKN, item.owner);
 			}
 		}

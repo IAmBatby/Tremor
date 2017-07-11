@@ -1,42 +1,42 @@
 ﻿using System;
-using System.IO;
 using System.Collections.Generic;
+using System.IO;
+using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.GameContent.Generation;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria.World.Generation;
-using Microsoft.Xna.Framework;
-using Terraria.GameContent.Generation;
 using Terraria.ModLoader.IO;
+using Terraria.World.Generation;
 
 namespace Tremor
 {
 	public class TremorWorld : ModWorld
 	{
 		private const int saveVersion = 0;
-		public static bool downedEvilCorn = false;
-		public static bool downedRukh = false;
-		public static bool downedSpaceWhale = false;
-		public static bool downedTrinity = false;
-		public static bool downedTremode = false;
-		public static bool downedTikiTotem = false;
-		public static bool downedStormJellyfish = false;
-		public static bool downedCyberKing = false;
-		public static bool downedHeaterofWorlds = false;
-		public static bool downedFrostKing = false;
-		public static bool downedDarkEmperor = false;
-		public static bool downedPixieQueen = false;
-		public static bool downedAlchemaster = false;
-		public static bool downedBrutallisk = false;
-		public static bool downedParadoxTitan = false;
-		public static bool downedCogLord = false;
-		public static bool downedWallofShadow = false;
-		public static bool downedMotherboard = false;
-		public static bool downedFungusBeetle = false;
-		public static bool downedAncientDragon = false;
-		public static bool downedAndas = false;
-		public static bool DownedNovaPillar = false;
-		public static bool downedWallOfShadow = false;
+		public static bool downedEvilCorn;
+		public static bool downedRukh;
+		public static bool downedSpaceWhale;
+		public static bool downedTrinity;
+		public static bool downedTremode;
+		public static bool downedTikiTotem;
+		public static bool downedStormJellyfish;
+		public static bool downedCyberKing;
+		public static bool downedHeaterofWorlds;
+		public static bool downedFrostKing;
+		public static bool downedDarkEmperor;
+		public static bool downedPixieQueen;
+		public static bool downedAlchemaster;
+		public static bool downedBrutallisk;
+		public static bool downedParadoxTitan;
+		public static bool downedCogLord;
+		public static bool downedWallofShadow;
+		public static bool downedMotherboard;
+		public static bool downedFungusBeetle;
+		public static bool downedAncientDragon;
+		public static bool downedAndas;
+		public static bool DownedNovaPillar;
+		public static bool downedWallOfShadow;
 
 		public override void Initialize()
 		{
@@ -233,10 +233,10 @@ namespace Tremor
 			downedWallOfShadow = flags3[6];
 		}
 
-		public static int CometTiles = 0;
-		public static int GraniteTiles = 0;
-		public static int IceTiles = 0;
-		public static int RuinsTiles = 0;
+		public static int CometTiles;
+		public static int GraniteTiles;
+		public static int IceTiles;
+		public static int RuinsTiles;
 
 		public override void ModifyWorldGenTasks(List<GenPass> tasks, ref float totalWeight)
 		{
@@ -254,7 +254,7 @@ namespace Tremor
 				{
 					int i2 = WorldGen.genRand.Next(0, Main.maxTilesX);
 					int j2 = WorldGen.genRand.Next((int)(Main.maxTilesY * .3f), (int)(Main.maxTilesY * .45f));
-					WorldGen.OreRunner(i2, j2, (double)WorldGen.genRand.Next(3, 4), WorldGen.genRand.Next(3, 8), (ushort)mod.TileType("ArgiteOre"));
+					WorldGen.OreRunner(i2, j2, WorldGen.genRand.Next(3, 4), WorldGen.genRand.Next(3, 8), (ushort)mod.TileType("ArgiteOre"));
 				}
 			}));
 
@@ -262,7 +262,7 @@ namespace Tremor
 			{
 				progress.Message = "Generating glacier...";
 				IL_19:
-				int StartPositionX = WorldGen.genRand.Next(0, (int)Main.maxTilesX - 2);
+				int StartPositionX = WorldGen.genRand.Next(0, Main.maxTilesX - 2);
 				int StartPositionY = (int)Main.worldSurface;
 				int StartX = 0;
 				int StartY = 0;
@@ -315,11 +315,11 @@ namespace Tremor
 					}
 					for (int k = 0; k < 1000; k++)
 					{
-						int PositionX = WorldGen.genRand.Next(0, (int)Main.maxTilesX);
-						int PositionY = WorldGen.genRand.Next(0, (int)Main.maxTilesY);
+						int PositionX = WorldGen.genRand.Next(0, Main.maxTilesX);
+						int PositionY = WorldGen.genRand.Next(0, Main.maxTilesY);
 						if (Main.tile[PositionX, PositionY].type == mod.TileType("IceBlock"))
 						{
-							WorldGen.TileRunner(PositionX, PositionY, (double)WorldGen.genRand.Next(2, 8), WorldGen.genRand.Next(2, 8), (ushort)mod.TileType("IceOre"), false, 0f, 0f, false, true);
+							WorldGen.TileRunner(PositionX, PositionY, WorldGen.genRand.Next(2, 8), WorldGen.genRand.Next(2, 8), (ushort)mod.TileType("IceOre"), false, 0f, 0f, false, true);
 						}
 					}
 					for (int k = 0; k < Main.maxTilesX; k++)
@@ -330,7 +330,6 @@ namespace Tremor
 							{
 								if (Main.tile[k + 1, i].active() && Main.tile[k, i - 1].active() && Main.tile[k - 1, i].active() && Main.tile[k, i + 1].active())
 								{
-									continue;
 								}
 								else
 								{
@@ -340,7 +339,7 @@ namespace Tremor
 						}
 					}
 
-					while (!Main.tile[StartX, StartY].active() && (double)StartY < Main.worldSurface)
+					while (!Main.tile[StartX, StartY].active() && StartY < Main.worldSurface)
 					{
 						StartY++;
 					}
@@ -502,7 +501,7 @@ namespace Tremor
 		{
 			int num = -1;
 			TileObject toBePlaced;
-			if (TileObject.CanPlace(x, y, (int)type, style, 1, out toBePlaced, false))
+			if (TileObject.CanPlace(x, y, type, style, 1, out toBePlaced, false))
 			{
 				bool flag = true;
 				if (notNearOtherChests && Chest.NearOtherChests(x - 1, y - 1))
@@ -637,7 +636,7 @@ namespace Tremor
 			}
 			//for (int i = 1; i < Main.rand.Next(1, 3); i++) //кол-во занятых слотов
 			//{
-			int[] itemsToPlaceInGlassChestsSecondary = new int[] { mod.ItemType("FrostLiquidFlask") }; //сами предметы
+			int[] itemsToPlaceInGlassChestsSecondary = { mod.ItemType("FrostLiquidFlask") }; //сами предметы
 			int itemsToPlaceInGlassChestsSecondaryChoice = 0;
 			for (int chestIndex = 0; chestIndex < 1000; chestIndex++)
 			{
@@ -658,7 +657,7 @@ namespace Tremor
 
 			//for (int i = 1; i < Main.rand.Next(7, 10); i++) //тоже самое
 			//{
-			int[] itemsToPlaceInGlassChestsSecondary1 = new int[] { 73 };
+			int[] itemsToPlaceInGlassChestsSecondary1 = { 73 };
 			int itemsToPlaceInGlassChestsSecondaryChoice1 = 0;
 			for (int chestIndex = 0; chestIndex < 1000; chestIndex++)
 			{
@@ -677,7 +676,7 @@ namespace Tremor
 			}
 			//}
 			//рандом. выбор предмета на 1
-			int[] itemsToPlaceInGlassChests = new int[] { mod.ItemType("FrostLance"), mod.ItemType("FrozenPaxe"), mod.ItemType("FrostGuardian"), mod.ItemType("FrostWind") };
+			int[] itemsToPlaceInGlassChests = { mod.ItemType("FrostLance"), mod.ItemType("FrozenPaxe"), mod.ItemType("FrostGuardian"), mod.ItemType("FrostWind") };
 			int itemsToPlaceInGlassChestsChoice = 0;
 			for (int chestIndex = 0; chestIndex < 1000; chestIndex++)
 			{
@@ -699,7 +698,7 @@ namespace Tremor
 			int k = j;
 			while (k < Main.maxTilesY)
 			{
-				if (Main.tile[i, k].active() && Main.tileSolid[(int)Main.tile[i, k].type])
+				if (Main.tile[i, k].active() && Main.tileSolid[Main.tile[i, k].type])
 				{
 					int num = k - 1;
 					if (Main.tile[i, num - 1].lava() || Main.tile[i - 1, num - 1].lava())
@@ -710,17 +709,17 @@ namespace Tremor
 					{
 						return false;
 					}
-					if (Main.wallDungeon[(int)Main.tile[i, num].wall])
+					if (Main.wallDungeon[Main.tile[i, num].wall])
 					{
 						return false;
 					}
 					Tile tile = Main.tile[i - 1, num + 1];
 					Tile tile2 = Main.tile[i, num + 1];
-					if (!tile.nactive() || !Main.tileSolid[(int)tile.type])
+					if (!tile.nactive() || !Main.tileSolid[tile.type])
 					{
 						return false;
 					}
-					if (!tile2.nactive() || !Main.tileSolid[(int)tile2.type])
+					if (!tile2.nactive() || !Main.tileSolid[tile2.type])
 					{
 						return false;
 					}
@@ -752,10 +751,7 @@ namespace Tremor
 					Main.tile[i, num].frameY = 18;
 					return true;
 				}
-				else
-				{
-					k++;
-				}
+				k++;
 			}
 			return false;
 		}
@@ -776,12 +772,12 @@ namespace Tremor
 				}
 			}
 			int num = 0;
-			float num2 = (float)(Main.maxTilesX / 4200);
+			float num2 = Main.maxTilesX / 4200;
 			int num3 = (int)(400f * num2);
 			for (int j = 5; j < Main.maxTilesX - 5; j++)
 			{
 				int num4 = 5;
-				while ((double)num4 < Main.worldSurface)
+				while (num4 < Main.worldSurface)
 				{
 					if (Main.tile[j, num4].active() && Main.tile[j, num4].type == (ushort)ModLoader.GetMod("Tremor").TileType("CometiteOreTile"))
 					{
@@ -797,16 +793,16 @@ namespace Tremor
 			float num5 = 600f;
 			while (!flag)
 			{
-				float num6 = (float)Main.maxTilesX * 0.08f;
+				float num6 = Main.maxTilesX * 0.08f;
 				int num7 = Main.rand.Next(150, Main.maxTilesX - 150);
-				while ((float)num7 > (float)Main.spawnTileX - num6 && (float)num7 < (float)Main.spawnTileX + num6)
+				while (num7 > Main.spawnTileX - num6 && num7 < Main.spawnTileX + num6)
 				{
 					num7 = Main.rand.Next(150, Main.maxTilesX - 150);
 				}
 				int k = (int)(Main.worldSurface * 0.3);
 				while (k < Main.maxTilesY)
 				{
-					if (Main.tile[num7, k].active() && Main.tileSolid[(int)Main.tile[num7, k].type])
+					if (Main.tile[num7, k].active() && Main.tileSolid[Main.tile[num7, k].type])
 					{
 						int num8 = 0;
 						int num9 = 15;
@@ -828,22 +824,18 @@ namespace Tremor
 								}
 							}
 						}
-						if ((float)num8 < num5)
+						if (num8 < num5)
 						{
 							num5 -= 0.5f;
 							break;
 						}
-						flag = TremorWorld.comet(num7, k);
+						flag = comet(num7, k);
 						if (flag)
 						{
-							break;
 						}
 						break;
 					}
-					else
-					{
-						k++;
-					}
+					k++;
 				}
 				if (num5 < 100f)
 				{
@@ -867,7 +859,7 @@ namespace Tremor
 			{
 				if (Main.player[k].active)
 				{
-					Rectangle value = new Rectangle((int)(Main.player[k].position.X + (float)(Main.player[k].width / 2) - (float)(NPC.sWidth / 2) - (float)NPC.safeRangeX), (int)(Main.player[k].position.Y + (float)(Main.player[k].height / 2) - (float)(NPC.sHeight / 2) - (float)NPC.safeRangeY), NPC.sWidth + NPC.safeRangeX * 2, NPC.sHeight + NPC.safeRangeY * 2);
+					Rectangle value = new Rectangle((int)(Main.player[k].position.X + Main.player[k].width / 2 - NPC.sWidth / 2 - NPC.safeRangeX), (int)(Main.player[k].position.Y + Main.player[k].height / 2 - NPC.sHeight / 2 - NPC.safeRangeY), NPC.sWidth + NPC.safeRangeX * 2, NPC.sHeight + NPC.safeRangeY * 2);
 					if (rectangle.Intersects(value))
 					{
 						return false;
@@ -902,12 +894,12 @@ namespace Tremor
 				{
 					if (num3 > j + Main.rand.Next(-2, 3) - 5)
 					{
-						float num4 = (float)Math.Abs(i - num2);
-						float num5 = (float)Math.Abs(j - num3);
-						float num6 = (float)Math.Sqrt((double)(num4 * num4 + num5 * num5));
-						if ((double)num6 < (double)num * 0.9 + (double)Main.rand.Next(-4, 5))
+						float num4 = Math.Abs(i - num2);
+						float num5 = Math.Abs(j - num3);
+						float num6 = (float)Math.Sqrt(num4 * num4 + num5 * num5);
+						if (num6 < num * 0.9 + Main.rand.Next(-4, 5))
 						{
-							if (!Main.tileSolid[(int)Main.tile[num2, num3].type])
+							if (!Main.tileSolid[Main.tile[num2, num3].type])
 							{
 								Main.tile[num2, num3].active(false);
 							}
@@ -923,10 +915,10 @@ namespace Tremor
 				{
 					if (num8 > j + Main.rand.Next(-2, 3) - 4)
 					{
-						float num9 = (float)Math.Abs(i - num7);
-						float num10 = (float)Math.Abs(j - num8);
-						float num11 = (float)Math.Sqrt((double)(num9 * num9 + num10 * num10));
-						if ((double)num11 < (double)num * 0.8 + (double)Main.rand.Next(-3, 4))
+						float num9 = Math.Abs(i - num7);
+						float num10 = Math.Abs(j - num8);
+						float num11 = (float)Math.Sqrt(num9 * num9 + num10 * num10);
+						if (num11 < num * 0.8 + Main.rand.Next(-3, 4))
 						{
 							Main.tile[num7, num8].active(false);
 						}
@@ -938,10 +930,10 @@ namespace Tremor
 			{
 				for (int num13 = j - num; num13 < j + num; num13++)
 				{
-					float num14 = (float)Math.Abs(i - num12);
-					float num15 = (float)Math.Abs(j - num13);
-					float num16 = (float)Math.Sqrt((double)(num14 * num14 + num15 * num15));
-					if ((double)num16 < (double)num * 0.7)
+					float num14 = Math.Abs(i - num12);
+					float num15 = Math.Abs(j - num13);
+					float num16 = (float)Math.Sqrt(num14 * num14 + num15 * num15);
+					if (num16 < num * 0.7)
 					{
 						if (Main.tile[num12, num13].type == 5 || Main.tile[num12, num13].type == 32 || Main.tile[num12, num13].type == 352)
 						{
@@ -971,10 +963,10 @@ namespace Tremor
 				{
 					if (num18 > j + WorldGen.genRand.Next(-3, 4) - 3 && Main.tile[num17, num18].active() && Main.rand.Next(10) == 0)
 					{
-						float num19 = (float)Math.Abs(i - num17);
-						float num20 = (float)Math.Abs(j - num18);
-						float num21 = (float)Math.Sqrt((double)(num19 * num19 + num20 * num20));
-						if ((double)num21 < (double)num * 0.8)
+						float num19 = Math.Abs(i - num17);
+						float num20 = Math.Abs(j - num18);
+						float num21 = (float)Math.Sqrt(num19 * num19 + num20 * num20);
+						if (num21 < num * 0.8)
 						{
 							if (Main.tile[num17, num18].type == 5 || Main.tile[num17, num18].type == 32 || Main.tile[num17, num18].type == 352)
 							{
@@ -993,10 +985,10 @@ namespace Tremor
 				{
 					if (num23 > j + WorldGen.genRand.Next(-2, 3) && Main.tile[num22, num23].active() && Main.rand.Next(20) == 0)
 					{
-						float num24 = (float)Math.Abs(i - num22);
-						float num25 = (float)Math.Abs(j - num23);
-						float num26 = (float)Math.Sqrt((double)(num24 * num24 + num25 * num25));
-						if ((double)num26 < (double)num * 0.85)
+						float num24 = Math.Abs(i - num22);
+						float num25 = Math.Abs(j - num23);
+						float num26 = (float)Math.Sqrt(num24 * num24 + num25 * num25);
+						if (num26 < num * 0.85)
 						{
 							if (Main.tile[num22, num23].type == 5 || Main.tile[num22, num23].type == 32 || Main.tile[num22, num23].type == 352)
 							{

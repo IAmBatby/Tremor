@@ -21,10 +21,10 @@ namespace Tremor.Ice.Tree
 			TileObjectData.newTile.Origin = new Point16(0, 1);
 			TileObjectData.newTile.AnchorBottom = new AnchorData(AnchorType.SolidTile, TileObjectData.newTile.Width, 0);
 			TileObjectData.newTile.UsesCustomCanPlace = true;
-			TileObjectData.newTile.CoordinateHeights = new int[] { 16, 18 };
+			TileObjectData.newTile.CoordinateHeights = new[] { 16, 18 };
 			TileObjectData.newTile.CoordinateWidth = 16;
 			TileObjectData.newTile.CoordinatePadding = 2;
-			TileObjectData.newTile.AnchorValidTiles = new int[] { mod.TileType("VeryVeryIce") };
+			TileObjectData.newTile.AnchorValidTiles = new[] { mod.TileType("VeryVeryIce") };
 			TileObjectData.newTile.StyleHorizontal = true;
 			TileObjectData.newTile.DrawFlipHorizontal = true;
 			TileObjectData.newTile.WaterPlacement = LiquidPlacement.NotAllowed;

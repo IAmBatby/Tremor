@@ -61,20 +61,20 @@ namespace Tremor.Projectiles
 			if (projectile.localAI[0] == 0f)
 			{
 				projectile.localAI[0] = 1f;
-				projectile.position.X = projectile.position.X + (float)(projectile.width / 2);
-				projectile.position.Y = projectile.position.Y + (float)(projectile.height / 2);
-				projectile.scale = ((float)(num613 + num614) - projectile.ai[1]) * num615 / (float)(num614 + num613);
-				projectile.width = (int)((float)num616 * projectile.scale);
-				projectile.height = (int)((float)num617 * projectile.scale);
-				projectile.position.X = projectile.position.X - (float)(projectile.width / 2);
-				projectile.position.Y = projectile.position.Y - (float)(projectile.height / 2);
+				projectile.position.X = projectile.position.X + projectile.width / 2;
+				projectile.position.Y = projectile.position.Y + projectile.height / 2;
+				projectile.scale = (num613 + num614 - projectile.ai[1]) * num615 / (num614 + num613);
+				projectile.width = (int)(num616 * projectile.scale);
+				projectile.height = (int)(num617 * projectile.scale);
+				projectile.position.X = projectile.position.X - projectile.width / 2;
+				projectile.position.Y = projectile.position.Y - projectile.height / 2;
 				projectile.netUpdate = true;
 			}
 			if (projectile.ai[1] != -1f)
 			{
-				projectile.scale = ((float)(num613 + num614) - projectile.ai[1]) * num615 / (float)(num614 + num613);
-				projectile.width = (int)((float)num616 * projectile.scale);
-				projectile.height = (int)((float)num617 * projectile.scale);
+				projectile.scale = (num613 + num614 - projectile.ai[1]) * num615 / (num614 + num613);
+				projectile.width = (int)(num616 * projectile.scale);
+				projectile.height = (int)(num617 * projectile.scale);
 			}
 			if (!Collision.SolidCollision(projectile.position, projectile.width, projectile.height))
 			{
@@ -100,22 +100,21 @@ namespace Tremor.Projectiles
 			{
 				projectile.netUpdate = true;
 				Vector2 center = projectile.Center;
-				center.Y -= (float)num617 * projectile.scale / 2f;
-				float num618 = ((float)(num613 + num614) - projectile.ai[1] + 1f) * num615 / (float)(num614 + num613);
-				center.Y -= (float)num617 * num618 / 2f;
+				center.Y -= num617 * projectile.scale / 2f;
+				float num618 = (num613 + num614 - projectile.ai[1] + 1f) * num615 / (num614 + num613);
+				center.Y -= num617 * num618 / 2f;
 				center.Y += 2f;
 				Projectile.NewProjectile(center.X, center.Y, projectile.velocity.X, projectile.velocity.Y, projectile.type, projectile.damage, projectile.knockBack, projectile.owner, 10f, projectile.ai[1] - 1f);
 			}
 			if (projectile.ai[0] <= 0f)
 			{
 				float num622 = 0.104719758f;
-				float num623 = (float)projectile.width / 5f;
-				float num624 = (float)(Math.Cos((double)(num622 * -(double)projectile.ai[0])) - 0.5) * num623;
-				projectile.position.X = projectile.position.X - num624 * (float)(-(float)projectile.direction);
+				float num623 = projectile.width / 5f;
+				float num624 = (float)(Math.Cos(num622 * -(double)projectile.ai[0]) - 0.5) * num623;
+				projectile.position.X = projectile.position.X - num624 * -(float)projectile.direction;
 				projectile.ai[0] -= 1f;
-				num624 = (float)(Math.Cos((double)(num622 * -(double)projectile.ai[0])) - 0.5) * num623;
-				projectile.position.X = projectile.position.X + num624 * (float)(-(float)projectile.direction);
-				return;
+				num624 = (float)(Math.Cos(num622 * -(double)projectile.ai[0]) - 0.5) * num623;
+				projectile.position.X = projectile.position.X + num624 * -(float)projectile.direction;
 			}
 		}
 	}

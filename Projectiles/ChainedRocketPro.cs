@@ -1,8 +1,6 @@
 using System;
-
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-
 using Terraria;
 using Terraria.ModLoader;
 
@@ -53,7 +51,7 @@ namespace Tremor.Projectiles
 				Main.player[projectile.owner].ChangeDir(-1);
 				projectile.direction = -1;
 			}
-			Main.player[projectile.owner].itemRotation = (vector63 * -1f * (float)projectile.direction).ToRotation();
+			Main.player[projectile.owner].itemRotation = (vector63 * -1f * projectile.direction).ToRotation();
 			projectile.spriteDirection = ((vector63.X > 0f) ? -1 : 1);
 			if (projectile.ai[0] == 0f && vector63.Length() > 800f)
 			{
@@ -93,23 +91,23 @@ namespace Tremor.Projectiles
 			{
 				Vector2 vector64 = vector63 * -1f;
 				vector64.Normalize();
-				vector64 *= (float)Main.rand.Next(45, 65) * 0.1f;
+				vector64 *= Main.rand.Next(45, 65) * 0.1f;
 				vector64 = vector64.RotatedBy((Main.rand.NextDouble() - 0.5) * 1.5707963705062866, default(Vector2));
 				Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, vector64.X, vector64.Y, mod.ProjectileType("nichego"), projectile.damage, projectile.knockBack, projectile.owner, -10f, 0f);
 			}
 		}
 
-		public override bool PreDraw(Microsoft.Xna.Framework.Graphics.SpriteBatch spriteBatch, Color lightColor)
+		public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)
 		{
 			Texture2D texture = ModLoader.GetTexture("Tremor/Projectiles/ChainedRocket_Chain");
 
 			Vector2 position = projectile.Center;
 			Vector2 mountedCenter = Main.player[projectile.owner].MountedCenter;
-			Microsoft.Xna.Framework.Rectangle? sourceRectangle = new Microsoft.Xna.Framework.Rectangle?();
-			Vector2 origin = new Vector2((float)texture.Width * 0.5f, (float)texture.Height * 0.5f);
-			float num1 = (float)texture.Height;
+			Rectangle? sourceRectangle = new Rectangle?();
+			Vector2 origin = new Vector2(texture.Width * 0.5f, texture.Height * 0.5f);
+			float num1 = texture.Height;
 			Vector2 vector2_4 = mountedCenter - position;
-			float rotation = (float)Math.Atan2((double)vector2_4.Y, (double)vector2_4.X) - 1.57f;
+			float rotation = (float)Math.Atan2(vector2_4.Y, vector2_4.X) - 1.57f;
 			bool flag = true;
 			if (float.IsNaN(position.X) && float.IsNaN(position.Y))
 				flag = false;
@@ -117,7 +115,7 @@ namespace Tremor.Projectiles
 				flag = false;
 			while (flag)
 			{
-				if ((double)vector2_4.Length() < (double)num1 + 1.0)
+				if (vector2_4.Length() < num1 + 1.0)
 				{
 					flag = false;
 				}
@@ -127,7 +125,7 @@ namespace Tremor.Projectiles
 					vector2_1.Normalize();
 					position += vector2_1 * num1;
 					vector2_4 = mountedCenter - position;
-					Microsoft.Xna.Framework.Color color2 = Lighting.GetColor((int)position.X / 16, (int)((double)position.Y / 16.0));
+					Color color2 = Lighting.GetColor((int)position.X / 16, (int)(position.Y / 16.0));
 					color2 = projectile.GetAlpha(color2);
 					Main.spriteBatch.Draw(texture, position - Main.screenPosition, sourceRectangle, color2, rotation, origin, 1f, SpriteEffects.None, 0.0f);
 				}

@@ -1,9 +1,9 @@
-﻿using Terraria.ID;
-using Terraria;
-using Terraria.ModLoader;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework;
+using Terraria;
+using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace Tremor.NPCs
 {
@@ -43,24 +43,26 @@ namespace Tremor.NPCs
 		List<int> SignalDrones = new List<int>(); // ID сигнальных дронов
 		int LastSignalDron = -1; // Последний дрон принимающий лазер
 		int stateTime = stateOne_AppearingTime + stateOne_DisappearingTime + stateOne_FollowPlayerTime; // Время стадии
-		bool ShootNow = false; // Происходит ли сейчас стрелба
+		bool ShootNow; // Происходит ли сейчас стрелба
 		int TimeToNextDrone = 1; // Время до спавна следующего дрона
 		int TimeToShoot = 60; // Время до следующего выстрела
 		int TimeToLaser = 3; // Время до выстрела лазера от дрона до дрона
-		int CurrentFrame = 0; // Содержит текущий кадр анимации
+		int CurrentFrame; // Содержит текущий кадр анимации
 		int TimeToAnimation = 6; // Время до смены кадра
 		List<int> Clampers = new List<int>(); // Список кламперов
 		int SecondShootTime = 60;
 		int ai = 0;
 
-		int getStateTime { get { return getAppearingTimeNow + getDisappearingTimeNow + getFollowPlayerTimeNow; } } //-----
+		int getStateTime => getAppearingTimeNow + getDisappearingTimeNow + getFollowPlayerTimeNow;
+//-----
 																												   // Получить время требуемое на полный цикл смены состояний
-		int getTimeToNextDrone { get { return (Main.rand.Next(3, 6) * 60); } } // Получить время до следующего дрона
+		int getTimeToNextDrone => (Main.rand.Next(3, 6) * 60);
+// Получить время до следующего дрона
 
 		//----- Методы получения времени на состояния в данный момент
-		int getFollowPlayerTimeNow { get { return (FirstState) ? stateOne_FollowPlayerTime : stateSecond_FollowPlayerTime; } }
-		int getDisappearingTimeNow { get { return (FirstState) ? stateOne_DisappearingTime : stateSecond_DisappearingTime; } }
-		int getAppearingTimeNow { get { return (FirstState) ? stateOne_AppearingTime : stateSecond_AppearingTime; } }
+		int getFollowPlayerTimeNow => (FirstState) ? stateOne_FollowPlayerTime : stateSecond_FollowPlayerTime;
+		int getDisappearingTimeNow => (FirstState) ? stateOne_DisappearingTime : stateSecond_DisappearingTime;
+		int getAppearingTimeNow => (FirstState) ? stateOne_AppearingTime : stateSecond_AppearingTime;
 		//-----
 		#endregion
 
@@ -141,13 +143,13 @@ namespace Tremor.NPCs
 					Vector2 vector142 = new Vector2(npc.Center.X, npc.Center.Y);
 					float num1243 = Main.player[npc.target].Center.X - vector142.X;
 					float num1244 = Main.player[npc.target].Center.Y - vector142.Y;
-					float num1245 = (float)Math.Sqrt((double)(num1243 * num1243 + num1244 * num1244));
+					float num1245 = (float)Math.Sqrt(num1243 * num1243 + num1244 * num1244);
 					if (npc.ai[1] == 0f)
 					{
 						if (Main.netMode != 1)
 						{
 							npc.localAI[1] += 1f;
-							if (npc.localAI[1] >= (float)(120 + Main.rand.Next(200)))
+							if (npc.localAI[1] >= 120 + Main.rand.Next(200))
 							{
 								npc.localAI[1] = 0f;
 								npc.TargetClosest(true);
@@ -161,7 +163,7 @@ namespace Tremor.NPCs
 									num1251 = (int)Main.player[npc.target].Center.Y / 16;
 									num1250 += Main.rand.Next(-50, 51);
 									num1251 += Main.rand.Next(-50, 51);
-									if (!WorldGen.SolidTile(num1250, num1251) && Collision.CanHit(new Vector2((float)(num1250 * 16), (float)(num1251 * 16)), 1, 1, Main.player[npc.target].position, Main.player[npc.target].width, Main.player[npc.target].height))
+									if (!WorldGen.SolidTile(num1250, num1251) && Collision.CanHit(new Vector2(num1250 * 16, num1251 * 16), 1, 1, Main.player[npc.target].position, Main.player[npc.target].width, Main.player[npc.target].height))
 									{
 										break;
 									}
@@ -171,8 +173,8 @@ namespace Tremor.NPCs
 									}
 								}
 								npc.ai[1] = 1f;
-								npc.ai[2] = (float)num1250;
-								npc.ai[3] = (float)num1251;
+								npc.ai[2] = num1250;
+								npc.ai[3] = num1251;
 								npc.netUpdate = true;
 								return;
 							}
@@ -184,8 +186,8 @@ namespace Tremor.NPCs
 						if (npc.alpha >= 255)
 						{
 							npc.alpha = 255;
-							npc.position.X = npc.ai[2] * 16f - (float)(npc.width / 2);
-							npc.position.Y = npc.ai[3] * 16f - (float)(npc.height / 2);
+							npc.position.X = npc.ai[2] * 16f - npc.width / 2;
+							npc.position.Y = npc.ai[3] * 16f - npc.height / 2;
 							npc.ai[1] = 2f;
 							return;
 						}
@@ -232,7 +234,7 @@ namespace Tremor.NPCs
 			{
 				for (int k = 0; k < 20; k++)
 				{
-					Dust.NewDust(npc.position, npc.width, npc.height, 151, 2.5f * (float)hitDirection, -2.5f, 0, default(Color), 0.7f);
+					Dust.NewDust(npc.position, npc.width, npc.height, 151, 2.5f * hitDirection, -2.5f, 0, default(Color), 0.7f);
 				}
 				Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/MotherboardGore1"), 1f);
 				Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/MotherboardGore2"), 1f);
@@ -241,6 +243,7 @@ namespace Tremor.NPCs
 				Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/MotherboardGore4"), 1f);
 			}
 		}
+
 		void SecondShoot()
 		{
 			for (int i = (int)npc.position.X - 8; i < (npc.position.X + 8 + npc.width); i += 8)
@@ -261,11 +264,13 @@ namespace Tremor.NPCs
 			if (SignalDrones.Count <= 0) // Если живих дронов нет
 			{
 				FirstState = false; // Выключаем первую стадию
-				Clampers = new List<int> {
-				NPC.NewNPC((int)npc.Center.X - 15, (int)npc.Center.Y + 25, mod.NPCType("Clamper"), 0, 0, 0, 0, npc.whoAmI),
-				NPC.NewNPC((int)npc.Center.X - 10, (int)npc.Center.Y + 25, mod.NPCType("Clamper"), 0, 0, 0, 0, npc.whoAmI),
-				NPC.NewNPC((int)npc.Center.X + 10, (int)npc.Center.Y + 25, mod.NPCType("Clamper"), 0, 0, 0, 0, npc.whoAmI),
-				NPC.NewNPC((int)npc.Center.X + 15, (int)npc.Center.Y + 25, mod.NPCType("Clamper"), 0, 0, 0, 0, npc.whoAmI)};
+				Clampers = new List<int>
+				{
+					NPC.NewNPC((int) npc.Center.X - 15, (int) npc.Center.Y + 25, mod.NPCType("Clamper"), 0, 0, 0, 0, npc.whoAmI),
+					NPC.NewNPC((int) npc.Center.X - 10, (int) npc.Center.Y + 25, mod.NPCType("Clamper"), 0, 0, 0, 0, npc.whoAmI),
+					NPC.NewNPC((int) npc.Center.X + 10, (int) npc.Center.Y + 25, mod.NPCType("Clamper"), 0, 0, 0, 0, npc.whoAmI),
+					NPC.NewNPC((int) npc.Center.X + 15, (int) npc.Center.Y + 25, mod.NPCType("Clamper"), 0, 0, 0, 0, npc.whoAmI)
+				};
 				Main.npc[Clampers[0]].localAI[1] = 1;
 				Main.npc[Clampers[1]].localAI[1] = 2;
 				Main.npc[Clampers[2]].localAI[1] = 3;
@@ -273,7 +278,7 @@ namespace Tremor.NPCs
 			}
 		}
 
-		int AppearTime = 0;
+		int AppearTime;
 		void ChangeAI() // Сменяет состояние (преследование/исчезновение/появление)
 		{
 			if (FirstState)
@@ -383,8 +388,8 @@ namespace Tremor.NPCs
 						for (int i = 0; i < SecondShootCount; i++)
 						{
 							Vector2 velocity = Helper.VelocityToPoint(Main.npc[SignalDrones[SignalDrones.Count - 1]].Center, Main.player[npc.target].Center, SecondShootSpeed);
-							velocity.X = velocity.X + (float)Main.rand.Next(-SecondShootSpread, SecondShootSpread + 1) * SecondShootSpreadMult;
-							velocity.Y = velocity.Y + (float)Main.rand.Next(-SecondShootSpread, SecondShootSpread + 1) * SecondShootSpreadMult;
+							velocity.X = velocity.X + Main.rand.Next(-SecondShootSpread, SecondShootSpread + 1) * SecondShootSpreadMult;
+							velocity.Y = velocity.Y + Main.rand.Next(-SecondShootSpread, SecondShootSpread + 1) * SecondShootSpreadMult;
 							Projectile.NewProjectile(npc.Center.X, npc.Center.Y, velocity.X, velocity.Y, LaserType, SecondShootDamage, SecondShootKN);
 						}
 						LastSignalDron = -1;
@@ -402,8 +407,8 @@ namespace Tremor.NPCs
 			TremorWorld.downedMotherboard = true;
 			if (Main.netMode != 1)
 			{
-				int centerX = (int)(npc.position.X + (float)(npc.width / 2)) / 16;
-				int centerY = (int)(npc.position.Y + (float)(npc.height / 2)) / 16;
+				int centerX = (int)(npc.position.X + npc.width / 2) / 16;
+				int centerY = (int)(npc.position.Y + npc.height / 2) / 16;
 				int halfLength = npc.width / 2 / 16 + 1;
 
 				if (Main.expertMode)

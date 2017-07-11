@@ -9,8 +9,8 @@ namespace Tremor
 {
 	public class InvasionSky : CustomSky
 	{
-		private bool isActive = false;
-		private float intensity = 0f;
+		private bool isActive;
+		private float intensity;
 		private int invasionI;
 
 		public override void Update(GameTime gameTime)

@@ -1,3 +1,4 @@
+using Terraria;
 using Terraria.ModLoader;
 
 namespace Tremor.Buffs
@@ -5,7 +6,7 @@ namespace Tremor.Buffs
 	public class TremorBuffs : GlobalBuff
 	{
 
-		public override void Update(int type, Terraria.Player player, ref int buffIndex)
+		public override void Update(int type, Player player, ref int buffIndex)
 		{
 			if (player.FindBuffIndex(117) != -1)
 			{

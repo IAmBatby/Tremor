@@ -29,8 +29,8 @@ namespace Tremor.Projectiles
 		{
 			for (int i = 0; i < 10; i++)
 			{
-				float x = projectile.Center.X - projectile.velocity.X / 10f * (float)i;
-				float y = projectile.Center.Y - projectile.velocity.Y / 10f * (float)i;
+				float x = projectile.Center.X - projectile.velocity.X / 10f * i;
+				float y = projectile.Center.Y - projectile.velocity.Y / 10f * i;
 				int dust = Dust.NewDust(new Vector2(x, y), 1, 1, 68, 0f, 0f, 0, default(Color), 1f);
 				Main.dust[dust].alpha = projectile.alpha;
 				Main.dust[dust].position.X = x;
@@ -75,9 +75,9 @@ namespace Tremor.Projectiles
 					int num = Dust.NewDust(projectile.position, projectile.width, projectile.height, 68, 0f, -2f, 0, default(Color), 2f);
 					Main.dust[num].noGravity = true;
 					Dust expr_62_cp_0 = Main.dust[num];
-					expr_62_cp_0.position.X = expr_62_cp_0.position.X + ((float)(Main.rand.Next(-50, 51) / 20) - 1.5f);
+					expr_62_cp_0.position.X = expr_62_cp_0.position.X + (Main.rand.Next(-50, 51) / 20 - 1.5f);
 					Dust expr_92_cp_0 = Main.dust[num];
-					expr_92_cp_0.position.Y = expr_92_cp_0.position.Y + ((float)(Main.rand.Next(-50, 51) / 20) - 1.5f);
+					expr_92_cp_0.position.Y = expr_92_cp_0.position.Y + (Main.rand.Next(-50, 51) / 20 - 1.5f);
 					if (Main.dust[num].position != projectile.Center)
 					{
 						Main.dust[num].velocity = projectile.DirectionTo(Main.dust[num].position) * 6f;

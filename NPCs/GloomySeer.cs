@@ -1,7 +1,7 @@
-using Terraria.ID;
 using System;
 using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace Tremor.NPCs
@@ -36,8 +36,8 @@ namespace Tremor.NPCs
 
 		public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
 		{
-			npc.lifeMax = (int)(npc.lifeMax * 1);
-			npc.damage = (int)(npc.damage * 1);
+			npc.lifeMax = npc.lifeMax * 1;
+			npc.damage = npc.damage * 1;
 		}
 
 		public override void AI()
@@ -49,10 +49,10 @@ namespace Tremor.NPCs
 				if (Collision.CanHit(npc.position, npc.width, npc.height, Main.player[npc.target].position, Main.player[npc.target].width, Main.player[npc.target].height))
 				{
 					float num630 = 2.2f;
-					Vector2 vector64 = new Vector2(npc.position.X + (float)npc.width * 0.5f, npc.position.Y + (float)npc.height * 0.5f);
-					float num631 = Main.player[npc.target].position.X + (float)Main.player[npc.target].width * 0.5f - vector64.X + (float)Main.rand.Next(-100, 101);
-					float num632 = Main.player[npc.target].position.Y + (float)Main.player[npc.target].height * 0.5f - vector64.Y + (float)Main.rand.Next(-100, 101);
-					float num633 = (float)Math.Sqrt((double)(num631 * num631 + num632 * num632));
+					Vector2 vector64 = new Vector2(npc.position.X + npc.width * 0.5f, npc.position.Y + npc.height * 0.5f);
+					float num631 = Main.player[npc.target].position.X + Main.player[npc.target].width * 0.5f - vector64.X + Main.rand.Next(-100, 101);
+					float num632 = Main.player[npc.target].position.Y + Main.player[npc.target].height * 0.5f - vector64.Y + Main.rand.Next(-100, 101);
+					float num633 = (float)Math.Sqrt(num631 * num631 + num632 * num632);
 					num633 = num630 / num633;
 					num631 *= num633;
 					num632 *= num633;
@@ -62,7 +62,7 @@ namespace Tremor.NPCs
 					Main.projectile[num636].timeLeft = 3000;
 				}
 			}
-			else if (npc.ai[0] >= (float)(150 + Main.rand.Next(150)))
+			else if (npc.ai[0] >= 150 + Main.rand.Next(150))
 			{
 				npc.ai[0] = 0f;
 			}
@@ -73,7 +73,7 @@ namespace Tremor.NPCs
 		{
 			int x = spawnInfo.spawnTileX;
 			int y = spawnInfo.spawnTileY;
-			int tile = (int)Main.tile[x, y].type;
+			int tile = Main.tile[x, y].type;
 			return (Tremor.NormalSpawn(spawnInfo) && Tremor.NoZoneAllowWater(spawnInfo)) && Main.bloodMoon && y < Main.worldSurface ? 0.001f : 0f;
 		}
 
@@ -83,7 +83,7 @@ namespace Tremor.NPCs
 			{
 				for (int k = 0; k < 20; k++)
 				{
-					Dust.NewDust(npc.position, npc.width, npc.height, 5, 2.5f * (float)hitDirection, -2.5f, 0, default(Color), 1.2f);
+					Dust.NewDust(npc.position, npc.width, npc.height, 5, 2.5f * hitDirection, -2.5f, 0, default(Color), 1.2f);
 				}
 				Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/GSGore1"), 1f);
 				Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/GSGore1"), 1f);

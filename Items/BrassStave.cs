@@ -1,6 +1,6 @@
-using Terraria.ID;
-using Terraria;
 using System.Linq;
+using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace Tremor.Items
@@ -94,7 +94,7 @@ namespace Tremor.Items
 		{
 			if (player.altFunctionUse == 2)
 			{
-				if (Main.player[Main.myPlayer].buffType.Contains<int>(mod.BuffType("SteamMageBuff")))
+				if (Main.player[Main.myPlayer].buffType.Contains(mod.BuffType("SteamMageBuff")))
 				{
 					item.damage = 100;
 				}
@@ -105,7 +105,7 @@ namespace Tremor.Items
 			}
 			else
 			{
-				if (Main.player[Main.myPlayer].buffType.Contains<int>(mod.BuffType("SteamMageBuff")))
+				if (Main.player[Main.myPlayer].buffType.Contains(mod.BuffType("SteamMageBuff")))
 				{
 					item.damage = 80;
 				}

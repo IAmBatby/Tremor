@@ -38,11 +38,11 @@ namespace Tremor.NovaPillar
 			music = MusicID.TheTowers;
 		}
 
-		int Timer = 0;
+		int Timer;
 		public override void AI()
 		{
-			this.Timer++;
-			if (this.Timer % 150 == 0)
+			Timer++;
+			if (Timer % 150 == 0)
 			{
 				if (Main.player[npc.target].GetModPlayer<TremorPlayer>(mod).ZoneTowerNova)
 				{
@@ -68,7 +68,7 @@ namespace Tremor.NovaPillar
 			if (Main.rand.Next(5) == 0)
 			{
 				Dust dust21 = Main.dust[Dust.NewDust(npc.Left, npc.width, npc.height / 2, 241, 0f, 0f, 0, default(Color), 1f)];
-				dust21.position = npc.Center + Vector2.UnitY.RotatedByRandom(2.0943951606750488) * new Vector2((float)(npc.width / 2), (float)(npc.height / 2)) * (0.8f + Main.rand.NextFloat() * 0.2f);
+				dust21.position = npc.Center + Vector2.UnitY.RotatedByRandom(2.0943951606750488) * new Vector2(npc.width / 2, npc.height / 2) * (0.8f + Main.rand.NextFloat() * 0.2f);
 				dust21.velocity.X = 0f;
 				dust21.velocity.Y = Math.Abs(dust21.velocity.Y) * 0.25f;
 			}
@@ -76,12 +76,12 @@ namespace Tremor.NovaPillar
 			{
 				if (Main.rand.Next(5) == 0)
 				{
-					Dust dust22 = Main.dust[Dust.NewDust(npc.Top + new Vector2((float)(-(float)npc.width) * (0.33f - 0.11f * (float)num1940), -20f), (int)((float)npc.width * (0.66f - 0.22f * (float)num1940)), 20, 135, 0f, 0f, 0, default(Color), 1f)];
+					Dust dust22 = Main.dust[Dust.NewDust(npc.Top + new Vector2(-(float)npc.width * (0.33f - 0.11f * num1940), -20f), (int)(npc.width * (0.66f - 0.22f * num1940)), 20, 135, 0f, 0f, 0, default(Color), 1f)];
 					dust22.velocity.X = 0f;
-					dust22.velocity.Y = -Math.Abs(dust22.velocity.Y - (float)num1940 + npc.velocity.Y - 4f) * 1f;
+					dust22.velocity.Y = -Math.Abs(dust22.velocity.Y - num1940 + npc.velocity.Y - 4f) * 1f;
 					dust22.noGravity = true;
 					dust22.fadeIn = 1f;
-					dust22.scale = 1f + Main.rand.NextFloat() + (float)num1940 * 0.3f;
+					dust22.scale = 1f + Main.rand.NextFloat() + num1940 * 0.3f;
 				}
 			}
 			if (npc.ai[2] == 1f)
@@ -107,12 +107,12 @@ namespace Tremor.NovaPillar
 					for (int i = 0; i < 3; i++)
 					{
 						Dust dust4 = Main.dust[Dust.NewDust(npc.Left, npc.width, npc.height / 2, dustID)];
-						dust4.position = npc.Center + Vector2.UnitY.RotatedByRandom(4.1887903213500977) * new Vector2((float)npc.width * 1.5f, (float)npc.height * 1.1f) * 0.8f * (0.8f + Main.rand.NextFloat() * 0.2f);
+						dust4.position = npc.Center + Vector2.UnitY.RotatedByRandom(4.1887903213500977) * new Vector2(npc.width * 1.5f, npc.height * 1.1f) * 0.8f * (0.8f + Main.rand.NextFloat() * 0.2f);
 						dust4.velocity.X = 0f;
-						dust4.velocity.Y = -Math.Abs(dust4.velocity.Y - (float)i + npc.velocity.Y - 4f) * 3f;
+						dust4.velocity.Y = -Math.Abs(dust4.velocity.Y - i + npc.velocity.Y - 4f) * 3f;
 						dust4.noGravity = true;
 						dust4.fadeIn = 1f;
-						dust4.scale = 1f + Main.rand.NextFloat() + (float)i * 0.3f;
+						dust4.scale = 1f + Main.rand.NextFloat() + i * 0.3f;
 					}
 				}
 				if (npc.ai[1] < 150f)
@@ -121,12 +121,12 @@ namespace Tremor.NovaPillar
 					{
 						if (Main.rand.Next(4) == 0)
 						{
-							Dust dust5 = Main.dust[Dust.NewDust(npc.Top + new Vector2((float)(-(float)npc.width) * (0.33f - 0.11f * (float)num1362), -20f), (int)((float)npc.width * (0.66f - 0.22f * (float)num1362)), 20, dustID)];
+							Dust dust5 = Main.dust[Dust.NewDust(npc.Top + new Vector2(-(float)npc.width * (0.33f - 0.11f * num1362), -20f), (int)(npc.width * (0.66f - 0.22f * num1362)), 20, dustID)];
 							dust5.velocity.X = 0f;
-							dust5.velocity.Y = -Math.Abs(dust5.velocity.Y - (float)num1362 + npc.velocity.Y - 4f) * (1f + npc.ai[1] / 180f * 0.5f);
+							dust5.velocity.Y = -Math.Abs(dust5.velocity.Y - num1362 + npc.velocity.Y - 4f) * (1f + npc.ai[1] / 180f * 0.5f);
 							dust5.noGravity = true;
 							dust5.fadeIn = 1f;
-							dust5.scale = 1f + Main.rand.NextFloat() + (float)num1362 * 0.3f;
+							dust5.scale = 1f + Main.rand.NextFloat() + num1362 * 0.3f;
 						}
 					}
 				}
@@ -134,7 +134,7 @@ namespace Tremor.NovaPillar
 				{
 					for (int i = 0; i < 3; i++)
 					{
-						Vector2 position6 = npc.Center + Vector2.UnitY.RotatedByRandom(4.1887903213500977) * new Vector2((float)npc.width, (float)npc.height) * 0.7f * Main.rand.NextFloat();
+						Vector2 position6 = npc.Center + Vector2.UnitY.RotatedByRandom(4.1887903213500977) * new Vector2(npc.width, npc.height) * 0.7f * Main.rand.NextFloat();
 						float num1364 = 1f + Main.rand.NextFloat() * 2f + npc.ai[1] / 180f * 4f;
 						for (int num1365 = 0; num1365 < 6; num1365++)
 						{
@@ -145,15 +145,15 @@ namespace Tremor.NovaPillar
 							dust6.velocity.Y = -Math.Abs(dust6.velocity.Y) * num1364;
 							dust6.noGravity = true;
 							dust6.fadeIn = 1f;
-							dust6.scale = 1.5f + Main.rand.NextFloat() + (float)num1365 * 0.13f;
+							dust6.scale = 1.5f + Main.rand.NextFloat() + num1365 * 0.13f;
 						}
-						Main.PlaySound(3, position6, Utils.SelectRandom(Main.rand, new[] { 1, 18 }));
+						Main.PlaySound(3, position6, Utils.SelectRandom(Main.rand, 1, 18));
 					}
 				}
 				if (Main.rand.Next(3) != 0 && npc.ai[1] < 150f)
 				{
 					Dust dust7 = Main.dust[Dust.NewDust(npc.Left, npc.width, npc.height / 2, DustID.MarblePot)];
-					dust7.position = npc.Center + Vector2.UnitY.RotatedByRandom(4.1887903213500977) * new Vector2((float)(npc.width / 2), (float)(npc.height / 2)) * (0.8f + Main.rand.NextFloat() * 0.2f);
+					dust7.position = npc.Center + Vector2.UnitY.RotatedByRandom(4.1887903213500977) * new Vector2(npc.width / 2, npc.height / 2) * (0.8f + Main.rand.NextFloat() * 0.2f);
 					dust7.velocity.X = 0f;
 					dust7.velocity.Y = Math.Abs(dust7.velocity.Y) * 0.25f;
 				}
@@ -171,7 +171,6 @@ namespace Tremor.NovaPillar
 						npc.checkDead();
 					}
 				}
-				return;
 			}
 		}
 
@@ -230,7 +229,7 @@ namespace Tremor.NovaPillar
 		public override void PostDraw(SpriteBatch spriteBatch, Color drawColor)
 		{
 			TremorUtils.DrawNPCGlowMask(spriteBatch, npc, mod.GetTexture("NovaPillar/NovaPillar_GlowMask"));
-			float num88 = (float)NovaHandler.ShieldStrength / (float)NPC.ShieldStrengthTowerMax;
+			float num88 = NovaHandler.ShieldStrength / (float)NPC.ShieldStrengthTowerMax;
 			if (NovaHandler.ShieldStrength > 0)
 			{
 				Main.spriteBatch.End();
@@ -245,7 +244,7 @@ namespace Tremor.NovaPillar
 				Filters.Scene["Tremor:Nova"].GetShader().UseIntensity(1f + num89).UseProgress(0f);
 				DrawData drawData = new DrawData(TextureManager.Load("Images/Misc/Perlin"), center - new Vector2(0, 10), new Rectangle(0, 0, 600, 600), Color.White * (num88 * 0.8f + 0.2f), npc.rotation, new Vector2(300f, 300f), npc.scale * (1f + num89 * 0.05f), SpriteEffects.None, 0);
 				GameShaders.Misc["ForceField"].UseColor(new Vector3(1f + num89 * 0.5f));
-				GameShaders.Misc["ForceField"].Apply(new DrawData?(drawData));
+				GameShaders.Misc["ForceField"].Apply(drawData);
 				drawData.Draw(Main.spriteBatch);
 				Main.spriteBatch.End();
 				Main.spriteBatch.Begin();
@@ -259,9 +258,9 @@ namespace Tremor.NovaPillar
 				float num90 = npc.ai[3] / 120f;
 				float num91 = Math.Min(npc.ai[3] / 30f, 1f);
 				Filters.Scene["Tremor:Nova"].GetShader().UseIntensity(Math.Min(5f, 15f * num90) + 1f).UseProgress(num90);
-				DrawData drawData = new DrawData(TextureManager.Load("Images/Misc/Perlin"), center - new Vector2(0, 10), new Rectangle(0, 0, 600, 600), new Color(new Vector4(1f - (float)Math.Sqrt((double)num91))), npc.rotation, new Vector2(300f, 300f), npc.scale * (1f + num91), SpriteEffects.None, 0);
+				DrawData drawData = new DrawData(TextureManager.Load("Images/Misc/Perlin"), center - new Vector2(0, 10), new Rectangle(0, 0, 600, 600), new Color(new Vector4(1f - (float)Math.Sqrt(num91))), npc.rotation, new Vector2(300f, 300f), npc.scale * (1f + num91), SpriteEffects.None, 0);
 				GameShaders.Misc["ForceField"].UseColor(new Vector3(2f));
-				GameShaders.Misc["ForceField"].Apply(new DrawData?(drawData));
+				GameShaders.Misc["ForceField"].Apply(drawData);
 				drawData.Draw(Main.spriteBatch);
 				Main.spriteBatch.End();
 				Main.spriteBatch.Begin();

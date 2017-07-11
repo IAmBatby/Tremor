@@ -1,9 +1,9 @@
-using System.IO;
 using System.Collections.Generic;
+using System.IO;
 using Terraria;
 using Terraria.ModLoader;
-using Terraria.World.Generation;
 using Terraria.ModLoader.IO;
+using Terraria.World.Generation;
 
 namespace Tremor.Invasion
 {
@@ -11,8 +11,8 @@ namespace Tremor.Invasion
 	{
 		private const int saveVersion = 0;
 		public static int CyberWrathPoints = 0;
-		public static int CyberWrathPoints1 = 0;
-		public static bool CyberWrath = false;
+		public static int CyberWrathPoints1;
+		public static bool CyberWrath;
 		public override void ModifyWorldGenTasks(List<GenPass> tasks, ref float totalWeight)
 		{
 

@@ -1,8 +1,8 @@
-﻿using Terraria.ID;
-using Terraria;
-using Terraria.ModLoader;
+﻿using System;
 using Microsoft.Xna.Framework;
-using System;
+using Terraria;
+using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace Tremor.NPCs
 {
@@ -30,15 +30,15 @@ namespace Tremor.NPCs
 		const int BonusDefenseInPower = 5;
 		const int BonusDamageInPower = 10;
 
-		bool Power = false;
-		bool OnlyPower = false;
+		bool Power;
+		bool OnlyPower;
 		int TimeToShoot = NormalShootRate;
 		int CurrentPower = PowerTime;
 		int Step = -1;
 		Color TextColor = Color.Orange;
 		bool StateFlag = true;
 
-		System.Random rnd = new System.Random();
+		Random rnd = new Random();
 
 		public override void SetDefaults()
 		{
@@ -64,7 +64,7 @@ namespace Tremor.NPCs
 			npc.damage = (int)(npc.damage * 0.6f);
 		}
 
-		bool RunAway = false;
+		bool RunAway;
 
 		public override void AI()
 		{
@@ -89,13 +89,13 @@ namespace Tremor.NPCs
 				Vector2 vector142 = new Vector2(npc.Center.X, npc.Center.Y);
 				float num1243 = Main.player[npc.target].Center.X - vector142.X;
 				float num1244 = Main.player[npc.target].Center.Y - vector142.Y;
-				float num1245 = (float)Math.Sqrt((double)(num1243 * num1243 + num1244 * num1244));
+				float num1245 = (float)Math.Sqrt(num1243 * num1243 + num1244 * num1244);
 				if (npc.ai[1] == 0f)
 				{
 					if (Main.netMode != 1)
 					{
 						npc.localAI[1] += 1f;
-						if (npc.localAI[1] >= (float)(120 + Main.rand.Next(200)))
+						if (npc.localAI[1] >= 120 + Main.rand.Next(200))
 						{
 							npc.localAI[1] = 0f;
 							npc.TargetClosest(true);
@@ -109,7 +109,7 @@ namespace Tremor.NPCs
 								num1251 = (int)Main.player[npc.target].Center.Y / 16;
 								num1250 += Main.rand.Next(-50, 51);
 								num1251 += Main.rand.Next(-50, 51);
-								if (!WorldGen.SolidTile(num1250, num1251) && Collision.CanHit(new Vector2((float)(num1250 * 16), (float)(num1251 * 16)), 1, 1, Main.player[npc.target].position, Main.player[npc.target].width, Main.player[npc.target].height))
+								if (!WorldGen.SolidTile(num1250, num1251) && Collision.CanHit(new Vector2(num1250 * 16, num1251 * 16), 1, 1, Main.player[npc.target].position, Main.player[npc.target].width, Main.player[npc.target].height))
 								{
 									break;
 								}
@@ -119,8 +119,8 @@ namespace Tremor.NPCs
 								}
 							}
 							npc.ai[1] = 1f;
-							npc.ai[2] = (float)num1250;
-							npc.ai[3] = (float)num1251;
+							npc.ai[2] = num1250;
+							npc.ai[3] = num1251;
 							npc.netUpdate = true;
 							//return;
 						}
@@ -132,8 +132,8 @@ namespace Tremor.NPCs
 					if (npc.alpha >= 255)
 					{
 						npc.alpha = 255;
-						npc.position.X = npc.ai[2] * 16f - (float)(npc.width / 2);
-						npc.position.Y = npc.ai[3] * 16f - (float)(npc.height / 2);
+						npc.position.X = npc.ai[2] * 16f - npc.width / 2;
+						npc.position.Y = npc.ai[3] * 16f - npc.height / 2;
 						npc.ai[1] = 2f;
 						//return;
 					}
@@ -188,9 +188,9 @@ namespace Tremor.NPCs
 			if (Main.dayTime || RunAway || npc.localAI[3] == 1) //если(Мой.День или Убегать или нпс.местный ИИ 3 к 1)
 			{
 				npc.localAI[3] = 1; //нпс.местный ИИ[3] равен 3
-				if (Main.npc[(int)npc.ai[2]].type == mod.NPCType("SoulofHope") && Main.npc[(int)npc.ai[2]].active == true) //если(Мой.нпс[(значение)нпс.ИИ[2]].тип равен мод.НПС Тип("МОБ") и Мой.нпс[(значение)нпс.ИИ[2]].активен равен да)
+				if (Main.npc[(int)npc.ai[2]].type == mod.NPCType("SoulofHope") && Main.npc[(int)npc.ai[2]].active) //если(Мой.нпс[(значение)нпс.ИИ[2]].тип равен мод.НПС Тип("МОБ") и Мой.нпс[(значение)нпс.ИИ[2]].активен равен да)
 					Main.npc[(int)npc.ai[2]].localAI[3] = 1; //Мой.нпс[(значение)нпс.ИИ[2]].местный ИИ[3] варно 1
-				if (Main.npc[(int)npc.ai[3]].type == mod.NPCType("SoulofTruth") && Main.npc[(int)npc.ai[3]].active == true) //если(Мой.нпс[(значение)нпс.ИИ[2]].тип равен мод.НПС Тип("МОБ") и Мой.нпс[(значение)нпс.ИИ[2]].активен равен да)
+				if (Main.npc[(int)npc.ai[3]].type == mod.NPCType("SoulofTruth") && Main.npc[(int)npc.ai[3]].active) //если(Мой.нпс[(значение)нпс.ИИ[2]].тип равен мод.НПС Тип("МОБ") и Мой.нпс[(значение)нпс.ИИ[2]].активен равен да)
 					Main.npc[(int)npc.ai[3]].localAI[3] = 1; //Мой.нпс[(значение)нпс.ИИ[2]].местный ИИ[3] варно 1
 				npc.life += 11; //нпс.жизнь прибавить
 				npc.aiStyle = 0; //нпс.ИИ Стиль - 0
@@ -201,8 +201,8 @@ namespace Tremor.NPCs
 			}
 			if (StateFlag)
 				if (
-					!((Main.npc[(int)npc.ai[2]].type == mod.NPCType("SoulofHope") && Main.npc[(int)npc.ai[2]].active == true)) ||
-					!((Main.npc[(int)npc.ai[3]].type == mod.NPCType("SoulofTruth") && Main.npc[(int)npc.ai[3]].active == true))
+					!((Main.npc[(int)npc.ai[2]].type == mod.NPCType("SoulofHope") && Main.npc[(int)npc.ai[2]].active)) ||
+					!((Main.npc[(int)npc.ai[3]].type == mod.NPCType("SoulofTruth") && Main.npc[(int)npc.ai[3]].active))
 				   )
 				{
 					StateFlag = false;
@@ -239,14 +239,13 @@ namespace Tremor.NPCs
 						Vector2 velocity = Helper2.VelocityFPTP(npc.Center, Main.player[npc.target].Center, PowerBulletSpeed);
 						int spread = 65;
 						float spreadMult = 0.05f;
-						velocity.X = velocity.X + (float)Main.rand.Next(-spread, spread + 1) * spreadMult;
-						velocity.Y = velocity.Y + (float)Main.rand.Next(-spread, spread + 1) * spreadMult;
+						velocity.X = velocity.X + Main.rand.Next(-spread, spread + 1) * spreadMult;
+						velocity.Y = velocity.Y + Main.rand.Next(-spread, spread + 1) * spreadMult;
 						int i = Projectile.NewProjectile(npc.Center.X, npc.Center.Y, velocity.X, velocity.Y, PowerShootType, PowerBulletDamage, PowerBulletKB);
 						Main.projectile[i].hostile = true;
 						Main.projectile[i].friendly = true;
 					}
 				}
-				return;
 			}
 		}
 
@@ -288,8 +287,8 @@ namespace Tremor.NPCs
 				float spreadMult = 0.075f;
 				for (int l = 0; l < 2; l++)
 				{
-					velocity.X = velocity.X + (float)Main.rand.Next(-spread, spread + 1) * spreadMult;
-					velocity.Y = velocity.Y + (float)Main.rand.Next(-spread, spread + 1) * spreadMult;
+					velocity.X = velocity.X + Main.rand.Next(-spread, spread + 1) * spreadMult;
+					velocity.Y = velocity.Y + Main.rand.Next(-spread, spread + 1) * spreadMult;
 					int i = Projectile.NewProjectile(npc.Center.X, npc.Center.Y, velocity.X, velocity.Y, NormalShootType, NormalBulletDamage, NormalBulletKB);
 					Main.projectile[i].hostile = true;
 					Main.projectile[i].friendly = false;
@@ -303,7 +302,7 @@ namespace Tremor.NPCs
 			{
 				for (int k = 0; k < 20; k++)
 				{
-					Dust.NewDust(npc.position, npc.width, npc.height, 6, 2.5f * (float)hitDirection, -2.5f, 0, default(Color), 0.7f);
+					Dust.NewDust(npc.position, npc.width, npc.height, 6, 2.5f * hitDirection, -2.5f, 0, default(Color), 0.7f);
 				}
 				Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/TrustGore1"), 1f);
 				Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/TrustGore2"), 1f);
@@ -326,8 +325,8 @@ namespace Tremor.NPCs
 
 			if (Main.netMode != 1)
 			{
-				int centerX = (int)(npc.position.X + (float)(npc.width / 2)) / 16;
-				int centerY = (int)(npc.position.Y + (float)(npc.height / 2)) / 16;
+				int centerX = (int)(npc.position.X + npc.width / 2) / 16;
+				int centerY = (int)(npc.position.Y + npc.height / 2) / 16;
 				int halfLength = npc.width / 2 / 16 + 1;
 
 
@@ -354,11 +353,11 @@ namespace Tremor.NPCs
 
 						for (int k = 0; k < (int)((double)(Main.maxTilesX * Main.maxTilesY) * 6E-05); k++)
 						{
-							WorldGen.TileRunner(WorldGen.genRand.Next(0, Main.maxTilesX), WorldGen.genRand.Next((int)(Main.maxTilesY * .3f), (int)(Main.maxTilesY * .65f)), (double)WorldGen.genRand.Next(9, 15), WorldGen.genRand.Next(9, 15), mod.TileType("CollapsiumOreTile"), false, 0f, 0f, false, true);
+							WorldGen.TileRunner(WorldGen.genRand.Next(0, Main.maxTilesX), WorldGen.genRand.Next((int)(Main.maxTilesY * .3f), (int)(Main.maxTilesY * .65f)), WorldGen.genRand.Next(9, 15), WorldGen.genRand.Next(9, 15), mod.TileType("CollapsiumOreTile"), false, 0f, 0f, false, true);
 						}
 						for (int k = 0; k < (int)((double)(Main.maxTilesX * Main.maxTilesY) * 6E-05); k++)
 						{
-							WorldGen.TileRunner(WorldGen.genRand.Next(0, Main.maxTilesX), WorldGen.genRand.Next((int)(Main.maxTilesY * .3f), (int)(Main.maxTilesY * .65f)), (double)WorldGen.genRand.Next(9, 15), WorldGen.genRand.Next(9, 15), mod.TileType("AngeliteOreTile"), false, 0f, 0f, false, true);
+							WorldGen.TileRunner(WorldGen.genRand.Next(0, Main.maxTilesX), WorldGen.genRand.Next((int)(Main.maxTilesY * .3f), (int)(Main.maxTilesY * .65f)), WorldGen.genRand.Next(9, 15), WorldGen.genRand.Next(9, 15), mod.TileType("AngeliteOreTile"), false, 0f, 0f, false, true);
 						}
 						TremorWorld.downedTrinity = true;
 					}

@@ -51,9 +51,9 @@ namespace Tremor.NovaPillar
 				}
 				for (int k = 0; k < 19; k++)
 				{
-					Vector2 Vector = new Vector2((float)Main.rand.Next(-100, 101), (float)Main.rand.Next(-100, 101));
+					Vector2 Vector = new Vector2(Main.rand.Next(-100, 101), Main.rand.Next(-100, 101));
 					Vector.Normalize();
-					Vector *= (float)Main.rand.Next(10, 201) * 0.01f;
+					Vector *= Main.rand.Next(10, 201) * 0.01f;
 					int i = Projectile.NewProjectile(npc.position.X, npc.position.Y, Vector.X, Vector.Y, mod.ProjectileType("NovaAlchemistCloud"), 20, 1);
 					Main.projectile[i].friendly = false;
 				}
@@ -78,9 +78,9 @@ namespace Tremor.NovaPillar
 			{
 				for (int k = 0; k < 19; k++)
 				{
-					Vector2 Vector = new Vector2((float)Main.rand.Next(-100, 101), (float)Main.rand.Next(-100, 101));
+					Vector2 Vector = new Vector2(Main.rand.Next(-100, 101), Main.rand.Next(-100, 101));
 					Vector.Normalize();
-					Vector *= (float)Main.rand.Next(10, 201) * 0.01f;
+					Vector *= Main.rand.Next(10, 201) * 0.01f;
 					int i = Projectile.NewProjectile(npc.position.X, npc.position.Y, Vector.X, Vector.Y, mod.ProjectileType("NovaAlchemistCloud"), 20, 1);
 					Main.projectile[i].friendly = false;
 				}

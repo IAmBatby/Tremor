@@ -133,8 +133,8 @@ namespace Tremor.NovaPillar
 			if (whoAmI == -1)
 			{
 				whoAmI = NPC.NewNPC((int)spawnPos.X, (int)spawnPos.Y, mod.NPCType("NovaPillar"));
-				NovaHandler.TowerX = (int)spawnPos.X;
-				NovaHandler.TowerY = (int)spawnPos.Y;
+				TowerX = (int)spawnPos.X;
+				TowerY = (int)spawnPos.Y;
 			}
 			else
 			{

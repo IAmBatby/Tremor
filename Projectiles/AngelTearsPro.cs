@@ -31,10 +31,10 @@ namespace Tremor.Projectiles
 			Lighting.AddLight(projectile.Center, ((255 - projectile.alpha) * 0.45f) / 255f, ((255 - projectile.alpha) * 0.2f) / 255f, ((255 - projectile.alpha) * 0.1f) / 255f);
 			for (int num92 = 0; num92 < 5; num92++)
 			{
-				float num93 = projectile.velocity.X / 3f * (float)num92;
-				float num94 = projectile.velocity.Y / 3f * (float)num92;
+				float num93 = projectile.velocity.X / 3f * num92;
+				float num94 = projectile.velocity.Y / 3f * num92;
 				int num95 = 4;
-				int num96 = Dust.NewDust(new Vector2(projectile.position.X + (float)num95, projectile.position.Y + (float)num95), projectile.width - num95 * 2, projectile.height - num95 * 2, 57, 0f, 0f, 100, default(Color), 1.2f);
+				int num96 = Dust.NewDust(new Vector2(projectile.position.X + num95, projectile.position.Y + num95), projectile.width - num95 * 2, projectile.height - num95 * 2, 57, 0f, 0f, 100, default(Color), 1.2f);
 				Main.dust[num96].noGravity = true;
 				Main.dust[num96].velocity *= 0.1f;
 				Main.dust[num96].velocity += projectile.velocity * 0.1f;
@@ -46,7 +46,7 @@ namespace Tremor.Projectiles
 			if (Main.rand.Next(5) == 0)
 			{
 				int num97 = 4;
-				int num98 = Dust.NewDust(new Vector2(projectile.position.X + (float)num97, projectile.position.Y + (float)num97), projectile.width - num97 * 2, projectile.height - num97 * 2, 174, 0f, 0f, 100, default(Color), 0.6f);
+				int num98 = Dust.NewDust(new Vector2(projectile.position.X + num97, projectile.position.Y + num97), projectile.width - num97 * 2, projectile.height - num97 * 2, 174, 0f, 0f, 100, default(Color), 0.6f);
 				Main.dust[num98].velocity *= 0.25f;
 				Main.dust[num98].velocity += projectile.velocity * 0.5f;
 			}
@@ -56,12 +56,11 @@ namespace Tremor.Projectiles
 			}
 			else
 			{
-				projectile.rotation += 0.3f * (float)projectile.direction;
+				projectile.rotation += 0.3f * projectile.direction;
 			}
 			if (projectile.velocity.Y > 16f)
 			{
 				projectile.velocity.Y = 16f;
-				return;
 			}
 		}
 

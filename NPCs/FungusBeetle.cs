@@ -4,7 +4,6 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-
 namespace Tremor.NPCs
 {
 	[AutoloadBossHead]
@@ -45,8 +44,8 @@ namespace Tremor.NPCs
 			}
 			if (Main.netMode != 1)
 			{
-				int centerX = (int)(npc.position.X + (float)(npc.width / 2)) / 16;
-				int centerY = (int)(npc.position.Y + (float)(npc.height / 2)) / 16;
+				int centerX = (int)(npc.position.X + npc.width / 2) / 16;
+				int centerY = (int)(npc.position.Y + npc.height / 2) / 16;
 				int halfLength = npc.width / 2 / 16 + 1;
 				if (!Main.expertMode && Main.rand.Next(7) == 0)
 				{
@@ -77,13 +76,13 @@ namespace Tremor.NPCs
 				Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/FungusBeetleGore4"), 1f);
 				for (int k = 0; k < 10; k++)
 				{
-					Dust.NewDust(npc.position, npc.width, npc.height, 67, 2.5f * (float)hitDirection, -2.5f, 0, default(Color), 0.7f);
+					Dust.NewDust(npc.position, npc.width, npc.height, 67, 2.5f * hitDirection, -2.5f, 0, default(Color), 0.7f);
 				}
 			}
 
 			for (int k = 0; k < damage / npc.lifeMax * 50.0; k++)
 			{
-				Dust.NewDust(npc.position, npc.width, npc.height, 67, (float)hitDirection, -1f, 0, default(Color), 0.7f);
+				Dust.NewDust(npc.position, npc.width, npc.height, 67, hitDirection, -1f, 0, default(Color), 0.7f);
 			}
 		}
 
@@ -151,8 +150,8 @@ namespace Tremor.NPCs
 		}
 
 		float customAi1;
-		bool FirstState = false;
-		bool SecondState = false;
+		bool FirstState;
+		bool SecondState;
 		public override void AI()
 		{
 			npc.position -= npc.velocity * 0.05f;
@@ -251,75 +250,75 @@ namespace Tremor.NPCs
 				}
 
 				int num60;
-				this.npc.TargetClosest(true);
+				npc.TargetClosest(true);
 
-				if (Main.player[this.npc.target].position.Y - 150 > this.npc.position.Y)
+				if (Main.player[npc.target].position.Y - 150 > npc.position.Y)
 				{
-					this.npc.directionY = 1;
+					npc.directionY = 1;
 				}
 				else
 				{
-					this.npc.directionY = -1;
+					npc.directionY = -1;
 				}
 
-				if (this.npc.direction == -1 && this.npc.velocity.X > -2f)
+				if (npc.direction == -1 && npc.velocity.X > -2f)
 				{
-					this.npc.velocity.X = this.npc.velocity.X - 0.4f;
-					if (this.npc.velocity.X > 2f)
+					npc.velocity.X = npc.velocity.X - 0.4f;
+					if (npc.velocity.X > 2f)
 					{
-						this.npc.velocity.X = this.npc.velocity.X - 0.4f;
+						npc.velocity.X = npc.velocity.X - 0.4f;
 					}
 					else
 					{
-						if (this.npc.velocity.X > 0f)
+						if (npc.velocity.X > 0f)
 						{
-							this.npc.velocity.X = this.npc.velocity.X + 0.08f;
+							npc.velocity.X = npc.velocity.X + 0.08f;
 						}
 					}
-					if (this.npc.velocity.X < -2f)
+					if (npc.velocity.X < -2f)
 					{
-						this.npc.velocity.X = -2f;
+						npc.velocity.X = -2f;
 					}
 				}
 				else
 				{
-					if (this.npc.direction == 1 && this.npc.velocity.X < 4f)
+					if (npc.direction == 1 && npc.velocity.X < 4f)
 					{
-						this.npc.velocity.X = this.npc.velocity.X + 0.1f;
-						if (this.npc.velocity.X < -2f)
+						npc.velocity.X = npc.velocity.X + 0.1f;
+						if (npc.velocity.X < -2f)
 						{
-							this.npc.velocity.X = this.npc.velocity.X + 0.1f;
+							npc.velocity.X = npc.velocity.X + 0.1f;
 						}
 						else
 						{
-							if (this.npc.velocity.X < 0f)
+							if (npc.velocity.X < 0f)
 							{
-								this.npc.velocity.X = this.npc.velocity.X - 0.08f;
+								npc.velocity.X = npc.velocity.X - 0.08f;
 							}
 						}
-						if (this.npc.velocity.X > 2f)
+						if (npc.velocity.X > 2f)
 						{
-							this.npc.velocity.X = 2f;
+							npc.velocity.X = 2f;
 						}
 					}
 				}
-				if (this.npc.directionY == -1 && (double)this.npc.velocity.Y > -1.5)
+				if (npc.directionY == -1 && npc.velocity.Y > -1.5)
 				{
-					this.npc.velocity.Y = this.npc.velocity.Y - 0.08f;
+					npc.velocity.Y = npc.velocity.Y - 0.08f;
 
-					if ((double)this.npc.velocity.Y < -1.5)
+					if (npc.velocity.Y < -1.5)
 					{
-						this.npc.velocity.Y = -1.5f;
+						npc.velocity.Y = -1.5f;
 					}
 				}
 				else
 				{
-					if (this.npc.directionY == 1 && (double)this.npc.velocity.Y < 1.5)
+					if (npc.directionY == 1 && npc.velocity.Y < 1.5)
 					{
-						this.npc.velocity.Y = this.npc.velocity.Y + 0.08f;
-						if ((double)this.npc.velocity.Y > 1.5)
+						npc.velocity.Y = npc.velocity.Y + 0.08f;
+						if (npc.velocity.Y > 1.5)
 						{
-							this.npc.velocity.Y = 1.5f;
+							npc.velocity.Y = 1.5f;
 						}
 					}
 				}

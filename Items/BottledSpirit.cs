@@ -11,7 +11,7 @@ namespace Tremor.Items
 			for (int i = 0; i < player.armor.Length; i++)
 			{
 				MPlayer modPlayer = (MPlayer)player.GetModPlayer(mod, "MPlayer");
-				if (modPlayer.spirit == true)
+				if (modPlayer.spirit)
 				{
 					return false;
 				}

@@ -1,6 +1,6 @@
-using Terraria.ID;
 using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace Tremor.NPCs
@@ -34,8 +34,8 @@ namespace Tremor.NPCs
 
 		public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
 		{
-			npc.lifeMax = (int)(npc.lifeMax * 1);
-			npc.damage = (int)(npc.damage * 1);
+			npc.lifeMax = npc.lifeMax * 1;
+			npc.damage = npc.damage * 1;
 		}
 
 		public override void AI()
@@ -43,7 +43,7 @@ namespace Tremor.NPCs
 			if (npc.ai[3] < 0f)
 			{
 				npc.knockBackResist = 0f;
-				npc.defense = (int)((double)npc.defDefense * 1.1);
+				npc.defense = (int)(npc.defDefense * 1.1);
 				npc.noGravity = true;
 				npc.noTileCollide = true;
 				if (npc.velocity.X < 0f)
@@ -58,7 +58,7 @@ namespace Tremor.NPCs
 				if (Main.netMode != 1)
 				{
 					npc.localAI[3] += 1f;
-					if (npc.localAI[3] > (float)Main.rand.Next(20, 180))
+					if (npc.localAI[3] > Main.rand.Next(20, 180))
 					{
 						npc.localAI[3] = 0f;
 						Vector2 value3 = npc.position;
@@ -130,7 +130,7 @@ namespace Tremor.NPCs
 				}
 				if (npc.ai[2] == 0f)
 				{
-					npc.ai[2] = (float)npc.direction;
+					npc.ai[2] = npc.direction;
 				}
 				npc.velocity.Y = npc.velocity.Y * 0.9f;
 				npc.velocity.X = npc.velocity.X + npc.ai[2] * 0.3f;
@@ -147,9 +147,7 @@ namespace Tremor.NPCs
 				{
 					npc.ai[3] = -4f;
 					npc.ai[2] = 0f;
-					return;
 				}
-				return;
 			}
 			else
 			{
@@ -162,7 +160,7 @@ namespace Tremor.NPCs
 						npc.velocity *= 0.9f;
 					}
 					int num50 = (int)npc.position.X / 16;
-					int num51 = (int)(npc.position.Y + (float)npc.height + 12f) / 16;
+					int num51 = (int)(npc.position.Y + npc.height + 12f) / 16;
 					bool flag4 = false;
 					for (int num52 = num50 - 1; num52 <= num50 + 1; num52++)
 					{
@@ -170,7 +168,7 @@ namespace Tremor.NPCs
 						{
 							Main.tile[num50, num51] = new Tile();
 						}
-						if (Main.tile[num52, num51].active() && Main.tileSolid[(int)Main.tile[num52, num51].type])
+						if (Main.tile[num52, num51].active() && Main.tileSolid[Main.tile[num52, num51].type])
 						{
 							flag4 = true;
 						}
@@ -209,12 +207,12 @@ namespace Tremor.NPCs
 						for (int num53 = 0; num53 < 2; num53++)
 						{
 							Vector2 vector11 = center3;
-							Vector2 value5 = new Vector2((float)Main.rand.Next(-100, 101), (float)Main.rand.Next(-100, 101));
+							Vector2 value5 = new Vector2(Main.rand.Next(-100, 101), Main.rand.Next(-100, 101));
 							value5.Normalize();
-							value5 *= (float)Main.rand.Next(0, 100) * 0.1f;
+							value5 *= Main.rand.Next(0, 100) * 0.1f;
 							vector11 += value5;
 							value5.Normalize();
-							value5 *= (float)Main.rand.Next(50, 90) * 0.1f;
+							value5 *= Main.rand.Next(50, 90) * 0.1f;
 							int num54 = Dust.NewDust(vector11, 1, 1, 59, 0f, 0f, 0, default(Color), 3f);
 							Main.dust[num54].velocity = -value5 * 0.3f;
 							Main.dust[num54].alpha = 100;
@@ -271,8 +269,8 @@ namespace Tremor.NPCs
 		{
 			if (Main.netMode != 1)
 			{
-				int centerX = (int)(npc.position.X + (float)(npc.width / 2)) / 16;
-				int centerY = (int)(npc.position.Y + (float)(npc.height / 2)) / 16;
+				int centerX = (int)(npc.position.X + npc.width / 2) / 16;
+				int centerY = (int)(npc.position.Y + npc.height / 2) / 16;
 				int halfLength = npc.width / 2 / 16 + 1;
 				if (Main.rand.Next(1) == 0)
 				{
@@ -291,21 +289,21 @@ namespace Tremor.NPCs
 			{
 				for (int k = 0; k < 20; k++)
 				{
-					Dust.NewDust(npc.position, npc.width, npc.height, 59, 2.5f * (float)hitDirection, -2.5f, 0, default(Color), 0.7f);
-					Dust.NewDust(npc.position, npc.width, npc.height, 59, 2.5f * (float)hitDirection, -2.5f, 0, default(Color), 1.7f);
-					Dust.NewDust(npc.position, npc.width, npc.height, 59, 2.5f * (float)hitDirection, -2.5f, 0, default(Color), 2.7f);
+					Dust.NewDust(npc.position, npc.width, npc.height, 59, 2.5f * hitDirection, -2.5f, 0, default(Color), 0.7f);
+					Dust.NewDust(npc.position, npc.width, npc.height, 59, 2.5f * hitDirection, -2.5f, 0, default(Color), 1.7f);
+					Dust.NewDust(npc.position, npc.width, npc.height, 59, 2.5f * hitDirection, -2.5f, 0, default(Color), 2.7f);
 				}
 				Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/MagiumGore1"), 1f);
 				Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/MagiumGore2"), 1f);
 				Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/MagiumGore2"), 1f);
 				Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/MagiumGore3"), 1f);
 				Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/MagiumGore3"), 1f);
-				Dust.NewDust(npc.position, npc.width, npc.height, 59, 2.5f * (float)hitDirection, -2.5f, 0, default(Color), 0.7f);
-				Dust.NewDust(npc.position, npc.width, npc.height, 59, 2.5f * (float)hitDirection, -2.5f, 0, default(Color), 1.7f);
-				Dust.NewDust(npc.position, npc.width, npc.height, 59, 2.5f * (float)hitDirection, -2.5f, 0, default(Color), 2.7f);
-				Dust.NewDust(npc.position, npc.width, npc.height, 59, 2.5f * (float)hitDirection, -2.5f, 0, default(Color), 0.7f);
-				Dust.NewDust(npc.position, npc.width, npc.height, 59, 2.5f * (float)hitDirection, -2.5f, 0, default(Color), 1.7f);
-				Dust.NewDust(npc.position, npc.width, npc.height, 59, 2.5f * (float)hitDirection, -2.5f, 0, default(Color), 2.7f);
+				Dust.NewDust(npc.position, npc.width, npc.height, 59, 2.5f * hitDirection, -2.5f, 0, default(Color), 0.7f);
+				Dust.NewDust(npc.position, npc.width, npc.height, 59, 2.5f * hitDirection, -2.5f, 0, default(Color), 1.7f);
+				Dust.NewDust(npc.position, npc.width, npc.height, 59, 2.5f * hitDirection, -2.5f, 0, default(Color), 2.7f);
+				Dust.NewDust(npc.position, npc.width, npc.height, 59, 2.5f * hitDirection, -2.5f, 0, default(Color), 0.7f);
+				Dust.NewDust(npc.position, npc.width, npc.height, 59, 2.5f * hitDirection, -2.5f, 0, default(Color), 1.7f);
+				Dust.NewDust(npc.position, npc.width, npc.height, 59, 2.5f * hitDirection, -2.5f, 0, default(Color), 2.7f);
 			}
 		}
 
@@ -313,7 +311,7 @@ namespace Tremor.NPCs
 		{
 			int x = spawnInfo.spawnTileX;
 			int y = spawnInfo.spawnTileY;
-			int tile = (int)Main.tile[x, y].type;
+			int tile = Main.tile[x, y].type;
 			return (Tremor.NoZoneAllowWater(spawnInfo)) && Main.hardMode && y > Main.rockLayer ? 0.0003f : 0f;
 		}
 	}

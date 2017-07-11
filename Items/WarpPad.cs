@@ -1,6 +1,6 @@
 using Terraria;
-using Terraria.ModLoader;
 using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace Tremor.Items
 {
@@ -38,8 +38,7 @@ namespace Tremor.Items
 				player.showLastDeath = false;
 				return true;
 			}
-			else
-				return false;
+			return false;
 		}
 
 		public override bool CanUseItem(Player player)

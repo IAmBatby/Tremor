@@ -75,7 +75,7 @@ namespace Tremor.Projectiles
 			{
 				projectile.ai[0] += 1f;
 			}
-			projectile.rotation += 0.3f * (float)projectile.direction;
+			projectile.rotation += 0.3f * projectile.direction;
 		}
 
 		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)

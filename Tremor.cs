@@ -4,14 +4,14 @@ using System.Linq;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
-using Terraria.ID;
-using Terraria.ModLoader;
 using Terraria.Graphics.Effects;
 using Terraria.Graphics.Shaders;
+using Terraria.ID;
+using Terraria.ModLoader;
 using Terraria.UI;
 using Tremor.Invasion;
-using Tremor.ZombieEvent;
 using Tremor.NovaPillar;
+using Tremor.ZombieEvent;
 
 namespace Tremor
 {
@@ -23,7 +23,7 @@ namespace Tremor
 
 		public Tremor()
 		{
-			Properties = new ModProperties()
+			Properties = new ModProperties
 			{
 				Autoload = true,
 				AutoloadGores = true,
@@ -41,26 +41,11 @@ namespace Tremor
 			ErrorLogger.Log(String.Format("[Tremor][{0}] {1}", DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss"), String.Format(format, args)));
 		}
 
-		private Mod mod
-		{
-			get
-			{
-				return ModLoader.GetMod("Tremor");
-			}
-		}
+		private Mod mod => ModLoader.GetMod("Tremor");
 
 		public override void AddRecipeGroups()
 		{
-			RecipeGroup group = new RecipeGroup(() => Lang.misc[37] + " " + Lang.GetItemNameValue(ItemType("AmethystStaff")), new int[]
-			{
-				ItemType("AmethystStaff"),
-				ItemType("DiamondStaff"),
-				ItemType("RubyStaff"),
-				ItemType("TopazStaff"),
-				ItemType("SapphireStaff"),
-				ItemType("AmberStaff"),
-				ItemType("EmeraldStaff")
-			});
+			RecipeGroup group = new RecipeGroup(() => Lang.misc[37] + " " + Lang.GetItemNameValue(ItemType("AmethystStaff")), ItemType("AmethystStaff"), ItemType("DiamondStaff"), ItemType("RubyStaff"), ItemType("TopazStaff"), ItemType("SapphireStaff"), ItemType("AmberStaff"), ItemType("EmeraldStaff"));
 			RecipeGroup.RegisterGroup("Tremor:GemStaves", group);
 		}
 
@@ -73,9 +58,9 @@ namespace Tremor
 				TremorPlayer modPlayer = Main.player[Main.myPlayer].GetModPlayer<TremorPlayer>(mod);
 				int[] NoOverride = {MusicID.Boss1, MusicID.Boss2, MusicID.Boss3, MusicID.Boss4, MusicID.Boss5,
 				MusicID.LunarBoss, MusicID.PumpkinMoon, MusicID.TheTowers, MusicID.FrostMoon, MusicID.GoblinInvasion, MusicID.Eclipse, MusicID.MartianMadness,
-				MusicID.PirateInvasion, this.GetSoundSlot(SoundType.Music, "Sounds/Music/CyberKing"), this.GetSoundSlot(SoundType.Music, "Sounds/Music/Boss6"), this.GetSoundSlot(SoundType.Music, "Sounds/Music/Trinity"),
-				this.GetSoundSlot(SoundType.Music, "Sounds/Music/SlimeRain"), this.GetSoundSlot(SoundType.Music, "Sounds/Music/EvilCorn"), this.GetSoundSlot(SoundType.Music, "Sounds/Music/TikiTotem"), this.GetSoundSlot(SoundType.Music, "Sounds/Music/CogLord"),
-				this.GetSoundSlot(SoundType.Music, "Sounds/Music/NightOfUndead"), this.GetSoundSlot(SoundType.Music, "Sounds/Music/CyberWrath")};
+				MusicID.PirateInvasion, GetSoundSlot(SoundType.Music, "Sounds/Music/CyberKing"), GetSoundSlot(SoundType.Music, "Sounds/Music/Boss6"), GetSoundSlot(SoundType.Music, "Sounds/Music/Trinity"),
+				GetSoundSlot(SoundType.Music, "Sounds/Music/SlimeRain"), GetSoundSlot(SoundType.Music, "Sounds/Music/EvilCorn"), GetSoundSlot(SoundType.Music, "Sounds/Music/TikiTotem"), GetSoundSlot(SoundType.Music, "Sounds/Music/CogLord"),
+				GetSoundSlot(SoundType.Music, "Sounds/Music/NightOfUndead"), GetSoundSlot(SoundType.Music, "Sounds/Music/CyberWrath")};
 				bool playMusic = true;
 				foreach (int n in NoOverride)
 				{
@@ -93,82 +78,82 @@ namespace Tremor
 
 				if (Main.player[Main.myPlayer].active && Main.player[Main.myPlayer].GetModPlayer<TremorPlayer>(this).ZoneGranite && playMusic)
 				{
-					music = this.GetSoundSlot(SoundType.Music, "Sounds/Music/Granite");
+					music = GetSoundSlot(SoundType.Music, "Sounds/Music/Granite");
 				}
 
 				if (ZWorld.ZInvasion && playMusic)
 				{
-					music = this.GetSoundSlot(SoundType.Music, "Sounds/Music/NightOfUndead");
+					music = GetSoundSlot(SoundType.Music, "Sounds/Music/NightOfUndead");
 				}
 
 				CyberWrathInvasion modPlayer1 = Main.player[Main.myPlayer].GetModPlayer<CyberWrathInvasion>(mod);
 				if (InvasionWorld.CyberWrath)
 				{
-					music = this.GetSoundSlot(SoundType.Music, "Sounds/Music/CyberWrath");
+					music = GetSoundSlot(SoundType.Music, "Sounds/Music/CyberWrath");
 				}
 
-				if (Main.player[Main.myPlayer].active && NPC.AnyNPCs(this.NPCType("CogLord")))
+				if (Main.player[Main.myPlayer].active && NPC.AnyNPCs(NPCType("CogLord")))
 				{
-					music = this.GetSoundSlot(SoundType.Music, "Sounds/Music/CogLord");
+					music = GetSoundSlot(SoundType.Music, "Sounds/Music/CogLord");
 				}
 
 				if (Main.player[Main.myPlayer].active && NPC.AnyNPCs(50))
 				{
-					music = this.GetSoundSlot(SoundType.Music, "Sounds/Music/Boss6");
+					music = GetSoundSlot(SoundType.Music, "Sounds/Music/Boss6");
 				}
 
-				if (Main.player[Main.myPlayer].active && (NPC.AnyNPCs(this.NPCType("TikiTotem")) || NPC.AnyNPCs(this.NPCType("HappySoul")) || NPC.AnyNPCs(this.NPCType("AngerSoul")) || NPC.AnyNPCs(this.NPCType("IndifferenceSoul"))))
+				if (Main.player[Main.myPlayer].active && (NPC.AnyNPCs(NPCType("TikiTotem")) || NPC.AnyNPCs(NPCType("HappySoul")) || NPC.AnyNPCs(NPCType("AngerSoul")) || NPC.AnyNPCs(NPCType("IndifferenceSoul"))))
 				{
-					music = this.GetSoundSlot(SoundType.Music, "Sounds/Music/TikiTotem");
+					music = GetSoundSlot(SoundType.Music, "Sounds/Music/TikiTotem");
 				}
 
-				if (Main.player[Main.myPlayer].active && NPC.AnyNPCs(this.NPCType("EvilCorn")))
+				if (Main.player[Main.myPlayer].active && NPC.AnyNPCs(NPCType("EvilCorn")))
 				{
-					music = this.GetSoundSlot(SoundType.Music, "Sounds/Music/EvilCorn");
+					music = GetSoundSlot(SoundType.Music, "Sounds/Music/EvilCorn");
 				}
 
 				if (Main.player[Main.myPlayer].active && Main.invasionType == 2)
 				{
-					music = this.GetSoundSlot(SoundType.Music, "Sounds/Music/Boss6");
+					music = GetSoundSlot(SoundType.Music, "Sounds/Music/Boss6");
 				}
 
 				if (Main.player[Main.myPlayer].active && Main.slimeRain && !NPC.AnyNPCs(50) && !Main.eclipse && playMusic)
 				{
-					music = this.GetSoundSlot(SoundType.Music, "Sounds/Music/SlimeRain");
+					music = GetSoundSlot(SoundType.Music, "Sounds/Music/SlimeRain");
 				}
 
-				if (Main.player[Main.myPlayer].active && NPC.AnyNPCs(this.NPCType("SoulofTruth")))
+				if (Main.player[Main.myPlayer].active && NPC.AnyNPCs(NPCType("SoulofTruth")))
 				{
-					music = this.GetSoundSlot(SoundType.Music, "Sounds/Music/Trinity");
+					music = GetSoundSlot(SoundType.Music, "Sounds/Music/Trinity");
 				}
-				if (Main.player[Main.myPlayer].active && NPC.AnyNPCs(this.NPCType("SoulofTrust")))
+				if (Main.player[Main.myPlayer].active && NPC.AnyNPCs(NPCType("SoulofTrust")))
 				{
-					music = this.GetSoundSlot(SoundType.Music, "Sounds/Music/Trinity");
+					music = GetSoundSlot(SoundType.Music, "Sounds/Music/Trinity");
 				}
-				if (Main.player[Main.myPlayer].active && NPC.AnyNPCs(this.NPCType("SoulofHope")))
+				if (Main.player[Main.myPlayer].active && NPC.AnyNPCs(NPCType("SoulofHope")))
 				{
-					music = this.GetSoundSlot(SoundType.Music, "Sounds/Music/Trinity");
+					music = GetSoundSlot(SoundType.Music, "Sounds/Music/Trinity");
 				}
-				if (Main.player[Main.myPlayer].active && NPC.AnyNPCs(this.NPCType("FrostKing")))
+				if (Main.player[Main.myPlayer].active && NPC.AnyNPCs(NPCType("FrostKing")))
 				{
-					music = this.GetSoundSlot(SoundType.Music, "Sounds/Music/Boss6");
+					music = GetSoundSlot(SoundType.Music, "Sounds/Music/Boss6");
 				}
-				if (Main.player[Main.myPlayer].active && NPC.AnyNPCs(this.NPCType("CyberKing")))
+				if (Main.player[Main.myPlayer].active && NPC.AnyNPCs(NPCType("CyberKing")))
 				{
-					music = this.GetSoundSlot(SoundType.Music, "Sounds/Music/CyberKing");
+					music = GetSoundSlot(SoundType.Music, "Sounds/Music/CyberKing");
 				}
 
 
 				if (Main.cloudAlpha > 0f &&
-					(double)Main.player[Main.myPlayer].position.Y <
-					Main.worldSurface * 16.0 + (double)(Main.screenHeight / 2) && Main.player[Main.myPlayer].ZoneSnow && playMusic)
+					Main.player[Main.myPlayer].position.Y <
+					Main.worldSurface * 16.0 + Main.screenHeight / 2 && Main.player[Main.myPlayer].ZoneSnow && playMusic)
 				{
-					music = this.GetSoundSlot(SoundType.Music, "Sounds/Music/Snow2");
+					music = GetSoundSlot(SoundType.Music, "Sounds/Music/Snow2");
 				}
 
 				if (player.active && player.GetModPlayer<TremorPlayer>(this).ZoneIce && !Main.gameMenu && playMusic)
 				{
-					music = this.GetSoundSlot(SoundType.Music, "Sounds/Music/Snow2");
+					music = GetSoundSlot(SoundType.Music, "Sounds/Music/Snow2");
 				}
 
 			}
@@ -251,7 +236,7 @@ namespace Tremor
 					TileType("GraniteMusicBox"));
 
 				TremorGlowMask.Load();
-				GameShaders.Armor.BindShader<ArmorShaderData>(ItemType("NovaDye"), new ArmorShaderData(Main.PixelShaderRef, "ArmorSolar")).UseColor(0.8f, 0.7f, 0.3f).UseSecondaryColor(0.8f, 0.7f, 0.3f);
+				GameShaders.Armor.BindShader(ItemType("NovaDye"), new ArmorShaderData(Main.PixelShaderRef, "ArmorSolar")).UseColor(0.8f, 0.7f, 0.3f).UseSecondaryColor(0.8f, 0.7f, 0.3f);
 				NovaSky.PlanetTexture = GetTexture("NovaPillar/NovaPlanet");
 				Filters.Scene["Tremor:Nova"] = new Filter(new NovaData("FilterMiniTower").UseColor(0.8f, 0.7f, 0.3f).UseOpacity(0.82f), EffectPriority.VeryHigh);
 				SkyManager.Instance["Tremor:Nova"] = new NovaSky();

@@ -39,8 +39,8 @@ namespace Tremor
 						{
 							Item.NewItem(npc.position, npc.width, npc.height, 1365);
 						}
-						Item.NewItem(npc.position, npc.width, npc.height, Utils.SelectRandom(Main.rand, NPCDrops.VanillaWoFEmblems));
-						Item.NewItem(npc.position, npc.width, npc.height, Utils.SelectRandom(Main.rand, NPCDrops.VanillaWoFWeapons));
+						Item.NewItem(npc.position, npc.width, npc.height, Utils.SelectRandom(Main.rand, VanillaWoFEmblems));
+						Item.NewItem(npc.position, npc.width, npc.height, Utils.SelectRandom(Main.rand, VanillaWoFWeapons));
 						Item.NewItem(npc.position, npc.width, npc.height, ItemID.GoldCoin, Main.rand.Next(6, 10));
 					}
 					break;

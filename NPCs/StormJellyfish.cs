@@ -1,6 +1,7 @@
-using Terraria.ID;
+using System;
 using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace Tremor.NPCs
@@ -73,9 +74,9 @@ namespace Tremor.NPCs
 			{
 				for (int k = 0; k < 60; k++)
 				{
-					Dust.NewDust(npc.position, npc.width, npc.height, 226, 2.5f * (float)hitDirection, -2.5f, 0, default(Color), 0.7f);
-					Dust.NewDust(npc.position, npc.width, npc.height, 226, 2.5f * (float)hitDirection, -2.5f, 0, default(Color), 0.7f);
-					Dust.NewDust(npc.position, npc.width, npc.height, 226, 2.5f * (float)hitDirection, -2.5f, 0, default(Color), 0.7f);
+					Dust.NewDust(npc.position, npc.width, npc.height, 226, 2.5f * hitDirection, -2.5f, 0, default(Color), 0.7f);
+					Dust.NewDust(npc.position, npc.width, npc.height, 226, 2.5f * hitDirection, -2.5f, 0, default(Color), 0.7f);
+					Dust.NewDust(npc.position, npc.width, npc.height, 226, 2.5f * hitDirection, -2.5f, 0, default(Color), 0.7f);
 				}
 				Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/StormGore1"), 1f);
 				Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/StormGore1"), 1f);
@@ -90,16 +91,16 @@ namespace Tremor.NPCs
 
 				for (int k = 0; k < damage / npc.lifeMax * 50.0; k++)
 				{
-					Dust.NewDust(npc.position, npc.width, npc.height, 226, (float)hitDirection, -2f, 0, default(Color), 0.7f);
-					Dust.NewDust(npc.position, npc.width, npc.height, 27, (float)hitDirection, -1f, 0, default(Color), 0.7f);
+					Dust.NewDust(npc.position, npc.width, npc.height, 226, hitDirection, -2f, 0, default(Color), 0.7f);
+					Dust.NewDust(npc.position, npc.width, npc.height, 27, hitDirection, -1f, 0, default(Color), 0.7f);
 				}
 			}
 		}
 
 		public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
 		{
-			npc.lifeMax = (int)(npc.lifeMax * 1);
-			npc.damage = (int)(npc.damage * 1);
+			npc.lifeMax = npc.lifeMax * 1;
+			npc.damage = npc.damage * 1;
 		}
 
 		void Shoot()
@@ -119,7 +120,7 @@ namespace Tremor.NPCs
 		Vector2 VelocityFPTP(Vector2 pos1, Vector2 pos2, float speed)
 		{
 			Vector2 move = pos2 - pos1;
-			return move * (speed / (float)System.Math.Sqrt(move.X * move.X + move.Y * move.Y));
+			return move * (speed / (float)Math.Sqrt(move.X * move.X + move.Y * move.Y));
 		}
 
 
@@ -127,8 +128,8 @@ namespace Tremor.NPCs
 		{
 			if (Main.netMode != 1)
 			{
-				int centerX = (int)(npc.position.X + (float)(npc.width / 2)) / 16;
-				int centerY = (int)(npc.position.Y + (float)(npc.height / 2)) / 16;
+				int centerX = (int)(npc.position.X + npc.width / 2) / 16;
+				int centerY = (int)(npc.position.Y + npc.height / 2) / 16;
 				int halfLength = npc.width / 2 / 16 + 1;
 
 				if (Main.expertMode)

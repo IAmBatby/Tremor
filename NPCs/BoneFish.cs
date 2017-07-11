@@ -1,9 +1,8 @@
-using Terraria.ID;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
-
 
 namespace Tremor.NPCs
 {
@@ -37,16 +36,16 @@ namespace Tremor.NPCs
 
 		public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
 		{
-			npc.lifeMax = (int)(npc.lifeMax * 1);
-			npc.damage = (int)(npc.damage * 1);
+			npc.lifeMax = npc.lifeMax * 1;
+			npc.damage = npc.damage * 1;
 		}
 
 		public override void NPCLoot()
 		{
 			if (Main.netMode != 1)
 			{
-				int centerX = (int)(npc.position.X + (float)(npc.width / 2)) / 16;
-				int centerY = (int)(npc.position.Y + (float)(npc.height / 2)) / 16;
+				int centerX = (int)(npc.position.X + npc.width / 2) / 16;
+				int centerY = (int)(npc.position.Y + npc.height / 2) / 16;
 				int halfLength = npc.width / 2 / 16 + 1;
 				if (Main.rand.Next(1) == 0)
 				{
@@ -64,7 +63,7 @@ namespace Tremor.NPCs
 				if (npc.direction == 1) { effect = SpriteEffects.FlipHorizontally; }
 				if (npc.direction == -1) { effect = SpriteEffects.None; }
 				Vector2 drawPos = npc.oldPos[k] - Main.screenPosition;
-				Color color = npc.GetAlpha(lightColor) * ((float)(npc.oldPos.Length - k) / (float)npc.oldPos.Length);
+				Color color = npc.GetAlpha(lightColor) * ((npc.oldPos.Length - k) / (float)npc.oldPos.Length);
 				Rectangle frame = new Rectangle(0, 0, 38, 26);
 				frame.Y += 164 * (k / 60);
 

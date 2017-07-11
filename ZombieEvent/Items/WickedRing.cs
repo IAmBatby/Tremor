@@ -1,7 +1,7 @@
-using Terraria.ID;
 using System;
 using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace Tremor.ZombieEvent.Items
@@ -19,8 +19,8 @@ namespace Tremor.ZombieEvent.Items
     	for (i = 0; i < 4; i++ )
     	{
    		offsetAngle = (startAngle + deltaAngle * ( i + i * i ) / 2f ) + 32f * i;
-        	Terraria.Projectile.NewProjectile(position.X, position.Y, (float)( Math.Sin(offsetAngle) * 5f ), (float)( Math.Cos(offsetAngle) * 5f ), item.shoot, damage, knockBack, item.owner);
-        	Terraria.Projectile.NewProjectile(position.X, position.Y, (float)( -Math.Sin(offsetAngle) * 5f ), (float)( -Math.Cos(offsetAngle) * 5f ), item.shoot, damage, knockBack, item.owner);
+        	Projectile.NewProjectile(position.X, position.Y, (float)( Math.Sin(offsetAngle) * 5f ), (float)( Math.Cos(offsetAngle) * 5f ), item.shoot, damage, knockBack, item.owner);
+        	Projectile.NewProjectile(position.X, position.Y, (float)( -Math.Sin(offsetAngle) * 5f ), (float)( -Math.Cos(offsetAngle) * 5f ), item.shoot, damage, knockBack, item.owner);
     	}
     	return false;
 	}

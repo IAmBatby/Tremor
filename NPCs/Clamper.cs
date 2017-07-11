@@ -1,8 +1,8 @@
-﻿using Terraria.ID;
-using System;
-using Terraria;
-using Terraria.ModLoader;
+﻿using System;
 using Microsoft.Xna.Framework;
+using Terraria;
+using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace Tremor.NPCs
 {
@@ -63,63 +63,63 @@ namespace Tremor.NPCs
 			if (Main.netMode != 1)
 			{
 				--npc.localAI[0];
-				if ((double)npc.localAI[0] <= 0.0)
+				if (npc.localAI[0] <= 0.0)
 				{
-					npc.localAI[0] = (float)Main.rand.Next(10, 26);
-					npc.ai[0] = (float)Main.rand.Next(-5, 14);
-					npc.ai[1] = (float)Main.rand.Next(-5, 14);
+					npc.localAI[0] = Main.rand.Next(10, 26);
+					npc.ai[0] = Main.rand.Next(-5, 14);
+					npc.ai[1] = Main.rand.Next(-5, 14);
 					npc.netUpdate = true;
 				}
 			}
 			npc.TargetClosest(true);
 			float num1 = 0.2f;
 			float num2 = 10f;
-			if ((double)Main.npc[index].life < (double)Main.npc[index].lifeMax * 0.25)
+			if (Main.npc[index].life < Main.npc[index].lifeMax * 0.25)
 				num2 += 5f;
-			if ((double)Main.npc[index].life < (double)Main.npc[index].lifeMax * 0.1)
+			if (Main.npc[index].life < Main.npc[index].lifeMax * 0.1)
 				num2 += 5f;
-			float x = Main.npc[index].position.X + (float)(Main.npc[index].width / 2);
-			float y = Main.npc[index].position.Y + (float)(Main.npc[index].height / 2);
+			float x = Main.npc[index].position.X + Main.npc[index].width / 2;
+			float y = Main.npc[index].position.Y + Main.npc[index].height / 2;
 			Vector2 vector2 = new Vector2(x, y);
 			float num3 = x + npc.ai[0];
 			float num4 = y + npc.ai[1];
 			float num5 = num3 - vector2.X;
 			float num6 = num4 - vector2.Y;
-			float num7 = (float)Math.Sqrt((double)num5 * (double)num5 + (double)num6 * (double)num6);
+			float num7 = (float)Math.Sqrt(num5 * (double)num5 + num6 * (double)num6);
 			float num8 = num2 / num7;
 			float num9 = num5 * num8;
 			float num10 = num6 * num8;
-			if ((double)npc.position.X < (double)x + (double)num9)
+			if (npc.position.X < x + (double)num9)
 			{
 				npc.velocity.X += num1;
-				if ((double)npc.velocity.X < 0.0 && (double)num9 > 0.0)
+				if (npc.velocity.X < 0.0 && num9 > 0.0)
 					npc.velocity.X *= 0.5f;
 			}
-			else if ((double)npc.position.X > (double)x + (double)num9)
+			else if (npc.position.X > x + (double)num9)
 			{
 				npc.velocity.X -= num1;
-				if ((double)npc.velocity.X > 0.0 && (double)num9 < 0.0)
+				if (npc.velocity.X > 0.0 && num9 < 0.0)
 					npc.velocity.X *= 0.5f;
 			}
-			if ((double)npc.position.Y < (double)y + (double)num10)
+			if (npc.position.Y < y + (double)num10)
 			{
 				npc.velocity.Y += num1;
-				if ((double)npc.velocity.Y < 0.0 && (double)num10 > 0.0)
+				if (npc.velocity.Y < 0.0 && num10 > 0.0)
 					npc.velocity.Y *= 0.5f;
 			}
-			else if ((double)npc.position.Y > (double)y + (double)num10)
+			else if (npc.position.Y > y + (double)num10)
 			{
 				npc.velocity.Y -= num1;
-				if ((double)npc.velocity.Y > 0.0 && (double)num10 < 0.0)
+				if (npc.velocity.Y > 0.0 && num10 < 0.0)
 					npc.velocity.Y *= 0.5f;
 			}
-			if ((double)npc.velocity.X > 8.0)
+			if (npc.velocity.X > 8.0)
 				npc.velocity.X = 8f;
-			if ((double)npc.velocity.X < -8.0)
+			if (npc.velocity.X < -8.0)
 				npc.velocity.X = -8f;
-			if ((double)npc.velocity.Y > 8.0)
+			if (npc.velocity.Y > 8.0)
 				npc.velocity.Y = 8f;
-			if ((double)npc.velocity.Y < -8.0)
+			if (npc.velocity.Y < -8.0)
 				npc.velocity.Y = -8f;
 			npc.rotation = Helper.rotateBetween2Points(npc.Center, Main.player[npc.target].Center) + 3.14f;
 		}

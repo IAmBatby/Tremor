@@ -1,8 +1,8 @@
-﻿using Terraria.ID;
-using Terraria;
-using Terraria.ModLoader;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Terraria;
+using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace Tremor.NPCs
 {
@@ -30,10 +30,10 @@ namespace Tremor.NPCs
 			npc.value = Item.buyPrice(0, 1, 0, 0);
 		}
 
-		int timer = 0;
+		int timer;
 		public override void AI()
 		{
-			float Num1 = (float)Main.mouseTextColor / 200f - 0.35f;
+			float Num1 = Main.mouseTextColor / 200f - 0.35f;
 			Num1 *= 0.5f;
 			npc.scale = Num1 + 0.95f;
 			timer++;

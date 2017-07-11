@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
-using Terraria;
-using Terraria.ModLoader;
 using System.Linq;
+using Terraria;
 using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace Tremor
 {
@@ -30,8 +30,7 @@ namespace Tremor
 		public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
 		{
 			Player player = Main.player[Main.myPlayer];
-			int[] coins = new int[]
-			{
+			int[] coins = {
 				ItemID.CopperCoin,
 				ItemID.SilverCoin,
 				ItemID.GoldCoin,

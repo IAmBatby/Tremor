@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ModLoader;
@@ -82,7 +83,7 @@ namespace Tremor.NPCs.AndasBoss
 					projectile.netUpdate = true;
 				}
 			}
-			Player targetPlayer = Main.player[this.target];
+			Player targetPlayer = Main.player[target];
 			Vector2 direction = targetPlayer.Center - projectile.Center;
 			direction.Normalize();
 			projectile.velocity *= 0.98f;
@@ -104,14 +105,14 @@ namespace Tremor.NPCs.AndasBoss
 			return false;
 		}
 
-		public override void SendExtraAI(System.IO.BinaryWriter writer)
+		public override void SendExtraAI(BinaryWriter writer)
 		{
-			writer.Write(this.target);
+			writer.Write(target);
 		}
 
-		public override void ReceiveExtraAI(System.IO.BinaryReader reader)
+		public override void ReceiveExtraAI(BinaryReader reader)
 		{
-			this.target = reader.Read();
+			target = reader.Read();
 		}
 	}
 }

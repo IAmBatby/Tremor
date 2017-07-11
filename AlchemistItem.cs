@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using System.Collections.Generic;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ModLoader;
 
@@ -7,24 +8,24 @@ namespace Tremor
 	public abstract class AlchemistItem : ModItem
 	{
 
-		public override void ModifyTooltips(System.Collections.Generic.List<TooltipLine> tooltips)
+		public override void ModifyTooltips(List<TooltipLine> tooltips)
 		{
 			for (int i = 0; i < tooltips.Count; ++i)
 			{
 				if (tooltips[i].Name == "Damage")
 				{
 					MPlayer mp = Main.LocalPlayer.GetModPlayer<MPlayer>(mod);
-					tooltips[i].text = ((int)(item.damage * mp.alchemistDamage)).ToString() + " alchemic damage";
+					tooltips[i].text = ((int)(item.damage * mp.alchemistDamage)) + " alchemic damage";
 				}
 
 				if (tooltips[i].Name == "CritChance")
 				{
 					MPlayer mp = Main.LocalPlayer.GetModPlayer<MPlayer>(mod);
-					tooltips[i].text = ((int)(item.crit + mp.alchemistCrit)).ToString() + "% critical strike chance";
+					tooltips[i].text = (item.crit + mp.alchemistCrit) + "% critical strike chance";
 				}
 			}
 			MPlayer mp2 = Main.LocalPlayer.GetModPlayer<MPlayer>(mod);
-			TooltipLine tip = new TooltipLine(mod, "Tremor:Tooltip", ((int)(item.crit + mp2.alchemistCrit)).ToString() + "% critical strike chance");
+			TooltipLine tip = new TooltipLine(mod, "Tremor:Tooltip", (item.crit + mp2.alchemistCrit) + "% critical strike chance");
 			tooltips.Insert(2, tip);
 		}
 

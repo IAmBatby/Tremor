@@ -9,31 +9,31 @@ namespace Tremor
 		// 60 * 1.5 = 90 damage.
 		public float alchemistDamage;
 		public int alchemistCrit;
-		public bool pyro = false;
-		public bool nitro = false;
-		public bool spirit = false;
-		public bool enchanted = false;
-		public bool glove = false;
-		public bool core = false;
-		public bool novaAura = false;
-		public bool novaSet = false;
-		public bool novaHelmet = false;
-		public bool novaChestplate = false;
+		public bool pyro;
+		public bool nitro;
+		public bool spirit;
+		public bool enchanted;
+		public bool glove;
+		public bool core;
+		public bool novaAura;
+		public bool novaSet;
+		public bool novaHelmet;
+		public bool novaChestplate;
 
 		public override void ResetEffects()
 		{
-			this.alchemistDamage = 1;
-			this.alchemistCrit = 0;
-			this.pyro = false;
-			this.nitro = false;
-			this.spirit = false;
-			this.enchanted = false;
-			this.glove = false;
-			this.core = false;
-			this.novaAura = false;
-			this.novaSet = false;
-			this.novaHelmet = false;
-			this.novaChestplate = false;
+			alchemistDamage = 1;
+			alchemistCrit = 0;
+			pyro = false;
+			nitro = false;
+			spirit = false;
+			enchanted = false;
+			glove = false;
+			core = false;
+			novaAura = false;
+			novaSet = false;
+			novaHelmet = false;
+			novaChestplate = false;
 		}
 	}
 }

@@ -1,8 +1,8 @@
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
+using Terraria.Enums;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
-using Terraria.Enums;
 
 namespace Tremor.Ice
 {
@@ -38,7 +38,7 @@ namespace Tremor.Ice
 			Main.tileWaterDeath[Type] = false;
 			TileObjectData.newTile.LavaPlacement = LiquidPlacement.NotAllowed;
 			TileObjectData.newTile.CopyFrom(TileObjectData.StyleAlch);
-			TileObjectData.newTile.AnchorValidTiles = new int[]
+			TileObjectData.newTile.AnchorValidTiles = new[]
 			{
 				mod.TileType("IceBlock")
 			};

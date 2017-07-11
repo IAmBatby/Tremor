@@ -1,7 +1,7 @@
-using Terraria.ID;
 using System;
 using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace Tremor.NPCs
@@ -16,8 +16,8 @@ namespace Tremor.NPCs
 		}
 
 
-		private float timeToNextFrame = 0;
-		private int frame = 0;
+		private float timeToNextFrame;
+		private int frame;
 
 		public override void SetDefaults()
 		{
@@ -53,14 +53,14 @@ namespace Tremor.NPCs
 
 		private float timeToAtack = 2;
 		private float vel = 2.5f;
-		private float lifeTime = 0;
+		private float lifeTime;
 		private int minTimeToAtack = 3;
 		private int maxTimeToAtack = 5;
 		private Vector2 localTargPos = new Vector2(666, 666);
-		private int mode = 0;
-		private float atackTimer = 0;
-		private float atackLenghtTimer = 0;
-		private float preAtack = 0;
+		private int mode;
+		private float atackTimer;
+		private float atackLenghtTimer;
+		private float preAtack;
 
 		public Vector2 bossCenter
 		{
@@ -274,14 +274,11 @@ namespace Tremor.NPCs
 			{
 				return min;
 			}
-			else if (value > max)
+			if (value > max)
 			{
 				return max;
 			}
-			else
-			{
-				return value;
-			}
+			return value;
 		}
 
 		public override void FindFrame(int frameHeight)
@@ -297,8 +294,8 @@ namespace Tremor.NPCs
 			}
 			if (Main.netMode != 1)
 			{
-				int centerX = (int)(npc.position.X + (float)(npc.width / 2)) / 16;
-				int centerY = (int)(npc.position.Y + (float)(npc.height / 2)) / 16;
+				int centerX = (int)(npc.position.X + npc.width / 2) / 16;
+				int centerY = (int)(npc.position.Y + npc.height / 2) / 16;
 				int halfLength = npc.width / 2 / 16 + 1;
 
 				if (!Main.expertMode && Main.rand.Next(7) == 0)

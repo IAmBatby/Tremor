@@ -1,8 +1,8 @@
-﻿using Terraria.ID;
-using Terraria;
-using Terraria.ModLoader;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Terraria;
+using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace Tremor.NPCs
 {
@@ -100,8 +100,8 @@ namespace Tremor.NPCs
 				Vector2 velocity = Helper.VelocityToPoint(npc.Center, Main.player[Main.npc[(int)npc.ai[1]].target].Center, ShootSpeed);
 				for (int l = 0; l < 2; l++)
 				{
-					velocity.X = velocity.X + (float)Main.rand.Next(-spread, spread + 1) * spreadMult;
-					velocity.Y = velocity.Y + (float)Main.rand.Next(-spread, spread + 1) * spreadMult;
+					velocity.X = velocity.X + Main.rand.Next(-spread, spread + 1) * spreadMult;
+					velocity.Y = velocity.Y + Main.rand.Next(-spread, spread + 1) * spreadMult;
 					int i = Projectile.NewProjectile(npc.Center.X, npc.Center.Y, velocity.X, velocity.Y, ShootType, ShootDamage, ShootKN);
 					Main.projectile[i].hostile = true;
 					Main.projectile[i].friendly = false;

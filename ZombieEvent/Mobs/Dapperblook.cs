@@ -1,5 +1,5 @@
-using Terraria.ID;
 using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace Tremor.ZombieEvent.Mobs
@@ -13,7 +13,7 @@ namespace Tremor.ZombieEvent.Mobs
 			Main.npcFrameCount[npc.type] = 4;
 		}
  
-        const int SpeedMulti = 3; // Œ­®¦¨â¥«ì áª®à®áâ¨
+        const int SpeedMulti = 3; // ï¿½ï¿½ï¿½ï¿½ï¿½â¥«ï¿½ áª®ï¿½ï¿½ï¿½
 
     public override void SetDefaults()
     {
@@ -49,8 +49,8 @@ npc.Transform(mod.NPCType("SuperDapperblook"));
     {
         if (Main.netMode != 1)
         {
-            int centerX = (int)(npc.position.X + (float)(npc.width / 2)) / 16;
-            int centerY = (int)(npc.position.Y + (float)(npc.height / 2)) / 16;
+            int centerX = (int)(npc.position.X + npc.width / 2) / 16;
+            int centerY = (int)(npc.position.Y + npc.height / 2) / 16;
             int halfLength = npc.width / 2 / 16 + 1;
         if(Main.rand.Next(4) == 0)
         {
@@ -65,8 +65,8 @@ npc.Transform(mod.NPCType("SuperDapperblook"));
 
     public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
     {
-        npc.lifeMax = (int)(npc.lifeMax * 1);
-        npc.damage = (int)(npc.damage * 1);
+        npc.lifeMax = npc.lifeMax * 1;
+        npc.damage = npc.damage * 1;
     }
 
     public override void HitEffect(int hitDirection, double damage)

@@ -31,7 +31,7 @@ namespace Tremor.NovaPillar
 			player.GetModPlayer<MPlayer>(mod).alchemistCrit += 12;
 			player.GetModPlayer<MPlayer>(mod).alchemistDamage += 0.12f;
 			player.aggro += 10;
-			Lighting.AddLight((int)((player.position.X + (float)(player.width / 2)) / 16f), (int)((player.position.Y + (float)(player.height / 2)) / 16f), 0.8f, 0.7f, 0.3f);
+			Lighting.AddLight((int)((player.position.X + player.width / 2) / 16f), (int)((player.position.Y + player.height / 2) / 16f), 0.8f, 0.7f, 0.3f);
 		}
 
 		public override bool IsArmorSet(Item head, Item body, Item legs)

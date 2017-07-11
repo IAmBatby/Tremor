@@ -1,7 +1,7 @@
-using Terraria.ID;
 using System;
 using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace Tremor.NPCs
@@ -16,8 +16,8 @@ namespace Tremor.NPCs
 		}
 
 
-		private float timeToNextFrame = 0;
-		public int frame = 0;
+		private float timeToNextFrame;
+		public int frame;
 
 		public override void SetDefaults()
 		{
@@ -41,8 +41,8 @@ namespace Tremor.NPCs
 
 		public float timeToShoot = 2;
 		private float vel = 2.5f;
-		private float lifeTime = 0;
-		private bool Rage = false;
+		private float lifeTime;
+		private bool Rage;
 
 
 
@@ -167,14 +167,11 @@ namespace Tremor.NPCs
 			{
 				return min;
 			}
-			else if (value > max)
+			if (value > max)
 			{
 				return max;
 			}
-			else
-			{
-				return value;
-			}
+			return value;
 		}
 
 		public override void FindFrame(int frameHeight)

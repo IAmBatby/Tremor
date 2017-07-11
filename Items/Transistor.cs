@@ -36,7 +36,7 @@ namespace Tremor.Items
 		{
 			Vector2 speed = new Vector2(speedX, speedY);
 			speed = speed.RotatedByRandom(MathHelper.ToRadians(60));
-			damage = (int)(damage);
+			damage = damage;
 			speedX = speed.X;
 			speedY = speed.Y;
 			return true;

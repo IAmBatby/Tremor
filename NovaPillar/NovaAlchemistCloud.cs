@@ -34,9 +34,9 @@ namespace Tremor.NovaPillar
 				projectile.Kill();
 				projectile.ai[0] = 255f;
 			}
-			projectile.alpha = (int)(100.0 + (double)projectile.ai[0] * 0.7);
+			projectile.alpha = (int)(100.0 + projectile.ai[0] * 0.7);
 			projectile.rotation += projectile.velocity.X * 0.1f;
-			projectile.rotation += (float)projectile.direction * 0.003f;
+			projectile.rotation += projectile.direction * 0.003f;
 			projectile.velocity *= 0.96f;
 		}
 	}

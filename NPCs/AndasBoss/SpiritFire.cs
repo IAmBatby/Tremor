@@ -83,8 +83,7 @@ namespace Tremor.NPCs.AndasBoss
 			{
 				projectile.ai[0] += 1f;
 			}
-			projectile.rotation += 0.3f * (float)projectile.direction;
-			return;
+			projectile.rotation += 0.3f * projectile.direction;
 		}
 
 		public override bool OnTileCollide(Vector2 oldVelocity)

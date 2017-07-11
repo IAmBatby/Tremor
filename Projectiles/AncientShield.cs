@@ -37,29 +37,29 @@ namespace Tremor.Projectiles
 			float Num = 4f;
 			float Num2 = 1.1f;
 			int Num3 = 1;
-			if (projectile.position.X + (float)(projectile.width / 2) < Main.player[projectile.owner].position.X + (float)Main.player[projectile.owner].width)
+			if (projectile.position.X + projectile.width / 2 < Main.player[projectile.owner].position.X + Main.player[projectile.owner].width)
 			{
 				Num3 = -1;
 			}
-			Vector2 Vector1 = new Vector2(projectile.position.X + (float)projectile.width * 0.5f, projectile.position.Y + (float)projectile.height * 0.5f);
-			float Num4 = Main.player[projectile.owner].position.X + (float)(Main.player[projectile.owner].width / 2) + (float)(Num3 * 180) - Vector1.X;
-			float Num5 = Main.player[projectile.owner].position.Y + (float)(Main.player[projectile.owner].height / 2) - Vector1.Y;
-			float Num6 = (float)Math.Sqrt((double)(Num4 * Num4 + Num5 * Num5));
-			float Num7 = projectile.position.X + (float)(projectile.width / 2) - Main.player[projectile.owner].position.X - (float)(Main.player[projectile.owner].width / 2);
-			float Num8 = projectile.position.Y + (float)projectile.height - 59f - Main.player[projectile.owner].position.Y - (float)(Main.player[projectile.owner].height / 2);
-			float Num9 = (float)Math.Atan2((double)Num8, (double)Num7) + 1.57f;
+			Vector2 Vector1 = new Vector2(projectile.position.X + projectile.width * 0.5f, projectile.position.Y + projectile.height * 0.5f);
+			float Num4 = Main.player[projectile.owner].position.X + Main.player[projectile.owner].width / 2 + Num3 * 180 - Vector1.X;
+			float Num5 = Main.player[projectile.owner].position.Y + Main.player[projectile.owner].height / 2 - Vector1.Y;
+			float Num6 = (float)Math.Sqrt(Num4 * Num4 + Num5 * Num5);
+			float Num7 = projectile.position.X + projectile.width / 2 - Main.player[projectile.owner].position.X - Main.player[projectile.owner].width / 2;
+			float Num8 = projectile.position.Y + projectile.height - 59f - Main.player[projectile.owner].position.Y - Main.player[projectile.owner].height / 2;
+			float Num9 = (float)Math.Atan2(Num8, Num7) + 1.57f;
 			if (Num9 < 0f)
 			{
 				Num9 += 6.283f;
 			}
-			else if ((double)Num9 > 6.283)
+			else if (Num9 > 6.283)
 			{
 				Num9 -= 6.283f;
 			}
 			float Num10 = 0.15f;
 			if (projectile.rotation < Num9)
 			{
-				if ((double)(Num9 - projectile.rotation) > 3.1415)
+				if (Num9 - projectile.rotation > 3.1415)
 				{
 					projectile.rotation -= Num10;
 				}
@@ -70,7 +70,7 @@ namespace Tremor.Projectiles
 			}
 			else if (projectile.rotation > Num9)
 			{
-				if ((double)(projectile.rotation - Num9) > 3.1415)
+				if (projectile.rotation - Num9 > 3.1415)
 				{
 					projectile.rotation += Num10;
 				}
@@ -87,7 +87,7 @@ namespace Tremor.Projectiles
 			{
 				projectile.rotation += 6.283f;
 			}
-			else if ((double)projectile.rotation > 6.283)
+			else if (projectile.rotation > 6.283)
 			{
 				projectile.rotation -= 6.283f;
 			}

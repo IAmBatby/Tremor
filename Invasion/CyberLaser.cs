@@ -56,7 +56,6 @@ namespace Tremor.Invasion
 				if (projectile.wet && !projectile.lavaWet)
 				{
 					projectile.Kill();
-					return;
 				}
 			}
 		}

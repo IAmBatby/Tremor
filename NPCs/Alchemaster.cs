@@ -1,7 +1,8 @@
-﻿using Terraria.ID;
+﻿using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace Tremor.NPCs
@@ -51,12 +52,12 @@ namespace Tremor.NPCs
 
 		#region "Переменные"
 		int TimeToAnimation = AnimationRate;
-		int Frame = 0;
+		int Frame;
 		bool Shoots = true;
 		int TimeToShoot = ShootRate;
-		int State = 0;
+		int State;
 		int TimeToState = StateTime_Flying;
-		bool runAway = false;
+		bool runAway;
 		#endregion
 
 		public override void SetDefaults()
@@ -91,9 +92,9 @@ namespace Tremor.NPCs
 			{
 				for (int k = 0; k < 20; k++)
 				{
-					Dust.NewDust(npc.position, npc.width, npc.height, 74, 2.5f * (float)hitDirection, -2.5f, 0, default(Color), 0.7f);
-					Dust.NewDust(npc.position, npc.width, npc.height, 74, 2.5f * (float)hitDirection, -2.5f, 0, default(Color), 0.7f);
-					Dust.NewDust(npc.position, npc.width, npc.height, 74, 2.5f * (float)hitDirection, -2.5f, 0, default(Color), 0.7f);
+					Dust.NewDust(npc.position, npc.width, npc.height, 74, 2.5f * hitDirection, -2.5f, 0, default(Color), 0.7f);
+					Dust.NewDust(npc.position, npc.width, npc.height, 74, 2.5f * hitDirection, -2.5f, 0, default(Color), 0.7f);
+					Dust.NewDust(npc.position, npc.width, npc.height, 74, 2.5f * hitDirection, -2.5f, 0, default(Color), 0.7f);
 				}
 				Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/AlchemasterGore1"), 1f);
 				Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/AlchemasterGore2"), 1f);
@@ -101,14 +102,14 @@ namespace Tremor.NPCs
 				Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/AlchemasterGore3"), 1f);
 				Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/AlchemasterGore4"), 1f);
 				Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/AlchemasterGore4"), 1f);
-				Dust.NewDust(npc.position, npc.width, npc.height, 74, 2.5f * (float)hitDirection, -2.5f, 0, default(Color), 0.7f);
-				Dust.NewDust(npc.position, npc.width, npc.height, 74, 2.5f * (float)hitDirection, -2.5f, 0, default(Color), 2.7f);
-				Dust.NewDust(npc.position, npc.width, npc.height, 74, 2.5f * (float)hitDirection, -2.5f, 0, default(Color), 0.7f);
-				Dust.NewDust(npc.position, npc.width, npc.height, 74, 2.5f * (float)hitDirection, -2.5f, 0, default(Color), 2.7f);
-				Dust.NewDust(npc.position, npc.width, npc.height, 74, 2.5f * (float)hitDirection, -2.5f, 0, default(Color), 1.7f);
-				Dust.NewDust(npc.position, npc.width, npc.height, 74, 2.5f * (float)hitDirection, -2.5f, 0, default(Color), 3.7f);
-				Dust.NewDust(npc.position, npc.width, npc.height, 74, 2.5f * (float)hitDirection, -2.5f, 0, default(Color), 2.7f);
-				Dust.NewDust(npc.position, npc.width, npc.height, 74, 2.5f * (float)hitDirection, -2.5f, 0, default(Color), 1.7f);
+				Dust.NewDust(npc.position, npc.width, npc.height, 74, 2.5f * hitDirection, -2.5f, 0, default(Color), 0.7f);
+				Dust.NewDust(npc.position, npc.width, npc.height, 74, 2.5f * hitDirection, -2.5f, 0, default(Color), 2.7f);
+				Dust.NewDust(npc.position, npc.width, npc.height, 74, 2.5f * hitDirection, -2.5f, 0, default(Color), 0.7f);
+				Dust.NewDust(npc.position, npc.width, npc.height, 74, 2.5f * hitDirection, -2.5f, 0, default(Color), 2.7f);
+				Dust.NewDust(npc.position, npc.width, npc.height, 74, 2.5f * hitDirection, -2.5f, 0, default(Color), 1.7f);
+				Dust.NewDust(npc.position, npc.width, npc.height, 74, 2.5f * hitDirection, -2.5f, 0, default(Color), 3.7f);
+				Dust.NewDust(npc.position, npc.width, npc.height, 74, 2.5f * hitDirection, -2.5f, 0, default(Color), 2.7f);
+				Dust.NewDust(npc.position, npc.width, npc.height, 74, 2.5f * hitDirection, -2.5f, 0, default(Color), 1.7f);
 			}
 		}
 
@@ -136,7 +137,7 @@ namespace Tremor.NPCs
 		Vector2 VelocityFPTP(Vector2 pos1, Vector2 pos2, float speed)
 		{
 			Vector2 move = pos2 - pos1;
-			return move * (speed / (float)System.Math.Sqrt(move.X * move.X + move.Y * move.Y));
+			return move * (speed / (float)Math.Sqrt(move.X * move.X + move.Y * move.Y));
 		}
 
 		void FlameShoot()
@@ -238,8 +239,8 @@ namespace Tremor.NPCs
 
 			if (Main.netMode != 1)
 			{
-				int centerX = (int)(npc.position.X + (float)(npc.width / 2)) / 16;
-				int centerY = (int)(npc.position.Y + (float)(npc.height / 2)) / 16;
+				int centerX = (int)(npc.position.X + npc.width / 2) / 16;
+				int centerY = (int)(npc.position.Y + npc.height / 2) / 16;
 				int halfLength = npc.width / 2 / 16 + 1;
 
 				if (!Main.expertMode && Main.rand.Next(7) == 0)

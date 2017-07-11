@@ -1,5 +1,5 @@
-using Terraria;
 using System.Linq;
+using Terraria;
 using Terraria.ModLoader;
 
 namespace Tremor.Projectiles.Alchemic
@@ -32,7 +32,7 @@ namespace Tremor.Projectiles.Alchemic
 
 	public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
 	{
-            if (Main.player[Main.myPlayer].buffType.Contains<int>(mod.BuffType("ConcentratedTinctureBuff")))
+            if (Main.player[Main.myPlayer].buffType.Contains(mod.BuffType("ConcentratedTinctureBuff")))
             {
 		int newLife = 2;
 		Main.player[projectile.owner].statLife += newLife;

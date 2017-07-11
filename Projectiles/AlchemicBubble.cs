@@ -35,7 +35,7 @@ namespace Tremor.Projectiles
 			for (int k = 0; k < projectile.oldPos.Length; k++)
 			{
 				Vector2 drawPos = projectile.oldPos[k] - Main.screenPosition + drawOrigin + new Vector2(0f, projectile.gfxOffY);
-				Color color = projectile.GetAlpha(lightColor) * ((float)(projectile.oldPos.Length - k) / (float)projectile.oldPos.Length);
+				Color color = projectile.GetAlpha(lightColor) * ((projectile.oldPos.Length - k) / (float)projectile.oldPos.Length);
 				spriteBatch.Draw(Main.projectileTexture[projectile.type], drawPos, null, color, projectile.rotation, drawOrigin, projectile.scale, SpriteEffects.None, 0f);
 			}
 			return true;
@@ -54,10 +54,10 @@ namespace Tremor.Projectiles
 				int num220 = Main.rand.Next(1, 3);
 				for (int num221 = 0; num221 < num220; num221++)
 				{
-					Vector2 value17 = new Vector2((float)Main.rand.Next(-100, 101), (float)Main.rand.Next(-100, 101));
+					Vector2 value17 = new Vector2(Main.rand.Next(-100, 101), Main.rand.Next(-100, 101));
 					value17.Normalize();
-					value17 *= (float)Main.rand.Next(10, 201) * 0.01f;
-					Projectile.NewProjectile(projectile.position.X, projectile.position.Y, value17.X, value17.Y, mod.ProjectileType("ShadowCloudPro"), projectile.damage, 1f, projectile.owner, 0f, (float)Main.rand.Next(-45, 1));
+					value17 *= Main.rand.Next(10, 201) * 0.01f;
+					Projectile.NewProjectile(projectile.position.X, projectile.position.Y, value17.X, value17.Y, mod.ProjectileType("ShadowCloudPro"), projectile.damage, 1f, projectile.owner, 0f, Main.rand.Next(-45, 1));
 				}
 			}
 		}

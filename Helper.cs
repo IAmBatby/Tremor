@@ -1,9 +1,9 @@
-﻿using Terraria;
-using Microsoft.Xna.Framework;
-using System;
-using System.Linq;
+﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Terraria;
 
 namespace Tremor
 {
@@ -26,7 +26,7 @@ namespace Tremor
 			return new Vector2(rnd.Next((int)pos1.X, (int)pos2.X) + 1, rnd.Next((int)pos1.Y, (int)pos2.Y) + 1);
 		}
 
-		public static int GetNearestAlivePlayer(Terraria.NPC npc)
+		public static int GetNearestAlivePlayer(NPC npc)
 		{
 			float NearestPlayerDist = 4815162342f;
 			int NearestPlayer = -1;
@@ -177,8 +177,8 @@ namespace Tremor
 		public static Vector2 PolarPos(Vector2 Point, float Distance, float Angle, int XOffset = 0, int YOffset = 0)
 		{
 			Vector2 ReturnedValue = new Vector2();
-			ReturnedValue.X = (Distance * (float)Math.Sin((double)Helper.RadtoGrad(Angle)) + Point.X) + XOffset;
-			ReturnedValue.Y = (Distance * (float)Math.Cos((double)Helper.RadtoGrad(Angle)) + Point.Y) + YOffset;
+			ReturnedValue.X = (Distance * (float)Math.Sin(RadtoGrad(Angle)) + Point.X) + XOffset;
+			ReturnedValue.Y = (Distance * (float)Math.Cos(RadtoGrad(Angle)) + Point.Y) + YOffset;
 			return ReturnedValue;
 		}
 
@@ -212,32 +212,32 @@ namespace Tremor
 				DistortNumber *= 10;
 				Counter++;
 			}
-			return Float + (((float)(Main.rand.Next(0, (int)DistortNumber + 1)) / (float)(Math.Pow(10, Counter))) * ((Main.rand.Next(2) == 0) ? -1 : 1));
+			return Float + ((Main.rand.Next(0, (int)DistortNumber + 1) / (float)(Math.Pow(10, Counter))) * ((Main.rand.Next(2) == 0) ? -1 : 1));
 		}
 
 		public static void Explode(int index, int sizeX, int sizeY, ExtraAction visualAction = null)
 		{
-			Terraria.Projectile projectile = Main.projectile[index];
+			Projectile projectile = Main.projectile[index];
 			if (!projectile.active)
 			{
 				return;
 			}
 			projectile.tileCollide = false;
 			projectile.alpha = 255;
-			projectile.position.X = projectile.position.X + (float)(projectile.width / 2);
-			projectile.position.Y = projectile.position.Y + (float)(projectile.height / 2);
+			projectile.position.X = projectile.position.X + projectile.width / 2;
+			projectile.position.Y = projectile.position.Y + projectile.height / 2;
 			projectile.width = sizeX;
 			projectile.height = sizeY;
-			projectile.position.X = projectile.position.X - (float)(projectile.width / 2);
-			projectile.position.Y = projectile.position.Y - (float)(projectile.height / 2);
+			projectile.position.X = projectile.position.X - projectile.width / 2;
+			projectile.position.Y = projectile.position.Y - projectile.height / 2;
 			projectile.Damage();
 			Main.projectileIdentity[projectile.owner, projectile.identity] = -1;
-			projectile.position.X = projectile.position.X + (float)(projectile.width / 2);
-			projectile.position.Y = projectile.position.Y + (float)(projectile.height / 2);
-			projectile.width = (int)((float)sizeX / 5.8f);
-			projectile.height = (int)((float)sizeY / 5.8f);
-			projectile.position.X = projectile.position.X - (float)(projectile.width / 2);
-			projectile.position.Y = projectile.position.Y - (float)(projectile.height / 2);
+			projectile.position.X = projectile.position.X + projectile.width / 2;
+			projectile.position.Y = projectile.position.Y + projectile.height / 2;
+			projectile.width = (int)(sizeX / 5.8f);
+			projectile.height = (int)(sizeY / 5.8f);
+			projectile.position.X = projectile.position.X - projectile.width / 2;
+			projectile.position.Y = projectile.position.Y - projectile.height / 2;
 			if (visualAction == null)
 			{
 				for (int i = 0; i < 30; i++)
@@ -292,11 +292,11 @@ namespace Tremor
 
 		public static void DrawAroundOrigin(int index, Color lightColor)
 		{
-			Terraria.Projectile projectile = Main.projectile[index];
+			Projectile projectile = Main.projectile[index];
 			Texture2D texture2D = Main.projectileTexture[projectile.type];
-			Vector2 origin = new Vector2((float)texture2D.Width * 0.5f, (float)(texture2D.Height / Main.projFrames[projectile.type]) * 0.5f);
+			Vector2 origin = new Vector2(texture2D.Width * 0.5f, texture2D.Height / Main.projFrames[projectile.type] * 0.5f);
 			SpriteEffects effects = (projectile.direction == -1) ? SpriteEffects.FlipHorizontally : SpriteEffects.None;
-			Main.spriteBatch.Draw(texture2D, projectile.Center - Main.screenPosition, new Rectangle?(Utils.Frame(texture2D, 1, Main.projFrames[projectile.type], 0, projectile.frame)), lightColor, projectile.rotation, origin, projectile.scale, effects, 0f);
+			Main.spriteBatch.Draw(texture2D, projectile.Center - Main.screenPosition, texture2D.Frame(1, Main.projFrames[projectile.type], 0, projectile.frame), lightColor, projectile.rotation, origin, projectile.scale, effects, 0f);
 		}
 
 		public static void DropItem(Rectangle Area, params Drop[] Drops)
@@ -310,7 +310,7 @@ namespace Tremor
 					Sh.Add(drop);
 			});
 			Drop DroppedItem = Sh[Main.rand.Next(Sh.Count)];
-			Item.NewItem((int)Area.X, (int)Area.Y, Area.Height, Area.Width, DroppedItem.Item, DroppedItem.Count);
+			Item.NewItem(Area.X, Area.Y, Area.Height, Area.Width, DroppedItem.Item, DroppedItem.Count);
 		}
 
 	}

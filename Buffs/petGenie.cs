@@ -1,4 +1,5 @@
-﻿using Terraria;
+﻿using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.ModLoader;
 
 namespace Tremor.Buffs
@@ -11,7 +12,7 @@ namespace Tremor.Buffs
 		{
 			DisplayName.SetDefault("Genie");
 			Description.SetDefault("A Genie follows you and shows location of enemies");
-			Main.buffNoTimeDisplay[this.Type] = true;
+			Main.buffNoTimeDisplay[Type] = true;
 		}
 
 		public override void Update(Player player, ref int buffIndex)
@@ -20,7 +21,7 @@ namespace Tremor.Buffs
 			{
 				if (npc.friendly || npc.lifeMax <= 5 || !npc.active || npc.Distance(player.position) > 750)
 					continue;
-				Lighting.AddLight(npc.Center, new Microsoft.Xna.Framework.Vector3(0, 0, 1));
+				Lighting.AddLight(npc.Center, new Vector3(0, 0, 1));
 			}
 			if (MyDzhin == -1)
 				MyDzhin = Projectile.NewProjectile(player.Center.X, player.Center.Y, 0, 0, mod.ProjectileType("projGenie"), 0, 0, 0);

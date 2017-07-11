@@ -53,10 +53,10 @@ namespace Tremor.Ice.Mobs
 				projectile.localAI[1] = value;
 			}
 		}
-		public float angleSpeed = 0f;
-		public float lengthSpeed = 0f;
+		public float angleSpeed;
+		public float lengthSpeed;
 		public int arm = -1;
-		private int netUpdateCounter = 0;
+		private int netUpdateCounter;
 		private const float maxAngleSpeed = 0.1f;
 		private const float angleBuffer = (float)Math.PI / 12f;
 		public const float minLength = 80f;

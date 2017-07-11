@@ -1,8 +1,8 @@
-﻿using Terraria.ID;
-using Terraria;
-using Terraria.ModLoader;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Terraria;
+using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace Tremor.NPCs
 {
@@ -32,7 +32,7 @@ namespace Tremor.NPCs
 
 		const float MaxDist = 250f;
 		bool FirstAI = true;
-		int timer = 0;
+		int timer;
 		public override void AI()
 		{
 			timer++;

@@ -1,11 +1,10 @@
-using System;
 using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.DataStructures;
+using Terraria.Enums;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
-using Terraria.Enums;
-using Terraria.DataStructures;
 
 namespace Tremor.Ice.Items.Furniture
 {
@@ -21,10 +20,10 @@ namespace Tremor.Ice.Items.Furniture
 			Main.tileLavaDeath[Type] = true;
 			TileObjectData.newTile.CopyFrom(TileObjectData.Style3x2);
 			TileObjectData.newTile.Origin = new Point16(1, 1);
-			TileObjectData.newTile.CoordinateHeights = new int[] { 16, 16 };
-			TileObjectData.newTile.HookCheck = new PlacementHook(new Func<int, int, int, int, int, int>(Chest.FindEmptyChest), -1, 0, true);
-			TileObjectData.newTile.HookPostPlaceMyPlayer = new PlacementHook(new Func<int, int, int, int, int, int>(Chest.AfterPlacement_Hook), -1, 0, false);
-			TileObjectData.newTile.AnchorInvalidTiles = new int[] { 127 };
+			TileObjectData.newTile.CoordinateHeights = new[] { 16, 16 };
+			TileObjectData.newTile.HookCheck = new PlacementHook(Chest.FindEmptyChest, -1, 0, true);
+			TileObjectData.newTile.HookPostPlaceMyPlayer = new PlacementHook(Chest.AfterPlacement_Hook, -1, 0, false);
+			TileObjectData.newTile.AnchorInvalidTiles = new[] { 127 };
 			TileObjectData.newTile.StyleHorizontal = true;
 			TileObjectData.newTile.LavaDeath = false;
 			TileObjectData.newTile.AnchorBottom = new AnchorData(AnchorType.SolidTile | AnchorType.SolidWithTop | AnchorType.SolidSide, TileObjectData.newTile.Width, 0);
@@ -44,10 +43,10 @@ namespace Tremor.Ice.Items.Furniture
 			{
 				Main.CancelClothesWindow(true);
 				Main.mouseRightRelease = false;
-				int left = (int)(Main.tile[Player.tileTargetX, Player.tileTargetY].frameX / 18);
+				int left = Main.tile[Player.tileTargetX, Player.tileTargetY].frameX / 18;
 				left %= 3;
 				left = Player.tileTargetX - left;
-				int top = Player.tileTargetY - (int)(Main.tile[Player.tileTargetX, Player.tileTargetY].frameY / 18);
+				int top = Player.tileTargetY - Main.tile[Player.tileTargetX, Player.tileTargetY].frameY / 18;
 				if (player.sign > -1)
 				{
 					Main.PlaySound(11, -1, -1, 1);
@@ -130,7 +129,7 @@ namespace Tremor.Ice.Items.Furniture
 			Tile tile = Main.tile[Player.tileTargetX, Player.tileTargetY];
 			int left = Player.tileTargetX;
 			int top = Player.tileTargetY;
-			left -= (int)(tile.frameX % 54 / 18);
+			left -= tile.frameX % 54 / 18;
 			if (tile.frameY % 36 != 0)
 			{
 				top--;
@@ -172,7 +171,7 @@ namespace Tremor.Ice.Items.Furniture
 			Tile tile = Main.tile[Player.tileTargetX, Player.tileTargetY];
 			int left = Player.tileTargetX;
 			int top = Player.tileTargetY;
-			left -= (int)(tile.frameX % 54 / 18);
+			left -= tile.frameX % 54 / 18;
 			if (tile.frameY % 36 != 0)
 			{
 				top--;

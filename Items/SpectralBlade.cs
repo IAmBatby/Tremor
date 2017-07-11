@@ -1,7 +1,6 @@
 using Terraria.ID;
 using Terraria.ModLoader;
 
-
 namespace Tremor.Items
 {
 	public class SpectralBlade : ModItem

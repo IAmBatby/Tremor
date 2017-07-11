@@ -1,7 +1,7 @@
-using Terraria.ID;
 using System;
 using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace Tremor.NPCs
@@ -32,13 +32,13 @@ namespace Tremor.NPCs
 
 		public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
 		{
-			npc.lifeMax = (int)(npc.lifeMax * 1);
-			npc.damage = (int)(npc.damage * 1);
+			npc.lifeMax = npc.lifeMax * 1;
+			npc.damage = npc.damage * 1;
 		}
 
 		int timer = 0;
 		int TimeToAnimation = 50;
-		int Frame = 0;
+		int Frame;
 		public override void AI()
 		{
 			if ((int)(Main.time % 180) == 0)
@@ -69,7 +69,7 @@ namespace Tremor.NPCs
 		{
 			for (int Num = 0; Num < 10; Num++)
 			{
-				int dust = Dust.NewDust(new Vector2((float)npc.position.X, (float)npc.position.Y), npc.width, npc.height, 68, npc.velocity.X + Main.rand.Next(-10, 10), npc.velocity.Y + Main.rand.Next(-10, 10), 5, npc.color, 2.6f);
+				int dust = Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, 68, npc.velocity.X + Main.rand.Next(-10, 10), npc.velocity.Y + Main.rand.Next(-10, 10), 5, npc.color, 2.6f);
 				Main.dust[dust].noGravity = true;
 			}
 			npc.position.X = (Main.player[npc.target].position.X - 500) + Main.rand.Next(1000);
@@ -92,14 +92,14 @@ namespace Tremor.NPCs
 
 		public override void NPCLoot()
 		{
-			if (Main.invasionType == Terraria.ID.InvasionID.GoblinArmy)
+			if (Main.invasionType == InvasionID.GoblinArmy)
 			{
 				Main.invasionProgress++;
 			}
 			if (Main.netMode != 1)
 			{
-				int centerX = (int)(npc.position.X + (float)(npc.width / 2)) / 16;
-				int centerY = (int)(npc.position.Y + (float)(npc.height / 2)) / 16;
+				int centerX = (int)(npc.position.X + npc.width / 2) / 16;
+				int centerY = (int)(npc.position.Y + npc.height / 2) / 16;
 				int halfLength = npc.width / 2 / 16 + 1;
 
 				if (Main.rand.Next(50) == 0)
@@ -113,7 +113,7 @@ namespace Tremor.NPCs
 		{
 			int x = spawnInfo.spawnTileX;
 			int y = spawnInfo.spawnTileY;
-			int tile = (int)Main.tile[x, y].type;
+			int tile = Main.tile[x, y].type;
 			return (NPC.AnyNPCs(26) || NPC.AnyNPCs(27) || NPC.AnyNPCs(28) || NPC.AnyNPCs(29)) && Main.hardMode && y < Main.worldSurface ? 0.08f : 0f;
 		}
 	}

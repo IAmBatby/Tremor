@@ -66,7 +66,7 @@ namespace Tremor.Projectiles
 					projectile.frameCounter = 0;
 					projectile.frame++;
 				}
-				if (projectile.ai[0] >= (float)(Main.projFrames[projectile.type] * projectile.MaxUpdates * 3))
+				if (projectile.ai[0] >= Main.projFrames[projectile.type] * projectile.MaxUpdates * 3)
 				{
 					projectile.Kill();
 				}
@@ -95,7 +95,6 @@ namespace Tremor.Projectiles
 					projectile.ai[0] = 0f;
 					projectile.ai[1] = -1f;
 					projectile.netUpdate = true;
-					return;
 				}
 			}
 		}

@@ -15,7 +15,7 @@ namespace Tremor.ZombieEvent.Tiles
         Main.tileLavaDeath[Type] = true;
         TileObjectData.newTile.CopyFrom(TileObjectData.Style1x1);
         TileObjectData.newTile.Height = 1;
-        TileObjectData.newTile.CoordinateHeights = new int[]{16};
+        TileObjectData.newTile.CoordinateHeights = new[]{16};
         TileObjectData.newTile.StyleHorizontal = true;
         TileObjectData.newTile.StyleWrapLimit = 111;
         TileObjectData.addTile(Type);

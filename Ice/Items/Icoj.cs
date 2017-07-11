@@ -10,7 +10,7 @@ namespace Tremor.Ice.Items
 		{
 			DisplayName.SetDefault("Ice Proj");
 		}
-		float rotationProj = 0.0f;
+		float rotationProj;
 		public override void SetDefaults()
 		{
 			projectile.width = 92;
@@ -30,7 +30,7 @@ namespace Tremor.Ice.Items
 			//aiType = ProjectileID.Bullet;
 		}
 
-		int timer = 0;
+		int timer;
 		public override void AI()
 		{
 			timer++;

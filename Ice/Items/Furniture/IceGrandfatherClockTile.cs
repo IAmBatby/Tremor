@@ -14,7 +14,7 @@ namespace Tremor.Ice.Items.Furniture
 			Main.tileLavaDeath[Type] = true;
 			TileObjectData.newTile.CopyFrom(TileObjectData.Style2xX);
 			TileObjectData.newTile.Height = 5;
-			TileObjectData.newTile.CoordinateHeights = new int[] { 16, 16, 16, 16, 16 };
+			TileObjectData.newTile.CoordinateHeights = new[] { 16, 16, 16, 16, 16 };
 			TileObjectData.newTile.StyleHorizontal = true;
 			TileObjectData.newTile.StyleWrapLimit = 36;
 			TileObjectData.addTile(Type);

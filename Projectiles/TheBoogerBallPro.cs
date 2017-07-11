@@ -50,7 +50,6 @@ namespace Tremor.Projectiles
 																									{
 																										projectile.alpha = 255;
 																										projectile.Kill();
-																										return;
 																									}
 																								}
 		

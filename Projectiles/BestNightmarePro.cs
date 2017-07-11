@@ -1,3 +1,4 @@
+using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
@@ -30,7 +31,7 @@ namespace Tremor.Projectiles
 			for (int k = 0; k < projectile.oldPos.Length; k++)
 			{
 				Vector2 drawPos = projectile.oldPos[k] - Main.screenPosition + drawOrigin + new Vector2(0f, projectile.gfxOffY);
-				Color color = projectile.GetAlpha(lightColor) * ((float)(projectile.oldPos.Length - k) / (float)projectile.oldPos.Length);
+				Color color = projectile.GetAlpha(lightColor) * ((projectile.oldPos.Length - k) / (float)projectile.oldPos.Length);
 				spriteBatch.Draw(Main.projectileTexture[projectile.type], drawPos, null, color, projectile.rotation, drawOrigin, projectile.scale, SpriteEffects.None, 0f);
 			}
 			return true;
@@ -38,7 +39,7 @@ namespace Tremor.Projectiles
 
 		public override void AI()
 		{
-			projectile.rotation = (float)System.Math.Atan2((double)projectile.velocity.Y, (double)projectile.velocity.X) + 1.57f;
+			projectile.rotation = (float)Math.Atan2(projectile.velocity.Y, projectile.velocity.X) + 1.57f;
 			if (Main.rand.Next(1) == 0)
 			{
 				Dust.NewDust(projectile.position + projectile.velocity, projectile.width, projectile.height, 62, projectile.velocity.X * 0.9f, projectile.velocity.Y * 0.9f);
@@ -93,7 +94,7 @@ namespace Tremor.Projectiles
 			{
 				Vector2 vector64 = vector63 * -1f;
 				vector64.Normalize();
-				vector64 *= (float)Main.rand.Next(5, 25) * 0.9f;
+				vector64 *= Main.rand.Next(5, 25) * 0.9f;
 
 				Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, vector64.X, vector64.Y, mod.ProjectileType("ChaosStarPro"), projectile.damage / 3, projectile.knockBack, projectile.owner, -10f, 0f);
 			}

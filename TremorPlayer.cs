@@ -5,9 +5,8 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.DataStructures;
-using Terraria.ModLoader;
 using Terraria.Graphics.Shaders;
-
+using Terraria.ModLoader;
 
 namespace Tremor
 {
@@ -15,61 +14,61 @@ namespace Tremor
 
 	public class TremorPlayer : ModPlayer
 	{
-		public bool heartAmulet = false;
-		public bool ZoneRuins = false;
-		public int healHurt = 0;
-		public bool dFear = false;
-		public bool creeperMinion = false;
-		public bool corruptorMinion = false;
-		public bool hungryMinion = false;
-		public bool meteorMinion = false;
-		public bool jellyfishMinion = false;
-		public bool cyberMinion = false;
-		public bool blueSakuraMinion = false;
-		public bool goblinMinion = false;
-		public bool shadowMinion = false;
-		public bool AnnoyingDog = false;
-		public bool vultureMinion = false;
-		public bool skeletonMinion = false;
-		public bool goldenWhale = false;
-		public bool vortexBee = false;
-		public bool nebulaJellyfish = false;
-		public bool solarMeteor = false;
-		public bool stardustSquid = false;
-		public bool mudDoll = false;
+		public bool heartAmulet;
+		public bool ZoneRuins;
+		public int healHurt;
+		public bool dFear;
+		public bool creeperMinion;
+		public bool corruptorMinion;
+		public bool hungryMinion;
+		public bool meteorMinion;
+		public bool jellyfishMinion;
+		public bool cyberMinion;
+		public bool blueSakuraMinion;
+		public bool goblinMinion;
+		public bool shadowMinion;
+		public bool AnnoyingDog;
+		public bool vultureMinion;
+		public bool skeletonMinion;
+		public bool goldenWhale;
+		public bool vortexBee;
+		public bool nebulaJellyfish;
+		public bool solarMeteor;
+		public bool stardustSquid;
+		public bool mudDoll;
 		public bool Irradiated;
-		public bool Brutty = false;
-		public bool quetzalcoatlMinion = false;
-		public bool northWind = false;
-		public bool summonerPower = false;
-		public bool gurdPet = false;
-		public bool ancientVision = false;
-		public bool ZoneGranite = false;
-		public bool ZoneComet = false;
-		public bool whiteSakura = false;
-		public bool petZootaloo = false;
+		public bool Brutty;
+		public bool quetzalcoatlMinion;
+		public bool northWind;
+		public bool summonerPower;
+		public bool gurdPet;
+		public bool ancientVision;
+		public bool ZoneGranite;
+		public bool ZoneComet;
+		public bool whiteSakura;
+		public bool petZootaloo;
 		public bool onHitShadaggers = false;
-		public bool LivingTombstone = false;
-		public bool miniCyber = false;
-		public bool cluster = false;
-		public bool ZoneIce = false;
-		public bool ancientPredator = false;
-		public bool starfishMinion = false;
-		public bool hauntpet = false;
-		public bool crabStaff = false;
-		public bool zombatMinion = false;
-		public bool huskyStaff = false;
-		public bool ruinAltar = false;
-		public bool emeraldy = false;
-		public bool hunterMinion = false;
-		public bool birbStaff = false;
-		public bool warkee = false;
-		public bool shadowArmSF = false;
+		public bool LivingTombstone;
+		public bool miniCyber;
+		public bool cluster;
+		public bool ZoneIce;
+		public bool ancientPredator;
+		public bool starfishMinion;
+		public bool hauntpet;
+		public bool crabStaff;
+		public bool zombatMinion;
+		public bool huskyStaff;
+		public bool ruinAltar;
+		public bool emeraldy;
+		public bool hunterMinion;
+		public bool birbStaff;
+		public bool warkee;
+		public bool shadowArmSF;
 
-		public bool zellariumHead = false;
-		public bool zellariumBody = false;
+		public bool zellariumHead;
+		public bool zellariumBody;
 
-		public bool ZoneTowerNova = false;
+		public bool ZoneTowerNova;
 		public bool NovaMonolith = false;
 
 		public override void UpdateDead()
@@ -130,13 +129,13 @@ namespace Tremor
 									}
 								}
 
-								this.zellariumDash = 10;
+								zellariumDash = 10;
 								player.dashDelay = 0;
 								player.velocity.X = -(float)hitDirection * 2f;
 								player.velocity.Y = -2f;
 								player.immune = true;
 								player.immuneTime = 7;
-								this.zellariumHit = i;
+								zellariumHit = i;
 							}
 						}
 					}
@@ -180,24 +179,24 @@ namespace Tremor
 
 					if (flag2)
 					{
-						player.velocity.X = 25f * (float)num21;
-						Point point3 = (player.Center + new Vector2((float)(num21 * player.width / 2 + 2), player.gravDir * -(float)player.height / 2f + player.gravDir * 2f)).ToTileCoordinates();
-						Point point4 = (player.Center + new Vector2((float)(num21 * player.width / 2 + 2), 0f)).ToTileCoordinates();
+						player.velocity.X = 25f * num21;
+						Point point3 = (player.Center + new Vector2(num21 * player.width / 2 + 2, player.gravDir * -(float)player.height / 2f + player.gravDir * 2f)).ToTileCoordinates();
+						Point point4 = (player.Center + new Vector2(num21 * player.width / 2 + 2, 0f)).ToTileCoordinates();
 						if (WorldGen.SolidOrSlopedTile(point3.X, point3.Y) || WorldGen.SolidOrSlopedTile(point4.X, point4.Y))
 						{
 							player.velocity.X = player.velocity.X / 2f;
 						}
 						player.dashDelay = -1;
-						this.zellariumDash = 15;
+						zellariumDash = 15;
 						for (int num22 = 0; num22 < 100; num22++)
 						{
 							int num23 = Dust.NewDust(new Vector2(player.position.X, player.position.Y), player.width, player.height, 59, 0f, 0f, 100, default(Color), 2f);
 							Dust dust3 = Main.dust[num23];
-							dust3.position.X = dust3.position.X + (float)Main.rand.Next(-5, 6);
+							dust3.position.X = dust3.position.X + Main.rand.Next(-5, 6);
 							Dust dust4 = Main.dust[num23];
-							dust4.position.Y = dust4.position.Y + (float)Main.rand.Next(-5, 6);
+							dust4.position.Y = dust4.position.Y + Main.rand.Next(-5, 6);
 							Main.dust[num23].velocity *= 0.2f;
-							Main.dust[num23].scale *= 1f + (float)Main.rand.Next(20) * 0.01f;
+							Main.dust[num23].scale *= 1f + Main.rand.Next(20) * 0.01f;
 							Main.dust[num23].shader = GameShaders.Armor.GetSecondaryShader(player.shield, player);
 						}
 					}
@@ -219,7 +218,7 @@ namespace Tremor
 						num14 = Dust.NewDust(new Vector2(player.position.X, player.position.Y + (player.height / 2) - 8f), player.width, 16, 59, 0f, 0f, 100, default(Color), 1.4f);
 					}
 					Main.dust[num14].velocity *= 0.1f;
-					Main.dust[num14].scale *= 1f + (float)Main.rand.Next(20) * 0.01f;
+					Main.dust[num14].scale *= 1f + Main.rand.Next(20) * 0.01f;
 					Main.dust[num14].shader = GameShaders.Armor.GetSecondaryShader(player.shoe, player);
 				}
 
@@ -245,7 +244,6 @@ namespace Tremor
 				if (player.velocity.X > 0f)
 				{
 					player.velocity.X = maxSpeed;
-					return;
 				}
 			}
 		}
@@ -323,7 +321,7 @@ namespace Tremor
 			public Vector2 Position;
 			public float Depth;
 		}
-		private TremorPlayer.LightPillar[] _pillars;
+		private LightPillar[] _pillars;
 		private Random _random = new Random();
 
 		public static int[] iceWidth = new int[3];
@@ -459,25 +457,25 @@ namespace Tremor
 			if (onHitShadaggers && Main.rand.Next(4) == 0)
 			{
 				player.petalTimer = 20;
-				if (x < player.position.X + (float)(player.width / 2))
+				if (x < player.position.X + player.width / 2)
 				{
 				}
 				int direction = player.direction;
 				float num = Main.screenPosition.X;
 				if (direction < 0)
 				{
-					num += (float)Main.screenWidth;
+					num += Main.screenWidth;
 				}
 				float num2 = Main.screenPosition.Y;
-				num2 += (float)Main.rand.Next(Main.screenHeight);
+				num2 += Main.rand.Next(Main.screenHeight);
 				Vector2 vector = new Vector2(num, num2);
 				float num3 = x - vector.X;
 				float num4 = y - vector.Y;
-				num3 += (float)Main.rand.Next(-50, 51) * 0.1f;
-				num4 += (float)Main.rand.Next(-50, 51) * 0.1f;
+				num3 += Main.rand.Next(-50, 51) * 0.1f;
+				num4 += Main.rand.Next(-50, 51) * 0.1f;
 				int num5 = 24;
-				float num6 = (float)Math.Sqrt((double)(num3 * num3 + num4 * num4));
-				num6 = (float)num5 / num6;
+				float num6 = (float)Math.Sqrt(num3 * num3 + num4 * num4);
+				num6 = num5 / num6;
 				num3 *= num6;
 				num4 *= num6;
 				Projectile.NewProjectile(num, num2, num3, num4, mod.ProjectileType("ParaxydeKnifePro"), 46, 0f, player.whoAmI, 0f, 0f);

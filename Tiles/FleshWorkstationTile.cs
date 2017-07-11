@@ -13,7 +13,7 @@ namespace Tremor.Tiles
 			Main.tileNoAttach[Type] = true;
 			Main.tileLavaDeath[Type] = true;
 			TileObjectData.newTile.CopyFrom(TileObjectData.Style3x2);
-			TileObjectData.newTile.CoordinateHeights = new int[]{ 16, 16 };
+			TileObjectData.newTile.CoordinateHeights = new[]{ 16, 16 };
 			TileObjectData.addTile(Type);
 		ModTranslation name = CreateMapEntryName();
 		name.SetDefault("Flesh Workstation");				

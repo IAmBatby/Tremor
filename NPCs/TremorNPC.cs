@@ -1,6 +1,7 @@
-using Terraria.ID;
 using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
+using Tremor.Items;
 
 namespace Tremor.NPCs
 {
@@ -460,17 +461,17 @@ namespace Tremor.NPCs
 			{
 				Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("Narsil"));
 			}
-			if (npc.boss == true && !Main.hardMode && Main.rand.Next(5) == 0)
+			if (npc.boss && !Main.hardMode && Main.rand.Next(5) == 0)
 			{
 				Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height,
 					mod.ItemType("HeavenHelmet"));
 			}
-			if (npc.boss == true && !Main.hardMode && Main.rand.Next(5) == 0)
+			if (npc.boss && !Main.hardMode && Main.rand.Next(5) == 0)
 			{
 				Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height,
 					mod.ItemType("HeavenBreastplate"));
 			}
-			if (npc.boss == true && !Main.hardMode && Main.rand.Next(5) == 0)
+			if (npc.boss && !Main.hardMode && Main.rand.Next(5) == 0)
 			{
 				Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height,
 					mod.ItemType("HeavenLeggings"));
@@ -886,12 +887,12 @@ namespace Tremor.NPCs
 					{
 						int i2 = WorldGen.genRand.Next(0, Main.maxTilesX);
 						int j2 = WorldGen.genRand.Next((int)(Main.maxTilesY * .3f), (int)(Main.maxTilesY * .45f));
-						WorldGen.OreRunner(i2, j2, (double)WorldGen.genRand.Next(3, 4), WorldGen.genRand.Next(3, 8), (ushort)mod.TileType("NightmareOreTile"));
+						WorldGen.OreRunner(i2, j2, WorldGen.genRand.Next(3, 4), WorldGen.genRand.Next(3, 8), (ushort)mod.TileType("NightmareOreTile"));
 					}
 
 					for (int k = 0; k < (int)((double)(Main.maxTilesX * Main.maxTilesY) * 6E-05); k++)
 					{
-						float value = (float)((double)k / ((double)(Main.maxTilesX * Main.maxTilesY) * 2E-05));
+						float value = (float)(k / (Main.maxTilesX * Main.maxTilesY * 2E-05));
 						bool flag2 = false;
 						int num = 0;
 						while (!flag2)
@@ -922,7 +923,7 @@ namespace Tremor.NPCs
 		{
 			if (type == NPCID.Merchant && Main.bloodMoon)
 			{
-				shop.item[nextSlot].SetDefaults(mod.ItemType<Items.RedPuzzleFragment>());
+				shop.item[nextSlot].SetDefaults(mod.ItemType<RedPuzzleFragment>());
 				nextSlot++;
 			}
 		}

@@ -21,7 +21,7 @@ namespace Tremor.Tiles
 		ModTranslation name = CreateMapEntryName();
 		name.SetDefault("Divine Forge");		
 	AddMapEntry(new Color(255, 20, 147), name);	
-        adjTiles = new int[]{412,133,16,17,134};
+        adjTiles = new[]{412,133,16,17,134};
     }
 
     public override void ModifyLight(int i, int j, ref float r, ref float g, ref float b)

@@ -16,7 +16,7 @@ namespace Tremor.NovaPillar
 			TileObjectData.newTile.CopyFrom(TileObjectData.Style2xX);
 			TileObjectData.newTile.Height = 3;
 			TileObjectData.newTile.Origin = new Point16(1, 2);
-			TileObjectData.newTile.CoordinateHeights = new int[] { 16, 16, 18 };
+			TileObjectData.newTile.CoordinateHeights = new[] { 16, 16, 18 };
 			TileObjectData.addTile(Type);
 			AddMapEntry(new Color(75, 139, 166));
 			dustType = 1;
@@ -51,7 +51,7 @@ namespace Tremor.NovaPillar
 			Texture2D texture;
 			if (Main.canDrawColorTile(i, j))
 			{
-				texture = Main.tileAltTexture[Type, (int)tile.color()];
+				texture = Main.tileAltTexture[Type, tile.color()];
 			}
 			else
 			{

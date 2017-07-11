@@ -4,7 +4,6 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-
 namespace Tremor.Invasion
 {
 	public class Violeum : ModNPC
@@ -39,8 +38,8 @@ namespace Tremor.Invasion
 		{
 			if (Main.netMode != 1)
 			{
-				int centerX = (int)(npc.position.X + (float)(npc.width / 2)) / 16;
-				int centerY = (int)(npc.position.Y + (float)(npc.height / 2)) / 16;
+				int centerX = (int)(npc.position.X + npc.width / 2) / 16;
+				int centerY = (int)(npc.position.Y + npc.height / 2) / 16;
 				int halfLength = npc.width / 2 / 16 + 1;
 
 				if (Main.expertMode)
@@ -66,7 +65,7 @@ namespace Tremor.Invasion
 			CyberWrathInvasion modPlayer = Main.player[Main.myPlayer].GetModPlayer<CyberWrathInvasion>(mod);
 			int x = spawnInfo.spawnTileX;
 			int y = spawnInfo.spawnTileY;
-			int tile = (int)Main.tile[x, y].type;
+			int tile = Main.tile[x, y].type;
 			return InvasionWorld.CyberWrath && y > Main.worldSurface ? 0.5f : 0f;
 		}
 
@@ -76,7 +75,7 @@ namespace Tremor.Invasion
 			{
 				for (int k = 0; k < 10; k++)
 				{
-					Dust.NewDust(npc.position, npc.width, npc.height, mod.DustType("CyberDust"), 2.5f * (float)hitDirection, -2.5f, 0, default(Color), 0.7f);
+					Dust.NewDust(npc.position, npc.width, npc.height, mod.DustType("CyberDust"), 2.5f * hitDirection, -2.5f, 0, default(Color), 0.7f);
 				}
 
 				CyberWrathInvasion modPlayer = Main.player[Main.myPlayer].GetModPlayer<CyberWrathInvasion>(mod);
@@ -89,14 +88,14 @@ namespace Tremor.Invasion
 
 			for (int k = 0; k < damage / npc.lifeMax * 50.0; k++)
 			{
-				Dust.NewDust(npc.position, npc.width, npc.height, mod.DustType("CyberDust"), (float)hitDirection, -1f, 0, default(Color), 0.7f);
+				Dust.NewDust(npc.position, npc.width, npc.height, mod.DustType("CyberDust"), hitDirection, -1f, 0, default(Color), 0.7f);
 			}
 		}
 
 		public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
 		{
-			npc.lifeMax = (int)(npc.lifeMax * 1);
-			npc.damage = (int)(npc.damage * 1);
+			npc.lifeMax = npc.lifeMax * 1;
+			npc.damage = npc.damage * 1;
 		}
 
 		const string Boss_Left_Hand_Type = "Violeum_LeftArm";
@@ -157,8 +156,8 @@ namespace Tremor.Invasion
 		}
 
 		float customAi1;
-		bool FirstState = false;
-		bool SecondState = false;
+		bool FirstState;
+		bool SecondState;
 		public override void AI()
 		{
 			if (npc.life > npc.lifeMax / 2)
@@ -215,75 +214,75 @@ namespace Tremor.Invasion
 				}
 
 				int num60;
-				this.npc.TargetClosest(true);
+				npc.TargetClosest(true);
 
-				if (Main.player[this.npc.target].position.Y - 150 > this.npc.position.Y)
+				if (Main.player[npc.target].position.Y - 150 > npc.position.Y)
 				{
-					this.npc.directionY = 1;
+					npc.directionY = 1;
 				}
 				else
 				{
-					this.npc.directionY = -1;
+					npc.directionY = -1;
 				}
 
-				if (this.npc.direction == -1 && this.npc.velocity.X > -2f)
+				if (npc.direction == -1 && npc.velocity.X > -2f)
 				{
-					this.npc.velocity.X = this.npc.velocity.X - 0.4f;
-					if (this.npc.velocity.X > 2f)
+					npc.velocity.X = npc.velocity.X - 0.4f;
+					if (npc.velocity.X > 2f)
 					{
-						this.npc.velocity.X = this.npc.velocity.X - 0.4f;
+						npc.velocity.X = npc.velocity.X - 0.4f;
 					}
 					else
 					{
-						if (this.npc.velocity.X > 0f)
+						if (npc.velocity.X > 0f)
 						{
-							this.npc.velocity.X = this.npc.velocity.X + 0.08f;
+							npc.velocity.X = npc.velocity.X + 0.08f;
 						}
 					}
-					if (this.npc.velocity.X < -2f)
+					if (npc.velocity.X < -2f)
 					{
-						this.npc.velocity.X = -2f;
+						npc.velocity.X = -2f;
 					}
 				}
 				else
 				{
-					if (this.npc.direction == 1 && this.npc.velocity.X < 4f)
+					if (npc.direction == 1 && npc.velocity.X < 4f)
 					{
-						this.npc.velocity.X = this.npc.velocity.X + 0.1f;
-						if (this.npc.velocity.X < -2f)
+						npc.velocity.X = npc.velocity.X + 0.1f;
+						if (npc.velocity.X < -2f)
 						{
-							this.npc.velocity.X = this.npc.velocity.X + 0.1f;
+							npc.velocity.X = npc.velocity.X + 0.1f;
 						}
 						else
 						{
-							if (this.npc.velocity.X < 0f)
+							if (npc.velocity.X < 0f)
 							{
-								this.npc.velocity.X = this.npc.velocity.X - 0.08f;
+								npc.velocity.X = npc.velocity.X - 0.08f;
 							}
 						}
-						if (this.npc.velocity.X > 2f)
+						if (npc.velocity.X > 2f)
 						{
-							this.npc.velocity.X = 2f;
+							npc.velocity.X = 2f;
 						}
 					}
 				}
-				if (this.npc.directionY == -1 && (double)this.npc.velocity.Y > -1.5)
+				if (npc.directionY == -1 && npc.velocity.Y > -1.5)
 				{
-					this.npc.velocity.Y = this.npc.velocity.Y - 0.08f;
+					npc.velocity.Y = npc.velocity.Y - 0.08f;
 
-					if ((double)this.npc.velocity.Y < -1.5)
+					if (npc.velocity.Y < -1.5)
 					{
-						this.npc.velocity.Y = -1.5f;
+						npc.velocity.Y = -1.5f;
 					}
 				}
 				else
 				{
-					if (this.npc.directionY == 1 && (double)this.npc.velocity.Y < 1.5)
+					if (npc.directionY == 1 && npc.velocity.Y < 1.5)
 					{
-						this.npc.velocity.Y = this.npc.velocity.Y + 0.08f;
-						if ((double)this.npc.velocity.Y > 1.5)
+						npc.velocity.Y = npc.velocity.Y + 0.08f;
+						if (npc.velocity.Y > 1.5)
 						{
-							this.npc.velocity.Y = 1.5f;
+							npc.velocity.Y = 1.5f;
 						}
 					}
 				}
@@ -300,13 +299,13 @@ namespace Tremor.Invasion
 						if ((int)Main.time % 40 < 1)
 							for (int i = 0; i < 3; i++)
 							{
-								j += (float)2;
+								j += 2;
 								m = (float)Math.Sin(j) * 25f;
 								n = (float)Math.Cos(j) * 25f;
 								Main.PlaySound(2, (int)npc.position.X, (int)npc.position.Y, 8);
 								int damage = 70,
 								type = mod.ProjectileType("CyberLaserBat");
-								int num56 = Projectile.NewProjectile(this.npc.position.X + 20, this.npc.position.Y + 50, m, n, type, damage, 0f, Main.myPlayer);
+								int num56 = Projectile.NewProjectile(npc.position.X + 20, npc.position.Y + 50, m, n, type, damage, 0f, Main.myPlayer);
 								Main.projectile[num56].timeLeft = 600;
 							}
 					}

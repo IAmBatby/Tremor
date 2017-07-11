@@ -55,7 +55,6 @@ namespace Tremor.Projectiles
 				if (projectile.wet && !projectile.lavaWet)
 				{
 					projectile.Kill();
-					return;
 				}
 			}
 		}

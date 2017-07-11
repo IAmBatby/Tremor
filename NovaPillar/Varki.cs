@@ -1,7 +1,7 @@
-﻿using Terraria.ID;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace Tremor.NovaPillar
@@ -16,9 +16,9 @@ namespace Tremor.NovaPillar
 
 		//Int variables
 		int AnimationRate = 4;
-		int CountFrame = 0;
+		int CountFrame;
 		int TimeToAnimation = 4;
-		int Timer = 0;
+		int Timer;
 		public override void SetDefaults()
 		{
 			npc.lifeMax = 750;
@@ -36,19 +36,19 @@ namespace Tremor.NovaPillar
 
 		public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
 		{
-			npc.lifeMax = (int)(npc.lifeMax * 1);
-			npc.damage = (int)(npc.damage * 1);
+			npc.lifeMax = npc.lifeMax * 1;
+			npc.damage = npc.damage * 1;
 		}
 
 		public override void AI()
 		{
 			npc.spriteDirection = npc.direction;
-			this.Timer++;
-			if (this.Timer == 2000)
+			Timer++;
+			if (Timer == 2000)
 			{
 				npc.Transform(mod.NPCType("Youwarkee2"));
 			}
-			this.NovaAnimation();
+			NovaAnimation();
 		}
 
 		public override void PostDraw(SpriteBatch spriteBatch, Color drawColor)
@@ -78,10 +78,10 @@ namespace Tremor.NovaPillar
 				Gore.NewGore(npc.Top, npc.velocity * hitDirection, mod.GetGoreSlot("Gores/VarkiGore3"));
 				for (int k = 0; k < 7; k++)
 				{
-					Vector2 Vector = new Vector2((float)Main.rand.Next(-100, 101), (float)Main.rand.Next(-100, 101));
+					Vector2 Vector = new Vector2(Main.rand.Next(-100, 101), Main.rand.Next(-100, 101));
 					Vector.Normalize();
-					Vector *= (float)Main.rand.Next(10, 201) * 0.01f;
-					int i = Projectile.NewProjectile(npc.position.X, npc.position.Y, Vector.X, Vector.Y, mod.ProjectileType("NovaAlchemistCloud"), 20, 1f, Main.myPlayer, 0f, (float)Main.rand.Next(-45, 1));
+					Vector *= Main.rand.Next(10, 201) * 0.01f;
+					int i = Projectile.NewProjectile(npc.position.X, npc.position.Y, Vector.X, Vector.Y, mod.ProjectileType("NovaAlchemistCloud"), 20, 1f, Main.myPlayer, 0f, Main.rand.Next(-45, 1));
 					Main.projectile[i].friendly = false;
 				}
 			}
@@ -89,12 +89,12 @@ namespace Tremor.NovaPillar
 
 		void NovaAnimation()
 		{
-			if (--this.TimeToAnimation <= 0)
+			if (--TimeToAnimation <= 0)
 			{
-				if (++this.CountFrame > 2)
-					this.CountFrame = 1;
-				this.TimeToAnimation = this.AnimationRate;
-				npc.frame = this.GetFrame(this.CountFrame + 0);
+				if (++CountFrame > 2)
+					CountFrame = 1;
+				TimeToAnimation = AnimationRate;
+				npc.frame = GetFrame(CountFrame + 0);
 			}
 		}
 

@@ -35,10 +35,10 @@ namespace Tremor.Projectiles.Alchemic.Blasts
         {
                             if (projectile.scale > 0.85f)
                             {
-                                    Vector2 valuekok = new Vector2((float)Main.rand.Next(-100, 101), (float)Main.rand.Next(-100, 101));
+                                    Vector2 valuekok = new Vector2(Main.rand.Next(-100, 101), Main.rand.Next(-100, 101));
                                     valuekok.Normalize();
-                                    valuekok *= (float)Main.rand.Next(10, 201) * 0.01f;
-                                    int proj = Projectile.NewProjectile(projectile.position.X, projectile.position.Y, valuekok.X, valuekok.Y, mod.ProjectileType("ClusterBlastPro"), projectile.damage, 0.8f, projectile.owner, 2f, (float)Main.rand.Next(-45, 45));
+                                    valuekok *= Main.rand.Next(10, 201) * 0.01f;
+                                    int proj = Projectile.NewProjectile(projectile.position.X, projectile.position.Y, valuekok.X, valuekok.Y, mod.ProjectileType("ClusterBlastPro"), projectile.damage, 0.8f, projectile.owner, 2f, Main.rand.Next(-45, 45));
                                     Main.projectile[proj].scale = 0.8f;
                             }
         }

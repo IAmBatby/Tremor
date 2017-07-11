@@ -1,7 +1,7 @@
-using Terraria;
 using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -35,7 +35,7 @@ namespace Tremor.NPCs.AndasBoss
 		}
 
 		int AnimationRate = 6;
-		int CurrentFrame = 0;
+		int CurrentFrame;
 		int TimeToAnimation = 6;
 
 		Rectangle GetFrame(int Number)
@@ -57,20 +57,20 @@ namespace Tremor.NPCs.AndasBoss
 			float acceleration = 0.011f;
 			npc.TargetClosest(true);
 			Vector2 center = npc.Center;
-			float deltaX = Main.player[npc.target].position.X + (float)(Main.player[npc.target].width / 2) - center.X;
-			float deltaY = Main.player[npc.target].position.Y + (float)(Main.player[npc.target].height / 2) - center.Y;
-			float distance = (float)Math.Sqrt((double)deltaX * (double)deltaX + (double)deltaY * (double)deltaY);
+			float deltaX = Main.player[npc.target].position.X + Main.player[npc.target].width / 2 - center.X;
+			float deltaY = Main.player[npc.target].position.Y + Main.player[npc.target].height / 2 - center.Y;
+			float distance = (float)Math.Sqrt(deltaX * (double)deltaX + deltaY * (double)deltaY);
 			npc.ai[1] += 1f;
-			if ((double)npc.ai[1] > 600.0)
+			if (npc.ai[1] > 600.0)
 			{
 				acceleration *= 8f;
 				velMax = 4f;
-				if ((double)npc.ai[1] > 650.0)
+				if (npc.ai[1] > 650.0)
 				{
 					npc.ai[1] = 0f;
 				}
 			}
-			else if ((double)distance < 250.0)
+			else if (distance < 250.0)
 			{
 				npc.ai[0] += 0.9f;
 				if (npc.ai[0] > 0f)
@@ -94,17 +94,17 @@ namespace Tremor.NPCs.AndasBoss
 					npc.ai[0] = -200f;
 				}
 			}
-			if ((double)distance > 350.0)
+			if (distance > 350.0)
 			{
 				velMax = 5f;
 				acceleration = 0.3f;
 			}
-			else if ((double)distance > 300.0)
+			else if (distance > 300.0)
 			{
 				velMax = 3f;
 				acceleration = 0.2f;
 			}
-			else if ((double)distance > 250.0)
+			else if (distance > 250.0)
 			{
 				velMax = 1.5f;
 				acceleration = 0.1f;
@@ -114,8 +114,8 @@ namespace Tremor.NPCs.AndasBoss
 			float velLimitY = deltaY * stepRatio;
 			if (Main.player[npc.target].dead)
 			{
-				velLimitX = (float)((double)((float)npc.direction * velMax) / 2.0);
-				velLimitY = (float)((double)(-(double)velMax) / 2.0);
+				velLimitX = (float)(npc.direction * velMax / 2.0);
+				velLimitY = (float)(-(double)velMax / 2.0);
 			}
 			if (npc.velocity.X < velLimitX)
 			{
@@ -133,15 +133,15 @@ namespace Tremor.NPCs.AndasBoss
 			{
 				npc.velocity.Y = npc.velocity.Y - acceleration;
 			}
-			if ((double)velLimitX > 0.0)
+			if (velLimitX > 0.0)
 			{
 				npc.spriteDirection = -1;
-				npc.rotation = (float)Math.Atan2((double)velLimitY, (double)velLimitX);
+				npc.rotation = (float)Math.Atan2(velLimitY, velLimitX);
 			}
-			if ((double)velLimitX < 0.0)
+			if (velLimitX < 0.0)
 			{
 				npc.spriteDirection = 1;
-				npc.rotation = (float)Math.Atan2((double)velLimitY, (double)velLimitX) + 3.14f;
+				npc.rotation = (float)Math.Atan2(velLimitY, velLimitX) + 3.14f;
 			}
 			Player target = Main.player[npc.target];
 			int distance2 = (int)Math.Sqrt((npc.Center.X - target.Center.X) * (npc.Center.X - target.Center.X) + (npc.Center.Y - target.Center.Y) * (npc.Center.Y - target.Center.Y));
@@ -149,15 +149,15 @@ namespace Tremor.NPCs.AndasBoss
 			{
 				float num867 = 6f;
 				int num869 = mod.ProjectileType("SpiritFire");
-				Vector2 vector86 = new Vector2(npc.position.X + (float)npc.width * 0.5f, npc.position.Y + (float)npc.height * 0.5f);
-				float num864 = Main.player[npc.target].position.X + (float)(Main.player[npc.target].width / 2) - vector86.X;
-				float num865 = Main.player[npc.target].position.Y + (float)(Main.player[npc.target].height / 2) - vector86.Y;
-				float num866 = (float)Math.Sqrt((double)(num864 * num864 + num865 * num865));
+				Vector2 vector86 = new Vector2(npc.position.X + npc.width * 0.5f, npc.position.Y + npc.height * 0.5f);
+				float num864 = Main.player[npc.target].position.X + Main.player[npc.target].width / 2 - vector86.X;
+				float num865 = Main.player[npc.target].position.Y + Main.player[npc.target].height / 2 - vector86.Y;
+				float num866 = (float)Math.Sqrt(num864 * num864 + num865 * num865);
 				num866 = num867 / num866;
 				num864 *= num866;
 				num865 *= num866;
-				num865 += (float)Main.rand.Next(-40, 41) * 0.01f;
-				num864 += (float)Main.rand.Next(-40, 41) * 0.01f;
+				num865 += Main.rand.Next(-40, 41) * 0.01f;
+				num864 += Main.rand.Next(-40, 41) * 0.01f;
 				num865 += npc.velocity.Y * 0.5f;
 				num864 += npc.velocity.X * 0.5f;
 				vector86.X -= num864 * 1f;

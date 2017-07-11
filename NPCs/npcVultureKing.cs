@@ -1,7 +1,7 @@
-﻿using Terraria.ID;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace Tremor.NPCs
@@ -45,12 +45,12 @@ namespace Tremor.NPCs
 
 		#region "Переменные"
 		int TimeToAnimation = AnimationRate;
-		int Frame = 0;
+		int Frame;
 		bool Shoots = true;
 		int TimeToShoot = ShootRate;
-		int State = 0;
+		int State;
 		int TimeToState = StateTime_Flying;
-		bool runAway = false;
+		bool runAway;
 		#endregion
 
 
@@ -220,8 +220,8 @@ namespace Tremor.NPCs
 			}
 			if (Main.netMode != 1)
 			{
-				int centerX = (int)(npc.position.X + (float)(npc.width / 2)) / 16;
-				int centerY = (int)(npc.position.Y + (float)(npc.height / 2)) / 16;
+				int centerX = (int)(npc.position.X + npc.width / 2) / 16;
+				int centerY = (int)(npc.position.Y + npc.height / 2) / 16;
 				int halfLength = npc.width / 2 / 16 + 1;
 
 				if (!Main.expertMode && Main.rand.Next(7) == 0)

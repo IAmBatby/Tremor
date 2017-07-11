@@ -32,8 +32,8 @@ namespace Tremor.NovaPillar
 
 		public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
 		{
-			npc.lifeMax = (int)(npc.lifeMax * 1);
-			npc.damage = (int)(npc.damage * 1);
+			npc.lifeMax = npc.lifeMax * 1;
+			npc.damage = npc.damage * 1;
 		}
 
 		public override float SpawnChance(NPCSpawnInfo spawnInfo)
@@ -65,10 +65,10 @@ namespace Tremor.NovaPillar
 			}
 			for (int k = 0; k < 30; k++)
 			{
-				Vector2 Vector = new Vector2((float)Main.rand.Next(-100, 101), (float)Main.rand.Next(-100, 101));
+				Vector2 Vector = new Vector2(Main.rand.Next(-100, 101), Main.rand.Next(-100, 101));
 				Vector.Normalize();
-				Vector *= (float)Main.rand.Next(10, 201) * 0.01f;
-				int i = Projectile.NewProjectile(npc.position.X, npc.position.Y, Vector.X, Vector.Y, mod.ProjectileType("NovaAlchemistCloud"), 20, 1f, Main.myPlayer, 0f, (float)Main.rand.Next(-45, 1));
+				Vector *= Main.rand.Next(10, 201) * 0.01f;
+				int i = Projectile.NewProjectile(npc.position.X, npc.position.Y, Vector.X, Vector.Y, mod.ProjectileType("NovaAlchemistCloud"), 20, 1f, Main.myPlayer, 0f, Main.rand.Next(-45, 1));
 				Main.projectile[i].friendly = false;
 			}
 		}
@@ -89,10 +89,10 @@ namespace Tremor.NovaPillar
 				}
 				for (int k = 0; k < 30; k++)
 				{
-					Vector2 Vector = new Vector2((float)Main.rand.Next(-100, 101), (float)Main.rand.Next(-100, 101));
+					Vector2 Vector = new Vector2(Main.rand.Next(-100, 101), Main.rand.Next(-100, 101));
 					Vector.Normalize();
-					Vector *= (float)Main.rand.Next(10, 201) * 0.01f;
-					int i = Projectile.NewProjectile(npc.position.X, npc.position.Y, Vector.X, Vector.Y, mod.ProjectileType("NovaAlchemistCloud"), 20, 1f, Main.myPlayer, 0f, (float)Main.rand.Next(-45, 1));
+					Vector *= Main.rand.Next(10, 201) * 0.01f;
+					int i = Projectile.NewProjectile(npc.position.X, npc.position.Y, Vector.X, Vector.Y, mod.ProjectileType("NovaAlchemistCloud"), 20, 1f, Main.myPlayer, 0f, Main.rand.Next(-45, 1));
 					Main.projectile[i].friendly = false;
 				}
 			}

@@ -1,12 +1,12 @@
-﻿using Terraria;
-using System;
+﻿using System;
 using Microsoft.Xna.Framework;
+using Terraria;
 
 namespace Tremor
 {
 	public static class Helper2
 	{
-		public static int GetNearestPlayer(Terraria.NPC npc)
+		public static int GetNearestPlayer(NPC npc)
 		{
 			float NearestPlayerDist = 4815162342f;
 			int NearestPlayer = -1;
@@ -21,7 +21,7 @@ namespace Tremor
 			return NearestPlayer;
 		}
 
-		public static int GetNearestAlivePlayer(Terraria.NPC npc)
+		public static int GetNearestAlivePlayer(NPC npc)
 		{
 			float NearestPlayerDist = 4815162342f;
 			int NearestPlayer = -1;

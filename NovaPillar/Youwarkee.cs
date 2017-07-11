@@ -17,9 +17,9 @@ namespace Tremor.NovaPillar
 
 		//Int variables
 		int AnimationRate = 4;
-		int CountFrame = 0;
+		int CountFrame;
 		int TimeToAnimation = 4;
-		int Timer = 0;
+		int Timer;
 		public override void SetDefaults()
 		{
 			npc.lifeMax = 1750;
@@ -38,19 +38,19 @@ namespace Tremor.NovaPillar
 
 		public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
 		{
-			npc.lifeMax = (int)(npc.lifeMax * 1);
-			npc.damage = (int)(npc.damage * 1);
+			npc.lifeMax = npc.lifeMax * 1;
+			npc.damage = npc.damage * 1;
 		}
 
 		const float Speed = 4f;
 		const float Acceleration = 0.27f;
 
-		int k = 0;
+		int k;
 		public override void AI()
 		{
-			Vector2 StartPosition = new Vector2(npc.position.X + (float)npc.width * 0.5f, npc.position.Y + (float)npc.height * 0.5f);
-			float DirectionX = Main.player[npc.target].position.X + (float)(Main.player[npc.target].width / 2) - StartPosition.X;
-			float DirectionY = (float)(Main.player[npc.target].position.Y + (Main.player[npc.target].height / 2) - 120) - StartPosition.Y;
+			Vector2 StartPosition = new Vector2(npc.position.X + npc.width * 0.5f, npc.position.Y + npc.height * 0.5f);
+			float DirectionX = Main.player[npc.target].position.X + Main.player[npc.target].width / 2 - StartPosition.X;
+			float DirectionY = Main.player[npc.target].position.Y + (Main.player[npc.target].height / 2) - 120 - StartPosition.Y;
 			float Length = (float)Math.Sqrt(DirectionX * DirectionX + DirectionY * DirectionY);
 			float Num = Speed / Length;
 			DirectionX = DirectionX * Num;
@@ -87,17 +87,17 @@ namespace Tremor.NovaPillar
 				npc.velocity.Y = (float)(Math.Sin(AndasRotation) * 15) * -1;
 				npc.netUpdate = true;
 			}
-			this.Timer++;
-			if (this.Timer >= 700)
+			Timer++;
+			if (Timer >= 700)
 			{
-				this.Timer = 0;
+				Timer = 0;
 			}
-			if (NPC.CountNPCS(k) < 3 && this.Timer % 200 == 0)
+			if (NPC.CountNPCS(k) < 3 && Timer % 200 == 0)
 			{
 				k = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("Varki"), 0, npc.whoAmI, 0, 200);
 			}
 			npc.rotation = npc.velocity.X * 0.1f;
-			this.NovaAnimation();
+			NovaAnimation();
 		}
 
 		public override void PostDraw(SpriteBatch spriteBatch, Color drawColor)
@@ -131,12 +131,12 @@ namespace Tremor.NovaPillar
 
 		void NovaAnimation()
 		{
-			if (--this.TimeToAnimation <= 0)
+			if (--TimeToAnimation <= 0)
 			{
-				if (++this.CountFrame > 4)
-					this.CountFrame = 1;
-				this.TimeToAnimation = this.AnimationRate;
-				npc.frame = this.GetFrame(this.CountFrame + 0);
+				if (++CountFrame > 4)
+					CountFrame = 1;
+				TimeToAnimation = AnimationRate;
+				npc.frame = GetFrame(CountFrame + 0);
 			}
 		}
 

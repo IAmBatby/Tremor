@@ -4,7 +4,6 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-
 namespace Tremor.Invasion
 {
 	public class ParadoxSun : ModNPC
@@ -38,12 +37,11 @@ namespace Tremor.Invasion
 			float spawn = 20f;
 			if (InvasionWorld.CyberWrath)
 				return 10000f;
-			else
-				return 0f;
+			return 0f;
 
 			int x = spawnInfo.spawnTileX;
 			int y = spawnInfo.spawnTileY;
-			int tile = (int)Main.tile[x, y].type;
+			int tile = Main.tile[x, y].type;
 			return InvasionWorld.CyberWrath && y > Main.worldSurface ? 1f : 0f;
 		}
 
@@ -53,7 +51,7 @@ namespace Tremor.Invasion
 			{
 				for (int k = 0; k < 10; k++)
 				{
-					Dust.NewDust(npc.position, npc.width, npc.height, mod.DustType("CyberDust"), 2.5f * (float)hitDirection, -2.5f, 0, default(Color), 0.7f);
+					Dust.NewDust(npc.position, npc.width, npc.height, mod.DustType("CyberDust"), 2.5f * hitDirection, -2.5f, 0, default(Color), 0.7f);
 				}
 
 				CyberWrathInvasion modPlayer = Main.player[Main.myPlayer].GetModPlayer<CyberWrathInvasion>(mod);
@@ -66,14 +64,14 @@ namespace Tremor.Invasion
 
 			for (int k = 0; k < damage / npc.lifeMax * 50.0; k++)
 			{
-				Dust.NewDust(npc.position, npc.width, npc.height, mod.DustType("CyberDust"), (float)hitDirection, -1f, 0, default(Color), 0.7f);
+				Dust.NewDust(npc.position, npc.width, npc.height, mod.DustType("CyberDust"), hitDirection, -1f, 0, default(Color), 0.7f);
 			}
 		}
 
 		public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
 		{
-			npc.lifeMax = (int)(npc.lifeMax * 1);
-			npc.damage = (int)(npc.damage * 1);
+			npc.lifeMax = npc.lifeMax * 1;
+			npc.damage = npc.damage * 1;
 		}
 
 		public override void OnHitPlayer(Player player, int damage, bool crit)
@@ -103,18 +101,18 @@ namespace Tremor.Invasion
 			{
 				flag2 = true;
 			}
-			if (npc.position.X == npc.oldPosition.X || npc.ai[3] >= (float)num5 || flag2)
+			if (npc.position.X == npc.oldPosition.X || npc.ai[3] >= num5 || flag2)
 			{
 				npc.ai[3] += 1f;
 			}
 			else
 			{
-				if ((double)Math.Abs(npc.velocity.X) > 0.9 && npc.ai[3] > 0f)
+				if (Math.Abs(npc.velocity.X) > 0.9 && npc.ai[3] > 0f)
 				{
 					npc.ai[3] -= 1f;
 				}
 			}
-			if (npc.ai[3] > (float)(num5 * 10))
+			if (npc.ai[3] > num5 * 10)
 			{
 				npc.ai[3] = 0f;
 			}
@@ -122,12 +120,12 @@ namespace Tremor.Invasion
 			{
 				npc.ai[3] = 0f;
 			}
-			if (npc.ai[3] == (float)num5)
+			if (npc.ai[3] == num5)
 			{
 				npc.netUpdate = true;
 			}
 
-			if (npc.ai[3] < (float)num5)
+			if (npc.ai[3] < num5)
 			{
 				npc.TargetClosest(true);
 			}
@@ -189,16 +187,16 @@ namespace Tremor.Invasion
 			bool flag4 = false;
 			if (npc.velocity.Y == 0f)
 			{
-				int num29 = (int)(npc.position.Y + (float)npc.height + 8f) / 16;
+				int num29 = (int)(npc.position.Y + npc.height + 8f) / 16;
 				int num30 = (int)npc.position.X / 16;
-				int num31 = (int)(npc.position.X + (float)npc.width) / 16;
+				int num31 = (int)(npc.position.X + npc.width) / 16;
 				for (int l = num30; l <= num31; l++)
 				{
 					if (Main.tile[l, num29] == null)
 					{
 						return;
 					}
-					if (Main.tile[l, num29].active() && Main.tileSolid[(int)Main.tile[l, num29].type])
+					if (Main.tile[l, num29].active() && Main.tileSolid[Main.tile[l, num29].type])
 					{
 						flag4 = true;
 						break;
@@ -208,8 +206,8 @@ namespace Tremor.Invasion
 
 			if (flag4)
 			{
-				int num32 = (int)((npc.position.X + (float)(npc.width / 2) + (float)((npc.width / 2 + 6) * npc.direction)) / 16f);
-				int num33 = (int)((npc.position.Y + (float)npc.height - 15f) / 16f);
+				int num32 = (int)((npc.position.X + npc.width / 2 + (npc.width / 2 + 6) * npc.direction) / 16f);
+				int num33 = (int)((npc.position.Y + npc.height - 15f) / 16f);
 				if (Main.tile[num32, num33] == null)
 				{
 					Main.tile[num32, num33] = new Tile();
@@ -245,7 +243,7 @@ namespace Tremor.Invasion
 					npc.ai[3] = 0f;
 					if (npc.ai[2] >= 60f)
 					{
-						npc.velocity.X = 0.5f * (float)(-(float)npc.direction);
+						npc.velocity.X = 0.5f * -(float)npc.direction;
 						npc.ai[1] += 1f;
 						npc.ai[2] = 0f;
 						bool flag5 = false;
@@ -260,7 +258,7 @@ namespace Tremor.Invasion
 							bool flag6 = WorldGen.OpenDoor(num32, num33, npc.direction);
 							if (!flag6)
 							{
-								npc.ai[3] = (float)num5;
+								npc.ai[3] = num5;
 								npc.netUpdate = true;
 							}
 							//if (Main.netMode == 2 && flag6)
@@ -273,9 +271,9 @@ namespace Tremor.Invasion
 
 				if ((npc.velocity.X < 0f && npc.spriteDirection == -1) || (npc.velocity.X > 0f && npc.spriteDirection == 1))
 				{
-					if (Main.tile[num32, num33 - 2].active() && Main.tileSolid[(int)Main.tile[num32, num33 - 2].type])
+					if (Main.tile[num32, num33 - 2].active() && Main.tileSolid[Main.tile[num32, num33 - 2].type])
 					{
-						if ((Main.tile[num32, num33 - 3].active() && Main.tileSolid[(int)Main.tile[num32, num33 - 3].type]))
+						if ((Main.tile[num32, num33 - 3].active() && Main.tileSolid[Main.tile[num32, num33 - 3].type]))
 						{
 							npc.velocity.Y = -8f;
 							npc.netUpdate = true;
@@ -288,21 +286,21 @@ namespace Tremor.Invasion
 					}
 					else
 					{
-						if (Main.tile[num32, num33 - 1].active() && Main.tileSolid[(int)Main.tile[num32, num33 - 1].type])
+						if (Main.tile[num32, num33 - 1].active() && Main.tileSolid[Main.tile[num32, num33 - 1].type])
 						{
 							npc.velocity.Y = -6f;
 							npc.netUpdate = true;
 						}
 						else
 						{
-							if (Main.tile[num32, num33].active() && Main.tileSolid[(int)Main.tile[num32, num33].type])
+							if (Main.tile[num32, num33].active() && Main.tileSolid[Main.tile[num32, num33].type])
 							{
 								npc.velocity.Y = -5f;
 								npc.netUpdate = true;
 							}
 							else
 							{
-								if (npc.directionY < 0 && (!Main.tile[num32, num33 + 1].active() || !Main.tileSolid[(int)Main.tile[num32, num33 + 1].type]) && (!Main.tile[num32 + npc.direction, num33 + 1].active() || !Main.tileSolid[(int)Main.tile[num32 + npc.direction, num33 + 1].type]))
+								if (npc.directionY < 0 && (!Main.tile[num32, num33 + 1].active() || !Main.tileSolid[Main.tile[num32, num33 + 1].type]) && (!Main.tile[num32 + npc.direction, num33 + 1].active() || !Main.tileSolid[Main.tile[num32 + npc.direction, num33 + 1].type]))
 								{
 									npc.velocity.Y = -8f;
 									npc.velocity.X = npc.velocity.X * 1.5f;

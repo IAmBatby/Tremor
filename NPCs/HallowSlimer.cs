@@ -1,7 +1,7 @@
-using Terraria.ID;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace Tremor.NPCs
@@ -37,8 +37,8 @@ namespace Tremor.NPCs
 
 		public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
 		{
-			npc.lifeMax = (int)(npc.lifeMax * 1);
-			npc.damage = (int)(npc.damage * 1);
+			npc.lifeMax = npc.lifeMax * 1;
+			npc.damage = npc.damage * 1;
 		}
 
 
@@ -51,7 +51,7 @@ namespace Tremor.NPCs
 				if (npc.direction == 1) { effect = SpriteEffects.FlipHorizontally; }
 				if (npc.direction == -1) { effect = SpriteEffects.None; }
 				Vector2 drawPos = npc.oldPos[k] - Main.screenPosition;
-				Color color = npc.GetAlpha(lightColor) * ((float)(npc.oldPos.Length - k) / (float)npc.oldPos.Length);
+				Color color = npc.GetAlpha(lightColor) * ((npc.oldPos.Length - k) / (float)npc.oldPos.Length);
 				Rectangle frame = new Rectangle(0, 0, 90, 42);
 				frame.Y += 164 * (k / 60);
 
@@ -68,7 +68,7 @@ namespace Tremor.NPCs
 				NPC.NewNPC((int)npc.position.X, (int)npc.position.Y - 48, 138);
 				for (int k = 0; k < 20; k++)
 				{
-					Dust.NewDust(npc.position, npc.width, npc.height, 151, 2.5f * (float)hitDirection, -2.5f, 0, default(Color), 0.7f);
+					Dust.NewDust(npc.position, npc.width, npc.height, 151, 2.5f * hitDirection, -2.5f, 0, default(Color), 0.7f);
 				}
 			}
 		}
@@ -88,7 +88,7 @@ namespace Tremor.NPCs
 		{
 			int x = spawnInfo.spawnTileX;
 			int y = spawnInfo.spawnTileY;
-			int tile = (int)Main.tile[x, y].type;
+			int tile = Main.tile[x, y].type;
 			return (Tremor.NormalSpawn(spawnInfo) && Tremor.NoZoneAllowWater(spawnInfo)) && spawnInfo.player.ZoneHoly && y < Main.worldSurface ? 0.01f : 0f;
 		}
 	}

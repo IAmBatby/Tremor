@@ -1,7 +1,7 @@
-using Terraria.ID;
 using System;
 using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace Tremor.NPCs
@@ -44,9 +44,9 @@ namespace Tremor.NPCs
 			{
 				for (int k = 0; k < 60; k++)
 				{
-					Dust.NewDust(npc.Center, npc.width, npc.height, 6, 2.5f * (float)hitDirection, -2.5f, 0, default(Color), 0.7f);
-					Dust.NewDust(npc.Center, npc.width, npc.height, 6, 2.5f * (float)hitDirection, -2.5f, 0, default(Color), 0.7f);
-					Dust.NewDust(npc.Center, npc.width, npc.height, 6, 2.5f * (float)hitDirection, -2.5f, 0, default(Color), 0.7f);
+					Dust.NewDust(npc.Center, npc.width, npc.height, 6, 2.5f * hitDirection, -2.5f, 0, default(Color), 0.7f);
+					Dust.NewDust(npc.Center, npc.width, npc.height, 6, 2.5f * hitDirection, -2.5f, 0, default(Color), 0.7f);
+					Dust.NewDust(npc.Center, npc.width, npc.height, 6, 2.5f * hitDirection, -2.5f, 0, default(Color), 0.7f);
 				}
 				Gore.NewGore(npc.Center, npc.velocity, mod.GetGoreSlot("Gores/SWGore1"), 1f);
 				Gore.NewGore(npc.Center, npc.velocity, mod.GetGoreSlot("Gores/SWGore2"), 1f);
@@ -60,8 +60,8 @@ namespace Tremor.NPCs
 
 				for (int k = 0; k < damage / npc.lifeMax * 20.0; k++)
 				{
-					Dust.NewDust(npc.Center, npc.width, npc.height, 226, (float)hitDirection, -2f, 0, default(Color), 0.7f);
-					Dust.NewDust(npc.Center, npc.width, npc.height, 27, (float)hitDirection, -1f, 0, default(Color), 0.7f);
+					Dust.NewDust(npc.Center, npc.width, npc.height, 226, hitDirection, -2f, 0, default(Color), 0.7f);
+					Dust.NewDust(npc.Center, npc.width, npc.height, 27, hitDirection, -1f, 0, default(Color), 0.7f);
 				}
 			}
 		}
@@ -113,7 +113,7 @@ namespace Tremor.NPCs
 			int num1085 = 4;
 			float scaleFactor4 = 6f;
 			float scaleFactor5 = 20f;
-			float num1086 = 6.28318548f / (float)(num1084 / 2);
+			float num1086 = 6.28318548f / (num1084 / 2);
 			int num1087 = 75;
 			Vector2 vector134 = npc.Center;
 			Player player2 = Main.player[npc.target];
@@ -151,7 +151,7 @@ namespace Tremor.NPCs
 					npc.netUpdate = true;
 				}
 			}
-			float num1088 = (float)Math.Atan2((double)(player2.Center.Y - vector134.Y), (double)(player2.Center.X - vector134.X));
+			float num1088 = (float)Math.Atan2(player2.Center.Y - vector134.Y, player2.Center.X - vector134.X);
 			if (npc.spriteDirection == 1)
 			{
 				num1088 += 3.14159274f;
@@ -203,7 +203,7 @@ namespace Tremor.NPCs
 			}
 			if (npc.rotation < num1088)
 			{
-				if ((double)(num1088 - npc.rotation) > 3.1415926535897931)
+				if (num1088 - npc.rotation > 3.1415926535897931)
 				{
 					npc.rotation -= num1089;
 				}
@@ -214,7 +214,7 @@ namespace Tremor.NPCs
 			}
 			if (npc.rotation > num1088)
 			{
-				if ((double)(npc.rotation - num1088) > 3.1415926535897931)
+				if (npc.rotation - num1088 > 3.1415926535897931)
 				{
 					npc.rotation += num1089;
 				}
@@ -286,13 +286,13 @@ namespace Tremor.NPCs
 						npc.alpha = 150;
 					}
 				}
-				if (npc.ai[2] == (float)(num1082 - 30))
+				if (npc.ai[2] == num1082 - 30)
 				{
 					int num1091 = 36;
 					for (int num1092 = 0; num1092 < num1091; num1092++)
 					{
-						Vector2 vector135 = Vector2.Normalize(npc.velocity) * new Vector2((float)npc.width / 2f, (float)npc.height) * 0.75f * 0.5f;
-						vector135 = vector135.RotatedBy((double)((float)(num1092 - (num1091 / 2 - 1)) * 6.28318548f / (float)num1091), default(Vector2)) + npc.Center;
+						Vector2 vector135 = Vector2.Normalize(npc.velocity) * new Vector2(npc.width / 2f, npc.height) * 0.75f * 0.5f;
+						vector135 = vector135.RotatedBy((num1092 - (num1091 / 2 - 1)) * 6.28318548f / num1091, default(Vector2)) + npc.Center;
 						Vector2 value2 = vector135 - npc.Center;
 						int num1093 = Dust.NewDust(vector135 + value2, 0, 0, 172, value2.X * 2f, value2.Y * 2f, 100, default(Color), 1.4f);
 						Main.dust[num1093].noGravity = true;
@@ -302,20 +302,19 @@ namespace Tremor.NPCs
 					Main.PlaySound(29, (int)vector134.X, (int)vector134.Y, 96);
 				}
 				npc.ai[2] += 1f;
-				if (npc.ai[2] >= (float)num1087)
+				if (npc.ai[2] >= num1087)
 				{
 					npc.ai[0] = 0f;
 					npc.ai[1] = 0f;
 					npc.ai[2] = 0f;
 					npc.netUpdate = true;
-					return;
 				}
 			}
 			else if (npc.ai[0] == 0f && !player2.dead)
 			{
 				if (npc.ai[1] == 0f)
 				{
-					npc.ai[1] = (float)(300 * Math.Sign((vector134 - player2.Center).X));
+					npc.ai[1] = 300 * Math.Sign((vector134 - player2.Center).X);
 				}
 				Vector2 value3 = player2.Center + new Vector2(npc.ai[1], -200f) - vector134;
 				Vector2 vector136 = Vector2.Normalize(value3 - npc.velocity) * scaleFactor;
@@ -366,7 +365,7 @@ namespace Tremor.NPCs
 					npc.spriteDirection = -npc.direction;
 				}
 				npc.ai[2] += 1f;
-				if (npc.ai[2] >= (float)num1076)
+				if (npc.ai[2] >= num1076)
 				{
 					int num1095 = 0;
 					switch ((int)npc.ai[3])
@@ -402,7 +401,7 @@ namespace Tremor.NPCs
 						npc.ai[1] = 0f;
 						npc.ai[2] = 0f;
 						npc.velocity = Vector2.Normalize(player2.Center - vector134) * scaleFactor2;
-						npc.rotation = (float)Math.Atan2((double)npc.velocity.Y, (double)npc.velocity.X);
+						npc.rotation = (float)Math.Atan2(npc.velocity.Y, npc.velocity.X);
 						if (num1094 != 0)
 						{
 							npc.direction = num1094;
@@ -432,7 +431,6 @@ namespace Tremor.NPCs
 						npc.ai[2] = 0f;
 					}
 					npc.netUpdate = true;
-					return;
 				}
 			}
 			else if (npc.ai[0] == 1f)
@@ -440,9 +438,9 @@ namespace Tremor.NPCs
 				int num1096 = 7;
 				for (int num1097 = 0; num1097 < num1096; num1097++)
 				{
-					Vector2 vector137 = Vector2.Normalize(npc.velocity) * new Vector2((float)(npc.width + 50) / 2f, (float)npc.height) * 0.75f;
-					vector137 = vector137.RotatedBy((double)(num1097 - (num1096 / 2 - 1)) * 3.1415926535897931 / (double)((float)num1096), default(Vector2)) + vector134;
-					Vector2 value4 = ((float)(Main.rand.NextDouble() * 3.1415927410125732) - 1.57079637f).ToRotationVector2() * (float)Main.rand.Next(3, 8);
+					Vector2 vector137 = Vector2.Normalize(npc.velocity) * new Vector2((npc.width + 50) / 2f, npc.height) * 0.75f;
+					vector137 = vector137.RotatedBy((num1097 - (num1096 / 2 - 1)) * 3.1415926535897931 / num1096, default(Vector2)) + vector134;
+					Vector2 value4 = ((float)(Main.rand.NextDouble() * 3.1415927410125732) - 1.57079637f).ToRotationVector2() * Main.rand.Next(3, 8);
 					int num1098 = Dust.NewDust(vector137 + value4, 0, 0, 172, value4.X * 2f, value4.Y * 2f, 100, default(Color), 1.4f);
 					Main.dust[num1098].noGravity = true;
 					Main.dust[num1098].noLight = true;
@@ -450,21 +448,20 @@ namespace Tremor.NPCs
 					Main.dust[num1098].velocity -= npc.velocity;
 				}
 				npc.ai[2] += 1f;
-				if (npc.ai[2] >= (float)num1078)
+				if (npc.ai[2] >= num1078)
 				{
 					npc.ai[0] = 0f;
 					npc.ai[1] = 0f;
 					npc.ai[2] = 0f;
 					npc.ai[3] += 2f;
 					npc.netUpdate = true;
-					return;
 				}
 			}
 			else if (npc.ai[0] == 2f)
 			{
 				if (npc.ai[1] == 0f)
 				{
-					npc.ai[1] = (float)(300 * Math.Sign((vector134 - player2.Center).X));
+					npc.ai[1] = 300 * Math.Sign((vector134 - player2.Center).X);
 				}
 				Vector2 value5 = player2.Center + new Vector2(npc.ai[1], -200f) - vector134;
 				Vector2 vector138 = Vector2.Normalize(value5 - npc.velocity) * scaleFactor3;
@@ -504,12 +501,12 @@ namespace Tremor.NPCs
 				{
 					Main.PlaySound(29, (int)vector134.X, (int)vector134.Y, 96);
 				}
-				if (npc.ai[2] % (float)num1080 == 0f)
+				if (npc.ai[2] % num1080 == 0f)
 				{
 					Main.PlaySound(4, (int)npc.Center.X, (int)npc.Center.Y, 19);
 					if (Main.netMode != 1)
 					{
-						Vector2 vector139 = Vector2.Normalize(player2.Center - vector134) * (float)(npc.width + 20) / 2f + vector134;
+						Vector2 vector139 = Vector2.Normalize(player2.Center - vector134) * (npc.width + 20) / 2f + vector134;
 						NPC.NewNPC((int)vector139.X, (int)vector139.Y + 45, mod.NPCType("SpaceWhaleMinion"), 0);
 					}
 				}
@@ -524,70 +521,67 @@ namespace Tremor.NPCs
 					npc.spriteDirection = -npc.direction;
 				}
 				npc.ai[2] += 1f;
-				if (npc.ai[2] >= (float)num1079)
+				if (npc.ai[2] >= num1079)
 				{
 					npc.ai[0] = 0f;
 					npc.ai[1] = 0f;
 					npc.ai[2] = 0f;
 					npc.netUpdate = true;
-					return;
 				}
 			}
 			else if (npc.ai[0] == 3f)
 			{
 				npc.velocity *= 0.98f;
 				npc.velocity.Y = MathHelper.Lerp(npc.velocity.Y, 0f, 0.02f);
-				if (npc.ai[2] == (float)(num1082 - 30))
+				if (npc.ai[2] == num1082 - 30)
 				{
 					Main.PlaySound(29, (int)vector134.X, (int)vector134.Y, 95);
 				}
-				if (Main.netMode != 1 && npc.ai[2] == (float)(num1082 - 30))
+				if (Main.netMode != 1 && npc.ai[2] == num1082 - 30)
 				{
-					Vector2 vector140 = npc.rotation.ToRotationVector2() * (Vector2.UnitX * (float)npc.direction) * (float)(npc.width + 20) / 2f + vector134;
-					Projectile.NewProjectile(vector140.X, vector140.Y, (float)(npc.direction * 2), 8f, 467, 0, 0f, Main.myPlayer, 0f, 0f); Projectile.NewProjectile(vector140.X, vector140.Y, (float)(npc.direction * 3), 8f, 467, 0, 0f, Main.myPlayer, 0f, 0f); Projectile.NewProjectile(vector140.X, vector140.Y, (float)(npc.direction * 4), 8f, 467, 0, 0f, Main.myPlayer, 0f, 0f); Projectile.NewProjectile(vector140.X, vector140.Y, (float)(npc.direction * 5), 8f, 467, 0, 0f, Main.myPlayer, 0f, 0f); Projectile.NewProjectile(vector140.X, vector140.Y, (float)(npc.direction * 6), 8f, 467, 0, 0f, Main.myPlayer, 0f, 0f); Projectile.NewProjectile(vector140.X, vector140.Y, (float)(npc.direction * 7), 8f, 467, 0, 0f, Main.myPlayer, 0f, 0f); Projectile.NewProjectile(vector140.X, vector140.Y, (float)(npc.direction * 8), 8f, 467, 0, 0f, Main.myPlayer, 0f, 0f); Projectile.NewProjectile(vector140.X, vector140.Y, (float)(npc.direction * 9), 8f, 467, 0, 0f, Main.myPlayer, 0f, 0f);
-					Projectile.NewProjectile(vector140.X, vector140.Y, (float)(-(float)npc.direction * 2), 8f, 467, 0, 0f, Main.myPlayer, 0f, 0f);
-					Projectile.NewProjectile(vector140.X, vector140.Y, (float)(-(float)npc.direction * 3), 8f, 467, 0, 0f, Main.myPlayer, 0f, 0f);
-					Projectile.NewProjectile(vector140.X, vector140.Y, (float)(-(float)npc.direction * 4), 8f, 467, 0, 0f, Main.myPlayer, 0f, 0f);
-					Projectile.NewProjectile(vector140.X, vector140.Y, (float)(-(float)npc.direction * 5), 8f, 467, 0, 0f, Main.myPlayer, 0f, 0f);
-					Projectile.NewProjectile(vector140.X, vector140.Y, (float)(-(float)npc.direction * 6), 8f, 467, 0, 0f, Main.myPlayer, 0f, 0f);
-					Projectile.NewProjectile(vector140.X, vector140.Y, (float)(-(float)npc.direction * 7), 8f, 467, 0, 0f, Main.myPlayer, 0f, 0f);
-					Projectile.NewProjectile(vector140.X, vector140.Y, (float)(-(float)npc.direction * 8), 8f, 467, 0, 0f, Main.myPlayer, 0f, 0f);
-					Projectile.NewProjectile(vector140.X, vector140.Y, (float)(-(float)npc.direction * 9), 8f, 467, 0, 0f, Main.myPlayer, 0f, 0f);
+					Vector2 vector140 = npc.rotation.ToRotationVector2() * (Vector2.UnitX * npc.direction) * (npc.width + 20) / 2f + vector134;
+					Projectile.NewProjectile(vector140.X, vector140.Y, npc.direction * 2, 8f, 467, 0, 0f, Main.myPlayer, 0f, 0f); Projectile.NewProjectile(vector140.X, vector140.Y, npc.direction * 3, 8f, 467, 0, 0f, Main.myPlayer, 0f, 0f); Projectile.NewProjectile(vector140.X, vector140.Y, npc.direction * 4, 8f, 467, 0, 0f, Main.myPlayer, 0f, 0f); Projectile.NewProjectile(vector140.X, vector140.Y, npc.direction * 5, 8f, 467, 0, 0f, Main.myPlayer, 0f, 0f); Projectile.NewProjectile(vector140.X, vector140.Y, npc.direction * 6, 8f, 467, 0, 0f, Main.myPlayer, 0f, 0f); Projectile.NewProjectile(vector140.X, vector140.Y, npc.direction * 7, 8f, 467, 0, 0f, Main.myPlayer, 0f, 0f); Projectile.NewProjectile(vector140.X, vector140.Y, npc.direction * 8, 8f, 467, 0, 0f, Main.myPlayer, 0f, 0f); Projectile.NewProjectile(vector140.X, vector140.Y, npc.direction * 9, 8f, 467, 0, 0f, Main.myPlayer, 0f, 0f);
+					Projectile.NewProjectile(vector140.X, vector140.Y, -(float)npc.direction * 2, 8f, 467, 0, 0f, Main.myPlayer, 0f, 0f);
+					Projectile.NewProjectile(vector140.X, vector140.Y, -(float)npc.direction * 3, 8f, 467, 0, 0f, Main.myPlayer, 0f, 0f);
+					Projectile.NewProjectile(vector140.X, vector140.Y, -(float)npc.direction * 4, 8f, 467, 0, 0f, Main.myPlayer, 0f, 0f);
+					Projectile.NewProjectile(vector140.X, vector140.Y, -(float)npc.direction * 5, 8f, 467, 0, 0f, Main.myPlayer, 0f, 0f);
+					Projectile.NewProjectile(vector140.X, vector140.Y, -(float)npc.direction * 6, 8f, 467, 0, 0f, Main.myPlayer, 0f, 0f);
+					Projectile.NewProjectile(vector140.X, vector140.Y, -(float)npc.direction * 7, 8f, 467, 0, 0f, Main.myPlayer, 0f, 0f);
+					Projectile.NewProjectile(vector140.X, vector140.Y, -(float)npc.direction * 8, 8f, 467, 0, 0f, Main.myPlayer, 0f, 0f);
+					Projectile.NewProjectile(vector140.X, vector140.Y, -(float)npc.direction * 9, 8f, 467, 0, 0f, Main.myPlayer, 0f, 0f);
 				}
 				npc.ai[2] += 1f;
-				if (npc.ai[2] >= (float)num1082)
+				if (npc.ai[2] >= num1082)
 				{
 					npc.ai[0] = 0f;
 					npc.ai[1] = 0f;
 					npc.ai[2] = 0f;
 					npc.netUpdate = true;
-					return;
 				}
 			}
 			else if (npc.ai[0] == 4f)
 			{
 				npc.velocity *= 0.98f;
 				npc.velocity.Y = MathHelper.Lerp(npc.velocity.Y, 0f, 0.02f);
-				if (npc.ai[2] == (float)(num1083 - 60))
+				if (npc.ai[2] == num1083 - 60)
 				{
 					Main.PlaySound(29, (int)vector134.X, (int)vector134.Y, 98);
 				}
 				npc.ai[2] += 1f;
-				if (npc.ai[2] >= (float)num1083)
+				if (npc.ai[2] >= num1083)
 				{
 					npc.ai[0] = 5f;
 					npc.ai[1] = 0f;
 					npc.ai[2] = 0f;
 					npc.ai[3] = 0f;
 					npc.netUpdate = true;
-					return;
 				}
 			}
 			else if (npc.ai[0] == 5f && !player2.dead)
 			{
 				if (npc.ai[1] == 0f)
 				{
-					npc.ai[1] = (float)(300 * Math.Sign((vector134 - player2.Center).X));
+					npc.ai[1] = 300 * Math.Sign((vector134 - player2.Center).X);
 				}
 				Vector2 value6 = player2.Center + new Vector2(npc.ai[1], -200f) - vector134;
 				Vector2 vector141 = Vector2.Normalize(value6 - npc.velocity) * scaleFactor;
@@ -638,7 +632,7 @@ namespace Tremor.NPCs
 					npc.spriteDirection = -npc.direction;
 				}
 				npc.ai[2] += 1f;
-				if (npc.ai[2] >= (float)num1076)
+				if (npc.ai[2] >= num1076)
 				{
 					int num1101 = 0;
 					switch ((int)npc.ai[3])
@@ -666,7 +660,7 @@ namespace Tremor.NPCs
 						npc.ai[1] = 0f;
 						npc.ai[2] = 0f;
 						npc.velocity = Vector2.Normalize(player2.Center - vector134) * scaleFactor2;
-						npc.rotation = (float)Math.Atan2((double)npc.velocity.Y, (double)npc.velocity.X);
+						npc.rotation = (float)Math.Atan2(npc.velocity.Y, npc.velocity.X);
 						if (num1100 != 0)
 						{
 							npc.direction = num1100;
@@ -680,7 +674,7 @@ namespace Tremor.NPCs
 					else if (num1101 == 2)
 					{
 						npc.velocity = Vector2.Normalize(player2.Center - vector134) * scaleFactor5;
-						npc.rotation = (float)Math.Atan2((double)npc.velocity.Y, (double)npc.velocity.X);
+						npc.rotation = (float)Math.Atan2(npc.velocity.Y, npc.velocity.X);
 						if (num1100 != 0)
 						{
 							npc.direction = num1100;
@@ -701,7 +695,6 @@ namespace Tremor.NPCs
 						npc.ai[2] = 0f;
 					}
 					npc.netUpdate = true;
-					return;
 				}
 			}
 			else if (npc.ai[0] == 6f)
@@ -709,9 +702,9 @@ namespace Tremor.NPCs
 				int num1102 = 7;
 				for (int num1103 = 0; num1103 < num1102; num1103++)
 				{
-					Vector2 vector142 = Vector2.Normalize(npc.velocity) * new Vector2((float)(npc.width + 50) / 2f, (float)npc.height) * 0.75f;
-					vector142 = vector142.RotatedBy((double)(num1103 - (num1102 / 2 - 1)) * 3.1415926535897931 / (double)((float)num1102), default(Vector2)) + vector134;
-					Vector2 value7 = ((float)(Main.rand.NextDouble() * 3.1415927410125732) - 1.57079637f).ToRotationVector2() * (float)Main.rand.Next(3, 8);
+					Vector2 vector142 = Vector2.Normalize(npc.velocity) * new Vector2((npc.width + 50) / 2f, npc.height) * 0.75f;
+					vector142 = vector142.RotatedBy((num1103 - (num1102 / 2 - 1)) * 3.1415926535897931 / num1102, default(Vector2)) + vector134;
+					Vector2 value7 = ((float)(Main.rand.NextDouble() * 3.1415927410125732) - 1.57079637f).ToRotationVector2() * Main.rand.Next(3, 8);
 					int num1104 = Dust.NewDust(vector142 + value7, 0, 0, 172, value7.X * 2f, value7.Y * 2f, 100, default(Color), 1.4f);
 					Main.dust[num1104].noGravity = true;
 					Main.dust[num1104].noLight = true;
@@ -719,14 +712,13 @@ namespace Tremor.NPCs
 					Main.dust[num1104].velocity -= npc.velocity;
 				}
 				npc.ai[2] += 1f;
-				if (npc.ai[2] >= (float)num1078)
+				if (npc.ai[2] >= num1078)
 				{
 					npc.ai[0] = 5f;
 					npc.ai[1] = 0f;
 					npc.ai[2] = 0f;
 					npc.ai[3] += 2f;
 					npc.netUpdate = true;
-					return;
 				}
 			}
 			else if (npc.ai[0] == 7f)
@@ -735,51 +727,49 @@ namespace Tremor.NPCs
 				{
 					Main.PlaySound(29, (int)vector134.X, (int)vector134.Y, 98);
 				}
-				if (npc.ai[2] % (float)num1085 == 0f)
+				if (npc.ai[2] % num1085 == 0f)
 				{
 					Main.PlaySound(4, (int)npc.Center.X, (int)npc.Center.Y, 19);
 					if (Main.netMode != 1)
 					{
-						Vector2 vector143 = Vector2.Normalize(npc.velocity) * (float)(npc.width + 20) / 2f + vector134;
+						Vector2 vector143 = Vector2.Normalize(npc.velocity) * (npc.width + 20) / 2f + vector134;
 						int num1105 = NPC.NewNPC((int)vector143.X, (int)vector143.Y + 45, mod.NPCType("SpaceWhaleMinion"), 0);
 						Main.npc[num1105].target = npc.target;
-						Main.npc[num1105].velocity = Vector2.Normalize(npc.velocity).RotatedBy((double)(1.57079637f * (float)npc.direction), default(Vector2)) * scaleFactor4;
+						Main.npc[num1105].velocity = Vector2.Normalize(npc.velocity).RotatedBy(1.57079637f * npc.direction, default(Vector2)) * scaleFactor4;
 						Main.npc[num1105].netUpdate = true;
-						Main.npc[num1105].ai[3] = (float)Main.rand.Next(80, 121) / 100f;
+						Main.npc[num1105].ai[3] = Main.rand.Next(80, 121) / 100f;
 					}
 				}
-				npc.velocity = npc.velocity.RotatedBy((double)(-(double)num1086 * (float)npc.direction), default(Vector2));
-				npc.rotation -= num1086 * (float)npc.direction;
+				npc.velocity = npc.velocity.RotatedBy(-(double)num1086 * npc.direction, default(Vector2));
+				npc.rotation -= num1086 * npc.direction;
 				npc.ai[2] += 1f;
-				if (npc.ai[2] >= (float)num1084)
+				if (npc.ai[2] >= num1084)
 				{
 					npc.ai[0] = 5f;
 					npc.ai[1] = 0f;
 					npc.ai[2] = 0f;
 					npc.netUpdate = true;
-					return;
 				}
 			}
 			else if (npc.ai[0] == 8f)
 			{
 				npc.velocity *= 0.98f;
 				npc.velocity.Y = MathHelper.Lerp(npc.velocity.Y, 0f, 0.02f);
-				if (npc.ai[2] == (float)(num1082 - 30))
+				if (npc.ai[2] == num1082 - 30)
 				{
 					Main.PlaySound(29, (int)vector134.X, (int)vector134.Y, 94);
 				}
-				if (Main.netMode != 1 && npc.ai[2] == (float)(num1082 - 30))
+				if (Main.netMode != 1 && npc.ai[2] == num1082 - 30)
 				{
-					Projectile.NewProjectile(vector134.X, vector134.Y, 0f, 0f, mod.ProjectileType("SpaceMeteorPro"), 0, 0f, Main.myPlayer, 1f, (float)(npc.target + 1));
+					Projectile.NewProjectile(vector134.X, vector134.Y, 0f, 0f, mod.ProjectileType("SpaceMeteorPro"), 0, 0f, Main.myPlayer, 1f, npc.target + 1);
 				}
 				npc.ai[2] += 1f;
-				if (npc.ai[2] >= (float)num1082)
+				if (npc.ai[2] >= num1082)
 				{
 					npc.ai[0] = 5f;
 					npc.ai[1] = 0f;
 					npc.ai[2] = 0f;
 					npc.netUpdate = true;
-					return;
 				}
 			}
 
@@ -795,8 +785,8 @@ namespace Tremor.NPCs
 
 			if (Main.netMode != 1)
 			{
-				int CenterX = (int)(npc.Center.X + (float)(npc.width / 2)) / 16;
-				int CenterY = (int)(npc.Center.Y + (float)(npc.height / 2)) / 16;
+				int CenterX = (int)(npc.Center.X + npc.width / 2) / 16;
+				int CenterY = (int)(npc.Center.Y + npc.height / 2) / 16;
 				int halfLength = npc.width / 2 / 16 + 1;
 
 

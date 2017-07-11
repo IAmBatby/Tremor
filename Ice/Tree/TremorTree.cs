@@ -5,13 +5,7 @@ namespace Tremor.Ice.Tree
 {
 	public class TremorTree : ModTree
 	{
-		private Mod mod
-		{
-			get
-			{
-				return ModLoader.GetMod("Tremor");
-			}
-		}
+		private Mod mod => ModLoader.GetMod("Tremor");
 
 		public override int CreateDust()
 		{

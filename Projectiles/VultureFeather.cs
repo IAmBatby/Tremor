@@ -1,12 +1,13 @@
 using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace Tremor.Projectiles
 {
     public class VultureFeather : ModProjectile
     {
-        const int TileCollideDustType = Terraria.ID.DustID.Tin;
+        const int TileCollideDustType = DustID.Tin;
         const int TileCollideDustCount = 4;
         const float TileCollideDustSpeedMulti = 0.2f;
 

@@ -13,12 +13,12 @@ namespace Tremor.ZombieEvent.Tiles
 			Main.tileNoAttach[Type] = true;
 			Main.tileLavaDeath[Type] = true;
 			TileObjectData.newTile.CopyFrom(TileObjectData.Style3x2);
-			TileObjectData.newTile.CoordinateHeights = new int[]{ 16, 16 };
+			TileObjectData.newTile.CoordinateHeights = new[]{ 16, 16 };
 			TileObjectData.addTile(Type);
 		ModTranslation name = CreateMapEntryName();
 		name.SetDefault("Necromaniac Workbench");			
 			AddMapEntry(new Color(0, 77, 255), name);
-                       adjTiles = new int[]{mod.TileType("FleshWorkstationTile")};
+                       adjTiles = new[]{mod.TileType("FleshWorkstationTile")};
 		}
 
 		public override void KillMultiTile(int i, int j, int frameX, int frameY)

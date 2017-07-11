@@ -9,10 +9,10 @@ namespace Tremor.Projectiles
         const int SpeedMulti = 2;
         const int XOffset = 24; // На сколько блоков от игрока будет появлятся меч. (16ед. == 1 блок.)
 
-        int YOffset = 0;
+        int YOffset;
         int YOffsetStep = -1;
         bool UP = true;
-        float YPos = 0;
+        float YPos;
 
         public override void SetDefaults()
         {

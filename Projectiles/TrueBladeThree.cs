@@ -1,6 +1,6 @@
-﻿using Terraria.ModLoader;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.ModLoader;
 
 namespace Tremor.Projectiles
 {
@@ -9,7 +9,7 @@ namespace Tremor.Projectiles
         const float RotationSpeed = 0.05f;
         const float Distanse = 150;
 
-        float Rotation = 0;
+        float Rotation;
 
 		public override Color? GetAlpha(Color lightColor)
 		{

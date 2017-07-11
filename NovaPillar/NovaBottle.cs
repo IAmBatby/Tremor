@@ -39,10 +39,10 @@ namespace Tremor.NovaPillar
 				int num220 = Main.rand.Next(5, 8);
 				for (int num221 = 0; num221 < num220; num221++)
 				{
-					Vector2 value17 = new Vector2((float)Main.rand.Next(-100, 101), (float)Main.rand.Next(-100, 101));
+					Vector2 value17 = new Vector2(Main.rand.Next(-100, 101), Main.rand.Next(-100, 101));
 					value17.Normalize();
-					value17 *= (float)Main.rand.Next(10, 201) * 0.01f;
-					int k = Projectile.NewProjectile(projectile.position.X, projectile.position.Y, value17.X, value17.Y, mod.ProjectileType("NovaBottleCloud"), projectile.damage, 1f, projectile.owner, 0f, (float)Main.rand.Next(-45, 1));
+					value17 *= Main.rand.Next(10, 201) * 0.01f;
+					int k = Projectile.NewProjectile(projectile.position.X, projectile.position.Y, value17.X, value17.Y, mod.ProjectileType("NovaBottleCloud"), projectile.damage, 1f, projectile.owner, 0f, Main.rand.Next(-45, 1));
 					Main.projectile[k].friendly = false;
 				}
 			}

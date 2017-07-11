@@ -36,18 +36,18 @@ namespace Tremor
 		{
 			if (other.Value >= (float)Math.PI)
 			{
-				return this.Value < other.Value && this.Value >= other.Opposite().Value;
+				return Value < other.Value && Value >= other.Opposite().Value;
 			}
-			return this.Value < other.Value || this.Value >= other.Opposite().Value;
+			return Value < other.Value || Value >= other.Opposite().Value;
 		}
 
 		public bool Between(Angle cLimit, Angle ccLimit)
 		{
 			if (cLimit.Value < ccLimit.Value)
 			{
-				return this.Value >= cLimit.Value && this.Value <= ccLimit.Value;
+				return Value >= cLimit.Value && Value <= ccLimit.Value;
 			}
-			return this.Value >= cLimit.Value || this.Value <= ccLimit.Value;
+			return Value >= cLimit.Value || Value <= ccLimit.Value;
 		}
 	}
 }

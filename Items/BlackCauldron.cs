@@ -2,7 +2,6 @@ using Terraria;
 using Terraria.DataStructures;
 using Terraria.ModLoader;
 
-
 namespace Tremor.Items
 {
 	public class BlackCauldron : ModItem

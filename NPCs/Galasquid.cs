@@ -92,8 +92,7 @@ namespace Tremor.NPCs
 					{
 						vector283 = Vector2.UnitY.RotatedByRandom(1.5707963705062866) * new Vector2(5f, 3f);
 					}
-					Projectile.NewProjectile(npc.Center.X, npc.Center.Y, vector283.X, vector283.Y, 435, 60, 0f, Main.myPlayer, 0f, (float)npc.whoAmI);
-					return;
+					Projectile.NewProjectile(npc.Center.X, npc.Center.Y, vector283.X, vector283.Y, 435, 60, 0f, Main.myPlayer, 0f, npc.whoAmI);
 				}
 			}
 		}
@@ -103,7 +102,7 @@ namespace Tremor.NPCs
 		{
 			int x = spawnInfo.spawnTileX;
 			int y = spawnInfo.spawnTileY;
-			int tile = (int)Main.tile[x, y].type;
+			int tile = Main.tile[x, y].type;
 			return spawnInfo.spawnTileY < Main.rockLayer && NPC.downedMoonlord && tile == mod.TileType("CometiteOreTile") || tile == mod.TileType("HardCometiteOreTile") ? 0.005f : 0f;
 		}
 
@@ -111,8 +110,8 @@ namespace Tremor.NPCs
 		{
 			if (Main.netMode != 1)
 			{
-				int centerX = (int)(npc.position.X + (float)(npc.width / 2)) / 16;
-				int centerY = (int)(npc.position.Y + (float)(npc.height / 2)) / 16;
+				int centerX = (int)(npc.position.X + npc.width / 2) / 16;
+				int centerY = (int)(npc.position.Y + npc.height / 2) / 16;
 				int halfLength = npc.width / 2 / 16 + 1;
 				if (Main.rand.Next(1) == 0)
 				{

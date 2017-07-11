@@ -46,14 +46,14 @@ namespace Tremor.Projectiles
                 {
                     num263 = Main.player[projectile.owner].inventory[Main.player[projectile.owner].selectedItem].shootSpeed * projectile.scale;
                     vector23 = vector22;
-                    num264 = (float)Main.mouseX + Main.screenPosition.X - vector23.X - 20;
-                    num265 = (float)Main.mouseY + Main.screenPosition.Y - vector23.Y;
+                    num264 = Main.mouseX + Main.screenPosition.X - vector23.X - 20;
+                    num265 = Main.mouseY + Main.screenPosition.Y - vector23.Y;
                     if (Main.player[projectile.owner].gravDir == -1f)
                     {
-                        num265 = (float)(Main.screenHeight - Main.mouseY) + Main.screenPosition.Y - vector23.Y;
+                        num265 = Main.screenHeight - Main.mouseY + Main.screenPosition.Y - vector23.Y;
                     }
-                    num266 = (float)Math.Sqrt((double)(num264 * num264 + num265 * num265));
-                    num266 = (float)Math.Sqrt((double)(num264 * num264 + num265 * num265));
+                    num266 = (float)Math.Sqrt(num264 * num264 + num265 * num265);
+                    num266 = (float)Math.Sqrt(num264 * num264 + num265 * num265);
                     num266 = num263 / num266;
                     num264 *= num266;
                     num265 *= num266;
@@ -82,18 +82,18 @@ namespace Tremor.Projectiles
             Main.player[projectile.owner].heldProj = projectile.whoAmI;
             Main.player[projectile.owner].itemTime = 2;
             Main.player[projectile.owner].itemAnimation = 2;
-            projectile.position.X = vector22.X - (float)(projectile.width / 2);
-            projectile.position.Y = vector22.Y - (float)(projectile.height / 2);
-            projectile.rotation = (float)(Math.Atan2((double)projectile.velocity.Y, (double)projectile.velocity.X) + 1.5700000524520874);
+            projectile.position.X = vector22.X - projectile.width / 2;
+            projectile.position.Y = vector22.Y - projectile.height / 2;
+            projectile.rotation = (float)(Math.Atan2(projectile.velocity.Y, projectile.velocity.X) + 1.5700000524520874);
             if (Main.player[projectile.owner].direction == 1)
             {
-                Main.player[projectile.owner].itemRotation = (float)Math.Atan2((double)(projectile.velocity.Y * (float)projectile.direction), (double)(projectile.velocity.X * (float)projectile.direction));
+                Main.player[projectile.owner].itemRotation = (float)Math.Atan2(projectile.velocity.Y * projectile.direction, projectile.velocity.X * projectile.direction);
             }
             else
             {
-                Main.player[projectile.owner].itemRotation = (float)Math.Atan2((double)(projectile.velocity.Y * (float)projectile.direction), (double)(projectile.velocity.X * (float)projectile.direction));
+                Main.player[projectile.owner].itemRotation = (float)Math.Atan2(projectile.velocity.Y * projectile.direction, projectile.velocity.X * projectile.direction);
             }
-            projectile.velocity.X = projectile.velocity.X * (1f + (float)Main.rand.Next(-3, 4) * 0.01f);
+            projectile.velocity.X = projectile.velocity.X * (1f + Main.rand.Next(-3, 4) * 0.01f);
             Player player = Main.player[projectile.owner];
             float num = 1.57079637f;
             Vector2 vector = player.RotatedRelativePoint(player.MountedCenter, true);
@@ -115,7 +115,7 @@ namespace Tremor.Projectiles
             int num4 = 6;
             projectile.ai[1] += 1f;
             bool flag = false;
-            if (projectile.ai[1] >= (float)(num3 - num4 * num2))
+            if (projectile.ai[1] >= num3 - num4 * num2)
             {
                 projectile.ai[1] = 0f;
                 flag = true;
@@ -141,7 +141,7 @@ namespace Tremor.Projectiles
             if (projectile.ai[1] == 1f && projectile.ai[0] != 1f)
             {
                 Vector2 vector2 = Vector2.UnitX * 24f;
-                vector2 = vector2.RotatedBy((double)(projectile.rotation - 1.57079637f), default(Vector2));
+                vector2 = vector2.RotatedBy(projectile.rotation - 1.57079637f, default(Vector2));
                 Vector2 value = projectile.Center + vector2;
                 for (int i = 0; i < 2; i++)
                 {
@@ -158,10 +158,10 @@ namespace Tremor.Projectiles
                 {
                     float scaleFactor = player.inventory[player.selectedItem].shootSpeed * projectile.scale;
                     Vector2 value2 = vector;
-                    Vector2 value3 = Main.screenPosition + new Vector2((float)Main.mouseX, (float)Main.mouseY) - value2;
+                    Vector2 value3 = Main.screenPosition + new Vector2(Main.mouseX, Main.mouseY) - value2;
                     if (player.gravDir == -1f)
                     {
-                        value3.Y = (float)(Main.screenHeight - Main.mouseY) + Main.screenPosition.Y - value2.Y;
+                        value3.Y = Main.screenHeight - Main.mouseY + Main.screenPosition.Y - value2.Y;
                     }
                     Vector2 vector3 = Vector2.Normalize(value3);
                     if (float.IsNaN(vector3.X) || float.IsNaN(vector3.Y))
@@ -179,7 +179,7 @@ namespace Tremor.Projectiles
                     int num7 = 7;
                     for (int j = 0; j < 2; j++)
                     {
-                        value2 = projectile.Center + new Vector2((float)Main.rand.Next(-num7, num7 + 1), (float)Main.rand.Next(-num7, num7 + 1));
+                        value2 = projectile.Center + new Vector2(Main.rand.Next(-num7, num7 + 1), Main.rand.Next(-num7, num7 + 1));
                         Vector2 spinningpoint = Vector2.Normalize(projectile.velocity) * scaleFactor2;
                         spinningpoint = spinningpoint.RotatedBy(Main.rand.NextDouble() * 0.19634954631328583 - 0.098174773156642914, default(Vector2));
                         if (float.IsNaN(spinningpoint.X) || float.IsNaN(spinningpoint.Y))

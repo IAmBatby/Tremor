@@ -31,7 +31,7 @@ namespace Tremor.Invasion
 			npc.noTileCollide = true;
 		}
 
-		int CurrentFrame = 0;
+		int CurrentFrame;
 		int TimeToAnimation = 6;
 		const int AnimationRate = 6;
 		bool FirstState_ = true;

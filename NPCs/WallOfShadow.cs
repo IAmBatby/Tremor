@@ -1,10 +1,8 @@
-using Terraria.ID;
 using System;
-
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-
 using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
 
 // Main.wofB = Wall of Flesh bottom
@@ -168,11 +166,11 @@ namespace Tremor.NPCs
 			{
 				npc.TargetClosest(false);
 				npc.velocity.Y = npc.velocity.Y + 1f;
-				if ((double)npc.position.Y > Main.worldSurface * 16.0)
+				if (npc.position.Y > Main.worldSurface * 16.0)
 				{
 					npc.velocity.Y = npc.velocity.Y + 1f;
 				}
-				if ((double)npc.position.Y > Main.rockLayer * 16.0)
+				if (npc.position.Y > Main.rockLayer * 16.0)
 				{
 					for (int num957 = 0; num957 < 200; num957++)
 					{
@@ -193,7 +191,7 @@ namespace Tremor.NPCs
 
 				if ((int)(Main.time % 360) == 0)
 				{
-					int index = NPC.NewNPC((int)(npc.position.X + (npc.width / 2)), (int)(npc.position.Y + (npc.height / 2) + 20.0), mod.NPCType("ShadowSteed"), 1, 0.0f, 0.0f, 0.0f, 0.0f, (int)byte.MaxValue);
+					int index = NPC.NewNPC((int)(npc.position.X + (npc.width / 2)), (int)(npc.position.Y + (npc.height / 2) + 20.0), mod.NPCType("ShadowSteed"), 1, 0.0f, 0.0f, 0.0f, 0.0f, byte.MaxValue);
 					Main.npc[index].velocity.X = npc.direction * 6;
 				}
 
@@ -253,7 +251,7 @@ namespace Tremor.NPCs
 						{
 							if (!WorldGen.SolidTile(i, npcBottom))
 							{
-								if ((int)Main.tile[i, npcBottom].liquid <= 0)
+								if (Main.tile[i, npcBottom].liquid <= 0)
 									continue;
 							}
 							++solidTiles;
@@ -291,7 +289,7 @@ namespace Tremor.NPCs
 						{
 							if (!WorldGen.SolidTile(i, j2))
 							{
-								if ((int)Main.tile[i, j2].liquid <= 0)
+								if (Main.tile[i, j2].liquid <= 0)
 									continue;
 							}
 							++num6;
@@ -459,7 +457,7 @@ namespace Tremor.NPCs
 						{
 							if (!WorldGen.SolidTile(i, npcBottom))
 							{
-								if ((int)Main.tile[i, npcBottom].liquid <= 0)
+								if (Main.tile[i, npcBottom].liquid <= 0)
 									continue;
 							}
 							++solidTiles;
@@ -497,7 +495,7 @@ namespace Tremor.NPCs
 						{
 							if (!WorldGen.SolidTile(i, j2))
 							{
-								if ((int)Main.tile[i, j2].liquid <= 0)
+								if (Main.tile[i, j2].liquid <= 0)
 									continue;
 							}
 							++num6;
@@ -613,7 +611,7 @@ namespace Tremor.NPCs
 					num16 = (num16 * 3 + 60) / 4;
 				if (num16 < 20)
 					num16 = (num16 + 20) / 2;
-				int maxValue1 = (int)((double)num16 * 0.7);
+				int maxValue1 = (int)(num16 * 0.7);
 				if (Main.rand.Next(maxValue1) == 0)
 				{
 					int index1 = 0;
@@ -633,11 +631,11 @@ namespace Tremor.NPCs
 						for (int index2 = 0; index2 < 1000; ++index2)
 						{
 							int num18 = Main.rand.Next(20);
-							float num19 = (float)((double)num18 * 0.100000001490116 - 0.0500000007450581);
+							float num19 = (float)(num18 * 0.100000001490116 - 0.0500000007450581);
 							bool flag = true;
 							for (int index3 = 0; index3 < index1; ++index3)
 							{
-								if ((double)num19 == (double)numArray[index3])
+								if (num19 == (double)numArray[index3])
 								{
 									flag = false;
 									break;
@@ -770,8 +768,8 @@ namespace Tremor.NPCs
 
 			if (Main.netMode != 1)
 			{
-				int centerX = (int)(npc.position.X + (float)(npc.width / 2)) / 16;
-				int centerY = (int)(npc.position.Y + (float)(npc.height / 2)) / 16;
+				int centerX = (int)(npc.position.X + npc.width / 2) / 16;
+				int centerY = (int)(npc.position.Y + npc.height / 2) / 16;
 				int halfLength = npc.width / 2 / 16 + 1;
 
 				if (!Main.expertMode)
@@ -852,7 +850,7 @@ namespace Tremor.NPCs
 							num3 = num - vector.X;
 							num4 = num2 - vector.Y;
 							Color color = Lighting.GetColor((int)vector.X / 16, (int)(vector.Y / 16f));
-							spriteBatch.Draw(shadowChain, new Vector2(vector.X - Main.screenPosition.X, vector.Y - Main.screenPosition.Y), new Rectangle?(new Rectangle(0, 0, shadowChain.Width, shadowChain.Height)), color, rotation, new Vector2(shadowChain.Width * 0.5f, shadowChain.Height * 0.5f), 1f, SpriteEffects.None, 0f);
+							spriteBatch.Draw(shadowChain, new Vector2(vector.X - Main.screenPosition.X, vector.Y - Main.screenPosition.Y), new Rectangle(0, 0, shadowChain.Width, shadowChain.Height), color, rotation, new Vector2(shadowChain.Width * 0.5f, shadowChain.Height * 0.5f), 1f, SpriteEffects.None, 0f);
 						}
 					}
 				}
@@ -902,15 +900,15 @@ namespace Tremor.NPCs
 						num9 = num6 - vector2.X;
 						num10 = num7 - vector2.Y;
 						Color color2 = Lighting.GetColor((int)vector2.X / 16, (int)(vector2.Y / 16f));
-						spriteBatch.Draw(shadowChain, new Vector2(vector2.X - Main.screenPosition.X, vector2.Y - Main.screenPosition.Y), new Rectangle?(new Rectangle(0, 0, shadowChain.Width, height)), color2, rotation2, new Vector2(shadowChain.Width * 0.5f, shadowChain.Height * 0.5f), 1f, effects1, 0f);
+						spriteBatch.Draw(shadowChain, new Vector2(vector2.X - Main.screenPosition.X, vector2.Y - Main.screenPosition.Y), new Rectangle(0, 0, shadowChain.Width, height), color2, rotation2, new Vector2(shadowChain.Width * 0.5f, shadowChain.Height * 0.5f), 1f, effects1, 0f);
 					}
 				}
 			}
 			int num12 = 140;
-			float num13 = (float)Main.wofT;
-			float num14 = (float)Main.wofB;
+			float num13 = Main.wofT;
+			float num14 = Main.wofB;
 			num14 = Main.screenPosition.Y + Main.screenHeight;
-			float num15 = (float)((int)((num13 - Main.screenPosition.Y) / (float)num12) + 1);
+			float num15 = (int)((num13 - Main.screenPosition.Y) / num12) + 1;
 			num15 *= num12;
 			if (num15 > 0f)
 			{
@@ -949,24 +947,24 @@ namespace Tremor.NPCs
 			while (flag4)
 			{
 				num18 = num14 - num16;
-				if (num18 > (float)num12)
+				if (num18 > num12)
 				{
-					num18 = (float)num12;
+					num18 = num12;
 				}
 				bool flag5 = true;
 				int num20 = 0;
 				while (flag5)
 				{
-					int x = (int)(num17 + (float)(shadowWall.Width / 2)) / 16;
-					int y = (int)(num16 + (float)num20) / 16;
-					Main.spriteBatch.Draw(shadowWall, new Vector2(num17 - Main.screenPosition.X, num16 + (float)num20 - Main.screenPosition.Y), new Rectangle?(new Rectangle(0, num19 + num20, shadowWall.Width, 16)), Lighting.GetColor(x, y), 0f, default(Vector2), 1f, effects2, 0f);
+					int x = (int)(num17 + shadowWall.Width / 2) / 16;
+					int y = (int)(num16 + num20) / 16;
+					Main.spriteBatch.Draw(shadowWall, new Vector2(num17 - Main.screenPosition.X, num16 + num20 - Main.screenPosition.Y), new Rectangle(0, num19 + num20, shadowWall.Width, 16), Lighting.GetColor(x, y), 0f, default(Vector2), 1f, effects2, 0f);
 					num20 += 16;
-					if ((float)num20 >= num18)
+					if (num20 >= num18)
 					{
 						flag5 = false;
 					}
 				}
-				num16 += (float)num12;
+				num16 += num12;
 				if (num16 >= num14)
 				{
 					flag4 = false;

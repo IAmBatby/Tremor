@@ -1,8 +1,8 @@
-﻿using Terraria.ID;
-using Terraria;
-using Terraria.ModLoader;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Terraria;
+using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace Tremor.NPCs
 {
@@ -15,7 +15,7 @@ namespace Tremor.NPCs
 
 		//Int variables
 		int AnimationRate = 6;
-		int CurrentFrame = 0;
+		int CurrentFrame;
 		int TimeToAnimation = 6;
 
 		//Float variables

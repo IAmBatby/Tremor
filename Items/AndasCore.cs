@@ -33,8 +33,8 @@ namespace Tremor.Items
 
 		public override void ArmorSetShadows(Player player)
 		{
-			player.armorEffectDrawOutlines = true; //áà¥¤­¥¥ ¯ã«ìá¨à®¢ ­¨¥
-			player.armorEffectDrawShadowLokis = true; //¬ «¥­ìª¨¥ â¥­¨
+			player.armorEffectDrawOutlines = true; //ï¿½à¥¤ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½à®¢ï¿½ï¿½ï¿½ï¿½
+			player.armorEffectDrawShadowLokis = true; //ï¿½ï¿½ï¿½ï¿½ï¿½ìª¨ï¿½ â¥­ï¿½
 		}
 
 		public override void VerticalWingSpeeds(Player player, ref float ascentWhenFalling, ref float ascentWhenRising,

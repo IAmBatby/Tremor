@@ -1,7 +1,7 @@
-using Terraria.ID;
 using System;
 using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace Tremor.NPCs
@@ -38,8 +38,8 @@ namespace Tremor.NPCs
 		{
 			if (Main.netMode != 1)
 			{
-				int centerX = (int)(npc.position.X + (float)(npc.width / 2)) / 16;
-				int centerY = (int)(npc.position.Y + (float)(npc.height / 2)) / 16;
+				int centerX = (int)(npc.position.X + npc.width / 2) / 16;
+				int centerY = (int)(npc.position.Y + npc.height / 2) / 16;
 				int halfLength = npc.width / 2 / 16 + 1;
 				if (Main.rand.Next(2) == 0)
 				{
@@ -55,30 +55,30 @@ namespace Tremor.NPCs
 		{
 			int x = spawnInfo.spawnTileX;
 			int y = spawnInfo.spawnTileY;
-			int tile = (int)Main.tile[x, y].type;
+			int tile = Main.tile[x, y].type;
 			return spawnInfo.player.ZoneSnow && y > Main.rockLayer ? 0.01f : 0f;
 		}
 
 		public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
 		{
-			npc.lifeMax = (int)(npc.lifeMax * 1);
-			npc.damage = (int)(npc.damage * 1);
+			npc.lifeMax = npc.lifeMax * 1;
+			npc.damage = npc.damage * 1;
 		}
 
 		public override void HitEffect(int hitDirection, double damage)
 		{
 			if (npc.life <= 0)
 			{
-				Dust.NewDust(npc.position, npc.width, npc.height, 80, 2.5f * (float)hitDirection, -2.5f, 0, default(Color), 1.7f);
-				Dust.NewDust(npc.position, npc.width, npc.height, 80, 2.5f * (float)hitDirection, -2.5f, 0, default(Color), 2.7f);
-				Dust.NewDust(npc.position, npc.width, npc.height, 80, 2.5f * (float)hitDirection, -2.5f, 0, default(Color), 0.7f);
+				Dust.NewDust(npc.position, npc.width, npc.height, 80, 2.5f * hitDirection, -2.5f, 0, default(Color), 1.7f);
+				Dust.NewDust(npc.position, npc.width, npc.height, 80, 2.5f * hitDirection, -2.5f, 0, default(Color), 2.7f);
+				Dust.NewDust(npc.position, npc.width, npc.height, 80, 2.5f * hitDirection, -2.5f, 0, default(Color), 0.7f);
 				Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/SEGore1"), 1f);
 				Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/SEGore1"), 1f);
 				Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/SEGore2"), 1f);
 				for (int k = 0; k < 20; k++)
 				{
-					Dust.NewDust(npc.position, npc.width, npc.height, 80, 2.5f * (float)hitDirection, -2.5f, 0, default(Color), 1.7f);
-					Dust.NewDust(npc.position, npc.width, npc.height, 80, 2.5f * (float)hitDirection, -2.5f, 0, default(Color), 0.6f);
+					Dust.NewDust(npc.position, npc.width, npc.height, 80, 2.5f * hitDirection, -2.5f, 0, default(Color), 1.7f);
+					Dust.NewDust(npc.position, npc.width, npc.height, 80, 2.5f * hitDirection, -2.5f, 0, default(Color), 0.6f);
 				}
 			}
 		}
@@ -87,30 +87,30 @@ namespace Tremor.NPCs
 		{
 			npc.TargetClosest(true);
 			float num679 = 12f;
-			Vector2 vector67 = new Vector2(npc.position.X + (float)npc.width * 0.5f, npc.position.Y + (float)npc.height * 0.5f);
-			float num680 = Main.player[npc.target].position.X + (float)(Main.player[npc.target].width / 2) - vector67.X;
+			Vector2 vector67 = new Vector2(npc.position.X + npc.width * 0.5f, npc.position.Y + npc.height * 0.5f);
+			float num680 = Main.player[npc.target].position.X + Main.player[npc.target].width / 2 - vector67.X;
 			float num681 = Main.player[npc.target].position.Y - vector67.Y;
-			float num682 = (float)Math.Sqrt((double)(num680 * num680 + num681 * num681));
+			float num682 = (float)Math.Sqrt(num680 * num680 + num681 * num681);
 			num682 = num679 / num682;
 			num680 *= num682;
 			num681 *= num682;
 			bool flag74 = false;
 			if (npc.directionY < 0)
 			{
-				npc.rotation = (float)(Math.Atan2((double)num681, (double)num680) + 1.57);
-				flag74 = ((double)npc.rotation >= -1.2 && (double)npc.rotation <= 1.2);
-				if ((double)npc.rotation < -0.8)
+				npc.rotation = (float)(Math.Atan2(num681, num680) + 1.57);
+				flag74 = (npc.rotation >= -1.2 && npc.rotation <= 1.2);
+				if (npc.rotation < -0.8)
 				{
 					npc.rotation = -0.8f;
 				}
-				else if ((double)npc.rotation > 0.8)
+				else if (npc.rotation > 0.8)
 				{
 					npc.rotation = 0.8f;
 				}
 				if (npc.velocity.X != 0f)
 				{
 					npc.velocity.X = npc.velocity.X * 0.9f;
-					if ((double)npc.velocity.X > -0.1 || (double)npc.velocity.X < 0.1)
+					if (npc.velocity.X > -0.1 || npc.velocity.X < 0.1)
 					{
 						npc.netUpdate = true;
 						npc.velocity.X = 0f;
@@ -140,9 +140,9 @@ namespace Tremor.NPCs
 			try
 			{
 				int num686 = (int)npc.position.X / 16;
-				int num687 = (int)(npc.position.X + (float)(npc.width / 2)) / 16;
-				int num688 = (int)(npc.position.X + (float)npc.width) / 16;
-				int num689 = (int)(npc.position.Y + (float)npc.height) / 16;
+				int num687 = (int)(npc.position.X + npc.width / 2) / 16;
+				int num688 = (int)(npc.position.X + npc.width) / 16;
+				int num689 = (int)(npc.position.Y + npc.height) / 16;
 				bool flag75 = false;
 				if (Main.tile[num686, num689] == null)
 				{
@@ -156,7 +156,7 @@ namespace Tremor.NPCs
 				{
 					Main.tile[num686, num689] = new Tile();
 				}
-				if ((Main.tile[num686, num689].nactive() && Main.tileSolid[(int)Main.tile[num686, num689].type]) || (Main.tile[num687, num689].nactive() && Main.tileSolid[(int)Main.tile[num687, num689].type]) || (Main.tile[num688, num689].nactive() && Main.tileSolid[(int)Main.tile[num688, num689].type]))
+				if ((Main.tile[num686, num689].nactive() && Main.tileSolid[Main.tile[num686, num689].type]) || (Main.tile[num687, num689].nactive() && Main.tileSolid[Main.tile[num687, num689].type]) || (Main.tile[num688, num689].nactive() && Main.tileSolid[Main.tile[num688, num689].type]))
 				{
 					flag75 = true;
 				}
@@ -172,7 +172,7 @@ namespace Tremor.NPCs
 					npc.noTileCollide = false;
 					if (Main.rand.Next(2) == 0)
 					{
-						int num690 = Dust.NewDust(new Vector2(npc.position.X - 4f, npc.position.Y + (float)npc.height - 8f), npc.width + 8, 24, 80, 0f, npc.velocity.Y / 2f, 0, default(Color), 1f);
+						int num690 = Dust.NewDust(new Vector2(npc.position.X - 4f, npc.position.Y + npc.height - 8f), npc.width + 8, 24, 80, 0f, npc.velocity.Y / 2f, 0, default(Color), 1f);
 						Dust expr_28A1C_cp_0 = Main.dust[num690];
 						expr_28A1C_cp_0.velocity.X = expr_28A1C_cp_0.velocity.X * 0.4f;
 						Dust expr_28A3C_cp_0 = Main.dust[num690];
@@ -184,11 +184,9 @@ namespace Tremor.NPCs
 						}
 					}
 				}
-				return;
 			}
 			catch
 			{
-				return;
 			}
 		}
 

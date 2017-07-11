@@ -1,7 +1,7 @@
-using Terraria.ID;
 using System;
 using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace Tremor.NPCs
@@ -109,27 +109,27 @@ namespace Tremor.NPCs
 				npc.TargetClosest(true);
 				int num1319 = 800;
 				float num1320 = Math.Abs(npc.Center.X - Main.player[npc.target].Center.X);
-				if (npc.Center.X < Main.player[npc.target].Center.X && npc.ai[2] < 0f && num1320 > (float)num1319)
+				if (npc.Center.X < Main.player[npc.target].Center.X && npc.ai[2] < 0f && num1320 > num1319)
 				{
 					npc.ai[2] = 0f;
 				}
-				if (npc.Center.X > Main.player[npc.target].Center.X && npc.ai[2] > 0f && num1320 > (float)num1319)
+				if (npc.Center.X > Main.player[npc.target].Center.X && npc.ai[2] > 0f && num1320 > num1319)
 				{
 					npc.ai[2] = 0f;
 				}
 				float num1321 = 0.45f;
 				float num1322 = 7f;
-				if ((double)npc.life < (double)npc.lifeMax * 0.75)
+				if (npc.life < npc.lifeMax * 0.75)
 				{
 					num1321 = 0.55f;
 					num1322 = 8f;
 				}
-				if ((double)npc.life < (double)npc.lifeMax * 0.5)
+				if (npc.life < npc.lifeMax * 0.5)
 				{
 					num1321 = 0.7f;
 					num1322 = 10f;
 				}
-				if ((double)npc.life < (double)npc.lifeMax * 0.25)
+				if (npc.life < npc.lifeMax * 0.25)
 				{
 					num1321 = 0.8f;
 					num1322 = 11f;
@@ -143,7 +143,7 @@ namespace Tremor.NPCs
 				{
 					npc.velocity.X = -num1322;
 				}
-				float num1323 = Main.player[npc.target].position.Y - (npc.position.Y + (float)npc.height);
+				float num1323 = Main.player[npc.target].position.Y - (npc.position.Y + npc.height);
 				if (num1323 < 150f)
 				{
 					npc.velocity.Y = npc.velocity.Y - 0.2f;
@@ -165,40 +165,40 @@ namespace Tremor.NPCs
 				{
 					npc.ai[3] += 1f;
 					int num1324 = 13;
-					if ((double)npc.life < (double)npc.lifeMax * 0.75)
+					if (npc.life < npc.lifeMax * 0.75)
 					{
 						num1324 = 12;
 					}
-					if ((double)npc.life < (double)npc.lifeMax * 0.5)
+					if (npc.life < npc.lifeMax * 0.5)
 					{
 						num1324 = 11;
 					}
-					if ((double)npc.life < (double)npc.lifeMax * 0.25)
+					if (npc.life < npc.lifeMax * 0.25)
 					{
 						num1324 = 10;
 					}
 					num1324++;
-					if (npc.ai[3] > (float)num1324)
+					if (npc.ai[3] > num1324)
 					{
-						npc.ai[3] = (float)(-(float)num1324);
+						npc.ai[3] = -(float)num1324;
 					}
 					if (npc.ai[3] == 0f && Main.netMode != 1)
 					{
 						Vector2 vector159 = new Vector2(npc.Center.X, npc.Center.Y);
 						vector159.X += npc.velocity.X * 7f;
-						float num1325 = Main.player[npc.target].position.X + (float)Main.player[npc.target].width * 0.5f - vector159.X;
+						float num1325 = Main.player[npc.target].position.X + Main.player[npc.target].width * 0.5f - vector159.X;
 						float num1326 = Main.player[npc.target].Center.Y - vector159.Y;
-						float num1327 = (float)Math.Sqrt((double)(num1325 * num1325 + num1326 * num1326));
+						float num1327 = (float)Math.Sqrt(num1325 * num1325 + num1326 * num1326);
 						float num1328 = 6f;
-						if ((double)npc.life < (double)npc.lifeMax * 0.75)
+						if (npc.life < npc.lifeMax * 0.75)
 						{
 							num1328 = 7f;
 						}
-						if ((double)npc.life < (double)npc.lifeMax * 0.5)
+						if (npc.life < npc.lifeMax * 0.5)
 						{
 							num1328 = 8f;
 						}
-						if ((double)npc.life < (double)npc.lifeMax * 0.25)
+						if (npc.life < npc.lifeMax * 0.25)
 						{
 							num1328 = 9f;
 						}
@@ -214,7 +214,7 @@ namespace Tremor.NPCs
 				}
 				if (Main.netMode != 1)
 				{
-					npc.ai[1] += (float)Main.rand.Next(1, 4);
+					npc.ai[1] += Main.rand.Next(1, 4);
 					if (npc.ai[1] > 800f && num1320 < 600f)
 					{
 						npc.ai[0] = -1f;
@@ -226,17 +226,17 @@ namespace Tremor.NPCs
 				npc.TargetClosest(true);
 				float num1329 = 0.15f;
 				float num1330 = 7f;
-				if ((double)npc.life < (double)npc.lifeMax * 0.75)
+				if (npc.life < npc.lifeMax * 0.75)
 				{
 					num1329 = 0.17f;
 					num1330 = 8f;
 				}
-				if ((double)npc.life < (double)npc.lifeMax * 0.5)
+				if (npc.life < npc.lifeMax * 0.5)
 				{
 					num1329 = 0.2f;
 					num1330 = 9f;
 				}
-				if ((double)npc.life < (double)npc.lifeMax * 0.25)
+				if (npc.life < npc.lifeMax * 0.25)
 				{
 					num1329 = 0.25f;
 					num1330 = 10f;
@@ -263,7 +263,7 @@ namespace Tremor.NPCs
 				{
 					npc.velocity.X = npc.velocity.X * 0.95f;
 				}
-				float num1331 = Main.player[npc.target].position.Y - (npc.position.Y + (float)npc.height);
+				float num1331 = Main.player[npc.target].position.Y - (npc.position.Y + npc.height);
 				if (num1331 < 180f)
 				{
 					npc.velocity.Y = npc.velocity.Y - 0.1f;
@@ -285,27 +285,27 @@ namespace Tremor.NPCs
 				{
 					npc.ai[3] += 1f;
 					int num1332 = 15;
-					if ((double)npc.life < (double)npc.lifeMax * 0.75)
+					if (npc.life < npc.lifeMax * 0.75)
 					{
 						num1332 = 14;
 					}
-					if ((double)npc.life < (double)npc.lifeMax * 0.5)
+					if (npc.life < npc.lifeMax * 0.5)
 					{
 						num1332 = 12;
 					}
-					if ((double)npc.life < (double)npc.lifeMax * 0.25)
+					if (npc.life < npc.lifeMax * 0.25)
 					{
 						num1332 = 10;
 					}
-					if ((double)npc.life < (double)npc.lifeMax * 0.1)
+					if (npc.life < npc.lifeMax * 0.1)
 					{
 						num1332 = 8;
 					}
 					num1332 += 3;
-					if (npc.ai[3] >= (float)num1332)
+					if (npc.ai[3] >= num1332)
 					{
 						npc.ai[3] = 0f;
-						Vector2 vector160 = new Vector2(npc.Center.X, npc.position.Y + (float)npc.height - 14f);
+						Vector2 vector160 = new Vector2(npc.Center.X, npc.position.Y + npc.height - 14f);
 						int i2 = (int)(vector160.X / 16f);
 						int j2 = (int)(vector160.Y / 16f);
 						if (!WorldGen.SolidTile(i2, j2))
@@ -317,13 +317,13 @@ namespace Tremor.NPCs
 							}
 							num1333 += 3f;
 							float speedX2 = npc.velocity.X * 0.25f;
-							Projectile.NewProjectile(vector160.X, vector160.Y, speedX2, num1333, mod.ProjectileType("RedPulsePro"), 42, 0f, Main.myPlayer, (float)Main.rand.Next(5), 0f);
+							Projectile.NewProjectile(vector160.X, vector160.Y, speedX2, num1333, mod.ProjectileType("RedPulsePro"), 42, 0f, Main.myPlayer, Main.rand.Next(5), 0f);
 						}
 					}
 				}
 				if (Main.netMode != 1)
 				{
-					npc.ai[1] += (float)Main.rand.Next(1, 4);
+					npc.ai[1] += Main.rand.Next(1, 4);
 					if (npc.ai[1] > 600f)
 					{
 						npc.ai[0] = -1f;
@@ -334,9 +334,9 @@ namespace Tremor.NPCs
 			{
 				npc.TargetClosest(true);
 				Vector2 vector161 = new Vector2(npc.Center.X, npc.Center.Y - 20f);
-				float num1334 = (float)Main.rand.Next(-1000, 1001);
-				float num1335 = (float)Main.rand.Next(-1000, 1001);
-				float num1336 = (float)Math.Sqrt((double)(num1334 * num1334 + num1335 * num1335));
+				float num1334 = Main.rand.Next(-1000, 1001);
+				float num1335 = Main.rand.Next(-1000, 1001);
+				float num1336 = (float)Math.Sqrt(num1334 * num1334 + num1335 * num1335);
 				float num1337 = 15f;
 				npc.velocity *= 0.95f;
 				num1336 = num1337 / num1336;
@@ -347,30 +347,30 @@ namespace Tremor.NPCs
 				vector161.Y += num1335 * 4f;
 				npc.ai[3] += 1f;
 				int num1338 = 7;
-				if ((double)npc.life < (double)npc.lifeMax * 0.75)
+				if (npc.life < npc.lifeMax * 0.75)
 				{
 					num1338--;
 				}
-				if ((double)npc.life < (double)npc.lifeMax * 0.5)
+				if (npc.life < npc.lifeMax * 0.5)
 				{
 					num1338 -= 2;
 				}
-				if ((double)npc.life < (double)npc.lifeMax * 0.25)
+				if (npc.life < npc.lifeMax * 0.25)
 				{
 					num1338 -= 3;
 				}
-				if ((double)npc.life < (double)npc.lifeMax * 0.1)
+				if (npc.life < npc.lifeMax * 0.1)
 				{
 					num1338 -= 4;
 				}
-				if (npc.ai[3] > (float)num1338)
+				if (npc.ai[3] > num1338)
 				{
 					npc.ai[3] = 0f;
 					Projectile.NewProjectile(vector161.X, vector161.Y, num1334, num1335, mod.ProjectileType("PurplePulsePro"), 30, 0f, Main.myPlayer, 0f, 0f);
 				}
 				if (Main.netMode != 1)
 				{
-					npc.ai[1] += (float)Main.rand.Next(1, 4);
+					npc.ai[1] += Main.rand.Next(1, 4);
 					if (npc.ai[1] > 500f)
 					{
 						npc.ai[0] = -1f;
@@ -385,11 +385,10 @@ namespace Tremor.NPCs
 				{
 					num1339 = 0;
 				}
-				npc.ai[0] = (float)num1339;
+				npc.ai[0] = num1339;
 				npc.ai[1] = 0f;
 				npc.ai[2] = 0f;
 				npc.ai[3] = 0f;
-				return;
 			}
 
 		}
@@ -402,8 +401,8 @@ namespace Tremor.NPCs
 			}
 			if (Main.netMode != 1)
 			{
-				int CenterX = (int)(npc.position.X + (float)(npc.width / 2)) / 16;
-				int CenterY = (int)(npc.position.Y + (float)(npc.height / 2)) / 16;
+				int CenterX = (int)(npc.position.X + npc.width / 2) / 16;
+				int CenterY = (int)(npc.position.Y + npc.height / 2) / 16;
 				int halfLength = npc.width / 2 / 16 + 1;
 
 				if (!Main.expertMode && Main.rand.Next(1) == 0)

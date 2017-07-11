@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.ModLoader;
+
 //using Terraria.Content.Fonts;
 
 namespace Tremor.ZombieEvent
@@ -41,8 +42,8 @@ namespace Tremor.ZombieEvent
             int eH = CyberWrathI.Height;
             int eW = CyberWrathI.Width;
 
-            int XX1 = (int)(((24 - iW1) / 2) + Main.screenWidth - sX1);
-            int YY1 = (int)(((24 - iH1) / 2) + sY1 + (int)(280 * 1.4) + (24 - iW1) * (-1) + 20);
+            int XX1 = ((24 - iW1) / 2) + Main.screenWidth - sX1;
+            int YY1 = ((24 - iH1) / 2) + sY1 + (int)(280 * 1.4) + (24 - iW1) * (-1) + 20;
 
             int eX = XX1 - 333;
             int eY = YY1 - 430 + (24 - eW) * (-1);

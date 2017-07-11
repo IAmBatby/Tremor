@@ -38,14 +38,11 @@ namespace Tremor.Invasion
 				Main.bloodMoon = true;
 				return true;
 			}
-			else
+			if (Main.netMode != 1)
 			{
-				if (Main.netMode != 1)
-				{
-					Main.dayTime = !Main.dayTime;
-					Main.time = (Main.dayTime ? 10000f : 0f);
-					return true;
-				}
+				Main.dayTime = !Main.dayTime;
+				Main.time = (Main.dayTime ? 10000f : 0f);
+				return true;
 			}
 			return true;
 		}

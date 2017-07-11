@@ -1,5 +1,5 @@
-using Terraria.ID;
 using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace Tremor.NPCs
@@ -7,21 +7,9 @@ namespace Tremor.NPCs
 	[AutoloadHead]
 	public class Elf : ModNPC
 	{
-		public override string Texture
-		{
-			get
-			{
-				return "Tremor/NPCs/Elf";
-			}
-		}
+		public override string Texture => "Tremor/NPCs/Elf";
 
-		public override string[] AltTextures
-		{
-			get
-			{
-				return new string[] { "Tremor/NPCs/Elf" };
-			}
-		}
+		public override string[] AltTextures => new[] { "Tremor/NPCs/Elf" };
 
 		public override bool Autoload(ref string name)
 		{

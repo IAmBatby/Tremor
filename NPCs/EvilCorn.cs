@@ -1,8 +1,8 @@
-﻿using Terraria.ID;
-using Terraria;
-using Terraria.ModLoader;
+﻿using System.Collections.Generic;
 using Microsoft.Xna.Framework;
-using System.Collections.Generic;
+using Terraria;
+using Terraria.ID;
+using Terraria.ModLoader;
 
 /*
 1 состояние - парит на месте - при приближении игрока даёт ему оплеуху. 
@@ -35,17 +35,17 @@ namespace Tremor.NPCs
 		#endregion
 
 		#region "Переменные для работы с AI"
-		int State = 0;
+		int State;
 		// 0 - парит на месте, при приближении бьёт
 		// 1 - парит на месте, скрыт в своих листьях
 		// 2 - летает за игроком махая листьями
 		int stateTime = simpleAttakStateTime;
 		// Время до завершения текущего действия
-		int nowHitPlayerLeft = 0;
+		int nowHitPlayerLeft;
 		// Время до завершения текущей анимации удара влево
-		int nowHitPlayerRight = 0;
+		int nowHitPlayerRight;
 		// Время до завершения текущей анимации удара вправо
-		int nowCangeLeavs = 0;
+		int nowCangeLeavs;
 		// Время до завершения текушей анимации смены листьев
 		#endregion
 
@@ -101,7 +101,7 @@ namespace Tremor.NPCs
 
 		#region "Работа с анимацией"
 		int _2_Frame = 17;
-		int FrameNow = 0;
+		int FrameNow;
 		bool needState3SetFrame = true;
 		void PlayAnimation()
 		{
@@ -203,7 +203,7 @@ namespace Tremor.NPCs
 		#endregion
 
 		bool NeedPrepere = true;
-		List<int> Stadyes = new List<int>() { 0, 1, 2, 3 };
+		List<int> Stadyes = new List<int> { 0, 1, 2, 3 };
 		int NextStady = -1;
 		void RechangeStage()
 		{
@@ -211,7 +211,7 @@ namespace Tremor.NPCs
 			{
 				if (Stadyes.Contains(State))
 					Stadyes.Remove(State);
-				if (Stadyes.Count <= 0) { Stadyes = new List<int>() { 0, 1, 2, 3 }; Stadyes.Remove(State); }
+				if (Stadyes.Count <= 0) { Stadyes = new List<int> { 0, 1, 2, 3 }; Stadyes.Remove(State); }
 				int ID = Main.rand.Next(0, Stadyes.Count);
 				NextStady = Stadyes[ID];
 				Stadyes.RemoveAt(ID);
@@ -555,7 +555,7 @@ namespace Tremor.NPCs
 			npc.position += npc.velocity; // Увеличиваем скорость вдвое
 		}
 
-		int FrameYOffset = 0;
+		int FrameYOffset;
 		bool FirstAction = true;
 		bool needTP = true;
 		int TimeToNS = 6;
@@ -583,7 +583,7 @@ namespace Tremor.NPCs
 					{
 						if (Main.rand.Next(6) == 0)
 							for (int x = (int)npc.position.X; x < (npc.position.X + npc.width); x++)
-								Dust.NewDust(new Vector2(x, npc.position.Y + npc.height), 1, 1, Terraria.ID.DustID.GoldCoin);
+								Dust.NewDust(new Vector2(x, npc.position.Y + npc.height), 1, 1, DustID.GoldCoin);
 						npc.frame = getFrame(22);
 						npc.frame.Y -= FrameYOffset;
 						FrameYOffset += 4;
@@ -607,7 +607,7 @@ namespace Tremor.NPCs
 						npc.position.Y += 8;
 					if (Main.rand.Next(6) == 0)
 						for (int x = (int)npc.position.X; x < (npc.position.X + npc.width); x++)
-							Dust.NewDust(new Vector2(x, npc.position.Y + npc.height), 1, 1, Terraria.ID.DustID.GoldCoin);
+							Dust.NewDust(new Vector2(x, npc.position.Y + npc.height), 1, 1, DustID.GoldCoin);
 					npc.frame = getFrame(21);
 					npc.frame.Y += FrameYOffset;
 					FrameYOffset += 8;
@@ -636,8 +636,8 @@ namespace Tremor.NPCs
 			}
 			if (Main.netMode != 1)
 			{
-				int centerX = (int)(npc.position.X + (float)(npc.width / 2)) / 16;
-				int centerY = (int)(npc.position.Y + (float)(npc.height / 2)) / 16;
+				int centerX = (int)(npc.position.X + npc.width / 2) / 16;
+				int centerY = (int)(npc.position.Y + npc.height / 2) / 16;
 				int halfLength = npc.width / 2 / 16 + 1;
 
 				if (!Main.expertMode && Main.rand.Next(7) == 0)
@@ -687,7 +687,7 @@ namespace Tremor.NPCs
 			{
 				for (int k = 0; k < 20; k++)
 				{
-					Dust.NewDust(npc.position, npc.width, npc.height, 151, 2.5f * (float)hitDirection, -2.5f, 0, default(Color), 0.7f);
+					Dust.NewDust(npc.position, npc.width, npc.height, 151, 2.5f * hitDirection, -2.5f, 0, default(Color), 0.7f);
 				}
 				Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/CornGore1"), 1f);
 				Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/CornGore2"), 1f);

@@ -1,7 +1,7 @@
-using Terraria.ID;
 using System;
 using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace Tremor.NPCs
@@ -31,12 +31,12 @@ namespace Tremor.NPCs
 
 		public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
 		{
-			npc.lifeMax = (int)(npc.lifeMax * 1);
-			npc.damage = (int)(npc.damage * 1);
+			npc.lifeMax = npc.lifeMax * 1;
+			npc.damage = npc.damage * 1;
 		}
 
 		int TimeToAnimation = 4;
-		int Frame = 0;
+		int Frame;
 		public override void AI()
 		{
 			npc.TargetClosest(true);
@@ -66,18 +66,18 @@ namespace Tremor.NPCs
 			{
 				Flag = true;
 			}
-			if (npc.position.X == npc.oldPosition.X || npc.ai[3] >= (float)Num || Flag)
+			if (npc.position.X == npc.oldPosition.X || npc.ai[3] >= Num || Flag)
 			{
 				npc.ai[3] += 1f;
 			}
 			else
 			{
-				if ((double)Math.Abs(npc.velocity.X) > 0.9 && npc.ai[3] > 0f)
+				if (Math.Abs(npc.velocity.X) > 0.9 && npc.ai[3] > 0f)
 				{
 					npc.ai[3] -= 1f;
 				}
 			}
-			if (npc.ai[3] > (float)(Num * 10))
+			if (npc.ai[3] > Num * 10)
 			{
 				npc.ai[3] = 0f;
 			}
@@ -85,12 +85,12 @@ namespace Tremor.NPCs
 			{
 				npc.ai[3] = 0f;
 			}
-			if (npc.ai[3] == (float)Num)
+			if (npc.ai[3] == Num)
 			{
 				npc.netUpdate = true;
 			}
 
-			if (npc.ai[3] < (float)Num)
+			if (npc.ai[3] < Num)
 			{
 				npc.TargetClosest(true);
 			}
@@ -152,16 +152,16 @@ namespace Tremor.NPCs
 			bool Flag3 = false;
 			if (npc.velocity.Y == 0f)
 			{
-				int Num2 = (int)(npc.position.Y + (float)npc.height + 8f) / 16;
+				int Num2 = (int)(npc.position.Y + npc.height + 8f) / 16;
 				int Num3 = (int)npc.position.X / 16;
-				int Num4 = (int)(npc.position.X + (float)npc.width) / 16;
+				int Num4 = (int)(npc.position.X + npc.width) / 16;
 				for (int l = Num3; l <= Num4; l++)
 				{
 					if (Main.tile[l, Num2] == null)
 					{
 						return;
 					}
-					if (Main.tile[l, Num2].active() && Main.tileSolid[(int)Main.tile[l, Num2].type])
+					if (Main.tile[l, Num2].active() && Main.tileSolid[Main.tile[l, Num2].type])
 					{
 						Flag3 = true;
 						break;
@@ -171,8 +171,8 @@ namespace Tremor.NPCs
 
 			if (Flag3)
 			{
-				int Num5 = (int)((npc.position.X + (float)(npc.width / 2) + (float)((npc.width / 2 + 6) * npc.direction)) / 16f);
-				int Num6 = (int)((npc.position.Y + (float)npc.height - 15f) / 16f);
+				int Num5 = (int)((npc.position.X + npc.width / 2 + (npc.width / 2 + 6) * npc.direction) / 16f);
+				int Num6 = (int)((npc.position.Y + npc.height - 15f) / 16f);
 				if (Main.tile[Num5, Num6] == null)
 				{
 					Main.tile[Num5, Num6] = new Tile();
@@ -208,7 +208,7 @@ namespace Tremor.NPCs
 					npc.ai[3] = 0f;
 					if (npc.ai[2] >= 60f)
 					{
-						npc.velocity.X = 0.5f * (float)(-(float)npc.direction);
+						npc.velocity.X = 0.5f * -(float)npc.direction;
 						npc.ai[1] += 1f;
 						npc.ai[2] = 0f;
 						bool Flag4 = false;
@@ -223,7 +223,7 @@ namespace Tremor.NPCs
 							bool Flag5 = WorldGen.OpenDoor(Num5, Num6, npc.direction);
 							if (!Flag5)
 							{
-								npc.ai[3] = (float)Num;
+								npc.ai[3] = Num;
 								npc.netUpdate = true;
 							}
 							if (Main.netMode == 2 && Flag5)
@@ -236,9 +236,9 @@ namespace Tremor.NPCs
 
 				if ((npc.velocity.X < 0f && npc.spriteDirection == -1) || (npc.velocity.X > 0f && npc.spriteDirection == 1))
 				{
-					if (Main.tile[Num5, Num6 - 2].active() && Main.tileSolid[(int)Main.tile[Num5, Num6 - 2].type])
+					if (Main.tile[Num5, Num6 - 2].active() && Main.tileSolid[Main.tile[Num5, Num6 - 2].type])
 					{
-						if ((Main.tile[Num5, Num6 - 3].active() && Main.tileSolid[(int)Main.tile[Num5, Num6 - 3].type]))
+						if ((Main.tile[Num5, Num6 - 3].active() && Main.tileSolid[Main.tile[Num5, Num6 - 3].type]))
 						{
 							npc.velocity.Y = -8f;
 							npc.netUpdate = true;
@@ -251,21 +251,21 @@ namespace Tremor.NPCs
 					}
 					else
 					{
-						if (Main.tile[Num5, Num6 - 1].active() && Main.tileSolid[(int)Main.tile[Num5, Num6 - 1].type])
+						if (Main.tile[Num5, Num6 - 1].active() && Main.tileSolid[Main.tile[Num5, Num6 - 1].type])
 						{
 							npc.velocity.Y = -6f;
 							npc.netUpdate = true;
 						}
 						else
 						{
-							if (Main.tile[Num5, Num6].active() && Main.tileSolid[(int)Main.tile[Num5, Num6].type])
+							if (Main.tile[Num5, Num6].active() && Main.tileSolid[Main.tile[Num5, Num6].type])
 							{
 								npc.velocity.Y = -5f;
 								npc.netUpdate = true;
 							}
 							else
 							{
-								if (npc.directionY < 0 && (!Main.tile[Num5, Num6 + 1].active() || !Main.tileSolid[(int)Main.tile[Num5, Num6 + 1].type]) && (!Main.tile[Num5 + npc.direction, Num6 + 1].active() || !Main.tileSolid[(int)Main.tile[Num5 + npc.direction, Num6 + 1].type]))
+								if (npc.directionY < 0 && (!Main.tile[Num5, Num6 + 1].active() || !Main.tileSolid[Main.tile[Num5, Num6 + 1].type]) && (!Main.tile[Num5 + npc.direction, Num6 + 1].active() || !Main.tileSolid[Main.tile[Num5 + npc.direction, Num6 + 1].type]))
 								{
 									npc.velocity.Y = -8f;
 									npc.velocity.X = npc.velocity.X * 1.5f;
@@ -300,12 +300,12 @@ namespace Tremor.NPCs
 			npc.active = false;
 			npc.checkDead();
 			Main.PlaySound(2, (int)npc.position.X, (int)npc.position.Y, 62);
-			npc.position.X = npc.position.X + (float)(npc.width / 2);
-			npc.position.Y = npc.position.Y + (float)(npc.height / 2);
+			npc.position.X = npc.position.X + npc.width / 2;
+			npc.position.Y = npc.position.Y + npc.height / 2;
 			npc.width = 80;
 			npc.height = 80;
-			npc.position.X = npc.position.X - (float)(npc.width / 2);
-			npc.position.Y = npc.position.Y - (float)(npc.height / 2);
+			npc.position.X = npc.position.X - npc.width / 2;
+			npc.position.Y = npc.position.Y - npc.height / 2;
 			for (int num628 = 0; num628 < 40; num628++)
 			{
 				int num629 = Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, 31, 0f, 0f, 100, default(Color), 2f);
@@ -313,7 +313,7 @@ namespace Tremor.NPCs
 				if (Main.rand.Next(2) == 0)
 				{
 					Main.dust[num629].scale = 0.5f;
-					Main.dust[num629].fadeIn = 1f + (float)Main.rand.Next(10) * 0.1f;
+					Main.dust[num629].fadeIn = 1f + Main.rand.Next(10) * 0.1f;
 				}
 			}
 			for (int num630 = 0; num630 < 70; num630++)
@@ -335,37 +335,37 @@ namespace Tremor.NPCs
 				{
 					scaleFactor10 = 1f;
 				}
-				int num633 = Gore.NewGore(new Vector2(npc.position.X + (float)(npc.width / 2) - 24f, npc.position.Y + (float)(npc.height / 2) - 24f), default(Vector2), Main.rand.Next(61, 64), 1f);
+				int num633 = Gore.NewGore(new Vector2(npc.position.X + npc.width / 2 - 24f, npc.position.Y + npc.height / 2 - 24f), default(Vector2), Main.rand.Next(61, 64), 1f);
 				Main.gore[num633].velocity *= scaleFactor10;
 				Gore expr_13E6D_cp_0 = Main.gore[num633];
 				expr_13E6D_cp_0.velocity.X = expr_13E6D_cp_0.velocity.X + 1f;
 				Gore expr_13E8D_cp_0 = Main.gore[num633];
 				expr_13E8D_cp_0.velocity.Y = expr_13E8D_cp_0.velocity.Y + 1f;
-				num633 = Gore.NewGore(new Vector2(npc.position.X + (float)(npc.width / 2) - 24f, npc.position.Y + (float)(npc.height / 2) - 24f), default(Vector2), Main.rand.Next(61, 64), 2f);
+				num633 = Gore.NewGore(new Vector2(npc.position.X + npc.width / 2 - 24f, npc.position.Y + npc.height / 2 - 24f), default(Vector2), Main.rand.Next(61, 64), 2f);
 				Main.gore[num633].velocity *= scaleFactor10;
 				Gore expr_13F30_cp_0 = Main.gore[num633];
 				expr_13F30_cp_0.velocity.X = expr_13F30_cp_0.velocity.X - 1f;
 				Gore expr_13F50_cp_0 = Main.gore[num633];
 				expr_13F50_cp_0.velocity.Y = expr_13F50_cp_0.velocity.Y + 1f;
-				num633 = Gore.NewGore(new Vector2(npc.position.X + (float)(npc.width / 2) - 24f, npc.position.Y + (float)(npc.height / 2) - 24f), default(Vector2), Main.rand.Next(61, 64), 1f);
+				num633 = Gore.NewGore(new Vector2(npc.position.X + npc.width / 2 - 24f, npc.position.Y + npc.height / 2 - 24f), default(Vector2), Main.rand.Next(61, 64), 1f);
 				Main.gore[num633].velocity *= scaleFactor10;
 				Gore expr_13FF3_cp_0 = Main.gore[num633];
 				expr_13FF3_cp_0.velocity.X = expr_13FF3_cp_0.velocity.X + 1f;
 				Gore expr_14013_cp_0 = Main.gore[num633];
 				expr_14013_cp_0.velocity.Y = expr_14013_cp_0.velocity.Y - 1f;
-				num633 = Gore.NewGore(new Vector2(npc.position.X + (float)(npc.width / 2) - 24f, npc.position.Y + (float)(npc.height / 2) - 24f), default(Vector2), Main.rand.Next(61, 64), 1f);
+				num633 = Gore.NewGore(new Vector2(npc.position.X + npc.width / 2 - 24f, npc.position.Y + npc.height / 2 - 24f), default(Vector2), Main.rand.Next(61, 64), 1f);
 				Main.gore[num633].velocity *= scaleFactor10;
 				Gore expr_140B6_cp_0 = Main.gore[num633];
 				expr_140B6_cp_0.velocity.X = expr_140B6_cp_0.velocity.X - 1f;
 				Gore expr_140D6_cp_0 = Main.gore[num633];
 				expr_140D6_cp_0.velocity.Y = expr_140D6_cp_0.velocity.Y - 1f;
 			}
-			npc.position.X = npc.position.X + (float)(npc.width / 2);
-			npc.position.Y = npc.position.Y + (float)(npc.height / 2);
+			npc.position.X = npc.position.X + npc.width / 2;
+			npc.position.Y = npc.position.Y + npc.height / 2;
 			npc.width = 10;
 			npc.height = 10;
-			npc.position.X = npc.position.X - (float)(npc.width / 2);
-			npc.position.Y = npc.position.Y - (float)(npc.height / 2);
+			npc.position.X = npc.position.X - npc.width / 2;
+			npc.position.Y = npc.position.Y - npc.height / 2;
 		}
 
 		public override void HitEffect(int hitDirection, double damage)
@@ -373,12 +373,12 @@ namespace Tremor.NPCs
 			if (npc.life <= 0)
 			{
 				Main.PlaySound(2, (int)npc.position.X, (int)npc.position.Y, 62);
-				npc.position.X = npc.position.X + (float)(npc.width / 2);
-				npc.position.Y = npc.position.Y + (float)(npc.height / 2);
+				npc.position.X = npc.position.X + npc.width / 2;
+				npc.position.Y = npc.position.Y + npc.height / 2;
 				npc.width = 80;
 				npc.height = 80;
-				npc.position.X = npc.position.X - (float)(npc.width / 2);
-				npc.position.Y = npc.position.Y - (float)(npc.height / 2);
+				npc.position.X = npc.position.X - npc.width / 2;
+				npc.position.Y = npc.position.Y - npc.height / 2;
 				for (int num628 = 0; num628 < 40; num628++)
 				{
 					int num629 = Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, 31, 0f, 0f, 100, default(Color), 2f);
@@ -386,7 +386,7 @@ namespace Tremor.NPCs
 					if (Main.rand.Next(2) == 0)
 					{
 						Main.dust[num629].scale = 0.5f;
-						Main.dust[num629].fadeIn = 1f + (float)Main.rand.Next(10) * 0.1f;
+						Main.dust[num629].fadeIn = 1f + Main.rand.Next(10) * 0.1f;
 					}
 				}
 				for (int num630 = 0; num630 < 70; num630++)
@@ -408,50 +408,50 @@ namespace Tremor.NPCs
 					{
 						scaleFactor10 = 1f;
 					}
-					int num633 = Gore.NewGore(new Vector2(npc.position.X + (float)(npc.width / 2) - 24f, npc.position.Y + (float)(npc.height / 2) - 24f), default(Vector2), Main.rand.Next(61, 64), 1f);
+					int num633 = Gore.NewGore(new Vector2(npc.position.X + npc.width / 2 - 24f, npc.position.Y + npc.height / 2 - 24f), default(Vector2), Main.rand.Next(61, 64), 1f);
 					Main.gore[num633].velocity *= scaleFactor10;
 					Gore expr_13E6D_cp_0 = Main.gore[num633];
 					expr_13E6D_cp_0.velocity.X = expr_13E6D_cp_0.velocity.X + 1f;
 					Gore expr_13E8D_cp_0 = Main.gore[num633];
 					expr_13E8D_cp_0.velocity.Y = expr_13E8D_cp_0.velocity.Y + 1f;
-					num633 = Gore.NewGore(new Vector2(npc.position.X + (float)(npc.width / 2) - 24f, npc.position.Y + (float)(npc.height / 2) - 24f), default(Vector2), Main.rand.Next(61, 64), 2f);
+					num633 = Gore.NewGore(new Vector2(npc.position.X + npc.width / 2 - 24f, npc.position.Y + npc.height / 2 - 24f), default(Vector2), Main.rand.Next(61, 64), 2f);
 					Main.gore[num633].velocity *= scaleFactor10;
 					Gore expr_13F30_cp_0 = Main.gore[num633];
 					expr_13F30_cp_0.velocity.X = expr_13F30_cp_0.velocity.X - 1f;
 					Gore expr_13F50_cp_0 = Main.gore[num633];
 					expr_13F50_cp_0.velocity.Y = expr_13F50_cp_0.velocity.Y + 1f;
-					num633 = Gore.NewGore(new Vector2(npc.position.X + (float)(npc.width / 2) - 24f, npc.position.Y + (float)(npc.height / 2) - 24f), default(Vector2), Main.rand.Next(61, 64), 1f);
+					num633 = Gore.NewGore(new Vector2(npc.position.X + npc.width / 2 - 24f, npc.position.Y + npc.height / 2 - 24f), default(Vector2), Main.rand.Next(61, 64), 1f);
 					Main.gore[num633].velocity *= scaleFactor10;
 					Gore expr_13FF3_cp_0 = Main.gore[num633];
 					expr_13FF3_cp_0.velocity.X = expr_13FF3_cp_0.velocity.X + 1f;
 					Gore expr_14013_cp_0 = Main.gore[num633];
 					expr_14013_cp_0.velocity.Y = expr_14013_cp_0.velocity.Y - 1f;
-					num633 = Gore.NewGore(new Vector2(npc.position.X + (float)(npc.width / 2) - 24f, npc.position.Y + (float)(npc.height / 2) - 24f), default(Vector2), Main.rand.Next(61, 64), 1f);
+					num633 = Gore.NewGore(new Vector2(npc.position.X + npc.width / 2 - 24f, npc.position.Y + npc.height / 2 - 24f), default(Vector2), Main.rand.Next(61, 64), 1f);
 					Main.gore[num633].velocity *= scaleFactor10;
 					Gore expr_140B6_cp_0 = Main.gore[num633];
 					expr_140B6_cp_0.velocity.X = expr_140B6_cp_0.velocity.X - 1f;
 					Gore expr_140D6_cp_0 = Main.gore[num633];
 					expr_140D6_cp_0.velocity.Y = expr_140D6_cp_0.velocity.Y - 1f;
 				}
-				npc.position.X = npc.position.X + (float)(npc.width / 2);
-				npc.position.Y = npc.position.Y + (float)(npc.height / 2);
+				npc.position.X = npc.position.X + npc.width / 2;
+				npc.position.Y = npc.position.Y + npc.height / 2;
 				npc.width = 10;
 				npc.height = 10;
-				npc.position.X = npc.position.X - (float)(npc.width / 2);
-				npc.position.Y = npc.position.Y - (float)(npc.height / 2);
+				npc.position.X = npc.position.X - npc.width / 2;
+				npc.position.Y = npc.position.Y - npc.height / 2;
 			}
 		}
 
 		public override void NPCLoot()
 		{
-			if (Main.invasionType == Terraria.ID.InvasionID.GoblinArmy)
+			if (Main.invasionType == InvasionID.GoblinArmy)
 			{
 				Main.invasionProgress++;
 			}
 			if (Main.netMode != 1)
 			{
-				int centerX = (int)(npc.position.X + (float)(npc.width / 2)) / 16;
-				int centerY = (int)(npc.position.Y + (float)(npc.height / 2)) / 16;
+				int centerX = (int)(npc.position.X + npc.width / 2) / 16;
+				int centerY = (int)(npc.position.Y + npc.height / 2) / 16;
 				int halfLength = npc.width / 2 / 16 + 1;
 
 				if (Main.rand.Next(2) == 0)
@@ -475,7 +475,7 @@ namespace Tremor.NPCs
 		{
 			int x = spawnInfo.spawnTileX;
 			int y = spawnInfo.spawnTileY;
-			int tile = (int)Main.tile[x, y].type;
+			int tile = Main.tile[x, y].type;
 			return (NPC.AnyNPCs(26) || NPC.AnyNPCs(27) || NPC.AnyNPCs(28) || NPC.AnyNPCs(29)) && NPC.downedBoss3 && y < Main.worldSurface ? 0.08f : 0f;
 		}
 	}

@@ -12,7 +12,7 @@ namespace Tremor.Tiles
         Main.tileFrameImportant[Type] = true;
         Main.tileLavaDeath[Type] = true;
         TileObjectData.newTile.CopyFrom(TileObjectData.Style3x4);
-        TileObjectData.newTile.CoordinateHeights = new int[]{16, 16, 16, 16};
+        TileObjectData.newTile.CoordinateHeights = new[]{16, 16, 16, 16};
         TileObjectData.newTile.StyleHorizontal = true;
         TileObjectData.newTile.StyleWrapLimit = 36;
         TileObjectData.addTile(Type);

@@ -1,6 +1,6 @@
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ModLoader;
-using Microsoft.Xna.Framework;
 
 namespace Tremor.Projectiles
 {
@@ -11,7 +11,7 @@ namespace Tremor.Projectiles
         {
             if (Main.gameMenu) return;
 
-            if (projectile.minion == true && Main.player[Main.myPlayer].active && Main.player[Main.myPlayer].FindBuffIndex(mod.BuffType("ZephyrhornBuff")) != -1)
+            if (projectile.minion && Main.player[Main.myPlayer].active && Main.player[Main.myPlayer].FindBuffIndex(mod.BuffType("ZephyrhornBuff")) != -1)
             {
                 projectile.scale = 1.5f;
                 projectile.width *= (int)1.5f;

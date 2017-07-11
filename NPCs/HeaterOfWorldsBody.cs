@@ -1,3 +1,4 @@
+using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
@@ -72,7 +73,7 @@ namespace Tremor.NPCs
 		Vector2 VelocityFPTP(Vector2 pos1, Vector2 pos2, float speed)
 		{
 			Vector2 move = pos2 - pos1;
-			return move * (speed / (float)System.Math.Sqrt(move.X * move.X + move.Y * move.Y));
+			return move * (speed / (float)Math.Sqrt(move.X * move.X + move.Y * move.Y));
 		}
 
 		public override void AI()

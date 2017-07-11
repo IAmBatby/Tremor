@@ -2,8 +2,8 @@ using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
-using Terraria.ModLoader;
 using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace Tremor.Projectiles
 {
@@ -109,15 +109,15 @@ namespace Tremor.Projectiles
 				if (Main.player[projectile.owner].channel)
 				{
 					float num146 = 12f;
-					Vector2 vector10 = new Vector2(projectile.position.X + (float)projectile.width * 0.5f, projectile.position.Y + (float)projectile.height * 0.5f);
-					float num147 = (float)Main.mouseX + Main.screenPosition.X - vector10.X;
-					float num148 = (float)Main.mouseY + Main.screenPosition.Y - vector10.Y;
+					Vector2 vector10 = new Vector2(projectile.position.X + projectile.width * 0.5f, projectile.position.Y + projectile.height * 0.5f);
+					float num147 = Main.mouseX + Main.screenPosition.X - vector10.X;
+					float num148 = Main.mouseY + Main.screenPosition.Y - vector10.Y;
 					if (Main.player[projectile.owner].gravDir == -1f)
 					{
-						num148 = Main.screenPosition.Y + (float)Main.screenHeight - (float)Main.mouseY - vector10.Y;
+						num148 = Main.screenPosition.Y + Main.screenHeight - Main.mouseY - vector10.Y;
 					}
-					float num149 = (float)Math.Sqrt((double)(num147 * num147 + num148 * num148));
-					num149 = (float)Math.Sqrt((double)(num147 * num147 + num148 * num148));
+					float num149 = (float)Math.Sqrt(num147 * num147 + num148 * num148);
+					num149 = (float)Math.Sqrt(num147 * num147 + num148 * num148);
 					if (num149 > num146)
 					{
 						num149 = num146 / num149;
@@ -155,20 +155,20 @@ namespace Tremor.Projectiles
 						projectile.ai[0] = 1f;
 						projectile.netUpdate = true;
 						float num158 = 12f;
-						Vector2 vector11 = new Vector2(projectile.position.X + (float)projectile.width * 0.5f, projectile.position.Y + (float)projectile.height * 0.5f);
-						float num159 = (float)Main.mouseX + Main.screenPosition.X - vector11.X;
-						float num160 = (float)Main.mouseY + Main.screenPosition.Y - vector11.Y;
+						Vector2 vector11 = new Vector2(projectile.position.X + projectile.width * 0.5f, projectile.position.Y + projectile.height * 0.5f);
+						float num159 = Main.mouseX + Main.screenPosition.X - vector11.X;
+						float num160 = Main.mouseY + Main.screenPosition.Y - vector11.Y;
 						if (Main.player[projectile.owner].gravDir == -1f)
 						{
-							num160 = Main.screenPosition.Y + (float)Main.screenHeight - (float)Main.mouseY - vector11.Y;
+							num160 = Main.screenPosition.Y + Main.screenHeight - Main.mouseY - vector11.Y;
 						}
-						float num161 = (float)Math.Sqrt((double)(num159 * num159 + num160 * num160));
+						float num161 = (float)Math.Sqrt(num159 * num159 + num160 * num160);
 						if (num161 == 0f)
 						{
-							vector11 = new Vector2(Main.player[projectile.owner].position.X + (float)(Main.player[projectile.owner].width / 2), Main.player[projectile.owner].position.Y + (float)(Main.player[projectile.owner].height / 2));
-							num159 = projectile.position.X + (float)projectile.width * 0.5f - vector11.X;
-							num160 = projectile.position.Y + (float)projectile.height * 0.5f - vector11.Y;
-							num161 = (float)Math.Sqrt((double)(num159 * num159 + num160 * num160));
+							vector11 = new Vector2(Main.player[projectile.owner].position.X + Main.player[projectile.owner].width / 2, Main.player[projectile.owner].position.Y + Main.player[projectile.owner].height / 2);
+							num159 = projectile.position.X + projectile.width * 0.5f - vector11.X;
+							num160 = projectile.position.Y + projectile.height * 0.5f - vector11.Y;
+							num161 = (float)Math.Sqrt(num159 * num159 + num160 * num160);
 						}
 						num161 = num158 / num161;
 						num159 *= num161;

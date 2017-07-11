@@ -1,7 +1,7 @@
-﻿using Terraria.ID;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace Tremor.NPCs
@@ -39,9 +39,9 @@ namespace Tremor.NPCs
 			{
 				npc.Center = Main.npc[(int)npc.ai[0]].Center;
 			}
-			if (--this.TimeToShoot <= 0)
+			if (--TimeToShoot <= 0)
 			{
-				this.TimeToShoot = this.ShootRate;
+				TimeToShoot = ShootRate;
 				NPC parent = Main.npc[NPC.FindFirstNPC(mod.NPCType("CogLord"))];
 				Vector2 Velocity = Helper.VelocityToPoint(npc.Center, parent.Center, 20);
 				int k = Projectile.NewProjectile(npc.Center.X, npc.Center.Y, Velocity.X, Velocity.Y, mod.ProjectileType("CogLordLaser"), 100, 1f);

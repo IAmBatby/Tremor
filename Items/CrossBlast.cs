@@ -1,5 +1,5 @@
-using Terraria.ID;
 using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace Tremor.Items
@@ -11,7 +11,7 @@ namespace Tremor.Items
 			for (int i = 0; i < player.armor.Length; i++)
 			{
 				MPlayer modPlayer = (MPlayer)player.GetModPlayer(mod, "MPlayer");
-				if (modPlayer.pyro == true)
+				if (modPlayer.pyro)
 				{
 					return false;
 				}

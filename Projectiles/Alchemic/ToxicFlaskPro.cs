@@ -1,9 +1,9 @@
 using System;
+using System.Linq;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using System.Linq;
 
 namespace Tremor.Projectiles.Alchemic
 {
@@ -18,7 +18,7 @@ namespace Tremor.Projectiles.Alchemic
             projectile.timeLeft = 1200;
             projectile.penetrate = 1;
             projectile.scale = 1.1f;
-            if (Main.player[Main.myPlayer].buffType.Contains<int>(mod.BuffType("BouncingCasingBuff")))
+            if (Main.player[Main.myPlayer].buffType.Contains(mod.BuffType("BouncingCasingBuff")))
             {
                 projectile.penetrate = 3;
             }
@@ -30,7 +30,7 @@ namespace Tremor.Projectiles.Alchemic
 
         public override void AI()
         {
-            if (Main.player[Main.myPlayer].buffType.Contains<int>(mod.BuffType("TheCadenceBuff")))
+            if (Main.player[Main.myPlayer].buffType.Contains(mod.BuffType("TheCadenceBuff")))
             {
                 int[] array = new int[20];
                 int num428 = 0;
@@ -40,9 +40,9 @@ namespace Tremor.Projectiles.Alchemic
                 {
                     if (Main.npc[num430].CanBeChasedBy(projectile, false))
                     {
-                        float num431 = Main.npc[num430].position.X + (float)(Main.npc[num430].width / 2);
-                        float num432 = Main.npc[num430].position.Y + (float)(Main.npc[num430].height / 2);
-                        float num433 = Math.Abs(projectile.position.X + (float)(projectile.width / 2) - num431) + Math.Abs(projectile.position.Y + (float)(projectile.height / 2) - num432);
+                        float num431 = Main.npc[num430].position.X + Main.npc[num430].width / 2;
+                        float num432 = Main.npc[num430].position.Y + Main.npc[num430].height / 2;
+                        float num433 = Math.Abs(projectile.position.X + projectile.width / 2 - num431) + Math.Abs(projectile.position.Y + projectile.height / 2 - num432);
                         if (num433 < num429 && Collision.CanHit(projectile.Center, 1, 1, Main.npc[num430].Center, 1, 1))
                         {
                             if (num428 < 20)
@@ -58,18 +58,18 @@ namespace Tremor.Projectiles.Alchemic
                 {
                     int num434 = Main.rand.Next(num428);
                     num434 = array[num434];
-                    float num435 = Main.npc[num434].position.X + (float)(Main.npc[num434].width / 2);
-                    float num436 = Main.npc[num434].position.Y + (float)(Main.npc[num434].height / 2);
+                    float num435 = Main.npc[num434].position.X + Main.npc[num434].width / 2;
+                    float num436 = Main.npc[num434].position.Y + Main.npc[num434].height / 2;
                     projectile.localAI[0] += 1f;
                     if (projectile.localAI[0] > 8f)
                     {
                         projectile.localAI[0] = 0f;
                         float num437 = 6f;
-                        Vector2 value10 = new Vector2(projectile.position.X + (float)projectile.width * 0.5f, projectile.position.Y + (float)projectile.height * 0.5f);
+                        Vector2 value10 = new Vector2(projectile.position.X + projectile.width * 0.5f, projectile.position.Y + projectile.height * 0.5f);
                         value10 += projectile.velocity * 4f;
                         float num438 = num435 - value10.X;
                         float num439 = num436 - value10.Y;
-                        float num440 = (float)Math.Sqrt((double)(num438 * num438 + num439 * num439));
+                        float num440 = (float)Math.Sqrt(num438 * num438 + num439 * num439);
                         num440 = num437 / num440;
                         num438 *= num440;
                         num439 *= num440;
@@ -77,7 +77,6 @@ namespace Tremor.Projectiles.Alchemic
                         {
                             Projectile.NewProjectile(value10.X, value10.Y, num438, num439, mod.ProjectileType("TheCadenceProj"), projectile.damage, projectile.knockBack, projectile.owner, 0f, 0f);
                         }
-                        return;
                     }
                 }
             }
@@ -93,7 +92,7 @@ namespace Tremor.Projectiles.Alchemic
 
         public override bool OnTileCollide(Vector2 oldVelocity)
         {
-            if (Main.player[Main.myPlayer].buffType.Contains<int>(mod.BuffType("BouncingCasingBuff")))
+            if (Main.player[Main.myPlayer].buffType.Contains(mod.BuffType("BouncingCasingBuff")))
             {
                 projectile.penetrate--;
                 if (projectile.penetrate <= 0)
@@ -127,7 +126,7 @@ namespace Tremor.Projectiles.Alchemic
             MPlayer modPlayer = (MPlayer)player.GetModPlayer(mod, "MPlayer");
             Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 107);
             Gore.NewGore(projectile.position, -projectile.oldVelocity * 0.2f, 704, 1f);
-            if (Main.player[Main.myPlayer].buffType.Contains<int>(mod.BuffType("BrassChipBuff")))
+            if (Main.player[Main.myPlayer].buffType.Contains(mod.BuffType("BrassChipBuff")))
             {
                 for (int i = 0; i < 5; i++)
                 {
@@ -137,15 +136,15 @@ namespace Tremor.Projectiles.Alchemic
                     Main.projectile[a].friendly = true;
                 }
             }
-            if (Main.player[Main.myPlayer].buffType.Contains<int>(mod.BuffType("ChaosElementBuff")))
+            if (Main.player[Main.myPlayer].buffType.Contains(mod.BuffType("ChaosElementBuff")))
             {
                 int num220 = Main.rand.Next(3, 6);
                 for (int num221 = 0; num221 < num220; num221++)
                 {
-                    Vector2 value17 = new Vector2((float)Main.rand.Next(-100, 101), (float)Main.rand.Next(-100, 101));
+                    Vector2 value17 = new Vector2(Main.rand.Next(-100, 101), Main.rand.Next(-100, 101));
                     value17.Normalize();
-                    value17 *= (float)Main.rand.Next(10, 201) * 0.01f;
-                    Projectile.NewProjectile(projectile.position.X, projectile.position.Y, value17.X, value17.Y, mod.ProjectileType("Shatter1"), projectile.damage, 1f, projectile.owner, 0f, (float)Main.rand.Next(-45, 1));
+                    value17 *= Main.rand.Next(10, 201) * 0.01f;
+                    Projectile.NewProjectile(projectile.position.X, projectile.position.Y, value17.X, value17.Y, mod.ProjectileType("Shatter1"), projectile.damage, 1f, projectile.owner, 0f, Main.rand.Next(-45, 1));
                 }
             }
 
@@ -154,10 +153,10 @@ namespace Tremor.Projectiles.Alchemic
                 int num220 = Main.rand.Next(20, 31);
                 for (int num221 = 0; num221 < num220; num221++)
                 {
-                    Vector2 value17 = new Vector2((float)Main.rand.Next(-100, 101), (float)Main.rand.Next(-100, 101));
+                    Vector2 value17 = new Vector2(Main.rand.Next(-100, 101), Main.rand.Next(-100, 101));
                     value17.Normalize();
-                    value17 *= (float)Main.rand.Next(10, 201) * 0.01f;
-                    Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, value17.X, value17.Y, mod.ProjectileType("ToxicFlaskCloud"), projectile.damage, 1f, projectile.owner, 0f, (float)Main.rand.Next(-45, 1));
+                    value17 *= Main.rand.Next(10, 201) * 0.01f;
+                    Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, value17.X, value17.Y, mod.ProjectileType("ToxicFlaskCloud"), projectile.damage, 1f, projectile.owner, 0f, Main.rand.Next(-45, 1));
                 }
             }
         }

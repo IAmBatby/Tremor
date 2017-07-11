@@ -1,13 +1,13 @@
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria;
 
 namespace Tremor.NPCs
 {
 	// Example Soul of Light/Soul of Night style NPC summon
 	public class DesertMimicSummon : ModPlayer
 	{
-		public int LastChest = 0;
+		public int LastChest;
 
 		// This doesn't make sense, but this is around where this check happens in Vanilla Terraria.
 		public override void PreUpdateBuffs()
@@ -38,7 +38,7 @@ namespace Tremor.NPCs
 			int numberDesertKey = 0;
 			int numberOtherItems = 0;
 			ushort tileType = Main.tile[Main.chest[num].x, Main.chest[num].y].type;
-			int tileStyle = (int)(Main.tile[Main.chest[num].x, Main.chest[num].y].frameX / 36);
+			int tileStyle = Main.tile[Main.chest[num].x, Main.chest[num].y].frameX / 36;
 			if (TileID.Sets.BasicChest[tileType] && (tileStyle < 5 || tileStyle > 6))
 			{
 				for (int i = 0; i < 40; i++)
@@ -84,7 +84,7 @@ namespace Tremor.NPCs
 						Main.chest[num].item[l] = new Item();
 					}
 					Chest.DestroyChest(x, y);
-					NetMessage.SendData(34, -1, -1, null, 1, (float)x, (float)y, 0f, number, 0, 0);
+					NetMessage.SendData(34, -1, -1, null, 1, x, y, 0f, number, 0, 0);
 					NetMessage.SendTileSquare(-1, x, y, 3);
 				}
 				int npcToSpawn = mod.NPCType("DesertMimic");

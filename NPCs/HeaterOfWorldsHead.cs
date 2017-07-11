@@ -15,7 +15,7 @@ namespace Tremor.NPCs
 			DisplayName.SetDefault("Heater of Worlds");
 		}
 
-		bool TailSpawned = false;
+		bool TailSpawned;
 
 		public static int ShootRate = 20;
 		const int ShootDamage = 58;
@@ -103,9 +103,9 @@ namespace Tremor.NPCs
 						lol = NPC.NewNPC((int)npc.position.X + (npc.width / 2), (int)npc.position.Y + (npc.width / 2), mod.NPCType("HeaterOfWorldsTail"), npc.whoAmI);
 					}
 					Main.npc[lol].realLife = npc.whoAmI;
-					Main.npc[lol].ai[2] = (float)npc.whoAmI;
-					Main.npc[lol].ai[1] = (float)Previous;
-					Main.npc[Previous].ai[0] = (float)lol;
+					Main.npc[lol].ai[2] = npc.whoAmI;
+					Main.npc[lol].ai[1] = Previous;
+					Main.npc[Previous].ai[0] = lol;
 					//NetMessage.SendData(23, -1, -1, "", lol, 0f, 0f, 0f, 0);
 					Previous = lol;
 				}
@@ -139,8 +139,8 @@ namespace Tremor.NPCs
 
 		public override void NPCLoot()
 		{
-			int centerX = (int)(npc.position.X + (float)(npc.width / 2)) / 16;
-			int centerY = (int)(npc.position.Y + (float)(npc.height / 2)) / 16;
+			int centerX = (int)(npc.position.X + npc.width / 2) / 16;
+			int centerY = (int)(npc.position.Y + npc.height / 2) / 16;
 			int halfLength = npc.width / 2 / 16 + 1;
 			for (int x = centerX - halfLength; x <= centerX + halfLength; x++)
 			{

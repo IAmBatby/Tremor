@@ -3,7 +3,6 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-
 namespace Tremor.Invasion
 {
 	public class InvisibleSoul : ModNPC
@@ -38,12 +37,11 @@ namespace Tremor.Invasion
 			float spawn = 20f;
 			if (InvasionWorld.CyberWrath)
 				return 1000f;
-			else
-				return 0f;
+			return 0f;
 
 			int x = spawnInfo.spawnTileX;
 			int y = spawnInfo.spawnTileY;
-			int tile = (int)Main.tile[x, y].type;
+			int tile = Main.tile[x, y].type;
 			return InvasionWorld.CyberWrath && y > Main.worldSurface ? 1f : 0f;
 		}
 
@@ -61,7 +59,7 @@ namespace Tremor.Invasion
 			{
 				for (int k = 0; k < 10; k++)
 				{
-					Dust.NewDust(npc.position, npc.width, npc.height, mod.DustType("CyberDust"), 2.5f * (float)hitDirection, -2.5f, 0, default(Color), 0.7f);
+					Dust.NewDust(npc.position, npc.width, npc.height, mod.DustType("CyberDust"), 2.5f * hitDirection, -2.5f, 0, default(Color), 0.7f);
 				}
 
 				CyberWrathInvasion modPlayer = Main.player[Main.myPlayer].GetModPlayer<CyberWrathInvasion>(mod);
@@ -74,7 +72,7 @@ namespace Tremor.Invasion
 
 			for (int k = 0; k < damage / npc.lifeMax * 50.0; k++)
 			{
-				Dust.NewDust(npc.position, npc.width, npc.height, mod.DustType("CyberDust"), (float)hitDirection, -1f, 0, default(Color), 0.7f);
+				Dust.NewDust(npc.position, npc.width, npc.height, mod.DustType("CyberDust"), hitDirection, -1f, 0, default(Color), 0.7f);
 			}
 		}
 
@@ -82,8 +80,8 @@ namespace Tremor.Invasion
 		{
 			if (Main.netMode != 1)
 			{
-				int centerX = (int)(npc.position.X + (float)(npc.width / 2)) / 16;
-				int centerY = (int)(npc.position.Y + (float)(npc.height / 2)) / 16;
+				int centerX = (int)(npc.position.X + npc.width / 2) / 16;
+				int centerY = (int)(npc.position.Y + npc.height / 2) / 16;
 				int halfLength = npc.width / 2 / 16 + 1;
 				if (Main.rand.Next(3) == 0)
 				{
@@ -94,13 +92,13 @@ namespace Tremor.Invasion
 
 		public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
 		{
-			npc.lifeMax = (int)(npc.lifeMax * 1);
-			npc.damage = (int)(npc.damage * 1);
+			npc.lifeMax = npc.lifeMax * 1;
+			npc.damage = npc.damage * 1;
 		}
 
 		float customAi1;
-		bool FirstState = false;
-		bool SecondState = false;
+		bool FirstState;
+		bool SecondState;
 		public Vector2 tilePos = default(Vector2);
 		public override void AI()
 		{
@@ -123,69 +121,69 @@ namespace Tremor.Invasion
 			}
 			if (FirstState)
 			{
-				if (Main.player[this.npc.target].position.X > this.npc.position.X)
-					this.npc.spriteDirection = 1;
+				if (Main.player[npc.target].position.X > npc.position.X)
+					npc.spriteDirection = 1;
 				else
-					this.npc.spriteDirection = -1;
+					npc.spriteDirection = -1;
 
-				if (this.npc.direction == -1 && this.npc.velocity.X > -2f)
+				if (npc.direction == -1 && npc.velocity.X > -2f)
 				{
-					this.npc.velocity.X = this.npc.velocity.X - 0.1f;
-					if (this.npc.velocity.X > 2f)
+					npc.velocity.X = npc.velocity.X - 0.1f;
+					if (npc.velocity.X > 2f)
 					{
-						this.npc.velocity.X = this.npc.velocity.X - 0.1f;
+						npc.velocity.X = npc.velocity.X - 0.1f;
 					}
 					else
 					{
-						if (this.npc.velocity.X > 0f)
+						if (npc.velocity.X > 0f)
 						{
-							this.npc.velocity.X = this.npc.velocity.X + 0.05f;
+							npc.velocity.X = npc.velocity.X + 0.05f;
 						}
 					}
-					if (this.npc.velocity.X < -2f)
+					if (npc.velocity.X < -2f)
 					{
-						this.npc.velocity.X = -2f;
+						npc.velocity.X = -2f;
 					}
 				}
 				else
 				{
-					if (this.npc.direction == 1 && this.npc.velocity.X < 2f)
+					if (npc.direction == 1 && npc.velocity.X < 2f)
 					{
-						this.npc.velocity.X = this.npc.velocity.X + 0.1f;
-						if (this.npc.velocity.X < -2f)
+						npc.velocity.X = npc.velocity.X + 0.1f;
+						if (npc.velocity.X < -2f)
 						{
-							this.npc.velocity.X = this.npc.velocity.X + 0.1f;
+							npc.velocity.X = npc.velocity.X + 0.1f;
 						}
 						else
 						{
-							if (this.npc.velocity.X < 0f)
+							if (npc.velocity.X < 0f)
 							{
-								this.npc.velocity.X = this.npc.velocity.X - 0.05f;
+								npc.velocity.X = npc.velocity.X - 0.05f;
 							}
 						}
-						if (this.npc.velocity.X > 2f)
+						if (npc.velocity.X > 2f)
 						{
-							this.npc.velocity.X = 2f;
+							npc.velocity.X = 2f;
 						}
 					}
 				}
-				if (this.npc.directionY == -1 && (double)this.npc.velocity.Y > -1.5)
+				if (npc.directionY == -1 && npc.velocity.Y > -1.5)
 				{
-					this.npc.velocity.Y = this.npc.velocity.Y - 0.05f;
+					npc.velocity.Y = npc.velocity.Y - 0.05f;
 
-					if ((double)this.npc.velocity.Y < -1.5)
+					if (npc.velocity.Y < -1.5)
 					{
-						this.npc.velocity.Y = -1.5f;
+						npc.velocity.Y = -1.5f;
 					}
 				}
 				else
 				{
-					if (this.npc.directionY == 1 && (double)this.npc.velocity.Y < 1.5)
+					if (npc.directionY == 1 && npc.velocity.Y < 1.5)
 					{
-						this.npc.velocity.Y = this.npc.velocity.Y + 0.05f;
-						if ((double)this.npc.velocity.Y > 1.5)
+						npc.velocity.Y = npc.velocity.Y + 0.05f;
+						if (npc.velocity.Y > 1.5)
 						{
-							this.npc.velocity.Y = 1.5f;
+							npc.velocity.Y = 1.5f;
 						}
 					}
 				}
@@ -198,69 +196,69 @@ namespace Tremor.Invasion
 
 			if (SecondState && !FirstState)
 			{
-				if (Main.player[this.npc.target].position.X > this.npc.position.X)
-					this.npc.spriteDirection = 1;
+				if (Main.player[npc.target].position.X > npc.position.X)
+					npc.spriteDirection = 1;
 				else
-					this.npc.spriteDirection = -1;
+					npc.spriteDirection = -1;
 
-				if (this.npc.direction == -1 && this.npc.velocity.X > -2f)
+				if (npc.direction == -1 && npc.velocity.X > -2f)
 				{
-					this.npc.velocity.X = this.npc.velocity.X - 0.1f;
-					if (this.npc.velocity.X > 2f)
+					npc.velocity.X = npc.velocity.X - 0.1f;
+					if (npc.velocity.X > 2f)
 					{
-						this.npc.velocity.X = this.npc.velocity.X - 0.1f;
+						npc.velocity.X = npc.velocity.X - 0.1f;
 					}
 					else
 					{
-						if (this.npc.velocity.X > 0f)
+						if (npc.velocity.X > 0f)
 						{
-							this.npc.velocity.X = this.npc.velocity.X + 0.05f;
+							npc.velocity.X = npc.velocity.X + 0.05f;
 						}
 					}
-					if (this.npc.velocity.X < -2f)
+					if (npc.velocity.X < -2f)
 					{
-						this.npc.velocity.X = -2f;
+						npc.velocity.X = -2f;
 					}
 				}
 				else
 				{
-					if (this.npc.direction == 1 && this.npc.velocity.X < 2f)
+					if (npc.direction == 1 && npc.velocity.X < 2f)
 					{
-						this.npc.velocity.X = this.npc.velocity.X + 0.1f;
-						if (this.npc.velocity.X < -2f)
+						npc.velocity.X = npc.velocity.X + 0.1f;
+						if (npc.velocity.X < -2f)
 						{
-							this.npc.velocity.X = this.npc.velocity.X + 0.1f;
+							npc.velocity.X = npc.velocity.X + 0.1f;
 						}
 						else
 						{
-							if (this.npc.velocity.X < 0f)
+							if (npc.velocity.X < 0f)
 							{
-								this.npc.velocity.X = this.npc.velocity.X - 0.05f;
+								npc.velocity.X = npc.velocity.X - 0.05f;
 							}
 						}
-						if (this.npc.velocity.X > 2f)
+						if (npc.velocity.X > 2f)
 						{
-							this.npc.velocity.X = 2f;
+							npc.velocity.X = 2f;
 						}
 					}
 				}
-				if (this.npc.directionY == -1 && (double)this.npc.velocity.Y > -1.5)
+				if (npc.directionY == -1 && npc.velocity.Y > -1.5)
 				{
-					this.npc.velocity.Y = this.npc.velocity.Y - 0.05f;
+					npc.velocity.Y = npc.velocity.Y - 0.05f;
 
-					if ((double)this.npc.velocity.Y < -1.5)
+					if (npc.velocity.Y < -1.5)
 					{
-						this.npc.velocity.Y = -1.5f;
+						npc.velocity.Y = -1.5f;
 					}
 				}
 				else
 				{
-					if (this.npc.directionY == 1 && (double)this.npc.velocity.Y < 1.5)
+					if (npc.directionY == 1 && npc.velocity.Y < 1.5)
 					{
-						this.npc.velocity.Y = this.npc.velocity.Y + 0.05f;
-						if ((double)this.npc.velocity.Y > 1.5)
+						npc.velocity.Y = npc.velocity.Y + 0.05f;
+						if (npc.velocity.Y > 1.5)
 						{
-							this.npc.velocity.Y = 1.5f;
+							npc.velocity.Y = 1.5f;
 						}
 					}
 				}

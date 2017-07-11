@@ -1,7 +1,7 @@
 using System;
 using Microsoft.Xna.Framework;
-using Terraria.ID;
 using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace Tremor.Ice.Items
@@ -47,12 +47,12 @@ namespace Tremor.Ice.Items
 
 			for (int i = 0; i < ShotAmt; i++)
 			{
-				float vX = 8 * speedX + (float)Main.rand.Next(-spread, spread + 1) * spreadMult;
-				float vY = 8 * speedY + (float)Main.rand.Next(-spread, spread + 1) * spreadMult;
+				float vX = 8 * speedX + Main.rand.Next(-spread, spread + 1) * spreadMult;
+				float vY = 8 * speedY + Main.rand.Next(-spread, spread + 1) * spreadMult;
 
 				float angle = (float)Math.Atan(vY / vX);
 				vector2 = new Vector2(position.X + 75f * (float)Math.Cos(angle), position.Y + 75f * (float)Math.Sin(angle));
-				float mouseX = (float)Main.mouseX + Main.screenPosition.X;
+				float mouseX = Main.mouseX + Main.screenPosition.X;
 				if (mouseX < player.position.X)
 				{
 					vector2 = new Vector2(position.X - 75f * (float)Math.Cos(angle), position.Y - 75f * (float)Math.Sin(angle));

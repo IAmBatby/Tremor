@@ -1,8 +1,8 @@
-﻿using Terraria.ID;
-using System;
-using Terraria;
-using Terraria.ModLoader;
+﻿using System;
 using Microsoft.Xna.Framework;
+using Terraria;
+using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace Tremor.NPCs
 {
@@ -35,23 +35,23 @@ namespace Tremor.NPCs
 				npc.active = false;
 				npc.netUpdate = true;
 			}
-			else if ((double)npc.ai[0] == 0.0)
+			else if (npc.ai[0] == 0.0)
 			{
 				Vector2 vector2 = new Vector2(npc.Center.X, npc.Center.Y);
 				float num1 = Main.npc[(int)npc.ai[3]].Center.X - vector2.X;
 				float num2 = Main.npc[(int)npc.ai[3]].Center.Y - vector2.Y;
-				float num3 = (float)Math.Sqrt((double)num1 * (double)num1 + (double)num2 * (double)num2);
-				if ((double)num3 > 90.0)
+				float num3 = (float)Math.Sqrt(num1 * (double)num1 + num2 * (double)num2);
+				if (num3 > 90.0)
 				{
 					float num4 = 8f / num3;
 					float num5 = num1 * num4;
 					float num6 = num2 * num4;
-					npc.velocity.X = (float)(((double)npc.velocity.X * 15.0 + (double)num5) / 16.0);
-					npc.velocity.Y = (float)(((double)npc.velocity.Y * 15.0 + (double)num6) / 16.0);
+					npc.velocity.X = (float)((npc.velocity.X * 15.0 + num5) / 16.0);
+					npc.velocity.Y = (float)((npc.velocity.Y * 15.0 + num6) / 16.0);
 				}
 				else
 				{
-					if ((double)Math.Abs(npc.velocity.X) + (double)Math.Abs(npc.velocity.Y) < 8.0)
+					if (Math.Abs(npc.velocity.X) + (double)Math.Abs(npc.velocity.Y) < 8.0)
 					{
 						npc.velocity.Y *= 1.05f;
 						npc.velocity.X *= 1.05f;
@@ -62,7 +62,7 @@ namespace Tremor.NPCs
 					vector2 = new Vector2(npc.Center.X, npc.Center.Y);
 					float num4 = Main.player[npc.target].Center.X - vector2.X;
 					float num5 = Main.player[npc.target].Center.Y - vector2.Y;
-					float num6 = 8f / (float)Math.Sqrt((double)num4 * (double)num4 + (double)num5 * (double)num5);
+					float num6 = 8f / (float)Math.Sqrt(num4 * (double)num4 + num5 * (double)num5);
 					npc.velocity.X = num4 * num6;
 					npc.velocity.Y = num5 * num6;
 					npc.ai[0] = 1f;
@@ -80,7 +80,7 @@ namespace Tremor.NPCs
 				Vector2 vector2_1 = new Vector2(npc.Center.X, npc.Center.Y);
 				float num1 = Main.npc[(int)npc.ai[3]].Center.X - vector2_1.X;
 				float num2 = Main.npc[(int)npc.ai[3]].Center.Y - vector2_1.Y;
-				if (Math.Sqrt((double)num1 * (double)num1 + (double)num2 * (double)num2) <= 700.0 && !npc.justHit)
+				if (Math.Sqrt(num1 * (double)num1 + num2 * (double)num2) <= 700.0 && !npc.justHit)
 					return;
 				npc.ai[0] = 0.0f;
 			}

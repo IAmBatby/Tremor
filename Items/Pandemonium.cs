@@ -1,7 +1,8 @@
-using Terraria.ID;
-using Terraria;
-using Terraria.ModLoader;
+using System.Collections.Generic;
 using Microsoft.Xna.Framework;
+using Terraria;
+using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace Tremor.Items
 {
@@ -35,7 +36,7 @@ namespace Tremor.Items
 		}
 
 
-		public override void ModifyTooltips(System.Collections.Generic.List<TooltipLine> tooltips)
+		public override void ModifyTooltips(List<TooltipLine> tooltips)
 		{
 			tooltips[0].overrideColor = new Color(238, 194, 73);
 		}
@@ -47,10 +48,10 @@ namespace Tremor.Items
 			return true;
 		}
 
-		public override bool Shoot(Player player, ref Microsoft.Xna.Framework.Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
+		public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
 		{
-			float SpeedX = speedX + (float)Main.rand.Next(-15, 16) * 0.05f;
-			float SpeedY = speedY + (float)Main.rand.Next(-15, 16) * 0.05f;
+			float SpeedX = speedX + Main.rand.Next(-15, 16) * 0.05f;
+			float SpeedY = speedY + Main.rand.Next(-15, 16) * 0.05f;
 			Projectile.NewProjectile(position.X, position.Y, SpeedX, SpeedY, type, damage, knockBack, player.whoAmI, 0.0f, 0.0f);
 			if (Main.rand.Next(2) == 0)
 				Projectile.NewProjectile(position.X, position.Y, SpeedX, SpeedY, mod.ProjectileType("PandemoniumBullet"), damage, knockBack, player.whoAmI, 0.0f, 0.0f);

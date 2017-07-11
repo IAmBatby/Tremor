@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+
 namespace Tremor.Invasion
 {
 	public class MiniSoul : ModNPC
@@ -13,7 +14,7 @@ namespace Tremor.Invasion
 			Main.npcFrameCount[npc.type] = 3;
 		}
 
-		int num = 0;
+		int num;
 		public readonly IList<int> targets = new List<int>();
 		public static readonly int arenaWidth = (int)(1.3f * NPC.sWidth);
 		public static readonly int arenaHeight = (int)(1.3f * NPC.sHeight);
@@ -57,7 +58,7 @@ namespace Tremor.Invasion
 			{
 				for (int k = 0; k < 10; k++)
 				{
-					Dust.NewDust(npc.position, npc.width, npc.height, mod.DustType("CyberDust"), 2.5f * (float)hitDirection, -2.5f, 0, default(Color), 0.7f);
+					Dust.NewDust(npc.position, npc.width, npc.height, mod.DustType("CyberDust"), 2.5f * hitDirection, -2.5f, 0, default(Color), 0.7f);
 				}
 
 				CyberWrathInvasion modPlayer = Main.player[Main.myPlayer].GetModPlayer<CyberWrathInvasion>(mod);
@@ -70,7 +71,7 @@ namespace Tremor.Invasion
 
 			for (int k = 0; k < damage / npc.lifeMax * 50.0; k++)
 			{
-				Dust.NewDust(npc.position, npc.width, npc.height, mod.DustType("CyberDust"), (float)hitDirection, -1f, 0, default(Color), 0.7f);
+				Dust.NewDust(npc.position, npc.width, npc.height, mod.DustType("CyberDust"), hitDirection, -1f, 0, default(Color), 0.7f);
 			}
 		}
 	}

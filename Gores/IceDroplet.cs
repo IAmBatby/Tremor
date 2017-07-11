@@ -42,7 +42,7 @@ namespace Tremor.Gores
 				{
 					frameDuration = 24 + Main.rand.Next(96);
 				}
-				if ((int)gore.frameCounter >= frameDuration)
+				if (gore.frameCounter >= frameDuration)
 				{
 					gore.frameCounter = 0;
 					gore.frame += 1;
@@ -57,7 +57,7 @@ namespace Tremor.Gores
 			else if (gore.frame <= 6)
 			{
 				frameDuration = 8;
-				if ((int)gore.frameCounter >= frameDuration)
+				if (gore.frameCounter >= frameDuration)
 				{
 					gore.frameCounter = 0;
 					gore.frame += 1;
@@ -79,7 +79,7 @@ namespace Tremor.Gores
 				{
 					gore.velocity.Y = 12f;
 				}
-				if ((int)gore.frameCounter >= frameDuration)
+				if (gore.frameCounter >= frameDuration)
 				{
 					gore.frameCounter = 0;
 					gore.frame += 1;
@@ -92,7 +92,7 @@ namespace Tremor.Gores
 			else
 			{
 				gore.velocity.Y += 0.1f;
-				if ((int)gore.frameCounter >= frameDuration)
+				if (gore.frameCounter >= frameDuration)
 				{
 					gore.frameCounter = 0;
 					gore.frame += 1;
@@ -128,7 +128,7 @@ namespace Tremor.Gores
 				if (Main.tile[tileX, tileY] != null && Main.tile[tileX, tileY].liquid > 0)
 				{
 					gore.velocity *= 0f;
-					gore.position.Y = tileY * 16 - (int)(Main.tile[tileX, tileY].liquid / 16);
+					gore.position.Y = tileY * 16 - Main.tile[tileX, tileY].liquid / 16;
 				}
 			}
 

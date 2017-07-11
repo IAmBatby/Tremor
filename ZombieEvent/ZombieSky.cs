@@ -7,8 +7,8 @@ namespace Tremor.ZombieEvent
 {
 	public class ZombieSky : CustomSky
 	{
-		private bool isActive = false;
-		private float intensity = 0f;
+		private bool isActive;
+		private float intensity;
 		private int CalIndex = -1;
 
 		public override void Update(GameTime gameTime)
@@ -25,12 +25,12 @@ namespace Tremor.ZombieEvent
 		
 		private float GetIntensity()
 		{
-			if (this.UpdateCalIndex())
+			if (UpdateCalIndex())
 			{
 				float x = 0f;
-				if (this.CalIndex != -1)
+				if (CalIndex != -1)
 				{
-					x = Vector2.Distance(Main.player[Main.myPlayer].Center, Main.npc[this.CalIndex].Center);
+					x = Vector2.Distance(Main.player[Main.myPlayer].Center, Main.npc[CalIndex].Center);
 				}
 				return 1f - Utils.SmoothStep(3000f, 6000f, x);
 			}
@@ -39,7 +39,7 @@ namespace Tremor.ZombieEvent
 		
 		public override Color OnTileColor(Color inColor)
 		{
-			float intensity = this.GetIntensity();
+			float intensity = GetIntensity();
 			return new Color(Vector4.Lerp(new Vector4(0.5f, 0.8f, 1f, 1f), inColor.ToVector4(), 1f - intensity));
 		}
 
@@ -67,7 +67,7 @@ namespace Tremor.ZombieEvent
 		{
 			if (maxDepth >= 0 && minDepth < 0)
 			{
-				float intensity = this.GetIntensity();
+				float intensity = GetIntensity();
 				spriteBatch.Draw(Main.blackTileTexture, new Rectangle(0, 0, Main.screenWidth, Main.screenHeight), Color.Black * intensity);
 			}
 		}

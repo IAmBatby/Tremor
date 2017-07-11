@@ -16,14 +16,14 @@ namespace Tremor.NovaPillar
 
 		//Int variables
 		int AnimationRate = 4;
-		int CountFrame = 0;
+		int CountFrame;
 		int TimeToAnimation = 4;
 		int Timer = 0;
 
 		//Vanilla AI
 		static int num1461 = 360;
 		float num1453 = 7f;
-		float num1463 = 6.28318548f / (float)(num1461 / 2);
+		float num1463 = 6.28318548f / (num1461 / 2);
 		int num1450 = 200;
 		int num1472 = 0;
 		bool flag128;
@@ -48,14 +48,14 @@ namespace Tremor.NovaPillar
 
 		public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
 		{
-			npc.lifeMax = (int)(npc.lifeMax * 1);
-			npc.damage = (int)(npc.damage * 1);
+			npc.lifeMax = npc.lifeMax * 1;
+			npc.damage = npc.damage * 1;
 		}
 
 		public override void AI()
 		{
 			npc.spriteDirection = npc.direction;
-			this.NovaAnimation();
+			NovaAnimation();
 			if (Main.time % 200 == 0)
 			{
 				Vector2 Velocity = Helper.VelocityToPoint(npc.Center, Helper.RandomPointInArea(new Vector2(Main.player[Main.myPlayer].Center.X - 10, Main.player[Main.myPlayer].Center.Y - 10), new Vector2(Main.player[Main.myPlayer].Center.X + 20, Main.player[Main.myPlayer].Center.Y + 20)), 7);
@@ -94,12 +94,12 @@ namespace Tremor.NovaPillar
 
 		void NovaAnimation()
 		{
-			if (--this.TimeToAnimation <= 0)
+			if (--TimeToAnimation <= 0)
 			{
-				if (++this.CountFrame > 4)
-					this.CountFrame = 1;
-				this.TimeToAnimation = this.AnimationRate;
-				npc.frame = this.GetFrame(this.CountFrame + 0);
+				if (++CountFrame > 4)
+					CountFrame = 1;
+				TimeToAnimation = AnimationRate;
+				npc.frame = GetFrame(CountFrame + 0);
 			}
 		}
 

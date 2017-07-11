@@ -1,7 +1,7 @@
-using Terraria.ID;
-using Terraria;
-using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
+using Terraria;
+using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace Tremor.Items
 {
@@ -87,8 +87,8 @@ namespace Tremor.Items
 			Vector2 velocity = Helper.VelocityToPoint(Main.player[item.owner].Center, Main.npc[Target].Center, ShootSpeed);
 			for (int l = 0; l < ShootCount; l++)
 			{
-				velocity.X = velocity.X + (float)Main.rand.Next(-spread, spread + 1) * spreadMult;
-				velocity.Y = velocity.Y + (float)Main.rand.Next(-spread, spread + 1) * spreadMult;
+				velocity.X = velocity.X + Main.rand.Next(-spread, spread + 1) * spreadMult;
+				velocity.Y = velocity.Y + Main.rand.Next(-spread, spread + 1) * spreadMult;
 				int i = Projectile.NewProjectile(Main.player[item.owner].Center.X, Main.player[item.owner].Center.Y, velocity.X, velocity.Y, mod.ProjectileType("WhiteGoldKnife"), 100, ShootKN, item.owner);
 			}
 		}

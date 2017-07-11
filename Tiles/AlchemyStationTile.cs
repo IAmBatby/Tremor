@@ -16,7 +16,7 @@ namespace Tremor.Tiles
         TileObjectData.newTile.StyleWrapLimit = 36;
         TileObjectData.addTile(Type);
         dustType = 7;
-        adjTiles = new int[]{13};
+        adjTiles = new[]{13};
 		ModTranslation name = CreateMapEntryName();
 		name.SetDefault("Alchemy Station");		
 	AddMapEntry(new Color(65, 43, 9), name);

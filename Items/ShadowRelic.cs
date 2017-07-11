@@ -1,6 +1,6 @@
-using Terraria.ID;
 using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace Tremor.Items
@@ -63,7 +63,7 @@ namespace Tremor.Items
 		{
 			if (pos.Y / 16.0 < (Main.maxTilesY - 205) || Main.wof >= 0 || Main.netMode == 1)
 				return;
-			int num1 = (int)Player.FindClosest(pos, 16, 16);
+			int num1 = Player.FindClosest(pos, 16, 16);
 			int num2 = 1;
 			if (pos.X / 16.0 > (Main.maxTilesX / 2))
 				num2 = -1;
@@ -91,7 +91,7 @@ namespace Tremor.Items
 			{
 				for (; WorldGen.SolidTile(i, num4 - num5) || (int)Main.tile[i, num4 - num5].liquid >= 100; ++num5)
 				{
-					if (!WorldGen.SolidTile(i, num4 + num5) && (int)Main.tile[i, num4 + num5].liquid < 100)
+					if (!WorldGen.SolidTile(i, num4 + num5) && Main.tile[i, num4 + num5].liquid < 100)
 					{
 						num4 += num5;
 						goto label_21;

@@ -7,15 +7,9 @@ namespace Tremor.NPCs
 	public class TremorGlobalNPC : GlobalNPC
 	{
 
-		public override bool InstancePerEntity
-		{
-			get
-			{
-				return true;
-			}
-		}
+		public override bool InstancePerEntity => true;
 
-		public bool dFear = false;
+		public bool dFear;
 		public bool Irradiated = false;
 
 		public override void ResetEffects(NPC npc)

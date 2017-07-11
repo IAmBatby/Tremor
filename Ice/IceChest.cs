@@ -1,4 +1,3 @@
-using System;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.DataStructures;
@@ -22,10 +21,10 @@ namespace Tremor.Ice
 			Main.tileValue[Type] = 500;
 			TileObjectData.newTile.CopyFrom(TileObjectData.Style2x2);
 			TileObjectData.newTile.Origin = new Point16(0, 1);
-			TileObjectData.newTile.CoordinateHeights = new int[] { 16, 18 };
-			TileObjectData.newTile.HookCheck = new PlacementHook(new Func<int, int, int, int, int, int>(Chest.FindEmptyChest), -1, 0, true);
-			TileObjectData.newTile.HookPostPlaceMyPlayer = new PlacementHook(new Func<int, int, int, int, int, int>(Chest.AfterPlacement_Hook), -1, 0, false);
-			TileObjectData.newTile.AnchorInvalidTiles = new int[] { 127 };
+			TileObjectData.newTile.CoordinateHeights = new[] { 16, 18 };
+			TileObjectData.newTile.HookCheck = new PlacementHook(Chest.FindEmptyChest, -1, 0, true);
+			TileObjectData.newTile.HookPostPlaceMyPlayer = new PlacementHook(Chest.AfterPlacement_Hook, -1, 0, false);
+			TileObjectData.newTile.AnchorInvalidTiles = new[] { 127 };
 			TileObjectData.newTile.StyleHorizontal = true;
 			TileObjectData.newTile.LavaDeath = false;
 			TileObjectData.newTile.AnchorBottom = new AnchorData(AnchorType.SolidTile | AnchorType.SolidWithTop | AnchorType.SolidSide, TileObjectData.newTile.Width, 0);
@@ -55,10 +54,7 @@ namespace Tremor.Ice
 			{
 				return name;
 			}
-			else
-			{
-				return name + ": " + Main.chest[chest].name;
-			}
+			return name + ": " + Main.chest[chest].name;
 		}
 
 		public override void NumDust(int i, int j, bool fail, ref int num)
@@ -150,7 +146,7 @@ namespace Tremor.Ice
 					}
 					else
 					{
-						NetMessage.SendData(31, -1, -1, null, left, (float)top, 0f, 0f, 0, 0, 0);
+						NetMessage.SendData(31, -1, -1, null, left, top, 0f, 0f, 0, 0, 0);
 						Main.stackSplit = 600;
 					}
 				}

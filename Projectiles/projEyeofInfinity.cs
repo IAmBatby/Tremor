@@ -1,9 +1,10 @@
-﻿using Microsoft.Xna.Framework;
+﻿using System.Collections.Generic;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.ModLoader;
 
-using System.Collections.Generic; ////////////////////
+////////////////////
 
 namespace Tremor.Projectiles
 {
@@ -63,7 +64,7 @@ namespace Tremor.Projectiles
         List<Vector2> OldPositionsRight = new List<Vector2>();
         List<float> OldRotations = new List<float>();
         const int SavePosRate = 1;
-        int TimeToSavePos = 0;
+        int TimeToSavePos;
         void TestDrawing()
         {
             if (--TimeToSavePos <= 0)

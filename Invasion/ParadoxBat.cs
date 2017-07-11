@@ -4,7 +4,6 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-
 namespace Tremor.Invasion
 {
 	public class ParadoxBat : ModNPC
@@ -39,12 +38,11 @@ namespace Tremor.Invasion
 			float spawn = 20f;
 			if (InvasionWorld.CyberWrath)
 				return 1000f;
-			else
-				return 0f;
+			return 0f;
 
 			int x = spawnInfo.spawnTileX;
 			int y = spawnInfo.spawnTileY;
-			int tile = (int)Main.tile[x, y].type;
+			int tile = Main.tile[x, y].type;
 			return InvasionWorld.CyberWrath && y > Main.worldSurface ? 1f : 0f;
 		}
 
@@ -54,7 +52,7 @@ namespace Tremor.Invasion
 			{
 				for (int k = 0; k < 10; k++)
 				{
-					Dust.NewDust(npc.position, npc.width, npc.height, mod.DustType("CyberDust"), 2.5f * (float)hitDirection, -2.5f, 0, default(Color), 0.7f);
+					Dust.NewDust(npc.position, npc.width, npc.height, mod.DustType("CyberDust"), 2.5f * hitDirection, -2.5f, 0, default(Color), 0.7f);
 				}
 
 				CyberWrathInvasion modPlayer = Main.player[Main.myPlayer].GetModPlayer<CyberWrathInvasion>(mod);
@@ -67,7 +65,7 @@ namespace Tremor.Invasion
 
 			for (int k = 0; k < damage / npc.lifeMax * 50.0; k++)
 			{
-				Dust.NewDust(npc.position, npc.width, npc.height, mod.DustType("CyberDust"), (float)hitDirection, -1f, 0, default(Color), 0.7f);
+				Dust.NewDust(npc.position, npc.width, npc.height, mod.DustType("CyberDust"), hitDirection, -1f, 0, default(Color), 0.7f);
 			}
 		}
 
@@ -96,16 +94,16 @@ namespace Tremor.Invasion
 
 		public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
 		{
-			npc.lifeMax = (int)(npc.lifeMax * 1);
-			npc.damage = (int)(npc.damage * 1);
+			npc.lifeMax = npc.lifeMax * 1;
+			npc.damage = npc.damage * 1;
 		}
 
 		public override void NPCLoot()
 		{
 			if (Main.netMode != 1)
 			{
-				int centerX = (int)(npc.position.X + (float)(npc.width / 2)) / 16;
-				int centerY = (int)(npc.position.Y + (float)(npc.height / 2)) / 16;
+				int centerX = (int)(npc.position.X + npc.width / 2) / 16;
+				int centerY = (int)(npc.position.Y + npc.height / 2) / 16;
 				int halfLength = npc.width / 2 / 16 + 1;
 				if (Main.rand.Next(3) == 0)
 				{
@@ -119,8 +117,8 @@ namespace Tremor.Invasion
 		}
 
 		float customAi1;
-		bool FirstState = false;
-		bool SecondState = false;
+		bool FirstState;
+		bool SecondState;
 		public override void AI()
 		{
 			//PlayAnimation();
@@ -139,7 +137,7 @@ namespace Tremor.Invasion
 			{
 				for (int num36 = 0; num36 < 25; num36++)
 				{
-					int dust = Dust.NewDust(new Vector2((float)npc.position.X, (float)npc.position.Y), npc.width, npc.height, mod.DustType("CyberDust"), npc.velocity.X + Main.rand.Next(-10, 10), npc.velocity.Y + Main.rand.Next(-10, 10), 1, npc.color, 1f);
+					int dust = Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, mod.DustType("CyberDust"), npc.velocity.X + Main.rand.Next(-10, 10), npc.velocity.Y + Main.rand.Next(-10, 10), 1, npc.color, 1f);
 					Main.dust[dust].noGravity = true;
 				}
 
@@ -242,13 +240,13 @@ namespace Tremor.Invasion
 				if (npc.life > 500)
 				{
 					Color color = new Color();
-					int dust = Dust.NewDust(new Vector2((float)npc.position.X, (float)npc.position.Y), npc.width, npc.height, mod.DustType("CyberDust"), npc.velocity.X, npc.velocity.Y, 100, color, 0.6f);
+					int dust = Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, mod.DustType("CyberDust"), npc.velocity.X, npc.velocity.Y, 100, color, 0.6f);
 					Main.dust[dust].noGravity = true;
 				}
 				else if (npc.life <= 200)
 				{
 					Color color = new Color();
-					int dust = Dust.NewDust(new Vector2((float)npc.position.X, (float)npc.position.Y), npc.width, npc.height, mod.DustType("CyberDust"), npc.velocity.X, npc.velocity.Y, 50, color, 0.8f);
+					int dust = Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, mod.DustType("CyberDust"), npc.velocity.X, npc.velocity.Y, 50, color, 0.8f);
 					Main.dust[dust].noGravity = true;
 				}
 			}
@@ -266,24 +264,24 @@ namespace Tremor.Invasion
 					Main.projectile[SpitShot1].timeLeft = 500;
 					customAi1 = 1f;
 				}
-				float npc_to_target_x = npc.position.X + (float)(npc.width / 2) - Main.player[npc.target].position.X - (float)(Main.player[npc.target].width / 2);
-				float npc_to_target_y = npc.position.Y + (float)npc.height - 59f - Main.player[npc.target].position.Y - (float)(Main.player[npc.target].height / 2); // 59(3.7 blocks) above bottom(slightly above center; ht is 110) to target center
-				float npc_to_target_angle = (float)Math.Atan2((double)npc_to_target_y, (double)npc_to_target_x) + 1.57f; // angle+pi/2
+				float npc_to_target_x = npc.position.X + npc.width / 2 - Main.player[npc.target].position.X - Main.player[npc.target].width / 2;
+				float npc_to_target_y = npc.position.Y + npc.height - 59f - Main.player[npc.target].position.Y - Main.player[npc.target].height / 2; // 59(3.7 blocks) above bottom(slightly above center; ht is 110) to target center
+				float npc_to_target_angle = (float)Math.Atan2(npc_to_target_y, npc_to_target_x) + 1.57f; // angle+pi/2
 				if (npc_to_target_angle < 0f) // modulus
 					npc_to_target_angle += 6.283f;
-				else if ((double)npc_to_target_angle > 6.283)
+				else if (npc_to_target_angle > 6.283)
 					npc_to_target_angle -= 6.283f;
 				float rotation_rate = 0.15f;
 				float top_speed = 4f;
 				float accel = 0.1f;
 				int close_side_of_target = 1;
-				if (npc.position.X + (float)(npc.width / 2) < Main.player[npc.target].position.X + (float)Main.player[npc.target].width)
+				if (npc.position.X + npc.width / 2 < Main.player[npc.target].position.X + Main.player[npc.target].width)
 					close_side_of_target = -1;
 
-				Vector2 npc_pos = new Vector2(npc.position.X + (float)npc.width * 0.5f, npc.position.Y + (float)npc.height * 0.5f);
-				npc_to_target_x = Main.player[npc.target].position.X + (float)(Main.player[npc.target].width / 2) + (float)(close_side_of_target * 360) - npc_pos.X;
-				npc_to_target_y = Main.player[npc.target].position.Y + (float)(Main.player[npc.target].height / 2) + (float)(close_side_of_target * 160) - npc_pos.Y;
-				float dist_to_target = (float)Math.Sqrt((double)(npc_to_target_x * npc_to_target_x + npc_to_target_y * npc_to_target_y));
+				Vector2 npc_pos = new Vector2(npc.position.X + npc.width * 0.5f, npc.position.Y + npc.height * 0.5f);
+				npc_to_target_x = Main.player[npc.target].position.X + Main.player[npc.target].width / 2 + close_side_of_target * 360 - npc_pos.X;
+				npc_to_target_y = Main.player[npc.target].position.Y + Main.player[npc.target].height / 2 + close_side_of_target * 160 - npc_pos.Y;
+				float dist_to_target = (float)Math.Sqrt(npc_to_target_x * npc_to_target_x + npc_to_target_y * npc_to_target_y);
 				dist_to_target = top_speed / dist_to_target;
 				npc_to_target_x *= dist_to_target;
 				npc_to_target_y *= dist_to_target;
@@ -320,7 +318,6 @@ namespace Tremor.Invasion
 					if (npc.timeLeft > 10)
 					{
 						npc.timeLeft = 10;
-						return;
 					}
 				}
 				else
@@ -330,13 +327,13 @@ namespace Tremor.Invasion
 						top_speed = 4f;
 						accel = 0.1f;
 						close_side_of_target = 1;
-						if (npc.position.X + (float)(npc.width / 2) < Main.player[npc.target].position.X + (float)Main.player[npc.target].width)
+						if (npc.position.X + npc.width / 2 < Main.player[npc.target].position.X + Main.player[npc.target].width)
 							close_side_of_target = -1;
 
-						npc_pos = new Vector2(npc.position.X + (float)npc.width * 0.5f, npc.position.Y + (float)npc.height * 0.5f);
-						npc_to_target_x = Main.player[npc.target].position.X + (float)(Main.player[npc.target].width / 2) + (float)(close_side_of_target * 360) - npc_pos.X; //360 pix in front of target
-						npc_to_target_y = Main.player[npc.target].position.Y + (float)(Main.player[npc.target].height / 2) + (float)(close_side_of_target * 160) - npc_pos.Y; //160 pix above target
-						dist_to_target = (float)Math.Sqrt((double)(npc_to_target_x * npc_to_target_x + npc_to_target_y * npc_to_target_y));
+						npc_pos = new Vector2(npc.position.X + npc.width * 0.5f, npc.position.Y + npc.height * 0.5f);
+						npc_to_target_x = Main.player[npc.target].position.X + Main.player[npc.target].width / 2 + close_side_of_target * 360 - npc_pos.X; //360 pix in front of target
+						npc_to_target_y = Main.player[npc.target].position.Y + Main.player[npc.target].height / 2 + close_side_of_target * 160 - npc_pos.Y; //160 pix above target
+						dist_to_target = (float)Math.Sqrt(npc_to_target_x * npc_to_target_x + npc_to_target_y * npc_to_target_y);
 						dist_to_target = top_speed / dist_to_target;
 						npc_to_target_x *= dist_to_target;
 						npc_to_target_y *= dist_to_target;
@@ -387,10 +384,10 @@ namespace Tremor.Invasion
 									npc.localAI[1] = 10f;
 									float projectile_velocity = 15f;
 									int projectile_dmg = 75;
-									npc_pos = new Vector2(npc.position.X + (float)npc.width * 0.5f, npc.position.Y + (float)npc.height * 0.5f);
-									npc_to_target_x = Main.player[npc.target].position.X + (float)(Main.player[npc.target].width / 2) - npc_pos.X;
-									npc_to_target_y = Main.player[npc.target].position.Y + (float)(Main.player[npc.target].height / 2) - npc_pos.Y;
-									dist_to_target = (float)Math.Sqrt((double)(npc_to_target_x * npc_to_target_x + npc_to_target_y * npc_to_target_y));
+									npc_pos = new Vector2(npc.position.X + npc.width * 0.5f, npc.position.Y + npc.height * 0.5f);
+									npc_to_target_x = Main.player[npc.target].position.X + Main.player[npc.target].width / 2 - npc_pos.X;
+									npc_to_target_y = Main.player[npc.target].position.Y + Main.player[npc.target].height / 2 - npc_pos.Y;
+									dist_to_target = (float)Math.Sqrt(npc_to_target_x * npc_to_target_x + npc_to_target_y * npc_to_target_y);
 									dist_to_target = projectile_velocity / dist_to_target; // prep to normalize by velocity
 									npc_to_target_x *= dist_to_target; // normalize by velocity
 									npc_to_target_y *= dist_to_target; // normalize by velocity
@@ -399,7 +396,6 @@ namespace Tremor.Invasion
 									npc_pos.X -= npc_to_target_x * 1f;
 									npc_pos.Y -= npc_to_target_y * 1f;
 									//Projectile.NewProjectile(npc_pos.X, npc_pos.Y, npc_to_target_x, npc_to_target_y, ProjDef.byName["Pumpking:TerraGuardLaser"].type, projectile_dmg, 0f, Main.myPlayer);
-									return;
 								}
 							}
 						}
@@ -408,15 +404,14 @@ namespace Tremor.Invasion
 					{
 						npc.rotation = npc_to_target_angle;
 						float speed = 14f;
-						npc_pos = new Vector2(npc.position.X + (float)npc.width * 0.5f, npc.position.Y + (float)npc.height * 0.5f);
-						npc_to_target_x = Main.player[npc.target].position.X + (float)(Main.player[npc.target].width / 2) - npc_pos.X;
-						npc_to_target_y = Main.player[npc.target].position.Y + (float)(Main.player[npc.target].height / 2) - npc_pos.Y;
-						dist_to_target = (float)Math.Sqrt((double)(npc_to_target_x * npc_to_target_x + npc_to_target_y * npc_to_target_y));
+						npc_pos = new Vector2(npc.position.X + npc.width * 0.5f, npc.position.Y + npc.height * 0.5f);
+						npc_to_target_x = Main.player[npc.target].position.X + Main.player[npc.target].width / 2 - npc_pos.X;
+						npc_to_target_y = Main.player[npc.target].position.Y + Main.player[npc.target].height / 2 - npc_pos.Y;
+						dist_to_target = (float)Math.Sqrt(npc_to_target_x * npc_to_target_x + npc_to_target_y * npc_to_target_y);
 						dist_to_target = speed / dist_to_target;
 						npc.velocity.X = npc_to_target_x * dist_to_target;
 						npc.velocity.Y = npc_to_target_y * dist_to_target;
 						npc.ai[1] = 2f;
-						return;
 					}
 					else if (npc.ai[1] == 2f)
 					{
@@ -425,13 +420,13 @@ namespace Tremor.Invasion
 						{
 							npc.velocity.X = npc.velocity.X * 0.93f;
 							npc.velocity.Y = npc.velocity.Y * 0.93f;
-							if ((double)npc.velocity.X > -0.1 && (double)npc.velocity.X < 0.1)
+							if (npc.velocity.X > -0.1 && npc.velocity.X < 0.1)
 								npc.velocity.X = 0f;
-							if ((double)npc.velocity.Y > -0.1 && (double)npc.velocity.Y < 0.1)
+							if (npc.velocity.Y > -0.1 && npc.velocity.Y < 0.1)
 								npc.velocity.Y = 0f;
 						}
 						else
-							npc.rotation = (float)Math.Atan2((double)npc.velocity.Y, (double)npc.velocity.X) - 1.57f;
+							npc.rotation = (float)Math.Atan2(npc.velocity.Y, npc.velocity.X) - 1.57f;
 
 						if (npc.ai[2] >= 80f)
 						{
@@ -446,7 +441,6 @@ namespace Tremor.Invasion
 								return;
 							}
 							npc.ai[1] = 1f;
-							return;
 						}
 					}
 				}

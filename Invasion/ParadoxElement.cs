@@ -1,6 +1,5 @@
 using Terraria.ModLoader;
 
-
 namespace Tremor.Invasion
 {
 	public class ParadoxElement : ModItem

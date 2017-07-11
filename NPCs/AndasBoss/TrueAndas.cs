@@ -1,7 +1,7 @@
-using Terraria;
 using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -46,7 +46,7 @@ namespace Tremor.NPCs.AndasBoss
 		const int ShootDirection = 7;
 		const float Speed = 18f;
 		const float Acceleration = 0.15f;
-		int Timer = 0;
+		int Timer;
 		#endregion
 		public override void AI()
 		{
@@ -61,9 +61,9 @@ namespace Tremor.NPCs.AndasBoss
 			Timer++;
 			if (Timer >= 0 && Timer <= 1000) //flight
 			{
-				Vector2 StartPosition = new Vector2(npc.position.X + (float)npc.width * 0.5f, npc.position.Y + (float)npc.height * 0.5f);
-				float DirectionX = Main.player[npc.target].position.X + (float)(Main.player[npc.target].width / 2) - StartPosition.X;
-				float DirectionY = (float)(Main.player[npc.target].position.Y + (Main.player[npc.target].height / 2) - 120) - StartPosition.Y;
+				Vector2 StartPosition = new Vector2(npc.position.X + npc.width * 0.5f, npc.position.Y + npc.height * 0.5f);
+				float DirectionX = Main.player[npc.target].position.X + Main.player[npc.target].width / 2 - StartPosition.X;
+				float DirectionY = Main.player[npc.target].position.Y + (Main.player[npc.target].height / 2) - 120 - StartPosition.Y;
 				float Length = (float)Math.Sqrt(DirectionX * DirectionX + DirectionY * DirectionY);
 				float Num = Speed / Length;
 				DirectionX = DirectionX * Num;
@@ -203,8 +203,8 @@ namespace Tremor.NPCs.AndasBoss
 
 			if (Main.netMode != 1)
 			{
-				int centerX = (int)(npc.position.X + (float)(npc.width / 2)) / 16;
-				int centerY = (int)(npc.position.Y + (float)(npc.height / 2)) / 16;
+				int centerX = (int)(npc.position.X + npc.width / 2) / 16;
+				int centerY = (int)(npc.position.Y + npc.height / 2) / 16;
 				int halfLength = npc.width / 2 / 16 + 1;
 
 				if (!Main.expertMode)

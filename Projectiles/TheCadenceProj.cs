@@ -47,7 +47,7 @@ namespace Tremor.Projectiles
 			{
 				Dust dust4 = Main.dust[Dust.NewDust(projectile.position, projectile.width, projectile.height, 172, projectile.velocity.X, projectile.velocity.Y, 100, default(Color), 1f)];
 				dust4.velocity = Vector2.Zero;
-				dust4.position -= projectile.velocity / 5f * (float)num121;
+				dust4.position -= projectile.velocity / 5f * num121;
 				dust4.noGravity = true;
 				dust4.scale = 0.8f;
 				dust4.noLight = true;

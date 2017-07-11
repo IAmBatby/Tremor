@@ -23,11 +23,11 @@ namespace Tremor.Tiles
 			TileObjectData.newTile.AnchorBottom = new AnchorData(AnchorType.SolidTile | AnchorType.SolidSide, TileObjectData.newTile.Width, 0);
 			TileObjectData.newAlternate.CopyFrom(TileObjectData.StyleTorch);
 			TileObjectData.newAlternate.AnchorLeft = new AnchorData(AnchorType.SolidTile | AnchorType.SolidSide | AnchorType.Tree | AnchorType.AlternateTile, TileObjectData.newTile.Height, 0);
-			TileObjectData.newAlternate.AnchorAlternateTiles = new int[]{ 124 };
+			TileObjectData.newAlternate.AnchorAlternateTiles = new[]{ 124 };
 			TileObjectData.addAlternate(1);
 			TileObjectData.newAlternate.CopyFrom(TileObjectData.StyleTorch);
 			TileObjectData.newAlternate.AnchorRight = new AnchorData(AnchorType.SolidTile | AnchorType.SolidSide | AnchorType.Tree | AnchorType.AlternateTile, TileObjectData.newTile.Height, 0);
-			TileObjectData.newAlternate.AnchorAlternateTiles = new int[]{ 124 };
+			TileObjectData.newAlternate.AnchorAlternateTiles = new[]{ 124 };
 			TileObjectData.addAlternate(2);
 			TileObjectData.newAlternate.CopyFrom(TileObjectData.StyleTorch);
 			TileObjectData.newAlternate.AnchorWall = true;
@@ -95,9 +95,9 @@ namespace Tremor.Tiles
 			}
 			for (int k = 0; k < 7; k++)
 			{
-				float x = (float)Utils.RandomInt(ref randSeed, -10, 11) * 0.15f;
-				float y = (float)Utils.RandomInt(ref randSeed, -10, 1) * 0.35f;
-				Main.spriteBatch.Draw(mod.GetTexture("Tiles/BulbTorch_Flame"), new Vector2((float)(i * 16 - (int)Main.screenPosition.X) - (width - 16f) / 2f + x, (float)(j * 16 - (int)Main.screenPosition.Y + offsetY) + y) + zero, new Rectangle(frameX, frameY, width, height), color, 0f, default(Vector2), 1f, SpriteEffects.None, 0f);
+				float x = Utils.RandomInt(ref randSeed, -10, 11) * 0.15f;
+				float y = Utils.RandomInt(ref randSeed, -10, 1) * 0.35f;
+				Main.spriteBatch.Draw(mod.GetTexture("Tiles/BulbTorch_Flame"), new Vector2(i * 16 - (int)Main.screenPosition.X - (width - 16f) / 2f + x, j * 16 - (int)Main.screenPosition.Y + offsetY + y) + zero, new Rectangle(frameX, frameY, width, height), color, 0f, default(Vector2), 1f, SpriteEffects.None, 0f);
 			}
 		}
 	}

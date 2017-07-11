@@ -1,9 +1,9 @@
 using System;
+using System.Linq;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using System.Linq;
 
 namespace Tremor.Projectiles.Alchemic {
 public class ExtendedBoomFlaskPro : ModProjectile
@@ -15,7 +15,7 @@ public class ExtendedBoomFlaskPro : ModProjectile
         projectile.friendly = true;
         projectile.aiStyle = 2;
             projectile.penetrate = 1;
-            if (Main.player[Main.myPlayer].buffType.Contains<int>(mod.BuffType("BouncingCasingBuff")))
+            if (Main.player[Main.myPlayer].buffType.Contains(mod.BuffType("BouncingCasingBuff")))
             {
                 projectile.penetrate = 3;
             }
@@ -28,7 +28,7 @@ public class ExtendedBoomFlaskPro : ModProjectile
 	
 	        public override void AI()
         {
-            if (Main.player[Main.myPlayer].buffType.Contains<int>(mod.BuffType("TheCadenceBuff")))
+            if (Main.player[Main.myPlayer].buffType.Contains(mod.BuffType("TheCadenceBuff")))
             {
                 int[] array = new int[20];
                 int num428 = 0;
@@ -38,9 +38,9 @@ public class ExtendedBoomFlaskPro : ModProjectile
                 {
                     if (Main.npc[num430].CanBeChasedBy(projectile, false))
                     {
-                        float num431 = Main.npc[num430].position.X + (float)(Main.npc[num430].width / 2);
-                        float num432 = Main.npc[num430].position.Y + (float)(Main.npc[num430].height / 2);
-                        float num433 = Math.Abs(projectile.position.X + (float)(projectile.width / 2) - num431) + Math.Abs(projectile.position.Y + (float)(projectile.height / 2) - num432);
+                        float num431 = Main.npc[num430].position.X + Main.npc[num430].width / 2;
+                        float num432 = Main.npc[num430].position.Y + Main.npc[num430].height / 2;
+                        float num433 = Math.Abs(projectile.position.X + projectile.width / 2 - num431) + Math.Abs(projectile.position.Y + projectile.height / 2 - num432);
                         if (num433 < num429 && Collision.CanHit(projectile.Center, 1, 1, Main.npc[num430].Center, 1, 1))
                         {
                             if (num428 < 20)
@@ -56,18 +56,18 @@ public class ExtendedBoomFlaskPro : ModProjectile
                 {
                     int num434 = Main.rand.Next(num428);
                     num434 = array[num434];
-                    float num435 = Main.npc[num434].position.X + (float)(Main.npc[num434].width / 2);
-                    float num436 = Main.npc[num434].position.Y + (float)(Main.npc[num434].height / 2);
+                    float num435 = Main.npc[num434].position.X + Main.npc[num434].width / 2;
+                    float num436 = Main.npc[num434].position.Y + Main.npc[num434].height / 2;
                     projectile.localAI[0] += 1f;
                     if (projectile.localAI[0] > 8f)
                     {
                         projectile.localAI[0] = 0f;
                         float num437 = 6f;
-                        Vector2 value10 = new Vector2(projectile.position.X + (float)projectile.width * 0.5f, projectile.position.Y + (float)projectile.height * 0.5f);
+                        Vector2 value10 = new Vector2(projectile.position.X + projectile.width * 0.5f, projectile.position.Y + projectile.height * 0.5f);
                         value10 += projectile.velocity * 4f;
                         float num438 = num435 - value10.X;
                         float num439 = num436 - value10.Y;
-                        float num440 = (float)Math.Sqrt((double)(num438 * num438 + num439 * num439));
+                        float num440 = (float)Math.Sqrt(num438 * num438 + num439 * num439);
                         num440 = num437 / num440;
                         num438 *= num440;
                         num439 *= num440;
@@ -75,7 +75,6 @@ public class ExtendedBoomFlaskPro : ModProjectile
                         {
                             Projectile.NewProjectile(value10.X, value10.Y, num438, num439, mod.ProjectileType("TheCadenceProj"), projectile.damage, projectile.knockBack, projectile.owner, 0f, 0f);
                         }
-                        return;
                     }
                 }
             }
@@ -91,7 +90,7 @@ public class ExtendedBoomFlaskPro : ModProjectile
 
         public override bool OnTileCollide(Vector2 oldVelocity)
         {
-            if (Main.player[Main.myPlayer].buffType.Contains<int>(mod.BuffType("BouncingCasingBuff")))
+            if (Main.player[Main.myPlayer].buffType.Contains(mod.BuffType("BouncingCasingBuff")))
             {
                 projectile.penetrate--;
                 if (projectile.penetrate <= 0)
@@ -122,7 +121,7 @@ public class ExtendedBoomFlaskPro : ModProjectile
 
     public override void Kill(int timeLeft)
 {
-                if (Main.player[Main.myPlayer].buffType.Contains<int>(mod.BuffType("DesertEmperorSetBuff")))
+                if (Main.player[Main.myPlayer].buffType.Contains(mod.BuffType("DesertEmperorSetBuff")))
                 {
                     int a = Projectile.NewProjectile(projectile.position.X, projectile.position.Y, 0, 0, mod.ProjectileType("FlaskWasp"), projectile.damage * 2, 1.5f, projectile.owner);
                     int b = Projectile.NewProjectile(projectile.position.X, projectile.position.Y, 0, 0, mod.ProjectileType("FlaskWasp"), projectile.damage * 2, 1.5f, projectile.owner);
@@ -131,7 +130,7 @@ public class ExtendedBoomFlaskPro : ModProjectile
             Player player = Main.player[projectile.owner];
             MPlayer modPlayer = (MPlayer)player.GetModPlayer(mod, "MPlayer");
 			
-						            if (Main.player[Main.myPlayer].buffType.Contains<int>(mod.BuffType("BrassChipBuff")))
+						            if (Main.player[Main.myPlayer].buffType.Contains(mod.BuffType("BrassChipBuff")))
             {
                 for (int i = 0; i < 5; i++)
                 {
@@ -141,24 +140,24 @@ public class ExtendedBoomFlaskPro : ModProjectile
                     Main.projectile[a].friendly = true;
                 }
             }
-            if (Main.player[Main.myPlayer].buffType.Contains<int>(mod.BuffType("ChaosElementBuff")))
+            if (Main.player[Main.myPlayer].buffType.Contains(mod.BuffType("ChaosElementBuff")))
             {
                 int num220 = Main.rand.Next(3, 6);
                 for (int num221 = 0; num221 < num220; num221++)
                 {
-                    Vector2 value17 = new Vector2((float)Main.rand.Next(-100, 101), (float)Main.rand.Next(-100, 101));
+                    Vector2 value17 = new Vector2(Main.rand.Next(-100, 101), Main.rand.Next(-100, 101));
                     value17.Normalize();
-                    value17 *= (float)Main.rand.Next(10, 201) * 0.01f;
-                    Projectile.NewProjectile(projectile.position.X, projectile.position.Y, value17.X, value17.Y, mod.ProjectileType("Shatter1"), projectile.damage, 1f, projectile.owner, 0f, (float)Main.rand.Next(-45, 1));
+                    value17 *= Main.rand.Next(10, 201) * 0.01f;
+                    Projectile.NewProjectile(projectile.position.X, projectile.position.Y, value17.X, value17.Y, mod.ProjectileType("Shatter1"), projectile.damage, 1f, projectile.owner, 0f, Main.rand.Next(-45, 1));
                 }
             }
    Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 62);
-   projectile.position.X = projectile.position.X + (float)(projectile.width / 2);
-   projectile.position.Y = projectile.position.Y + (float)(projectile.height / 2);
+   projectile.position.X = projectile.position.X + projectile.width / 2;
+   projectile.position.Y = projectile.position.Y + projectile.height / 2;
    projectile.width = 80;
    projectile.height = 80;
-   projectile.position.X = projectile.position.X - (float)(projectile.width / 2);
-   projectile.position.Y = projectile.position.Y - (float)(projectile.height / 2);
+   projectile.position.X = projectile.position.X - projectile.width / 2;
+   projectile.position.Y = projectile.position.Y - projectile.height / 2;
    for (int num628 = 0; num628 < 40; num628++)
    {
     int num629 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, 31, 0f, 0f, 100, default(Color), 2f);
@@ -166,7 +165,7 @@ public class ExtendedBoomFlaskPro : ModProjectile
     if (Main.rand.Next(2) == 0)
     {
      Main.dust[num629].scale = 0.5f;
-     Main.dust[num629].fadeIn = 1f + (float)Main.rand.Next(10) * 0.1f;
+     Main.dust[num629].fadeIn = 1f + Main.rand.Next(10) * 0.1f;
     }
    }
    for (int num630 = 0; num630 < 70; num630++)
@@ -188,37 +187,37 @@ public class ExtendedBoomFlaskPro : ModProjectile
     {
      scaleFactor10 = 1f;
     }
-    int num633 = Gore.NewGore(new Vector2(projectile.position.X + (float)(projectile.width / 2) - 24f, projectile.position.Y + (float)(projectile.height / 2) - 24f), default(Vector2), Main.rand.Next(61, 64), 1f);
+    int num633 = Gore.NewGore(new Vector2(projectile.position.X + projectile.width / 2 - 24f, projectile.position.Y + projectile.height / 2 - 24f), default(Vector2), Main.rand.Next(61, 64), 1f);
     Main.gore[num633].velocity *= scaleFactor10;
     Gore expr_13E6D_cp_0 = Main.gore[num633];
     expr_13E6D_cp_0.velocity.X = expr_13E6D_cp_0.velocity.X + 1f;
     Gore expr_13E8D_cp_0 = Main.gore[num633];
     expr_13E8D_cp_0.velocity.Y = expr_13E8D_cp_0.velocity.Y + 1f;
-    num633 = Gore.NewGore(new Vector2(projectile.position.X + (float)(projectile.width / 2) - 24f, projectile.position.Y + (float)(projectile.height / 2) - 24f), default(Vector2), Main.rand.Next(61, 64), 2f);
+    num633 = Gore.NewGore(new Vector2(projectile.position.X + projectile.width / 2 - 24f, projectile.position.Y + projectile.height / 2 - 24f), default(Vector2), Main.rand.Next(61, 64), 2f);
     Main.gore[num633].velocity *= scaleFactor10;
     Gore expr_13F30_cp_0 = Main.gore[num633];
     expr_13F30_cp_0.velocity.X = expr_13F30_cp_0.velocity.X - 1f;
     Gore expr_13F50_cp_0 = Main.gore[num633];
     expr_13F50_cp_0.velocity.Y = expr_13F50_cp_0.velocity.Y + 1f;
-    num633 = Gore.NewGore(new Vector2(projectile.position.X + (float)(projectile.width / 2) - 24f, projectile.position.Y + (float)(projectile.height / 2) - 24f), default(Vector2), Main.rand.Next(61, 64), 1f);
+    num633 = Gore.NewGore(new Vector2(projectile.position.X + projectile.width / 2 - 24f, projectile.position.Y + projectile.height / 2 - 24f), default(Vector2), Main.rand.Next(61, 64), 1f);
     Main.gore[num633].velocity *= scaleFactor10;
     Gore expr_13FF3_cp_0 = Main.gore[num633];
     expr_13FF3_cp_0.velocity.X = expr_13FF3_cp_0.velocity.X + 1f;
     Gore expr_14013_cp_0 = Main.gore[num633];
     expr_14013_cp_0.velocity.Y = expr_14013_cp_0.velocity.Y - 1f;
-    num633 = Gore.NewGore(new Vector2(projectile.position.X + (float)(projectile.width / 2) - 24f, projectile.position.Y + (float)(projectile.height / 2) - 24f), default(Vector2), Main.rand.Next(61, 64), 1f);
+    num633 = Gore.NewGore(new Vector2(projectile.position.X + projectile.width / 2 - 24f, projectile.position.Y + projectile.height / 2 - 24f), default(Vector2), Main.rand.Next(61, 64), 1f);
     Main.gore[num633].velocity *= scaleFactor10;
     Gore expr_140B6_cp_0 = Main.gore[num633];
     expr_140B6_cp_0.velocity.X = expr_140B6_cp_0.velocity.X - 1f;
     Gore expr_140D6_cp_0 = Main.gore[num633];
     expr_140D6_cp_0.velocity.Y = expr_140D6_cp_0.velocity.Y - 1f;
    }
-   projectile.position.X = projectile.position.X + (float)(projectile.width / 2);
-   projectile.position.Y = projectile.position.Y + (float)(projectile.height / 2);
+   projectile.position.X = projectile.position.X + projectile.width / 2;
+   projectile.position.Y = projectile.position.Y + projectile.height / 2;
    projectile.width = 10;
    projectile.height = 10;
-   projectile.position.X = projectile.position.X - (float)(projectile.width / 2);
-   projectile.position.Y = projectile.position.Y - (float)(projectile.height / 2);
+   projectile.position.X = projectile.position.X - projectile.width / 2;
+   projectile.position.Y = projectile.position.Y - projectile.height / 2;
 
             if (!modPlayer.pyro && !modPlayer.nitro)
             {
@@ -227,22 +226,22 @@ public class ExtendedBoomFlaskPro : ModProjectile
 			int num220 = Main.rand.Next(3, 8);
 			for (int num221 = 0; num221 < num220; num221++)
 			{
-				Vector2 value17 = new Vector2((float)Main.rand.Next(-100, 101), (float)Main.rand.Next(-100, 101));
+				Vector2 value17 = new Vector2(Main.rand.Next(-100, 101), Main.rand.Next(-100, 101));
 				value17.Normalize();
-				value17 *= (float)Main.rand.Next(10, 201) * 0.01f;
-				Projectile.NewProjectile(projectile.position.X, projectile.position.Y, value17.X, value17.Y, mod.ProjectileType("BoomCloudPro"), projectile.damage, 1f, projectile.owner, 0f, (float)Main.rand.Next(-45, 1));
+				value17 *= Main.rand.Next(10, 201) * 0.01f;
+				Projectile.NewProjectile(projectile.position.X, projectile.position.Y, value17.X, value17.Y, mod.ProjectileType("BoomCloudPro"), projectile.damage, 1f, projectile.owner, 0f, Main.rand.Next(-45, 1));
 			}
 		}
             }
             if (projectile.owner == Main.myPlayer)
             {
-                if (Main.player[Main.myPlayer].buffType.Contains<int>(mod.BuffType("PyroBuff")) && !modPlayer.nitro)
+                if (Main.player[Main.myPlayer].buffType.Contains(mod.BuffType("PyroBuff")) && !modPlayer.nitro)
                 {
                     Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 62);
                     int a = Projectile.NewProjectile(projectile.position.X, projectile.position.Y, 0, 0, mod.ProjectileType("BoomBlast"), projectile.damage * 2, 1.5f, projectile.owner);
                     Main.projectile[a].scale = 1.5f;
                 }
-                if (Main.player[Main.myPlayer].buffType.Contains<int>(mod.BuffType("ChemikazeBuff")) && !modPlayer.nitro)
+                if (Main.player[Main.myPlayer].buffType.Contains(mod.BuffType("ChemikazeBuff")) && !modPlayer.nitro)
                 {
                     Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 62);
                     int a = Projectile.NewProjectile(projectile.position.X, projectile.position.Y, 0, 0, mod.ProjectileType("BoomBlast"), projectile.damage * 2, 1.25f, projectile.owner);
@@ -252,7 +251,7 @@ public class ExtendedBoomFlaskPro : ModProjectile
                     int d = Projectile.NewProjectile(projectile.position.X, projectile.position.Y + 32, 0, 0, mod.ProjectileType("BoomBlast"), projectile.damage * 2, 1f, projectile.owner);
                     int e = Projectile.NewProjectile(projectile.position.X, projectile.position.Y - 32, 0, 0, mod.ProjectileType("BoomBlast"), projectile.damage * 2, 1f, projectile.owner);
                 }
-                if (Main.player[Main.myPlayer].buffType.Contains<int>(mod.BuffType("CrossBlastBuff")) && !modPlayer.nitro)
+                if (Main.player[Main.myPlayer].buffType.Contains(mod.BuffType("CrossBlastBuff")) && !modPlayer.nitro)
                 {
                     Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 62);
                     int a = Projectile.NewProjectile(projectile.position.X, projectile.position.Y, 0, 0, mod.ProjectileType("BoomBlast"), projectile.damage * 2, 1.25f, projectile.owner);
@@ -278,7 +277,7 @@ public class ExtendedBoomFlaskPro : ModProjectile
                     int m = Projectile.NewProjectile(projectile.position.X, projectile.position.Y - 70, 0, 0, mod.ProjectileType("BoomBlast"), projectile.damage * 2, 0.5f, projectile.owner);
                     Main.projectile[m].scale = 0.8f;
                 }
-                if (Main.player[Main.myPlayer].buffType.Contains<int>(mod.BuffType("RoundBlastBuff")) && !modPlayer.nitro)
+                if (Main.player[Main.myPlayer].buffType.Contains(mod.BuffType("RoundBlastBuff")) && !modPlayer.nitro)
                 {
                     Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 62);
                     int a = Projectile.NewProjectile(projectile.position.X + 60, projectile.position.Y, 0, 0, mod.ProjectileType("BoomBlast"), projectile.damage * 2, 1f, projectile.owner);
@@ -291,7 +290,7 @@ public class ExtendedBoomFlaskPro : ModProjectile
                     int h = Projectile.NewProjectile(projectile.position.X - 40, projectile.position.Y - 40, 0, 0, mod.ProjectileType("BoomBlast"), projectile.damage * 2, 1f, projectile.owner);
                 }
 
-                if (Main.player[Main.myPlayer].buffType.Contains<int>(mod.BuffType("SquareBlastBuff")) && !modPlayer.nitro)
+                if (Main.player[Main.myPlayer].buffType.Contains(mod.BuffType("SquareBlastBuff")) && !modPlayer.nitro)
                 {
                     Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 62);
                     int a = Projectile.NewProjectile(projectile.position.X + 70, projectile.position.Y, 0, 0, mod.ProjectileType("BoomBlast"), projectile.damage * 2, 1f, projectile.owner);
@@ -304,13 +303,13 @@ public class ExtendedBoomFlaskPro : ModProjectile
                     int h = Projectile.NewProjectile(projectile.position.X - 70, projectile.position.Y - 70, 0, 0, mod.ProjectileType("BoomBlast"), projectile.damage * 2, 1f, projectile.owner);
                 }
 
-                if (Main.player[Main.myPlayer].buffType.Contains<int>(mod.BuffType("NitroBuff")) && !modPlayer.pyro)
+                if (Main.player[Main.myPlayer].buffType.Contains(mod.BuffType("NitroBuff")) && !modPlayer.pyro)
                 {
                     Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 100);
                     int a = Projectile.NewProjectile(projectile.position.X, projectile.position.Y, 0, 0, mod.ProjectileType("BoomBurst"), projectile.damage, 1f, projectile.owner);
                 }
 
-                if (Main.player[Main.myPlayer].buffType.Contains<int>(mod.BuffType("ReinforcedBurstBuff")) && !modPlayer.pyro)
+                if (Main.player[Main.myPlayer].buffType.Contains(mod.BuffType("ReinforcedBurstBuff")) && !modPlayer.pyro)
                 {
                     Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 100);
                     int a = Projectile.NewProjectile(projectile.position.X, projectile.position.Y, 0, 0, mod.ProjectileType("BoomBurst"), projectile.damage, 1f, projectile.owner);
@@ -318,7 +317,7 @@ public class ExtendedBoomFlaskPro : ModProjectile
                     int c = Projectile.NewProjectile(projectile.position.X-50, projectile.position.Y, 0, 0, mod.ProjectileType("BoomBurst"), projectile.damage, 1f, projectile.owner);
                 }
 
-                if (Main.player[Main.myPlayer].buffType.Contains<int>(mod.BuffType("LinearBurstBuff")) && !modPlayer.pyro)
+                if (Main.player[Main.myPlayer].buffType.Contains(mod.BuffType("LinearBurstBuff")) && !modPlayer.pyro)
                 {
                     Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 100);
                     int a = Projectile.NewProjectile(projectile.position.X, projectile.position.Y, 0, 0, mod.ProjectileType("BoomBurst"), projectile.damage, 1f, projectile.owner);
@@ -328,7 +327,7 @@ public class ExtendedBoomFlaskPro : ModProjectile
                     int e = Projectile.NewProjectile(projectile.position.X-100, projectile.position.Y, 0, 0, mod.ProjectileType("BoomBurst"), projectile.damage, 1f, projectile.owner);
                 }
 
-                if (Main.player[Main.myPlayer].buffType.Contains<int>(mod.BuffType("NitroBuff")) && Main.player[Main.myPlayer].buffType.Contains<int>(mod.BuffType("PyroBuff")))
+                if (Main.player[Main.myPlayer].buffType.Contains(mod.BuffType("NitroBuff")) && Main.player[Main.myPlayer].buffType.Contains(mod.BuffType("PyroBuff")))
                 {
                     Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 42);
                     int a = Projectile.NewProjectile(projectile.position.X, projectile.position.Y, 0, 0, mod.ProjectileType("BoomBlast"), projectile.damage * 2, 1.5f, projectile.owner);
@@ -337,7 +336,7 @@ public class ExtendedBoomFlaskPro : ModProjectile
                     int c = Projectile.NewProjectile(projectile.position.X-20, projectile.position.Y, -5, 0, mod.ProjectileType("BoomSkull"), projectile.damage, 1f, projectile.owner);
                 }
 
-                if (Main.player[Main.myPlayer].buffType.Contains<int>(mod.BuffType("ReinforcedBurstBuff")) && Main.player[Main.myPlayer].buffType.Contains<int>(mod.BuffType("PyroBuff")))
+                if (Main.player[Main.myPlayer].buffType.Contains(mod.BuffType("ReinforcedBurstBuff")) && Main.player[Main.myPlayer].buffType.Contains(mod.BuffType("PyroBuff")))
                 {
                     Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 42);
                     int a = Projectile.NewProjectile(projectile.position.X, projectile.position.Y, 0, 0, mod.ProjectileType("BoomBlast"), projectile.damage * 2, 1.5f, projectile.owner);
@@ -348,7 +347,7 @@ public class ExtendedBoomFlaskPro : ModProjectile
                     int e = Projectile.NewProjectile(projectile.position.X-40, projectile.position.Y+10, -4, 0, mod.ProjectileType("BoomSkull"), projectile.damage, 1f, projectile.owner);
                 }
 
-                if (Main.player[Main.myPlayer].buffType.Contains<int>(mod.BuffType("LinearBurstBuff")) && Main.player[Main.myPlayer].buffType.Contains<int>(mod.BuffType("PyroBuff")))
+                if (Main.player[Main.myPlayer].buffType.Contains(mod.BuffType("LinearBurstBuff")) && Main.player[Main.myPlayer].buffType.Contains(mod.BuffType("PyroBuff")))
                 {
                     Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 42);
                     int a = Projectile.NewProjectile(projectile.position.X, projectile.position.Y, 0, 0, mod.ProjectileType("BoomBlast"), projectile.damage * 2, 1.5f, projectile.owner);
@@ -361,7 +360,7 @@ public class ExtendedBoomFlaskPro : ModProjectile
                     int g = Projectile.NewProjectile(projectile.position.X-70, projectile.position.Y+15, -4, 0, mod.ProjectileType("BoomSkull"), projectile.damage, 1f, projectile.owner);
                 }
 
-                if (Main.player[Main.myPlayer].buffType.Contains<int>(mod.BuffType("RoundBlastBuff")) && Main.player[Main.myPlayer].buffType.Contains<int>(mod.BuffType("NitroBuff")))
+                if (Main.player[Main.myPlayer].buffType.Contains(mod.BuffType("RoundBlastBuff")) && Main.player[Main.myPlayer].buffType.Contains(mod.BuffType("NitroBuff")))
                 {
                     Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 62);
                     int z = Projectile.NewProjectile(projectile.position.X, projectile.position.Y, 0, 0, mod.ProjectileType("BoomBlast"), projectile.damage * 2, 1.5f, projectile.owner);
@@ -381,7 +380,7 @@ public class ExtendedBoomFlaskPro : ModProjectile
                 }
 
 
-                if (Main.player[Main.myPlayer].buffType.Contains<int>(mod.BuffType("RoundBlastBuff")) && Main.player[Main.myPlayer].buffType.Contains<int>(mod.BuffType("ReinforcedBurstBuff")))
+                if (Main.player[Main.myPlayer].buffType.Contains(mod.BuffType("RoundBlastBuff")) && Main.player[Main.myPlayer].buffType.Contains(mod.BuffType("ReinforcedBurstBuff")))
                 {
                     Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 62);
                     int z = Projectile.NewProjectile(projectile.position.X, projectile.position.Y, 0, 0, mod.ProjectileType("BoomBlast"), projectile.damage * 2, 1.5f, projectile.owner);
@@ -400,7 +399,7 @@ public class ExtendedBoomFlaskPro : ModProjectile
                     Main.projectile[h].scale = 1.2f;
                 }
 
-                if (Main.player[Main.myPlayer].buffType.Contains<int>(mod.BuffType("RoundBlastBuff")) && Main.player[Main.myPlayer].buffType.Contains<int>(mod.BuffType("LinearBurstBuff")))
+                if (Main.player[Main.myPlayer].buffType.Contains(mod.BuffType("RoundBlastBuff")) && Main.player[Main.myPlayer].buffType.Contains(mod.BuffType("LinearBurstBuff")))
                 {
                     Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 62);
                     int z = Projectile.NewProjectile(projectile.position.X, projectile.position.Y, 0, 0, mod.ProjectileType("BoomBlast"), projectile.damage * 2, 1.5f, projectile.owner);
@@ -427,7 +426,7 @@ public class ExtendedBoomFlaskPro : ModProjectile
                     Main.projectile[m].scale = 0.6f;
                 }
 
-                if (Main.player[Main.myPlayer].buffType.Contains<int>(mod.BuffType("SquareBlastBuff")) && Main.player[Main.myPlayer].buffType.Contains<int>(mod.BuffType("NitroBuff")))
+                if (Main.player[Main.myPlayer].buffType.Contains(mod.BuffType("SquareBlastBuff")) && Main.player[Main.myPlayer].buffType.Contains(mod.BuffType("NitroBuff")))
                 {
                     Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 62);
                     int d = Projectile.NewProjectile(projectile.position.X, projectile.position.Y, 0, 0, mod.ProjectileType("BoomBlast"), projectile.damage * 2, 1f, projectile.owner);
@@ -439,7 +438,7 @@ public class ExtendedBoomFlaskPro : ModProjectile
                 }
 
 
-                if (Main.player[Main.myPlayer].buffType.Contains<int>(mod.BuffType("SquareBlastBuff")) && Main.player[Main.myPlayer].buffType.Contains<int>(mod.BuffType("ReinforcedBurstBuff")))
+                if (Main.player[Main.myPlayer].buffType.Contains(mod.BuffType("SquareBlastBuff")) && Main.player[Main.myPlayer].buffType.Contains(mod.BuffType("ReinforcedBurstBuff")))
                 {
                     Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 62);
                     int d = Projectile.NewProjectile(projectile.position.X, projectile.position.Y, 0, 0, mod.ProjectileType("BoomBlast"), projectile.damage * 2, 1f, projectile.owner);
@@ -462,7 +461,7 @@ public class ExtendedBoomFlaskPro : ModProjectile
                     Main.projectile[l].scale = 0.75f;
                 }
 
-                if (Main.player[Main.myPlayer].buffType.Contains<int>(mod.BuffType("SquareBlastBuff")) && Main.player[Main.myPlayer].buffType.Contains<int>(mod.BuffType("LinearBurstBuff")))
+                if (Main.player[Main.myPlayer].buffType.Contains(mod.BuffType("SquareBlastBuff")) && Main.player[Main.myPlayer].buffType.Contains(mod.BuffType("LinearBurstBuff")))
                 {
                     Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 62);
                     int d = Projectile.NewProjectile(projectile.position.X, projectile.position.Y, 0, 0, mod.ProjectileType("BoomBlast"), projectile.damage * 2, 1f, projectile.owner);
@@ -493,14 +492,14 @@ public class ExtendedBoomFlaskPro : ModProjectile
                     Main.projectile[p].scale = 0.7f;
                 }
 
-                if (Main.player[Main.myPlayer].buffType.Contains<int>(mod.BuffType("NitroBuff")) && Main.player[Main.myPlayer].buffType.Contains<int>(mod.BuffType("ChemikazeBuff")))
+                if (Main.player[Main.myPlayer].buffType.Contains(mod.BuffType("NitroBuff")) && Main.player[Main.myPlayer].buffType.Contains(mod.BuffType("ChemikazeBuff")))
                 {
                     Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 100);
                     Projectile.NewProjectile(projectile.position.X-30, projectile.position.Y, -2, 0, mod.ProjectileType("BoomBurst"), projectile.damage, 1f, projectile.owner);
                     Projectile.NewProjectile(projectile.position.X+30, projectile.position.Y, +2, 0, mod.ProjectileType("BoomBurst"), projectile.damage, 1f, projectile.owner);
                 }
 
-                if (Main.player[Main.myPlayer].buffType.Contains<int>(mod.BuffType("ReinforcedBurstBuff")) && Main.player[Main.myPlayer].buffType.Contains<int>(mod.BuffType("ChemikazeBuff")))
+                if (Main.player[Main.myPlayer].buffType.Contains(mod.BuffType("ReinforcedBurstBuff")) && Main.player[Main.myPlayer].buffType.Contains(mod.BuffType("ChemikazeBuff")))
                 {
                     Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 100);
                     Projectile.NewProjectile(projectile.position.X-40, projectile.position.Y, -2, 0, mod.ProjectileType("BoomBurst"), projectile.damage, 1f, projectile.owner);
@@ -509,7 +508,7 @@ public class ExtendedBoomFlaskPro : ModProjectile
                     Projectile.NewProjectile(projectile.position.X+60, projectile.position.Y, +3, 0, mod.ProjectileType("BoomBurst"), projectile.damage, 1f, projectile.owner);
                 }
 
-                if (Main.player[Main.myPlayer].buffType.Contains<int>(mod.BuffType("LinearBurstBuff")) && Main.player[Main.myPlayer].buffType.Contains<int>(mod.BuffType("ChemikazeBuff")))
+                if (Main.player[Main.myPlayer].buffType.Contains(mod.BuffType("LinearBurstBuff")) && Main.player[Main.myPlayer].buffType.Contains(mod.BuffType("ChemikazeBuff")))
                 {
                     Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 100);
                     Projectile.NewProjectile(projectile.position.X-40, projectile.position.Y, -2, 0, mod.ProjectileType("BoomBurst"), projectile.damage, 1f, projectile.owner);
@@ -520,7 +519,7 @@ public class ExtendedBoomFlaskPro : ModProjectile
                     Projectile.NewProjectile(projectile.position.X+80, projectile.position.Y, +4, 0, mod.ProjectileType("BoomBurst"), projectile.damage, 1f, projectile.owner);
                 }
 
-                if (Main.player[Main.myPlayer].buffType.Contains<int>(mod.BuffType("CrossBlastBuff")) && Main.player[Main.myPlayer].buffType.Contains<int>(mod.BuffType("NitroBuff")))
+                if (Main.player[Main.myPlayer].buffType.Contains(mod.BuffType("CrossBlastBuff")) && Main.player[Main.myPlayer].buffType.Contains(mod.BuffType("NitroBuff")))
                 {
                     Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 62);
                     int a = Projectile.NewProjectile(projectile.position.X, projectile.position.Y, 4, 0, mod.ProjectileType("BoomSkullburst"), projectile.damage * 1, 1f, projectile.owner);
@@ -533,7 +532,7 @@ public class ExtendedBoomFlaskPro : ModProjectile
                     int h = Projectile.NewProjectile(projectile.position.X, projectile.position.Y-60, 0, 4, mod.ProjectileType("BoomSkullburst"), projectile.damage * 1, 1f, projectile.owner);
                 }
 
-                if (Main.player[Main.myPlayer].buffType.Contains<int>(mod.BuffType("CrossBlastBuff")) && Main.player[Main.myPlayer].buffType.Contains<int>(mod.BuffType("ReinforcedBurstBuff")))
+                if (Main.player[Main.myPlayer].buffType.Contains(mod.BuffType("CrossBlastBuff")) && Main.player[Main.myPlayer].buffType.Contains(mod.BuffType("ReinforcedBurstBuff")))
                 {
                     Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 62);
                     int a = Projectile.NewProjectile(projectile.position.X, projectile.position.Y, 6, 0, mod.ProjectileType("BoomSkullburst"), projectile.damage * 1, 1f, projectile.owner);
@@ -546,7 +545,7 @@ public class ExtendedBoomFlaskPro : ModProjectile
                     int h = Projectile.NewProjectile(projectile.position.X, projectile.position.Y-60, 0, 6, mod.ProjectileType("BoomSkullburst"), projectile.damage * 1, 1f, projectile.owner);
                 }
 
-                if (Main.player[Main.myPlayer].buffType.Contains<int>(mod.BuffType("CrossBlastBuff")) && Main.player[Main.myPlayer].buffType.Contains<int>(mod.BuffType("LinearBurstBuff")))
+                if (Main.player[Main.myPlayer].buffType.Contains(mod.BuffType("CrossBlastBuff")) && Main.player[Main.myPlayer].buffType.Contains(mod.BuffType("LinearBurstBuff")))
                 {
                     Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 62);
                     int a = Projectile.NewProjectile(projectile.position.X, projectile.position.Y, 8, 0, mod.ProjectileType("BoomSkullburst"), projectile.damage * 1, 1f, projectile.owner);

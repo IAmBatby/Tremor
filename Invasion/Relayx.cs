@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
@@ -65,7 +66,7 @@ namespace Tremor.Invasion
 			return false;
 		}
 
-		public override void ModifyTooltips(System.Collections.Generic.List<TooltipLine> tooltips)
+		public override void ModifyTooltips(List<TooltipLine> tooltips)
 		{
 			TooltipLine tip = new TooltipLine(mod, "Tremor:Tooltip", "-Donator Items-");
 			tip.overrideColor = new Color(119, 200, 203);

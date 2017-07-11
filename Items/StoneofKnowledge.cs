@@ -1,5 +1,5 @@
-using Terraria.ID;
 using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace Tremor.Items
@@ -39,9 +39,9 @@ namespace Tremor.Items
 			Main.PlaySound(15, (int)player.position.X, (int)player.position.Y, 0);
 			if (Main.netMode != 1)
 			{
-				int b1ID = Terraria.NPC.NewNPC((int)player.Center.X - 300, (int)player.Center.Y - 800, mod.NPCType("SoulofHope"));
-				int b2ID = Terraria.NPC.NewNPC((int)player.Center.X, (int)player.Center.Y - 300, mod.NPCType("SoulofTrust"));
-				int b3ID = Terraria.NPC.NewNPC((int)player.Center.X + 100, (int)player.Center.Y - 500, mod.NPCType("SoulofTruth"));
+				int b1ID = NPC.NewNPC((int)player.Center.X - 300, (int)player.Center.Y - 800, mod.NPCType("SoulofHope"));
+				int b2ID = NPC.NewNPC((int)player.Center.X, (int)player.Center.Y - 300, mod.NPCType("SoulofTrust"));
+				int b3ID = NPC.NewNPC((int)player.Center.X + 100, (int)player.Center.Y - 500, mod.NPCType("SoulofTruth"));
 				Main.npc[b1ID].ai[2] = b2ID;
 				Main.npc[b1ID].ai[3] = b3ID;
 				Main.npc[b2ID].ai[2] = b1ID;

@@ -1,8 +1,8 @@
 using System.Collections.Generic;
 using Terraria;
+using Terraria.GameContent.Generation;
 using Terraria.ModLoader;
 using Terraria.World.Generation;
-using Terraria.GameContent.Generation;
 
 namespace Tremor.DungeonGenn
 {
@@ -15,9 +15,9 @@ namespace Tremor.DungeonGenn
 		static public bool showLog = false;
 
 		static public Dungeon[] dungeon;
-		static public int spawnTileX = 0;
-		static public int spawnTileY = 0;
-		static public int rockLayerFat = 0;
+		static public int spawnTileX;
+		static public int spawnTileY;
+		static public int rockLayerFat;
 		static public int lavaLayer = 0;
 		static public int densityDivider;
 		//public DungeonGen(ModBase modBase) : base(modBase){ }
@@ -53,7 +53,7 @@ namespace Tremor.DungeonGenn
 			small = Main.maxTilesY < 1500;
 			large = Main.maxTilesY > 2300;
 			medium = !small && !large;
-			rockLayerFat = (int)Main.maxTilesY - (int)Main.rockLayer;
+			rockLayerFat = Main.maxTilesY - (int)Main.rockLayer;
 			//if(small) densityDivider = 50;
 			densityDivider = 35;
 			//with old 32 = small-15, medium-36, large-63
@@ -212,7 +212,7 @@ namespace Tremor.DungeonGenn
 		public Room[] room;
 		public Room[] corridor;
 		public Graph graph;
-		public int CorridorNum = 0;
+		public int CorridorNum;
 
 		public bool isOk = true;
 
@@ -728,7 +728,7 @@ namespace Tremor.DungeonGenn
 		//for Mutate()
 		public int mutateChance = 2;
 		public int mutateLimit = 2;
-		public int mutated = 0;
+		public int mutated;
 
 		//for Fix()
 		public int maxHLimit = 40;
@@ -877,17 +877,17 @@ namespace Tremor.DungeonGenn
 	public class Room
 	{
 		//{VARS
-		public int x = 0;//active part
-		public int y = 0;//active part
-		public int w = 0;
-		public int h = 0;
+		public int x;//active part
+		public int y;//active part
+		public int w;
+		public int h;
 		public int wallState = 1; //0 full wall, 1 destroyed, 2 no wall
 		public bool isTreasureRoom = false;
 		public bool isSpawnRoom = false;
 		public bool isCorridor = false;
-		public bool isDestroyed = false;
-		public bool isFake = false;
-		public bool isBridged = false;
+		public bool isDestroyed;
+		public bool isFake;
+		public bool isBridged;
 		public bool isFlooded = false;
 		public bool isAroundSand = false;
 		public bool canConnectBetweenFloors = true;
@@ -958,7 +958,7 @@ namespace Tremor.DungeonGenn
 					tileCount++;
 				}
 			}
-			return ((int)((float)destroyedTiles / (float)tileCount * 100));
+			return ((int)(destroyedTiles / (float)tileCount * 100));
 		}
 		public bool IsInRoom(int posX, int posY, int offsetX, int offsetY)
 		{
@@ -1330,7 +1330,6 @@ namespace Tremor.DungeonGenn
 				}
 				//}
 			}
-			return;
 		}
 		public void FillWithFurniture(int offsetX, int offsetY)
 		{
@@ -1407,7 +1406,7 @@ namespace Tremor.DungeonGenn
 		public int room1;
 		public int room2;
 
-		private int I = 0;
+		private int I;
 		private Connection[] connection;
 
 		public Graph(int roomNum)
@@ -1457,7 +1456,7 @@ namespace Tremor.DungeonGenn
 	{
 		public int room1;
 		public int room2;
-		public bool connected = false;
+		public bool connected;
 		public void Connect(int r1, int r2)
 		{
 			room1 = r1;
@@ -1489,10 +1488,10 @@ namespace Tremor.DungeonGenn
 	public class ItemList
 	{
 		static public string[] lowTier = {
-			"IceKey",
+			"IceKey"
 		};
 		static public string[] highTier = {
-			"Gold Coin",
+			"Gold Coin"
 		};
 	}
 
@@ -1516,7 +1515,7 @@ namespace Tremor.DungeonGenn
 						break;
 					}
 				}
-				int[] itemsToPlaceInGlassChestsSecondary = new int[] { ModLoader.GetMod("Tremor").ItemType("IceKey"), 73 };
+				int[] itemsToPlaceInGlassChestsSecondary = { ModLoader.GetMod("Tremor").ItemType("IceKey"), 73 };
 				int itemsToPlaceInGlassChestsSecondaryChoice = 0;
 				if (isInDungeon)
 				{

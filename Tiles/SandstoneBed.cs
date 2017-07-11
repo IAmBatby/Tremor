@@ -13,7 +13,7 @@ namespace Tremor.Tiles
 			Main.tileFrameImportant[Type] = true;
 			Main.tileLavaDeath[Type] = true;
 			TileObjectData.newTile.CopyFrom(TileObjectData.Style4x2); //this style already takes care of direction for us
-			TileObjectData.newTile.CoordinateHeights = new int[]{ 16, 16 };
+			TileObjectData.newTile.CoordinateHeights = new[]{ 16, 16 };
 			TileObjectData.addTile(Type);
 			AddMapEntry(new Color(233, 211, 123));
 			adjTiles = new int[]{ TileID.Beds };

@@ -1,7 +1,7 @@
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Microsoft.Xna.Framework;
 
 namespace Tremor.NovaPillar
 {
@@ -17,9 +17,9 @@ namespace Tremor.NovaPillar
 
 		//Int variables
 		int AnimationRate = 8;
-		int CountFrame = 0;
+		int CountFrame;
 		int TimeToAnimation = 8;
-		int Timer = 0;
+		int Timer;
 		public override void SetDefaults()
 		{
 			npc.lifeMax = 1;
@@ -48,18 +48,18 @@ namespace Tremor.NovaPillar
 			npc.spriteDirection = npc.direction;
 			Player player = Main.player[npc.target];
 			npc.rotation = 0f;
-			this.NovaAnimation();
-			this.Timer++;
-			if (this.Timer >= 350)
+			NovaAnimation();
+			Timer++;
+			if (Timer >= 350)
 			{
 				npc.life = -1;
 				npc.active = false;
 				npc.checkDead();
 				for (int k = 0; k < 19; k++)
 				{
-					Vector2 Vector = new Vector2((float)Main.rand.Next(-100, 101), (float)Main.rand.Next(-100, 101));
+					Vector2 Vector = new Vector2(Main.rand.Next(-100, 101), Main.rand.Next(-100, 101));
 					Vector.Normalize();
-					Vector *= (float)Main.rand.Next(10, 201) * 0.01f;
+					Vector *= Main.rand.Next(10, 201) * 0.01f;
 					int i = Projectile.NewProjectile(npc.position.X, npc.position.Y, Vector.X, Vector.Y, mod.ProjectileType("NovaAlchemistCloud"), 20, 1);
 					Main.projectile[i].friendly = false;
 				}
@@ -68,12 +68,12 @@ namespace Tremor.NovaPillar
 
 		void NovaAnimation()
 		{
-			if (--this.TimeToAnimation <= 0)
+			if (--TimeToAnimation <= 0)
 			{
-				if (++this.CountFrame > 3)
-					this.CountFrame = 1;
-				this.TimeToAnimation = this.AnimationRate;
-				npc.frame = this.GetFrame(this.CountFrame + 0);
+				if (++CountFrame > 3)
+					CountFrame = 1;
+				TimeToAnimation = AnimationRate;
+				npc.frame = GetFrame(CountFrame + 0);
 			}
 		}
 

@@ -1,7 +1,7 @@
-using Terraria.ID;
-using Microsoft.Xna.Framework;
 using System.Linq;
+using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace Tremor.Items
@@ -39,7 +39,7 @@ namespace Tremor.Items
 
 		public override void UpdateInventory(Player player)
 		{
-			if (Main.player[Main.myPlayer].buffType.Contains<int>(mod.BuffType("SteamRangerBuff")))
+			if (Main.player[Main.myPlayer].buffType.Contains(mod.BuffType("SteamRangerBuff")))
 			{
 				item.damage = 45;
 			}
