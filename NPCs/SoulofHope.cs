@@ -159,14 +159,14 @@ namespace Tremor.NPCs
 			if (npc.target != -1 && !RunAway)
 				if (!Main.player[npc.target].active)
 				{
-					if (Helper2.GetNearestAlivePlayer(npc) == -1)
+					if (Helper.GetNearestAlivePlayer(npc) == -1)
 						RunAway = true;
 					else
 					{
-						if (Main.player[Helper2.GetNearestAlivePlayer(npc)].Distance(npc.Center) > 2500f)
+						if (Main.player[Helper.GetNearestAlivePlayer(npc)].Distance(npc.Center) > 2500f)
 							RunAway = true;
 						else
-							npc.target = Helper2.GetNearestAlivePlayer(npc);
+							npc.target = Helper.GetNearestAlivePlayer(npc);
 					}
 				}
 			if (Main.dayTime || RunAway || npc.localAI[3] == 1)
@@ -179,7 +179,7 @@ namespace Tremor.NPCs
 				npc.life += 11;
 				npc.aiStyle = 0;
 				npc.rotation = 0;
-				npc.velocity = Helper2.VelocityFPTP(npc.Center, new Vector2(npc.Center.X, npc.Center.Y - 4815162342), 30.0f);
+				npc.velocity = Helper.VelocityFPTP(npc.Center, new Vector2(npc.Center.X, npc.Center.Y - 4815162342), 30.0f);
 				CreateDust();
 				return;
 			}
@@ -195,7 +195,7 @@ namespace Tremor.NPCs
 			if (OnlyPower)
 				SetStage(true);
 			else
-				SetStage(Main.player[Helper2.GetNearestPlayer(npc)].Distance(npc.Center) <= DistantionToPower);
+				SetStage(Main.player[Helper.GetNearestPlayer(npc)].Distance(npc.Center) <= DistantionToPower);
 			SetRotation();
 			CreateDust();
 			TimeToShoot--;
@@ -226,7 +226,7 @@ namespace Tremor.NPCs
 				if (Rotation != 0.0f)
 				{
 					Rotation -= (RotationSpeed * 2.0f);
-					Vector2 velocity = Helper2.VelocityFPTP(npc.Center, Helper2.RandomPositin(new Vector2(npc.Center.X - 250, npc.Center.Y - 250), new Vector2(npc.Center.X + 250, npc.Center.Y + 250)), PowerLaserSpeed);
+					Vector2 velocity = Helper.VelocityFPTP(npc.Center, Helper.RandomPositin(new Vector2(npc.Center.X - 250, npc.Center.Y - 250), new Vector2(npc.Center.X + 250, npc.Center.Y + 250)), PowerLaserSpeed);
 					int i = Projectile.NewProjectile(npc.Center.X, npc.Center.Y, velocity.X, velocity.Y, ShootType, PowerLaserDamage, PowerLaserKB);
 					Main.projectile[i].tileCollide = false;
 				}
@@ -257,10 +257,10 @@ namespace Tremor.NPCs
 
 		void Shoot()
 		{
-			if (Helper2.GetNearestPlayer(npc) != -1)
+			if (Helper.GetNearestPlayer(npc) != -1)
 			{
-				npc.target = Helper2.GetNearestPlayer(npc);
-				Vector2 velocity = Helper2.VelocityFPTP(npc.Center, Main.player[npc.target].Center, (Power) ? PowerLaserSpeed : NormalLaserSpeed);
+				npc.target = Helper.GetNearestPlayer(npc);
+				Vector2 velocity = Helper.VelocityFPTP(npc.Center, Main.player[npc.target].Center, (Power) ? PowerLaserSpeed : NormalLaserSpeed);
 				int i = Projectile.NewProjectile(npc.Center.X, npc.Center.Y, velocity.X, velocity.Y, ShootType, (Power) ? PowerLaserDamage : NormalLaserDamage, (Power) ? PowerLaserKB : NormalLaserKB);
 				Main.projectile[i].tileCollide = false;
 				Main.projectile[i].friendly = false;

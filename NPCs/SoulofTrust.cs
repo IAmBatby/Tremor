@@ -175,14 +175,14 @@ namespace Tremor.NPCs
 			if (npc.target != -1 && !RunAway) //если(пнс.цель не варно -1 И не убегать)
 				if (!Main.player[npc.target].active) //если (не мой.игрок[нпс.цель].активный)
 				{
-					if (Helper2.GetNearestAlivePlayer(npc) == -1) //если (Помощьник.ПолучитьКоординатыИгрока(нпс) присвоить -1)
+					if (Helper.GetNearestAlivePlayer(npc) == -1) //если (Помощьник.ПолучитьКоординатыИгрока(нпс) присвоить -1)
 						RunAway = true; //Убегает = да
 					else //или
 					{
-						if (Main.player[Helper2.GetNearestAlivePlayer(npc)].Distance(npc.Center) > 2500f) //если(Мой.игрок[Помощьник.ПолучитьКоординатыИгрока(нпс)].Дистанция(нпс.Центр) больше 2500фунтов)
+						if (Main.player[Helper.GetNearestAlivePlayer(npc)].Distance(npc.Center) > 2500f) //если(Мой.игрок[Помощьник.ПолучитьКоординатыИгрока(нпс)].Дистанция(нпс.Центр) больше 2500фунтов)
 							RunAway = true; //Убегает = да
 						else //или...
-							npc.target = Helper2.GetNearestAlivePlayer(npc); //нпс.цель равно Помощьник.ПолучитьКоординатыИгрока(нпс)
+							npc.target = Helper.GetNearestAlivePlayer(npc); //нпс.цель равно Помощьник.ПолучитьКоординатыИгрока(нпс)
 					}
 				}
 			if (Main.dayTime || RunAway || npc.localAI[3] == 1) //если(Мой.День или Убегать или нпс.местный ИИ 3 к 1)
@@ -195,7 +195,7 @@ namespace Tremor.NPCs
 				npc.life += 11; //нпс.жизнь прибавить
 				npc.aiStyle = 0; //нпс.ИИ Стиль - 0
 				npc.rotation = 0;
-				npc.velocity = Helper2.VelocityFPTP(npc.Center, new Vector2(npc.Center.X, npc.Center.Y - 4815162342), 30.0f); //нпс.поворот = Помощьник.ПоворотФПТП(нпс.Центр, новый Вектор2(нпс.Центр.X, нпс.Центр.Y - 4815162342))
+				npc.velocity = Helper.VelocityFPTP(npc.Center, new Vector2(npc.Center.X, npc.Center.Y - 4815162342), 30.0f); //нпс.поворот = Помощьник.ПоворотФПТП(нпс.Центр, новый Вектор2(нпс.Центр.X, нпс.Центр.Y - 4815162342))
 				CreateDust();
 				return;
 			}
@@ -231,12 +231,12 @@ namespace Tremor.NPCs
 			if (TimeToShoot <= 0 && Power)
 			{
 				TimeToShoot = PowerShootRate;
-				npc.target = Helper2.GetNearestPlayer(npc);
+				npc.target = Helper.GetNearestPlayer(npc);
 				if (npc.target != -1)
 				{
 					for (int a = 0; a < 5; a++)
 					{
-						Vector2 velocity = Helper2.VelocityFPTP(npc.Center, Main.player[npc.target].Center, PowerBulletSpeed);
+						Vector2 velocity = Helper.VelocityFPTP(npc.Center, Main.player[npc.target].Center, PowerBulletSpeed);
 						int spread = 65;
 						float spreadMult = 0.05f;
 						velocity.X = velocity.X + Main.rand.Next(-spread, spread + 1) * spreadMult;
@@ -279,10 +279,10 @@ namespace Tremor.NPCs
 
 		void Shoot()
 		{
-			npc.target = Helper2.GetNearestPlayer(npc);
+			npc.target = Helper.GetNearestPlayer(npc);
 			if (npc.target != -1)
 			{
-				Vector2 velocity = Helper2.VelocityFPTP(npc.Center, Main.player[npc.target].Center, NormalBulletSpeed);
+				Vector2 velocity = Helper.VelocityFPTP(npc.Center, Main.player[npc.target].Center, NormalBulletSpeed);
 				int spread = 95;
 				float spreadMult = 0.075f;
 				for (int l = 0; l < 2; l++)

@@ -158,14 +158,14 @@ namespace Tremor.NPCs
 			if (npc.target != -1 && !RunAway)
 				if (!Main.player[npc.target].active)
 				{
-					if (Helper2.GetNearestAlivePlayer(npc) == -1)
+					if (Helper.GetNearestAlivePlayer(npc) == -1)
 						RunAway = true;
 					else
 					{
-						if (Main.player[Helper2.GetNearestAlivePlayer(npc)].Distance(npc.Center) > 2500f)
+						if (Main.player[Helper.GetNearestAlivePlayer(npc)].Distance(npc.Center) > 2500f)
 							RunAway = true;
 						else
-							npc.target = Helper2.GetNearestAlivePlayer(npc);
+							npc.target = Helper.GetNearestAlivePlayer(npc);
 					}
 				}
 			if (Main.dayTime || RunAway || npc.localAI[3] == 1)
@@ -178,7 +178,7 @@ namespace Tremor.NPCs
 				npc.life += 11;
 				npc.aiStyle = 0;
 				npc.rotation = 0;
-				npc.velocity = Helper2.VelocityFPTP(npc.Center, new Vector2(npc.Center.X, npc.Center.Y - 4815162342), 30.0f);
+				npc.velocity = Helper.VelocityFPTP(npc.Center, new Vector2(npc.Center.X, npc.Center.Y - 4815162342), 30.0f);
 				CreateDust();
 				return;
 			}
@@ -192,7 +192,7 @@ namespace Tremor.NPCs
 					OnlyPower = true;
 				}
 			if (!OnlyPower)
-				SetStage(!(Main.player[Helper2.GetNearestPlayer(npc)].Distance(npc.Center) <= DistantionToPower));
+				SetStage(!(Main.player[npc.GetNearestPlayer()].Distance(npc.Center) <= DistantionToPower));
 			else
 				SetStage(true);
 			SetRotation();
@@ -246,10 +246,10 @@ namespace Tremor.NPCs
 
 		void Shoot()
 		{
-			npc.target = Helper2.GetNearestPlayer(npc);
+			npc.target = npc.GetNearestPlayer();
 			if (npc.target != -1)
 			{
-				Vector2 velocity = Helper2.VelocityFPTP(npc.Center, new Vector2(Main.player[npc.target].Center.X, Main.player[npc.target].Center.Y + 20), 0.0f);
+				Vector2 velocity = Helper.VelocityFPTP(npc.Center, new Vector2(Main.player[npc.target].Center.X, Main.player[npc.target].Center.Y + 20), 0.0f);
 				int spread = 65;
 				float spreadMult = 0.05f;
 				for (int l = 0; l < 2; l++)

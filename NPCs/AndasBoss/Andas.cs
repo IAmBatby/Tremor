@@ -63,7 +63,7 @@ namespace Tremor.NPCs.AndasBoss
 			{
 				if ((int)(Main.time % 90) == 0)
 				{
-					Vector2 Velocity = Helper2.VelocityFPTP(npc.Center, new Vector2(Main.player[npc.target].Center.X, Main.player[npc.target].Center.Y + 20), 10);
+					Vector2 Velocity = Helper.VelocityFPTP(npc.Center, new Vector2(Main.player[npc.target].Center.X, Main.player[npc.target].Center.Y + 20), 10);
 					int Spread = 65;
 					float SpreadMult = 0.05f;
 					Velocity.X = Velocity.X + Main.rand.Next(-Spread, Spread + 1) * SpreadMult;

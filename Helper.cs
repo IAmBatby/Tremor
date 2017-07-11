@@ -89,6 +89,22 @@ namespace Tremor
 			return NearestPlayer;
 		}
 
+		public static int GetNearestPlayer(this NPC npc)
+		{
+			float NearestPlayerDist = 4815162342f;
+			int NearestPlayer = -1;
+			foreach (Player player in Main.player)
+			{
+				if (player.Distance(npc.Center) < NearestPlayerDist)
+				{
+					NearestPlayerDist = player.Distance(npc.Center);
+					NearestPlayer = player.whoAmI;
+				}
+			}
+			return NearestPlayer;
+		}
+
+
 		/// <summary>
 		/// *Используется для вычислиения инерции от точки до точки с заданой скоростью*
 		/// </summary>
@@ -296,6 +312,7 @@ namespace Tremor
 		}
 
 	}
+
 	public struct Drop
 	{
 		public int Item; public int Count; public int Chance;
