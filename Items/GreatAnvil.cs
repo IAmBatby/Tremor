@@ -4,31 +4,33 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace Tremor.Items {
-public class GreatAnvil : ModItem
+namespace Tremor.Items
 {
-    public override void SetDefaults()
-    {
+	public class GreatAnvil : ModItem
+	{
+		public override void SetDefaults()
+		{
 
-        item.width = 50;
-        item.height = 26;
-        item.maxStack = 99;
-        item.useTurn = true;
-        item.autoReuse = true;
+			item.width = 50;
+			item.height = 26;
+			item.maxStack = 99;
+			item.useTurn = true;
+			item.autoReuse = true;
 
-        item.useAnimation = 15;
-        item.useTime = 10;
-        item.useStyle = 1;
-        item.consumable = true;
-        item.value = 150;
-        item.createTile = mod.TileType("GreatAnvilTile");
-    }
+			item.useAnimation = 15;
+			item.useTime = 10;
+			item.useStyle = 1;
+			item.consumable = true;
+			item.value = 150;
+			item.createTile = mod.TileType("GreatAnvilTile");
+		}
 
-    public override void SetStaticDefaults()
-    {
-      DisplayName.SetDefault("Great Anvil");
-      Tooltip.SetDefault("Allows to produce heavy weapons");
-    }
+		public override void SetStaticDefaults()
+		{
+			DisplayName.SetDefault("Great Anvil");
+			Tooltip.SetDefault("Allows to produce heavy weapons");
+		}
 
 
-}}
+	}
+}

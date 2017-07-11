@@ -17,9 +17,9 @@ namespace Tremor.Ice.Items.Furniture
 			Main.tileTable[Type] = true;
 			Main.tileLavaDeath[Type] = true;
 			TileObjectData.newTile.CopyFrom(TileObjectData.Style2x1);
-			TileObjectData.newTile.CoordinateHeights = new int[]{ 16, 16 };
+			TileObjectData.newTile.CoordinateHeights = new int[] { 16, 16 };
 			TileObjectData.addTile(Type);
-			adjTiles = new int[]{ TileID.WorkBenches };
+			adjTiles = new int[] { TileID.WorkBenches };
 			AddToArray(ref TileID.Sets.RoomNeeds.CountsAsTable);
 			AddMapEntry(new Color(233, 211, 123));
 		}

@@ -19,27 +19,27 @@ namespace Tremor.Items
 			item.useAnimation = 15;
 			item.useTime = 10;
 			item.useStyle = 1;
-                        item.rare = 1;
+			item.rare = 1;
 			item.consumable = true;
 			item.value = 150;
 			item.createTile = mod.TileType("CrimstoneDoorClosed");
 		}
 
-    public override void SetStaticDefaults()
-    {
-      DisplayName.SetDefault("Crimstone Door");
-      Tooltip.SetDefault("");
-    }
+		public override void SetStaticDefaults()
+		{
+			DisplayName.SetDefault("Crimstone Door");
+			Tooltip.SetDefault("");
+		}
 
 
-    public override void AddRecipes()
-    {
-        ModRecipe recipe = new ModRecipe(mod);
-        recipe.AddIngredient(836, 6);
-        recipe.AddIngredient(1257, 1);
-        recipe.SetResult(this);
-        recipe.AddTile(17);
-        recipe.AddRecipe();
-    }
+		public override void AddRecipes()
+		{
+			ModRecipe recipe = new ModRecipe(mod);
+			recipe.AddIngredient(836, 6);
+			recipe.AddIngredient(1257, 1);
+			recipe.SetResult(this);
+			recipe.AddTile(17);
+			recipe.AddRecipe();
+		}
 	}
 }

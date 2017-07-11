@@ -7,7 +7,7 @@ using Terraria.ModLoader;
 
 namespace Tremor.NovaPillar
 {
-[AutoloadEquip(EquipType.Head)]
+	[AutoloadEquip(EquipType.Head)]
 	public class NovaHelmet : ModItem
 	{
 
@@ -22,20 +22,20 @@ namespace Tremor.NovaPillar
 			item.defense = 14;
 		}
 
-    public override void SetStaticDefaults()
-    {
-      DisplayName.SetDefault("Nova Helmet");
-      Tooltip.SetDefault("Increases alchemic damage by 12%\nIncreases alchemic critical strike chance by 12\nEnemies are more likely to target you");
-    }
+		public override void SetStaticDefaults()
+		{
+			DisplayName.SetDefault("Nova Helmet");
+			Tooltip.SetDefault("Increases alchemic damage by 12%\nIncreases alchemic critical strike chance by 12\nEnemies are more likely to target you");
+		}
 
-		
+
 		public override void UpdateEquip(Player player)
 		{
-            player.GetModPlayer<MPlayer>(mod).alchemistCrit += 12;
-            player.GetModPlayer<MPlayer>(mod).alchemistDamage += 0.12f;
-            player.aggro += 10;
-            Lighting.AddLight((int)((player.position.X + (float)(player.width / 2)) / 16f), (int)((player.position.Y + (float)(player.height / 2)) / 16f), 0.8f, 0.7f, 0.3f);
-        }
+			player.GetModPlayer<MPlayer>(mod).alchemistCrit += 12;
+			player.GetModPlayer<MPlayer>(mod).alchemistDamage += 0.12f;
+			player.aggro += 10;
+			Lighting.AddLight((int)((player.position.X + (float)(player.width / 2)) / 16f), (int)((player.position.Y + (float)(player.height / 2)) / 16f), 0.8f, 0.7f, 0.3f);
+		}
 
 		public override bool IsArmorSet(Item head, Item body, Item legs)
 		{
@@ -44,14 +44,14 @@ namespace Tremor.NovaPillar
 
 		public override void UpdateArmorSet(Player player)
 		{
-            player.setBonus = "Increases alchemic damage by 15% and summons alchemical cauldron to protect you";
-            player.GetModPlayer<MPlayer>(mod).alchemistDamage += 0.15f;
-            player.GetModPlayer<MPlayer>(mod).novaSet = true;
-            if (player.ownedProjectileCounts[mod.ProjectileType("NovaCauldron")] < 1)
-            {
-                Projectile.NewProjectile(player.position, Vector2.Zero, mod.ProjectileType("NovaCauldron"), 50, 0, player.whoAmI);
-            }
-        }
+			player.setBonus = "Increases alchemic damage by 15% and summons alchemical cauldron to protect you";
+			player.GetModPlayer<MPlayer>(mod).alchemistDamage += 0.15f;
+			player.GetModPlayer<MPlayer>(mod).novaSet = true;
+			if (player.ownedProjectileCounts[mod.ProjectileType("NovaCauldron")] < 1)
+			{
+				Projectile.NewProjectile(player.position, Vector2.Zero, mod.ProjectileType("NovaCauldron"), 50, 0, player.whoAmI);
+			}
+		}
 
 		public override void ArmorSetShadows(Player player)
 		{

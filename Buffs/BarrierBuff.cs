@@ -15,11 +15,11 @@ namespace Tremor.Buffs
 
 		public override void Update(Player player, ref int buffIndex)
 		{
-               player.statDefense += 500;
-                if(player.buffTime[buffIndex] == 0)
-                  {
-                  player.AddBuff(mod.BuffType("BarrierRechargeBuff"), 7200);
-                  }
+			player.statDefense += 500;
+			if (player.buffTime[buffIndex] == 0)
+			{
+				player.AddBuff(mod.BuffType("BarrierRechargeBuff"), 7200);
+			}
 		}
 	}
 }

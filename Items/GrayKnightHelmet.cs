@@ -7,7 +7,7 @@ using Terraria.ModLoader;
 
 namespace Tremor.Items
 {
-[AutoloadEquip(EquipType.Head)]
+	[AutoloadEquip(EquipType.Head)]
 	public class GrayKnightHelmet : ModItem
 	{
 		public override void SetDefaults()
@@ -21,11 +21,11 @@ namespace Tremor.Items
 			item.vanity = true;
 		}
 
-    public override void SetStaticDefaults()
-    {
-      DisplayName.SetDefault("Gray Knight Helmet");
-      Tooltip.SetDefault("Can be colored with gems");
-    }
+		public override void SetStaticDefaults()
+		{
+			DisplayName.SetDefault("Gray Knight Helmet");
+			Tooltip.SetDefault("Can be colored with gems");
+		}
 
 	}
 }

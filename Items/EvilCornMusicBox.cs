@@ -25,11 +25,11 @@ namespace Tremor.Items
 			item.accessory = true;
 		}
 
-    public override void SetStaticDefaults()
-    {
-      DisplayName.SetDefault("Music Box (Evil Corn)");
-      Tooltip.SetDefault("");
-    }
+		public override void SetStaticDefaults()
+		{
+			DisplayName.SetDefault("Music Box (Evil Corn)");
+			Tooltip.SetDefault("");
+		}
 
 	}
 }

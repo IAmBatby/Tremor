@@ -4,25 +4,28 @@ using System.Collections.Generic;
 using Terraria;
 using Terraria.ModLoader;
 
-namespace Tremor.Items { [AutoloadEquip(EquipType.Head)]
-public class WallofShadowMask : ModItem
+namespace Tremor.Items
 {
+	[AutoloadEquip(EquipType.Head)]
+	public class WallofShadowMask : ModItem
+	{
 
 
 
-    public override void SetDefaults()
-    {
+		public override void SetDefaults()
+		{
 
-        item.width = 20;
-        item.height = 24;
-        item.rare = 1;
-        item.vanity = true;
-    }
+			item.width = 20;
+			item.height = 24;
+			item.rare = 1;
+			item.vanity = true;
+		}
 
-    public override void SetStaticDefaults()
-    {
-      DisplayName.SetDefault("Wall of Shadows Mask");
-      Tooltip.SetDefault("");
-    }
+		public override void SetStaticDefaults()
+		{
+			DisplayName.SetDefault("Wall of Shadows Mask");
+			Tooltip.SetDefault("");
+		}
 
-}}
+	}
+}

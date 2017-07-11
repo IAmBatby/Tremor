@@ -27,18 +27,18 @@ namespace Tremor.Items
 			item.UseSound = SoundID.Item40;
 			item.autoReuse = false;
 			item.shoot = 10;
-	 		item.shootSpeed = 15f;
-                        item.useAmmo = AmmoID.Bullet;
+			item.shootSpeed = 15f;
+			item.useAmmo = AmmoID.Bullet;
 		}
 
-    public override void SetStaticDefaults()
-    {
-      DisplayName.SetDefault("Candy Blaster");
-      Tooltip.SetDefault("Spends bullets and fires candies");
-    }
+		public override void SetStaticDefaults()
+		{
+			DisplayName.SetDefault("Candy Blaster");
+			Tooltip.SetDefault("Spends bullets and fires candies");
+		}
 
 
-    public override bool ConsumeAmmo(Player p)
+		public override bool ConsumeAmmo(Player p)
 		{
 			return Main.rand.Next(3) == 0;
 		}

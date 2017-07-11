@@ -18,8 +18,8 @@ namespace Tremor.NPCs
 			}
 		}
 
-	    public bool dFear = false;
-	    public bool Irradiated = false;
+		public bool dFear = false;
+		public bool Irradiated = false;
 
 		public override void ResetEffects(NPC npc)
 		{

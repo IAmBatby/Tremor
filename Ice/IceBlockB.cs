@@ -19,13 +19,13 @@ namespace Tremor.Ice
 			item.useStyle = 1;
 			item.consumable = true;
 			item.createTile = mod.TileType("VeryVeryIce");
-        }
+		}
 
-    public override void SetStaticDefaults()
-    {
-      DisplayName.SetDefault("Everfrost Block");
-      Tooltip.SetDefault("");
-    }
+		public override void SetStaticDefaults()
+		{
+			DisplayName.SetDefault("Everfrost Block");
+			Tooltip.SetDefault("");
+		}
 
 	}
 }

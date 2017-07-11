@@ -6,8 +6,8 @@ using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace Tremor.Items
-{ 
-[AutoloadEquip(EquipType.Body)]
+{
+	[AutoloadEquip(EquipType.Body)]
 	public class EnchantedBreastplate : ModItem
 	{
 		public override void SetDefaults()
@@ -22,17 +22,17 @@ namespace Tremor.Items
 			item.defense = 7;
 		}
 
-    public override void SetStaticDefaults()
-    {
-      DisplayName.SetDefault("Enchanted Breastplate");
-      Tooltip.SetDefault("Increases maximum mana by 20\nIncreases maximum health by 20");
-    }
+		public override void SetStaticDefaults()
+		{
+			DisplayName.SetDefault("Enchanted Breastplate");
+			Tooltip.SetDefault("Increases maximum mana by 20\nIncreases maximum health by 20");
+		}
 
 
 		public override void UpdateEquip(Player player)
 		{
-            player.statManaMax2 += 20;
-            player.statLifeMax2 += 20;
+			player.statManaMax2 += 20;
+			player.statLifeMax2 += 20;
 		}
 	}
 }

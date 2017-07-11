@@ -6,8 +6,8 @@ using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace Tremor.Items
-{ 
-[AutoloadEquip(EquipType.Body)]
+{
+	[AutoloadEquip(EquipType.Body)]
 	public class GrayKnightBreastplate : ModItem
 	{
 		public override void SetDefaults()
@@ -21,11 +21,11 @@ namespace Tremor.Items
 			item.vanity = true;
 		}
 
-    public override void SetStaticDefaults()
-    {
-      DisplayName.SetDefault("Gray Knight Breastplate");
-      Tooltip.SetDefault("Can be colored with gems");
-    }
+		public override void SetStaticDefaults()
+		{
+			DisplayName.SetDefault("Gray Knight Breastplate");
+			Tooltip.SetDefault("Can be colored with gems");
+		}
 
 	}
 }

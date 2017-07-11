@@ -7,30 +7,30 @@ using Terraria.ModLoader;
 
 namespace Tremor.Projectiles
 {
-    public class EaterofDreamsPro : ModProjectile
-    {
-        public override void SetDefaults()
-        {
+	public class EaterofDreamsPro : ModProjectile
+	{
+		public override void SetDefaults()
+		{
 
-            projectile.width = 6;
-            projectile.height = 6;
-            projectile.friendly = true;
-            projectile.ignoreWater = true;
-            projectile.penetrate = -1;
-            projectile.extraUpdates = 3;
-            projectile.timeLeft = 90;
-        }
+			projectile.width = 6;
+			projectile.height = 6;
+			projectile.friendly = true;
+			projectile.ignoreWater = true;
+			projectile.penetrate = -1;
+			projectile.extraUpdates = 3;
+			projectile.timeLeft = 90;
+		}
 
-    public override void SetStaticDefaults()
-    {
-      DisplayName.SetDefault("EaterofDreams Pro");
-       
-    }
+		public override void SetStaticDefaults()
+		{
+			DisplayName.SetDefault("EaterofDreams Pro");
+
+		}
 
 
-        public override void AI()
-        {
-        	Lighting.AddLight(projectile.Center, ((255 - projectile.alpha) * 0.25f) / 255f, ((255 - projectile.alpha) * 0.05f) / 255f, ((255 - projectile.alpha) * 0.05f) / 255f);
+		public override void AI()
+		{
+			Lighting.AddLight(projectile.Center, ((255 - projectile.alpha) * 0.25f) / 255f, ((255 - projectile.alpha) * 0.05f) / 255f, ((255 - projectile.alpha) * 0.05f) / 255f);
 			if (projectile.timeLeft > 90)
 			{
 				projectile.timeLeft = 90;
@@ -91,34 +91,34 @@ namespace Tremor.Projectiles
 				projectile.ai[0] += 1f;
 			}
 			projectile.rotation += 0.3f * (float)projectile.direction;
-			return;	
-        }
-        public override bool OnTileCollide(Vector2 oldVelocity)
-        {
-            projectile.penetrate--;
-            if (projectile.penetrate <= 0)
-            {
-                projectile.Kill();
-            }
-            else
-            {
-                projectile.ai[0] += 0.1f;
-                if (projectile.velocity.X != oldVelocity.X)
-                {
-                    projectile.velocity.X = -oldVelocity.X;
-                }
-                if (projectile.velocity.Y != oldVelocity.Y)
-                {
-                    projectile.velocity.Y = -oldVelocity.Y;
-                }
-                projectile.velocity *= 0.75f;
-            }
-            return false;
-        }
+			return;
+		}
+		public override bool OnTileCollide(Vector2 oldVelocity)
+		{
+			projectile.penetrate--;
+			if (projectile.penetrate <= 0)
+			{
+				projectile.Kill();
+			}
+			else
+			{
+				projectile.ai[0] += 0.1f;
+				if (projectile.velocity.X != oldVelocity.X)
+				{
+					projectile.velocity.X = -oldVelocity.X;
+				}
+				if (projectile.velocity.Y != oldVelocity.Y)
+				{
+					projectile.velocity.Y = -oldVelocity.Y;
+				}
+				projectile.velocity *= 0.75f;
+			}
+			return false;
+		}
 
-        public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
-        {
-        	target.AddBuff(153, 500);
-        }
-    }
+		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		{
+			target.AddBuff(153, 500);
+		}
+	}
 }

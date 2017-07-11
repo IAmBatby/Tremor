@@ -14,16 +14,16 @@ namespace Tremor.Projectiles
 
 			aiType = 198;
 			Main.projFrames[projectile.type] = 4;
-                        projectile.width = 24;
-                        projectile.height = 36;
+			projectile.width = 24;
+			projectile.height = 36;
 			Main.projPet[projectile.type] = true;
 		}
 
-    public override void SetStaticDefaults()
-    {
-      DisplayName.SetDefault("Living Tombstone");
-       
-    }
+		public override void SetStaticDefaults()
+		{
+			DisplayName.SetDefault("Living Tombstone");
+
+		}
 
 
 		public override bool PreAI()

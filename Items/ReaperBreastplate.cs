@@ -6,8 +6,8 @@ using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace Tremor.Items
-{ 
-[AutoloadEquip(EquipType.Body)]
+{
+	[AutoloadEquip(EquipType.Body)]
 	public class ReaperBreastplate : ModItem
 	{
 
@@ -22,16 +22,16 @@ namespace Tremor.Items
 			item.defense = 9;
 		}
 
-    public override void SetStaticDefaults()
-    {
-      DisplayName.SetDefault("Reaper Breastplate");
-      Tooltip.SetDefault("Increases alchemic damage by 15%");
-    }
+		public override void SetStaticDefaults()
+		{
+			DisplayName.SetDefault("Reaper Breastplate");
+			Tooltip.SetDefault("Increases alchemic damage by 15%");
+		}
 
 
 		public override void UpdateEquip(Player player)
 		{
-        player.GetModPlayer<MPlayer>(mod).alchemistDamage += 0.15f;
+			player.GetModPlayer<MPlayer>(mod).alchemistDamage += 0.15f;
 		}
 
 	}

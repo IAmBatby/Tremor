@@ -16,11 +16,11 @@ namespace Tremor.Buffs
 
 		public override void Update(Player player, ref int buffIndex)
 		{
-	player.meleeDamage += 0.05f;
-	player.rangedDamage += 0.05f;
-	player.thrownDamage += 0.05f;
-	player.minionDamage += 0.05f;
-	player.magicDamage += 0.05f;
+			player.meleeDamage += 0.05f;
+			player.rangedDamage += 0.05f;
+			player.thrownDamage += 0.05f;
+			player.minionDamage += 0.05f;
+			player.magicDamage += 0.05f;
 		}
 	}
 }

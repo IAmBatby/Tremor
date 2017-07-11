@@ -5,25 +5,27 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace Tremor.Items { 
-[AutoloadEquip(EquipType.Body)]
-public class PlagueRobe : ModItem
+namespace Tremor.Items
 {
+	[AutoloadEquip(EquipType.Body)]
+	public class PlagueRobe : ModItem
+	{
 
-    public override void SetDefaults()
-    {
+		public override void SetDefaults()
+		{
 
-        item.width = 26;
-        item.height = 24;
+			item.width = 26;
+			item.height = 24;
 
-        item.rare = 2;
-        item.value = 10000;
-    }
+			item.rare = 2;
+			item.value = 10000;
+		}
 
-    public override void SetStaticDefaults()
-    {
-      DisplayName.SetDefault("Plague Robe");
-      Tooltip.SetDefault("'HEE HEE HEE'");
-    }
+		public override void SetStaticDefaults()
+		{
+			DisplayName.SetDefault("Plague Robe");
+			Tooltip.SetDefault("'HEE HEE HEE'");
+		}
 
-}}
+	}
+}

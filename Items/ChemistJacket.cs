@@ -6,8 +6,8 @@ using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace Tremor.Items
-{ 
-[AutoloadEquip(EquipType.Body)]
+{
+	[AutoloadEquip(EquipType.Body)]
 	public class ChemistJacket : ModItem
 	{
 
@@ -22,27 +22,27 @@ namespace Tremor.Items
 			item.defense = 3;
 		}
 
-    public override void SetStaticDefaults()
-    {
-      DisplayName.SetDefault("Chemist Jacket");
-      Tooltip.SetDefault("Increases alchemic damage by 6%");
-    }
+		public override void SetStaticDefaults()
+		{
+			DisplayName.SetDefault("Chemist Jacket");
+			Tooltip.SetDefault("Increases alchemic damage by 6%");
+		}
 
 
 		public override void UpdateEquip(Player player)
 		{
-        player.GetModPlayer<MPlayer>(mod).alchemistDamage += 0.06f;
+			player.GetModPlayer<MPlayer>(mod).alchemistDamage += 0.06f;
 		}
 
-    public override void AddRecipes()
-    {
-        ModRecipe recipe = new ModRecipe(mod);
-        recipe.AddIngredient(null, "LeatherShirt", 1);
-        recipe.AddIngredient(null, "Chainmail", 1);
-        recipe.AddIngredient(null, "HazardousChemicals", 1);
-        recipe.SetResult(this);
-        recipe.AddTile(18);
-        recipe.AddRecipe();
-    }
+		public override void AddRecipes()
+		{
+			ModRecipe recipe = new ModRecipe(mod);
+			recipe.AddIngredient(null, "LeatherShirt", 1);
+			recipe.AddIngredient(null, "Chainmail", 1);
+			recipe.AddIngredient(null, "HazardousChemicals", 1);
+			recipe.SetResult(this);
+			recipe.AddTile(18);
+			recipe.AddRecipe();
+		}
 	}
 }

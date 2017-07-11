@@ -10,37 +10,37 @@ namespace Tremor.Projectiles
 	{
 		public override void SetDefaults()
 		{
-                        projectile.CloneDefaults(ProjectileID.ValkyrieYoyo);
+			projectile.CloneDefaults(ProjectileID.ValkyrieYoyo);
 			projectile.width = 22;
 			projectile.height = 22;
-                        projectile.timeLeft = 220;
+			projectile.timeLeft = 220;
 			projectile.friendly = true;
 		}
 
-    public override void SetStaticDefaults()
-    {
-      DisplayName.SetDefault("");
-       
-    }
+		public override void SetStaticDefaults()
+		{
+			DisplayName.SetDefault("");
+
+		}
 
 
-    public override bool PreAI()
-    {
-        if(Main.rand.Next(3) == 0)
-        {
-            Dust.NewDust(projectile.position + projectile.velocity, projectile.width, projectile.height, 13, projectile.velocity.X * 0.9f, projectile.velocity.Y * 0.9f);
-        }
+		public override bool PreAI()
+		{
+			if (Main.rand.Next(3) == 0)
+			{
+				Dust.NewDust(projectile.position + projectile.velocity, projectile.width, projectile.height, 13, projectile.velocity.X * 0.9f, projectile.velocity.Y * 0.9f);
+			}
 
-        return true;
-    }
+			return true;
+		}
 
-    public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
-    {
-        if(Main.rand.Next(1) == 0)
-        {
-            target.AddBuff(72, 280, false);
-        }
-    }
+		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		{
+			if (Main.rand.Next(1) == 0)
+			{
+				target.AddBuff(72, 280, false);
+			}
+		}
 
 	}
 }

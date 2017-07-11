@@ -13,18 +13,18 @@ namespace Tremor.Items
 		{
 			item.CloneDefaults(ItemID.Carrot);
 
-                        item.useTime = 25;
-                        item.useAnimation = 25;
+			item.useTime = 25;
+			item.useAnimation = 25;
 
 			item.shoot = mod.ProjectileType("GurdPet");
 			item.buffType = mod.BuffType("GurdPetBuff");
 		}
 
-    public override void SetStaticDefaults()
-    {
-      DisplayName.SetDefault("Bad Apple");
-      Tooltip.SetDefault("Summons a gurd pet");
-    }
+		public override void SetStaticDefaults()
+		{
+			DisplayName.SetDefault("Bad Apple");
+			Tooltip.SetDefault("Summons a gurd pet");
+		}
 
 
 		public override void UseStyle(Player player)

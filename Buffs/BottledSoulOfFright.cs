@@ -16,10 +16,10 @@ namespace Tremor.Buffs
 
 		public override void Update(Player player, ref int buffIndex)
 		{
-            player.rangedCrit += 2;
-            player.meleeCrit += 2;
-            player.magicCrit += 2;
-            player.thrownCrit += 2;
+			player.rangedCrit += 2;
+			player.meleeCrit += 2;
+			player.magicCrit += 2;
+			player.thrownCrit += 2;
 		}
 	}
 }

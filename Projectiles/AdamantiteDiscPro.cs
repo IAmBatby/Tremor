@@ -5,21 +5,23 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace Tremor.Projectiles {
-public class AdamantiteDiscPro : ModProjectile
+namespace Tremor.Projectiles
 {
-    public override void SetDefaults()
-    {
+	public class AdamantiteDiscPro : ModProjectile
+	{
+		public override void SetDefaults()
+		{
 			projectile.CloneDefaults(106);
 
 			aiType = 106;
-    }
+		}
 
-    public override void SetStaticDefaults()
-    {
-      DisplayName.SetDefault("AdamantiteDiscPro");
-       
-    }
+		public override void SetStaticDefaults()
+		{
+			DisplayName.SetDefault("AdamantiteDiscPro");
+
+		}
 
 
-}}
+	}
+}

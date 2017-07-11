@@ -18,8 +18,8 @@ namespace Tremor.Items
 			item.height = 40;
 			item.useTime = 20;
 			item.useAnimation = 20;
-            item.hammer = 95;
-            item.useStyle = 1;
+			item.hammer = 95;
+			item.useStyle = 1;
 			item.knockBack = 7;
 			item.value = 1040;
 			item.rare = 9;
@@ -27,25 +27,25 @@ namespace Tremor.Items
 			item.autoReuse = true;
 		}
 
-    public override void SetStaticDefaults()
-    {
-      DisplayName.SetDefault("Frostammer");
-      Tooltip.SetDefault("");
-    }
+		public override void SetStaticDefaults()
+		{
+			DisplayName.SetDefault("Frostammer");
+			Tooltip.SetDefault("");
+		}
 
 
 		public override void AddRecipes()
 		{
-            ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(null, "FrostoneBar", 15);
-            recipe.AddTile(TileID.MythrilAnvil);
-            recipe.SetResult(this);
-            recipe.AddRecipe();
-        }
-
-		
+			ModRecipe recipe = new ModRecipe(mod);
+			recipe.AddIngredient(null, "FrostoneBar", 15);
+			recipe.AddTile(TileID.MythrilAnvil);
+			recipe.SetResult(this);
+			recipe.AddRecipe();
 		}
+
+
 	}
-   
-  
- 
+}
+
+
+

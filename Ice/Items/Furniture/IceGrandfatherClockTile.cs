@@ -14,11 +14,11 @@ namespace Tremor.Ice.Items.Furniture
 			Main.tileFrameImportant[Type] = true;
 			Main.tileLavaDeath[Type] = true;
 			TileObjectData.newTile.CopyFrom(TileObjectData.Style2xX);
-        TileObjectData.newTile.Height = 5;
-        TileObjectData.newTile.CoordinateHeights = new int[]{16, 16, 16, 16, 16};
-        TileObjectData.newTile.StyleHorizontal = true;
-        TileObjectData.newTile.StyleWrapLimit = 36;
-        TileObjectData.addTile(Type);
+			TileObjectData.newTile.Height = 5;
+			TileObjectData.newTile.CoordinateHeights = new int[] { 16, 16, 16, 16, 16 };
+			TileObjectData.newTile.StyleHorizontal = true;
+			TileObjectData.newTile.StyleWrapLimit = 36;
+			TileObjectData.addTile(Type);
 			AddMapEntry(new Color(87, 144, 165));
 			adjTiles = new int[] { TileID.GrandfatherClocks };
 		}
@@ -27,7 +27,7 @@ namespace Tremor.Ice.Items.Furniture
 		{
 			Item.NewItem(i * 16, j * 16, 32, 16, mod.ItemType("IceGrandfatherClock"));
 		}
-public override void RightClick(int x, int y)
+		public override void RightClick(int x, int y)
 		{
 			{
 				string text = "AM";

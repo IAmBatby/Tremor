@@ -7,35 +7,35 @@ using Terraria.ModLoader;
 
 namespace Tremor.Projectiles
 {
-    public class GhostlyExplosion : ModProjectile
-    {
-        public override void SetDefaults()
-        {
+	public class GhostlyExplosion : ModProjectile
+	{
+		public override void SetDefaults()
+		{
 
-            projectile.width = 250;
-            projectile.height = 250;
-            projectile.friendly = true;
-            projectile.ignoreWater = false;
-            projectile.tileCollide = false;
-            projectile.penetrate = -1;
-            projectile.timeLeft = 150;
-            projectile.magic = true;
-        }
+			projectile.width = 250;
+			projectile.height = 250;
+			projectile.friendly = true;
+			projectile.ignoreWater = false;
+			projectile.tileCollide = false;
+			projectile.penetrate = -1;
+			projectile.timeLeft = 150;
+			projectile.magic = true;
+		}
 
-    public override void SetStaticDefaults()
-    {
-      DisplayName.SetDefault("Ghostly Explosion");
-       
-    }
+		public override void SetStaticDefaults()
+		{
+			DisplayName.SetDefault("Ghostly Explosion");
+
+		}
 
 
-        public override void AI()
-        {
-        	Lighting.AddLight(projectile.Center, ((255 - projectile.alpha) * 0.75f) / 255f, ((255 - projectile.alpha) * 0.5f) / 255f, ((255 - projectile.alpha) * 0.01f) / 255f);
-        	if (projectile.wet && !projectile.lavaWet)
-        	{
-        		projectile.Kill();
-        	}
+		public override void AI()
+		{
+			Lighting.AddLight(projectile.Center, ((255 - projectile.alpha) * 0.75f) / 255f, ((255 - projectile.alpha) * 0.5f) / 255f, ((255 - projectile.alpha) * 0.01f) / 255f);
+			if (projectile.wet && !projectile.lavaWet)
+			{
+				projectile.Kill();
+			}
 			if (projectile.localAI[0] == 0f)
 			{
 				Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 20);
@@ -98,7 +98,7 @@ namespace Tremor.Projectiles
 				num462++;
 			}
 			return;
-        }
+		}
 
-    }
+	}
 }

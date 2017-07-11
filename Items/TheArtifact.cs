@@ -13,18 +13,18 @@ namespace Tremor.Items
 		{
 			item.CloneDefaults(ItemID.Carrot);
 
-                        item.useTime = 25;
-                        item.useAnimation = 25;
+			item.useTime = 25;
+			item.useAnimation = 25;
 
 			item.shoot = mod.ProjectileType("AnnoyingDog");
 			item.buffType = mod.BuffType("AnnoyingDogBuff");
 		}
 
-    public override void SetStaticDefaults()
-    {
-      DisplayName.SetDefault("The Artifact");
-      Tooltip.SetDefault("Summons annoying dog");
-    }
+		public override void SetStaticDefaults()
+		{
+			DisplayName.SetDefault("The Artifact");
+			Tooltip.SetDefault("Summons annoying dog");
+		}
 
 
 		public override void UseStyle(Player player)

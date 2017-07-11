@@ -35,10 +35,10 @@ namespace Tremor.Ice.Items.Furniture
 			adjTiles = new int[] { TileID.Containers };
 			chest = "Glacier Wood Chest";
 			chestDrop = mod.ItemType("IceChest");
-            TileID.Sets.BasicChest[Type] = true;			
+			TileID.Sets.BasicChest[Type] = true;
 		}
 
-				public string MapChestName(string name, int i, int j)
+		public string MapChestName(string name, int i, int j)
 		{
 			int left = i;
 			int top = j;

@@ -9,7 +9,7 @@ namespace Tremor.Buffs
 		public override void SetDefaults()
 		{
 			DisplayName.SetDefault("Desert Wasp");
-            Description.SetDefault("Releases a wasp to attack enemies when a flask explodes");
+			Description.SetDefault("Releases a wasp to attack enemies when a flask explodes");
 			Main.buffNoSave[Type] = true;
 			Main.buffNoTimeDisplay[Type] = true;
 		}

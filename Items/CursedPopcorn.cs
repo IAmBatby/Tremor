@@ -4,37 +4,38 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace Tremor.Items {
-
-public class CursedPopcorn : ModItem
+namespace Tremor.Items
 {
 
-    public override void SetDefaults()
-    {
+	public class CursedPopcorn : ModItem
+	{
 
-        item.width = 26;
-        item.height = 34;
-        item.maxStack = 20;
+		public override void SetDefaults()
+		{
 
-        item.rare = 2;
-        item.value = 50000;
-        item.useAnimation = 45;
-        item.useTime = 45;
-        item.useStyle = 4;
-        item.consumable = true;
-    }
+			item.width = 26;
+			item.height = 34;
+			item.maxStack = 20;
 
-    public override void SetStaticDefaults()
-    {
-      DisplayName.SetDefault("Cursed Popcorn");
-      Tooltip.SetDefault("Summons the Evil Corn");
-    }
+			item.rare = 2;
+			item.value = 50000;
+			item.useAnimation = 45;
+			item.useTime = 45;
+			item.useStyle = 4;
+			item.consumable = true;
+		}
+
+		public override void SetStaticDefaults()
+		{
+			DisplayName.SetDefault("Cursed Popcorn");
+			Tooltip.SetDefault("Summons the Evil Corn");
+		}
 
 
-    public override bool CanUseItem(Player player)
-    {
-        return !Main.dayTime && !NPC.AnyNPCs(mod.NPCType("EvilCorn"));
-    }
+		public override bool CanUseItem(Player player)
+		{
+			return !Main.dayTime && !NPC.AnyNPCs(mod.NPCType("EvilCorn"));
+		}
 
 		public override bool UseItem(Player player)
 		{
@@ -42,4 +43,5 @@ public class CursedPopcorn : ModItem
 			Main.PlaySound(SoundID.Roar, player.position, 0);
 			return true;
 		}
-}}
+	}
+}

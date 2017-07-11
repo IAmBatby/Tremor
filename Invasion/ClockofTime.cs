@@ -19,40 +19,40 @@ namespace Tremor.Invasion
 			item.rare = 5;
 			item.useTurn = true;
 			item.autoReuse = false;
-                        item.useStyle = 4;
+			item.useStyle = 4;
 			item.useAnimation = 15;
 			item.useTime = 15;
 			item.maxStack = 1;
-                        item.mana = 100;
-                        item.UseSound = SoundID.Item8;
+			item.mana = 100;
+			item.UseSound = SoundID.Item8;
 		}
 
-    public override void SetStaticDefaults()
-    {
-      DisplayName.SetDefault("Paradox Clock");
-      Tooltip.SetDefault("Allows you to control the time");
-    }
+		public override void SetStaticDefaults()
+		{
+			DisplayName.SetDefault("Paradox Clock");
+			Tooltip.SetDefault("Allows you to control the time");
+		}
 
-		
-		public override bool UseItem(Player player) 
-        {
+
+		public override bool UseItem(Player player)
+		{
 			if (player.altFunctionUse == 2)
 			{
 				Main.bloodMoon = true;
 				return true;
 			}
 			else
-			{				
+			{
 				if (Main.netMode != 1)
 				{
 					Main.dayTime = !Main.dayTime;
 					Main.time = (Main.dayTime ? 10000f : 0f);
 					return true;
-				}			
+				}
 			}
 			return true;
-        }
-		
+		}
+
 		public override bool AltFunctionUse(Player player)
 		{
 			return true;

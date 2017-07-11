@@ -27,13 +27,13 @@ namespace Tremor.NovaPillar
 			DisplayName.SetDefault("Nova Monolith");
 		}
 
-        public override void AddRecipes()
-        {
-            ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(null, "NovaFragment", 15);
-            recipe.SetResult(this);
-            recipe.AddTile(412);
-            recipe.AddRecipe();
-        }
+		public override void AddRecipes()
+		{
+			ModRecipe recipe = new ModRecipe(mod);
+			recipe.AddIngredient(null, "NovaFragment", 15);
+			recipe.SetResult(this);
+			recipe.AddTile(412);
+			recipe.AddRecipe();
+		}
 	}
 }

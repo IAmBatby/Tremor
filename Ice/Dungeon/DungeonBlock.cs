@@ -10,12 +10,12 @@ namespace Tremor.Ice.Dungeon
 		{
 			Main.tileSolid[Type] = true;
 			Main.tileMergeDirt[Type] = true;
-                        Main.tileMerge[Type][mod.TileType("IceBlock")] = true;
-                        Main.tileMerge[Type][mod.TileType("VeryVeryIce")] = true;
-                        Main.tileMerge[Type][147] = true;
+			Main.tileMerge[Type][mod.TileType("IceBlock")] = true;
+			Main.tileMerge[Type][mod.TileType("VeryVeryIce")] = true;
+			Main.tileMerge[Type][147] = true;
 			dustType = mod.DustType("IceDust");
 			drop = mod.ItemType("DungeonBlockItem");
-                        AddMapEntry(new Color(70, 156, 213));
+			AddMapEntry(new Color(70, 156, 213));
 		}
 
 		public override void NumDust(int i, int j, bool fail, ref int num)

@@ -11,8 +11,8 @@ namespace Tremor.Buffs
 		{
 			DisplayName.SetDefault("Emeraldy");
 			Description.SetDefault("It lights up the area");
-            Main.buffNoTimeDisplay[Type] = true;
-            Main.lightPet[Type] = true;
+			Main.buffNoTimeDisplay[Type] = true;
+			Main.lightPet[Type] = true;
 		}
 
 		public override void Update(Player player, ref int buffIndex)
@@ -33,15 +33,15 @@ namespace Tremor.Buffs
 			{
 				//if (player.doubleTapCardinalTimer[0] > 0 && player.doubleTapCardinalTimer[0] != 15)
 				//{
-					for (int j = 0; j < 1000; j++)
+				for (int j = 0; j < 1000; j++)
+				{
+					if (Main.projectile[j].active && Main.projectile[j].type == mod.ProjectileType("Emeraldy") && Main.projectile[j].owner == player.whoAmI)
 					{
-						if (Main.projectile[j].active && Main.projectile[j].type == mod.ProjectileType("Emeraldy") && Main.projectile[j].owner == player.whoAmI)
-						{
-							Projectile lightpet = Main.projectile[j];
-							Vector2 vectorToMouse = player.Center - lightpet.Center;
-							lightpet.velocity += 5f * Vector2.Normalize(vectorToMouse);
-						}
+						Projectile lightpet = Main.projectile[j];
+						Vector2 vectorToMouse = player.Center - lightpet.Center;
+						lightpet.velocity += 5f * Vector2.Normalize(vectorToMouse);
 					}
+				}
 				//}
 			}
 		}

@@ -9,13 +9,13 @@ namespace Tremor.Projectiles
 	public class CursedTwisterPro : ModProjectile
 	{
 
-    public override void Kill(int timeLeft)
-    {
-        for(int k = 0; k < 5; k++)
-        {
-                       int dust = Dust.NewDust(projectile.position + projectile.velocity, projectile.width, projectile.height, 74, projectile.oldVelocity.X * 0.1f, projectile.oldVelocity.Y * 0.1f);
-        }
-    }
+		public override void Kill(int timeLeft)
+		{
+			for (int k = 0; k < 5; k++)
+			{
+				int dust = Dust.NewDust(projectile.position + projectile.velocity, projectile.width, projectile.height, 74, projectile.oldVelocity.X * 0.1f, projectile.oldVelocity.Y * 0.1f);
+			}
+		}
 		public override void SetDefaults()
 		{
 
@@ -28,11 +28,11 @@ namespace Tremor.Projectiles
 			projectile.ignoreWater = true;
 		}
 
-    public override void SetStaticDefaults()
-    {
-      DisplayName.SetDefault("CursedTwisterPro");
-       
-    }
+		public override void SetStaticDefaults()
+		{
+			DisplayName.SetDefault("CursedTwisterPro");
+
+		}
 
 
 		public override void AI()
@@ -78,14 +78,14 @@ namespace Tremor.Projectiles
 				projectile.ai[0] += 1f;
 			}
 			projectile.rotation += 0.3f * (float)projectile.direction;
-                        }
+		}
 
-    public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
-    {
-        if(Main.rand.Next(10) == 0)
-        {
-            target.AddBuff(39, 500, false);
-        }
-    }
+		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		{
+			if (Main.rand.Next(10) == 0)
+			{
+				target.AddBuff(39, 500, false);
+			}
+		}
 	}
 }

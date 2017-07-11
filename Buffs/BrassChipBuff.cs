@@ -10,7 +10,7 @@ namespace Tremor.Buffs
 		{
 			DisplayName.SetDefault("Brass Chip");
 			Description.SetDefault("Shoots rockets from the sky when a flask is destroyed");
-            Main.buffNoSave[Type] = true;
+			Main.buffNoSave[Type] = true;
 			Main.buffNoTimeDisplay[Type] = true;
 		}
 	}

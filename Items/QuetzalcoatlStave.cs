@@ -22,7 +22,7 @@ namespace Tremor.Items
 			item.useStyle = 1;
 			item.noMelee = true;
 			item.knockBack = 3;
-                        item.value = 1000000;
+			item.value = 1000000;
 			item.rare = 11;
 			item.UseSound = SoundID.Item44;
 			item.shoot = mod.ProjectileType("QuetzalcoatlPro");
@@ -31,26 +31,26 @@ namespace Tremor.Items
 			item.buffTime = 3600;
 		}
 
-    public override void SetStaticDefaults()
-    {
-      DisplayName.SetDefault("Baby Quetzalcoatl Stave");
-      Tooltip.SetDefault("Summons a baby quetzalcoatl to fight for you.");
-    }
+		public override void SetStaticDefaults()
+		{
+			DisplayName.SetDefault("Baby Quetzalcoatl Stave");
+			Tooltip.SetDefault("Summons a baby quetzalcoatl to fight for you.");
+		}
 
 
 		public override bool AltFunctionUse(Player player)
 		{
 			return true;
 		}
-		
+
 		public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
 		{
 			return player.altFunctionUse != 2;
 		}
-		
+
 		public override bool UseItem(Player player)
 		{
-			if(player.altFunctionUse == 2)
+			if (player.altFunctionUse == 2)
 			{
 				player.MinionNPCTargetAim();
 			}

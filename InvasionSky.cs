@@ -10,7 +10,7 @@ namespace Tremor
 {
 	public class InvasionSky : CustomSky
 	{
-        private bool isActive = false;
+		private bool isActive = false;
 		private float intensity = 0f;
 		private int invasionI;
 
@@ -28,14 +28,14 @@ namespace Tremor
 
 		private bool UpdatePuritySpiritIndex()
 		{
-            Mod mod = ModLoader.GetMod("Tremor");
-            CyberWrathInvasion modPlayer = Main.player[Main.myPlayer].GetModPlayer<CyberWrathInvasion>(mod);
-            if (InvasionWorld.CyberWrath)
-            {
-                return true;
-            }
-            invasionI = -1;
-            return invasionI >= 0;
+			Mod mod = ModLoader.GetMod("Tremor");
+			CyberWrathInvasion modPlayer = Main.player[Main.myPlayer].GetModPlayer<CyberWrathInvasion>(mod);
+			if (InvasionWorld.CyberWrath)
+			{
+				return true;
+			}
+			invasionI = -1;
+			return invasionI >= 0;
 		}
 
 		public override void Draw(SpriteBatch spriteBatch, float minDepth, float maxDepth)

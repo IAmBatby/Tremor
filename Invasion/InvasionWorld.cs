@@ -13,38 +13,38 @@ namespace Tremor.Invasion
 {
 	public class InvasionWorld : ModWorld
 	{
-	    private const int saveVersion = 0;
-        public static int CyberWrathPoints = 0;
-        public static int CyberWrathPoints1 = 0;
-        public static bool CyberWrath = false;
+		private const int saveVersion = 0;
+		public static int CyberWrathPoints = 0;
+		public static int CyberWrathPoints1 = 0;
+		public static bool CyberWrath = false;
 		public override void ModifyWorldGenTasks(List<GenPass> tasks, ref float totalWeight)
 		{
-			
+
 		}
 
 		public override void PostWorldGen()
 		{
-			
-        }
+
+		}
 
 		public override void Initialize()
-        {
+		{
 			CyberWrathPoints1 = 0;
 			CyberWrath = false;
-        }
-
-        public override void TileCountsAvailable(int[] tileCounts)
-		{
-			
 		}
-		
+
+		public override void TileCountsAvailable(int[] tileCounts)
+		{
+
+		}
+
 		/*public override void SaveCustomData(BinaryWriter writer)
 		{
 			writer.Write(saveVersion);
 			writer.Write(CyberWrath);
 			writer.Write(CyberWrathPoints1);
 		} */
-		
+
 		public override TagCompound Save()
 		{
 			TagCompound save_data = new TagCompound();
@@ -52,7 +52,7 @@ namespace Tremor.Invasion
 			save_data.Add("CyberWrathPoints1", CyberWrathPoints1);
 			return save_data;
 		}
-		
+
 		public override void NetSend(BinaryWriter writer)
 		{
 			writer.Write(CyberWrath);
@@ -65,14 +65,14 @@ namespace Tremor.Invasion
 			flags[0] = CyberWrath;
 			CyberWrathPoints1 = reader.ReadInt32();
 		}
-		
+
 		int num;
 		public override void Load(TagCompound tag)
 		{
 			CyberWrath = tag.GetBool("CyberWrath");
-			CyberWrathPoints1 = tag.GetInt("CyberWrathPoints1"); 
+			CyberWrathPoints1 = tag.GetInt("CyberWrathPoints1");
 		}
-		
+
 		public override void LoadLegacy(BinaryReader reader)
 		{
 			int loadVersion = reader.ReadInt32();
@@ -86,6 +86,6 @@ namespace Tremor.Invasion
 			{
 				ErrorLogger.Log("Tremor: Unknown loadVersion: " + loadVersion);
 			}
-		}	
+		}
 	}
 }

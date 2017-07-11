@@ -16,7 +16,7 @@ namespace Tremor.Buffs
 
 		public override void Update(Player player, ref int buffIndex)
 		{
-	player.minionDamage += 0.15f;
+			player.minionDamage += 0.15f;
 		}
 	}
 }

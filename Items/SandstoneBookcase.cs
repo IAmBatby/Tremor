@@ -19,17 +19,17 @@ namespace Tremor.Items
 			item.useAnimation = 15;
 			item.useTime = 15;
 			item.useStyle = 1;
-                        item.rare = 1;
+			item.rare = 1;
 			item.consumable = true;
 			item.value = 2000;
 			item.createTile = mod.TileType("SandstoneBookcase");
 		}
 
-    public override void SetStaticDefaults()
-    {
-      DisplayName.SetDefault("Sandstone Bookcase");
-      Tooltip.SetDefault("");
-    }
+		public override void SetStaticDefaults()
+		{
+			DisplayName.SetDefault("Sandstone Bookcase");
+			Tooltip.SetDefault("");
+		}
 
 	}
 }

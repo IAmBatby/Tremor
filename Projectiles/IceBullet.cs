@@ -14,8 +14,8 @@ namespace Tremor.Projectiles
 			projectile.CloneDefaults(14);
 
 			projectile.light = 0.5f;
-                        projectile.width = 1;
-                        projectile.height = 1;
+			projectile.width = 1;
+			projectile.height = 1;
 			projectile.light = 0.5f;
 			projectile.extraUpdates = 1;
 			projectile.alpha = 255;
@@ -26,20 +26,20 @@ namespace Tremor.Projectiles
 			aiType = ProjectileID.Bullet;
 		}
 
-    public override void SetStaticDefaults()
-    {
-      DisplayName.SetDefault("Ice Bullet");
-       
-    }
+		public override void SetStaticDefaults()
+		{
+			DisplayName.SetDefault("Ice Bullet");
+
+		}
 
 
-    public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
-    {
-        if(Main.rand.Next(4) == 0)
-        {
-            target.AddBuff(44, 180, false);
-        }
-    }
+		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		{
+			if (Main.rand.Next(4) == 0)
+			{
+				target.AddBuff(44, 180, false);
+			}
+		}
 
 		public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)
 		{
@@ -52,5 +52,5 @@ namespace Tremor.Projectiles
 			}
 			return true;
 		}
-}
+	}
 }

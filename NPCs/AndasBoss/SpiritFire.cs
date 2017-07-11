@@ -7,26 +7,26 @@ using Terraria.ModLoader;
 
 namespace Tremor.NPCs.AndasBoss
 {
-    public class SpiritFire : ModProjectile
-    {
-    		public override void SetStaticDefaults()
+	public class SpiritFire : ModProjectile
+	{
+		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Spirit Fire");
 		}
 
-        public override void SetDefaults()
-        {
-            projectile.width = 6;
-            projectile.height = 6;
-            projectile.hostile = true;
-            projectile.ignoreWater = true;
-            projectile.penetrate = -1;
-            projectile.extraUpdates = 3;
-            projectile.timeLeft = 60;
-        }
+		public override void SetDefaults()
+		{
+			projectile.width = 6;
+			projectile.height = 6;
+			projectile.hostile = true;
+			projectile.ignoreWater = true;
+			projectile.penetrate = -1;
+			projectile.extraUpdates = 3;
+			projectile.timeLeft = 60;
+		}
 
-        public override void AI()
-        {
+		public override void AI()
+		{
 			if (projectile.timeLeft > 60)
 			{
 				projectile.timeLeft = 60;
@@ -87,13 +87,13 @@ namespace Tremor.NPCs.AndasBoss
 				projectile.ai[0] += 1f;
 			}
 			projectile.rotation += 0.3f * (float)projectile.direction;
-			return;	
-        }
-        
-        public override bool OnTileCollide(Vector2 oldVelocity)
-        {
-            projectile.Kill();
-            return false;
-        }
-    }
+			return;
+		}
+
+		public override bool OnTileCollide(Vector2 oldVelocity)
+		{
+			projectile.Kill();
+			return false;
+		}
+	}
 }

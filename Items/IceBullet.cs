@@ -27,11 +27,11 @@ namespace Tremor.Items
 			item.ammo = AmmoID.Bullet;
 		}
 
-    public override void SetStaticDefaults()
-    {
-      DisplayName.SetDefault("Ice Bullet");
-      Tooltip.SetDefault("25% chance to inflict frostburn");
-    }
+		public override void SetStaticDefaults()
+		{
+			DisplayName.SetDefault("Ice Bullet");
+			Tooltip.SetDefault("25% chance to inflict frostburn");
+		}
 
 
 		public override void AddRecipes()

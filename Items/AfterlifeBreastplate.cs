@@ -6,8 +6,8 @@ using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace Tremor.Items
-{ 
-[AutoloadEquip(EquipType.Body)]
+{
+	[AutoloadEquip(EquipType.Body)]
 	public class AfterlifeBreastplate : ModItem
 	{
 
@@ -23,31 +23,31 @@ namespace Tremor.Items
 			item.defense = 11;
 		}
 
-    public override void SetStaticDefaults()
-    {
-      DisplayName.SetDefault("Afterlife Breastplate");
-      Tooltip.SetDefault("9% increased all damage\nIncreases your max number of minions");
-    }
+		public override void SetStaticDefaults()
+		{
+			DisplayName.SetDefault("Afterlife Breastplate");
+			Tooltip.SetDefault("9% increased all damage\nIncreases your max number of minions");
+		}
 
 
 		public override void UpdateEquip(Player player)
 		{
-            player.maxMinions += 2;
-            player.minionDamage += 0.09f;
-            player.thrownDamage += 0.09f;
-            player.magicDamage += 0.09f;
-            player.meleeDamage += 0.09f;
-            player.rangedDamage += 0.09f;
+			player.maxMinions += 2;
+			player.minionDamage += 0.09f;
+			player.thrownDamage += 0.09f;
+			player.magicDamage += 0.09f;
+			player.meleeDamage += 0.09f;
+			player.rangedDamage += 0.09f;
 		}
 
-    public override void AddRecipes()
-    {
-        ModRecipe recipe = new ModRecipe(mod);
-        recipe.AddIngredient(null, "SkullTeeth", 3);
-        recipe.AddIngredient(null, "SteelBar", 20);
-        recipe.SetResult(this);
-        recipe.AddTile(134);
-        recipe.AddRecipe();
-    }
+		public override void AddRecipes()
+		{
+			ModRecipe recipe = new ModRecipe(mod);
+			recipe.AddIngredient(null, "SkullTeeth", 3);
+			recipe.AddIngredient(null, "SteelBar", 20);
+			recipe.SetResult(this);
+			recipe.AddTile(134);
+			recipe.AddRecipe();
+		}
 	}
 }

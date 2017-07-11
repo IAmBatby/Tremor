@@ -25,11 +25,11 @@ namespace Tremor.Items
 			item.mountType = mod.MountType("Antlion");
 		}
 
-    public override void SetStaticDefaults()
-    {
-      DisplayName.SetDefault("Fossil Sugar");
-      Tooltip.SetDefault("Summons a rideable Antlion mount");
-    }
+		public override void SetStaticDefaults()
+		{
+			DisplayName.SetDefault("Fossil Sugar");
+			Tooltip.SetDefault("Summons a rideable Antlion mount");
+		}
 
 	}
 }

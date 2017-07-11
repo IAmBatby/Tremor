@@ -7,43 +7,45 @@ using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
 using Terraria.DataStructures;
 
-namespace Tremor.Items {
-public class Revolwar : ModItem
+namespace Tremor.Items
 {
-    public override void SetDefaults()
-    {
-				item.useStyle = 5;
-				item.useAnimation = 16;
-				item.useTime = 16;
+	public class Revolwar : ModItem
+	{
+		public override void SetDefaults()
+		{
+			item.useStyle = 5;
+			item.useAnimation = 16;
+			item.useTime = 16;
 
-				item.width = 24;
-				item.height = 28;
-				item.shoot = 14;
-			        item.useAmmo = AmmoID.Bullet;
-				item.UseSound = SoundID.Item11;
-				item.damage = 450;
-				item.shootSpeed = 12f;
-				item.noMelee = true;
-				item.value = 500000;
-				item.scale = 0.9f;
-				item.rare = 0;
-				item.ranged = true;
-    }
+			item.width = 24;
+			item.height = 28;
+			item.shoot = 14;
+			item.useAmmo = AmmoID.Bullet;
+			item.UseSound = SoundID.Item11;
+			item.damage = 450;
+			item.shootSpeed = 12f;
+			item.noMelee = true;
+			item.value = 500000;
+			item.scale = 0.9f;
+			item.rare = 0;
+			item.ranged = true;
+		}
 
-    public override void SetStaticDefaults()
-    {
-      DisplayName.SetDefault("Revolwar");
-      Tooltip.SetDefault("");
-    }
+		public override void SetStaticDefaults()
+		{
+			DisplayName.SetDefault("Revolwar");
+			Tooltip.SetDefault("");
+		}
 
 
-	public override void ModifyTooltips(System.Collections.Generic.List<TooltipLine> tooltips)
-        {
-            tooltips[0].overrideColor = new Color(238, 194, 73);
-        }
+		public override void ModifyTooltips(System.Collections.Generic.List<TooltipLine> tooltips)
+		{
+			tooltips[0].overrideColor = new Color(238, 194, 73);
+		}
 
-        public override Vector2? HoldoutOffset()
-        {
-            return new Vector2(-12, -2);
-        }    
-}}
+		public override Vector2? HoldoutOffset()
+		{
+			return new Vector2(-12, -2);
+		}
+	}
+}

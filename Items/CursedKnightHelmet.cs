@@ -8,7 +8,7 @@ using Terraria.ModLoader;
 
 namespace Tremor.Items
 {
-[AutoloadEquip(EquipType.Head)]
+	[AutoloadEquip(EquipType.Head)]
 	public class CursedKnightHelmet : ModItem
 	{
 
@@ -22,11 +22,11 @@ namespace Tremor.Items
 			item.rare = 9;
 		}
 
-    public override void SetStaticDefaults()
-    {
-      DisplayName.SetDefault("Cursed Knight Helmet");
-      Tooltip.SetDefault("'Great for impersonating devs!'");
-    }
+		public override void SetStaticDefaults()
+		{
+			DisplayName.SetDefault("Cursed Knight Helmet");
+			Tooltip.SetDefault("'Great for impersonating devs!'");
+		}
 
 	}
 }

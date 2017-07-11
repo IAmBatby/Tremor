@@ -13,19 +13,19 @@ namespace Tremor.Items
 		{
 			item.CloneDefaults(ItemID.Carrot);
 
-                        item.useTime = 25;
-                        item.useAnimation = 25;
+			item.useTime = 25;
+			item.useAnimation = 25;
 
 			item.shoot = mod.ProjectileType("LivingTombstonePro");
 			item.buffType = mod.BuffType("LivingTombstoneBuff");
 			item.value = 500000;
 		}
 
-    public override void SetStaticDefaults()
-    {
-      DisplayName.SetDefault("Living Tombstone");
-      Tooltip.SetDefault("Summons a living tombstone");
-    }
+		public override void SetStaticDefaults()
+		{
+			DisplayName.SetDefault("Living Tombstone");
+			Tooltip.SetDefault("Summons a living tombstone");
+		}
 
 
 		public override void UseStyle(Player player)

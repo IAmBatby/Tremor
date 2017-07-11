@@ -13,7 +13,7 @@ namespace Tremor.Buffs
 		{
 			DisplayName.SetDefault("Enchanted");
 			Description.SetDefault("Enchanted weapons have more power");
-                        //Main.buffNoSave[Type] = true;
+			//Main.buffNoSave[Type] = true;
 			Main.buffNoTimeDisplay[Type] = true;
 		}
 	}

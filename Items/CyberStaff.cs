@@ -16,7 +16,7 @@ namespace Tremor.Items
 			item.mana = 15;
 			item.width = 26;
 			item.height = 28;
-                                   item.expert = true;
+			item.expert = true;
 
 			item.useTime = 36;
 			item.useAnimation = 36;
@@ -32,26 +32,26 @@ namespace Tremor.Items
 			item.buffTime = 3600;
 		}
 
-    public override void SetStaticDefaults()
-    {
-      DisplayName.SetDefault("Cyber Staff");
-      Tooltip.SetDefault("Summons a cyber saw to fight for you.");
-    }
+		public override void SetStaticDefaults()
+		{
+			DisplayName.SetDefault("Cyber Staff");
+			Tooltip.SetDefault("Summons a cyber saw to fight for you.");
+		}
 
 
 		public override bool AltFunctionUse(Player player)
 		{
 			return true;
 		}
-		
+
 		public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
 		{
 			return player.altFunctionUse != 2;
 		}
-		
+
 		public override bool UseItem(Player player)
 		{
-			if(player.altFunctionUse == 2)
+			if (player.altFunctionUse == 2)
 			{
 				player.MinionNPCTargetAim();
 			}

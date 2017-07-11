@@ -4,23 +4,25 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace Tremor.Items {
-public class StoneofLife : ModItem
+namespace Tremor.Items
 {
-    public override void SetDefaults()
-    {
+	public class StoneofLife : ModItem
+	{
+		public override void SetDefaults()
+		{
 
-        item.width = 24;
-        item.height = 16;
-        item.maxStack = 99;
-        item.value = 500;
-        item.rare = 1;
-    }
+			item.width = 24;
+			item.height = 16;
+			item.maxStack = 99;
+			item.value = 500;
+			item.rare = 1;
+		}
 
-    public override void SetStaticDefaults()
-    {
-      DisplayName.SetDefault("Stone of Life");
-      Tooltip.SetDefault("");
-    }
+		public override void SetStaticDefaults()
+		{
+			DisplayName.SetDefault("Stone of Life");
+			Tooltip.SetDefault("");
+		}
 
-}}
+	}
+}

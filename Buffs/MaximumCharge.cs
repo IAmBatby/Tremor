@@ -15,7 +15,7 @@ namespace Tremor.Buffs
 
 		public override void Update(Player player, ref int buffIndex)
 		{
-	        player.statManaMax2 += 100;
+			player.statManaMax2 += 100;
 		}
 	}
 }

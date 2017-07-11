@@ -17,13 +17,13 @@ namespace Tremor.NovaPillar
 			item.rare = 4;
 		}
 
-    public override void SetStaticDefaults()
-    {
-      DisplayName.SetDefault("Nova Dye");
-      Tooltip.SetDefault("");
-    }
+		public override void SetStaticDefaults()
+		{
+			DisplayName.SetDefault("Nova Dye");
+			Tooltip.SetDefault("");
+		}
 
-		
+
 		public override void AddRecipes()
 		{
 			var recipe = new ModRecipe(mod);

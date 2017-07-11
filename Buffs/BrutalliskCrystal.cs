@@ -10,9 +10,9 @@ namespace Tremor.Buffs
 		public override void SetDefaults()
 		{
 			Main.buffNoTimeDisplay[Type] = true;
-            DisplayName.SetDefault("Aquamarine Crystal");
-            Description.SetDefault("A fast way of travelling");
-        }
+			DisplayName.SetDefault("Aquamarine Crystal");
+			Description.SetDefault("A fast way of travelling");
+		}
 
 		public override void Update(Player player, ref int buffIndex)
 		{

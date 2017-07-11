@@ -5,40 +5,42 @@ using Terraria.ModLoader;
 using Terraria.ID;
 using Microsoft.Xna.Framework;
 
-namespace Tremor.Ice.Items {
-public class FrozenPaxe : ModItem
+namespace Tremor.Ice.Items
 {
-    public override void SetDefaults()
-    {
+	public class FrozenPaxe : ModItem
+	{
+		public override void SetDefaults()
+		{
 
-        item.damage = 22;
-        item.melee = true;
-        item.width = 48;
-        item.height = 40;
-        item.useTime = 13;
-        item.useAnimation = 22;
-        item.useStyle = 1;
-        item.knockBack = 5;
-        item.value = 20000;
-        item.rare = 3;
-        item.axe = 10;
-        item.pick = 60;
-        item.UseSound = SoundID.Item1;
-        item.autoReuse = true;
-    }
+			item.damage = 22;
+			item.melee = true;
+			item.width = 48;
+			item.height = 40;
+			item.useTime = 13;
+			item.useAnimation = 22;
+			item.useStyle = 1;
+			item.knockBack = 5;
+			item.value = 20000;
+			item.rare = 3;
+			item.axe = 10;
+			item.pick = 60;
+			item.UseSound = SoundID.Item1;
+			item.autoReuse = true;
+		}
 
-    public override void SetStaticDefaults()
-    {
-      DisplayName.SetDefault("Frozen Paxe");
-      Tooltip.SetDefault("");
-    }
+		public override void SetStaticDefaults()
+		{
+			DisplayName.SetDefault("Frozen Paxe");
+			Tooltip.SetDefault("");
+		}
 
 
-    public override void MeleeEffects(Player player, Rectangle hitbox)
-    {
-        if(Main.rand.Next(3) == 0)
-        {
-            int dust = Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, 80);
-        }
-    }
-}}
+		public override void MeleeEffects(Player player, Rectangle hitbox)
+		{
+			if (Main.rand.Next(3) == 0)
+			{
+				int dust = Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, 80);
+			}
+		}
+	}
+}

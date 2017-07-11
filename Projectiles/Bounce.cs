@@ -5,31 +5,31 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace Tremor.Projectiles
 {
-    public class Bounce : ModProjectile
-    {
-        public override void SetDefaults()
-        {
+	public class Bounce : ModProjectile
+	{
+		public override void SetDefaults()
+		{
 
-            projectile.width = 16;
-            projectile.height = 16;
-            projectile.friendly = true;
-            projectile.magic = true;
-            projectile.penetrate = 5;
-            projectile.timeLeft = 99999;
-            projectile.aiStyle = 1;
-            projectile.tileCollide = true;
-            projectile.ignoreWater = true;
-        }
+			projectile.width = 16;
+			projectile.height = 16;
+			projectile.friendly = true;
+			projectile.magic = true;
+			projectile.penetrate = 5;
+			projectile.timeLeft = 99999;
+			projectile.aiStyle = 1;
+			projectile.tileCollide = true;
+			projectile.ignoreWater = true;
+		}
 
-    public override void SetStaticDefaults()
-    {
-      DisplayName.SetDefault("Bounce");
-       
-    }
+		public override void SetStaticDefaults()
+		{
+			DisplayName.SetDefault("Bounce");
 
-		
+		}
+
+
 		float smooth = 2f;
-		
+
 		public override bool OnTileCollide(Vector2 oldVelocity)
 		{
 			projectile.penetrate--;
@@ -51,12 +51,12 @@ namespace Tremor.Projectiles
 			}
 			return false;
 		}
-		
+
 		public override void AI()
 		{
-		    CreateDust();
+			CreateDust();
 		}
-		
+
 		public void CreateDust()
 		{
 			if (Main.rand.Next(2) == 1)

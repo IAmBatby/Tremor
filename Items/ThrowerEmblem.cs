@@ -17,18 +17,18 @@ namespace Tremor.Items
 			item.accessory = true;
 		}
 
-    public override void SetStaticDefaults()
-    {
-      DisplayName.SetDefault("Thrower Emblem");
-      Tooltip.SetDefault("15% increased throwing damage");
-    }
+		public override void SetStaticDefaults()
+		{
+			DisplayName.SetDefault("Thrower Emblem");
+			Tooltip.SetDefault("15% increased throwing damage");
+		}
 
-		
+
 		public override void UpdateAccessory(Player player, bool hideVisual)
 		{
-                      player.thrownDamage += 0.15f;
-                }
-		
+			player.thrownDamage += 0.15f;
+		}
+
 		public override void AddRecipes()
 		{
 			var recipe = new ModRecipe(mod);

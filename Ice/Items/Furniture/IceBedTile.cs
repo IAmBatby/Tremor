@@ -14,11 +14,11 @@ namespace Tremor.Ice.Items.Furniture
 			Main.tileFrameImportant[Type] = true;
 			Main.tileLavaDeath[Type] = true;
 			TileObjectData.newTile.CopyFrom(TileObjectData.Style4x2); //this style already takes care of direction for us
-			TileObjectData.newTile.CoordinateHeights = new int[]{ 16, 16 };
+			TileObjectData.newTile.CoordinateHeights = new int[] { 16, 16 };
 			TileObjectData.addTile(Type);
 			AddMapEntry(new Color(87, 144, 165));
-			adjTiles = new int[]{ TileID.Beds };
-	AddToArray(ref TileID.Sets.RoomNeeds.CountsAsChair);
+			adjTiles = new int[] { TileID.Beds };
+			AddToArray(ref TileID.Sets.RoomNeeds.CountsAsChair);
 			bed = true;
 		}
 

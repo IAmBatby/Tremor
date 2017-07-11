@@ -15,77 +15,77 @@ namespace Tremor.NovaPillar
 		public static int TowerY = -1;
 		public static bool TowerActive;
 		public static int ShieldStrength;
-		
+
 		public static bool LunarApocalypseLastTick;
-		
+
 		public override void Initialize()
 		{
 			LunarApocalypseLastTick = NPC.LunarApocalypseIsUp;
 			ShieldStrength = NPC.ShieldStrengthTowerMax;
-            TowerX = -1;
-            TowerY = -1;
-        }
-		
+			TowerX = -1;
+			TowerY = -1;
+		}
+
 		public override void PreUpdate()
 		{
 			TowerActive = NPC.AnyNPCs(mod.NPCType("NovaPillar"));
 		}
-		
+
 		public override TagCompound Save()
 		{
 			var tag = new TagCompound
 			{
 				{"NovaActive", TowerActive}
 			};
-			if(TowerX != -1)
+			if (TowerX != -1)
 			{
 				tag.Add("NovaX", TowerX);
 				tag.Add("NovaY", TowerY);
 			}
 			return tag;
 		}
-		
+
 		public override void Load(TagCompound tag)
 		{
 			TowerActive = tag.GetBool("NovaActive");
-			if(tag.ContainsKey("NovaX"))
+			if (tag.ContainsKey("NovaX"))
 			{
 				TowerX = tag.GetInt("NovaX");
 				TowerY = tag.GetInt("NovaY");
 				NPC.NewNPC(TowerX, TowerY, mod.NPCType("NovaPillar"));
 			}
 		}
-		
+
 		public override void PostUpdate()
 		{
-			if(NPC.LunarApocalypseIsUp && !LunarApocalypseLastTick)
+			if (NPC.LunarApocalypseIsUp && !LunarApocalypseLastTick)
 			{
-                Tremor.Log("Moving pillars...");
-                var towers = new int[5];
-				
-				foreach(var npc in Main.npc)
+				Tremor.Log("Moving pillars...");
+				var towers = new int[5];
+
+				foreach (var npc in Main.npc)
 				{
-					if(npc == null) continue;
-					if(npc.type == NPCID.LunarTowerNebula)	 towers[0] = npc.whoAmI;
-					if(npc.type == NPCID.LunarTowerSolar)	 towers[1] = npc.whoAmI;
-					if(npc.type == NPCID.LunarTowerStardust) towers[2] = npc.whoAmI;
-					if(npc.type == NPCID.LunarTowerVortex)	 towers[3] = npc.whoAmI;
+					if (npc == null) continue;
+					if (npc.type == NPCID.LunarTowerNebula) towers[0] = npc.whoAmI;
+					if (npc.type == NPCID.LunarTowerSolar) towers[1] = npc.whoAmI;
+					if (npc.type == NPCID.LunarTowerStardust) towers[2] = npc.whoAmI;
+					if (npc.type == NPCID.LunarTowerVortex) towers[3] = npc.whoAmI;
 				}
 				towers[4] = -1;
 				towers = towers.OrderBy(x => Main.rand.Next()).ToArray();
-				
-				for(int i = 0; i < 5; i++)
+
+				for (int i = 0; i < 5; i++)
 				{
 					MovePillar(i, towers[i]);
 				}
 			}
-			else if(!NPC.LunarApocalypseIsUp && LunarApocalypseLastTick && TowerActive)
+			else if (!NPC.LunarApocalypseIsUp && LunarApocalypseLastTick && TowerActive)
 			{
-				for(int i = Main.chatLine.Length - 1; i >= 0; i--)
+				for (int i = Main.chatLine.Length - 1; i >= 0; i--)
 				{
-					if(Main.chatLine[i].text.StartsWith("Impending doom"))
+					if (Main.chatLine[i].text.StartsWith("Impending doom"))
 					{
-						Main.chatLine[i].parsedText = new []
+						Main.chatLine[i].parsedText = new[]
 						{
 							new TextSnippet("Your hands are shaking...", new Color(175, 75, 255))
 						};
@@ -94,24 +94,24 @@ namespace Tremor.NovaPillar
 				}
 				NPC.MoonLordCountdown = 0;
 			}
-			
+
 			LunarApocalypseLastTick = NPC.LunarApocalypseIsUp;
 		}
-		
+
 		void MovePillar(int position, int whoAmI)
 		{
-            if (whoAmI == -1)
-            {
-                Tremor.Log("Spawning Nova Pillar");
-            }
-            //else
-            //{
-                //Tremor.Log("Moving " + Main.npc[whoAmI].displayName);
-           // }
+			if (whoAmI == -1)
+			{
+				Tremor.Log("Spawning Nova Pillar");
+			}
+			//else
+			//{
+			//Tremor.Log("Moving " + Main.npc[whoAmI].displayName);
+			// }
 
-            int x = Main.maxTilesX / 6 * (1 + position);
+			int x = Main.maxTilesX / 6 * (1 + position);
 			var spawnPos = new Vector2(x * 16, (float)(Main.worldSurface - 40) * 16);
-			
+
 			bool success = false;
 			for (int attempts = 0; attempts < 30; attempts++)
 			{
@@ -130,13 +130,13 @@ namespace Tremor.NovaPillar
 					break;
 				}
 			}
-			
-			if(whoAmI == -1)
+
+			if (whoAmI == -1)
 			{
 				whoAmI = NPC.NewNPC((int)spawnPos.X, (int)spawnPos.Y, mod.NPCType("NovaPillar"));
-                NovaHandler.TowerX = (int)spawnPos.X;
-                NovaHandler.TowerY = (int)spawnPos.Y;
-            }
+				NovaHandler.TowerX = (int)spawnPos.X;
+				NovaHandler.TowerY = (int)spawnPos.Y;
+			}
 			else
 			{
 				Main.npc[whoAmI].Center = spawnPos;
@@ -148,26 +148,26 @@ namespace Tremor.NovaPillar
 				NetMessage.SendData(MessageID.SyncNPC, number: whoAmI);
 			}
 		}
-		
+
 		static readonly string[] NovaNPCs =
 		{
 			"NovaAlchemist",
-            "Varki",
-            "Youwarkee",
-            "Deadling",
-            "NovaFlier"
+			"Varki",
+			"Youwarkee",
+			"Deadling",
+			"NovaFlier"
 		};
-		
+
 		public class AuroraGlobalNPC : GlobalNPC
 		{
-            public override void EditSpawnRate(Player player, ref int spawnRate, ref int maxSpawns)
-            {
-                if (player.GetModPlayer<TremorPlayer>(mod).ZoneTowerNova)
-                {
-                    spawnRate = (int)(spawnRate * 0.14f);
-                    maxSpawns = (int)(maxSpawns * 5f);
-                }
-            } 
-        }
+			public override void EditSpawnRate(Player player, ref int spawnRate, ref int maxSpawns)
+			{
+				if (player.GetModPlayer<TremorPlayer>(mod).ZoneTowerNova)
+				{
+					spawnRate = (int)(spawnRate * 0.14f);
+					maxSpawns = (int)(maxSpawns * 5f);
+				}
+			}
+		}
 	}
 }

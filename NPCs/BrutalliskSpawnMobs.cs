@@ -1,4 +1,4 @@
- using System;
+using System;
 using System.Diagnostics;
 using System.Collections.Generic;
 using System.IO;
@@ -19,19 +19,19 @@ using Tremor.ZombieEvent;
 namespace Tremor.NPCs
 {
 	public class BrutalliskSpawnMobs : ModPlayer
-    { 
-        public override void PostUpdate()
-        {
-            const int XOffset = 1200;
-            const int YOffset = 1200;
+	{
+		public override void PostUpdate()
+		{
+			const int XOffset = 1200;
+			const int YOffset = 1200;
 
-            if (NPC.AnyNPCs(mod.NPCType("Brutallisk")))
-            {
+			if (NPC.AnyNPCs(mod.NPCType("Brutallisk")))
+			{
 				if (Main.rand.Next(380) == 1)
-                    NPC.NewNPC((int)Main.player[Main.myPlayer].Center.X + XOffset, (int)Main.player[Main.myPlayer].Center.Y - YOffset, mod.NPCType("Quetzalcoatl"), 0, NPC.NewNPC((int)Main.player[Main.myPlayer].Center.X + XOffset, (int)Main.player[Main.myPlayer].Center.Y + YOffset, mod.NPCType("")));
-                if (Main.rand.Next(380) == 1)
-                    NPC.NewNPC((int)Main.player[Main.myPlayer].Center.X - XOffset, (int)Main.player[Main.myPlayer].Center.Y - YOffset, mod.NPCType("Quetzalcoatl"), 0, NPC.NewNPC((int)Main.player[Main.myPlayer].Center.X + XOffset, (int)Main.player[Main.myPlayer].Center.Y + YOffset, mod.NPCType("")));
-            }          
-        }
-    }
+					NPC.NewNPC((int)Main.player[Main.myPlayer].Center.X + XOffset, (int)Main.player[Main.myPlayer].Center.Y - YOffset, mod.NPCType("Quetzalcoatl"), 0, NPC.NewNPC((int)Main.player[Main.myPlayer].Center.X + XOffset, (int)Main.player[Main.myPlayer].Center.Y + YOffset, mod.NPCType("")));
+				if (Main.rand.Next(380) == 1)
+					NPC.NewNPC((int)Main.player[Main.myPlayer].Center.X - XOffset, (int)Main.player[Main.myPlayer].Center.Y - YOffset, mod.NPCType("Quetzalcoatl"), 0, NPC.NewNPC((int)Main.player[Main.myPlayer].Center.X + XOffset, (int)Main.player[Main.myPlayer].Center.Y + YOffset, mod.NPCType("")));
+			}
+		}
+	}
 }

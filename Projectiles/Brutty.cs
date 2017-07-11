@@ -14,16 +14,16 @@ namespace Tremor.Projectiles
 
 			aiType = 269;
 			Main.projFrames[projectile.type] = 7;
-                        projectile.width = 32;
-                        projectile.height = 28;
+			projectile.width = 32;
+			projectile.height = 28;
 			Main.projPet[projectile.type] = true;
 		}
 
-    public override void SetStaticDefaults()
-    {
-      DisplayName.SetDefault("Brutty");
-       
-    }
+		public override void SetStaticDefaults()
+		{
+			DisplayName.SetDefault("Brutty");
+
+		}
 
 
 		public override bool PreAI()

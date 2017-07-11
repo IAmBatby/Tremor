@@ -23,14 +23,14 @@ namespace Tremor.Items
 			item.rare = 0;
 			item.shoot = mod.ProjectileType("Carrot");
 			item.ammo = item.type;
-                        item.value = 15;
+			item.value = 15;
 		}
 
-    public override void SetStaticDefaults()
-    {
-      DisplayName.SetDefault("Carrot");
-      Tooltip.SetDefault("");
-    }
+		public override void SetStaticDefaults()
+		{
+			DisplayName.SetDefault("Carrot");
+			Tooltip.SetDefault("");
+		}
 
 	}
 }

@@ -5,35 +5,36 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace Tremor.Projectiles {
-public class FrostwindPro : ModProjectile
+namespace Tremor.Projectiles
 {
-    public override void SetDefaults()
-    {
+	public class FrostwindPro : ModProjectile
+	{
+		public override void SetDefaults()
+		{
 
-            projectile.light = 0.8f;
-            projectile.width = 80;
-            projectile.height = 46;
-            projectile.friendly = true;
-            projectile.tileCollide = false;
-            projectile.ignoreWater = true;
-            projectile.penetrate = -1;
-            projectile.alpha = 255;
-            projectile.timeLeft = 120;
-            Main.projFrames[projectile.type] = 6;
-    }
+			projectile.light = 0.8f;
+			projectile.width = 80;
+			projectile.height = 46;
+			projectile.friendly = true;
+			projectile.tileCollide = false;
+			projectile.ignoreWater = true;
+			projectile.penetrate = -1;
+			projectile.alpha = 255;
+			projectile.timeLeft = 120;
+			Main.projFrames[projectile.type] = 6;
+		}
 
-    public override void SetStaticDefaults()
-    {
-      DisplayName.SetDefault("FrostwindPro");
-       
-    }
+		public override void SetStaticDefaults()
+		{
+			DisplayName.SetDefault("FrostwindPro");
+
+		}
 
 
 
-        public override void AI()
-        {
-        	int num613 = 10;
+		public override void AI()
+		{
+			int num613 = 10;
 			int num614 = 15;
 			float num615 = 1f;
 			int num616 = 150;
@@ -111,7 +112,8 @@ public class FrostwindPro : ModProjectile
 				projectile.position.X = projectile.position.X + num624 * (float)(-(float)projectile.direction);
 				return;
 			}
-        }
+		}
 
 
-}}
+	}
+}

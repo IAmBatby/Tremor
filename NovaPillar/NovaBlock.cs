@@ -25,7 +25,7 @@ namespace Tremor.NovaPillar
 			drop = mod.ItemType("NovaFragmentBlock");
 			AddMapEntry(Color.Yellow);
 		}
-		
+
 		public override void NumDust(int i, int j, bool fail, ref int num)
 		{
 			num = fail ? 1 : 3;

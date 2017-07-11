@@ -34,11 +34,11 @@ namespace Tremor.Items
 			item.crit = 7;
 		}
 
-    public override void SetStaticDefaults()
-    {
-      DisplayName.SetDefault("Spear of Justice");
-      Tooltip.SetDefault("'NGAAAAAHHHHHHHHHHHHHHHHH!'");
-    }
+		public override void SetStaticDefaults()
+		{
+			DisplayName.SetDefault("Spear of Justice");
+			Tooltip.SetDefault("'NGAAAAAHHHHHHHHHHHHHHHHH!'");
+		}
 
 	}
 }

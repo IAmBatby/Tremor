@@ -6,23 +6,25 @@ using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace Tremor.Items {
-public class AncientTablet : ModItem
+namespace Tremor.Items
 {
-    public override void SetDefaults()
-    {
+	public class AncientTablet : ModItem
+	{
+		public override void SetDefaults()
+		{
 
-        item.width = 34;
-        item.height = 40;
-        item.maxStack = 99;
-        item.value = 10000;
-        item.rare = 10;
-    }
+			item.width = 34;
+			item.height = 40;
+			item.maxStack = 99;
+			item.value = 10000;
+			item.rare = 10;
+		}
 
-    public override void SetStaticDefaults()
-    {
-      DisplayName.SetDefault("Ancient Tablet");
-      Tooltip.SetDefault("");
-	  Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(8, 4));
-    } 
-}}
+		public override void SetStaticDefaults()
+		{
+			DisplayName.SetDefault("Ancient Tablet");
+			Tooltip.SetDefault("");
+			Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(8, 4));
+		}
+	}
+}

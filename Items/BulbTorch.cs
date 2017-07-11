@@ -27,11 +27,11 @@ namespace Tremor.Items
 			item.value = 50;
 		}
 
-    public override void SetStaticDefaults()
-    {
-      DisplayName.SetDefault("Bulb Torch");
-      Tooltip.SetDefault("");
-    }
+		public override void SetStaticDefaults()
+		{
+			DisplayName.SetDefault("Bulb Torch");
+			Tooltip.SetDefault("");
+		}
 
 
 		public override void HoldItem(Player player)

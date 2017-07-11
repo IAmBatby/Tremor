@@ -21,11 +21,11 @@ namespace Tremor.Items
 			item.rare = -11;
 		}
 
-    public override void SetStaticDefaults()
-    {
-      DisplayName.SetDefault("Parrot Fish");
-      Tooltip.SetDefault("");
-    }
+		public override void SetStaticDefaults()
+		{
+			DisplayName.SetDefault("Parrot Fish");
+			Tooltip.SetDefault("");
+		}
 
 
 		public override bool IsQuestFish()
@@ -35,7 +35,7 @@ namespace Tremor.Items
 
 		//public override bool IsAnglerQuestAvailable()
 		//{
-			//return Main.downedInvasion3;
+		//return Main.downedInvasion3;
 		//}
 
 		public override void AnglerQuestChat(ref string description, ref string catchLocation)

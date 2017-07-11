@@ -7,32 +7,32 @@ using Terraria.ModLoader;
 
 namespace Tremor.Projectiles
 {
-    public class AngelTearsPro : ModProjectile
-    {
-    	
-        public override void SetDefaults()
-        {
+	public class AngelTearsPro : ModProjectile
+	{
 
-            projectile.width = 16;
-            projectile.height = 16;
-            projectile.friendly = true;
-            projectile.alpha = 255;
-            projectile.penetrate = 4;
-            projectile.timeLeft /= 2;
-            projectile.magic = true;
-        }
+		public override void SetDefaults()
+		{
 
-    public override void SetStaticDefaults()
-    {
-      DisplayName.SetDefault("Angel Tears");
-       
-    }
+			projectile.width = 16;
+			projectile.height = 16;
+			projectile.friendly = true;
+			projectile.alpha = 255;
+			projectile.penetrate = 4;
+			projectile.timeLeft /= 2;
+			projectile.magic = true;
+		}
+
+		public override void SetStaticDefaults()
+		{
+			DisplayName.SetDefault("Angel Tears");
+
+		}
 
 
-        public override void AI()
-        {
-        	Lighting.AddLight(projectile.Center, ((255 - projectile.alpha) * 0.45f) / 255f, ((255 - projectile.alpha) * 0.2f) / 255f, ((255 - projectile.alpha) * 0.1f) / 255f);
-        	for (int num92 = 0; num92 < 5; num92++)
+		public override void AI()
+		{
+			Lighting.AddLight(projectile.Center, ((255 - projectile.alpha) * 0.45f) / 255f, ((255 - projectile.alpha) * 0.2f) / 255f, ((255 - projectile.alpha) * 0.1f) / 255f);
+			for (int num92 = 0; num92 < 5; num92++)
 			{
 				float num93 = projectile.velocity.X / 3f * (float)num92;
 				float num94 = projectile.velocity.Y / 3f * (float)num92;
@@ -66,39 +66,39 @@ namespace Tremor.Projectiles
 				projectile.velocity.Y = 16f;
 				return;
 			}
-        }
-        
-        public override bool OnTileCollide(Vector2 oldVelocity)
-        {
-            projectile.penetrate--;
-            if (projectile.penetrate <= 0)
-            {
-                projectile.Kill();
-            }
-            else
-            {
-                projectile.ai[0] += 0.1f;
-                if (projectile.velocity.X != oldVelocity.X)
-                {
-                    projectile.velocity.X = -oldVelocity.X;
-                }
-                if (projectile.velocity.Y != oldVelocity.Y)
-                {
-                    projectile.velocity.Y = -oldVelocity.Y;
-                }
-                Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 10);
-            }
-            return false;
-        }
+		}
 
-        public override void Kill(int timeLeft)
-        {
-        	Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 10);
-            for (int k = 0; k < 5; k++)
-            {
-            	Dust.NewDust(projectile.position + projectile.velocity, projectile.width, projectile.height, 57, projectile.oldVelocity.X * 0.5f, projectile.oldVelocity.Y * 0.5f);
-            }
-        }
+		public override bool OnTileCollide(Vector2 oldVelocity)
+		{
+			projectile.penetrate--;
+			if (projectile.penetrate <= 0)
+			{
+				projectile.Kill();
+			}
+			else
+			{
+				projectile.ai[0] += 0.1f;
+				if (projectile.velocity.X != oldVelocity.X)
+				{
+					projectile.velocity.X = -oldVelocity.X;
+				}
+				if (projectile.velocity.Y != oldVelocity.Y)
+				{
+					projectile.velocity.Y = -oldVelocity.Y;
+				}
+				Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 10);
+			}
+			return false;
+		}
 
-    }
+		public override void Kill(int timeLeft)
+		{
+			Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 10);
+			for (int k = 0; k < 5; k++)
+			{
+				Dust.NewDust(projectile.position + projectile.velocity, projectile.width, projectile.height, 57, projectile.oldVelocity.X * 0.5f, projectile.oldVelocity.Y * 0.5f);
+			}
+		}
+
+	}
 }

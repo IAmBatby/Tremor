@@ -7,35 +7,35 @@ using Terraria.ModLoader;
 
 namespace Tremor.Projectiles
 {
-    public class HellStormProj : ModProjectile
-    { 	
-        public override void SetDefaults()
-        {
+	public class HellStormProj : ModProjectile
+	{
+		public override void SetDefaults()
+		{
 
-            projectile.width = 78;
-            projectile.height = 32;
-            projectile.friendly = true;
-            projectile.penetrate = -1;
-            projectile.tileCollide = false;
-            projectile.ignoreWater = true;
-            projectile.ranged = true;
-        }
+			projectile.width = 78;
+			projectile.height = 32;
+			projectile.friendly = true;
+			projectile.penetrate = -1;
+			projectile.tileCollide = false;
+			projectile.ignoreWater = true;
+			projectile.ranged = true;
+		}
 
-    public override void SetStaticDefaults()
-    {
-      DisplayName.SetDefault("Hell Storm");
-       
-    }
+		public override void SetStaticDefaults()
+		{
+			DisplayName.SetDefault("Hell Storm");
+
+		}
 
 
-        public override Color? GetAlpha(Color lightColor)
-        {
-            return Color.White;
-        }
+		public override Color? GetAlpha(Color lightColor)
+		{
+			return Color.White;
+		}
 
-        public override void AI()
-        {
-        	Player player = Main.player[projectile.owner];
+		public override void AI()
+		{
+			Player player = Main.player[projectile.owner];
 			float num = 1.57079637f;
 			Vector2 vector = player.RotatedRelativePoint(player.MountedCenter, true);
 			if (projectile.type == mod.ProjectileType("HellStormProj"))
@@ -131,6 +131,6 @@ namespace Tremor.Projectiles
 			player.itemTime = 2;
 			player.itemAnimation = 2;
 			player.itemRotation = (float)Math.Atan2((double)(projectile.velocity.Y * (float)projectile.direction), (double)(projectile.velocity.X * (float)projectile.direction));
-        }
-    }
+		}
+	}
 }

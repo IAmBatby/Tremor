@@ -4,14 +4,16 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace Tremor.Ice.Items {
-public class GlacierFenceWall : ModWall
+namespace Tremor.Ice.Items
 {
-    public override void SetDefaults()
-    {
-        Main.wallHouse[Type] = true;
-        drop = mod.ItemType("GlacierFence");
-	AddMapEntry(new Color(36, 43, 102));
-    }
+	public class GlacierFenceWall : ModWall
+	{
+		public override void SetDefaults()
+		{
+			Main.wallHouse[Type] = true;
+			drop = mod.ItemType("GlacierFence");
+			AddMapEntry(new Color(36, 43, 102));
+		}
 
-}}
+	}
+}

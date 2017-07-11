@@ -29,14 +29,14 @@ namespace Tremor.Items
 			item.autoReuse = false;
 			item.shoot = 10;
 			item.shootSpeed = 15f;
-                        item.useAmmo = AmmoID.Bullet;
+			item.useAmmo = AmmoID.Bullet;
 		}
 
-    public override void SetStaticDefaults()
-    {
-      DisplayName.SetDefault("Corruptor Gun");
-      Tooltip.SetDefault("Spends bullets and fires small corruptors");
-    }
+		public override void SetStaticDefaults()
+		{
+			DisplayName.SetDefault("Corruptor Gun");
+			Tooltip.SetDefault("Spends bullets and fires small corruptors");
+		}
 
 
 		public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)

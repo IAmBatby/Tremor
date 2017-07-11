@@ -6,41 +6,41 @@ using Terraria.ModLoader;
 
 namespace Tremor.Projectiles
 {
-    public class CthulhunadoPro : ModProjectile
-    {
-    	
-        public override void SetDefaults()
-        {
+	public class CthulhunadoPro : ModProjectile
+	{
 
-            projectile.width = 150;
-            projectile.height = 42;
-            projectile.friendly = true;
-            projectile.tileCollide = false;
-            projectile.ignoreWater = true;
-            projectile.penetrate = -1;
-            projectile.alpha = 255;
-            projectile.timeLeft = 420;
-            Main.projFrames[projectile.type] = 6;
-        }
+		public override void SetDefaults()
+		{
 
-    public override void SetStaticDefaults()
-    {
-      DisplayName.SetDefault("Cthulhunado");
-       
-    }
+			projectile.width = 150;
+			projectile.height = 42;
+			projectile.friendly = true;
+			projectile.tileCollide = false;
+			projectile.ignoreWater = true;
+			projectile.penetrate = -1;
+			projectile.alpha = 255;
+			projectile.timeLeft = 420;
+			Main.projFrames[projectile.type] = 6;
+		}
 
-        
-        public override void AI()
-        {
-        	int num613 = 10;
+		public override void SetStaticDefaults()
+		{
+			DisplayName.SetDefault("Cthulhunado");
+
+		}
+
+
+		public override void AI()
+		{
+			int num613 = 10;
 			int num614 = 15;
 			float num615 = 1f;
 			int num616 = 150;
 			int num617 = 42;
 			if (Main.rand.Next(15) == 0)
-            {
-            	Dust.NewDust(projectile.position + projectile.velocity, projectile.width, projectile.height, 172, projectile.velocity.X * 0.5f, projectile.velocity.Y * 0.5f);
-            }
+			{
+				Dust.NewDust(projectile.position + projectile.velocity, projectile.width, projectile.height, 172, projectile.velocity.X * 0.5f, projectile.velocity.Y * 0.5f);
+			}
 			if (projectile.velocity.X != 0f)
 			{
 				projectile.direction = (projectile.spriteDirection = -Math.Sign(projectile.velocity.X));
@@ -114,6 +114,6 @@ namespace Tremor.Projectiles
 				projectile.position.X = projectile.position.X + num624 * (float)(-(float)projectile.direction);
 				return;
 			}
-        }
-    }
+		}
+	}
 }

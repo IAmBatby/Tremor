@@ -6,25 +6,27 @@ using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace Tremor.Items {
-public class PhantomSoul : ModItem
+namespace Tremor.Items
 {
-    public override void SetDefaults()
-    {
+	public class PhantomSoul : ModItem
+	{
+		public override void SetDefaults()
+		{
 
-        item.width = 32;
-        item.height = 58;
-        item.maxStack = 99;
-        item.value = 100;
-        item.rare = 2;
-        ItemID.Sets.ItemNoGravity[item.type] = true;
-    }
+			item.width = 32;
+			item.height = 58;
+			item.maxStack = 99;
+			item.value = 100;
+			item.rare = 2;
+			ItemID.Sets.ItemNoGravity[item.type] = true;
+		}
 
-    public override void SetStaticDefaults()
-    {
-      DisplayName.SetDefault("Phantom Soul");
-      Tooltip.SetDefault("");
-	  Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(10, 4));
-    }
+		public override void SetStaticDefaults()
+		{
+			DisplayName.SetDefault("Phantom Soul");
+			Tooltip.SetDefault("");
+			Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(10, 4));
+		}
 
-}}
+	}
+}

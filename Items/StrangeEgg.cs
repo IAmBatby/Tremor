@@ -13,19 +13,19 @@ namespace Tremor.Items
 		{
 			item.CloneDefaults(ItemID.Carrot);
 
-                        item.useTime = 25;
-                        item.useAnimation = 25;
-                        item.rare = 11;
+			item.useTime = 25;
+			item.useAnimation = 25;
+			item.rare = 11;
 
 			item.shoot = mod.ProjectileType("Brutty");
 			item.buffType = mod.BuffType("BruttyBuff");
 		}
 
-    public override void SetStaticDefaults()
-    {
-      DisplayName.SetDefault("Strange Egg");
-      Tooltip.SetDefault("Summons an brutty");
-    }
+		public override void SetStaticDefaults()
+		{
+			DisplayName.SetDefault("Strange Egg");
+			Tooltip.SetDefault("Summons an brutty");
+		}
 
 
 		public override void UseStyle(Player player)

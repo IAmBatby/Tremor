@@ -19,26 +19,26 @@ namespace Tremor.Items
 			item.useAnimation = 15;
 			item.useTime = 15;
 			item.useStyle = 1;
-                        item.rare = 1;
+			item.rare = 1;
 			item.consumable = true;
 			item.value = 2000;
 			item.createTile = mod.TileType("CrimstonePlatform");
 		}
 
-    public override void SetStaticDefaults()
-    {
-      DisplayName.SetDefault("Crimstone Platform");
-      Tooltip.SetDefault("");
-    }
+		public override void SetStaticDefaults()
+		{
+			DisplayName.SetDefault("Crimstone Platform");
+			Tooltip.SetDefault("");
+		}
 
 
-    public override void AddRecipes()
-    {
-        ModRecipe recipe = new ModRecipe(mod);
-        recipe.AddIngredient(836, 1);
-        recipe.SetResult(this, 2);
-        recipe.AddTile(17);
-        recipe.AddRecipe();
-    }
+		public override void AddRecipes()
+		{
+			ModRecipe recipe = new ModRecipe(mod);
+			recipe.AddIngredient(836, 1);
+			recipe.SetResult(this, 2);
+			recipe.AddTile(17);
+			recipe.AddRecipe();
+		}
 	}
 }

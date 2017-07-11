@@ -12,9 +12,9 @@ namespace Tremor.Items
 {
 	public class EaterofDreams : ModItem
 	{
-	
-	    public override void SetDefaults()
-	    {
+
+		public override void SetDefaults()
+		{
 
 			item.damage = 99;
 			item.ranged = true;
@@ -34,24 +34,24 @@ namespace Tremor.Items
 			item.useAmmo = AmmoID.Gel;
 		}
 
-    public override void SetStaticDefaults()
-    {
-      DisplayName.SetDefault("Eater of Dreams");
-      Tooltip.SetDefault("Consumes gel as ammo");
-    }
+		public override void SetStaticDefaults()
+		{
+			DisplayName.SetDefault("Eater of Dreams");
+			Tooltip.SetDefault("Consumes gel as ammo");
+		}
 
 
-    public override void AddRecipes()                
-    {                                                
-        ModRecipe recipe = new ModRecipe(mod);    
-        recipe.AddIngredient(null, "NightmareBar", 16); 
-	recipe.AddIngredient(ItemID.Flamethrower, 1);  
-        recipe.AddIngredient(null, "PhantomSoul", 25); 
-        recipe.AddIngredient(null, "PurpleQuartz", 15);
-        recipe.AddIngredient(null, "TearsofDeath", 8);
-        recipe.SetResult(this);                     
-	recipe.AddTile(412);
-        recipe.AddRecipe();
-    }  
+		public override void AddRecipes()
+		{
+			ModRecipe recipe = new ModRecipe(mod);
+			recipe.AddIngredient(null, "NightmareBar", 16);
+			recipe.AddIngredient(ItemID.Flamethrower, 1);
+			recipe.AddIngredient(null, "PhantomSoul", 25);
+			recipe.AddIngredient(null, "PurpleQuartz", 15);
+			recipe.AddIngredient(null, "TearsofDeath", 8);
+			recipe.SetResult(this);
+			recipe.AddTile(412);
+			recipe.AddRecipe();
+		}
 	}
 }

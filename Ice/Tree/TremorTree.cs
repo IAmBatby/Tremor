@@ -12,7 +12,7 @@ namespace Tremor.Ice.Tree
 				return ModLoader.GetMod("Tremor");
 			}
 		}
-		
+
 		public override int CreateDust()
 		{
 			return mod.DustType("TreeCrash");
@@ -22,22 +22,22 @@ namespace Tremor.Ice.Tree
 		{
 			return mod.GetGoreSlot("Ice/Tree/TremorTreeFX");
 		}
-		
+
 		public override int DropWood()
 		{
 			return mod.ItemType("GlacierWood");
 		}
-		
+
 		public override Texture2D GetTexture()
 		{
 			return mod.GetTexture("Ice/Tree/TremorTree");
 		}
-		
+
 		public override Texture2D GetBranchTextures(int i, int j, int trunkOffset, ref int frame)
 		{
-		    return mod.GetTexture("Ice/Tree/TremorTree_Branches");
+			return mod.GetTexture("Ice/Tree/TremorTree_Branches");
 		}
-		
+
 		public override Texture2D GetTopTextures(int i, int j, ref int frame, ref int frameWidth, ref int frameHeight, ref int xOffsetLeft, ref int yOffset)
 		{
 			return mod.GetTexture("Ice/Tree/TremorTree_Tops");

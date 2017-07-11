@@ -19,31 +19,31 @@ namespace Tremor.NovaPillar
 			projectile.friendly = true;
 		}
 
-        public override Color? GetAlpha(Color lightColor)
-        {
-            return Color.White;
-        }
-
-        public override void ModifyHitNPC(NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
-        {
-            if (Main.rand.Next(1, 101) <= Main.player[projectile.owner].GetModPlayer<MPlayer>(mod).alchemistCrit)
-            {
-                crit = true;
-            }
-        }
-
-        public override bool PreAI()
+		public override Color? GetAlpha(Color lightColor)
 		{
-            projectile.frameCounter++;
-            if (projectile.frameCounter > 3)
-            {
-                projectile.frame++;
-                projectile.frameCounter = 0;
-            }
-            if (projectile.frame >= 3)
-            {
-                projectile.frame = 0;
-            }            
+			return Color.White;
+		}
+
+		public override void ModifyHitNPC(NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
+		{
+			if (Main.rand.Next(1, 101) <= Main.player[projectile.owner].GetModPlayer<MPlayer>(mod).alchemistCrit)
+			{
+				crit = true;
+			}
+		}
+
+		public override bool PreAI()
+		{
+			projectile.frameCounter++;
+			if (projectile.frameCounter > 3)
+			{
+				projectile.frame++;
+				projectile.frameCounter = 0;
+			}
+			if (projectile.frame >= 3)
+			{
+				projectile.frame = 0;
+			}
 			float num2 = (float)Math.Sqrt((double)(projectile.velocity.X * projectile.velocity.X + projectile.velocity.Y * projectile.velocity.Y));
 			float num3 = projectile.localAI[0];
 			if (num3 == 0f)
@@ -142,5 +142,5 @@ namespace Tremor.NovaPillar
 				}
 			});
 		}
-    }
+	}
 }

@@ -5,21 +5,23 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace Tremor.Projectiles {
-public class BrassCog : ModProjectile
+namespace Tremor.Projectiles
 {
-    public override void SetDefaults()
-    {
+	public class BrassCog : ModProjectile
+	{
+		public override void SetDefaults()
+		{
 			projectile.CloneDefaults(24);
 
 			aiType = 24;
-    }
+		}
 
-    public override void SetStaticDefaults()
-    {
-      DisplayName.SetDefault("BrassCog");
-       
-    }
+		public override void SetStaticDefaults()
+		{
+			DisplayName.SetDefault("BrassCog");
+
+		}
 
 
-}}
+	}
+}

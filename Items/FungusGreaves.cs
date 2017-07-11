@@ -5,7 +5,9 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace Tremor.Items { [AutoloadEquip(EquipType.Legs)]
+namespace Tremor.Items
+{
+	[AutoloadEquip(EquipType.Legs)]
 	public class FungusGreaves : ModItem
 	{
 
@@ -20,34 +22,34 @@ namespace Tremor.Items { [AutoloadEquip(EquipType.Legs)]
 			item.defense = 7;
 		}
 
-    public override void SetStaticDefaults()
-    {
-      DisplayName.SetDefault("Fungus Greaves");
-      Tooltip.SetDefault("");
-    }
+		public override void SetStaticDefaults()
+		{
+			DisplayName.SetDefault("Fungus Greaves");
+			Tooltip.SetDefault("");
+		}
 
 
 		public override void UpdateEquip(Player player)
 		{
 		}
 
-    public override void AddRecipes()
-    {
-        ModRecipe recipe = new ModRecipe(mod);
-        recipe.AddIngredient(null, "FungusElement", 14);
-        recipe.AddIngredient(ItemID.GlowingMushroom, 12);
-        recipe.AddIngredient(ItemID.GoldGreaves, 1);
-        recipe.SetResult(this);
-        recipe.AddTile(16);
-        recipe.AddRecipe();
+		public override void AddRecipes()
+		{
+			ModRecipe recipe = new ModRecipe(mod);
+			recipe.AddIngredient(null, "FungusElement", 14);
+			recipe.AddIngredient(ItemID.GlowingMushroom, 12);
+			recipe.AddIngredient(ItemID.GoldGreaves, 1);
+			recipe.SetResult(this);
+			recipe.AddTile(16);
+			recipe.AddRecipe();
 
-        recipe = new ModRecipe(mod);
-        recipe.AddIngredient(null, "FungusElement", 14);
-        recipe.AddIngredient(ItemID.GlowingMushroom, 12);
-        recipe.AddIngredient(ItemID.PlatinumGreaves, 1);
-        recipe.SetResult(this);
-        recipe.AddTile(16);
-        recipe.AddRecipe();
-    }
+			recipe = new ModRecipe(mod);
+			recipe.AddIngredient(null, "FungusElement", 14);
+			recipe.AddIngredient(ItemID.GlowingMushroom, 12);
+			recipe.AddIngredient(ItemID.PlatinumGreaves, 1);
+			recipe.SetResult(this);
+			recipe.AddTile(16);
+			recipe.AddRecipe();
+		}
 	}
 }

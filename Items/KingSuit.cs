@@ -6,8 +6,8 @@ using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace Tremor.Items
-{ 
-[AutoloadEquip(EquipType.Body)]
+{
+	[AutoloadEquip(EquipType.Body)]
 	public class KingSuit : ModItem
 	{
 
@@ -22,11 +22,11 @@ namespace Tremor.Items
 			item.vanity = true;
 		}
 
-    public override void SetStaticDefaults()
-    {
-      DisplayName.SetDefault("King Suit");
-      Tooltip.SetDefault("");
-    }
+		public override void SetStaticDefaults()
+		{
+			DisplayName.SetDefault("King Suit");
+			Tooltip.SetDefault("");
+		}
 
 	}
 }

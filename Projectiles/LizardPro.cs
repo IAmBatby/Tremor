@@ -4,26 +4,27 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace Tremor.Projectiles {
-public class LizardPro : ModProjectile
+namespace Tremor.Projectiles
 {
-    public override void SetDefaults()
-    {
+	public class LizardPro : ModProjectile
+	{
+		public override void SetDefaults()
+		{
 
-        projectile.width = 26;
-        projectile.height = 26;
-        projectile.aiStyle = 2;
-        projectile.timeLeft = 1200;
-        projectile.penetrate = 5;
-        ProjectileID.Sets.TrailCacheLength[projectile.type] = 5;
-        ProjectileID.Sets.TrailingMode[projectile.type] = 2;
-    }
+			projectile.width = 26;
+			projectile.height = 26;
+			projectile.aiStyle = 2;
+			projectile.timeLeft = 1200;
+			projectile.penetrate = 5;
+			ProjectileID.Sets.TrailCacheLength[projectile.type] = 5;
+			ProjectileID.Sets.TrailingMode[projectile.type] = 2;
+		}
 
-    public override void SetStaticDefaults()
-    {
-      DisplayName.SetDefault("LizardPro");
-       
-    }
+		public override void SetStaticDefaults()
+		{
+			DisplayName.SetDefault("LizardPro");
+
+		}
 
 
 
@@ -48,10 +49,11 @@ public class LizardPro : ModProjectile
 			return false;
 		}
 
-    public override void Kill(int timeLeft)
-    {
-            NPC.NewNPC((int)projectile.Center.X, (int)projectile.Center.Y, mod.NPCType("Lizard"));
-    }
+		public override void Kill(int timeLeft)
+		{
+			NPC.NewNPC((int)projectile.Center.X, (int)projectile.Center.Y, mod.NPCType("Lizard"));
+		}
 
 
-}}
+	}
+}

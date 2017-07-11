@@ -38,11 +38,11 @@ namespace Tremor.Projectiles
 			projectile.hide = true;
 		}
 
-    public override void SetStaticDefaults()
-    {
-      DisplayName.SetDefault("Diamond Beam");
-       
-    }
+		public override void SetStaticDefaults()
+		{
+			DisplayName.SetDefault("Diamond Beam");
+
+		}
 
 
 		public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)
@@ -50,8 +50,8 @@ namespace Tremor.Projectiles
 			if (Charge == MAX_CHARGE)
 			{
 				Vector2 unit = projectile.velocity;
-				DrawLaser(spriteBatch, Main.projectileTexture[projectile.type], 
-					Main.player[projectile.owner].Center, unit, 10, projectile.damage, 
+				DrawLaser(spriteBatch, Main.projectileTexture[projectile.type],
+					Main.player[projectile.owner].Center, unit, 10, projectile.damage,
 					-1.57f, 1f, 1000f, Color.White, (int)MOVE_DISTANCE);
 			}
 			return false;

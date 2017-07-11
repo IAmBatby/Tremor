@@ -1,8 +1,9 @@
 using System.Collections.Generic;
 using Terraria.ModLoader;
 
-namespace Tremor.Invasion {
-[AutoloadEquip(EquipType.Head)]
+namespace Tremor.Invasion
+{
+	[AutoloadEquip(EquipType.Head)]
 	public class VioleumMask : ModItem
 	{
 
@@ -15,11 +16,11 @@ namespace Tremor.Invasion {
 			item.vanity = true;
 		}
 
-    public override void SetStaticDefaults()
-    {
-      DisplayName.SetDefault("Violeum Mask");
-      Tooltip.SetDefault("");
-    }
+		public override void SetStaticDefaults()
+		{
+			DisplayName.SetDefault("Violeum Mask");
+			Tooltip.SetDefault("");
+		}
 
 
 		public override bool DrawHead()

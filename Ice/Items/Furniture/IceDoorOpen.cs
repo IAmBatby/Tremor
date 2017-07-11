@@ -24,7 +24,7 @@ namespace Tremor.Ice.Items.Furniture
 			TileObjectData.newTile.AnchorBottom = new AnchorData(AnchorType.SolidTile, 1, 0);
 			TileObjectData.newTile.UsesCustomCanPlace = true;
 			TileObjectData.newTile.LavaDeath = true;
-			TileObjectData.newTile.CoordinateHeights = new int[]{ 16, 16, 16 };
+			TileObjectData.newTile.CoordinateHeights = new int[] { 16, 16, 16 };
 			TileObjectData.newTile.CoordinateWidth = 16;
 			TileObjectData.newTile.CoordinatePadding = 2;
 			TileObjectData.newTile.StyleHorizontal = true;
@@ -59,7 +59,7 @@ namespace Tremor.Ice.Items.Furniture
 			AddToArray(ref TileID.Sets.RoomNeeds.CountsAsDoor);
 			TileID.Sets.HousingWalls[Type] = true; //needed for non-solid blocks to count as walls
 			AddMapEntry(new Color(87, 144, 165));
-			adjTiles = new int[]{ TileID.OpenDoor };
+			adjTiles = new int[] { TileID.OpenDoor };
 			closeDoorID = mod.TileType("IceDoorClosed");
 		}
 

@@ -5,21 +5,23 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace Tremor.Projectiles {
-public class HuntingSpearPro : ModProjectile
+namespace Tremor.Projectiles
 {
-    public override void SetDefaults()
-    {
+	public class HuntingSpearPro : ModProjectile
+	{
+		public override void SetDefaults()
+		{
 			projectile.CloneDefaults(66);
 
 			aiType = 66;
-    }
+		}
 
-    public override void SetStaticDefaults()
-    {
-      DisplayName.SetDefault("HuntingSpearPro");
-       
-    }
+		public override void SetStaticDefaults()
+		{
+			DisplayName.SetDefault("HuntingSpearPro");
+
+		}
 
 
-}}
+	}
+}

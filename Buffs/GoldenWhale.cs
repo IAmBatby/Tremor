@@ -16,7 +16,7 @@ namespace Tremor.Buffs
 
 		public override void Update(Player player, ref int buffIndex)
 		{
-                        player.meleeEnchant = 4;
+			player.meleeEnchant = 4;
 
 			player.buffTime[buffIndex] = 18000;
 			TremorPlayer modPlayer = (TremorPlayer)player.GetModPlayer(mod, "TremorPlayer");

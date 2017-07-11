@@ -5,43 +5,44 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace Tremor.Items {
-public class DragonRafale : ModItem
+namespace Tremor.Items
 {
-    public override void SetDefaults()
-    {
+	public class DragonRafale : ModItem
+	{
+		public override void SetDefaults()
+		{
 
-        item.damage = 236;
-        item.ranged = true;
-        item.width = 50;
-        item.maxStack = 1;
-        item.height = 30;
-        item.useTime = 10;
-        item.useAnimation = 15;
-        //item.shoot = mod.ProjectileType("DragonLaser");
-        item.shoot = 20;
+			item.damage = 236;
+			item.ranged = true;
+			item.width = 50;
+			item.maxStack = 1;
+			item.height = 30;
+			item.useTime = 10;
+			item.useAnimation = 15;
+			//item.shoot = mod.ProjectileType("DragonLaser");
+			item.shoot = 20;
 
-        item.useAmmo = AmmoID.Bullet;
-        item.shootSpeed = 15f; 
-        item.useStyle = 5;
-        item.knockBack = 4;
-        item.value = 31000;;
-        item.rare = 11;
-        item.UseSound = SoundID.Item11;
-        item.autoReuse = false;
-    }
+			item.useAmmo = AmmoID.Bullet;
+			item.shootSpeed = 15f;
+			item.useStyle = 5;
+			item.knockBack = 4;
+			item.value = 31000; ;
+			item.rare = 11;
+			item.UseSound = SoundID.Item11;
+			item.autoReuse = false;
+		}
 
-    public override void SetStaticDefaults()
-    {
-      DisplayName.SetDefault("Dragon Rafale");
-      Tooltip.SetDefault("Two round burst");
-    }
+		public override void SetStaticDefaults()
+		{
+			DisplayName.SetDefault("Dragon Rafale");
+			Tooltip.SetDefault("Two round burst");
+		}
 
 
-        public override Vector2? HoldoutOffset()
-        {
-            return new Vector2(-10, -4);
-        }    
+		public override Vector2? HoldoutOffset()
+		{
+			return new Vector2(-10, -4);
+		}
 
 		public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
 		{
@@ -58,5 +59,6 @@ public class DragonRafale : ModItem
 			recipe.AddTile(412);
 			recipe.SetResult(this);
 			recipe.AddRecipe();
-		}    
-}}
+		}
+	}
+}

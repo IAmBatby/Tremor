@@ -25,11 +25,11 @@ namespace Tremor.Items
 			item.mountType = mod.MountType("FlyingDutchman");
 		}
 
-    public override void SetStaticDefaults()
-    {
-      DisplayName.SetDefault("Pirate Flag");
-      Tooltip.SetDefault("Summons a rideable Flying Dutchman");
-    }
+		public override void SetStaticDefaults()
+		{
+			DisplayName.SetDefault("Pirate Flag");
+			Tooltip.SetDefault("Summons a rideable Flying Dutchman");
+		}
 
 	}
 }

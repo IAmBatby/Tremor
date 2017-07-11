@@ -16,7 +16,7 @@ namespace Tremor.Buffs
 
 		public override void Update(Player player, ref int buffIndex)
 		{
-        player.findTreasure = true;
+			player.findTreasure = true;
 		}
 	}
 }

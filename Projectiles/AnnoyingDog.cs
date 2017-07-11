@@ -14,16 +14,16 @@ namespace Tremor.Projectiles
 
 			aiType = ProjectileID.Bunny;
 			Main.projFrames[projectile.type] = 8;
-                        projectile.width = 46;
-                        projectile.height = 38;
+			projectile.width = 46;
+			projectile.height = 38;
 			Main.projPet[projectile.type] = true;
 		}
 
-    public override void SetStaticDefaults()
-    {
-      DisplayName.SetDefault("Annoying Dog");
-       
-    }
+		public override void SetStaticDefaults()
+		{
+			DisplayName.SetDefault("Annoying Dog");
+
+		}
 
 
 		public override bool PreAI()

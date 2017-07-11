@@ -16,10 +16,10 @@ namespace Tremor.Invasion
 			DisplayName.SetDefault("Paradox Crystal");
 			Main.npcFrameCount[npc.type] = 5;
 		}
- 
+
 		public override void SetDefaults()
 		{
-            animationType = 523;
+			animationType = 523;
 			npc.npcSlots = 0.3f;
 			npc.damage = 150;
 			npc.width = 36;
@@ -35,31 +35,31 @@ namespace Tremor.Invasion
 			npc.DeathSound = SoundID.NPCDeath1;
 		}
 
-        public override bool PreAI()
-        {
-            bool expertMode = Main.expertMode;
-            npc.TargetClosest(true);
-            Vector2 direction = Main.player[npc.target].Center - npc.Center;
-            direction.Normalize();
-            direction *= 9f;
-            npc.rotation = 0f;
-            Player player = Main.player[npc.target];
-            NPC parent = Main.npc[NPC.FindFirstNPC(mod.NPCType("Titan"))];
-            double deg = (double)npc.ai[1] / 2;
-            double rad = deg * (Math.PI / 180); 
-            double dist = 250; 
-            npc.position.X = parent.Center.X - (int)(Math.Cos(rad) * dist) - npc.width / 2;
-            npc.position.Y = parent.Center.Y - (int)(Math.Sin(rad) * dist) - npc.height / 2;
-            npc.ai[1] += 2f;
-            return false;
-        }
+		public override bool PreAI()
+		{
+			bool expertMode = Main.expertMode;
+			npc.TargetClosest(true);
+			Vector2 direction = Main.player[npc.target].Center - npc.Center;
+			direction.Normalize();
+			direction *= 9f;
+			npc.rotation = 0f;
+			Player player = Main.player[npc.target];
+			NPC parent = Main.npc[NPC.FindFirstNPC(mod.NPCType("Titan"))];
+			double deg = (double)npc.ai[1] / 2;
+			double rad = deg * (Math.PI / 180);
+			double dist = 250;
+			npc.position.X = parent.Center.X - (int)(Math.Cos(rad) * dist) - npc.width / 2;
+			npc.position.Y = parent.Center.Y - (int)(Math.Sin(rad) * dist) - npc.height / 2;
+			npc.ai[1] += 2f;
+			return false;
+		}
 
-        public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
+		public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
 		{
 			npc.lifeMax = (int)(npc.lifeMax * 0.55f * bossLifeScale);
 			npc.damage = (int)(npc.damage * 0.75f);
 		}
-		
+
 		public override void HitEffect(int hitDirection, double damage)
 		{
 			for (int k = 0; k < 5; k++)
@@ -68,9 +68,9 @@ namespace Tremor.Invasion
 			}
 		}
 
-        public override bool CheckActive()
-        {
-            return false;
-        }
-    }
+		public override bool CheckActive()
+		{
+			return false;
+		}
+	}
 }

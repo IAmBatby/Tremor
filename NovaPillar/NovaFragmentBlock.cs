@@ -17,18 +17,18 @@ namespace Tremor.NovaPillar
 			item.useAnimation = 15;
 			item.useTime = 10;
 			item.useStyle = 1;
-                        item.rare = 0;
+			item.rare = 0;
 			item.consumable = true;
 			item.createTile = mod.TileType("NovaBlock");
 		}
 
-    public override void SetStaticDefaults()
-    {
-      DisplayName.SetDefault("Nova Fragment Block");
-      Tooltip.SetDefault("");
-    }
+		public override void SetStaticDefaults()
+		{
+			DisplayName.SetDefault("Nova Fragment Block");
+			Tooltip.SetDefault("");
+		}
 
-		
+
 		public override void AddRecipes()
 		{
 			var recipe = new ModRecipe(mod);

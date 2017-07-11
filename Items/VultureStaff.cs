@@ -32,11 +32,11 @@ namespace Tremor.Items
 			item.buffTime = 3600;
 		}
 
-    public override void SetStaticDefaults()
-    {
-      DisplayName.SetDefault("Vulture Staff");
-      Tooltip.SetDefault("Summons a vulture to fight for you.");
-    }
+		public override void SetStaticDefaults()
+		{
+			DisplayName.SetDefault("Vulture Staff");
+			Tooltip.SetDefault("Summons a vulture to fight for you.");
+		}
 
 	}
 }

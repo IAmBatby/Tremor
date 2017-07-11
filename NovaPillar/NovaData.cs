@@ -9,7 +9,7 @@ namespace Tremor.NovaPillar
 	{
 		int NovaTowerIndex;
 
-		public NovaData(string passName) : base(passName) {}
+		public NovaData(string passName) : base(passName) { }
 
 		void UpdatePuritySpiritIndex()
 		{
@@ -18,12 +18,12 @@ namespace Tremor.NovaPillar
 			{
 				return;
 			}
-            NovaTowerIndex = -1;
+			NovaTowerIndex = -1;
 			for (int i = 0; i < Main.npc.Length; i++)
 			{
 				if (Main.npc[i].active && Main.npc[i].type == NovaTowerType)
 				{
-                    NovaTowerIndex = i;
+					NovaTowerIndex = i;
 					break;
 				}
 			}

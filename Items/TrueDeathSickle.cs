@@ -20,7 +20,7 @@ namespace Tremor.Items
 			item.channel = true;
 			item.noUseGraphic = true;
 			item.noMelee = true;
-                        item.useTurn = true;
+			item.useTurn = true;
 			item.useStyle = 100;
 			item.knockBack = 8f;
 			item.value = Item.sellPrice(0, 10, 0, 0);
@@ -30,11 +30,11 @@ namespace Tremor.Items
 			item.shootSpeed = 0f;
 		}
 
-    public override void SetStaticDefaults()
-    {
-      DisplayName.SetDefault("True Death Sickle");
-      Tooltip.SetDefault("");
-    }
+		public override void SetStaticDefaults()
+		{
+			DisplayName.SetDefault("True Death Sickle");
+			Tooltip.SetDefault("");
+		}
 
 
 		public override bool UseItemFrame(Player player)
@@ -43,15 +43,15 @@ namespace Tremor.Items
 			return true;
 		}
 
-        public override void AddRecipes()
-        {
-            ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(1327);
-            recipe.AddIngredient(1570);
-            recipe.AddIngredient(548, 10);
-            recipe.AddTile(TileID.MythrilAnvil);
-            recipe.SetResult(this, 1);
-            recipe.AddRecipe();
-        }
-    }
+		public override void AddRecipes()
+		{
+			ModRecipe recipe = new ModRecipe(mod);
+			recipe.AddIngredient(1327);
+			recipe.AddIngredient(1570);
+			recipe.AddIngredient(548, 10);
+			recipe.AddTile(TileID.MythrilAnvil);
+			recipe.SetResult(this, 1);
+			recipe.AddRecipe();
+		}
+	}
 }

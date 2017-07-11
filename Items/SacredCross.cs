@@ -32,21 +32,21 @@ namespace Tremor.Items
 			item.shootSpeed = 15f;
 		}
 
-    public override void SetStaticDefaults()
-    {
-      DisplayName.SetDefault("Sacred Cross");
-      Tooltip.SetDefault("Shoots magical crosses that heal you");
-    }
+		public override void SetStaticDefaults()
+		{
+			DisplayName.SetDefault("Sacred Cross");
+			Tooltip.SetDefault("Shoots magical crosses that heal you");
+		}
 
 
 		public override void AddRecipes()
 		{
 			ModRecipe recipe = new ModRecipe(mod);
-        recipe.AddIngredient(null, "WoodenCross", 1);
-        recipe.AddIngredient(null, "Opal", 3);
+			recipe.AddIngredient(null, "WoodenCross", 1);
+			recipe.AddIngredient(null, "Opal", 3);
 			recipe.AddIngredient(ItemID.HallowedBar, 12);
 			recipe.SetResult(this);
-	recipe.AddTile(134);
+			recipe.AddTile(134);
 			recipe.AddRecipe();
 		}
 	}

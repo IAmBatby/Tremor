@@ -4,7 +4,7 @@ using Terraria.ModLoader;
 
 namespace Tremor.Buffs
 {
-	public class ExtendedManaBooster: ModBuff
+	public class ExtendedManaBooster : ModBuff
 	{
 		public override void SetDefaults()
 		{
@@ -14,12 +14,12 @@ namespace Tremor.Buffs
 
 		public override void Update(Player player, ref int buffIndex)
 		{
-                if(player.buffTime[buffIndex] == 0)
-                  {
-                  player.statMana += 200;
-                  player.ManaEffect(200);
-                  player.AddBuff(mod.BuffType("ExtendedManaBooster"), 2700);
-                  }
+			if (player.buffTime[buffIndex] == 0)
+			{
+				player.statMana += 200;
+				player.ManaEffect(200);
+				player.AddBuff(mod.BuffType("ExtendedManaBooster"), 2700);
+			}
 		}
 	}
 }

@@ -16,7 +16,7 @@ namespace Tremor.Buffs
 
 		public override void Update(Player player, ref int buffIndex)
 		{
-	                player.GetModPlayer<MPlayer>(mod).alchemistCrit += 20;
+			player.GetModPlayer<MPlayer>(mod).alchemistCrit += 20;
 			player.buffTime[buffIndex] = 18000;
 			TremorPlayer modPlayer = (TremorPlayer)player.GetModPlayer(mod, "TremorPlayer");
 			modPlayer.gurdPet = true;

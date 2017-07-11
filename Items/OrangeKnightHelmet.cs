@@ -7,7 +7,7 @@ using Terraria.ModLoader;
 
 namespace Tremor.Items
 {
-[AutoloadEquip(EquipType.Head)]
+	[AutoloadEquip(EquipType.Head)]
 	public class OrangeKnightHelmet : ModItem
 	{
 
@@ -21,21 +21,21 @@ namespace Tremor.Items
 			item.vanity = true;
 		}
 
-    public override void SetStaticDefaults()
-    {
-      DisplayName.SetDefault("Orange Knight Helmet");
-      Tooltip.SetDefault("");
-    }
+		public override void SetStaticDefaults()
+		{
+			DisplayName.SetDefault("Orange Knight Helmet");
+			Tooltip.SetDefault("");
+		}
 
 
-    public override void AddRecipes()
-    {
-        ModRecipe recipe = new ModRecipe(mod);
-        recipe.AddIngredient(null, "GrayKnightHelmet", 3);
-        recipe.AddIngredient(ItemID.Amber, 1);
-        recipe.SetResult(this);
-        recipe.AddTile(16);
-        recipe.AddRecipe();
-    }
+		public override void AddRecipes()
+		{
+			ModRecipe recipe = new ModRecipe(mod);
+			recipe.AddIngredient(null, "GrayKnightHelmet", 3);
+			recipe.AddIngredient(ItemID.Amber, 1);
+			recipe.SetResult(this);
+			recipe.AddTile(16);
+			recipe.AddRecipe();
+		}
 	}
 }

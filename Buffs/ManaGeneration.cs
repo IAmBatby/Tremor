@@ -16,7 +16,7 @@ namespace Tremor.Buffs
 
 		public override void Update(Player player, ref int buffIndex)
 		{
-       player.manaCost  -= 0.70f;	
+			player.manaCost -= 0.70f;
 		}
 	}
 }

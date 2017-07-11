@@ -26,20 +26,20 @@ namespace Tremor.Items
 			item.ammo = item.type;
 		}
 
-    public override void SetStaticDefaults()
-    {
-      DisplayName.SetDefault("Popcorn");
-      Tooltip.SetDefault("");
-    }
+		public override void SetStaticDefaults()
+		{
+			DisplayName.SetDefault("Popcorn");
+			Tooltip.SetDefault("");
+		}
 
 
-    public override void AddRecipes()
-    {
-        ModRecipe recipe = new ModRecipe(mod);
-        recipe.AddIngredient(null, "Corn", 1);
-        recipe.SetResult(this, 25);
-        recipe.AddTile(17);
-        recipe.AddRecipe();
-    }
+		public override void AddRecipes()
+		{
+			ModRecipe recipe = new ModRecipe(mod);
+			recipe.AddIngredient(null, "Corn", 1);
+			recipe.SetResult(this, 25);
+			recipe.AddTile(17);
+			recipe.AddRecipe();
+		}
 	}
 }

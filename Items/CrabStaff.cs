@@ -29,43 +29,43 @@ namespace Tremor.Items
 			item.shootSpeed = 1f;
 			item.buffType = mod.BuffType("CrabBuff");
 			item.buffTime = 3600;
-		}  
+		}
 
-    public override void SetStaticDefaults()
-    {
-      DisplayName.SetDefault("Crab Staff");
-      Tooltip.SetDefault("Summons a little crab to fight for you.");
-    }
+		public override void SetStaticDefaults()
+		{
+			DisplayName.SetDefault("Crab Staff");
+			Tooltip.SetDefault("Summons a little crab to fight for you.");
+		}
 
 
 		public override bool AltFunctionUse(Player player)
 		{
 			return true;
 		}
-		
+
 		public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
 		{
 			return player.altFunctionUse != 2;
 		}
-		
+
 		public override bool UseItem(Player player)
 		{
-			if(player.altFunctionUse == 2)
+			if (player.altFunctionUse == 2)
 			{
 				player.MinionNPCTargetAim();
 			}
 			return base.UseItem(player);
 		}
-    public override void AddRecipes()
-    {
-        ModRecipe recipe = new ModRecipe(mod);
-        recipe.AddIngredient(ItemID.Coral, 16);
-        recipe.AddIngredient(null, "SeaFragment", 5);
-        recipe.AddIngredient(ItemID.Seashell, 2);
-        recipe.AddIngredient(ItemID.Wood, 8);
-        recipe.SetResult(this);
-        recipe.AddTile(18);
-        recipe.AddRecipe();
-    }
+		public override void AddRecipes()
+		{
+			ModRecipe recipe = new ModRecipe(mod);
+			recipe.AddIngredient(ItemID.Coral, 16);
+			recipe.AddIngredient(null, "SeaFragment", 5);
+			recipe.AddIngredient(ItemID.Seashell, 2);
+			recipe.AddIngredient(ItemID.Wood, 8);
+			recipe.SetResult(this);
+			recipe.AddTile(18);
+			recipe.AddRecipe();
+		}
 	}
 }

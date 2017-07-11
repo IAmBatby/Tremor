@@ -22,43 +22,43 @@ namespace Tremor.Projectiles
 			projectile.penetrate = 1;
 			projectile.timeLeft = 600;
 			projectile.ignoreWater = true;
-                        projectile.tileCollide = false;
+			projectile.tileCollide = false;
 		}
 
-    public override void SetStaticDefaults()
-    {
-      DisplayName.SetDefault("Flask Wasp");
-       
-    }
+		public override void SetStaticDefaults()
+		{
+			DisplayName.SetDefault("Flask Wasp");
+
+		}
 
 
-        public override Color? GetAlpha(Color lightColor)
-        {
-            return Color.White;
-        }
+		public override Color? GetAlpha(Color lightColor)
+		{
+			return Color.White;
+		}
 
-        public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
-    {
-            target.AddBuff(BuffID.Poisoned, 80, false);
-    }
+		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		{
+			target.AddBuff(BuffID.Poisoned, 80, false);
+		}
 
-        public override void AI()
-        {
-            projectile.spriteDirection = projectile.direction;
-            projectile.rotation = 0f;
-        }
+		public override void AI()
+		{
+			projectile.spriteDirection = projectile.direction;
+			projectile.rotation = 0f;
+		}
 
 		public override bool OnTileCollide(Vector2 oldVelocity)
 		{
-				if (projectile.velocity.X != oldVelocity.X)
-				{
-					projectile.velocity.X = oldVelocity.X;
-				}
-				if (projectile.velocity.Y != oldVelocity.Y)
-				{
-					projectile.velocity.Y = oldVelocity.Y;
-				}
-            return false;
+			if (projectile.velocity.X != oldVelocity.X)
+			{
+				projectile.velocity.X = oldVelocity.X;
+			}
+			if (projectile.velocity.Y != oldVelocity.Y)
+			{
+				projectile.velocity.Y = oldVelocity.Y;
+			}
+			return false;
 		}
 	}
 }

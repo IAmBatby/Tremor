@@ -16,11 +16,11 @@ namespace Tremor.Buffs
 
 		public override void Update(Player player, ref int buffIndex)
 		{
-                        player.meleeCrit += 25;
-                        player.rangedCrit += 25;
-                        player.magicCrit += 25;
-                        player.thrownCrit += 25;
-                        player.GetModPlayer<MPlayer>(mod).alchemistCrit += 25;
+			player.meleeCrit += 25;
+			player.rangedCrit += 25;
+			player.magicCrit += 25;
+			player.thrownCrit += 25;
+			player.GetModPlayer<MPlayer>(mod).alchemistCrit += 25;
 		}
 	}
 }

@@ -26,11 +26,11 @@ namespace Tremor.Items
 			item.ammo = item.type;
 		}
 
-    public override void SetStaticDefaults()
-    {
-      DisplayName.SetDefault("SBC Cannonball");
-      Tooltip.SetDefault("");
-    }
+		public override void SetStaticDefaults()
+		{
+			DisplayName.SetDefault("SBC Cannonball");
+			Tooltip.SetDefault("");
+		}
 
 	}
 }

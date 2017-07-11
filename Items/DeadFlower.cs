@@ -31,23 +31,23 @@ namespace Tremor.Items
 			item.shootSpeed = 15f;
 		}
 
-    public override void SetStaticDefaults()
-    {
-      DisplayName.SetDefault("Dead Flower");
-      Tooltip.SetDefault("");
-    }
+		public override void SetStaticDefaults()
+		{
+			DisplayName.SetDefault("Dead Flower");
+			Tooltip.SetDefault("");
+		}
 
 
-    public override void AddRecipes()
-    {
-        ModRecipe recipe = new ModRecipe(mod);
-        recipe.AddIngredient(ItemID.Wood, 12);
-        recipe.AddIngredient(null, "UntreatedFlesh", 5);
-        recipe.AddIngredient(ItemID.Lens, 2);
-        recipe.AddIngredient(ItemID.FallenStar, 1);
-        recipe.SetResult(this);
-        recipe.AddTile(null, "FleshWorkstationTile");
-        recipe.AddRecipe();
-    }
+		public override void AddRecipes()
+		{
+			ModRecipe recipe = new ModRecipe(mod);
+			recipe.AddIngredient(ItemID.Wood, 12);
+			recipe.AddIngredient(null, "UntreatedFlesh", 5);
+			recipe.AddIngredient(ItemID.Lens, 2);
+			recipe.AddIngredient(ItemID.FallenStar, 1);
+			recipe.SetResult(this);
+			recipe.AddTile(null, "FleshWorkstationTile");
+			recipe.AddRecipe();
+		}
 	}
 }

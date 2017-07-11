@@ -4,23 +4,25 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace Tremor.Items {
-public class AncientTechnology : ModItem
+namespace Tremor.Items
 {
-    public override void SetDefaults()
-    {
+	public class AncientTechnology : ModItem
+	{
+		public override void SetDefaults()
+		{
 
-        item.height = 16;
-        item.maxStack = 20;
-        item.value = 1000000;
-        item.rare = 8;
-    }
+			item.height = 16;
+			item.maxStack = 20;
+			item.value = 1000000;
+			item.rare = 8;
+		}
 
-    public override void SetStaticDefaults()
-    {
-      DisplayName.SetDefault("Ancient Technology");
-      Tooltip.SetDefault("");
-    }
+		public override void SetStaticDefaults()
+		{
+			DisplayName.SetDefault("Ancient Technology");
+			Tooltip.SetDefault("");
+		}
 
 
-}}
+	}
+}

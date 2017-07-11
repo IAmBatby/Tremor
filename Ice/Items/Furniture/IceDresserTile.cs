@@ -140,7 +140,7 @@ namespace Tremor.Ice.Items.Furniture
 			if (chestIndex < 0)
 			{
 				player.showItemIconText = "Glacier Wood Dresser";
-            }
+			}
 			else
 			{
 				if (Main.chest[chestIndex].name != "")
@@ -182,7 +182,7 @@ namespace Tremor.Ice.Items.Furniture
 			if (num138 < 0)
 			{
 				player.showItemIconText = "Glacier Wood Dresser";
-            }
+			}
 			else
 			{
 				if (Main.chest[num138].name != "")

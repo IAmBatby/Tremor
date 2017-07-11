@@ -4,26 +4,29 @@ using System.Collections.Generic;
 using Terraria;
 using Terraria.ModLoader;
 
-namespace Tremor.Items { [AutoloadEquip(EquipType.Head)]
-public class VultureKingMask : ModItem
+namespace Tremor.Items
 {
+	[AutoloadEquip(EquipType.Head)]
+	public class VultureKingMask : ModItem
+	{
 
 
 
-    public override void SetDefaults()
-    {
+		public override void SetDefaults()
+		{
 
-        item.width = 30;
-        item.height = 22;
-        item.value = 20000;
-        item.rare = 0;
-        item.vanity = true;
-    }
+			item.width = 30;
+			item.height = 22;
+			item.value = 20000;
+			item.rare = 0;
+			item.vanity = true;
+		}
 
-    public override void SetStaticDefaults()
-    {
-      DisplayName.SetDefault("Rukh Mask");
-      Tooltip.SetDefault("");
-    }
+		public override void SetStaticDefaults()
+		{
+			DisplayName.SetDefault("Rukh Mask");
+			Tooltip.SetDefault("");
+		}
 
-}}
+	}
+}

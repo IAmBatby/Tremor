@@ -12,24 +12,24 @@ namespace Tremor.Items
 		{
 
 			item.width = 12;
-                        item.value = 10000;
+			item.value = 10000;
 			item.height = 12;
 			item.maxStack = 999;
 			item.useTurn = true;
 			item.autoReuse = true;
 			item.useAnimation = 15;
 			item.useTime = 10;
-                                   item.rare = 11;
+			item.rare = 11;
 			item.useStyle = 1;
 			item.consumable = true;
 			item.createTile = mod.TileType("CometiteOreTile");
 		}
 
-    public override void SetStaticDefaults()
-    {
-      DisplayName.SetDefault("Cometite Ore");
-      Tooltip.SetDefault("'Ore from the depths of space'");
-    }
+		public override void SetStaticDefaults()
+		{
+			DisplayName.SetDefault("Cometite Ore");
+			Tooltip.SetDefault("'Ore from the depths of space'");
+		}
 
 	}
 }

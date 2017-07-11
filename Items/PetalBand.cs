@@ -22,11 +22,11 @@ namespace Tremor.Items
 			item.consumable = true;
 		}
 
-    public override void SetStaticDefaults()
-    {
-      DisplayName.SetDefault("Petal Band");
-      Tooltip.SetDefault("Summons the Plantera");
-    }
+		public override void SetStaticDefaults()
+		{
+			DisplayName.SetDefault("Petal Band");
+			Tooltip.SetDefault("Summons the Plantera");
+		}
 
 
 		public override bool CanUseItem(Player player)
@@ -41,16 +41,16 @@ namespace Tremor.Items
 			return true;
 		}
 
-    public override void AddRecipes()
-    {
-        ModRecipe recipe = new ModRecipe(mod);
-        recipe.AddIngredient(null, "EssenseofJungle", 1);
-        recipe.AddIngredient(ItemID.ChlorophyteBar, 5);
-        recipe.AddIngredient(ItemID.Vine, 5);
-        recipe.AddIngredient(ItemID.Stinger, 5);
-        recipe.SetResult(this);
-	recipe.AddTile(26);
-        recipe.AddRecipe();
-    }
+		public override void AddRecipes()
+		{
+			ModRecipe recipe = new ModRecipe(mod);
+			recipe.AddIngredient(null, "EssenseofJungle", 1);
+			recipe.AddIngredient(ItemID.ChlorophyteBar, 5);
+			recipe.AddIngredient(ItemID.Vine, 5);
+			recipe.AddIngredient(ItemID.Stinger, 5);
+			recipe.SetResult(this);
+			recipe.AddTile(26);
+			recipe.AddRecipe();
+		}
 	}
 }

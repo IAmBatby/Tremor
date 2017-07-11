@@ -5,8 +5,8 @@ using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace Tremor.Items
-{ 
-[AutoloadEquip(EquipType.Body)]
+{
+	[AutoloadEquip(EquipType.Body)]
 	public class CursedKnightBreastplate : ModItem
 	{
 
@@ -20,11 +20,11 @@ namespace Tremor.Items
 			item.rare = 9;
 		}
 
-    public override void SetStaticDefaults()
-    {
-      DisplayName.SetDefault("Cursed Knight Breastplate");
-      Tooltip.SetDefault("'Great for impersonating devs!'");
-    }
+		public override void SetStaticDefaults()
+		{
+			DisplayName.SetDefault("Cursed Knight Breastplate");
+			Tooltip.SetDefault("'Great for impersonating devs!'");
+		}
 
 	}
 }

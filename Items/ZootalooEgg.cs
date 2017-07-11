@@ -13,18 +13,18 @@ namespace Tremor.Items
 		{
 			item.CloneDefaults(ItemID.Carrot);
 
-                        item.useTime = 25;
-                        item.useAnimation = 25;
+			item.useTime = 25;
+			item.useAnimation = 25;
 
 			item.shoot = mod.ProjectileType("ZootalooPet");
 			item.buffType = mod.BuffType("ZootalooBuff");
 		}
 
-    public override void SetStaticDefaults()
-    {
-      DisplayName.SetDefault("Zootaloo Egg");
-      Tooltip.SetDefault("Summons an zootaloo junior");
-    }
+		public override void SetStaticDefaults()
+		{
+			DisplayName.SetDefault("Zootaloo Egg");
+			Tooltip.SetDefault("Summons an zootaloo junior");
+		}
 
 
 		public override void UseStyle(Player player)

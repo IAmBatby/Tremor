@@ -10,7 +10,7 @@ namespace Tremor.Buffs
 		{
 			DisplayName.SetDefault("Barrier Recharging");
 			Description.SetDefault("Magic barrier can't appear");
-                        Main.debuff[Type] = true;
+			Main.debuff[Type] = true;
 		}
 	}
 }

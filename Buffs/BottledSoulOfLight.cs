@@ -16,7 +16,7 @@ namespace Tremor.Buffs
 
 		public override void Update(Player player, ref int buffIndex)
 		{
-        player.moveSpeed += 0.2f;
+			player.moveSpeed += 0.2f;
 		}
 	}
 }

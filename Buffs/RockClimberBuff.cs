@@ -15,8 +15,8 @@ namespace Tremor.Buffs
 
 		public override void Update(Player player, ref int buffIndex)
 		{
-       player.spikedBoots = 1;
-       player.spikedBoots = 2;
+			player.spikedBoots = 1;
+			player.spikedBoots = 2;
 		}
 	}
 }

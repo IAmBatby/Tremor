@@ -25,11 +25,11 @@ namespace Tremor.Items
 			item.accessory = true;
 		}
 
-    public override void SetStaticDefaults()
-    {
-      DisplayName.SetDefault("Music Box (Cog Lord)");
-      Tooltip.SetDefault("");
-    }
+		public override void SetStaticDefaults()
+		{
+			DisplayName.SetDefault("Music Box (Cog Lord)");
+			Tooltip.SetDefault("");
+		}
 
 	}
 }

@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using Terraria;
 using Terraria.ModLoader;
 
-namespace Tremor.Items { [AutoloadEquip(EquipType.Legs)]
+namespace Tremor.Items
+{
+	[AutoloadEquip(EquipType.Legs)]
 	public class ZerokkLegs : ModItem
 	{
 
@@ -17,11 +19,11 @@ namespace Tremor.Items { [AutoloadEquip(EquipType.Legs)]
 			item.rare = 9;
 		}
 
-    public override void SetStaticDefaults()
-    {
-      DisplayName.SetDefault("Zerokk's Leggings");
-      Tooltip.SetDefault("'Great for impersonating devs!'");
-    }
+		public override void SetStaticDefaults()
+		{
+			DisplayName.SetDefault("Zerokk's Leggings");
+			Tooltip.SetDefault("'Great for impersonating devs!'");
+		}
 
 	}
 }

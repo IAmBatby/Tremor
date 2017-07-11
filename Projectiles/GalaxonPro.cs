@@ -7,32 +7,32 @@ using Terraria.ModLoader;
 
 namespace Tremor.Projectiles
 {
-    public class GalaxonPro : ModProjectile
-    {
-    	
-        public override void SetDefaults()
-        {
+	public class GalaxonPro : ModProjectile
+	{
 
-            projectile.width = 10;
-            projectile.height = 10;
-            projectile.friendly = true;
-            projectile.aiStyle = 1;
-            projectile.penetrate = -1;
-            projectile.extraUpdates = 5;
-            projectile.tileCollide = false;
-            projectile.magic = true;
-        }
+		public override void SetDefaults()
+		{
 
-    public override void SetStaticDefaults()
-    {
-      DisplayName.SetDefault("GalaxonPro");
-       
-    }
+			projectile.width = 10;
+			projectile.height = 10;
+			projectile.friendly = true;
+			projectile.aiStyle = 1;
+			projectile.penetrate = -1;
+			projectile.extraUpdates = 5;
+			projectile.tileCollide = false;
+			projectile.magic = true;
+		}
+
+		public override void SetStaticDefaults()
+		{
+			DisplayName.SetDefault("GalaxonPro");
+
+		}
 
 
-        public override void AI()
-        {
-        	if (projectile.ai[1] != -1f && projectile.position.Y > projectile.ai[1])
+		public override void AI()
+		{
+			if (projectile.ai[1] != -1f && projectile.position.Y > projectile.ai[1])
 			{
 				projectile.tileCollide = true;
 			}
@@ -101,12 +101,12 @@ namespace Tremor.Projectiles
 					return;
 				}
 			}
-        }
+		}
 
-        public override void Kill(int timeLeft)
-        {
-        	Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 14);
-            bool flag = WorldGen.SolidTile(Framing.GetTileSafely((int)projectile.position.X / 16, (int)projectile.position.Y / 16));
+		public override void Kill(int timeLeft)
+		{
+			Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 14);
+			bool flag = WorldGen.SolidTile(Framing.GetTileSafely((int)projectile.position.X / 16, (int)projectile.position.Y / 16));
 			for (int m = 0; m < 4; m++)
 			{
 				Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, 59, 0f, 0f, 100, default(Color), 1.5f);
@@ -128,7 +128,7 @@ namespace Tremor.Projectiles
 					Main.dust[num10].noLight = true;
 				}
 			}
-        }
+		}
 
-    }
+	}
 }

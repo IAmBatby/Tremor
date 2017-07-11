@@ -15,11 +15,11 @@ namespace Tremor.Items
 			item.rare = 4;
 		}
 
-    public override void SetStaticDefaults()
-    {
-      DisplayName.SetDefault("Ruin Key");
-      Tooltip.SetDefault("Opens Ruin Chest once");
-    }
+		public override void SetStaticDefaults()
+		{
+			DisplayName.SetDefault("Ruin Key");
+			Tooltip.SetDefault("Opens Ruin Chest once");
+		}
 
 	}
 }

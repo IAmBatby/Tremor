@@ -19,11 +19,11 @@ namespace Tremor.Invasion
 			bossBagNPC = mod.NPCType("Titan");
 		}
 
-    public override void SetStaticDefaults()
-    {
-      DisplayName.SetDefault("Treasure Bag");
-      Tooltip.SetDefault("Right click to open");
-    }
+		public override void SetStaticDefaults()
+		{
+			DisplayName.SetDefault("Treasure Bag");
+			Tooltip.SetDefault("Right click to open");
+		}
 
 
 		public override bool CanRightClick()
@@ -41,21 +41,21 @@ namespace Tremor.Invasion
 			if (Main.rand.Next(20) == 0)
 			{
 				player.QuickSpawnItem(mod.ItemType("VioleumWings"));
-			}			
-        switch (Main.rand.Next(4)) 
-        { 
-             case 0: 
-             player.QuickSpawnItem(mod.ItemType("TheEtherealm")); 
-             break; 
-             case 1: 
-             player.QuickSpawnItem(mod.ItemType("RocketWand")); 
-             break; 
-             case 2: 
-             player.QuickSpawnItem(mod.ItemType("SoulFlames")); 
-             break; 			 
-        }
+			}
+			switch (Main.rand.Next(4))
+			{
+				case 0:
+					player.QuickSpawnItem(mod.ItemType("TheEtherealm"));
+					break;
+				case 1:
+					player.QuickSpawnItem(mod.ItemType("RocketWand"));
+					break;
+				case 2:
+					player.QuickSpawnItem(mod.ItemType("SoulFlames"));
+					break;
+			}
 			player.QuickSpawnItem(mod.ItemType("HealingPotion"), Main.rand.Next(7, 20));
-            player.QuickSpawnItem(mod.ItemType("TimeTissue"), Main.rand.Next(5, 15));
+			player.QuickSpawnItem(mod.ItemType("TimeTissue"), Main.rand.Next(5, 15));
 			player.QuickSpawnItem(mod.ItemType("Relayx"));
 			player.QuickSpawnItem(mod.ItemType("ClockofTime"));
 		}

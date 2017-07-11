@@ -5,25 +5,26 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace Tremor.Projectiles {
-public class BigPlague : ModProjectile
+namespace Tremor.Projectiles
 {
-    public override void SetDefaults()
-    {
+	public class BigPlague : ModProjectile
+	{
+		public override void SetDefaults()
+		{
 			projectile.CloneDefaults(566);
 
 			aiType = 566;
-                        projectile.tileCollide = false;
-            Main.projFrames[projectile.type] = 4;
-            projectile.width = 40;
-            projectile.height = 32;
-    }
+			projectile.tileCollide = false;
+			Main.projFrames[projectile.type] = 4;
+			projectile.width = 40;
+			projectile.height = 32;
+		}
 
-    public override void SetStaticDefaults()
-    {
-      DisplayName.SetDefault("BigPlague");
-       
-    }
+		public override void SetStaticDefaults()
+		{
+			DisplayName.SetDefault("BigPlague");
+
+		}
 
 
 		public override Color? GetAlpha(Color lightColor)
@@ -31,13 +32,13 @@ public class BigPlague : ModProjectile
 			return Color.White;
 		}
 
-        public override void Kill(int timeLeft)
-        {
-                    int ses=Projectile.NewProjectile(projectile.position.X, projectile.position.Y, 0, 0, mod.ProjectileType("PlagueBlast"), projectile.damage * 2, 0.7f, projectile.owner);
-                    Main.projectile[ses].scale = projectile.scale;
-        }
-        public override void AI()
-        {				
+		public override void Kill(int timeLeft)
+		{
+			int ses = Projectile.NewProjectile(projectile.position.X, projectile.position.Y, 0, 0, mod.ProjectileType("PlagueBlast"), projectile.damage * 2, 0.7f, projectile.owner);
+			Main.projectile[ses].scale = projectile.scale;
+		}
+		public override void AI()
+		{
 			projectile.frameCounter++;
 			if (projectile.frameCounter > 2)
 			{
@@ -45,9 +46,10 @@ public class BigPlague : ModProjectile
 				projectile.frameCounter = 0;
 			}
 			if (projectile.frame >= 4)
-                        {projectile.frame = 0;}
+			{ projectile.frame = 0; }
 
 
 
-        }
-}}
+		}
+	}
+}

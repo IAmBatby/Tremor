@@ -24,11 +24,11 @@ namespace Tremor.Invasion
 			item.accessory = true;
 		}
 
-    public override void SetStaticDefaults()
-    {
-      DisplayName.SetDefault("Music Box (Paradox Cohort)");
-      Tooltip.SetDefault("");
-    }
+		public override void SetStaticDefaults()
+		{
+			DisplayName.SetDefault("Music Box (Paradox Cohort)");
+			Tooltip.SetDefault("");
+		}
 
 	}
 }

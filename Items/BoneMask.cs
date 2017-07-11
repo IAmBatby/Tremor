@@ -5,24 +5,27 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace Tremor.Items { [AutoloadEquip(EquipType.Head)]
-public class BoneMask : ModItem
+namespace Tremor.Items
 {
+	[AutoloadEquip(EquipType.Head)]
+	public class BoneMask : ModItem
+	{
 
 
-    public override void SetDefaults()
-    {
+		public override void SetDefaults()
+		{
 
-        item.width = 26;
-        item.height = 24;
-        item.rare = 2;
-        item.vanity = true;
-    }
+			item.width = 26;
+			item.height = 24;
+			item.rare = 2;
+			item.vanity = true;
+		}
 
-    public override void SetStaticDefaults()
-    {
-      DisplayName.SetDefault("Bone Mask");
-      Tooltip.SetDefault("");
-    }
+		public override void SetStaticDefaults()
+		{
+			DisplayName.SetDefault("Bone Mask");
+			Tooltip.SetDefault("");
+		}
 
-}}
+	}
+}

@@ -33,14 +33,14 @@ namespace Tremor.Items
 			item.rare = 5;
 			item.shoot = mod.ProjectileType("CyberCutterPro");
 			item.shootSpeed = 5f;
-                        item.mana = 14;
+			item.mana = 14;
 		}
 
-    public override void SetStaticDefaults()
-    {
-      DisplayName.SetDefault("Cyber Cutter");
-      Tooltip.SetDefault("Casts a controllable saw");
-    }
+		public override void SetStaticDefaults()
+		{
+			DisplayName.SetDefault("Cyber Cutter");
+			Tooltip.SetDefault("Casts a controllable saw");
+		}
 
 
 		public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)

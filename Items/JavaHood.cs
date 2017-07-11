@@ -7,7 +7,7 @@ using Terraria.ModLoader;
 
 namespace Tremor.Items
 {
-[AutoloadEquip(EquipType.Head)]
+	[AutoloadEquip(EquipType.Head)]
 	public class JavaHood : ModItem
 	{
 
@@ -22,11 +22,11 @@ namespace Tremor.Items
 			item.vanity = true;
 		}
 
-    public override void SetStaticDefaults()
-    {
-      DisplayName.SetDefault("Java Hood");
-      Tooltip.SetDefault("");
-    }
+		public override void SetStaticDefaults()
+		{
+			DisplayName.SetDefault("Java Hood");
+			Tooltip.SetDefault("");
+		}
 
 	}
 }

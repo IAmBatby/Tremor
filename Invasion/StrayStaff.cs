@@ -7,9 +7,9 @@ using Terraria.ID;
 namespace Tremor.Invasion
 {
 	public class StrayStaff : ModItem
-    {
+	{
 
-        public override void SetDefaults()
+		public override void SetDefaults()
 		{
 
 			item.damage = 120;
@@ -31,26 +31,26 @@ namespace Tremor.Invasion
 			item.buffTime = 3600;
 		}
 
-    public override void SetStaticDefaults()
-    {
-      DisplayName.SetDefault("Stray Staff");
-      Tooltip.SetDefault("Summons a cyber stray to fight for you");
-    }
+		public override void SetStaticDefaults()
+		{
+			DisplayName.SetDefault("Stray Staff");
+			Tooltip.SetDefault("Summons a cyber stray to fight for you");
+		}
 
 
 		public override bool AltFunctionUse(Player player)
 		{
 			return true;
 		}
-		
+
 		public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
 		{
 			return player.altFunctionUse != 2;
 		}
-		
+
 		public override bool UseItem(Player player)
 		{
-			if(player.altFunctionUse == 2)
+			if (player.altFunctionUse == 2)
 			{
 				player.MinionNPCTargetAim();
 			}

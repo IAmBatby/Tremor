@@ -6,26 +6,28 @@ using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace Tremor.Items {
-public class Phantaplasm : ModItem
+namespace Tremor.Items
 {
-    public override void SetDefaults()
-    {
+	public class Phantaplasm : ModItem
+	{
+		public override void SetDefaults()
+		{
 
-        item.width = 36;
-        item.height = 52;
-        item.maxStack = 99;
-        item.value = 15000;
-        item.rare = 10;
-	ItemID.Sets.ItemNoGravity[item.type] = true;
-    }
+			item.width = 36;
+			item.height = 52;
+			item.maxStack = 99;
+			item.value = 15000;
+			item.rare = 10;
+			ItemID.Sets.ItemNoGravity[item.type] = true;
+		}
 
-    public override void SetStaticDefaults()
-    {
-      DisplayName.SetDefault("Alphaplasm");
-      Tooltip.SetDefault("");
-    }
+		public override void SetStaticDefaults()
+		{
+			DisplayName.SetDefault("Alphaplasm");
+			Tooltip.SetDefault("");
+		}
 
 
 
-}}
+	}
+}

@@ -17,18 +17,18 @@ namespace Tremor.Items
 			item.accessory = true;
 		}
 
-    public override void SetStaticDefaults()
-    {
-      DisplayName.SetDefault("Alchemist Emblem");
-      Tooltip.SetDefault("15% increased alchemic damage");
-    }
+		public override void SetStaticDefaults()
+		{
+			DisplayName.SetDefault("Alchemist Emblem");
+			Tooltip.SetDefault("15% increased alchemic damage");
+		}
 
-		
+
 		public override void UpdateAccessory(Player player, bool hideVisual)
 		{
-            player.GetModPlayer<MPlayer>(mod).alchemistDamage += 0.15f;
-        }
-		
+			player.GetModPlayer<MPlayer>(mod).alchemistDamage += 0.15f;
+		}
+
 		public override void AddRecipes()
 		{
 			var recipe = new ModRecipe(mod);

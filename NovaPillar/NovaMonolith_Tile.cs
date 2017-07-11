@@ -16,13 +16,13 @@ namespace Tremor.NovaPillar
 			TileObjectData.newTile.CopyFrom(TileObjectData.Style2xX);
 			TileObjectData.newTile.Height = 3;
 			TileObjectData.newTile.Origin = new Point16(1, 2);
-			TileObjectData.newTile.CoordinateHeights = new int[]{ 16, 16, 18 };
+			TileObjectData.newTile.CoordinateHeights = new int[] { 16, 16, 18 };
 			TileObjectData.addTile(Type);
 			AddMapEntry(new Color(75, 139, 166));
 			dustType = 1;
 			animationFrameHeight = 56;
 			disableSmartCursor = true;
-			adjTiles = new int[]{ TileID.LunarMonolith };
+			adjTiles = new int[] { TileID.LunarMonolith };
 		}
 
 		public override void KillMultiTile(int i, int j, int frameX, int frameY)

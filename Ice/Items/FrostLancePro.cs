@@ -5,19 +5,21 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace Tremor.Ice.Items {
-public class FrostLancePro : ModProjectile
+namespace Tremor.Ice.Items
 {
-    public override void SetDefaults()
-    {
+	public class FrostLancePro : ModProjectile
+	{
+		public override void SetDefaults()
+		{
 			projectile.CloneDefaults(66);
 			aiType = 66;
-    }
+		}
 
-    public override void SetStaticDefaults()
-    {
-      DisplayName.SetDefault("Frost Lance");
-    }
+		public override void SetStaticDefaults()
+		{
+			DisplayName.SetDefault("Frost Lance");
+		}
 
 
-}}
+	}
+}

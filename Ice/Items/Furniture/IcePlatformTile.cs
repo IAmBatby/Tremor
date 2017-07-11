@@ -18,7 +18,7 @@ namespace Tremor.Ice.Items.Furniture
 			Main.tileNoAttach[Type] = true;
 			Main.tileTable[Type] = true;
 			Main.tileLavaDeath[Type] = true;
-			TileObjectData.newTile.CoordinateHeights = new int[]{ 16 };
+			TileObjectData.newTile.CoordinateHeights = new int[] { 16 };
 			TileObjectData.newTile.CoordinateWidth = 16;
 			TileObjectData.newTile.CoordinatePadding = 2;
 			TileObjectData.newTile.StyleHorizontal = true;
@@ -30,7 +30,7 @@ namespace Tremor.Ice.Items.Furniture
 			AddToArray(ref TileID.Sets.RoomNeeds.CountsAsDoor);
 			AddMapEntry(new Color(87, 144, 165));
 			drop = mod.ItemType("IcePlatform");
-			adjTiles = new int[]{ TileID.Platforms };
+			adjTiles = new int[] { TileID.Platforms };
 			TileID.Sets.Platforms[Type] = true;
 		}
 

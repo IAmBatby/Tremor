@@ -15,14 +15,14 @@ namespace Tremor.Buffs
 
 		public override void Update(Player player, ref int buffIndex)
 		{
-            player.aggro += 50;
-			
+			player.aggro += 50;
+
 			player.statDefense += 10000;
 			player.moveSpeed += 0.15f;
 			player.moveSpeed += 999f;
-			
-		    player.buffImmune[20] = true;
-		    player.buffImmune[21] = true;
+
+			player.buffImmune[20] = true;
+			player.buffImmune[21] = true;
 			player.buffImmune[22] = true;
 			player.buffImmune[23] = true;
 			player.buffImmune[24] = true;

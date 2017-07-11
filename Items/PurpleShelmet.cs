@@ -7,7 +7,7 @@ using Terraria.ModLoader;
 
 namespace Tremor.Items
 {
-[AutoloadEquip(EquipType.Head)]
+	[AutoloadEquip(EquipType.Head)]
 	public class PurpleShelmet : ModItem
 	{
 
@@ -21,11 +21,11 @@ namespace Tremor.Items
 			item.defense = 6;
 		}
 
-    public override void SetStaticDefaults()
-    {
-      DisplayName.SetDefault("Purple Shelmet");
-      Tooltip.SetDefault("");
-    }
+		public override void SetStaticDefaults()
+		{
+			DisplayName.SetDefault("Purple Shelmet");
+			Tooltip.SetDefault("");
+		}
 
 	}
 }

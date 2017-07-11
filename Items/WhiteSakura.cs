@@ -32,40 +32,40 @@ namespace Tremor.Items
 			item.buffTime = 3600;
 		}
 
-    public override void SetStaticDefaults()
-    {
-      DisplayName.SetDefault("White Sakura");
-      Tooltip.SetDefault("Summons a white wind to fight for you.");
-    }
+		public override void SetStaticDefaults()
+		{
+			DisplayName.SetDefault("White Sakura");
+			Tooltip.SetDefault("Summons a white wind to fight for you.");
+		}
 
 
 		public override bool AltFunctionUse(Player player)
 		{
 			return true;
 		}
-		
+
 		public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
 		{
 			return player.altFunctionUse != 2;
 		}
-		
+
 		public override bool UseItem(Player player)
 		{
-			if(player.altFunctionUse == 2)
+			if (player.altFunctionUse == 2)
 			{
 				player.MinionNPCTargetAim();
 			}
 			return base.UseItem(player);
 		}
 
-    public override void AddRecipes()                
-    {                                                
-        ModRecipe recipe = new ModRecipe(mod);      
-        recipe.AddIngredient(null, "BlueSakura", 1);  
-        recipe.AddIngredient(null, "WhiteGoldBar", 15); 
-        recipe.SetResult(this);  
-        recipe.AddTile(null, "DivineForgeTile");
-        recipe.AddRecipe();
-    }   
+		public override void AddRecipes()
+		{
+			ModRecipe recipe = new ModRecipe(mod);
+			recipe.AddIngredient(null, "BlueSakura", 1);
+			recipe.AddIngredient(null, "WhiteGoldBar", 15);
+			recipe.SetResult(this);
+			recipe.AddTile(null, "DivineForgeTile");
+			recipe.AddRecipe();
+		}
 	}
 }

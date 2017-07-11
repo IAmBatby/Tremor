@@ -5,22 +5,24 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace Tremor.Projectiles {
-public class MagicGrenade : ModProjectile
+namespace Tremor.Projectiles
 {
-    public override void SetDefaults()
-    {
-            			projectile.CloneDefaults(30);
+	public class MagicGrenade : ModProjectile
+	{
+		public override void SetDefaults()
+		{
+			projectile.CloneDefaults(30);
 
-            projectile.width = 14;
-            projectile.height = 20;
-    }
+			projectile.width = 14;
+			projectile.height = 20;
+		}
 
-    public override void SetStaticDefaults()
-    {
-      DisplayName.SetDefault("Magic Grenade");
-       
-    }
+		public override void SetStaticDefaults()
+		{
+			DisplayName.SetDefault("Magic Grenade");
+
+		}
 
 
-}}
+	}
+}

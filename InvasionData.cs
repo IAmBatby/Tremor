@@ -8,7 +8,7 @@ namespace Tremor
 {
 	public class InvasionData : ScreenShaderData
 	{
-        private int invasionI;
+		private int invasionI;
 
 		public InvasionData(string passName)
 			: base(passName)
@@ -17,14 +17,14 @@ namespace Tremor
 
 		private void UpdatePuritySpiritIndex()
 		{
-            Mod mod = ModLoader.GetMod("Tremor");
-            CyberWrathInvasion modPlayer = Main.player[Main.myPlayer].GetModPlayer<CyberWrathInvasion>(mod);
-            if (InvasionWorld.CyberWrath)
+			Mod mod = ModLoader.GetMod("Tremor");
+			CyberWrathInvasion modPlayer = Main.player[Main.myPlayer].GetModPlayer<CyberWrathInvasion>(mod);
+			if (InvasionWorld.CyberWrath)
 			{
 				return;
 			}
-            invasionI = -1;
-        }
+			invasionI = -1;
+		}
 
 		public override void Apply()
 		{

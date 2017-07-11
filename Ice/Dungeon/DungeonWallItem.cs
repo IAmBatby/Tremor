@@ -18,23 +18,23 @@ namespace Tremor.Ice.Dungeon
 			item.useStyle = 1;
 			item.consumable = true;
 			item.createWall = mod.WallType("DungeonWall");
-            ItemID.Sets.ExtractinatorMode[item.type] = item.type;
-        }
+			ItemID.Sets.ExtractinatorMode[item.type] = item.type;
+		}
 
-    public override void SetStaticDefaults()
-    {
-      DisplayName.SetDefault("Frost Brick Wall");
-      Tooltip.SetDefault("");
-    }
+		public override void SetStaticDefaults()
+		{
+			DisplayName.SetDefault("Frost Brick Wall");
+			Tooltip.SetDefault("");
+		}
 
 
-    public override void AddRecipes()
-    {
-        ModRecipe recipe = new ModRecipe(mod);
-        recipe.AddIngredient(null, "DungeonBlockItem");
-        recipe.SetResult(this, 4);
-        recipe.AddTile(18);
-        recipe.AddRecipe();
-    }
+		public override void AddRecipes()
+		{
+			ModRecipe recipe = new ModRecipe(mod);
+			recipe.AddIngredient(null, "DungeonBlockItem");
+			recipe.SetResult(this, 4);
+			recipe.AddTile(18);
+			recipe.AddRecipe();
+		}
 	}
 }

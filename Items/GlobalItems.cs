@@ -51,7 +51,7 @@ namespace Tremor.Items
 
 			if (context == "bossBag" && arg == ItemID.MoonLordBossBag && Main.rand.Next(1) == 0)
 			{
-				player.QuickSpawnItem(mod.ItemType("MultidimensionalFragment"), Main.rand.Next(6,12));
+				player.QuickSpawnItem(mod.ItemType("MultidimensionalFragment"), Main.rand.Next(6, 12));
 			}
 
 			if (context == "bossBag" && arg == ItemID.SkeletronBossBag && Main.rand.Next(1) == 0)
@@ -70,7 +70,7 @@ namespace Tremor.Items
 			}
 
 
-// Dev. Items
+			// Dev. Items
 
 			if (Main.hardMode && context == "bossBag" && Main.rand.Next(30) == 0)
 			{

@@ -15,8 +15,8 @@ namespace Tremor.Buffs
 
 		public override void Update(Player player, ref int buffIndex)
 		{
-            TremorPlayer modPlayer = (TremorPlayer)player.GetModPlayer(mod, "TremorPlayer");
-            modPlayer.ruinAltar = true;
-        }
+			TremorPlayer modPlayer = (TremorPlayer)player.GetModPlayer(mod, "TremorPlayer");
+			modPlayer.ruinAltar = true;
+		}
 	}
 }

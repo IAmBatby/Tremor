@@ -27,11 +27,11 @@ namespace Tremor.Items
 			item.ammo = AmmoID.Bullet;
 		}
 
-    public override void SetStaticDefaults()
-    {
-      DisplayName.SetDefault("Nightmare Bullet");
-      Tooltip.SetDefault("'Can bounce off blocks.'");
-    }
+		public override void SetStaticDefaults()
+		{
+			DisplayName.SetDefault("Nightmare Bullet");
+			Tooltip.SetDefault("'Can bounce off blocks.'");
+		}
 
 
 		public override void AddRecipes()

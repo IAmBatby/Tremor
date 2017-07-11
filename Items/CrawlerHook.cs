@@ -17,15 +17,15 @@ namespace Tremor.Items
 			item.shoot = mod.ProjectileType("CrawlerHookProjectile");
 		}
 
-    public override void SetStaticDefaults()
-    {
-      DisplayName.SetDefault("Crawler Hook");
-      Tooltip.SetDefault("");
-    }
+		public override void SetStaticDefaults()
+		{
+			DisplayName.SetDefault("Crawler Hook");
+			Tooltip.SetDefault("");
+		}
 
 	}
 
-        class CrawlerHookProjectile : ModProjectile
+	class CrawlerHookProjectile : ModProjectile
 	{
 		public override void SetStaticDefaults()
 		{
@@ -39,24 +39,24 @@ namespace Tremor.Items
 
 
 		// Use this hook for hooks that can have multiple hooks midflight: Dual Hook, Web Slinger, Fish Hook, Static Hook, Lunar Hook
-/*
-		public override bool? CanUseGrapple(Player player)
-		{
-			int hooksOut = 0;
-			for (int l = 0; l < 1000; l++)
-			{
-				if (Main.projectile[l].active && Main.projectile[l].owner == Main.myPlayer && Main.projectile[l].type == projectile.type)
+		/*
+				public override bool? CanUseGrapple(Player player)
 				{
-					hooksOut++;
+					int hooksOut = 0;
+					for (int l = 0; l < 1000; l++)
+					{
+						if (Main.projectile[l].active && Main.projectile[l].owner == Main.myPlayer && Main.projectile[l].type == projectile.type)
+						{
+							hooksOut++;
+						}
+					}
+					if (hooksOut > 2) // This hook can have 3 hooks out.
+					{
+						return false;
+					}
+					return true;
 				}
-			}
-			if (hooksOut > 2) // This hook can have 3 hooks out.
-			{
-				return false;
-			}
-			return true;
-		}
-*/
+		*/
 
 		// Return true if it is like: Hook, CandyCaneHook, BatHook, GemHooks
 		//public override bool? SingleGrappleHook(Player player)

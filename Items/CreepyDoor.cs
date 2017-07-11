@@ -19,27 +19,27 @@ namespace Tremor.Items
 			item.useAnimation = 15;
 			item.useTime = 10;
 			item.useStyle = 1;
-                        item.rare = 1;
+			item.rare = 1;
 			item.consumable = true;
 			item.value = 150;
 			item.createTile = mod.TileType("ScaryDoorClosed");
 		}
 
-    public override void SetStaticDefaults()
-    {
-      DisplayName.SetDefault("Creepy Door");
-      Tooltip.SetDefault("");
-    }
+		public override void SetStaticDefaults()
+		{
+			DisplayName.SetDefault("Creepy Door");
+			Tooltip.SetDefault("");
+		}
 
 
-    public override void AddRecipes()
-    {
-        ModRecipe recipe = new ModRecipe(mod);
-        recipe.AddIngredient(ItemID.Wood, 6);
-        recipe.AddIngredient(ItemID.Cobweb, 6);
-        recipe.SetResult(this);
-        recipe.AddTile(16);
-        recipe.AddRecipe();
-    }
+		public override void AddRecipes()
+		{
+			ModRecipe recipe = new ModRecipe(mod);
+			recipe.AddIngredient(ItemID.Wood, 6);
+			recipe.AddIngredient(ItemID.Cobweb, 6);
+			recipe.SetResult(this);
+			recipe.AddTile(16);
+			recipe.AddRecipe();
+		}
 	}
 }

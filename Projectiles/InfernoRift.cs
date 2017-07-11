@@ -6,17 +6,17 @@ using Terraria.ModLoader;
 using Terraria.ID;
 
 namespace Tremor.Projectiles
-{	
+{
 	public class InfernoRift : ModProjectile
 	{
-        const int ShootRate = 20; // ����� ����५� (1 ᥪ㭤� = 60��.)
-        const float ShootDistance = 500f; // ���쭮��� ��५��
-        const float ShootSpeed = 12f; // ������� ᭠�鸞
-        const int ShootDamage = 450; // �஭ ᭠�鸞
-        const float ShootKnockback = 2; // ���� ᭠�鸞
-        int ShootType = 668; // ��� ����५� (�᫨ �� �����쭮� �ન)
-        int TimeToShoot = ShootRate;
-        string ShootTypeMod;
+		const int ShootRate = 20; // ����� ����५� (1 ᥪ㭤� = 60��.)
+		const float ShootDistance = 500f; // ���쭮��� ��५��
+		const float ShootSpeed = 12f; // ������� ᭠�鸞
+		const int ShootDamage = 450; // �஭ ᭠�鸞
+		const float ShootKnockback = 2; // ���� ᭠�鸞
+		int ShootType = 668; // ��� ����५� (�᫨ �� �����쭮� �ન)
+		int TimeToShoot = ShootRate;
+		string ShootTypeMod;
 
 		public override void SetDefaults()
 		{
@@ -36,67 +36,67 @@ namespace Tremor.Projectiles
 			ProjectileID.Sets.TrailingMode[projectile.type] = 0;
 		}
 
-    public override void SetStaticDefaults()
-    {
-      DisplayName.SetDefault("Inferno Rift");
-       
-    }
+		public override void SetStaticDefaults()
+		{
+			DisplayName.SetDefault("Inferno Rift");
+
+		}
 
 
-        public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)
-        {
-            Vector2 drawOrigin = new Vector2(Main.projectileTexture[projectile.type].Width * 0.5f, projectile.height * 0.5f);
-            for (int k = 0; k < projectile.oldPos.Length; k++)
-            {
-                Vector2 drawPos = projectile.oldPos[k] - Main.screenPosition + drawOrigin + new Vector2(0f, projectile.gfxOffY);
-                spriteBatch.Draw(Main.projectileTexture[projectile.type], drawPos, null, Color.White, projectile.rotation, drawOrigin, projectile.scale, SpriteEffects.None, 0f);
-            }
-            return true;
-        }
+		public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)
+		{
+			Vector2 drawOrigin = new Vector2(Main.projectileTexture[projectile.type].Width * 0.5f, projectile.height * 0.5f);
+			for (int k = 0; k < projectile.oldPos.Length; k++)
+			{
+				Vector2 drawPos = projectile.oldPos[k] - Main.screenPosition + drawOrigin + new Vector2(0f, projectile.gfxOffY);
+				spriteBatch.Draw(Main.projectileTexture[projectile.type], drawPos, null, Color.White, projectile.rotation, drawOrigin, projectile.scale, SpriteEffects.None, 0f);
+			}
+			return true;
+		}
 
-    public override void Kill(int timeLeft)
-    {
-        for(int k = 0; k < 5; k++)
-        {
-                       int dust = Dust.NewDust(projectile.position + projectile.velocity, projectile.width, projectile.height, 6, projectile.oldVelocity.X * 0.1f, projectile.oldVelocity.Y * 0.1f);
-        }
-        Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 109);
-    }
+		public override void Kill(int timeLeft)
+		{
+			for (int k = 0; k < 5; k++)
+			{
+				int dust = Dust.NewDust(projectile.position + projectile.velocity, projectile.width, projectile.height, 6, projectile.oldVelocity.X * 0.1f, projectile.oldVelocity.Y * 0.1f);
+			}
+			Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 109);
+		}
 
-        void Shoot()
-        {
-            if (--TimeToShoot <= 0)
-            {
-                TimeToShoot = ShootRate;
-                if (ShootType == -1)
-                ShootType = mod.ProjectileType(ShootTypeMod);
+		void Shoot()
+		{
+			if (--TimeToShoot <= 0)
+			{
+				TimeToShoot = ShootRate;
+				if (ShootType == -1)
+					ShootType = mod.ProjectileType(ShootTypeMod);
 
-                float NearestNPCDist = ShootDistance;
-                int NearestNPC = -1;
-                foreach (NPC npc in Main.npc)
-                {
-                    if (!npc.active)
-                        continue;
-                    if (npc.friendly || npc.lifeMax <= 5)
-                        continue;
-                    if (NearestNPCDist == -1 || npc.Distance(projectile.Center) < NearestNPCDist && Collision.CanHitLine(projectile.Center, 16, 16, npc.Center, 16, 16))
-                    {
-                        NearestNPCDist = npc.Distance(projectile.Center);
-                        NearestNPC = npc.whoAmI;
-                    }
-                }
-                if (NearestNPC == -1)
-                    return;
-                Vector2 Velocity = Helper.VelocityToPoint(projectile.Center, Main.npc[NearestNPC].Center, ShootSpeed);
-                Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, Velocity.X, Velocity.Y, ShootType, ShootDamage, ShootKnockback, projectile.owner);
-            }
-        }
+				float NearestNPCDist = ShootDistance;
+				int NearestNPC = -1;
+				foreach (NPC npc in Main.npc)
+				{
+					if (!npc.active)
+						continue;
+					if (npc.friendly || npc.lifeMax <= 5)
+						continue;
+					if (NearestNPCDist == -1 || npc.Distance(projectile.Center) < NearestNPCDist && Collision.CanHitLine(projectile.Center, 16, 16, npc.Center, 16, 16))
+					{
+						NearestNPCDist = npc.Distance(projectile.Center);
+						NearestNPC = npc.whoAmI;
+					}
+				}
+				if (NearestNPC == -1)
+					return;
+				Vector2 Velocity = Helper.VelocityToPoint(projectile.Center, Main.npc[NearestNPC].Center, ShootSpeed);
+				Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, Velocity.X, Velocity.Y, ShootType, ShootDamage, ShootKnockback, projectile.owner);
+			}
+		}
 
-public override void AI()
-        {
-            Shoot();
-            projectile.ai[1] = 1;
-            base.AI();
+		public override void AI()
+		{
+			Shoot();
+			projectile.ai[1] = 1;
+			base.AI();
 			projectile.light = 0.9f;
 			int DustID1 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, 6, projectile.velocity.X * 0.2f, projectile.velocity.Y * 0.2f, 120, default(Color), 1.75f);
 			int DustID2 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, 6, projectile.velocity.X * 0.2f, projectile.velocity.Y * 0.2f, 120, default(Color), 1.75f);

@@ -4,7 +4,7 @@ using Terraria.ModLoader;
 
 namespace Tremor.Buffs
 {
-	public class ExtendedHealthBooster: ModBuff
+	public class ExtendedHealthBooster : ModBuff
 	{
 		public override void SetDefaults()
 		{
@@ -14,12 +14,12 @@ namespace Tremor.Buffs
 
 		public override void Update(Player player, ref int buffIndex)
 		{
-                if(player.buffTime[buffIndex] == 0)
-                  {
-                  player.statLife += 150;
-                  player.HealEffect(150);
-                  player.AddBuff(mod.BuffType("ExtendedHealthBooster"), 2700);
-                  }
+			if (player.buffTime[buffIndex] == 0)
+			{
+				player.statLife += 150;
+				player.HealEffect(150);
+				player.AddBuff(mod.BuffType("ExtendedHealthBooster"), 2700);
+			}
 		}
 	}
 }

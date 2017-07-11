@@ -8,13 +8,13 @@ namespace Tremor.Items
 {
 	public class BrutalliskCrystal : ModItem
 	{
-        public override void SetStaticDefaults()
-        {
-            DisplayName.SetDefault("Aquamarine Crystal");
-            Tooltip.SetDefault("Summons a rideable aquamarine crystal mount");
-        }
+		public override void SetStaticDefaults()
+		{
+			DisplayName.SetDefault("Aquamarine Crystal");
+			Tooltip.SetDefault("Summons a rideable aquamarine crystal mount");
+		}
 
-        public override void SetDefaults()
+		public override void SetDefaults()
 		{
 			item.width = 30;
 			item.height = 26;

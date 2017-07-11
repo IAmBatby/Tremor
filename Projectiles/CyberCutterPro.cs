@@ -6,7 +6,7 @@ using Terraria;
 using Terraria.ModLoader;
 
 namespace Tremor.Projectiles
-{	
+{
 	public class CyberCutterPro : ModProjectile
 	{
 		public override void SetDefaults()
@@ -24,14 +24,14 @@ namespace Tremor.Projectiles
 			projectile.penetrate = 50;
 		}
 
-    public override void SetStaticDefaults()
-    {
-      DisplayName.SetDefault("CyberCutterPro");
-       
-    }
+		public override void SetStaticDefaults()
+		{
+			DisplayName.SetDefault("CyberCutterPro");
+
+		}
 
 		public override void AI()
-        {
+		{
 			projectile.light = 0.9f;
 			int DustID1 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, 60, projectile.velocity.X * 0.2f, projectile.velocity.Y * 0.2f, 120, default(Color), 1.75f);
 			int DustID2 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, 60, projectile.velocity.X * 0.2f, projectile.velocity.Y * 0.2f, 120, default(Color), 1.75f);
@@ -164,18 +164,18 @@ namespace Tremor.Projectiles
 				projectile.velocity.Y = 16f;
 				projectile.rotation += (float)projectile.direction * 0.8f;
 			}
-			if(projectile.timeLeft % 60 == 0)
+			if (projectile.timeLeft % 60 == 0)
 				Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 23);
 		}
-		public override bool OnTileCollide(Vector2 velocityChange) 
+		public override bool OnTileCollide(Vector2 velocityChange)
 		{
-			if (projectile.velocity.X != velocityChange.X) 
+			if (projectile.velocity.X != velocityChange.X)
 			{
-				projectile.velocity.X = -velocityChange.X; 
+				projectile.velocity.X = -velocityChange.X;
 			}
-			if (projectile.velocity.Y != velocityChange.Y) 
-			{ 
-				projectile.velocity.Y = -velocityChange.Y; 
+			if (projectile.velocity.Y != velocityChange.Y)
+			{
+				projectile.velocity.Y = -velocityChange.Y;
 			}
 			projectile.penetrate -= 1;
 			return false;

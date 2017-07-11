@@ -7,8 +7,8 @@ using Microsoft.Xna.Framework;
 using System.Collections.Generic;
 
 namespace Tremor.Items
-{ 
-[AutoloadEquip(EquipType.Body)]
+{
+	[AutoloadEquip(EquipType.Body)]
 	public class OmnikronBreastplate : ModItem
 	{
 		public override void SetDefaults()
@@ -22,35 +22,35 @@ namespace Tremor.Items
 			item.defense = 40;
 		}
 
-    public override void SetStaticDefaults()
-    {
-      DisplayName.SetDefault("Omnikron Breastplate");
-      Tooltip.SetDefault("Increases all damage by 20%");
-    }
-
-		
-		public override void ModifyTooltips(System.Collections.Generic.List<TooltipLine> tooltips)
-        {
-            tooltips[0].overrideColor = new Color(238, 194, 73);
-        }
-		
-		public override void UpdateEquip(Player player)
+		public override void SetStaticDefaults()
 		{
-            player.magicDamage += 0.2f;
-            player.minionDamage += 0.2f;
-            player.meleeDamage += 0.2f;
-            player.rangedDamage += 0.2f;
-            player.thrownDamage += 0.2f;
-            player.GetModPlayer<MPlayer>(mod).alchemistDamage += 0.2f;
+			DisplayName.SetDefault("Omnikron Breastplate");
+			Tooltip.SetDefault("Increases all damage by 20%");
 		}
 
-    public override void AddRecipes()
-    {
-        ModRecipe recipe = new ModRecipe(mod);
-        recipe.AddIngredient(null, "OmnikronBar", 26);
-        recipe.SetResult(this);
-        recipe.AddTile(412);
-        recipe.AddRecipe();
-    }
+
+		public override void ModifyTooltips(System.Collections.Generic.List<TooltipLine> tooltips)
+		{
+			tooltips[0].overrideColor = new Color(238, 194, 73);
+		}
+
+		public override void UpdateEquip(Player player)
+		{
+			player.magicDamage += 0.2f;
+			player.minionDamage += 0.2f;
+			player.meleeDamage += 0.2f;
+			player.rangedDamage += 0.2f;
+			player.thrownDamage += 0.2f;
+			player.GetModPlayer<MPlayer>(mod).alchemistDamage += 0.2f;
+		}
+
+		public override void AddRecipes()
+		{
+			ModRecipe recipe = new ModRecipe(mod);
+			recipe.AddIngredient(null, "OmnikronBar", 26);
+			recipe.SetResult(this);
+			recipe.AddTile(412);
+			recipe.AddRecipe();
+		}
 	}
 }

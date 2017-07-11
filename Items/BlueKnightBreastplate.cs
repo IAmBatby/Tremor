@@ -6,8 +6,8 @@ using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace Tremor.Items
-{ 
-[AutoloadEquip(EquipType.Body)]
+{
+	[AutoloadEquip(EquipType.Body)]
 	public class BlueKnightBreastplate : ModItem
 	{
 
@@ -21,21 +21,21 @@ namespace Tremor.Items
 			item.vanity = true;
 		}
 
-    public override void SetStaticDefaults()
-    {
-      DisplayName.SetDefault("Blue Knight Breastplate");
-      Tooltip.SetDefault("");
-    }
+		public override void SetStaticDefaults()
+		{
+			DisplayName.SetDefault("Blue Knight Breastplate");
+			Tooltip.SetDefault("");
+		}
 
 
-    public override void AddRecipes()
-    {
-        ModRecipe recipe = new ModRecipe(mod);
-        recipe.AddIngredient(null, "GrayKnightBreastplate", 3);
-        recipe.AddIngredient(ItemID.Sapphire, 1);
-        recipe.SetResult(this);
-        recipe.AddTile(16);
-        recipe.AddRecipe();
-    }
+		public override void AddRecipes()
+		{
+			ModRecipe recipe = new ModRecipe(mod);
+			recipe.AddIngredient(null, "GrayKnightBreastplate", 3);
+			recipe.AddIngredient(ItemID.Sapphire, 1);
+			recipe.SetResult(this);
+			recipe.AddTile(16);
+			recipe.AddRecipe();
+		}
 	}
 }

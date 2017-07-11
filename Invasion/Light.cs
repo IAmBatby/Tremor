@@ -16,20 +16,20 @@ namespace Tremor.Invasion
 
 		public override void Update(Player player, ref int buffIndex)
 		{
-            player.meleeSpeed += 0.03f;
-            player.detectCreature = true;
-            player.findTreasure = true;
-            player.meleeDamage += 0.03f;
-            player.rangedDamage += 0.03f;
-            player.thrownDamage += 0.03f;
-            player.minionDamage += 0.03f;
-            player.magicDamage += 0.03f;
-            player.moveSpeed += 0.2f;
-            player.rangedCrit += 2;
-            player.meleeCrit += 2;
-            player.magicCrit += 2;
-            player.thrownCrit += 2;
-            player.jumpSpeedBoost += 0.2f;
-        }
+			player.meleeSpeed += 0.03f;
+			player.detectCreature = true;
+			player.findTreasure = true;
+			player.meleeDamage += 0.03f;
+			player.rangedDamage += 0.03f;
+			player.thrownDamage += 0.03f;
+			player.minionDamage += 0.03f;
+			player.magicDamage += 0.03f;
+			player.moveSpeed += 0.2f;
+			player.rangedCrit += 2;
+			player.meleeCrit += 2;
+			player.magicCrit += 2;
+			player.thrownCrit += 2;
+			player.jumpSpeedBoost += 0.2f;
+		}
 	}
 }

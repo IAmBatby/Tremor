@@ -20,17 +20,17 @@ namespace Tremor.Items
 			item.useAnimation = 15;
 			item.useTime = 15;
 			item.useStyle = 1;
-                        item.rare = 3;
+			item.rare = 3;
 			item.consumable = true;
 			item.value = 2000;
 			item.createTile = mod.TileType("EyeMonolithTile");
 		}
 
-    public override void SetStaticDefaults()
-    {
-      DisplayName.SetDefault("Eye Monolith");
-      Tooltip.SetDefault("15% increased minion damage if placed");
-    }
+		public override void SetStaticDefaults()
+		{
+			DisplayName.SetDefault("Eye Monolith");
+			Tooltip.SetDefault("15% increased minion damage if placed");
+		}
 
 
 	}

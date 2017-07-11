@@ -33,19 +33,19 @@ namespace Tremor.Items
 			item.crit = 7;
 		}
 
-    public override void SetStaticDefaults()
-    {
-      DisplayName.SetDefault("Phantom Javelin");
-      Tooltip.SetDefault("");
-    }
+		public override void SetStaticDefaults()
+		{
+			DisplayName.SetDefault("Phantom Javelin");
+			Tooltip.SetDefault("");
+		}
 
-    public override void AddRecipes()
-    {
-        ModRecipe recipe = new ModRecipe(mod);
-        recipe.AddIngredient(null, "PhantomSoul", 25);
-        recipe.SetResult(this);
-        recipe.AddTile(null, "MagicWorkbenchTile");
-        recipe.AddRecipe();
-    }
+		public override void AddRecipes()
+		{
+			ModRecipe recipe = new ModRecipe(mod);
+			recipe.AddIngredient(null, "PhantomSoul", 25);
+			recipe.SetResult(this);
+			recipe.AddTile(null, "MagicWorkbenchTile");
+			recipe.AddRecipe();
+		}
 	}
 }

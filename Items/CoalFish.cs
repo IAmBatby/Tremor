@@ -21,11 +21,11 @@ namespace Tremor.Items
 			item.rare = -11;
 		}
 
-    public override void SetStaticDefaults()
-    {
-      DisplayName.SetDefault("Coal Fish");
-      Tooltip.SetDefault("");
-    }
+		public override void SetStaticDefaults()
+		{
+			DisplayName.SetDefault("Coal Fish");
+			Tooltip.SetDefault("");
+		}
 
 
 		public override bool IsQuestFish()
