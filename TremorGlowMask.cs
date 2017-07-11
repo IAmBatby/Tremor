@@ -6,44 +6,35 @@ namespace Tremor
 {
 	public static class TremorGlowMask
 	{
-		//Grove Set List
-		public static short DEH;
-		public static short DEG;
+		static short countAdded=0;
+		static ushort countInitial=0;
 
-		public static short NovaPick;
-		public static short NovaHamaxe;
-
-		//Count items
-		const short Count = 4;
-		static ushort vanillaCount;
-		
-		public static bool Loaded;
-
-		public static void Load()
+		public static short AddGlowMask(string texturePath)
 		{
-			vanillaCount=(ushort)Main.glowMaskTexture.Length;
-			Array.Resize(ref Main.glowMaskTexture, vanillaCount + Count);
-			short i = (short)vanillaCount;
-			Main.glowMaskTexture[i] = ModLoader.GetTexture("Tremor/Items/DesertExplorerVisage_HeadGlow");
-			DEH = i++;
-			Main.glowMaskTexture[i] = ModLoader.GetTexture("Tremor/Items/DesertExplorerGreaves_LegsGlow");
-			DEG = i++;
-			Main.glowMaskTexture[i] = ModLoader.GetTexture("Tremor/NovaPillar/NovaPickaxe_Glow");
-			NovaPick = i++;
-			Main.glowMaskTexture[i] = ModLoader.GetTexture("Tremor/NovaPillar/NovaHamaxe_Glow");
-			NovaHamaxe = i++;
-			Loaded = true;
+			if(countInitial==0){countInitial=(ushort)Main.glowMaskTexture.Length;}
+			Microsoft.Xna.Framework.Graphics.Texture2D texture=ModLoader.GetTexture(texturePath);
+			if(texture==null){throw new Exception("Could not find texture: "+texturePath);}
+			countAdded++;
+			Array.Resize(ref Main.glowMaskTexture,Main.glowMaskTexture.Length+1);
+			Main.glowMaskTexture[Main.glowMaskTexture.Length-1]=texture;
+			return (short)(Main.glowMaskTexture.Length-1);
 		}
+
+		/*public static void Load()
+		{
+
+		}*/
 
 		public static void Unload()
 		{
-			Array.Resize(ref Main.glowMaskTexture,vanillaCount);
-			Loaded = false;
-			DEH = 0;
-			DEG = 0;
-			NovaPick = 0;
-			NovaHamaxe = 0;
+			if(Main.glowMaskTexture.Length>=countInitial+countAdded)//Probably an unneeded check
+			{
+				Array.Resize(ref Main.glowMaskTexture,Main.glowMaskTexture.Length-countAdded);
+			}
+			else if(Main.glowMaskTexture.Length>countInitial)
+			{
+				Array.Resize(ref Main.glowMaskTexture,countInitial);
+			}
 		}
-
 	}
 }

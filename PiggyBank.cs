@@ -1,74 +1,29 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace Tremor
 {
-	class PiggyBank : GlobalItem
+	public class PiggyBank:GlobalItem
 	{
-		public bool ManySimilarItems(Item item, Item[] inventory)
+		public override void ModifyTooltips(Item item,List<TooltipLine> tooltips)//Add support for defender coins in bank3?
 		{
-			int count = inventory.ToList().Where(x => x.type == item.type).Count();
-			return count >= 2;
-		}
-
-		public int GetSimilarItemsStack(Item item, Item[] inventory)
-		{
-			int stack = 0;
-			for (int i = 0; i < inventory.Length; i++)
+			bool flag;
+			int[] coins;
+			if(item.type==ItemID.PiggyBank||item.type==ItemID.MoneyTrough)
 			{
-				if (inventory[i].type == item.type)
-				{
-					stack += inventory[i].stack;
-				}
+				coins=Utils.CoinsSplit(Utils.CoinsCount(out flag,Main.LocalPlayer.bank.item,new int[0]));
 			}
-			return stack;
-		}
-
-		public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
-		{
-			Player player = Main.player[Main.myPlayer];
-			int[] coins = {
-				ItemID.CopperCoin,
-				ItemID.SilverCoin,
-				ItemID.GoldCoin,
-				ItemID.PlatinumCoin
-			};
-			if (item.type == ItemID.PiggyBank || item.type == ItemID.MoneyTrough)
+			else if(item.type==ItemID.Safe)
 			{
-				foreach (Item myItem in player.bank.item)
-				{
-					if (!myItem.IsAir && coins.Contains(myItem.type))
-					{
-						if (!ManySimilarItems(myItem, player.bank.item))
-						{
-							tooltips.Add(new TooltipLine(mod, "", "[i/s1:" + myItem.type + " ]" + "" + " x" + myItem.stack + ""));
-						}
-						else if (!(tooltips.Where(tooltip => tooltip.text == "[i/s1:" + myItem.type + " ]" + "" + " x" + GetSimilarItemsStack(myItem, player.bank.item) + "").Count() > 0))
-						{
-							tooltips.Add(new TooltipLine(mod, "", "[i/s1:" + myItem.type + " ]" + "" + " x" + GetSimilarItemsStack(myItem, player.bank.item) + ""));
-						}
-					}
-				}
+				coins=Utils.CoinsSplit(Utils.CoinsCount(out flag,Main.LocalPlayer.bank2.item,new int[0]));
 			}
-			if (item.type == ItemID.Safe)
+			else{return;}
+
+			for(int i=0;i<3;i++)
 			{
-				foreach (Item myItem in player.bank2.item)
-				{
-					if (!myItem.IsAir && coins.Contains(myItem.type))
-					{
-						if (!ManySimilarItems(myItem, player.bank2.item))
-						{
-							tooltips.Add(new TooltipLine(mod, "", "[i/s1:" + "" + " ]" + "" + " x" + myItem.stack + ""));
-						}
-						else if (!(tooltips.Where(tooltip => tooltip.text == "[i/s1:" + myItem.type + " ]" + "" + " x" + GetSimilarItemsStack(myItem, player.bank2.item) + "").Count() > 0))
-						{
-							tooltips.Add(new TooltipLine(mod, "", "[i/s1:" + "" + " ]" + "" + " x" + GetSimilarItemsStack(myItem, player.bank2.item) + ""));
-						}
-					}
-				}
+				if(coins[i]>0){tooltips.Add(new TooltipLine(mod,"","[i/s1:"+(ItemID.PlatinumCoin-i)+"] x"+coins[i]));}
 			}
 		}
 	}
