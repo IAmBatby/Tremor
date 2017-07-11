@@ -1,0 +1,115 @@
+New buffs:
+
+    Fungus Blades
+    Bouncing Casing
+    Reinforced Burst
+    Linear Burst
+    The Nitro
+    The Chemikaze
+    Long Fuse
+    Cross Blast
+    Concentrated Tincture
+    Round Blast
+    The Pyro
+    Square Blast
+
+
+New tiles:
+
+    Granite Music Box
+    Fungus Beetle Trophy
+
+
+New items:
+
+    Glacier Knives
+    Frostbyte Eye
+    Fungus Element
+    Fungus Mask
+    Golden Glowing Ring
+    Fungus Beetle Treasure Bag
+    Fungus Broadsword
+    Mushroom Crystal
+    Fungus Spear
+    Fungus Pickaxe
+    Fungus Hamaxe
+    Bouncing Casing
+    Reinforced Burst
+    Linear Burst
+    The Nitro
+    The Chemikaze
+    Long Fuse
+    Cross Blast
+    Concentrated Tincture
+    Round Blast
+    The Pyro
+    Square Blast
+    Apple
+    Banana
+    Bread
+    Cake
+    Cheese
+    Raw Pork
+    Raw Beef
+    Raw Bird Meat
+    Raw Bunny Meat
+    Cooked Pork
+    Cooked Beef
+    Cooked Bird Meat
+    Cooked Bunny Meat
+    Egg
+    Hamburger
+    Hotdog
+    Lard
+    Omelet
+    Sausage
+    Tomato
+    Fungus Helmet
+    Fungus Breastplate
+    Fungus Greaves
+
+
+New bosses:
+
+    Fungus Beetle
+
+
+New boss minions:
+
+    Little Mushroom Bug
+    Great Fungus Bug
+
+
+Fixes:
+
+    Pixie Queen now drops her Treasure Bag
+    Shockwave Claymore & Cyber Cutter now drop from Cyber King
+    Boonerang now shoots Boonerang and not Adamantite Disk
+    Fixed Ingniter craft
+    Fixed some items value
+    Heater of Worlds now works fine in Multiplayer
+    Bosses now spawn fine in Multiplayer
+    Brass Chain Repeated and Paraxyde Stormbow now shoot arrows they consume
+    Fixed Glacier Biome generation
+    Fixed Prizmatic Fang giving health on hit
+    Fixed Brass Chainrepeater and Paraxyde Stormow only shooting Wooden Arrows
+    Farmer and Forge Master now spawn in Multiplayer
+    Placed bars are now dropping items properly and can't be duped using Hook
+    Ancient Cultist now drops Ancient Tablets
+    Fixed Nightmare, Angelite and Collapsium Ore spawn
+    Skeletron now drops the Artifact
+
+
+Others:
+
+    Resprites for many items
+    Alchemist now moves in after beating Eye of Cthulhu
+    You can now see how much coins is in Piggy Bank/Safe by hovering over items
+    Added new effects for Glacier biome
+    Nerfed Alchemaster a bit
+    Red Puzzle Fragment can be now bought from the Merchant during the Bloodmoon
+    Yellow Puzzle Fragment can be now dropped by Queen Bee
+    Green Puzzle Fragment can be now fished anywhere in Hardmode
+    Purple Puzzle Fragment can be now crafted of Souls of Night, Amethysts and Phantom Souls
+    Updated Hunger System (Can be disabled with Hunger System Disabler that is crafted from nothing)
+    Granite Biome Music
