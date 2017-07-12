@@ -14,7 +14,7 @@ namespace Tremor.Tiles
 			Main.tileMergeDirt[Type] = true;
 			Main.tileBlockLight[Type] = true;
 			Main.tileLighted[Type] = true;
-			dustType = mod.DustType("NightmareFlame");
+			dustType = mod.DustType<Dusts.NightmareFlame>();
 			drop = mod.ItemType("NightmareOre");
 			AddMapEntry(new Color(90, 0, 157));
 mineResist = 12f;

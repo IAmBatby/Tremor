@@ -60,7 +60,7 @@ namespace Tremor.Projectiles
 		{
 			if (Main.rand.Next(2) == 1)
 			{
-				int dust = Dust.NewDust(projectile.position, projectile.width, projectile.height, mod.DustType("Slime"));
+				int dust = Dust.NewDust(projectile.position, projectile.width, projectile.height, mod.DustType<Dusts.Slime>());
 				Main.dust[dust].scale = 0.9f;
 			}
 		}

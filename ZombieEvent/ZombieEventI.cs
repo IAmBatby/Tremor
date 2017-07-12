@@ -17,8 +17,8 @@ namespace Tremor.ZombieEvent
         public static readonly PlayerLayer MiscEffects = new PlayerLayer("Tremor", "MiscEffects", PlayerLayer.MiscEffectsFront, delegate (PlayerDrawInfo drawInfo)
         {
             Player drawPlayer = drawInfo.drawPlayer;
-            Mod mod = ModLoader.GetMod("Tremor");
-            CyberWrathInvasion modPlayer = drawPlayer.GetModPlayer<CyberWrathInvasion>(mod);
+            Mod mod = Tremor.instance;
+            CyberWrathInvasion modPlayer = drawPlayer.GetModPlayer<CyberWrathInvasion>();
 
             Texture2D CyberWrathI = mod.GetTexture("Invasion/System/System1");
             Texture2D CyberWrathI1 = mod.GetTexture("Invasion/System/System2");

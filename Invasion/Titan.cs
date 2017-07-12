@@ -165,7 +165,7 @@ namespace Tremor.Invasion
 				for (int num36 = 0; num36 < 10; num36++)
 				{
 					Color color = new Color();
-					int dust = Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, mod.DustType("CyberDust"), npc.velocity.X + Main.rand.Next(-10, 10), npc.velocity.Y + Main.rand.Next(-10, 10), 200, color, 1f);
+					int dust = Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, mod.DustType<CyberDust>(), npc.velocity.X + Main.rand.Next(-10, 10), npc.velocity.Y + Main.rand.Next(-10, 10), 200, color, 1f);
 					Main.dust[dust].noGravity = true;
 				}
 				npc.ai[3] = (float)(Main.rand.Next(360) * (Math.PI / 180));
@@ -193,7 +193,7 @@ namespace Tremor.Invasion
 				for (int num36 = 0; num36 < 10; num36++)
 				{
 					Color color = new Color();
-					int dust = Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, mod.DustType("CyberDust"), npc.velocity.X + Main.rand.Next(-10, 10), npc.velocity.Y + Main.rand.Next(-10, 10), 200, color, 1f);
+					int dust = Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, mod.DustType<CyberDust>(), npc.velocity.X + Main.rand.Next(-10, 10), npc.velocity.Y + Main.rand.Next(-10, 10), 200, color, 1f);
 					Main.dust[dust].noGravity = true;
 				}
 				npc.ai[3] = (float)(Main.rand.Next(360) * (Math.PI / 180));

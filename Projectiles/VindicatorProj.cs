@@ -145,10 +145,12 @@ namespace Tremor.Projectiles
                 Vector2 value = projectile.Center + vector2;
                 for (int i = 0; i < 2; i++)
                 {
-                    int num5 = Dust.NewDust(value - Vector2.One * 8f, 16, 16, mod.DustType("CryotechDust"), projectile.velocity.X / 2f, projectile.velocity.Y / 2f, 100, default(Color), 1f);
+					/* TODO: CryotechDust does not exist
+                    int num5 = Dust.NewDust(value - Vector2.One * 8f, 16, 16, mod.DustType<Dusts.CryotechDust>(), projectile.velocity.X / 2f, projectile.velocity.Y / 2f, 100, default(Color), 1f);
                     Main.dust[num5].velocity *= 0.66f;
                     Main.dust[num5].noGravity = true;
                     Main.dust[num5].scale = 1.4f;
+					*/
                 }
             }
             if (flag && Main.myPlayer == projectile.owner)

@@ -42,7 +42,7 @@ namespace Tremor.Ice
 			{
 				mod.TileType("IceBlock")
 			};
-			dustType = mod.DustType("IceDust");
+			dustType = mod.DustType<IceDust>();
 			soundType = 21;
 			soundStyle = 2;
 			TileObjectData.newTile.WaterDeath = false;

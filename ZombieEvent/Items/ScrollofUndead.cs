@@ -30,7 +30,6 @@ namespace Tremor.ZombieEvent.Items
 
     public override bool CanUseItem(Player player)
     {
-            Mod mod = ModLoader.GetMod("Tremor");
             CyberWrathInvasion modPlayer = Main.player[Main.myPlayer].GetModPlayer<CyberWrathInvasion>(mod);
             if (ZWorld.ZInvasion)
 			{
@@ -46,7 +45,6 @@ namespace Tremor.ZombieEvent.Items
 
         public override bool UseItem(Player player)
         {
-            Mod mod = ModLoader.GetMod("Tremor");
             CyberWrathInvasion modPlayer = Main.player[Main.myPlayer].GetModPlayer<CyberWrathInvasion>(mod);
             Main.NewText("Undead creatures are rising from ground!", 175, 75, 255);
             Main.NewText("The Night of Undead has begun...", 135, 17, 17);

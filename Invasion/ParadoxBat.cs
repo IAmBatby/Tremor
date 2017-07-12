@@ -33,7 +33,6 @@ namespace Tremor.Invasion
 
 		public override float SpawnChance(NPCSpawnInfo spawnInfo)
 		{
-			Mod mod = ModLoader.GetMod("Tremor");
 			CyberWrathInvasion modPlayer = Main.player[Main.myPlayer].GetModPlayer<CyberWrathInvasion>(mod);
 			float spawn = 20f;
 			if (InvasionWorld.CyberWrath)
@@ -52,7 +51,7 @@ namespace Tremor.Invasion
 			{
 				for (int k = 0; k < 10; k++)
 				{
-					Dust.NewDust(npc.position, npc.width, npc.height, mod.DustType("CyberDust"), 2.5f * hitDirection, -2.5f, 0, default(Color), 0.7f);
+					Dust.NewDust(npc.position, npc.width, npc.height, mod.DustType<CyberDust>(), 2.5f * hitDirection, -2.5f, 0, default(Color), 0.7f);
 				}
 
 				CyberWrathInvasion modPlayer = Main.player[Main.myPlayer].GetModPlayer<CyberWrathInvasion>(mod);
@@ -65,7 +64,7 @@ namespace Tremor.Invasion
 
 			for (int k = 0; k < damage / npc.lifeMax * 50.0; k++)
 			{
-				Dust.NewDust(npc.position, npc.width, npc.height, mod.DustType("CyberDust"), hitDirection, -1f, 0, default(Color), 0.7f);
+				Dust.NewDust(npc.position, npc.width, npc.height, mod.DustType<CyberDust>(), hitDirection, -1f, 0, default(Color), 0.7f);
 			}
 		}
 
@@ -137,7 +136,7 @@ namespace Tremor.Invasion
 			{
 				for (int num36 = 0; num36 < 25; num36++)
 				{
-					int dust = Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, mod.DustType("CyberDust"), npc.velocity.X + Main.rand.Next(-10, 10), npc.velocity.Y + Main.rand.Next(-10, 10), 1, npc.color, 1f);
+					int dust = Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, mod.DustType<CyberDust>(), npc.velocity.X + Main.rand.Next(-10, 10), npc.velocity.Y + Main.rand.Next(-10, 10), 1, npc.color, 1f);
 					Main.dust[dust].noGravity = true;
 				}
 
@@ -166,7 +165,7 @@ namespace Tremor.Invasion
 			}
 			if (Main.rand.Next(2) == 0)
 			{
-				int num706 = Dust.NewDust(npc.position, npc.width, npc.height, mod.DustType("CyberDust"), 0f, 0f, 200, npc.color, 0.5f);
+				int num706 = Dust.NewDust(npc.position, npc.width, npc.height, mod.DustType<CyberDust>(), 0f, 0f, 200, npc.color, 0.5f);
 				Main.dust[num706].velocity *= 0.6f;
 			}
 			if (FirstState)
@@ -222,7 +221,7 @@ namespace Tremor.Invasion
 
 				if (Main.rand.Next(6) == 0)
 				{
-					int dust = Dust.NewDust(npc.position, npc.width, npc.height, mod.DustType("CyberDust"), 0f, 0f, 200, npc.color, 0.4f);
+					int dust = Dust.NewDust(npc.position, npc.width, npc.height, mod.DustType<CyberDust>(), 0f, 0f, 200, npc.color, 0.4f);
 					Main.dust[dust].velocity *= 0.4f;
 				}
 
@@ -240,13 +239,13 @@ namespace Tremor.Invasion
 				if (npc.life > 500)
 				{
 					Color color = new Color();
-					int dust = Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, mod.DustType("CyberDust"), npc.velocity.X, npc.velocity.Y, 100, color, 0.6f);
+					int dust = Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, mod.DustType<CyberDust>(), npc.velocity.X, npc.velocity.Y, 100, color, 0.6f);
 					Main.dust[dust].noGravity = true;
 				}
 				else if (npc.life <= 200)
 				{
 					Color color = new Color();
-					int dust = Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, mod.DustType("CyberDust"), npc.velocity.X, npc.velocity.Y, 50, color, 0.8f);
+					int dust = Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, mod.DustType<CyberDust>(), npc.velocity.X, npc.velocity.Y, 50, color, 0.8f);
 					Main.dust[dust].noGravity = true;
 				}
 			}

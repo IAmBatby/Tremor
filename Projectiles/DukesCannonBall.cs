@@ -97,7 +97,7 @@ namespace Tremor.Projectiles
 		{
 			for (int k = 0; k < 10; k++)
 			{
-				int dust = Dust.NewDust(projectile.position + projectile.velocity, projectile.width, projectile.height, mod.DustType("Ball"), projectile.oldVelocity.X * 0.9f, projectile.oldVelocity.Y * 0.9f);
+				int dust = Dust.NewDust(projectile.position + projectile.velocity, projectile.width, projectile.height, mod.DustType<Dusts.Ball>(), projectile.oldVelocity.X * 0.9f, projectile.oldVelocity.Y * 0.9f);
 			}
 		}
 
