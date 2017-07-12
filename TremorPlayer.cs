@@ -10,8 +10,6 @@ using Terraria.ModLoader;
 
 namespace Tremor
 {
-
-
 	public class TremorPlayer : ModPlayer
 	{
 		public bool heartAmulet;
