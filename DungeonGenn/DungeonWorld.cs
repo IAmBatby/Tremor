@@ -273,7 +273,9 @@ namespace Tremor.DungeonGenn
 		public void GenerateOcean()
 		{
 			/*maxDistBeetweenRooms/=2;
-    for(int i=0; i<floorNum; i++)				for(int j=0; j<roomNum; j++)				{
+    for(int i=0; i<floorNum; i++)
+				for(int j=0; j<roomNum; j++)
+				{
             if(i<=1)
             {
                 room[i,j]=new Room();
@@ -293,11 +295,13 @@ namespace Tremor.DungeonGenn
                     room[i,j].GenerateUnder(room[i, j-1], minW/2, maxW/2, minH, maxH, maxDistBeetweenRooms/2);
                     graph[GetRoomFullId(i, j), GetRoomFullId(i, j-1)]=true;
                 }
-            }					else GenerateSparseRoom(i,j);
+            }
+					else GenerateSparseRoom(i,j);
             room[i,j].isFlooded=true;
             if(i!=0)room[i,j].isAroundSand=true;
             if(HitChance(80))room[i,j].wallState=0;
-        }			AfterGenerate();*/
+        }
+			AfterGenerate();*/
 		}
 		private void AfterGenerate()
 		{
@@ -392,15 +396,94 @@ namespace Tremor.DungeonGenn
 		}
 		public void GenerateTraitRichRoom(int i, int traitId)
 		{
-			/*room[i,j] = new Room();			bool TouchesRoom=false;			int debugI=0;
+			/*room[i,j] = new Room();
+			bool TouchesRoom=false;
+			int debugI=0;
 			if(HitChance(trait[traitId].destroyedChance)) room[i,j].isDestroyed = true;
-			if(HitChance(25)) room[i,j].wallState = 0;			do			{
-			    TouchesRoom=false;				debugI++;
-				if(j==0 || j==roomNum-1) room[i,j].isDestroyed = true;				//pirmas aukstas				if(i==0)				{					//jei nevienas nesukurtas					if(j==0)					{						room[i,j].GenerateRoom(trait[traitId].minW, trait[traitId].maxW, trait[traitId].minH, trait[traitId].maxH);					}					//iprastas kambariu kurimas					else					{						if(HitChance(steepness))						{							if(HitChance(50)) room[i,j].GenerateUnder(room[i, j-1], trait[traitId].minW, trait[traitId].maxW, trait[traitId].minH, trait[traitId].maxH, trait[traitId].maxDistBeetweenRooms);
-							else room[i,j].GenerateOnTopOf(room[i, j-1], trait[traitId].minW, trait[traitId].maxW, trait[traitId].minH, trait[traitId].maxH, trait[traitId].maxDistBeetweenRooms);						}						else						{							room[i,j].GenerateRightTo(room[i, j-1], trait[traitId].minW, trait[traitId].maxW, trait[traitId].minH, trait[traitId].maxH, trait[traitId].maxDistBeetweenRooms*2, 5, 25);						}						graph[GetRoomFullId(i, j), GetRoomFullId(i, j-1)]=true;					}				}				//kiti aukstai				else				{					//jei ne pirmo auksto pirmas kambarys					if(j==0)					{						findLowestIdInFloor(i-1);
+			if(HitChance(25)) room[i,j].wallState = 0;
+			do
+			{
+			    TouchesRoom=false;
+				debugI++;
+				if(j==0 || j==roomNum-1) room[i,j].isDestroyed = true;
+				//pirmas aukstas
+				if(i==0)
+				{
+					//jei nevienas nesukurtas
+					if(j==0)
+					{
+						room[i,j].GenerateRoom(trait[traitId].minW, trait[traitId].maxW, trait[traitId].minH, trait[traitId].maxH);
+					}
+					//iprastas kambariu kurimas
+					else
+					{
+						if(HitChance(steepness))
+						{
+							if(HitChance(50)) room[i,j].GenerateUnder(room[i, j-1], trait[traitId].minW, trait[traitId].maxW, trait[traitId].minH, trait[traitId].maxH, trait[traitId].maxDistBeetweenRooms);
+							else room[i,j].GenerateOnTopOf(room[i, j-1], trait[traitId].minW, trait[traitId].maxW, trait[traitId].minH, trait[traitId].maxH, trait[traitId].maxDistBeetweenRooms);
+						}
+						else
+						{
+							room[i,j].GenerateRightTo(room[i, j-1], trait[traitId].minW, trait[traitId].maxW, trait[traitId].minH, trait[traitId].maxH, trait[traitId].maxDistBeetweenRooms*2, 5, 25);
+						}
+						graph[GetRoomFullId(i, j), GetRoomFullId(i, j-1)]=true;
+					}
+				}
+				//kiti aukstai
+				else
+				{
+					//jei ne pirmo auksto pirmas kambarys
+					if(j==0)
+					{
+						findLowestIdInFloor(i-1);
 						//replaced from findLowestIdInFloor;
-						lowestId=WorldGen.genRand.Next(roomNum);						room[i,j].GenerateUnder(room[i-1, lowestId], trait[traitId].minW, trait[traitId].maxW, trait[traitId].minH, trait[traitId].maxH, trait[traitId].maxDistBeetweenRooms);						graph[GetRoomFullId(i, j), GetRoomFullId(i-1, lowestId)]=true;						pickedCenter=WorldGen.genRand.Next(roomNum);					}					//iprastas kambariu kurimas					else					{						if(HitChance(steepness))						{							if(HitChance(50)) room[i,j].GenerateUnder(room[i, j-1], trait[traitId].minW, trait[traitId].maxW, trait[traitId].minH, trait[traitId].maxH, trait[traitId].maxDistBeetweenRooms);
-							else room[i,j].GenerateOnTopOf(room[i, j-1], trait[traitId].minW, trait[traitId].maxW, trait[traitId].minH, trait[traitId].maxH, trait[traitId].maxDistBeetweenRooms);							graph[GetRoomFullId(i, j), GetRoomFullId(i, j-1)]=true;						}						else						{							if(j<pickedCenter)							{								room[i,j].GenerateRightTo(room[i, j-1], trait[traitId].minW, trait[traitId].maxW, trait[traitId].minH, trait[traitId].maxH, trait[traitId].maxDistBeetweenRooms, 5, 25);								graph[GetRoomFullId(i, j), GetRoomFullId(i, j-1)]=true;							}							else if(j==pickedCenter)                            {                                room[i,j].GenerateLeftTo(room[i, 0], trait[traitId].minW, trait[traitId].maxW, trait[traitId].minH, trait[traitId].maxH, trait[traitId].maxDistBeetweenRooms, 5, 25);                                graph[GetRoomFullId(i, j), GetRoomFullId(i, 0)]=true;                            }                            else                            {                                room[i,j].GenerateLeftTo(room[i, j-1], trait[traitId].minW, trait[traitId].maxW, trait[traitId].minH, trait[traitId].maxH, trait[traitId].maxDistBeetweenRooms, 5, 25);                                graph[GetRoomFullId(i, j), GetRoomFullId(i, j-1)]=true;							}						}					}				}				//tikrinama ar kambariia lieciasi				for(int m=0; m<=i; m++)				{					for(int n=0; n<j; n++)						if(room[i,j].TouchesRoom(room[m,n]))						{							TouchesRoom=true;							break;						}					if (TouchesRoom) break;				}			}			while(TouchesRoom && debugI<10);*/
+						lowestId=WorldGen.genRand.Next(roomNum);
+						room[i,j].GenerateUnder(room[i-1, lowestId], trait[traitId].minW, trait[traitId].maxW, trait[traitId].minH, trait[traitId].maxH, trait[traitId].maxDistBeetweenRooms);
+						graph[GetRoomFullId(i, j), GetRoomFullId(i-1, lowestId)]=true;
+						pickedCenter=WorldGen.genRand.Next(roomNum);
+					}
+					//iprastas kambariu kurimas
+					else
+					{
+						if(HitChance(steepness))
+						{
+							if(HitChance(50)) room[i,j].GenerateUnder(room[i, j-1], trait[traitId].minW, trait[traitId].maxW, trait[traitId].minH, trait[traitId].maxH, trait[traitId].maxDistBeetweenRooms);
+							else room[i,j].GenerateOnTopOf(room[i, j-1], trait[traitId].minW, trait[traitId].maxW, trait[traitId].minH, trait[traitId].maxH, trait[traitId].maxDistBeetweenRooms);
+							graph[GetRoomFullId(i, j), GetRoomFullId(i, j-1)]=true;
+						}
+						else
+						{
+							if(j<pickedCenter)
+							{
+								room[i,j].GenerateRightTo(room[i, j-1], trait[traitId].minW, trait[traitId].maxW, trait[traitId].minH, trait[traitId].maxH, trait[traitId].maxDistBeetweenRooms, 5, 25);
+								graph[GetRoomFullId(i, j), GetRoomFullId(i, j-1)]=true;
+							}
+							else if(j==pickedCenter)
+                            {
+                                room[i,j].GenerateLeftTo(room[i, 0], trait[traitId].minW, trait[traitId].maxW, trait[traitId].minH, trait[traitId].maxH, trait[traitId].maxDistBeetweenRooms, 5, 25);
+                                graph[GetRoomFullId(i, j), GetRoomFullId(i, 0)]=true;
+                            }
+                            else
+                            {
+                                room[i,j].GenerateLeftTo(room[i, j-1], trait[traitId].minW, trait[traitId].maxW, trait[traitId].minH, trait[traitId].maxH, trait[traitId].maxDistBeetweenRooms, 5, 25);
+                                graph[GetRoomFullId(i, j), GetRoomFullId(i, j-1)]=true;
+							}
+						}
+					}
+				}
+				//tikrinama ar kambariia lieciasi
+				for(int m=0; m<=i; m++)
+				{
+					for(int n=0; n<j; n++)
+						if(room[i,j].TouchesRoom(room[m,n]))
+						{
+							TouchesRoom=true;
+							break;
+						}
+					if (TouchesRoom) break;
+				}
+			}
+			while(TouchesRoom && debugI<10);*/
 		}
 		//}
 		//{CORRIDOR BUILDING METHODS
@@ -633,7 +716,8 @@ namespace Tremor.DungeonGenn
 				if (prec > 45 && prec < 50)
 				{
 					room[i].isDestroyed = true;
-					/*for(int m=0; m<floorNum; m++)                        for(int n=0; n<roomNum; n++)
+					/*for(int m=0; m<floorNum; m++)
+                        for(int n=0; n<roomNum; n++)
                         {
                             if(m==i && n==j) continue;
                             bool destroy = room[i,j].IsNear(room[m,n], 5);
@@ -1368,7 +1452,7 @@ namespace Tremor.DungeonGenn
 						case 0:
 							break;
 						case 1:
-							if (HitChance(120)) WorldGen.PlaceTile(putX, putY, (ushort)ModLoader.GetMod("Tremor").TileType("RuinAltar")); break;
+							if (HitChance(120)) WorldGen.PlaceTile(putX, putY, (ushort)Tremor.instance.TileType("RuinAltar")); break;
 					}
 				}
 			}
@@ -1396,7 +1480,7 @@ namespace Tremor.DungeonGenn
 			if (FirstAI)
 			{
 				FirstAI = false;
-				if (HitChance(40)) WorldGen.PlaceChest(putX, putY, (ushort)ModLoader.GetMod("Tremor").TileType("RuinChest"), false, 2);
+				if (HitChance(40)) WorldGen.PlaceChest(putX, putY, (ushort)Tremor.instance.TileType("RuinChest"), false, 2);
 			}
 		}
 	}
@@ -1515,7 +1599,7 @@ namespace Tremor.DungeonGenn
 						break;
 					}
 				}
-				int[] itemsToPlaceInGlassChestsSecondary = { ModLoader.GetMod("Tremor").ItemType("IceKey"), 73 };
+				int[] itemsToPlaceInGlassChestsSecondary = { Tremor.instance.ItemType("IceKey"), 73 };
 				int itemsToPlaceInGlassChestsSecondaryChoice = 0;
 				if (isInDungeon)
 				{

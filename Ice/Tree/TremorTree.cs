@@ -5,12 +5,14 @@ namespace Tremor.Ice.Tree
 {
 	public class TremorTree : ModTree
 	{
-		private Mod mod => ModLoader.GetMod("Tremor");
+		private Mod mod => Tremor.instance;
 
+		/* TODO: TreeCrash does not exist
 		public override int CreateDust()
 		{
-			return mod.DustType("TreeCrash");
+			return mod.DustType<TreeCrash>();
 		}
+		*/
 
 		public override int GrowthFXGore()
 		{

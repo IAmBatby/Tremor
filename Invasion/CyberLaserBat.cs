@@ -31,8 +31,8 @@ namespace Tremor.Invasion
 			projectile.rotation = -((float)Math.Atan2(rotX, rotY)) - 1.57f;
 			if (Main.netMode != 2)
 			{
-				int dustID = Dust.NewDust(projectile.position, projectile.width, projectile.height, mod.DustType("CyberDust"), projectile.velocity.X * 0.2f, projectile.velocity.Y * 0.2f, 100, Color.White, 0.6f);
-				int dustID2 = Dust.NewDust(projectile.position, projectile.width, projectile.height, mod.DustType("CyberDust"), projectile.velocity.X * 0.2f, projectile.velocity.Y * 0.2f, 100, Color.White, 0.8f);
+				int dustID = Dust.NewDust(projectile.position, projectile.width, projectile.height, mod.DustType<CyberDust>(), projectile.velocity.X * 0.2f, projectile.velocity.Y * 0.2f, 100, Color.White, 0.6f);
+				int dustID2 = Dust.NewDust(projectile.position, projectile.width, projectile.height, mod.DustType<CyberDust>(), projectile.velocity.X * 0.2f, projectile.velocity.Y * 0.2f, 100, Color.White, 0.8f);
 			}
 		}
 	}

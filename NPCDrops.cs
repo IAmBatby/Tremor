@@ -19,8 +19,8 @@ namespace Tremor
 			ItemID.RangerEmblem,
 			ItemID.SorcererEmblem,
 			ItemID.SummonerEmblem,
-			ModLoader.GetMod("Tremor").ItemType("AlchemistEmblem"),
-			ModLoader.GetMod("Tremor").ItemType("ThrowerEmblem")
+			Tremor.instance.ItemType("AlchemistEmblem"),
+			Tremor.instance.ItemType("ThrowerEmblem")
 		};
 
 		public override void NPCLoot(NPC npc)

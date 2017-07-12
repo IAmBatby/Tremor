@@ -12,7 +12,7 @@ namespace Tremor.Tiles
 			Main.tileMergeDirt[Type] = true;
 			Main.tileBlockLight[Type] = true;
 			Main.tileLighted[Type] = true;
-			dustType = mod.DustType("DoomFlame");
+			dustType = mod.DustType<Dusts.DoomFlame>();
 			drop = mod.ItemType("Doombrick");
                                    soundType = 21;
                                    soundStyle = 2;

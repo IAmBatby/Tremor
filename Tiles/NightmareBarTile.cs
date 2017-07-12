@@ -21,7 +21,7 @@ namespace Tremor.Tiles
         TileObjectData.newTile.StyleHorizontal = true;
         TileObjectData.newTile.StyleWrapLimit = 111;
         TileObjectData.addTile(Type);
-        dustType = mod.DustType("NightmareFlame");
+        dustType = mod.DustType<Dusts.NightmareFlame>();
 	AddMapEntry(new Color(90, 0, 150));
         Main.tileShine[Type] = 1100;
         Main.tileSolid[Type] = true;

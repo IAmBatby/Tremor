@@ -30,7 +30,6 @@ namespace Tremor.Invasion
 
 		public override bool CanUseItem(Player player)
 		{
-			Mod mod = ModLoader.GetMod("Tremor");
 			CyberWrathInvasion modPlayer = Main.player[Main.myPlayer].GetModPlayer<CyberWrathInvasion>(mod);
 			if (InvasionWorld.CyberWrath)
 				return false;
@@ -39,7 +38,6 @@ namespace Tremor.Invasion
 
 		public override bool UseItem(Player player)
 		{
-			Mod mod = ModLoader.GetMod("Tremor");
 			CyberWrathInvasion modPlayer = Main.player[Main.myPlayer].GetModPlayer<CyberWrathInvasion>(mod);
 			Main.NewText("Paradox Cohort is striking from nowhere!", 39, 86, 134);
 			Main.PlaySound(mod.GetSoundSlot(SoundType.Music, "Sounds/Music/Wrath1"), (int)player.position.X, (int)player.position.Y, 0);

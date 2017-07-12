@@ -12,7 +12,7 @@ namespace Tremor.NovaPillar
 
 		void UpdatePuritySpiritIndex()
 		{
-			int NovaTowerType = ModLoader.GetMod("Tremor").NPCType("NovaPillar");
+			int NovaTowerType = Tremor.instance.NPCType("NovaPillar");
 			if (NovaTowerIndex >= 0 && Main.npc[NovaTowerIndex].active && Main.npc[NovaTowerIndex].type == NovaTowerType)
 			{
 				return;

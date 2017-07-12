@@ -41,7 +41,7 @@ namespace Tremor.NovaPillar
 			_starTextures = new Texture2D[3];
 			for (int i = 0; i < _starTextures.Length; i++)
 			{
-				_starTextures[i] = ModLoader.GetMod("Tremor").GetTexture("NovaPillar/NovaSoul " + i);
+				_starTextures[i] = Tremor.instance.GetTexture("NovaPillar/NovaSoul " + i);
 			}
 		}
 

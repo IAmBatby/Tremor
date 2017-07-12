@@ -38,7 +38,7 @@ namespace Tremor.Projectiles
 		{
 			for (int k = 0; k < 5; k++)
 			{
-				Dust.NewDust(projectile.position + projectile.velocity, projectile.width, projectile.height, mod.DustType("NightmareFlame"), projectile.oldVelocity.X * 0.5f, projectile.oldVelocity.Y * 2f, 100, default(Color), 2f);
+				Dust.NewDust(projectile.position + projectile.velocity, projectile.width, projectile.height, mod.DustType<Dusts.NightmareFlame>(), projectile.oldVelocity.X * 0.5f, projectile.oldVelocity.Y * 2f, 100, default(Color), 2f);
 			}
 			Main.PlaySound(0, (int)projectile.position.X, (int)projectile.position.Y, 0);
 		}

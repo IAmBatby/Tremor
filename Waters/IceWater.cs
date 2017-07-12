@@ -8,8 +8,7 @@ namespace Tremor.Waters
 	{
         public override bool ChooseWaterStyle()
         {
-            Mod mod = ModLoader.GetMod("Tremor");
-            TremorPlayer modPlayer = Main.player[Main.myPlayer].GetModPlayer<TremorPlayer>(mod);
+            TremorPlayer modPlayer = Main.player[Main.myPlayer].GetModPlayer<TremorPlayer>();
             return modPlayer.ZoneIce;
         }
 
@@ -20,7 +19,7 @@ namespace Tremor.Waters
 
 		public override int GetSplashDust()
 		{
-			return mod.DustType("IceWaterSplash");
+			return mod.DustType<Dusts.IceWaterSplash>();
 		}
 
 		public override int GetDropletGore()

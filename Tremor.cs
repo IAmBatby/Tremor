@@ -54,7 +54,6 @@ namespace Tremor
 		{
 			if (Main.myPlayer != -1 && !Main.gameMenu)
 			{
-				Mod mod = ModLoader.GetMod("Tremor");
 				int[] NoOverride = {MusicID.Boss1, MusicID.Boss2, MusicID.Boss3, MusicID.Boss4, MusicID.Boss5,
 				MusicID.LunarBoss, MusicID.PumpkinMoon, MusicID.TheTowers, MusicID.FrostMoon, MusicID.GoblinInvasion, MusicID.Eclipse, MusicID.MartianMadness,
 				MusicID.PirateInvasion, GetSoundSlot(SoundType.Music, "Sounds/Music/CyberKing"), GetSoundSlot(SoundType.Music, "Sounds/Music/Boss6"), GetSoundSlot(SoundType.Music, "Sounds/Music/Trinity"),
@@ -85,7 +84,7 @@ namespace Tremor
 					music = GetSoundSlot(SoundType.Music, "Sounds/Music/NightOfUndead");
 				}
 
-				CyberWrathInvasion modPlayer1 = Main.player[Main.myPlayer].GetModPlayer<CyberWrathInvasion>(mod);
+				CyberWrathInvasion modPlayer1 = Main.player[Main.myPlayer].GetModPlayer<CyberWrathInvasion>();
 				if (InvasionWorld.CyberWrath)
 				{
 					music = GetSoundSlot(SoundType.Music, "Sounds/Music/CyberWrath");
@@ -696,8 +695,7 @@ namespace Tremor
 
 		public override void ModifyInterfaceLayers(List<GameInterfaceLayer> layers)
 		{
-			Mod mod = ModLoader.GetMod("Tremor");
-			CyberWrathInvasion modPlayer1 = Main.player[Main.myPlayer].GetModPlayer<CyberWrathInvasion>(mod);
+			CyberWrathInvasion modPlayer1 = Main.player[Main.myPlayer].GetModPlayer<CyberWrathInvasion>();
 			if (InvasionWorld.CyberWrath)
 			{
 				int index = layers.FindIndex(layer => layer.Name.Equals("Vanilla: Inventory"));
@@ -715,15 +713,14 @@ namespace Tremor
 
 		public void DrawOrionEvent(SpriteBatch spriteBatch)
 		{
-			Mod mod = ModLoader.GetMod("Tremor");
-			CyberWrathInvasion modPlayer1 = Main.player[Main.myPlayer].GetModPlayer<CyberWrathInvasion>(mod);
+			CyberWrathInvasion modPlayer1 = Main.player[Main.myPlayer].GetModPlayer<CyberWrathInvasion>();
 			if (InvasionWorld.CyberWrath && !Main.gameMenu)
 			{
 				float scaleMultiplier = 0.5f + 1 * 0.5f;
 				float alpha = 0.5f;
 				Texture2D progressBg = Main.colorBarTexture;
 				Texture2D progressColor = Main.colorBarTexture;
-				Texture2D orionIcon = mod.GetTexture("Invasion/InvasionIcon");
+				Texture2D orionIcon = Tremor.instance.GetTexture("Invasion/InvasionIcon");
 				const string orionDescription = "Paradox Cohort";
 				Color descColor = new Color(39, 86, 134);
 

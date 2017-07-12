@@ -27,8 +27,7 @@ namespace Tremor
 
 		private bool UpdatePuritySpiritIndex()
 		{
-			Mod mod = ModLoader.GetMod("Tremor");
-			CyberWrathInvasion modPlayer = Main.player[Main.myPlayer].GetModPlayer<CyberWrathInvasion>(mod);
+			CyberWrathInvasion modPlayer = Main.player[Main.myPlayer].GetModPlayer<CyberWrathInvasion>();
 			if (InvasionWorld.CyberWrath)
 			{
 				return true;

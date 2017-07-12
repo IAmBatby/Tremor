@@ -45,7 +45,7 @@ namespace Tremor.Invasion
 				}
 				for (int num91 = 0; num91 < num90; num91++)
 				{
-					int num92 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y + 2f), projectile.width, projectile.height, mod.DustType("CyberDust"), projectile.velocity.X * 0.2f, projectile.velocity.Y * 0.1f, 100, default(Color), 0.4f);
+					int num92 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y + 2f), projectile.width, projectile.height, mod.DustType<CyberDust>(), projectile.velocity.X * 0.2f, projectile.velocity.Y * 0.1f, 100, default(Color), 0.4f);
 					Main.dust[num92].noGravity = true;
 					Dust expr_46AC_cp_0 = Main.dust[num92];
 					expr_46AC_cp_0.velocity.X = expr_46AC_cp_0.velocity.X * 0.3f;
