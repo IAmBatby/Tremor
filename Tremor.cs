@@ -248,32 +248,9 @@ namespace Tremor
 
 		public override void AddRecipes()
 		{
-			List<Tuple<int, int[]>> recipesToDelete = new List<Tuple<int, int[]>>
-			{
-				new Tuple<int, int[]>(ItemID.NightsEdge, new int[] {ItemID.BloodButcherer}),
-				new Tuple<int, int[]>(ItemID.MechanicalWorm, new int[] {ItemID.Vertebrae}),
-				new Tuple<int, int[]>(3544, new int[0]),// Super Healing Potion
-				new Tuple<int, int[]>(3601, new int[0]),// Celestial Sigil
-				new Tuple<int, int[]>(3456, new int[0]),// Celestial Sigil
-				new Tuple<int, int[]>(3457, new int[0]),// Celestial Sigil
-				new Tuple<int, int[]>(3458, new int[0]),// Celestial Sigil
-				new Tuple<int, int[]>(3459, new int[0])// Celestial Sigil
-			};
-
-			foreach (var toDeleteRecipe in recipesToDelete)
-			{
-				var finder = new RecipeFinder();
-				finder.SetResult(toDeleteRecipe.Item1);
-				foreach (var ingredient in toDeleteRecipe.Item2)
-				{
-					finder.AddIngredient(ingredient);
-				}
-				foreach (Recipe foundRecipe in finder.SearchRecipes())
-				{
-					RecipeEditor editor = new RecipeEditor(foundRecipe);
-					editor.DeleteRecipe();
-				}
-			}
+			// Recipe wrapper
+			RecipeWrapper.AddRecipes();
+			RecipeWrapper.RemoveRecipes();
 
 			// Pillars Recipes
 			ModRecipe recipe = new ModRecipe(this);
