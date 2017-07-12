@@ -45,8 +45,10 @@ namespace Tremor.Projectiles
 		{
 			if (Main.rand.Next(2) == 1)
 			{
-				int dust = Dust.NewDust(projectile.position, projectile.width, projectile.height, mod.DustType("CrystalD"));
+				/* TODO: CrystalD does not exist
+				int dust = Dust.NewDust(projectile.position, projectile.width, projectile.height, mod.DustType<Dusts.CrystalD>());
 				Main.dust[dust].scale = 0.9f;
+				*/
 			}
 		}
 	}

@@ -22,7 +22,7 @@ namespace Tremor.Projectiles
 
 		public override void AI()
 		{
-			int dust = Dust.NewDust(projectile.position, projectile.width, projectile.height, mod.DustType("ClusterFlame"), projectile.velocity.X * 0.2f, projectile.velocity.Y * 0.2f, 136, default(Color), 2.9f);
+			int dust = Dust.NewDust(projectile.position, projectile.width, projectile.height, mod.DustType<Dusts.ClusterFlame>(), projectile.velocity.X * 0.2f, projectile.velocity.Y * 0.2f, 136, default(Color), 2.9f);
 			Main.dust[dust].noGravity = true;
 		}
 

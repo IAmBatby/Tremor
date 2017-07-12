@@ -61,7 +61,7 @@ namespace Tremor.Invasion
 		{
 			for (int k = 0; k < 5; k++)
 			{
-				Dust.NewDust(npc.position, npc.width, npc.height, mod.DustType("CyberDust"), hitDirection, -1f, 0, default(Color), 1f);
+				Dust.NewDust(npc.position, npc.width, npc.height, mod.DustType<CyberDust>(), hitDirection, -1f, 0, default(Color), 1f);
 			}
 		}
 

@@ -505,7 +505,6 @@ namespace Tremor
 		}
 		public override void UpdateBiomeVisuals()
 		{
-			Mod mod = ModLoader.GetMod("Tremor");
 			TremorPlayer modPlayer = Main.player[Main.myPlayer].GetModPlayer<TremorPlayer>(mod);
 			bool UseEffects = modPlayer.ZoneIce;
 			player.ManageSpecialBiomeVisuals("Tremor:Ice", UseEffects);

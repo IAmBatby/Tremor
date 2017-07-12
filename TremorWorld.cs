@@ -734,19 +734,19 @@ namespace Tremor
 						tile2.halfBrick(false);
 					}
 					Main.tile[i - 1, num - 1].active(true);
-					Main.tile[i - 1, num - 1].type = (ushort)ModLoader.GetMod("Tremor").TileType("LunarRootTile");
+					Main.tile[i - 1, num - 1].type = (ushort)Tremor.instance.TileType("LunarRootTile");
 					Main.tile[i - 1, num - 1].frameX = 0;
 					Main.tile[i - 1, num - 1].frameY = 0;
 					Main.tile[i, num - 1].active(true);
-					Main.tile[i, num - 1].type = (ushort)ModLoader.GetMod("Tremor").TileType("LunarRootTile");
+					Main.tile[i, num - 1].type = (ushort)Tremor.instance.TileType("LunarRootTile");
 					Main.tile[i, num - 1].frameX = 18;
 					Main.tile[i, num - 1].frameY = 0;
 					Main.tile[i - 1, num].active(true);
-					Main.tile[i - 1, num].type = (ushort)ModLoader.GetMod("Tremor").TileType("LunarRootTile");
+					Main.tile[i - 1, num].type = (ushort)Tremor.instance.TileType("LunarRootTile");
 					Main.tile[i - 1, num].frameX = 0;
 					Main.tile[i - 1, num].frameY = 18;
 					Main.tile[i, num].active(true);
-					Main.tile[i, num].type = (ushort)ModLoader.GetMod("Tremor").TileType("LunarRootTile");
+					Main.tile[i, num].type = (ushort)Tremor.instance.TileType("LunarRootTile");
 					Main.tile[i, num].frameX = 18;
 					Main.tile[i, num].frameY = 18;
 					return true;
@@ -779,7 +779,7 @@ namespace Tremor
 				int num4 = 5;
 				while (num4 < Main.worldSurface)
 				{
-					if (Main.tile[j, num4].active() && Main.tile[j, num4].type == (ushort)ModLoader.GetMod("Tremor").TileType("CometiteOreTile"))
+					if (Main.tile[j, num4].active() && Main.tile[j, num4].type == (ushort)Tremor.instance.TileType("CometiteOreTile"))
 					{
 						num++;
 						if (num > num3)
@@ -903,7 +903,7 @@ namespace Tremor
 							{
 								Main.tile[num2, num3].active(false);
 							}
-							Main.tile[num2, num3].type = (ushort)ModLoader.GetMod("Tremor").TileType("CometiteOreTile");
+							Main.tile[num2, num3].type = (ushort)Tremor.instance.TileType("CometiteOreTile");
 						}
 					}
 				}
@@ -941,7 +941,7 @@ namespace Tremor
 						}
 						Main.tile[num12, num13].liquid = 0;
 					}
-					if (Main.tile[num12, num13].type == (ushort)ModLoader.GetMod("Tremor").TileType("HardCometiteOreTile"))
+					if (Main.tile[num12, num13].type == (ushort)Tremor.instance.TileType("HardCometiteOreTile"))
 					{
 						if (!WorldGen.SolidTile(num12 - 1, num13) && !WorldGen.SolidTile(num12 + 1, num13) && !WorldGen.SolidTile(num12, num13 - 1) && !WorldGen.SolidTile(num12, num13 + 1))
 						{
@@ -972,7 +972,7 @@ namespace Tremor
 							{
 								WorldGen.KillTile(num17, num18, false, false, false);
 							}
-							Main.tile[num17, num18].type = (ushort)ModLoader.GetMod("Tremor").TileType("CometiteOreTile");
+							Main.tile[num17, num18].type = (ushort)Tremor.instance.TileType("CometiteOreTile");
 							WorldGen.SquareTileFrame(num17, num18, true);
 						}
 					}
@@ -994,7 +994,7 @@ namespace Tremor
 							{
 								WorldGen.KillTile(num22, num23, false, false, false);
 							}
-							Main.tile[num22, num23].type = (ushort)ModLoader.GetMod("Tremor").TileType("HardCometiteOreTile");
+							Main.tile[num22, num23].type = (ushort)Tremor.instance.TileType("HardCometiteOreTile");
 							WorldGen.SquareTileFrame(num22, num23, true);
 						}
 					}

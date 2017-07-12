@@ -22,7 +22,7 @@ namespace Tremor.Invasion
 
 		public override void AI()
 		{
-			int dust = Dust.NewDust(projectile.position, projectile.width, projectile.height, mod.DustType("CyberDust"), projectile.velocity.X * 0.2f, projectile.velocity.Y * 0.2f, 100, default(Color), 1f);
+			int dust = Dust.NewDust(projectile.position, projectile.width, projectile.height, mod.DustType<CyberDust>(), projectile.velocity.X * 0.2f, projectile.velocity.Y * 0.2f, 100, default(Color), 1f);
 			Main.dust[dust].noGravity = true;
 		}
 
