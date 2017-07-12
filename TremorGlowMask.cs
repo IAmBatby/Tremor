@@ -1,65 +1,96 @@
-﻿using System;
-using Terraria;
+﻿using System.Collections.Generic;
+using Microsoft.Xna.Framework.Graphics;
+using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace Tremor
 {
-	public static class TremorGlowMask
+	public class TremorGlowMask:ModPlayer
 	{
-		//Grove Set List
-		public static short DEH;
-		public static short DEG;
+		private static Dictionary<int,Texture2D> itemGlowMask=new Dictionary<int,Texture2D>();
 
-		public static short NovaPick;
-		public static short NovaHamaxe;
-
-		//Count items
-		const short Count = 4;
-
-		//Start - Final
-		static short End;
-		public static bool Loaded;
-
-		public static void Load()
+		public static void AddGlowMask(int itemType,string texturePath)
 		{
-			Array.Resize(ref Main.glowMaskTexture, Main.glowMaskTexture.Length + Count);
-			short i = (short)(Main.glowMaskTexture.Length - Count);
-			Main.glowMaskTexture[i] = ModLoader.GetTexture("Tremor/Items/DesertExplorerVisage_HeadGlow");
-			DEH = i;
-			i++;
-			Main.glowMaskTexture[i] = ModLoader.GetTexture("Tremor/Items/DesertExplorerGreaves_LegsGlow");
-			DEG = i;
-			i++;
-			Main.glowMaskTexture[i] = ModLoader.GetTexture("Tremor/NovaPillar/NovaPickaxe_Glow");
-			NovaPick = i;
-			i++;
-			Main.glowMaskTexture[i] = ModLoader.GetTexture("Tremor/NovaPillar/NovaHamaxe_Glow");
-			NovaHamaxe = i;
-			i++;
-			End = i;
-			Loaded = true;
+			itemGlowMask.Add(itemType,ModLoader.GetTexture(texturePath));
 		}
 
-		public static void Unload()
+		public override void ModifyDrawLayers(List<PlayerLayer> layers)
 		{
-			if (Main.glowMaskTexture.Length == End)
+			Texture2D textureLegs;
+			if(!player.armor[12].IsAir)
 			{
-				Array.Resize(ref Main.glowMaskTexture, Main.glowMaskTexture.Length - Count);
-			}
-			else if (Main.glowMaskTexture.Length > End && Main.glowMaskTexture.Length > Count)
-			{
-				for (int i = End - Count; i < End; i++)
+				if(player.armor[12].type>=ItemID.Count&&itemGlowMask.TryGetValue(player.armor[12].type,out textureLegs))//Vanity Legs
 				{
-					Main.glowMaskTexture[i] = ModLoader.GetTexture("Terraria/Item_0");
+					InsertAfterVanillaLayer(layers,"Legs",new PlayerLayer(mod.Name,"GlowMaskLegs",delegate(PlayerDrawInfo info)
+					{
+						TremorUtils.DrawArmorGlowMask(EquipType.Legs,textureLegs,info);
+					}));
 				}
 			}
-			Loaded = false;
-			DEH = 0;
-			DEG = 0;
-			NovaPick = 0;
-			NovaHamaxe = 0;
-			End = 0;
+			else if(player.armor[2].type>=ItemID.Count&&itemGlowMask.TryGetValue(player.armor[2].type,out textureLegs))//Legs
+			{
+				InsertAfterVanillaLayer(layers,"Legs",new PlayerLayer(mod.Name,"GlowMaskLegs",delegate(PlayerDrawInfo info)
+				{
+					TremorUtils.DrawArmorGlowMask(EquipType.Legs,textureLegs,info);
+				}));
+			}
+			Texture2D textureBody;
+			if(!player.armor[11].IsAir)
+			{
+				if(player.armor[11].type>=ItemID.Count&&itemGlowMask.TryGetValue(player.armor[11].type,out textureBody))//Vanity Body
+				{
+					InsertAfterVanillaLayer(layers,"Body",new PlayerLayer(mod.Name,"GlowMaskBody",delegate(PlayerDrawInfo info)
+					{
+						TremorUtils.DrawArmorGlowMask(EquipType.Body,textureBody,info);
+					}));
+				}
+			}
+			else if(player.armor[1].type>=ItemID.Count&&itemGlowMask.TryGetValue(player.armor[1].type,out textureBody))//Body
+			{
+				InsertAfterVanillaLayer(layers,"Body",new PlayerLayer(mod.Name,"GlowMaskBody",delegate(PlayerDrawInfo info)
+				{
+					TremorUtils.DrawArmorGlowMask(EquipType.Body,textureBody,info);
+				}));
+			}
+			Texture2D textureHead;
+			if(!player.armor[10].IsAir)
+			{
+				if(player.armor[10].type>=ItemID.Count&&itemGlowMask.TryGetValue(player.armor[10].type,out textureHead))//Vanity Head
+				{
+					InsertAfterVanillaLayer(layers,"Head",new PlayerLayer(mod.Name,"GlowMaskHead",delegate(PlayerDrawInfo info)
+					{
+						TremorUtils.DrawArmorGlowMask(EquipType.Head,textureHead,info);
+					}));
+				}
+			}
+			else if(player.armor[0].type>=ItemID.Count&&itemGlowMask.TryGetValue(player.armor[0].type,out textureHead))//Head
+			{
+				InsertAfterVanillaLayer(layers,"Head",new PlayerLayer(mod.Name,"GlowMaskHead",delegate(PlayerDrawInfo info)
+				{
+					TremorUtils.DrawArmorGlowMask(EquipType.Head,textureHead,info);
+				}));
+			}
+			Texture2D textureItem;
+			if(player.HeldItem.type>=ItemID.Count&&itemGlowMask.TryGetValue(player.HeldItem.type,out textureItem))//Held Item
+			{
+				InsertAfterVanillaLayer(layers,"HeldItem",new PlayerLayer(mod.Name,"GlowMaskHeldItem",delegate(PlayerDrawInfo info)
+				{
+					TremorUtils.DrawItemGlowMask(textureItem,info);
+				}));
+			}
 		}
 
+		public static void InsertAfterVanillaLayer(List<PlayerLayer> layers,string vanillaLayerName,PlayerLayer newPlayerLayer)
+		{
+			for(int i=0;i<layers.Count;i++)
+			{
+				if(layers[i].Name==vanillaLayerName&&layers[i].mod=="Terraria")
+				{
+					layers.Insert(i+1,newPlayerLayer);
+					return;
+				}
+			}
+			layers.Add(newPlayerLayer);
+		}
 	}
 }

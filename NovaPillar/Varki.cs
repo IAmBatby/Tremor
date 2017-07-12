@@ -42,6 +42,13 @@ namespace Tremor.NovaPillar
 
 		public override void AI()
 		{
+			if(Main.player[npc.target].GetModPlayer<TremorPlayer>(mod).ZoneRuins)
+			{
+				npc.life=-1;
+				npc.active=false;
+				npc.checkDead();
+				return;
+			}
 			npc.spriteDirection = npc.direction;
 			Timer++;
 			if (Timer == 2000)

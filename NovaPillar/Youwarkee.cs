@@ -48,9 +48,17 @@ namespace Tremor.NovaPillar
 		int k;
 		public override void AI()
 		{
+			Player player=Main.player[npc.target];
+			if(player.GetModPlayer<TremorPlayer>(mod).ZoneRuins)
+			{
+				npc.life=-1;
+				npc.active=false;
+				npc.checkDead();
+				return;
+			}
 			Vector2 StartPosition = new Vector2(npc.position.X + npc.width * 0.5f, npc.position.Y + npc.height * 0.5f);
-			float DirectionX = Main.player[npc.target].position.X + Main.player[npc.target].width / 2 - StartPosition.X;
-			float DirectionY = Main.player[npc.target].position.Y + (Main.player[npc.target].height / 2) - 120 - StartPosition.Y;
+			float DirectionX = player.position.X + player.width / 2 - StartPosition.X;
+			float DirectionY = player.position.Y + (player.height / 2) - 120 - StartPosition.Y;
 			float Length = (float)Math.Sqrt(DirectionX * DirectionX + DirectionY * DirectionY);
 			float Num = Speed / Length;
 			DirectionX = DirectionX * Num;
@@ -82,7 +90,7 @@ namespace Tremor.NovaPillar
 			if (Main.rand.Next(46) == 1)
 			{
 				Vector2 StartPosition2 = new Vector2(npc.position.X + (npc.width * 0.5f), npc.position.Y + (npc.height / 2));
-				float AndasRotation = (float)Math.Atan2(StartPosition2.Y - (Main.player[npc.target].position.Y + (Main.player[npc.target].height * 0.5f)), StartPosition2.X - (Main.player[npc.target].position.X + (Main.player[npc.target].width * 0.5f)));
+				float AndasRotation = (float)Math.Atan2(StartPosition2.Y - (player.position.Y + (player.height * 0.5f)), StartPosition2.X - (player.position.X + (player.width * 0.5f)));
 				npc.velocity.X = (float)(Math.Cos(AndasRotation) * 15) * -1;
 				npc.velocity.Y = (float)(Math.Sin(AndasRotation) * 15) * -1;
 				npc.netUpdate = true;

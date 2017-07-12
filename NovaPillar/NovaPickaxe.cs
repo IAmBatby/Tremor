@@ -5,6 +5,7 @@ namespace Tremor.NovaPillar
 {
 	public class NovaPickaxe : ModItem
 	{
+
 		public override void SetDefaults()
 		{
 
@@ -22,7 +23,6 @@ namespace Tremor.NovaPillar
 			item.UseSound = SoundID.Item1;
 			item.autoReuse = true;
 			item.tileBoost += 4;
-			item.glowMask = TremorGlowMask.NovaPick;
 			item.useTurn = true;
 		}
 
@@ -30,6 +30,7 @@ namespace Tremor.NovaPillar
 		{
 			DisplayName.SetDefault("Nova Pickaxe");
 			Tooltip.SetDefault("");
+			TremorGlowMask.AddGlowMask(item.type,"Tremor/NovaPillar/NovaPickaxe_Glow");
 		}
 
 

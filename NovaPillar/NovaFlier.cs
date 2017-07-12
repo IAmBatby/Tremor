@@ -54,11 +54,19 @@ namespace Tremor.NovaPillar
 
 		public override void AI()
 		{
+			Player player=Main.player[npc.target];
+			if(player.GetModPlayer<TremorPlayer>(mod).ZoneRuins)
+			{
+				npc.life=-1;
+				npc.active=false;
+				npc.checkDead();
+				return;
+			}
 			npc.spriteDirection = npc.direction;
 			NovaAnimation();
 			if (Main.time % 200 == 0)
 			{
-				Vector2 Velocity = Helper.VelocityToPoint(npc.Center, Helper.RandomPointInArea(new Vector2(Main.player[Main.myPlayer].Center.X - 10, Main.player[Main.myPlayer].Center.Y - 10), new Vector2(Main.player[Main.myPlayer].Center.X + 20, Main.player[Main.myPlayer].Center.Y + 20)), 7);
+				Vector2 Velocity = Helper.VelocityToPoint(npc.Center, Helper.RandomPointInArea(new Vector2(player.Center.X - 10, player.Center.Y - 10), new Vector2(player.Center.X + 20, player.Center.Y + 20)), 7);
 				int i = Projectile.NewProjectile(npc.Center.X, npc.Center.Y, Velocity.X, Velocity.Y, mod.ProjectileType("NovaFlierProj"), 20, 1f);
 			}
 		}
