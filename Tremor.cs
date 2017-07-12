@@ -207,6 +207,9 @@ namespace Tremor
 			Filters.Scene["Tremor:CogLord"] = new Filter(new ZombieScreenShaderData("FilterMiniTower").UseColor(0.9f, 0.5f, 0.2f).UseOpacity(0.6f), EffectPriority.VeryHigh);
 			SkyManager.Instance["Tremor:CogLord"] = new ZombieSky();
 
+			// Init
+			NPCDrops.Init();
+
 			if (!Main.dedServ)
 			{
 				string[,] musicBoxes =
@@ -268,7 +271,6 @@ namespace Tremor
 				layers.Insert(index, orionProgress);
 			}
 		}
-
 
 		public void DrawOrionEvent(SpriteBatch spriteBatch)
 		{
