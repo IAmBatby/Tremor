@@ -5,8 +5,6 @@ namespace Tremor.NovaPillar
 {
 	public class NovaHamaxe : ModItem
 	{
-		private static short glowMaskIndex;
-
 		public override void SetDefaults()
 		{
 
@@ -25,7 +23,6 @@ namespace Tremor.NovaPillar
 			item.UseSound = SoundID.Item1;
 			item.autoReuse = true;
 			item.tileBoost += 4;
-			item.glowMask = glowMaskIndex;
 			item.useTurn = true;
 		}
 
@@ -33,7 +30,7 @@ namespace Tremor.NovaPillar
 		{
 			DisplayName.SetDefault("Nova Hamaxe");
 			Tooltip.SetDefault("");
-			glowMaskIndex=TremorGlowMask.AddGlowMask("Tremor/NovaPillar/NovaHamaxe_Glow");
+			TremorGlowMask.AddGlowMask(item.type,"Tremor/NovaPillar/NovaHamaxe_Glow");
 		}
 
 

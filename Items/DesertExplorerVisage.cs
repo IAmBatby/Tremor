@@ -7,8 +7,6 @@ namespace Tremor.Items
 	[AutoloadEquip(EquipType.Head)]
 	public class DesertExplorerVisage : ModItem
 	{
-		private static short glowMaskIndex;
-
 		public override void SetDefaults()
 		{
 
@@ -24,7 +22,7 @@ namespace Tremor.Items
 		{
 			DisplayName.SetDefault("Desert Explorer Visage");
 			Tooltip.SetDefault("Increases alchemic critical chance by 14");
-			glowMaskIndex=TremorGlowMask.AddGlowMask("Tremor/Items/DesertExplorerVisage_HeadGlow");
+			TremorGlowMask.AddGlowMask(item.type,"Tremor/Items/DesertExplorerVisage_HeadGlow");
 		}
 
 
@@ -36,7 +34,6 @@ namespace Tremor.Items
 
 		public override void DrawArmorColor(Player drawPlayer, float shadow, ref Color color, ref int glowMask, ref Color glowMaskColor)
 		{
-			glowMask = glowMaskIndex;
 			glowMaskColor = Color.White;
 		}
 

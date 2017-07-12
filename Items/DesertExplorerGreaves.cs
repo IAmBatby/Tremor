@@ -1,4 +1,5 @@
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.ModLoader;
 
@@ -7,8 +8,6 @@ namespace Tremor.Items
 	[AutoloadEquip(EquipType.Legs)]
 	public class DesertExplorerGreaves : ModItem
 	{
-		private static short glowMaskIndex;
-
 		public override void SetDefaults()
 		{
 
@@ -25,7 +24,7 @@ namespace Tremor.Items
 		{
 			DisplayName.SetDefault("Desert Explorer Greaves");
 			Tooltip.SetDefault("Increases alchemic damage by 11%\nIncreases movement speed by 30%");
-			glowMaskIndex=TremorGlowMask.AddGlowMask("Tremor/Items/DesertExplorerGreaves_LegsGlow");
+			TremorGlowMask.AddGlowMask(item.type,"Tremor/Items/DesertExplorerGreaves_LegsGlow");
 		}
 
 
@@ -37,8 +36,12 @@ namespace Tremor.Items
 
 		public override void DrawArmorColor(Player drawPlayer, float shadow, ref Color color, ref int glowMask, ref Color glowMaskColor)
 		{
-			glowMask = glowMaskIndex;
 			glowMaskColor = Color.White;
+		}
+
+		public override void PostDrawInWorld(SpriteBatch spriteBatch,Color lightColor,Color alphaColor,float rotation,float scale,int whoAmI)
+		{
+			
 		}
 	}
 }

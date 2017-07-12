@@ -71,8 +71,15 @@ namespace Tremor.NovaPillar
 		public override void AI()
 		{
 			npc.TargetClosest(true);
+			Player player=Main.player[npc.target];
+			if(player.GetModPlayer<TremorPlayer>(mod).ZoneRuins)
+			{
+				npc.life=-1;
+				npc.active=false;
+				npc.checkDead();
+				return;
+			}
 			npc.spriteDirection = npc.direction;
-			Player player = Main.player[npc.target];
 			if (Main.rand.Next(800) == 0)
 			{
 				Main.PlaySound(SoundID.NPCDeath51, npc.Center);

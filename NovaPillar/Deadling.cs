@@ -43,6 +43,18 @@ namespace Tremor.NovaPillar
 			return 0;
 		}
 
+		public override bool PreAI()
+		{
+			if(Main.player[npc.target].GetModPlayer<TremorPlayer>(mod).ZoneRuins)
+			{
+				npc.life=-1;
+				npc.active=false;
+				npc.checkDead();
+				return false;
+			}
+			return true;
+		}
+
 		public override void PostDraw(SpriteBatch spriteBatch, Color drawColor)
 		{
 			TremorUtils.DrawNPCGlowMask(spriteBatch, npc, mod.GetTexture("NovaPillar/Deadling_GlowMask"));

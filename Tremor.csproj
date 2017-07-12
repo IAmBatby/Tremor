@@ -60,6 +60,9 @@
     <Reference Include="Terraria">
       <HintPath>..\..\..\..\..\..\..\Apps\Steam\steamapps\common\Terraria\Terraria.exe</HintPath>
     </Reference>
+    <Reference Include="Terraria_tML">
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Terraria\Terraria_tML.exe</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AlchemistGlobalItem.cs" />
@@ -185,7 +188,6 @@
     <Compile Include="Buffs\ZephyrhornBuff.cs" />
     <Compile Include="Buffs\ZombatBuff.cs" />
     <Compile Include="Buffs\ZootalooBuff.cs" />
-    <Compile Include="CheckMobs.cs" />
     <Compile Include="CustomDrop.cs" />
     <Compile Include="DungeonGenn\DungeonWorld.cs" />
     <Compile Include="Dusts\Ball.cs" />
