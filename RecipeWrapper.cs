@@ -7,6 +7,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Tremor.Items;
 using Tremor.NovaPillar;
+using Tremor.NovaPillar.Items;
 using Tremor.Tiles;
 using MineralTransmutator = Tremor.Items.MineralTransmutator;
 
