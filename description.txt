@@ -1,17 +1,19 @@
-Tremor mod is one of the biggest Terraria mods.
+The original Tremor team: Zadum4ivii, Bogdan3456, DaKkharn, Obesedog, Zerokk, Liniqes, CursedKnight
+Tremor is now maintained by Jofairden and collaborators.
+Git: https://github.com/Jofairden/Tremor
 
-The latest version of mod includes:
+Please check the Tremor thread on TCF for the recent changelogs.
 
--Over 1500 new items - including new armor sets, weapons for each class, accessories, new materials and banners for every mob.
--17 new bosses - every boss has it's own AI, loot, treasure bag with unique expert item.
--13 new NPCs - each NPC has it's own stuff to sell. Many NPCs also sell new things after certain bosses are defeated.
--2 brand new invasions - new invasions with new interesting mobs, loot and also with new soundtracks.
--New Glacier minibiome - a biome that spawns in Snow biome and has new mobs and loot.
--New ores - some generate in the beginning of the game and some only generate after defeating certain boss.
--Ruins structure - a new structure that generates underground with new mobs, chests, loot and boss!
--Tremode - Post Moon Lord gamemode with it's own ores, lots of new content, such as armors, weapons, materials, harder monsters and hard bosses.
--New alchemist class - absolutely new class with new damage type, weapons, armor and accessories.
--New Nova Celestial Pillar - a completely new pillar for alchemist class that spawns with regular pillars!
--11 new soundtracks - amazing tracks for different bosses and events made by Delicious Saturn.
--Amazing neat sprites made by our wonderful spriters!
--And also support of Boss Checklist Mod!
+What Tremor offers:
+Over 1600 new items - including new armor sets, weapons for each class, accessories, new materials and banners for every mob.
+21 new bosses - every boss has it's own AI, loot, treasure bag with unique expert item.
+13 new NPCs - each NPC has it's own stuff to sell. Many NPCs also sell new things after certain bosses are defeated.
+2 brand new invasions - new invasions with new interesting mobs, loot and also with new soundtracks.
+New Glacier minibiome - a biome that spawns in Snow biome and has new mobs and loot.
+New ores - some generate in the beginning of the game and some only generate after defeating certain boss.
+Tremode - Post Moon Lord gamemode with it's own ores, lots of new content, such as armors, weapons, materials, harder monsters and hard bosses.
+New alchemist class - absolutely new class with new damage type, weapons, armor and accessories.
+New Nova Celestial Pillar - a completely new pillar for alchemist class that spawns with regular pillars!
+11 new soundtracks - amazing tracks for different bosses and events made by Delicious Saturn.
+Amazing neat sprites made by our wonderful spriters!
+And also support of Boss Checklist Mod!
