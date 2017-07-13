@@ -9,6 +9,11 @@ namespace Tremor
 	{
 		private static readonly Dictionary<int, Texture2D> ItemGlowMask = new Dictionary<int, Texture2D>();
 
+		internal static void Unload()
+		{
+			ItemGlowMask.Clear();
+		}
+
 		public static void AddGlowMask(int itemType, string texturePath)
 		{
 			ItemGlowMask.Add(itemType, ModLoader.GetTexture(texturePath));
