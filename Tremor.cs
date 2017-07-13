@@ -189,7 +189,7 @@ namespace Tremor
 		{
 			if (!Main.dedServ)
 			{
-				
+				TremorGlowMask.Unload();
 			}
 		}
 
