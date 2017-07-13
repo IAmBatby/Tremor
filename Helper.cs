@@ -55,6 +55,11 @@ namespace Tremor
 		}
 		#endregion
 
+		public static Item NewItemFast(Vector2 position, Vector2 size, int type, int stack = 1)
+		{
+			return Main.item[Item.NewItem((int) position.X, (int) position.Y, (int) size.X, (int) size.Y, type, stack)];
+		}
+
 		public static Vector2 RandomPosition(Vector2 pos1, Vector2 pos2)
 		{
 			Random rnd = new Random();
