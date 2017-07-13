@@ -1,5 +1,6 @@
 using Terraria;
 using Terraria.ModLoader;
+using Tremor.NovaPillar.Tiles;
 
 namespace Tremor.NovaPillar.Items.Placeable
 {
@@ -18,7 +19,7 @@ namespace Tremor.NovaPillar.Items.Placeable
 			item.consumable = true;
 			item.rare = 10;
 			item.value = Item.buyPrice(0, 10, 0, 0);
-			item.createTile = mod.TileType("NovaMonolith_Tile");
+			item.createTile = mod.TileType<NovaMonolithTile>();
 		}
 
 		public override void SetStaticDefaults()
