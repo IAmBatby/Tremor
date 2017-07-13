@@ -185,7 +185,7 @@
     <Compile Include="Buffs\ZephyrhornBuff.cs" />
     <Compile Include="Buffs\ZombatBuff.cs" />
     <Compile Include="Buffs\ZootalooBuff.cs" />
-    <Compile Include="CustomDrop.cs" />
+    <Compile Include="TremorGlobalTile.cs" />
     <Compile Include="DungeonGenn\DungeonWorld.cs" />
     <Compile Include="Dusts\Ball.cs" />
     <Compile Include="Dusts\ClusterFlame.cs" />
@@ -236,7 +236,7 @@
     <Compile Include="NovaPillar\Projectiles\NovaSkull.cs" />
     <Compile Include="NovaPillar\Projectiles\NovaSkullburst.cs" />
     <Compile Include="NovaPillar\Tiles\NovaBlock.cs" />
-    <Compile Include="NovaPillar\Tiles\NovaMonolith_Tile.cs" />
+    <Compile Include="NovaPillar\Tiles\NovaMonolithTile.cs" />
     <Compile Include="RecipeWrapper.cs" />
     <Compile Include="TremorGlobalItem.cs" />
     <Compile Include="Gores\IceDroplet.cs" />
@@ -5869,8 +5869,8 @@
     <Content Include="NovaPillar\Projectiles\NovaSkull.png" />
     <Content Include="NovaPillar\Projectiles\NovaSkullburst.png" />
     <Content Include="NovaPillar\Tiles\NovaBlock.png" />
-    <Content Include="NovaPillar\Tiles\NovaMonolith_Tile.png" />
-    <Content Include="NovaPillar\Tiles\NovaMonolith_TileGlow.png" />
+    <Content Include="NovaPillar\Tiles\NovaMonolithTile.png" />
+    <Content Include="NovaPillar\Tiles\NovaMonolithTile_Glowmask.png" />
     <Content Include="NPCs\Abomination.png" />
     <Content Include="NPCs\Agloomination.png" />
     <Content Include="NPCs\Alchemaster.png" />

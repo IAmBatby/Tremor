@@ -1,5 +1,6 @@
 ﻿using Terraria.ID;
 using Terraria.ModLoader;
+using Tremor.NovaPillar.Tiles;
 
 namespace Tremor.NovaPillar.Items.Placeable
 {
@@ -18,13 +19,12 @@ namespace Tremor.NovaPillar.Items.Placeable
 			item.useStyle = 1;
 			item.rare = 0;
 			item.consumable = true;
-			item.createTile = mod.TileType("NovaBlock");
+			item.createTile = mod.TileType<NovaBlock>();
 		}
 
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Nova Fragment Block");
-			Tooltip.SetDefault("");
 		}
 
 
