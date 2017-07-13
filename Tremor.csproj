@@ -3043,6 +3043,17 @@
     <Content Include="Buffs\ZombatBuff.png" />
     <Content Include="Buffs\ZootalooBuff.png" />
     <Content Include="build.txt" />
+    <Content Include="Changelogs\v1.3.1.10.txt" />
+    <Content Include="Changelogs\v1.3.1.12.txt" />
+    <Content Include="Changelogs\v1.3.1.13.txt" />
+    <Content Include="Changelogs\v1.3.1.14.txt" />
+    <Content Include="Changelogs\v1.3.1.15.txt" />
+    <Content Include="Changelogs\v1.3.1.5.txt" />
+    <Content Include="Changelogs\v1.3.1.6.txt" />
+    <Content Include="Changelogs\v1.3.1.8.txt" />
+    <Content Include="Changelogs\v1.3.1.9.txt" />
+    <Content Include="Changelogs\v1.3.11.txt" />
+    <Content Include="Changelogs\v1.3.2.txt" />
     <Content Include="description.txt" />
     <Content Include="Dusts\Ball.png" />
     <Content Include="Dusts\ClusterFlame.png" />
