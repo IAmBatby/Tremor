@@ -55,10 +55,14 @@ namespace Tremor
 		}
 		#endregion
 
-		public static Item NewItemFast(Vector2 position, Vector2 size, int type, int stack = 1)
-		{
-			return Main.item[Item.NewItem((int) position.X, (int) position.Y, (int) size.X, (int) size.Y, type, stack)];
-		}
+		public static Item SpawnItem(this ModNPC npc, short type, int stack = 1)
+			=> SpawnItem(npc.npc, type, stack);
+
+		public static Item SpawnItem(this NPC npc, short type, int stack = 1)
+			=> Main.item[Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, type, stack)];
+
+		public static Item SpawnItem(Vector2 position, Vector2 size, short type, int stack = 1)
+			=> Main.item[Item.NewItem((int)position.X, (int)position.Y, (int)size.X, (int)size.Y, type, stack)];
 
 		public static Vector2 RandomPosition(Vector2 pos1, Vector2 pos2)
 		{
