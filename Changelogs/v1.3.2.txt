@@ -1,6 +1,22 @@
+The previous team has decided to stop their development for Tremor. The mod has now been transferred to Jofairden.
+Tremor is now publicly available on github: https://github.com/Jofairden/Tremor
+Thanks to all the collaborators, Tremor will remain available and bugs will be fixed.
+
+Thanks to the collaboration of Rartrin, Jopojelly, more bugs have been fixed.
+
 Fixes:
- - Removed many redundant code, effectively reducing the .tmod filesize by an amount
+ - Fixed 'Index was outside bounds of array at Tremor.GlowMask.Unload()'
+   This was fixed by rewriting certain glowmask code
+ - Fixed Alchemist item damage modifiers, these were moved to the respective base class
+ - Fixed Dice Zombie not dropping items in multiplayer
+ - Fixed Dize Zombie's drop chance for Rupicide
+
+Structure:
+ - Merged helper classes, removed unused code
+ - Restructured a lot of folder hierachy
+
+ Other:
+ - Removed many redundant code, effectively reducing the .tmod filesize by a sizable amount
  - Reformatted most of the code
- 
-Other:
- - Tremor is now publicly available on github: https://github.com/Jofairden/Tremor
+ - Written a RecipeWrapper class
+ - More code has been rewritten, possibly fixing more hidden bugs
