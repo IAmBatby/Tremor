@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
@@ -9,6 +10,7 @@ using Tremor.Items;
 namespace Tremor.NPCs
 {
 	// TODO: fix Motherboard despawn on first hit
+	// TODO: motherboard does not spawn in MP
 	// TODO: rewrite this thing, lol
 	[AutoloadBossHead]
 	public class Motherboard : ModNPC
@@ -43,6 +45,7 @@ namespace Tremor.NPCs
 
 		#region "Переменные"
 
+		private int _appearTime;
 		private bool _firstAi = true; // Первый ли раз вызван метод AI
 		private bool _firstState = true; // Первая ли стадия
 		private List<int> _signalDrones = new List<int>(); // ID сигнальных дронов
@@ -75,24 +78,32 @@ namespace Tremor.NPCs
 		{
 			DisplayName.SetDefault("Motherboard");
 			Main.npcFrameCount[npc.type] = 6;
+
+			NPCID.Sets.MustAlwaysDraw[npc.type] = true;
+			NPCID.Sets.NeedsExpertScaling[npc.type] = true;
 		}
 
 		public override void SetDefaults()
 		{
-			npc.dontTakeDamage = true;
-			npc.noTileCollide = true;
-			npc.noGravity = true;
 			npc.lifeMax = 45000;
 			npc.damage = 30;
 			npc.knockBackResist = 0f;
 			npc.defense = 70;
 			npc.width = 170;
 			npc.height = 160;
-			npc.aiStyle = 2;
+			npc.aiStyle = 2; // -1
+			npc.npcSlots = 50f;
+			music = MusicID.Boss3;
+
+			npc.dontTakeDamage = true;
+			npc.noTileCollide = true;
+			npc.noGravity = true;
 			npc.boss = true;
+			npc.lavaImmune = true;
+
 			npc.HitSound = SoundID.NPCHit4;
 			npc.DeathSound = SoundID.NPCDeath10;
-			music = 13;
+
 			bossBag = mod.ItemType<MotherboardBag>();
 		}
 
@@ -100,6 +111,62 @@ namespace Tremor.NPCs
 		{
 			npc.lifeMax = (int)(npc.lifeMax * 0.625f * bossLifeScale);
 			npc.damage = (int)(npc.damage * 0.6f);
+		}
+
+		public override bool UsesPartyHat() => false;
+
+		// ?? Doesn't seem to fix much
+		public override void SendExtraAI(BinaryWriter writer)
+		{
+			writer.Write(_appearTime);
+			writer.Write(_firstAi);
+			writer.Write(_firstState);
+			writer.Write(_signalDrones.Count);
+			foreach (int drone in _signalDrones)
+			{
+				writer.Write(drone);
+			}
+			writer.Write(_lastSignalDron);
+			writer.Write(_shootNow);
+			writer.Write(_timeToNextDrone);
+			writer.Write(_timeToShoot);
+			writer.Write(_timeToLaser);
+			writer.Write(_currentFrame);
+			writer.Write(_timeToAnimation);
+			writer.Write(_clampers.Count);
+			foreach (int clamper in _clampers)
+			{
+				writer.Write(clamper);
+			}
+			writer.Write(_secondShootTime);
+			writer.Write(_ai);
+		}
+
+		public override void ReceiveExtraAI(BinaryReader reader)
+		{
+			_appearTime = reader.ReadInt32();
+			_firstAi = reader.ReadBoolean();
+			_firstState = reader.ReadBoolean();
+			int c = reader.ReadInt32();
+			_signalDrones = new List<int>();
+			for (int i = 0; i < c; i++)
+			{
+				_signalDrones[i] = reader.ReadInt32();
+			}
+			_lastSignalDron = reader.ReadInt32();
+			_shootNow = reader.ReadBoolean();
+			_timeToNextDrone = reader.ReadInt32();
+			_timeToShoot = reader.ReadInt32();
+			_timeToLaser = reader.ReadInt32();
+			_currentFrame = reader.ReadInt32();
+			_timeToAnimation = reader.ReadInt32();
+			c = reader.ReadInt32();
+			for (int i = 0; i < c; i++)
+			{
+				_clampers[i] = reader.ReadInt32();
+			}
+			_secondShootTime = reader.ReadInt32();
+			_ai = reader.ReadInt32();
 		}
 
 		private void Teleport()
@@ -283,8 +350,6 @@ namespace Tremor.NPCs
 			}
 		}
 
-		private int _appearTime;
-
 		private void ChangeAi() // Сменяет состояние (преследование/исчезновение/появление)
 		{
 			if (_firstState)
@@ -420,38 +485,38 @@ namespace Tremor.NPCs
 			{
 				if (Main.rand.NextBool())
 				{
-					Helper.NewItemFast(npc.position, npc.Size, mod.ItemType<SoulofMind>(), Main.rand.Next(20, 40));
+					this.SpawnItem((short) mod.ItemType<SoulofMind>(), Main.rand.Next(20, 40));
 				}
 				if (Main.rand.NextBool())
 				{
-					Helper.NewItemFast(npc.position, npc.Size, ItemID.GreaterHealingPotion, Main.rand.Next(5, 15));
+					this.SpawnItem(ItemID.GreaterHealingPotion, Main.rand.Next(5, 15));
 				}
 				if (Main.rand.NextBool())
 				{
-					Helper.NewItemFast(npc.position, npc.Size, ItemID.HallowedBar, Main.rand.Next(15, 35));
+					this.SpawnItem(ItemID.HallowedBar, Main.rand.Next(15, 35));
 				}
 				if (Main.rand.Next(7) == 0)
 				{
-					Helper.NewItemFast(npc.position, npc.Size, mod.ItemType<MotherboardMask>());
+					this.SpawnItem((short) mod.ItemType<MotherboardMask>());
 				}
 			}
 
 			if (Main.rand.Next(10) == 0)
 			{
-				Helper.NewItemFast(npc.position, npc.Size, mod.ItemType<MotherboardTrophy>());
+				this.SpawnItem((short) mod.ItemType<MotherboardTrophy>());
 			}
 			if (Main.rand.Next(3) == 0)
 			{
-				Helper.NewItemFast(npc.position, npc.Size, mod.ItemType<BenderLegs>());
+				this.SpawnItem((short) mod.ItemType<BenderLegs>());
 			}
 			if (Main.rand.Next(10) == 0)
 			{
-				Helper.NewItemFast(npc.position, npc.Size, mod.ItemType<FlaskCore>());
+				this.SpawnItem((short) mod.ItemType<FlaskCore>());
 			}
 
 			if (NPC.downedMoonlord && Main.rand.NextBool())
 			{
-				Helper.NewItemFast(npc.position, npc.Size, mod.ItemType<CarbonSteel>(), Main.rand.Next(6, 12));
+				this.SpawnItem((short) mod.ItemType<CarbonSteel>(), Main.rand.Next(6, 12));
 			}
 		}
 	}
