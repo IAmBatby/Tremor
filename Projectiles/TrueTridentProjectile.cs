@@ -3,19 +3,20 @@ using Terraria.ModLoader;
 namespace Tremor.Projectiles
 {
 	public class TrueTridentProjectile : ModProjectile
-{
-    public override void SetDefaults()
-    {
+	{
+		public override void SetDefaults()
+		{
 			projectile.CloneDefaults(66);
 
 			aiType = 66;
-    }
+		}
 
-    public override void SetStaticDefaults()
-    {
-      DisplayName.SetDefault("True Trident");
-       
-    }
+		public override void SetStaticDefaults()
+		{
+			DisplayName.SetDefault("True Trident");
+
+		}
 
 
-}}
+	}
+}

@@ -32,7 +32,7 @@ namespace Tremor.Projectiles
 		{
 			DisplayName.SetDefault("True Blade");
 		}
-		
+
 		public override void AI()
 		{
 			Rotation += RotationSpeed;

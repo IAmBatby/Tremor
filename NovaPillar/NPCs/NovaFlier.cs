@@ -54,11 +54,11 @@ namespace Tremor.NovaPillar.NPCs
 
 		public override void AI()
 		{
-			Player player=Main.player[npc.target];
-			if(player.GetModPlayer<TremorPlayer>(mod).ZoneRuins)
+			Player player = Main.player[npc.target];
+			if (player.GetModPlayer<TremorPlayer>(mod).ZoneRuins)
 			{
-				npc.life=-1;
-				npc.active=false;
+				npc.life = -1;
+				npc.active = false;
 				npc.checkDead();
 				return;
 			}

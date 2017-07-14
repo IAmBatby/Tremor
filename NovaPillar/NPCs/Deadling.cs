@@ -45,10 +45,10 @@ namespace Tremor.NovaPillar.NPCs
 
 		public override bool PreAI()
 		{
-			if(Main.player[npc.target].GetModPlayer<TremorPlayer>(mod).ZoneRuins)
+			if (Main.player[npc.target].GetModPlayer<TremorPlayer>(mod).ZoneRuins)
 			{
-				npc.life=-1;
-				npc.active=false;
+				npc.life = -1;
+				npc.active = false;
 				npc.checkDead();
 				return false;
 			}

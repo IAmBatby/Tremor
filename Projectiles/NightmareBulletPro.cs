@@ -26,18 +26,18 @@ namespace Tremor.Projectiles
 			aiType = ProjectileID.Bullet;
 		}
 
-    public override void SetStaticDefaults()
-    {
-      DisplayName.SetDefault("NightmareBulletPro");
-       
-    }
+		public override void SetStaticDefaults()
+		{
+			DisplayName.SetDefault("NightmareBulletPro");
+
+		}
 
 
-    public override void AI()
-    {
-        int dust = Dust.NewDust(projectile.position, projectile.width, projectile.height, 27, projectile.velocity.X * 0.2f, projectile.velocity.Y * 0.2f, 100, default(Color), 0.9f);
-        Main.dust[dust].noGravity = true;
-    }
+		public override void AI()
+		{
+			int dust = Dust.NewDust(projectile.position, projectile.width, projectile.height, 27, projectile.velocity.X * 0.2f, projectile.velocity.Y * 0.2f, 100, default(Color), 0.9f);
+			Main.dust[dust].noGravity = true;
+		}
 
 		public override bool OnTileCollide(Vector2 oldVelocity)
 		{

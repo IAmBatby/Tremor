@@ -231,7 +231,7 @@ namespace Tremor
 				{
 					AddMusicBox(GetSoundSlot(SoundType.Music, $"Sounds/Music/{musicBoxes[i, 0]}"), ItemType(musicBoxes[i, 1]), TileType(musicBoxes[i, 2]));
 				}
-				
+
 				GameShaders.Armor.BindShader(ItemType("NovaDye"), new ArmorShaderData(Main.PixelShaderRef, "ArmorSolar")).UseColor(0.8f, 0.7f, 0.3f).UseSecondaryColor(0.8f, 0.7f, 0.3f);
 				NovaSky.PlanetTexture = GetTexture("NovaPillar/NovaPlanet");
 				Filters.Scene["Tremor:Nova"] = new Filter(new NovaData("FilterMiniTower").UseColor(0.8f, 0.7f, 0.3f).UseOpacity(0.82f), EffectPriority.VeryHigh);

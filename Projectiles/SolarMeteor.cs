@@ -12,16 +12,16 @@ namespace Tremor.Projectiles
 
 			aiType = ProjectileID.ZephyrFish;
 			Main.projFrames[projectile.type] = 4;
-                        projectile.width = 32;
-                        projectile.height = 38;
+			projectile.width = 32;
+			projectile.height = 38;
 			Main.projPet[projectile.type] = true;
 		}
 
-    public override void SetStaticDefaults()
-    {
-      DisplayName.SetDefault("Solar Meteor");
-       
-    }
+		public override void SetStaticDefaults()
+		{
+			DisplayName.SetDefault("Solar Meteor");
+
+		}
 
 
 		public override bool PreAI()

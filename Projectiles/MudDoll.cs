@@ -12,16 +12,16 @@ namespace Tremor.Projectiles
 
 			aiType = ProjectileID.MiniMinotaur;
 			Main.projFrames[projectile.type] = 10;
-                        projectile.width = 24;
-                        projectile.height = 34;
+			projectile.width = 24;
+			projectile.height = 34;
 			Main.projPet[projectile.type] = true;
 		}
 
-    public override void SetStaticDefaults()
-    {
-      DisplayName.SetDefault("Mud Doll");
-       
-    }
+		public override void SetStaticDefaults()
+		{
+			DisplayName.SetDefault("Mud Doll");
+
+		}
 
 
 		public override bool PreAI()
