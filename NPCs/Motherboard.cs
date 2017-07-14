@@ -408,7 +408,7 @@ namespace Tremor.NPCs
 		{
 			for (int index = 0; index < _signalDrones.Count; index++) // Passing through each element of array with ID of clampers
 				if (!Main.npc[_signalDrones[index]].active || Main.npc[_signalDrones[index]].type != mod.NPCType("SignalDron")) // If
-																													 // NPC with ID from array isn't a Drone or is dead then...
+																																// NPC with ID from array isn't a Drone or is dead then...
 				{
 					_signalDrones.RemoveAt(index); // Remove ID of this NPC from Drones list
 					--index; // Lowering index by 1 in order not to miss 1 element in array of IDs
@@ -485,7 +485,7 @@ namespace Tremor.NPCs
 			{
 				if (Main.rand.NextBool())
 				{
-					this.SpawnItem((short) mod.ItemType<SoulofMind>(), Main.rand.Next(20, 40));
+					this.SpawnItem((short)mod.ItemType<SoulofMind>(), Main.rand.Next(20, 40));
 				}
 				if (Main.rand.NextBool())
 				{
@@ -497,26 +497,26 @@ namespace Tremor.NPCs
 				}
 				if (Main.rand.Next(7) == 0)
 				{
-					this.SpawnItem((short) mod.ItemType<MotherboardMask>());
+					this.SpawnItem((short)mod.ItemType<MotherboardMask>());
 				}
 			}
 
 			if (Main.rand.Next(10) == 0)
 			{
-				this.SpawnItem((short) mod.ItemType<MotherboardTrophy>());
+				this.SpawnItem((short)mod.ItemType<MotherboardTrophy>());
 			}
 			if (Main.rand.Next(3) == 0)
 			{
-				this.SpawnItem((short) mod.ItemType<BenderLegs>());
+				this.SpawnItem((short)mod.ItemType<BenderLegs>());
 			}
 			if (Main.rand.Next(10) == 0)
 			{
-				this.SpawnItem((short) mod.ItemType<FlaskCore>());
+				this.SpawnItem((short)mod.ItemType<FlaskCore>());
 			}
 
 			if (NPC.downedMoonlord && Main.rand.NextBool())
 			{
-				this.SpawnItem((short) mod.ItemType<CarbonSteel>(), Main.rand.Next(6, 12));
+				this.SpawnItem((short)mod.ItemType<CarbonSteel>(), Main.rand.Next(6, 12));
 			}
 		}
 	}

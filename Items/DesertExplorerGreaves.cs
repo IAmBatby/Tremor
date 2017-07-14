@@ -24,7 +24,7 @@ namespace Tremor.Items
 		{
 			DisplayName.SetDefault("Desert Explorer Greaves");
 			Tooltip.SetDefault("Increases alchemic damage by 11%\nIncreases movement speed by 30%");
-			TremorGlowMask.AddGlowMask(item.type,"Tremor/Items/DesertExplorerGreaves_LegsGlow");
+			TremorGlowMask.AddGlowMask(item.type, "Tremor/Items/DesertExplorerGreaves_LegsGlow");
 		}
 
 
@@ -39,9 +39,9 @@ namespace Tremor.Items
 			glowMaskColor = Color.White;
 		}
 
-		public override void PostDrawInWorld(SpriteBatch spriteBatch,Color lightColor,Color alphaColor,float rotation,float scale,int whoAmI)
+		public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
 		{
-			
+
 		}
 	}
 }

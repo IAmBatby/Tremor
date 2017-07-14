@@ -22,7 +22,7 @@ namespace Tremor.Items
 		{
 			DisplayName.SetDefault("Desert Explorer Visage");
 			Tooltip.SetDefault("Increases alchemic critical chance by 14");
-			TremorGlowMask.AddGlowMask(item.type,"Tremor/Items/DesertExplorerVisage_HeadGlow");
+			TremorGlowMask.AddGlowMask(item.type, "Tremor/Items/DesertExplorerVisage_HeadGlow");
 		}
 
 

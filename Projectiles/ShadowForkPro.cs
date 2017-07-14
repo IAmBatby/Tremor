@@ -4,29 +4,30 @@ using Terraria.ModLoader;
 namespace Tremor.Projectiles
 {
 	public class ShadowForkPro : ModProjectile
-{
-    public override void SetDefaults()
-    {
+	{
+		public override void SetDefaults()
+		{
 			projectile.CloneDefaults(66);
 
 			aiType = 66;
-                        projectile.tileCollide = false;
-    }
+			projectile.tileCollide = false;
+		}
 
-    public override void SetStaticDefaults()
-    {
-      DisplayName.SetDefault("ShadowForkPro");
-       
-    }
+		public override void SetStaticDefaults()
+		{
+			DisplayName.SetDefault("ShadowForkPro");
+
+		}
 
 
 
-    public override void AI()
-    {
-        projectile.velocity.Y += projectile.ai[0];
-        if(Main.rand.Next(3) == 0)
-        {
-            Dust.NewDust(projectile.position + projectile.velocity, projectile.width, projectile.height, 37, projectile.velocity.X * 0.5f, projectile.velocity.Y * 0.5f);
-        }
-    }
-}}
+		public override void AI()
+		{
+			projectile.velocity.Y += projectile.ai[0];
+			if (Main.rand.Next(3) == 0)
+			{
+				Dust.NewDust(projectile.position + projectile.velocity, projectile.width, projectile.height, 37, projectile.velocity.X * 0.5f, projectile.velocity.Y * 0.5f);
+			}
+		}
+	}
+}

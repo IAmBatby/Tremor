@@ -13,8 +13,8 @@ namespace Tremor.Projectiles
 			projectile.CloneDefaults(14);
 
 			projectile.light = 0.5f;
-                        projectile.width = 1;
-                        projectile.height = 1;
+			projectile.width = 1;
+			projectile.height = 1;
 			projectile.light = 0.5f;
 			projectile.extraUpdates = 1;
 			projectile.alpha = 255;
@@ -25,17 +25,17 @@ namespace Tremor.Projectiles
 			aiType = ProjectileID.Bullet;
 		}
 
-    public override void SetStaticDefaults()
-    {
-      DisplayName.SetDefault("Mud Shot");
-       
-    }
+		public override void SetStaticDefaults()
+		{
+			DisplayName.SetDefault("Mud Shot");
+
+		}
 
 
-    public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
-    {
-            target.AddBuff(31, 60, false);
-    }
+		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		{
+			target.AddBuff(31, 60, false);
+		}
 
 		public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)
 		{
@@ -48,5 +48,5 @@ namespace Tremor.Projectiles
 			}
 			return true;
 		}
-}
+	}
 }
