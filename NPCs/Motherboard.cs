@@ -17,23 +17,23 @@ namespace Tremor.NPCs
 	{
 		#region "Константы"
 
-		private const int StateOneFollowPlayerTime = 120; // Время следования за игроком в первой стадии
-		private const int StateOneDisappearingTime = 30; // Время исчезновения в первой стадии
-		private const int StateOneAppearingTime = 30; // Время появления в первой стадии
-		private const int StateSecondFollowPlayerTime = 90; // Время следования за игроком в второй стадии
-		private const int StateSecondDisappearingTime = 30; // Время исчезновения в второй стадии
-		private const int StateSecondAppearingTime = 30; // Время появления в второй стадии
-		private const int MaxDrones = 20; // Макс. кол-во дронов
-		private const int DronSpawnAreaX = 300; // Размер площади, в которой может заспавнится дрон, по X
-		private const int DronSpawnAreaY = 300; // Размер площади, в которой может заспавнится дрон, по Y
-		private const int StartDronCount = 8; // Начальное кол-во дронов
-		private const int ShootRate = 150; // Скорость стрельбы (60ед. == 1сек.)
-		private const int LaserDamage = 40; // Урон от лазера
-		private const float LaserKb = 1; // Отброс от лазера
-		private const int LaserYOffset = 95; // Смещение точки спавна лазера по Y ( + значени это вниз, - значение это вверх)
-		private const int TimeToLaserRate = 3; // Скорость выстрелов лазером от дрона до дрона
-		private const int LaserType = ProjectileID.ShadowBeamHostile; // Тип выстрела по игроку
-		private const int AnimationRate = 6; // Скорость смены кадров
+		private const int StateOneFollowPlayerTime = 120; // Time of following player in 1st stage
+		private const int StateOneDisappearingTime = 30; // Time of disappearing in 1st stage
+		private const int StateOneAppearingTime = 30; // Time of appearing in 1st stage
+		private const int StateSecondFollowPlayerTime = 90; // Time of following player in 2nd stage
+		private const int StateSecondDisappearingTime = 30; //Time of disappearing in 2nd stage
+		private const int StateSecondAppearingTime = 30; // Time of appearing in 2nd stage
+		private const int MaxDrones = 20; // Maximum amount of Drones
+		private const int DronSpawnAreaX = 300; // Area size in which Drone can spawn by X value
+		private const int DronSpawnAreaY = 300; // Area size in which Drone can spawn by Y value
+		private const int StartDronCount = 8; // Initial amount of Drones
+		private const int ShootRate = 150; // Fire rate in ticks
+		private const int LaserDamage = 40; // Laser damage
+		private const float LaserKb = 1; // Laser knockback
+		private const int LaserYOffset = 95; // Laser spawn offset by Y value
+		private const int TimeToLaserRate = 3; // Fire rate (From drones to player)
+		private const int LaserType = ProjectileID.ShadowBeamHostile; // Laser type
+		private const int AnimationRate = 6; // Animation rate
 		private const int SecondShootCount = 3;
 		private const float SecondShootSpeed = 15f;
 		private const int SecondShootDamage = 30;
@@ -46,28 +46,28 @@ namespace Tremor.NPCs
 		#region "Переменные"
 
 		private int _appearTime;
-		private bool _firstAi = true; // Первый ли раз вызван метод AI
-		private bool _firstState = true; // Первая ли стадия
-		private List<int> _signalDrones = new List<int>(); // ID сигнальных дронов
-		private int _lastSignalDron = -1; // Последний дрон принимающий лазер
-		private int _stateTime = StateOneAppearingTime + StateOneDisappearingTime + StateOneFollowPlayerTime; // Время стадии
-		private bool _shootNow; // Происходит ли сейчас стрелба
-		private int _timeToNextDrone = 1; // Время до спавна следующего дрона
-		private int _timeToShoot = 60; // Время до следующего выстрела
-		private int _timeToLaser = 3; // Время до выстрела лазера от дрона до дрона
-		private int _currentFrame; // Содержит текущий кадр анимации
-		private int _timeToAnimation = 6; // Время до смены кадра
-		private List<int> _clampers = new List<int>(); // Список кламперов
+		private bool _firstAi = true; // Is it the first time when AI method is called?
+		private bool _firstState = true; // Is it 1st stage?
+		private List<int> _signalDrones = new List<int>(); // ID of Signal Drones
+		private int _lastSignalDron = -1; // Last Drone 
+		private int _stateTime = StateOneAppearingTime + StateOneDisappearingTime + StateOneFollowPlayerTime; // Stage time
+		private bool _shootNow; // Does the Motherboard shoots right now?
+		private int _timeToNextDrone = 1; // Time for spawning next Drone
+		private int _timeToShoot = 60; // Time for next shoot
+		private int _timeToLaser = 3; // Time for next shoot (Drones lasers)
+		private int _currentFrame; // Current frame
+		private int _timeToAnimation = 6; // Animation rate
+		private List<int> _clampers = new List<int>(); // Clampers list
 		private int _secondShootTime = 60;
 		private int _ai = 0;
 
 		private int GetStateTime => GetAppearingTimeNow + GetDisappearingTimeNow + GetFollowPlayerTimeNow;
 		//-----
-		// Получить время требуемое на полный цикл смены состояний
+		// Get time needed for full cycle of changing states 
 		private int GetTimeToNextDrone => (Main.rand.Next(3, 6) * 60);
-		// Получить время до следующего дрона
+		// Get time for spawning next Drone
 
-		//----- Методы получения времени на состояния в данный момент
+		//----- Methods of getting times of states at the moment
 		private int GetFollowPlayerTimeNow => (_firstState) ? StateOneFollowPlayerTime : StateSecondFollowPlayerTime;
 		private int GetDisappearingTimeNow => (_firstState) ? StateOneDisappearingTime : StateSecondDisappearingTime;
 		private int GetAppearingTimeNow => (_firstState) ? StateOneAppearingTime : StateSecondAppearingTime;
@@ -330,12 +330,12 @@ namespace Tremor.NPCs
 			}
 		}
 
-		private void ChangeStady() // Попытка смены стадии
+		private void ChangeStady() // Trying change stage
 		{
-			CheckDrones(); // Удаляем лишних дронов (мёртвых)
-			if (_signalDrones.Count <= 0) // Если живих дронов нет
+			CheckDrones(); // Checking for Drones
+			if (_signalDrones.Count <= 0) // If there are no Drones alive
 			{
-				_firstState = false; // Выключаем первую стадию
+				_firstState = false; // Toggling off 1st Stage
 				_clampers = new List<int>
 				{
 					NPC.NewNPC((int) npc.Center.X - 15, (int) npc.Center.Y + 25, mod.NPCType("Clamper"), 0, 0, 0, 0, npc.whoAmI),
@@ -350,27 +350,27 @@ namespace Tremor.NPCs
 			}
 		}
 
-		private void ChangeAi() // Сменяет состояние (преследование/исчезновение/появление)
+		private void ChangeAi() // Changes state (Following/disappearing/appearing)
 		{
 			if (_firstState)
 			{
-				--_stateTime; // Уменьшаем время состояний
-				if (_stateTime <= 0) // Если время состояния меньше или равно 0, то обновляем переменную
-					_stateTime = GetStateTime; // Обновление
+				--_stateTime; // Lowering states time
+				if (_stateTime <= 0) // If state time < or = 0 then update a variable
+					_stateTime = GetStateTime; // Updating
 				for (int i = 0; i < _clampers.Count; i++)
 					Main.npc[_clampers[i]].ai[2] = 1;
-				if (_stateTime <= GetAppearingTimeNow) // Если у нас стадия появления
+				if (_stateTime <= GetAppearingTimeNow) // If it is appearing state
 				{
-					npc.ai[0] = -3; // То появляемся
-					return; // Завершаем метод
+					npc.ai[0] = -3; // Then appear
+					return; // Ending the method
 				}
-				if (_stateTime <= GetAppearingTimeNow + GetDisappearingTimeNow) // Если у нас стадия исчезновения
+				if (_stateTime <= GetAppearingTimeNow + GetDisappearingTimeNow) // If it is disappearing state
 				{
-					npc.ai[0] = -2; // Исчезаем
-					return; // Завершаем метод
+					npc.ai[0] = -2; // Then disappear
+					return; // Ending the method
 				}
 			}
-			// Сюда процессор дойдёт только в том случаи, если сейчас стадия следования за игроком, по этому...
+			// This will toggle if only it is following state
 			if (npc.ai[0] == -2)
 				_appearTime = GetAppearingTimeNow;
 			if (--_appearTime > 0)
@@ -378,17 +378,17 @@ namespace Tremor.NPCs
 				npc.ai[0] = -3;
 				return;
 			}
-			npc.ai[0] = -1; // Следуем за игроком
+			npc.ai[0] = -1; // Follow the player
 		}
 
 		private void CheckClampers()
 		{
-			for (int index = 0; index < _clampers.Count; index++) // Проходим по каждому элементу массива с id кламперов
-				if (!Main.npc[_clampers[index]].active || Main.npc[_clampers[index]].type != mod.NPCType("Clamper")) // Если...
-																													 // NPC с текущим ID из массива кламперов, не является клампером, или мёртв, то...
+			for (int index = 0; index < _clampers.Count; index++) // Passing through each element of array with ID of clampers
+				if (!Main.npc[_clampers[index]].active || Main.npc[_clampers[index]].type != mod.NPCType("Clamper")) // If
+																													 // NPC with ID from array isn't a Clamper or is dead then...
 				{
-					_clampers.RemoveAt(index); // Удаляем из списка кламперов ID данного NPC
-					--index; // Уменьшаем индекс на 1, чтобы не перескочить через одно значение в массиве ID кламперов
+					_clampers.RemoveAt(index); // Remove ID of this NPC from Clamper list
+					--index; // Lowering index by 1 in order not to miss 1 element in array of IDs
 				}
 			foreach (int ID in _clampers)
 			{
@@ -397,63 +397,63 @@ namespace Tremor.NPCs
 			}
 		}
 
-		private void Drones() // Работает с дронами (только в первой стадии)
+		private void Drones() // Drones in 1st Stage
 		{
-			CheckDrones(); // Удаляет из списка всех мёртвых дронов
-			SpawnDrones(); // Спавнит дронов
-			ShootDrones(); // Работа с лазерами
+			CheckDrones(); // Removes dead Drones from the listУдаляет из списка всех мёртвых дронов
+			SpawnDrones(); // Spawns Drones
+			ShootDrones(); // Shoots lasers 
 		}
 
-		private void CheckDrones() // Удаляет из списка всех мёртвых дронов
+		private void CheckDrones() // Removes all dead Drones from the list
 		{
-			for (int index = 0; index < _signalDrones.Count; index++) // Проходим по каждому элементу массива с id дронов
-				if (!Main.npc[_signalDrones[index]].active || Main.npc[_signalDrones[index]].type != mod.NPCType("SignalDron")) // Если...
-																																// NPC с текущим ID из массива дронов, не является дроном, или мёртв, то...
+			for (int index = 0; index < _signalDrones.Count; index++) // Passing through each element of array with ID of clampers
+				if (!Main.npc[_signalDrones[index]].active || Main.npc[_signalDrones[index]].type != mod.NPCType("SignalDron")) // If
+																													 // NPC with ID from array isn't a Drone or is dead then...
 				{
-					_signalDrones.RemoveAt(index); // Удаляем из списка дронов ID данного NPC
-					--index; // Уменьшаем индекс на 1, чтобы не перескочить через одно значение в массиве ID дронов
+					_signalDrones.RemoveAt(index); // Remove ID of this NPC from Drones list
+					--index; // Lowering index by 1 in order not to miss 1 element in array of IDs
 				}
 		}
 
-		private void SpawnDrones() // Если пришло время, спавнит дрона
+		private void SpawnDrones() // If it is time to spawn a Drone
 		{
-			if (_signalDrones.Count >= MaxDrones) // Если текущее кол-во дронов равно или привышает лимит дронов, то...
-				return; // Завершаем метод
-			if (--_timeToNextDrone <= 0) // Уменьшаем время до спавна следующего дрона. Если время до следующего дрона меньше или равно 0, то...
+			if (_signalDrones.Count >= MaxDrones) // If the current amount of Drones = or > maximum amount of drones then...
+				return; // End the method
+			if (--_timeToNextDrone <= 0) // Lowering the time of spawning next Drone. If the time < or = 0 then...
 			{
-				_timeToNextDrone = GetTimeToNextDrone; // Устанавливаем новое время для спавна дронов
+				_timeToNextDrone = GetTimeToNextDrone; // Setting new time of spawning Drones
 				Vector2 spawnPosition = Helper.RandomPointInArea(new Vector2(npc.Center.X - DronSpawnAreaX / 2, npc.Center.Y - DronSpawnAreaY / 2), new Vector2(npc.Center.X + DronSpawnAreaX / 2, npc.Center.Y + DronSpawnAreaY / 2));
-				// С помощью хелпера определяем случайную позицию вокруг босса и записываем в переменную 01
+				// Defining random position around the boss (Via Helper) and write it into Var 01
 				_signalDrones.Add(NPC.NewNPC((int)spawnPosition.X, (int)spawnPosition.Y + LaserYOffset, mod.NPCType("SignalDron"), 0, 0, 0, 0, npc.whoAmI));
-				// Спавним дрона с координатами из переменной 01 и с ID данного босса в ai[3]
+				// Spawning Drone with coordinates from Var 01 and with ID in ai[3]
 			}
 		}
 
-		private void ShootDrones() // Если пришло время, начинает стрельбу
+		private void ShootDrones() // If it is time to shoot
 		{
-			if (_signalDrones.Count <= 0) // Если нету дронов, то...
-				return; // Завершаем метод
-			if (--_timeToShoot <= 0 || _shootNow) // Если сейчас идёт стрельба, или настало её время (тут же это время изменяем), то
+			if (_signalDrones.Count <= 0) // If there're no Drones then...
+				return; // Ending the method
+			if (--_timeToShoot <= 0 || _shootNow) // If it is time to shoot or if the boss is already shooting then...
 			{
 				if (_lastSignalDron == -1 && npc.ai[0] != -1)
 					return;
-				_timeToShoot = ShootRate; // Устанавливаем новое время выстрела
-				_shootNow = true; // Сейчас стреляем
-				if (--_timeToLaser <= 0) // Если время стрелять лазером от дрона до дрона
+				_timeToShoot = ShootRate; // Setting new shoot time
+				_shootNow = true; // Shooting
+				if (--_timeToLaser <= 0) // If it is time to shoot Drones lasers then...
 				{
-					_timeToLaser = TimeToLaserRate; // Устанавливаем новое время
-					if (_lastSignalDron == -1) // Если нет последнего стрелявшего дрона, то...
+					_timeToLaser = TimeToLaserRate; // Set new shoot time
+					if (_lastSignalDron == -1) // If there's no last Drone shooting then...
 					{
-						_lastSignalDron = 0; // Берём первого дрона из массива
+						_lastSignalDron = 0; // Take new Drone from the array
 						Main.projectile[Projectile.NewProjectile(npc.Center.X, npc.Center.Y, 0, 0, mod.ProjectileType("projMotherboardLaser"), LaserDamage, LaserKb, 0, npc.whoAmI, _signalDrones[_lastSignalDron])].localAI[1] = 1;
-						// Стреляем в него из босса
-						return; // Выход из метода
+						// Shoot the Drone from the boss
+						return; // Ending the method
 					}
-					++_lastSignalDron; // Берём следующего дрона
-					if (_lastSignalDron < _signalDrones.Count) // Проверка на выход за пределы массива
+					++_lastSignalDron; // Taking new Drone
+					if (_lastSignalDron < _signalDrones.Count) // Checking for exiting the bounds of array
 						Projectile.NewProjectile(npc.Center.X, npc.Center.Y, 0, 0, mod.ProjectileType("projMotherboardLaser"), LaserDamage, LaserKb, 0, _signalDrones[_lastSignalDron - 1], _signalDrones[_lastSignalDron]);
-					// Спавним лазер
-					if (_lastSignalDron + 1 >= _signalDrones.Count) // Если это замыкающий дрон, то...
+					// Shoot laser
+					if (_lastSignalDron + 1 >= _signalDrones.Count) // If it is last drone then...
 					{
 						Vector2 vel = Helper.VelocityToPoint(Main.npc[_signalDrones[_signalDrones.Count - 1]].Center, Main.player[npc.target].Center, 15f);
 						for (int i = 0; i < SecondShootCount; i++)
@@ -465,7 +465,7 @@ namespace Tremor.NPCs
 						}
 						_lastSignalDron = -1;
 						_shootNow = false;
-						// Стреляем в игрока другим лазером, устанавливаем последнего дрона на -1 и завершаем цикл стрельбы
+						// Shooting the player with anotherl laser, setting last Drone to -1 and ending the cycle of shooting
 					}
 				}
 			}
