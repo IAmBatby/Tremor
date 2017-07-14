@@ -1,16 +1,16 @@
+using System;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace Tremor.Items
 {
-
 	public class HealthStimPack : ModItem
 	{
 		public override void SetDefaults()
 		{
-			item.width = 36;
-			item.height = 36;
+			item.Size = new Vector2(36);
 			item.maxStack = 999;
 			item.rare = 11;
 			item.useAnimation = 15;
@@ -26,21 +26,27 @@ namespace Tremor.Items
 			Tooltip.SetDefault("Restores 50 health\nHas no cooldown");
 		}
 
+		public override bool ConsumeItem(Player player) => true;
+
 		public override bool UseItem(Player player)
 		{
-			Main.PlaySound(2, (int)player.position.X, (int)player.position.Y, 3);
-			Main.player[Main.myPlayer].HealEffect(50);
-			player.statLife += 50;
-			return true;
+			if (player.whoAmI == Main.myPlayer)
+			{
+				Main.PlaySound(2, (int)player.position.X, (int)player.position.Y, 3);
+				player.HealEffect(50);
+				player.statLife = Math.Min(player.statLifeMax2, player.statLife + 50);
+				return true;
+			}
+			return false;
 		}
 
 		public override void AddRecipes()
 		{
 			ModRecipe recipe = new ModRecipe(mod);
-			recipe.AddIngredient(null, "BrassBar", 2);
+			recipe.AddIngredient(mod.ItemType<BrassBar>(), 2);
 			recipe.AddIngredient(ItemID.SuperHealingPotion);
 			recipe.AddIngredient(ItemID.BottledWater);
-			recipe.AddIngredient(null, "NightmareBar", 5);
+			recipe.AddIngredient(mod.ItemType<NightmareBar>(), 5);
 			recipe.SetResult(this);
 			recipe.AddTile(13);
 			recipe.AddRecipe();
