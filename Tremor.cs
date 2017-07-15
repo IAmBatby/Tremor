@@ -162,14 +162,6 @@ namespace Tremor
 			Mod bossChecklist = ModLoader.GetMod("BossChecklist");
 			if (bossChecklist != null)
 			{
-				var data = new[]
-				{
-					new[]{
-						"AddBossWithInfo", "Rukh", 2.7f, (Func<bool>) (() => TremorWorld.downedBoss[TremorWorld.DownedBoss.Rukh]),
-						"Use a [i:" + ItemType("DesertCrown") + "] in Desert"
-					}
-				};
-
 				bossChecklist.Call("AddBossWithInfo", "Rukh", 2.7f, (Func<bool>)(() => TremorWorld.downedBoss[TremorWorld.DownedBoss.Rukh]), "Use a [i:" + ItemType("DesertCrown") + "] in Desert");
 				bossChecklist.Call("AddBossWithInfo", "Tiki Totem", 3.3f, (Func<bool>)(() => TremorWorld.downedBoss[TremorWorld.DownedBoss.TikiTotem]), "Use a [i:" + ItemType("MysteriousDrum") + "] in Jungle at night after beating Eye of Cthulhu");
 				bossChecklist.Call("AddBossWithInfo", "Evil Corn", 3.4f, (Func<bool>)(() => TremorWorld.downedBoss[TremorWorld.DownedBoss.EvilCorn]), "Use a [i:" + ItemType("CursedPopcorn") + "] at night");
