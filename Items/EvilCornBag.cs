@@ -40,7 +40,7 @@ namespace Tremor.Items
 			{
 				player.QuickSpawnItem(mod.ItemType("EvilCornTrophy"));
 			}
-			if (Main.rand.Next(1) == 0)
+			if (Main.rand.NextBool())
 			{
 				player.QuickSpawnItem(mod.ItemType("CornHeater"));
 			}

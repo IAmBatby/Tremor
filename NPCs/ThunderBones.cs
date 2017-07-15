@@ -43,7 +43,7 @@ namespace Tremor.NPCs
 				{
 					Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("Bonecrusher"));
 				};
-				if (Main.rand.Next(1) == 0)
+				if (Main.rand.NextBool())
 				{
 					Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("TearsofDeath"), Main.rand.Next(1, 5));
 				};

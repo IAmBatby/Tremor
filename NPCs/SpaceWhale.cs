@@ -837,7 +837,7 @@ namespace Tremor.NPCs
 				{
 					Item.NewItem((int)npc.Center.X, (int)npc.Center.Y, npc.width, npc.height, mod.ItemType("WhaleFlippers"));
 				}
-				if (Main.rand.Next(1) == 0)
+				if (Main.rand.NextBool())
 				{
 					Item.NewItem((int)npc.Center.X, (int)npc.Center.Y, npc.width, npc.height, mod.ItemType("CosmicFuel"));
 				}

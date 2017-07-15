@@ -48,7 +48,7 @@ namespace Tremor.Items
 			{
 				player.QuickSpawnItem(mod.ItemType("VultureFeather"));
 			}
-			if (Main.rand.Next(1) == 0)
+			if (Main.rand.NextBool())
 			{
 				player.QuickSpawnItem(mod.ItemType("SandstoneBar"), Main.rand.Next(10, 18));
 			}

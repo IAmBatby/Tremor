@@ -51,7 +51,7 @@ namespace Tremor.NPCs
 				{
 					Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("Squorb"), Main.rand.Next(1, 2));
 				}
-				if (Main.rand.Next(1) == 0)
+				if (Main.rand.NextBool())
 				{
 					Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, 3467, Main.rand.Next(3, 8));
 				}
