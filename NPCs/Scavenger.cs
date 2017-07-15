@@ -94,7 +94,7 @@ namespace Tremor.NPCs
 					{
 						Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, 29, Main.rand.Next(1, 2));
 					};
-					if (Main.rand.Next(1) == 0)
+					if (Main.rand.NextBool())
 					{
 						if (!WorldGen.crimson)
 						{
@@ -105,19 +105,19 @@ namespace Tremor.NPCs
 							Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, 1257, Main.rand.Next(10, 25));
 						}
 					};
-					if (Main.rand.Next(1) == 0)
+					if (Main.rand.NextBool())
 					{
 						Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, 188, Main.rand.Next(2, 10));
 					};
-					if (Main.rand.Next(1) == 0)
+					if (Main.rand.NextBool())
 					{
 						Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, 189, Main.rand.Next(2, 10));
 					};
-					if (Main.rand.Next(1) == 0)
+					if (Main.rand.NextBool())
 					{
 						Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, 178, Main.rand.Next(5, 15));
 					};
-					if (Main.rand.Next(1) == 0)
+					if (Main.rand.NextBool())
 					{
 						Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, 182, Main.rand.Next(5, 15));
 					};
@@ -125,15 +125,15 @@ namespace Tremor.NPCs
 					{
 						Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("Opal"), Main.rand.Next(1, 3));
 					};
-					if (Main.rand.Next(1) == 0)
+					if (Main.rand.NextBool())
 					{
 						Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, 227, Main.rand.Next(2, 10));
 					};
-					if (Main.rand.Next(1) == 0)
+					if (Main.rand.NextBool())
 					{
 						Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, 175, Main.rand.Next(2, 10));
 					};
-					if (Main.rand.Next(1) == 0)
+					if (Main.rand.NextBool())
 					{
 						Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, 3532, Main.rand.Next(1, 2));
 					};

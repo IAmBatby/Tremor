@@ -60,7 +60,7 @@ namespace Tremor.NPCs
 
 		public override void OnHitPlayer(Player player, int damage, bool crit)
 		{
-			if (Main.expertMode || Main.rand.Next(1) == 0)
+			if (Main.expertMode || Main.rand.NextBool())
 			{
 				player.AddBuff(24, 180, true);
 			}
@@ -168,7 +168,7 @@ namespace Tremor.NPCs
 				npc.DropBossBags();
 			}
 
-			if (!Main.expertMode && Main.rand.Next(1) == 0)
+			if (!Main.expertMode && Main.rand.NextBool())
 			{
 				Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("MoltenParts"));
 			}
@@ -176,11 +176,11 @@ namespace Tremor.NPCs
 			{
 				Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("HeaterOfWorldsTrophy"));
 			}
-			if (!Main.expertMode && Main.rand.Next(1) == 0)
+			if (!Main.expertMode && Main.rand.NextBool())
 			{
 				Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, 188, Main.rand.Next(6, 18));
 			}
-			if (!Main.expertMode && Main.rand.Next(1) == 0)
+			if (!Main.expertMode && Main.rand.NextBool())
 			{
 				Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, 189, Main.rand.Next(6, 18));
 			}

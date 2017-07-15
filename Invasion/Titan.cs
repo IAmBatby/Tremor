@@ -309,11 +309,11 @@ namespace Tremor.Invasion
 				{
 					Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("ParadoxTitanMask"));
 				}
-				if (!Main.expertMode && Main.rand.Next(1) == 0)
+				if (!Main.expertMode && Main.rand.NextBool())
 				{
 					Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("TimeTissue"), Main.rand.Next(20, 32));
 				}
-				if (!Main.expertMode && Main.rand.Next(1) == 0)
+				if (!Main.expertMode && Main.rand.NextBool())
 				{
 					Helper.DropItem(new Rectangle((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height), new Drop(mod.ItemType("RocketWand"), 1, 1), new Drop(mod.ItemType("TheEtherealm"), 1, 1), new Drop(mod.ItemType("SoulFlames"), 1, 1));
 				}

@@ -40,11 +40,11 @@ namespace Tremor.Items
 			{
 				player.QuickSpawnItem(mod.ItemType("AlchemasterTrophy"));
 			}
-			if (Main.rand.Next(1) == 0)
+			if (Main.rand.NextBool())
 			{
 				player.QuickSpawnItem(mod.ItemType("PlagueFlask"), Main.rand.Next(30, 78));
 			}
-			if (Main.rand.Next(1) == 0)
+			if (Main.rand.NextBool())
 			{
 				player.QuickSpawnItem(mod.ItemType("SparkingFlask"), Main.rand.Next(30, 78));
 			}
