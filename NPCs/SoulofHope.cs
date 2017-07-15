@@ -322,7 +322,7 @@ namespace Tremor.NPCs
 						Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("TrueEssense"), Main.rand.Next(10, 25));
 					}
 
-					if (!TremorWorld.downedBoss[TremorWorld.Boss.Trinity])
+					if (!TremorWorld.Boss.Trinity.Downed())
 					{
 						Main.NewText("This world has been enlightened with Angelite!", 0, 191, 255);
 						Main.NewText("This world has been attacked with Collapsium!", 255, 20, 147);

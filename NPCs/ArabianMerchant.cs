@@ -49,7 +49,7 @@ namespace Tremor.NPCs
 
 		public override bool CanTownNPCSpawn(int numTownNPCs, int money)
 		{
-			if (TremorWorld.downedBoss[TremorWorld.Boss.Rukh])
+			if (TremorWorld.Boss.Rukh.Downed())
 			{
 				return true;
 			}

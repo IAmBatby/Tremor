@@ -49,7 +49,7 @@ namespace Tremor.NPCs
 
 		public override bool CanTownNPCSpawn(int numTownNPCs, int money)
 		{
-			if (TremorWorld.downedBoss[TremorWorld.Boss.SpaceWhale])
+			if (TremorWorld.Boss.SpaceWhale.Downed())
 			{
 				return true;
 			}
@@ -136,12 +136,12 @@ namespace Tremor.NPCs
 				shop.item[nextSlot].SetDefaults(mod.ItemType("StartrooperFlameburstPistol"));
 				nextSlot++;
 			}
-			if (TremorWorld.downedBoss[TremorWorld.Boss.Trinity])
+			if (TremorWorld.Boss.Trinity.Downed())
 			{
 				shop.item[nextSlot].SetDefaults(mod.ItemType("WartimeRocketLauncher"));
 				nextSlot++;
 			}
-			if (TremorWorld.downedBoss[TremorWorld.Boss.Trinity] && !Main.dayTime)
+			if (TremorWorld.Boss.Trinity.Downed() && !Main.dayTime)
 			{
 				shop.item[nextSlot].SetDefaults(mod.ItemType("CosmicAssaultRifle"));
 				nextSlot++;

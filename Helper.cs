@@ -55,6 +55,9 @@ namespace Tremor
 		}
 		#endregion
 
+		public static bool Downed(this TremorWorld.Boss boss)
+			=> boss.Downed();
+
 		public static Item SpawnItem(this ModNPC npc, short type, int stack = 1)
 			=> SpawnItem(npc.npc, type, stack);
 

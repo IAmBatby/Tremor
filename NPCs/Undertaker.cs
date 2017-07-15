@@ -48,7 +48,7 @@ namespace Tremor.NPCs
 
 		public override bool CanTownNPCSpawn(int numTownNPCs, int money)
 		{
-			if (TremorWorld.downedBoss[TremorWorld.Boss.Trinity])
+			if (TremorWorld.Boss.Trinity.Downed())
 			{
 				return true;
 			}
