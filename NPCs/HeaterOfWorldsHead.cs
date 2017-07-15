@@ -228,7 +228,6 @@ namespace Tremor.NPCs
 
 				if (Helper.Chance(7))
 					npc.SpawnItem((short)mod.ItemType<HeaterOfWorldsMask>());
-
 			}
 		}
 	}

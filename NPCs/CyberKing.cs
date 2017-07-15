@@ -405,7 +405,7 @@ namespace Tremor.NPCs
 				int CenterY = (int)(npc.position.Y + npc.height / 2) / 16;
 				int halfLength = npc.width / 2 / 16 + 1;
 
-				if (!Main.expertMode && Main.rand.Next(1) == 0)
+				if (!Main.expertMode && Main.rand.NextBool())
 				{
 					Helper.DropItem(new Rectangle((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height), new Drop(mod.ItemType("RedStorm"), 1, 1), new Drop(mod.ItemType("ShockwaveClaymore"), 1, 1), new Drop(mod.ItemType("CyberCutter"), 1, 1));
 				}

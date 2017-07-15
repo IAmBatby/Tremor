@@ -17,15 +17,15 @@ namespace Tremor.Items
 			{
 				player.QuickSpawnItem(mod.ItemType("PrimeBlade"));
 			}
-			if (context == "bossBag" && arg == ItemID.WallOfFleshBossBag && Main.rand.Next(1) == 0)
+			if (context == "bossBag" && arg == ItemID.WallOfFleshBossBag && Main.rand.NextBool())
 			{
 				player.QuickSpawnItem(mod.ItemType("PieceofFlesh"), Main.rand.Next(8, 17));
 			}
-			if (context == "bossBag" && arg == ItemID.SkeletronBossBag && Main.rand.Next(1) == 0)
+			if (context == "bossBag" && arg == ItemID.SkeletronBossBag && Main.rand.NextBool())
 			{
 				player.QuickSpawnItem(mod.ItemType("CursedSoul"), Main.rand.Next(1, 5));
 			}
-			if (context == "bossBag" && arg == ItemID.GolemBossBag && Main.rand.Next(1) == 0)
+			if (context == "bossBag" && arg == ItemID.GolemBossBag && Main.rand.NextBool())
 			{
 				player.QuickSpawnItem(mod.ItemType("GolemCore"));
 			}
@@ -38,7 +38,7 @@ namespace Tremor.Items
 				player.QuickSpawnItem(mod.ItemType("MonsterTooth"));
 			}
 
-			if (context == "bossBag" && arg == ItemID.PlanteraBossBag && Main.rand.Next(1) == 0)
+			if (context == "bossBag" && arg == ItemID.PlanteraBossBag && Main.rand.NextBool())
 			{
 				player.QuickSpawnItem(mod.ItemType("EssenseofJungle"), Main.rand.Next(2, 3));
 			}
@@ -48,12 +48,12 @@ namespace Tremor.Items
 				player.QuickSpawnItem(mod.ItemType("DukeCannon"));
 			}
 
-			if (context == "bossBag" && arg == ItemID.MoonLordBossBag && Main.rand.Next(1) == 0)
+			if (context == "bossBag" && arg == ItemID.MoonLordBossBag && Main.rand.NextBool())
 			{
 				player.QuickSpawnItem(mod.ItemType("MultidimensionalFragment"), Main.rand.Next(6, 12));
 			}
 
-			if (context == "bossBag" && arg == ItemID.SkeletronBossBag && Main.rand.Next(1) == 0)
+			if (context == "bossBag" && arg == ItemID.SkeletronBossBag && Main.rand.NextBool())
 			{
 				player.QuickSpawnItem(mod.ItemType("TearsofDeath"), Main.rand.Next(1, 3));
 			}

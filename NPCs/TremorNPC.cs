@@ -145,7 +145,7 @@ namespace Tremor.NPCs
 					mod.ItemType("Transistor"));
 			}
 
-			if (!Main.expertMode && npc.type == 113 && Main.rand.Next(1) == 0)
+			if (!Main.expertMode && npc.type == 113 && Main.rand.NextBool())
 			{
 				Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height,
 					mod.ItemType("PieceofFlesh"), Main.rand.Next(8, 17));
@@ -359,13 +359,13 @@ namespace Tremor.NPCs
 					mod.ItemType("PirateChest"));
 			}
 
-			if (!Main.expertMode && npc.type == 245 && Main.rand.Next(1) == 0)
+			if (!Main.expertMode && npc.type == 245 && Main.rand.NextBool())
 			{
 				Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height,
 					mod.ItemType("GolemCore"));
 			}
 
-			if (npc.type == 124 && Main.rand.Next(1) == 0)
+			if (npc.type == 124 && Main.rand.NextBool())
 			{
 				Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height,
 					mod.ItemType("ThrowingWrench"), Main.rand.Next(10, 20));
@@ -421,7 +421,7 @@ namespace Tremor.NPCs
 			}
 
 			if ((npc.type == 466 || npc.type == 467 || npc.type == 468 || npc.type == 463 || npc.type == 460) &&
-				Main.rand.Next(1) == 0)
+				Main.rand.NextBool())
 			{
 				Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height,
 					mod.ItemType("DarkMatter"), Main.rand.Next(2, 3));
@@ -573,7 +573,7 @@ namespace Tremor.NPCs
 			}
 
 			if ((npc.type == 125 || npc.type == 126 || npc.type == 127 || npc.type == 134) && NPC.downedMoonlord &&
-				Main.rand.Next(1) == 0)
+				Main.rand.NextBool())
 			{
 				Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height,
 					mod.ItemType("CarbonSteel"), Main.rand.Next(6, 12));
@@ -744,13 +744,13 @@ namespace Tremor.NPCs
 					mod.ItemType("WrathofWraith"));
 			}
 
-			if (npc.type == 439 && Main.rand.Next(1) == 0)
+			if (npc.type == 439 && Main.rand.NextBool())
 			{
 				Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height,
 					mod.ItemType("AncientTablet"), Main.rand.Next(12, 22));
 			}
 
-			if (npc.type == 262 && Main.rand.Next(1) == 0)
+			if (npc.type == 262 && Main.rand.NextBool())
 			{
 				Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height,
 					mod.ItemType("EssenseofJungle"), Main.rand.Next(2, 3));
@@ -780,7 +780,7 @@ namespace Tremor.NPCs
 					mod.ItemType("GunBlade"), Main.rand.Next(2, 3));
 			}
 
-			if (npc.type == 346 && Main.rand.Next(1) == 0)
+			if (npc.type == 346 && Main.rand.NextBool())
 			{
 				Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height,
 					mod.ItemType("SpiK3Ball"), Main.rand.Next(50, 100));
@@ -852,7 +852,7 @@ namespace Tremor.NPCs
 					mod.ItemType("MartianSprayer"));
 			}
 
-			if (npc.type == 370 && Main.rand.Next(1) == 0)
+			if (npc.type == 370 && Main.rand.NextBool())
 			{
 				Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height,
 					mod.ItemType("DukeFlask"), Main.rand.Next(550, 750));
@@ -869,7 +869,7 @@ namespace Tremor.NPCs
 				Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height,
 					mod.ItemType("FrogMask"));
 			}
-			if (npc.type == 35 && Main.rand.Next(1) == 0)
+			if (npc.type == 35 && Main.rand.NextBool())
 			{
 				Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height,
 					mod.ItemType("CursedSoul"), Main.rand.Next(1, 5));
