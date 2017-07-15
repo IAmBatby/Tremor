@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.GameContent.Generation;
@@ -13,124 +14,80 @@ namespace Tremor
 {
 	public class TremorWorld : ModWorld
 	{
-		private const int saveVersion = 0;
-		public static bool downedEvilCorn;
-		public static bool downedRukh;
-		public static bool downedSpaceWhale;
-		public static bool downedTrinity;
-		public static bool downedTremode;
-		public static bool downedTikiTotem;
-		public static bool downedStormJellyfish;
-		public static bool downedCyberKing;
-		public static bool downedHeaterofWorlds;
-		public static bool downedFrostKing;
-		public static bool downedDarkEmperor;
-		public static bool downedPixieQueen;
-		public static bool downedAlchemaster;
-		public static bool downedBrutallisk;
-		public static bool downedParadoxTitan;
-		public static bool downedCogLord;
-		public static bool downedWallofShadow;
-		public static bool downedMotherboard;
-		public static bool downedFungusBeetle;
-		public static bool downedAncientDragon;
-		public static bool downedAndas;
-		public static bool DownedNovaPillar;
-		public static bool downedWallOfShadow;
+		public enum DownedBoss
+		{
+			EvilCorn,
+			Rukh,
+			SpaceWhale,
+			Trinity,
+			Tremode,
+			TikiTotem,
+			StormJellyfish,
+			CyberKing,
+			HeaterofWorlds,
+			FrostKing,
+			DarkEmperor,
+			PixieQueen,
+			Alchemaster,
+			Brutallisk,
+			ParadoxTitan,
+			CogLord,
+			//WallofShadow, // ?
+			Motherboard,
+			FungusBeetle,
+			AncientDragon,
+			Andas,
+			NovaPillar,
+			WallOfShadow
+		}
+
+		private DownedBoss FindBossMatch(string boss)
+			=> (DownedBoss)Enum.Parse(typeof(DownedBoss), boss, true);
+
+		public static Dictionary<DownedBoss, bool> downedBoss;
 
 		public override void Initialize()
 		{
-			downedEvilCorn = false;
-			downedRukh = false;
-			downedSpaceWhale = false;
-			downedTrinity = false;
-			downedTremode = false;
-			downedTikiTotem = false;
-			downedStormJellyfish = false;
-			downedCyberKing = false;
-			downedHeaterofWorlds = false;
-			downedFrostKing = false;
-			downedDarkEmperor = false;
-			downedPixieQueen = false;
-			downedAlchemaster = false;
-			downedBrutallisk = false;
-			downedParadoxTitan = false;
-			downedCogLord = false;
-			downedWallofShadow = false;
-			downedMotherboard = false;
-			downedFungusBeetle = false;
-			downedAncientDragon = false;
-			DownedNovaPillar = false;
-			downedAndas = false;
-			downedWallOfShadow = false;
+			downedBoss = new Dictionary<DownedBoss, bool>();
+			foreach (DownedBoss boss in Enum.GetValues(typeof(DownedBoss)).Cast<DownedBoss>())
+			{
+				downedBoss[boss] = false;
+			}
 		}
 
 		public override TagCompound Save()
 		{
 			var downed = new List<string>();
-			if (downedEvilCorn) downed.Add("evilCorn");
-			if (downedRukh) downed.Add("rukh");
-			if (downedSpaceWhale) downed.Add("spaceWhale");
-			if (downedTrinity) downed.Add("trinity");
-			if (downedTremode) downed.Add("tremode");
-			if (downedTikiTotem) downed.Add("tikiTotem");
-			if (downedStormJellyfish) downed.Add("stormJellyfish");
-			if (downedCyberKing) downed.Add("cyberKing");
-			if (downedHeaterofWorlds) downed.Add("heaterofWorlds");
-			if (downedFrostKing) downed.Add("frostKing");
-			if (downedDarkEmperor) downed.Add("darkEmperor");
-			if (downedPixieQueen) downed.Add("pixieQueen");
-			if (downedAlchemaster) downed.Add("alchemaster");
-			if (downedBrutallisk) downed.Add("brutallisk");
-			if (downedParadoxTitan) downed.Add("paradoxTitan");
-			if (downedCogLord) downed.Add("cogLord");
-			if (downedWallofShadow) downed.Add("wallofShadow");
-			if (downedMotherboard) downed.Add("motherboard");
-			if (downedFungusBeetle) downed.Add("fungusBeetle");
-			if (downedAncientDragon) downed.Add("ancientDragon");
-			if (downedAndas) downed.Add("andas");
-			if (downedWallOfShadow) downed.Add("wallOfShadow");
 
-			return new TagCompound {
-				{"downed", downed}
-			};
+			foreach (var pair in downedBoss)
+			{
+				if (pair.Value)
+				{
+					string boss = pair.Key.ToString();
+					downed.Add(char.ToLowerInvariant(boss[0]) + boss.Substring(1));
+				}
+			}
 
-
-			var Downed = new List<string>();
-			if (DownedNovaPillar) Downed.Add("novaPillar");
-			return new TagCompound {
-				{"Downed", Downed}
+			return new TagCompound
+			{
+				["downed"] = downed
 			};
 		}
 
 		public override void Load(TagCompound tag)
 		{
 			var downed = tag.GetList<string>("downed");
-			downedEvilCorn = downed.Contains("evilCorn");
-			downedRukh = downed.Contains("rukh");
-			downedSpaceWhale = downed.Contains("spaceWhale");
-			downedTrinity = downed.Contains("trinity");
-			downedTremode = downed.Contains("tremode");
-			downedTikiTotem = downed.Contains("tikiTotem");
-			downedStormJellyfish = downed.Contains("stormJellyfish");
-			downedCyberKing = downed.Contains("cyberKing");
-			downedHeaterofWorlds = downed.Contains("heaterofWorlds");
-			downedFrostKing = downed.Contains("frostKing");
-			downedDarkEmperor = downed.Contains("darkEmperor");
-			downedPixieQueen = downed.Contains("pixieQueen");
-			downedAlchemaster = downed.Contains("alchemaster");
-			downedBrutallisk = downed.Contains("brutallisk");
-			downedParadoxTitan = downed.Contains("paradoxTitan");
-			downedCogLord = downed.Contains("cogLord");
-			downedWallofShadow = downed.Contains("wallofShadow");
-			downedMotherboard = downed.Contains("motherboard");
-			downedFungusBeetle = downed.Contains("fungusBeetle");
-			downedAncientDragon = downed.Contains("ancientDragon");
-			downedAndas = downed.Contains("andas");
-			downedWallOfShadow = downed.Contains("wallOfShadow");
-
-			var Downed = tag.GetList<string>("Downed");
-			DownedNovaPillar = Downed.Contains("novaPillar");
+			foreach (string boss in downed)
+			{
+				try
+				{
+					downedBoss[FindBossMatch(boss)] = true;
+				}
+				catch (Exception e)
+				{
+					
+				}
+			}
 		}
 
 		public override void LoadLegacy(BinaryReader reader)
@@ -139,29 +96,11 @@ namespace Tremor
 			if (loadVersion == 0)
 			{
 				BitsByte flags = reader.ReadByte();
-				downedEvilCorn = flags[0];
-				downedRukh = flags[1];
-				downedSpaceWhale = flags[2];
-				downedTrinity = flags[3];
-				downedTremode = flags[4];
-				downedTikiTotem = flags[5];
-				downedStormJellyfish = flags[6];
-				downedCyberKing = flags[7];
-				downedHeaterofWorlds = flags[8];
-				downedFrostKing = flags[9];
-				downedDarkEmperor = flags[10];
-				downedPixieQueen = flags[11];
-				downedAlchemaster = flags[12];
-				downedBrutallisk = flags[13];
-				downedParadoxTitan = flags[14];
-				downedCogLord = flags[15];
-				downedWallofShadow = flags[16];
-				downedMotherboard = flags[17];
-				downedFungusBeetle = flags[18];
-				downedAncientDragon = flags[19];
-				DownedNovaPillar = flags[20];
-				downedAndas = flags[21];
-				downedWallOfShadow = flags[22];
+
+				foreach (DownedBoss boss in Enum.GetValues(typeof(DownedBoss)).Cast<DownedBoss>())
+				{
+					downedBoss[boss] = flags[(int) boss];
+				}
 			}
 			else
 			{
@@ -171,66 +110,48 @@ namespace Tremor
 
 		public override void NetSend(BinaryWriter writer)
 		{
-			BitsByte flags1 = new BitsByte();
-			flags1[0] = downedEvilCorn;
-			flags1[1] = downedRukh;
-			flags1[2] = downedSpaceWhale;
-			flags1[3] = downedTrinity;
-			flags1[4] = downedTremode;
-			flags1[5] = downedTikiTotem;
-			flags1[6] = downedStormJellyfish;
-			flags1[7] = downedCyberKing;
-			BitsByte flags2 = new BitsByte();
-			flags2[0] = downedHeaterofWorlds;
-			flags2[1] = downedFrostKing;
-			flags2[2] = downedDarkEmperor;
-			flags2[3] = downedPixieQueen;
-			flags2[4] = downedAlchemaster;
-			flags2[5] = downedBrutallisk;
-			flags2[6] = downedParadoxTitan;
-			flags2[7] = downedCogLord;
-			BitsByte flags3 = new BitsByte();
-			flags3[0] = downedWallofShadow;
-			flags3[1] = downedMotherboard;
-			flags3[2] = downedFungusBeetle;
-			flags3[3] = downedAncientDragon;
-			flags3[4] = DownedNovaPillar;
-			flags3[5] = downedAndas;
-			flags3[6] = downedWallOfShadow;
-			writer.Write(flags1);
-			writer.Write(flags2);
-			writer.Write(flags3);
+			int bossCount = Enum.GetNames(typeof(DownedBoss)).Length;
+			int allocations = (int) Math.Ceiling(bossCount / 8f);
+
+			if (allocations > 0)
+			{
+				writer.Write(bossCount);
+				writer.Write(allocations);
+
+				BitsByte[] bits = new BitsByte[allocations];
+
+				for (int i = 0; i < bossCount; i++)
+				{
+					bits[i / 8][i % 8] = downedBoss[(DownedBoss)i];
+				}
+
+				foreach (BitsByte b in bits)
+				{
+					writer.Write(b);
+				}
+			}
 		}
 
 
 		public override void NetReceive(BinaryReader reader)
 		{
-			BitsByte flags1 = reader.ReadByte();
-			BitsByte flags2 = reader.ReadByte();
-			BitsByte flags3 = reader.ReadByte();
-			downedEvilCorn = flags1[0];
-			downedRukh = flags1[1];
-			downedSpaceWhale = flags1[2];
-			downedTrinity = flags1[3];
-			downedTremode = flags1[4];
-			downedTikiTotem = flags1[5];
-			downedStormJellyfish = flags1[6];
-			downedCyberKing = flags1[7];
-			downedHeaterofWorlds = flags2[0];
-			downedFrostKing = flags2[1];
-			downedDarkEmperor = flags2[2];
-			downedPixieQueen = flags2[3];
-			downedAlchemaster = flags2[4];
-			downedBrutallisk = flags2[5];
-			downedParadoxTitan = flags2[6];
-			downedCogLord = flags2[7];
-			downedWallofShadow = flags3[0];
-			downedMotherboard = flags3[1];
-			downedFungusBeetle = flags3[2];
-			downedAncientDragon = flags3[3];
-			DownedNovaPillar = flags3[4];
-			downedAndas = flags3[5];
-			downedWallOfShadow = flags3[6];
+			int bossCount = reader.ReadInt32();
+			int allocations = reader.ReadInt32();
+
+			if (allocations > 0)
+			{
+				BitsByte[] bits = new BitsByte[allocations];
+
+				for (int i = 0; i < allocations; i++)
+				{
+					bits[i] = reader.ReadByte();
+				}
+
+				for (int i = 0; i < bossCount; i++)
+				{
+					downedBoss[(DownedBoss) i] = bits[i / 8][i % 8];
+				}
+			}
 		}
 
 		public static int CometTiles;

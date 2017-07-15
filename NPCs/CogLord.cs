@@ -330,7 +330,7 @@ namespace Tremor.NPCs
 		}
 		public override void NPCLoot()
 		{
-			TremorWorld.downedCogLord = true;
+			TremorWorld.downedBoss[TremorWorld.DownedBoss.CogLord] = true;
 			if (Main.netMode != 1)
 			{
 				if (Main.expertMode)

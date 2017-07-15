@@ -127,7 +127,7 @@ namespace Tremor.NPCs
 				shop.item[nextSlot].SetDefaults(mod.ItemType("Nitro"));
 				nextSlot++;
 			}
-			if (TremorWorld.downedAlchemaster)
+			if (TremorWorld.downedBoss[TremorWorld.DownedBoss.Alchemaster])
 			{
 				shop.item[nextSlot].SetDefaults(mod.ItemType("Pyro"));
 				nextSlot++;

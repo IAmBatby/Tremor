@@ -557,7 +557,7 @@ namespace Tremor.NPCs
 				{
 					Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("BrutalliskMask"));
 				}
-				TremorWorld.downedBrutallisk = true;
+				TremorWorld.downedBoss[TremorWorld.DownedBoss.Brutallisk] = true;
 			}
 		}
 

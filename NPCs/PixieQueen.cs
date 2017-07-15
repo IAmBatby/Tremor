@@ -790,7 +790,7 @@ namespace Tremor.NPCs
 				{
 					Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("ChaosBar"), Main.rand.Next(25, 30));
 				}
-				TremorWorld.downedPixieQueen = true;
+				TremorWorld.downedBoss[TremorWorld.DownedBoss.PixieQueen] = true;
 			}
 		}
 	}

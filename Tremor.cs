@@ -162,26 +162,34 @@ namespace Tremor
 			Mod bossChecklist = ModLoader.GetMod("BossChecklist");
 			if (bossChecklist != null)
 			{
-				bossChecklist.Call("AddBossWithInfo", "Rukh", 2.7f, (Func<bool>)(() => TremorWorld.downedRukh), "Use a [i:" + ItemType("DesertCrown") + "] in Desert");
-				bossChecklist.Call("AddBossWithInfo", "Tiki Totem", 3.3f, (Func<bool>)(() => TremorWorld.downedTikiTotem), "Use a [i:" + ItemType("MysteriousDrum") + "] in Jungle at night after beating Eye of Cthulhu");
-				bossChecklist.Call("AddBossWithInfo", "Evil Corn", 3.4f, (Func<bool>)(() => TremorWorld.downedEvilCorn), "Use a [i:" + ItemType("CursedPopcorn") + "] at night");
-				bossChecklist.Call("AddBossWithInfo", "Storm Jellyfish", 3.5f, (Func<bool>)(() => TremorWorld.downedStormJellyfish), "Use a [i:" + ItemType("StormJelly") + "]");
-				bossChecklist.Call("AddBossWithInfo", "Ancient Dragon", 3.6f, (Func<bool>)(() => TremorWorld.downedAncientDragon), "Use a [i:" + ItemType("RustyLantern") + "] in Ruins after pressing with RMB on Ruin Altar and getting Ruin Powers buff");
-				bossChecklist.Call("AddBossWithInfo", "Fungus Beetle", 5.5f, (Func<bool>)(() => TremorWorld.downedFungusBeetle), "Use a [i:" + ItemType("MushroomCrystal") + "]");
-				bossChecklist.Call("AddBossWithInfo", "Heater of Worlds", 5.6f, (Func<bool>)(() => TremorWorld.downedFungusBeetle), "Use a [i:" + ItemType("MoltenHeart") + "] in Underworld");
-				bossChecklist.Call("AddBossWithInfo", "Alchemaster", 6.5f, (Func<bool>)(() => TremorWorld.downedAlchemaster), "Use a [i:" + ItemType("AncientMosaic") + "] at night");
-				bossChecklist.Call("AddBossWithInfo", "Motherboard (Destroyer alt)", 8.01f, (Func<bool>)(() => TremorWorld.downedMotherboard), "Use a [i:" + ItemType("MechanicalBrain") + "] at night");
-				bossChecklist.Call("AddBossWithInfo", "Pixie Queen", 9.6f, (Func<bool>)(() => TremorWorld.downedPixieQueen), "Use a [i:" + ItemType("PixieinaJar") + "] in Hallow at night");
-				bossChecklist.Call("AddBossWithInfo", "Wall of Shadows", 10.7f, (Func<bool>)(() => TremorWorld.downedWallOfShadow), "Throw a [i:" + ItemType("ShadowRelic") + "] into lava in Underworld after beating Plantera and having the Dryad alive ");
-				bossChecklist.Call("AddBossWithInfo", "Frost King", 10.6f, (Func<bool>)(() => TremorWorld.downedFrostKing), "Use a [i:" + ItemType("FrostCrown") + "] in Snow");
-				bossChecklist.Call("AddBossWithInfo", "Cog Lord", 11.4f, (Func<bool>)(() => TremorWorld.downedCogLord), "Use a [i:" + ItemType("ArtifactEngine") + "] at night");
-				bossChecklist.Call("AddBossWithInfo", "Cyber King", 11.5f, (Func<bool>)(() => TremorWorld.downedCyberKing), "Use a [i:" + ItemType("AdvancedCircuit") + "] at night to summon a Mothership which will spawn Cyber King on death");
-				bossChecklist.Call("AddBossWithInfo", "Nova Pillar", 13.5f, (Func<bool>)(() => TremorWorld.DownedNovaPillar), "Kill the Lunatic Cultist outside the dungeon post-Golem");
-				bossChecklist.Call("AddBossWithInfo", "The Dark Emperor", 14.4f, (Func<bool>)(() => TremorWorld.downedDarkEmperor), "Use a [i:" + ItemType("EmperorCrown") + "]");
-				bossChecklist.Call("AddBossWithInfo", "Brutallisk", 14.5f, (Func<bool>)(() => TremorWorld.downedBrutallisk), "Use a [i:" + ItemType("RoyalEgg") + "] in Desert");
-				bossChecklist.Call("AddBossWithInfo", "Space Whale", 14.6f, (Func<bool>)(() => TremorWorld.downedSpaceWhale), "Use a [i:" + ItemType("CosmicKrill") + "]");
-				bossChecklist.Call("AddBossWithInfo", "The Trinity", 14.7f, (Func<bool>)(() => TremorWorld.downedTrinity), "Use a [i:" + ItemType("StoneofKnowledge") + "] at night");
-				bossChecklist.Call("AddBossWithInfo", "Andas", 14.8f, (Func<bool>)(() => TremorWorld.downedAndas), "Use a [i:" + ItemType("InfernoSkull") + "] at Underworld");
+				var data = new[]
+				{
+					new[]{
+						"AddBossWithInfo", "Rukh", 2.7f, (Func<bool>) (() => TremorWorld.downedBoss[TremorWorld.DownedBoss.Rukh]),
+						"Use a [i:" + ItemType("DesertCrown") + "] in Desert"
+					}
+				};
+
+				bossChecklist.Call("AddBossWithInfo", "Rukh", 2.7f, (Func<bool>)(() => TremorWorld.downedBoss[TremorWorld.DownedBoss.Rukh]), "Use a [i:" + ItemType("DesertCrown") + "] in Desert");
+				bossChecklist.Call("AddBossWithInfo", "Tiki Totem", 3.3f, (Func<bool>)(() => TremorWorld.downedBoss[TremorWorld.DownedBoss.TikiTotem]), "Use a [i:" + ItemType("MysteriousDrum") + "] in Jungle at night after beating Eye of Cthulhu");
+				bossChecklist.Call("AddBossWithInfo", "Evil Corn", 3.4f, (Func<bool>)(() => TremorWorld.downedBoss[TremorWorld.DownedBoss.EvilCorn]), "Use a [i:" + ItemType("CursedPopcorn") + "] at night");
+				bossChecklist.Call("AddBossWithInfo", "Storm Jellyfish", 3.5f, (Func<bool>)(() => TremorWorld.downedBoss[TremorWorld.DownedBoss.StormJellyfish]), "Use a [i:" + ItemType("StormJelly") + "]");
+				bossChecklist.Call("AddBossWithInfo", "Ancient Dragon", 3.6f, (Func<bool>)(() => TremorWorld.downedBoss[TremorWorld.DownedBoss.AncientDragon]), "Use a [i:" + ItemType("RustyLantern") + "] in Ruins after pressing with RMB on Ruin Altar and getting Ruin Powers buff");
+				bossChecklist.Call("AddBossWithInfo", "Fungus Beetle", 5.5f, (Func<bool>)(() => TremorWorld.downedBoss[TremorWorld.DownedBoss.FungusBeetle]), "Use a [i:" + ItemType("MushroomCrystal") + "]");
+				bossChecklist.Call("AddBossWithInfo", "Heater of Worlds", 5.6f, (Func<bool>)(() => TremorWorld.downedBoss[TremorWorld.DownedBoss.HeaterofWorlds]), "Use a [i:" + ItemType("MoltenHeart") + "] in Underworld");
+				bossChecklist.Call("AddBossWithInfo", "Alchemaster", 6.5f, (Func<bool>)(() => TremorWorld.downedBoss[TremorWorld.DownedBoss.Alchemaster]), "Use a [i:" + ItemType("AncientMosaic") + "] at night");
+				bossChecklist.Call("AddBossWithInfo", "Motherboard (Destroyer alt)", 8.01f, (Func<bool>)(() => TremorWorld.downedBoss[TremorWorld.DownedBoss.Motherboard]), "Use a [i:" + ItemType("MechanicalBrain") + "] at night");
+				bossChecklist.Call("AddBossWithInfo", "Pixie Queen", 9.6f, (Func<bool>)(() => TremorWorld.downedBoss[TremorWorld.DownedBoss.PixieQueen]), "Use a [i:" + ItemType("PixieinaJar") + "] in Hallow at night");
+				bossChecklist.Call("AddBossWithInfo", "Wall of Shadows", 10.7f, (Func<bool>)(() => TremorWorld.downedBoss[TremorWorld.DownedBoss.WallOfShadow]), "Throw a [i:" + ItemType("ShadowRelic") + "] into lava in Underworld after beating Plantera and having the Dryad alive ");
+				bossChecklist.Call("AddBossWithInfo", "Frost King", 10.6f, (Func<bool>)(() => TremorWorld.downedBoss[TremorWorld.DownedBoss.FrostKing]), "Use a [i:" + ItemType("FrostCrown") + "] in Snow");
+				bossChecklist.Call("AddBossWithInfo", "Cog Lord", 11.4f, (Func<bool>)(() => TremorWorld.downedBoss[TremorWorld.DownedBoss.CogLord]), "Use a [i:" + ItemType("ArtifactEngine") + "] at night");
+				bossChecklist.Call("AddBossWithInfo", "Cyber King", 11.5f, (Func<bool>)(() => TremorWorld.downedBoss[TremorWorld.DownedBoss.CyberKing]), "Use a [i:" + ItemType("AdvancedCircuit") + "] at night to summon a Mothership which will spawn Cyber King on death");
+				bossChecklist.Call("AddBossWithInfo", "Nova Pillar", 13.5f, (Func<bool>)(() => TremorWorld.downedBoss[TremorWorld.DownedBoss.NovaPillar]), "Kill the Lunatic Cultist outside the dungeon post-Golem");
+				bossChecklist.Call("AddBossWithInfo", "The Dark Emperor", 14.4f, (Func<bool>)(() => TremorWorld.downedBoss[TremorWorld.DownedBoss.DarkEmperor]), "Use a [i:" + ItemType("EmperorCrown") + "]");
+				bossChecklist.Call("AddBossWithInfo", "Brutallisk", 14.5f, (Func<bool>)(() => TremorWorld.downedBoss[TremorWorld.DownedBoss.Brutallisk]), "Use a [i:" + ItemType("RoyalEgg") + "] in Desert");
+				bossChecklist.Call("AddBossWithInfo", "Space Whale", 14.6f, (Func<bool>)(() => TremorWorld.downedBoss[TremorWorld.DownedBoss.SpaceWhale]), "Use a [i:" + ItemType("CosmicKrill") + "]");
+				bossChecklist.Call("AddBossWithInfo", "The Trinity", 14.7f, (Func<bool>)(() => TremorWorld.downedBoss[TremorWorld.DownedBoss.Trinity]), "Use a [i:" + ItemType("StoneofKnowledge") + "] at night");
+				bossChecklist.Call("AddBossWithInfo", "Andas", 14.8f, (Func<bool>)(() => TremorWorld.downedBoss[TremorWorld.DownedBoss.Andas]), "Use a [i:" + ItemType("InfernoSkull") + "] at Underworld");
 			}
 		}
 
