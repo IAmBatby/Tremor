@@ -287,7 +287,7 @@ namespace Tremor.NPCs
 					mod.ItemType("Arachnophobia"));
 			}
 
-			if (!TremorWorld.downedBoss[TremorWorld.DownedBoss.Motherboard] && Main.hardMode && Main.rand.Next(2500) == 0)
+			if (!TremorWorld.downedBoss[TremorWorld.Boss.Motherboard] && Main.hardMode && Main.rand.Next(2500) == 0)
 			{
 				Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height,
 					mod.ItemType("MechanicalBrain"));
@@ -877,7 +877,7 @@ namespace Tremor.NPCs
 
 			if (npc.type == 398)
 			{
-				if (!TremorWorld.downedBoss[TremorWorld.DownedBoss.Tremode]) // Смотрим есть ли Тремод
+				if (!TremorWorld.downedBoss[TremorWorld.Boss.Tremode]) // Смотрим есть ли Тремод
 				{
 					Main.NewText("Nightmares became reality!", 90, 0, 157);
 					Main.NewText("The moon slowly drifts towards the Earth...", 0, 255, 255);
@@ -912,7 +912,7 @@ namespace Tremor.NPCs
 						}
 					}
 
-					TremorWorld.downedBoss[TremorWorld.DownedBoss.Tremode] = true; // Врубаем Тремод
+					TremorWorld.downedBoss[TremorWorld.Boss.Tremode] = true; // Врубаем Тремод
 				}
 			}
 

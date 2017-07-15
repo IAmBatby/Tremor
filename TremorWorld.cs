@@ -14,7 +14,7 @@ namespace Tremor
 {
 	public class TremorWorld : ModWorld
 	{
-		public enum DownedBoss
+		public enum Boss
 		{
 			EvilCorn,
 			Rukh,
@@ -41,15 +41,15 @@ namespace Tremor
 			WallOfShadow
 		}
 
-		private DownedBoss FindBossMatch(string boss)
-			=> (DownedBoss)Enum.Parse(typeof(DownedBoss), boss, true);
+		private Boss FindBossMatch(string boss)
+			=> (Boss)Enum.Parse(typeof(Boss), boss, true);
 
-		public static Dictionary<DownedBoss, bool> downedBoss;
+		public static Dictionary<Boss, bool> downedBoss;
 
 		public override void Initialize()
 		{
-			downedBoss = new Dictionary<DownedBoss, bool>();
-			foreach (DownedBoss boss in Enum.GetValues(typeof(DownedBoss)).Cast<DownedBoss>())
+			downedBoss = new Dictionary<Boss, bool>();
+			foreach (Boss boss in Enum.GetValues(typeof(Boss)).Cast<Boss>())
 			{
 				downedBoss[boss] = false;
 			}
@@ -97,7 +97,7 @@ namespace Tremor
 			{
 				BitsByte flags = reader.ReadByte();
 
-				foreach (DownedBoss boss in Enum.GetValues(typeof(DownedBoss)).Cast<DownedBoss>())
+				foreach (Boss boss in Enum.GetValues(typeof(Boss)).Cast<Boss>())
 				{
 					downedBoss[boss] = flags[(int) boss];
 				}
@@ -110,7 +110,7 @@ namespace Tremor
 
 		public override void NetSend(BinaryWriter writer)
 		{
-			int bossCount = Enum.GetNames(typeof(DownedBoss)).Length;
+			int bossCount = Enum.GetNames(typeof(Boss)).Length;
 			int allocations = (int) Math.Ceiling(bossCount / 8f);
 
 			if (allocations > 0)
@@ -122,7 +122,7 @@ namespace Tremor
 
 				for (int i = 0; i < bossCount; i++)
 				{
-					bits[i / 8][i % 8] = downedBoss[(DownedBoss)i];
+					bits[i / 8][i % 8] = downedBoss[(Boss)i];
 				}
 
 				foreach (BitsByte b in bits)
@@ -149,7 +149,7 @@ namespace Tremor
 
 				for (int i = 0; i < bossCount; i++)
 				{
-					downedBoss[(DownedBoss) i] = bits[i / 8][i % 8];
+					downedBoss[(Boss) i] = bits[i / 8][i % 8];
 				}
 			}
 		}

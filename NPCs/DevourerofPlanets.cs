@@ -69,7 +69,7 @@ namespace Tremor.NPCs
 			int x = spawnInfo.spawnTileX;
 			int y = spawnInfo.spawnTileY;
 			int tile = Main.tile[x, y].type;
-			return Main.hardMode && TremorWorld.downedBoss[TremorWorld.DownedBoss.Trinity] && !spawnInfo.player.ZoneDungeon && y > Main.rockLayer ? 0.005f : 0f;
+			return Main.hardMode && TremorWorld.downedBoss[TremorWorld.Boss.Trinity] && !spawnInfo.player.ZoneDungeon && y > Main.rockLayer ? 0.005f : 0f;
 		}
 
 		public override void HitEffect(int hitDirection, double damage)

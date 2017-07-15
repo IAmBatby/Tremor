@@ -475,7 +475,7 @@ namespace Tremor.NPCs
 		{
 			NPC.downedMechBossAny = true;
 			NPC.downedMechBoss1 = true;
-			TremorWorld.downedBoss[TremorWorld.DownedBoss.Motherboard] = true;
+			TremorWorld.downedBoss[TremorWorld.Boss.Motherboard] = true;
 
 			if (Main.expertMode)
 			{

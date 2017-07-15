@@ -484,10 +484,10 @@ namespace Tremor.NPCs
 				{
 					Item.NewItem((int)npc.Center.X, (int)npc.Center.Y, npc.width, npc.height, mod.ItemType("TikiTotemTrophy"));
 				}
-				if (!TremorWorld.downedBoss[TremorWorld.DownedBoss.TikiTotem])
+				if (!TremorWorld.downedBoss[TremorWorld.Boss.TikiTotem])
 				{
 					Main.NewText("Ghosts are returning to ruins...", 193, 139, 77);
-					TremorWorld.downedBoss[TremorWorld.DownedBoss.TikiTotem] = true;
+					TremorWorld.downedBoss[TremorWorld.Boss.TikiTotem] = true;
 				}
 			}
 		}

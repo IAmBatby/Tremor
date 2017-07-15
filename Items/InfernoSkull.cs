@@ -38,7 +38,7 @@ namespace Tremor.Items
 
 		public override bool CanUseItem(Player player)
 		{
-			return player.position.Y / 16f > Main.maxTilesY - 200 && TremorWorld.downedBoss[TremorWorld.DownedBoss.Trinity] && !NPC.AnyNPCs(mod.NPCType("Andas"));
+			return player.position.Y / 16f > Main.maxTilesY - 200 && TremorWorld.downedBoss[TremorWorld.Boss.Trinity] && !NPC.AnyNPCs(mod.NPCType("Andas"));
 		}
 
 		public override void AddRecipes()

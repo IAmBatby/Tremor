@@ -188,7 +188,7 @@ namespace Tremor.NPCs
 			{
 				Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("HeaterOfWorldsMask"));
 			}
-			TremorWorld.downedBoss[TremorWorld.DownedBoss.HeaterofWorlds] = true;
+			TremorWorld.downedBoss[TremorWorld.Boss.HeaterofWorlds] = true;
 		}
 
 	}
