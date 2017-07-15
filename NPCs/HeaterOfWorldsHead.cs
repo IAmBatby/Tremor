@@ -93,8 +93,8 @@ namespace Tremor.NPCs
 	{
 		public bool IsSegmented
 		{
-			get => npc.ai[0] == 1f;
-			set => npc.ai[0] = value ? 1f : 0f;
+			get { return npc.ai[0] == 1f; }
+			set { npc.ai[0] = value ? 1f : 0f; }
 		}
 
 		public override void SetDefaults()
