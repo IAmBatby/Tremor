@@ -10,6 +10,7 @@ namespace Tremor.NPCs
 	{
 		public override void SetDefaults()
 		{
+			base.SetDefaults();
 			npc.width = 30;
 			npc.height = 62;	
 		}
