@@ -2,6 +2,7 @@ using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
+using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Tremor.Items;
@@ -10,9 +11,26 @@ namespace Tremor.NPCs
 {
 	public abstract class HeaterofWorldsPart : ModNPC
 	{
+		public bool JustSpawned
+		{
+			get { return npc.localAI[0] == 0f; }
+			set { npc.localAI[0] = value ? 0f : 1f; }
+		}
+
+		public NPC PrevSegment
+		{
+			get { return Main.npc[(int) npc.ai[1]]; }
+		}
+
+		public NPC ParentHead
+		{
+			get { return Main.npc[(int) npc.ai[2]]; }
+		}
+
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Heater of Worlds");
+			NPCID.Sets.TechnicallyABoss[npc.type] = true;
 		}
 
 		public override void SetDefaults()
@@ -20,9 +38,6 @@ namespace Tremor.NPCs
 			npc.lifeMax = 6500;
 			npc.damage = 39;
 			npc.defense = 40;
-			//npc.knockBackResist = 0f;
-			//npc.width = 74;
-			//npc.height = 82;
 			npc.aiStyle = 6;
 			npc.npcSlots = 5f;
 			music = 17;
@@ -39,8 +54,6 @@ namespace Tremor.NPCs
 
 			npc.HitSound = SoundID.NPCHit7;
 			npc.DeathSound = SoundID.NPCDeath10;
-
-			//bossBag = mod.ItemType<HeaterOfWorldsBag>();
 		}
 
 		public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
@@ -51,16 +64,17 @@ namespace Tremor.NPCs
 
 		public override void OnHitPlayer(Player player, int damage, bool crit)
 		{
-			if (Main.expertMode || Main.rand.NextBool())
+			if (Main.expertMode 
+				|| Main.rand.NextBool())
 			{
-				player.AddBuff(BuffID.OnFire, 180, true);
+				player.AddBuff(BuffID.OnFire, 180);
 			}
 		}
 
 		public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)
 		{
 			Texture2D drawTexture = Main.npcTexture[npc.type];
-			Vector2 origin = new Vector2(drawTexture.Width / 2 * 0.5F, drawTexture.Height / Main.npcFrameCount[npc.type] * 0.5f);
+			Vector2 origin = new Vector2(drawTexture.Width / 2 * 0.5f, drawTexture.Height / Main.npcFrameCount[npc.type] * 0.5f);
 
 			Vector2 drawPos = new Vector2(
 				npc.position.X - Main.screenPosition.X + npc.width / 2 - Main.npcTexture[npc.type].Width / 2 * npc.scale / 2f + origin.X * npc.scale,
@@ -78,11 +92,14 @@ namespace Tremor.NPCs
 
 		public void CheckSegments()
 		{
-			if (!Main.npc[(int)npc.ai[1]].active)
+			if (!PrevSegment.active
+				|| !ParentHead.active)
 			{
-				npc.life = 0;
+				npc.VanillaHitEffect();
 				npc.HitEffect();
 				NPCLoot();
+				npc.life = 0;
+				npc.timeLeft = 0;
 				npc.active = false;
 			}
 		}
@@ -91,16 +108,20 @@ namespace Tremor.NPCs
 	[AutoloadBossHead]
 	public class HeaterOfWorldsHead : HeaterofWorldsPart
 	{
-		public bool IsSegmented
+		public override void SetStaticDefaults()
 		{
-			get { return npc.ai[0] == 1f; }
-			set { npc.ai[0] = value ? 1f : 0f; }
+			base.SetStaticDefaults();
+			NPCID.Sets.TechnicallyABoss[npc.type] = false;
 		}
 
 		public override void SetDefaults()
 		{
+			base.SetDefaults();
 			npc.width = 74;
 			npc.height = 82;
+
+			npc.boss = true;
+
 			bossBag = mod.ItemType<HeaterOfWorldsBag>();
 		}
 
@@ -119,7 +140,7 @@ namespace Tremor.NPCs
 					? 430
 					: 490;
 
-			if (Main.rand.Next(odds) == 0)
+			if (Helper.Chance(odds))
 			{
 				NPC.NewNPC((int)npc.Center.X - 70, (int)npc.Center.Y, mod.NPCType<MagmaLeechHead>());
 			}
@@ -127,46 +148,44 @@ namespace Tremor.NPCs
 
 		private void UpdatePosition()
 		{
-			npc.position += npc.velocity * (2 - 1);
+			npc.position += npc.velocity;
 		}
 
 		private void UpdateVelocity()
 		{
 			if ((int)(Main.time % 180) == 0)
 			{
-				Vector2 vector = new Vector2(npc.position.X + (npc.width * 0.5f), npc.position.Y + (npc.height / 2));
-				float birdRotation = (float)Math.Atan2(vector.Y - (Main.player[npc.target].position.Y + (Main.player[npc.target].height * 0.5f)), vector.X - (Main.player[npc.target].position.X + (Main.player[npc.target].width * 0.5f)));
-				npc.velocity.X = (float)(Math.Cos(birdRotation) * 7) * -1;
-				npc.velocity.Y = (float)(Math.Sin(birdRotation) * 7) * -1;
+				float from = npc.AngleFrom(Main.player[npc.target].Center);
+				npc.velocity = new Vector2((float)Math.Cos(from), (float)Math.Sin(from)) * -7;
 				npc.netUpdate = true;
 			}
 		}
 
 		private void SegmentBody()
 		{
-			if (!IsSegmented)
+			if (JustSpawned)
 			{
 				int previous = npc.whoAmI;
+				const int segments = 25;
 
-				for (int i = 0; i < 25; i++)
+				for (int i = 0; i < segments; i++)
 				{
 					int type =
-						i < 24
+						i < segments - 1
 							? mod.NPCType<HeaterOfWorldsBody>()
 							: mod.NPCType<HeaterOfWorldsTail>();
 
-					NPC segment = Main.npc[
-						NPC.NewNPC((int) npc.position.X + npc.width / 2, (int) npc.position.Y + npc.width / 2, type, npc.whoAmI)];
-
+					// whoAmI is only set in NPC.Update...not NewNPC
+					// hence this manual work
+					int segmentWhoAmI = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, type, ai1: previous, ai2: npc.whoAmI);
+					NPC segment = Main.npc[segmentWhoAmI];
+					segment.whoAmI = segmentWhoAmI;
 					segment.realLife = npc.whoAmI;
-					segment.ai[2] = npc.whoAmI;
-					segment.ai[1] = previous;
-					Main.npc[previous].ai[0] = segment.whoAmI;
-					//NetMessage.SendData(23, -1, -1, "", segment.whoAmI, 0f, 0f, 0f, 0);
-					previous = segment.whoAmI;
+					segment.active = true;
+					previous = segmentWhoAmI;
 				}
 
-				IsSegmented = true;
+				JustSpawned = false;
 			}
 		}
 
@@ -180,27 +199,31 @@ namespace Tremor.NPCs
 
 		private void ConvertTiles()
 		{
-			int centerX = (int)(npc.position.X + npc.width / 2) / 16;
-			int centerY = (int)(npc.position.Y + npc.height / 2) / 16;
+			Point16 center = npc.Center.ToTileCoordinates16();
 			int halfLength = npc.width / 2 / 16 + 1;
-			for (int x = centerX - halfLength; x <= centerX + halfLength; x++)
+			for (int x = center.X - halfLength; x <= center.X + halfLength; x++)
 			{
-				for (int y = centerY - halfLength; y <= centerY + halfLength; y++)
+				for (int y = center.Y - halfLength; y <= center.Y + halfLength; y++)
 				{
-					if ((x == centerX - halfLength || x == centerX + halfLength || y == centerY - halfLength || y == centerY + halfLength) && !Main.tile[x, y].active())
+					Tile tile = Main.tile[x, y];
+					if ((x == center.X - halfLength 
+						|| x == center.X + halfLength 
+						|| y == center.Y - halfLength 
+						|| y == center.Y + halfLength) 
+						&& !tile.active())
 					{
-						Main.tile[x, y].type = TileID.ObsidianBrick;
-						Main.tile[x, y].active(true);
+						tile.type = TileID.ObsidianBrick;
+						tile.active(true);
 					}
-					Main.tile[x, y].lava(false);
-					Main.tile[x, y].liquid = 0;
+					tile.lava(false);
+					tile.liquid = 0;
 					if (Main.netMode == NetmodeID.Server)
 					{
 						NetMessage.SendTileSquare(-1, x, y, 1);
 					}
 					else
 					{
-						WorldGen.SquareTileFrame(x, y, true);
+						WorldGen.SquareTileFrame(x, y);
 					}
 				}
 			}
@@ -211,9 +234,6 @@ namespace Tremor.NPCs
 			if (Main.expertMode)
 			{
 				npc.DropBossBags();
-
-				if (Helper.Chance(10))
-					npc.SpawnItem((short)mod.ItemType<HeaterOfWorldsTrophy>());
 			}
 			else
 			{
@@ -228,8 +248,10 @@ namespace Tremor.NPCs
 
 				if (Helper.Chance(7))
 					npc.SpawnItem((short)mod.ItemType<HeaterOfWorldsMask>());
-
 			}
+
+			if (Helper.Chance(10))
+				npc.SpawnItem((short)mod.ItemType<HeaterOfWorldsTrophy>());
 		}
 	}
 }

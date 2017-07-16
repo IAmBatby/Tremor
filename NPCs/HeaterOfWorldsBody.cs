@@ -9,17 +9,28 @@ namespace Tremor.NPCs
 {
 	public class HeaterOfWorldsBody : HeaterofWorldsPart
 	{
-		const int CDMax = 160;
-		int ShootCD = CDMax;
+		const int MaxCooldown = 240;
+
+		public float ShootCooldown
+		{
+			get { return npc.ai[0]; }
+			set { npc.ai[0] = value; }
+		}
 
 		public override void SetDefaults()
 		{
+			base.SetDefaults();
 			npc.width = 26;
 			npc.height = 48;
 		}
 
 		public override void AI()
 		{
+			if (JustSpawned)
+			{
+				ShootCooldown = MaxCooldown;
+				JustSpawned = false;
+			}
 			CheckSegments();
 			TryShoot();
 			DustFX();
@@ -27,11 +38,16 @@ namespace Tremor.NPCs
 
 		private void TryShoot()
 		{
+			if (Main.rand.NextBool())
+				ShootCooldown -= 1;
+
+			npc.TargetClosest(false);
+
 			if (Main.netMode != NetmodeID.MultiplayerClient
-			    && npc.target != -1
-				&& --ShootCD <= 0)
+			    && npc.HasValidTarget
+				&& ShootCooldown <= 0)
 			{
-				ShootCD = CDMax;
+				ShootCooldown = MaxCooldown;
 				Vector2 velocity = Helper.VelocityFPTP(npc.Center, Main.player[npc.target].Center, 4);
 				Projectile.NewProjectile(npc.Center.X, npc.Center.Y, velocity.X, velocity.Y, 326, 10, 1f);
 			}
@@ -42,7 +58,10 @@ namespace Tremor.NPCs
 			if (Helper.Chance(3))
 			{
 				for (int i = 0; i < 2; i++)
-					Dust.NewDust(npc.position, npc.width, npc.height, 6, 0f, 0f, 200, npc.color, 1f);
+				{
+					Dust dust = Dust.NewDustPerfect(npc.position, 6, Alpha: 200);
+					dust.noGravity = true;
+				}
 			}
 		}
 
