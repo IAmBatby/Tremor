@@ -33,15 +33,15 @@ namespace Tremor.Items
 		public override void OpenBossBag(Player player)
 		{
 			player.QuickSpawnItem(3355);
-			if (Main.rand.Next(1) == 0)
+			if (Main.rand.NextBool())
 			{
 				player.QuickSpawnItem(mod.ItemType("SoulofMind"), Main.rand.Next(20, 40));
 			}
-			if (Main.rand.Next(1) == 0)
+			if (Main.rand.NextBool())
 			{
 				player.QuickSpawnItem(499, Main.rand.Next(5, 15));
 			}
-			if (Main.rand.Next(1) == 0)
+			if (Main.rand.NextBool())
 			{
 				player.QuickSpawnItem(1225, Main.rand.Next(15, 35)); ;
 			}

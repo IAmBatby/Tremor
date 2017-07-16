@@ -28,7 +28,7 @@ namespace Tremor.Projectiles
 
 		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
 		{
-			if (Main.rand.Next(1) == 0)
+			if (Main.rand.NextBool())
 			{
 				target.AddBuff(mod.BuffType("DeathFear"), 480, false);
 			}

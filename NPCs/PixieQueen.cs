@@ -623,12 +623,12 @@ namespace Tremor.NPCs
 
 		public override void OnHitPlayer(Player player, int damage, bool crit)
 		{
-			if (Main.rand.Next(1) == 0)
+			if (Main.rand.NextBool())
 			{
 				player.AddBuff(BuffID.Confused, 60, true);
 			}
 
-			if (Main.rand.Next(1) == 0)
+			if (Main.rand.NextBool())
 			{
 				player.AddBuff(BuffID.Slow, 60, true);
 			}
@@ -786,7 +786,7 @@ namespace Tremor.NPCs
 				{
 					Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("PixieQueenTrophy"));
 				}
-				if (!Main.expertMode && Main.rand.Next(1) == 0)
+				if (!Main.expertMode && Main.rand.NextBool())
 				{
 					Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("ChaosBar"), Main.rand.Next(25, 30));
 				}

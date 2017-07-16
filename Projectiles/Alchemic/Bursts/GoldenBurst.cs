@@ -38,7 +38,7 @@ namespace Tremor.Projectiles.Alchemic.Bursts
         
     public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
     {
-        if(Main.rand.Next(1) == 0)
+        if(Main.rand.NextBool())
         {
             target.AddBuff(72, 10000, false);
         }
