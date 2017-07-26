@@ -193,8 +193,6 @@ namespace Tremor.NPCs
 		{
 			ConvertTiles();
 			DropLoot();
-
-			TremorWorld.downedHeaterofWorlds = true;
 		}
 
 		private void ConvertTiles()
