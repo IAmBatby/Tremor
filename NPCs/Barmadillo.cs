@@ -97,7 +97,7 @@ namespace Tremor.NPCs
 			int x = spawnInfo.spawnTileX;
 			int y = spawnInfo.spawnTileY;
 			int tile = Main.tile[x, y].type;
-			return Main.hardMode && TremorWorld.downedTrinity && !spawnInfo.player.ZoneDungeon && y > Main.rockLayer ? 0.002f : 0f;
+			return Main.hardMode && TremorWorld.Boss.Trinity.Downed() && !spawnInfo.player.ZoneDungeon && y > Main.rockLayer ? 0.002f : 0f;
 		}
 	}
 }
