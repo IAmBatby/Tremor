@@ -5,6 +5,6 @@ homepage = http://forums.terraria.org/index.php?threads/tremor-remastered.28695
 hideCode = true
 hideResources = true
 includeSource = false
-buildIgnore = *.csproj, *.user, obj\*, bin\*, .vs\*, .git\*, .editorconfig, .gitignore, *.sln, Changelogs\*
+buildIgnore = *.csproj, *.user, obj\*, bin\*, .vs\*, .git\*, .editorconfig, .gitignore, *.sln, Changelogs\*, *.md
 includePDB = false
 languageVersion = 6

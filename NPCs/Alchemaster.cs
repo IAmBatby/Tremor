@@ -271,7 +271,7 @@ namespace Tremor.NPCs
 				{
 					Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("BadApple"));
 				}
-				TremorWorld.downedAlchemaster = true;
+				TremorWorld.downedBoss[TremorWorld.Boss.Alchemaster] = true;
 
 			}
 		}

@@ -250,6 +250,8 @@ namespace Tremor.NPCs
 					npc.SpawnItem((short)mod.ItemType<HeaterOfWorldsMask>());
 			}
 
+			TremorWorld.downedBoss[TremorWorld.Boss.HeaterofWorlds] = true;
+      
 			if (Helper.Chance(10))
 				npc.SpawnItem((short)mod.ItemType<HeaterOfWorldsTrophy>());
 		}

@@ -427,7 +427,7 @@ namespace Tremor.NPCs
 				{
 					Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("SoulofFight"), Main.rand.Next(20, 30));
 				}
-				TremorWorld.downedDarkEmperor = true;
+				TremorWorld.downedBoss[TremorWorld.Boss.DarkEmperor] = true;
 			}
 		}
 	}
