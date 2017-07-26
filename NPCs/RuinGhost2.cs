@@ -37,7 +37,7 @@ namespace Tremor.NPCs
 		public override float SpawnChance(NPCSpawnInfo spawnInfo)
 		{
 			int[] TileArray2 = { mod.TileType("RuinAltar"), mod.TileType("RuinChest"), 120 };
-			return TileArray2.Contains(Main.tile[spawnInfo.spawnTileX, spawnInfo.spawnTileY].type) && TremorWorld.downedTikiTotem ? 45f : 0f;
+			return TileArray2.Contains(Main.tile[spawnInfo.spawnTileX, spawnInfo.spawnTileY].type) && TremorWorld.Boss.TikiTotem.Downed() ? 45f : 0f;
 		}
 
 		public override void HitEffect(int hitDirection, double damage)

@@ -790,19 +790,19 @@ namespace Tremor.NPCs
 				int halfLength = npc.width / 2 / 16 + 1;
 
 
-				if (!TremorWorld.downedSpaceWhale)
+				if (!TremorWorld.Boss.SpaceWhale.Downed())
 				{
 					Main.NewText("A comet has struck the ground!", 117, 187, 253);
 					TremorWorld.dropComet();
 					//return;
 				}
-				if (TremorWorld.downedSpaceWhale && Main.rand.Next(3) == 0)
+				if (TremorWorld.Boss.SpaceWhale.Downed() && Main.rand.Next(3) == 0)
 				{
 					Main.NewText("A comet has struck the ground!", 117, 187, 253);
 					TremorWorld.dropComet();
 					//return;
 				}
-				TremorWorld.downedSpaceWhale = true;
+				TremorWorld.downedBoss[TremorWorld.Boss.SpaceWhale] = true;
 
 				if (!Main.expertMode && Main.rand.Next(7) == 0)
 				{

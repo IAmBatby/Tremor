@@ -8,7 +8,6 @@ namespace Tremor.Items
 	{
 		public override void SetDefaults()
 		{
-
 			item.width = 30;
 			item.height = 24;
 			item.maxStack = 99;
