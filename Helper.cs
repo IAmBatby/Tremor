@@ -237,13 +237,14 @@ namespace Tremor
 			return returnedValue;
 		}
 
+		public static bool Chance(int chance)
+			=> Main.rand.Next(chance) == 0;
+
 		/// <summary>*Вычисления того, произойдёт ли событие с заданым шансом в этот раз, или нет*</summary>
 		/// <param name="chance">Шанс события</param>
 		/// <returns>Произойдёт ли событие с заданым шансом, или нет</returns>
 		public static bool Chance(float chance)
-		{
-			return (Main.rand.NextFloat() <= chance);
-		}
+			=> Main.rand.NextFloat() <= chance;
 
 		/// <summary>
 		/// *Используется для плавного перехода одного вектора в другой*
