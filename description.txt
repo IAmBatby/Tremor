@@ -2,44 +2,18 @@ The original Tremor team (Zadum4ivii, Bogdan3456, DaKkharn, Obesedog, Zerokk, Li
 Tremor is now controlled by Jofairden and collaborators.
 Git: https://github.com/Jofairden/Tremor
 
-Recent changelogs below.
+See the git or the TCF thread (homepage) for changelogs
 
 What Tremor offers:
-Over 1600 new items - including new armor sets, weapons for each class, accessories, new materials and banners for every mob.
-21 new bosses - every boss has it's own AI, loot, treasure bag with unique expert item.
-13 new NPCs - each NPC has it's own stuff to sell. Many NPCs also sell new things after certain bosses are defeated.
-2 brand new invasions - new invasions with new interesting mobs, loot and also with new soundtracks.
-New Glacier minibiome - a biome that spawns in Snow biome and has new mobs and loot.
-New ores - some generate in the beginning of the game and some only generate after defeating certain boss.
-Tremode - Post Moon Lord gamemode with it's own ores, lots of new content, such as armors, weapons, materials, harder monsters and hard bosses.
-New alchemist class - absolutely new class with new damage type, weapons, armor and accessories.
-New Nova Celestial Pillar - a completely new pillar for alchemist class that spawns with regular pillars!
-11 new soundtracks - amazing tracks for different bosses and events made by Delicious Saturn.
-Amazing neat sprites made by our wonderful spriters!
-And also support of Boss Checklist Mod!
-
-Changelogs for v1.3.2:
-The previous team has decided to stop their development for Tremor. The mod has now been transferred to Jofairden.
-Tremor is now publicly available on github: https://github.com/Jofairden/Tremor
-Thanks to all the collaborators, Tremor will remain available and bugs will be fixed.
-
-This patch was brought to you by the collaboration of Rartrin, Jopojelly and Zadum4ivii
-Please report any bugs on the git, by making a new issue.
-All contributions are incredibly helpful, and mentioned in changelogs.
-
-Fixes:
- - Fixed 'Index was outside bounds of array at Tremor.GlowMask.Unload()' exception
- - Fixed Alchemist item damage modifiers, these were moved to the respective base class
- - Fixed Dice Zombie not dropping items in multiplayer
- - Fixed Dize Zombie's drop chance for Rupicide
- - Fixed Mana/Health stimpacks not consumable
- - (Hopefully) fixed FPS dropping to 1 when viewing Tremor's mod description
-
- Other:
- - Removed many redundant code, effectively reducing the .tmod filesize by a sizable amount
- - Reformatted most of the code
- - Written a RecipeWrapper class
- - Thanks Rartrin, for your contributions (pull/1)
- - Thanks Jopojelly, for your contributions (5f61742)
- - Thanks Zadum4ivii, for your contributions (pull/8)
- - More code has been rewritten, possibly fixing unknown bugs
+* Over 1600 new items - including new armor sets, weapons for each class, accessories, new materials and banners for every mob.
+* 21 new bosses - every boss has it's own AI, loot, treasure bag with unique expert item.
+* 13 new NPCs - each NPC has it's own stuff to sell. Many NPCs also sell new things after certain bosses are defeated.
+* 2 brand new invasions - new invasions with new interesting mobs, loot and also with new soundtracks.
+* New Glacier minibiome - a biome that spawns in Snow biome and has new mobs and loot.
+* New ores - some generate in the beginning of the game and some only generate after defeating certain boss.
+* Tremode - Post Moon Lord gamemode with it's own ores, lots of new content, such as armors, weapons, materials, harder monsters and hard bosses.
+* New alchemist class - absolutely new class with new damage type, weapons, armor and accessories.
+* New Nova Celestial Pillar - a completely new pillar for alchemist class that spawns with regular pillars!
+* 11 new soundtracks - amazing tracks for different bosses and events made by Delicious Saturn.
+* Amazing neat sprites made by our wonderful spriters!
+* And also support of Boss Checklist Mod!
