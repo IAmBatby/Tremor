@@ -123,6 +123,7 @@ namespace Tremor.Items
 
 		public override void SetDefaults(Item item)
 		{
+			/* WRONG -- TODO: Remove this buff or actually code it correctly
 			if (item.ranged && Main.player[Main.myPlayer].active && Main.player[Main.myPlayer].FindBuffIndex(mod.BuffType("ShotSpeedBuff")) != -1)
 			{
 				item.shootSpeed *= 2f;
@@ -131,6 +132,7 @@ namespace Tremor.Items
 			{
 				item.shootSpeed *= 2f;
 			}
+			*/
 			if (item.type == 2196)
 			{
 				item.value = 30;
@@ -143,6 +145,7 @@ namespace Tremor.Items
 			{
 
 			}
+			/* WRONG -- TODO: Remove this buff or actually code it correctly
 			if (item.type == ItemID.EnchantedSword && Main.player[Main.myPlayer].active && Main.player[Main.myPlayer].FindBuffIndex(mod.BuffType("EnchantedBuff")) != -1)
 			{
 				item.damage += 5;
@@ -151,6 +154,7 @@ namespace Tremor.Items
 			{
 				item.damage += 5;
 			}
+			*/
 			if (item.type == ItemID.SlimeStaff)
 			{
 				item.value = 2000;
