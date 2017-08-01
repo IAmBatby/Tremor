@@ -190,6 +190,11 @@ namespace Tremor
 			if (!Main.dedServ)
 			{
 				TremorGlowMask.Unload();
+				Main.itemTexture[3601] = Main.instance.OurLoad<Texture2D>(string.Concat(new object[] { "Images", Path.DirectorySeparatorChar, "Item_3601" }));
+				for (int i = 1; i < 206; i++)
+				{
+					Main.buffTexture[i] = Main.instance.OurLoad<Texture2D>(string.Concat(new object[] { "Images", Path.DirectorySeparatorChar, "Buff_" + i }));
+				}
 			}
 		}
 

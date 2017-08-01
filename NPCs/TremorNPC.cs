@@ -897,6 +897,7 @@ namespace Tremor.NPCs
 						int num = 0;
 						while (!flag2)
 						{
+							// TODO: BUG! worldSurfaceHigh does not exist after worldgen, it is not saved.
 							if (TremorWorld.AddLunarRoots(WorldGen.genRand.Next(100, Main.maxTilesX + 120), WorldGen.genRand.Next((int)(WorldGen.worldSurfaceHigh + 20.0), Main.maxTilesY - 300)))
 							{
 								flag2 = true;
