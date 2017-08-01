@@ -6,32 +6,33 @@ namespace Tremor.Projectiles
 {
 
 	public class TopazDrillPro : ModProjectile
-{
-    public override void SetDefaults()
-    {
+	{
+		public override void SetDefaults()
+		{
 
-        projectile.width = 22;
-        projectile.height = 22;
-        projectile.aiStyle = 20;
-        projectile.friendly = true;
-        projectile.penetrate = -1;
-        projectile.tileCollide = false;
-        projectile.hide = true;
-        projectile.ownerHitCheck = true;
-        projectile.melee = true;
-    }
+			projectile.width = 22;
+			projectile.height = 22;
+			projectile.aiStyle = 20;
+			projectile.friendly = true;
+			projectile.penetrate = -1;
+			projectile.tileCollide = false;
+			projectile.hide = true;
+			projectile.ownerHitCheck = true;
+			projectile.melee = true;
+		}
 
-    public override void SetStaticDefaults()
-    {
-      DisplayName.SetDefault("Topaz Drill");
-       
-    }
+		public override void SetStaticDefaults()
+		{
+			DisplayName.SetDefault("Topaz Drill");
+
+		}
 
 
-    public override void AI()
-    {
-        int dust = Dust.NewDust(projectile.position, projectile.width, projectile.height, 64, projectile.velocity.X * 0.2f, projectile.velocity.Y * 0.2f, 100, default(Color), 1.9f);
-        Main.dust[dust].noGravity = true;
-    }
+		public override void AI()
+		{
+			int dust = Dust.NewDust(projectile.position, projectile.width, projectile.height, 64, projectile.velocity.X * 0.2f, projectile.velocity.Y * 0.2f, 100, default(Color), 1.9f);
+			Main.dust[dust].noGravity = true;
+		}
 
-}}
+	}
+}

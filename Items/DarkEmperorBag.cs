@@ -44,7 +44,7 @@ namespace Tremor.Items
 			{
 				player.QuickSpawnItem(mod.ItemType("DelightfulClump"));
 			}
-			if (Main.rand.Next(1) == 0)
+			if (Main.rand.NextBool())
 			{
 				player.QuickSpawnItem(mod.ItemType("NastyJavelin"), Main.rand.Next(30, 50));
 			}

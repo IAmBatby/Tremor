@@ -11,16 +11,16 @@ namespace Tremor.Projectiles
 			projectile.height = 40;
 			projectile.magic = true;
 			projectile.penetrate = 8;
-                        projectile.aiStyle = 92;
-                        projectile.friendly = true;
+			projectile.aiStyle = 92;
+			projectile.friendly = true;
 			projectile.timeLeft = 600;
 		}
 
-    public override void SetStaticDefaults()
-    {
-      DisplayName.SetDefault("WraithCloud");
-       
-    }
+		public override void SetStaticDefaults()
+		{
+			DisplayName.SetDefault("WraithCloud");
+
+		}
 
 
 	}

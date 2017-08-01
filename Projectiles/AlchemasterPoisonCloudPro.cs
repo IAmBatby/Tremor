@@ -28,7 +28,7 @@ namespace Tremor.Projectiles
 
 		public override void OnHitPlayer(Player target, int damage, bool crit)
 		{
-			if (Main.rand.Next(1) == 0)
+			if (Main.rand.NextBool())
 			{
 				target.AddBuff(20, 180, false);
 			}

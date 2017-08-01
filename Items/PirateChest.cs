@@ -64,7 +64,7 @@ namespace Tremor.Items
 			{
 				player.QuickSpawnItem(mod.ItemType("PirateFlag"));
 			}
-			if (Main.rand.Next(1) == 0)
+			if (Main.rand.NextBool())
 			{
 				player.QuickSpawnItem(73, Main.rand.Next(9, 18));
 			}

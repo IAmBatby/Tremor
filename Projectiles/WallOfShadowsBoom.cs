@@ -18,11 +18,11 @@ namespace Tremor.Projectiles
 			Main.projFrames[projectile.type] = 5;
 		}
 
-    public override void SetStaticDefaults()
-    {
-      DisplayName.SetDefault("Wall Of Shadows Boom");
-       
-    }
+		public override void SetStaticDefaults()
+		{
+			DisplayName.SetDefault("Wall Of Shadows Boom");
+
+		}
 
 
 		public override bool PreAI()
@@ -34,7 +34,8 @@ namespace Tremor.Projectiles
 			}
 			projectile.frameCounter++;
 			if (projectile.frameCounter > 10)
-			{;
+			{
+				;
 				projectile.frameCounter = 0;
 				projectile.frame++;
 				if (projectile.frame > Main.projFrames[projectile.type])
@@ -46,21 +47,21 @@ namespace Tremor.Projectiles
 		}
 
 		public override void ModifyHitNPC(NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
-        {
-            if (Main.rand.Next(1, 101) <= Main.player[projectile.owner].GetModPlayer<MPlayer>(mod).alchemistCrit)
-            {
-                crit = true;
-            }
-        }
+		{
+			if (Main.rand.Next(1, 101) <= Main.player[projectile.owner].GetModPlayer<MPlayer>(mod).alchemistCrit)
+			{
+				crit = true;
+			}
+		}
 
 		public override void AI()
 		{
-            Dust.NewDust(projectile.position + projectile.velocity, projectile.width, projectile.height, 173, projectile.velocity.X * 0.5f, projectile.velocity.Y * 0.5f);
+			Dust.NewDust(projectile.position + projectile.velocity, projectile.width, projectile.height, 173, projectile.velocity.X * 0.5f, projectile.velocity.Y * 0.5f);
 		}
 
-        public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
-        {
-            target.AddBuff(153, 300);
-        }
+		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		{
+			target.AddBuff(153, 300);
+		}
 	}
 }

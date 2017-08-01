@@ -10,30 +10,30 @@ namespace Tremor.Projectiles
 		public override void SetDefaults()
 		{
 			projectile.CloneDefaults(ProjectileID.Grenade);
-            projectile.penetrate = 1;
-            projectile.width = 8;
-            projectile.height = 8;
+			projectile.penetrate = 1;
+			projectile.width = 8;
+			projectile.height = 8;
 			projectile.alpha = 80;
 			aiType = ProjectileID.Grenade;
 			projectile.light = 0.5f;
 		}
 
-        public override void ModifyHitNPC(NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
-        {
-            if (Main.rand.Next(1, 101) <= Main.player[projectile.owner].GetModPlayer<MPlayer>(mod).alchemistCrit)
-            {
-                crit = true;
-            }
-        }
+		public override void ModifyHitNPC(NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
+		{
+			if (Main.rand.Next(1, 101) <= Main.player[projectile.owner].GetModPlayer<MPlayer>(mod).alchemistCrit)
+			{
+				crit = true;
+			}
+		}
 
-        public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
-        {
-            int newLife = 1;
-            Main.player[projectile.owner].statLife += newLife;
-            Main.player[projectile.owner].HealEffect(newLife);
-        }
+		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		{
+			int newLife = 1;
+			Main.player[projectile.owner].statLife += newLife;
+			Main.player[projectile.owner].HealEffect(newLife);
+		}
 
-        public override bool OnTileCollide(Vector2 oldVelocity)
+		public override bool OnTileCollide(Vector2 oldVelocity)
 		{
 			projectile.penetrate--;
 			if (projectile.penetrate <= 0)

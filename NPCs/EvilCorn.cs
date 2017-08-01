@@ -664,7 +664,7 @@ namespace Tremor.NPCs
 				{
 					Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("CornSword"));
 				}
-				if (!Main.expertMode && Main.rand.Next(1) == 0)
+				if (!Main.expertMode && Main.rand.NextBool())
 				{
 					Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("Corn"), Main.rand.Next(25, 48));
 				}
@@ -672,11 +672,11 @@ namespace Tremor.NPCs
 				{
 					Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("FarmerShovel"));
 				}
-				if (!Main.expertMode && Main.rand.Next(1) == 0)
+				if (!Main.expertMode && Main.rand.NextBool())
 				{
 					Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("CornJavelin"), Main.rand.Next(15, 45));
 				}
-				TremorWorld.downedEvilCorn = true;
+				TremorWorld.downedBoss[TremorWorld.Boss.EvilCorn] = true;
 
 			}
 		}

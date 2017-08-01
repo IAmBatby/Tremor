@@ -306,11 +306,11 @@ namespace Tremor.NPCs
 				{
 					Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("FrostKingTrophy"));
 				}
-				if (!Main.expertMode && Main.rand.Next(1) == 0)
+				if (!Main.expertMode && Main.rand.NextBool())
 				{
 					Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("FrostoneOre"), Main.rand.Next(24, 42));
 				}
-				TremorWorld.downedFrostKing = true;
+				TremorWorld.downedBoss[TremorWorld.Boss.FrostKing] = true;
 			}
 		}
 	}

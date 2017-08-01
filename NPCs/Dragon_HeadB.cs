@@ -78,11 +78,11 @@ namespace Tremor.NPCs
 				{
 					Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("AncientDragonTrophy"));
 				}
-				if (!Main.expertMode && Main.rand.Next(1) == 0)
+				if (!Main.expertMode && Main.rand.NextBool())
 				{
 					Helper.DropItem(new Rectangle((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height), new Drop(mod.ItemType("AncientTimesEdge"), 1, 1), new Drop(mod.ItemType("DragonHead"), 1, 1), new Drop(mod.ItemType("Swordstorm"), 1, 1), new Drop(0, 0, 0));
 				}
-				TremorWorld.downedAncientDragon = true;
+				TremorWorld.downedBoss[TremorWorld.Boss.AncientDragon] = true;
 
 			}
 		}

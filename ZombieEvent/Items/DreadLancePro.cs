@@ -13,7 +13,7 @@ namespace Tremor.ZombieEvent.Items
 
     public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
     {
-        if(Main.rand.Next(1) == 0)
+        if(Main.rand.NextBool())
         {
             target.AddBuff(39, 180, false);
         }

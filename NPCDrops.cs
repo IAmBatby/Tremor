@@ -6,22 +6,28 @@ namespace Tremor
 {
 	public class NPCDrops : GlobalNPC
 	{
-		internal static readonly int[] VanillaWoFWeapons =
+		public static void Init()
 		{
-			ItemID.LaserRifle,
-			ItemID.BreakerBlade,
-			ItemID.ClockworkAssaultRifle
-		};
+			VanillaWoFWeapons = new int[]
+			{
+				ItemID.LaserRifle,
+				ItemID.BreakerBlade,
+				ItemID.ClockworkAssaultRifle
+			};
 
-		internal static readonly int[] VanillaWoFEmblems =
-		{
-			ItemID.WarriorEmblem,
-			ItemID.RangerEmblem,
-			ItemID.SorcererEmblem,
-			ItemID.SummonerEmblem,
-			Tremor.instance.ItemType("AlchemistEmblem"),
-			Tremor.instance.ItemType("ThrowerEmblem")
-		};
+			VanillaWoFEmblems = new int[]
+			{
+				ItemID.WarriorEmblem,
+				ItemID.RangerEmblem,
+				ItemID.SorcererEmblem,
+				ItemID.SummonerEmblem,
+				Tremor.instance.ItemType("AlchemistEmblem"),
+				Tremor.instance.ItemType("ThrowerEmblem")
+			};
+		}
+
+		internal static int[] VanillaWoFWeapons;
+		internal static int[] VanillaWoFEmblems;
 
 		public override void NPCLoot(NPC npc)
 		{

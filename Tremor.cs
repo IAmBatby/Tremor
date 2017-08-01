@@ -162,26 +162,26 @@ namespace Tremor
 			Mod bossChecklist = ModLoader.GetMod("BossChecklist");
 			if (bossChecklist != null)
 			{
-				bossChecklist.Call("AddBossWithInfo", "Rukh", 2.7f, (Func<bool>)(() => TremorWorld.downedRukh), "Use a [i:" + ItemType("DesertCrown") + "] in Desert");
-				bossChecklist.Call("AddBossWithInfo", "Tiki Totem", 3.3f, (Func<bool>)(() => TremorWorld.downedTikiTotem), "Use a [i:" + ItemType("MysteriousDrum") + "] in Jungle at night after beating Eye of Cthulhu");
-				bossChecklist.Call("AddBossWithInfo", "Evil Corn", 3.4f, (Func<bool>)(() => TremorWorld.downedEvilCorn), "Use a [i:" + ItemType("CursedPopcorn") + "] at night");
-				bossChecklist.Call("AddBossWithInfo", "Storm Jellyfish", 3.5f, (Func<bool>)(() => TremorWorld.downedStormJellyfish), "Use a [i:" + ItemType("StormJelly") + "]");
-				bossChecklist.Call("AddBossWithInfo", "Ancient Dragon", 3.6f, (Func<bool>)(() => TremorWorld.downedAncientDragon), "Use a [i:" + ItemType("RustyLantern") + "] in Ruins after pressing with RMB on Ruin Altar and getting Ruin Powers buff");
-				bossChecklist.Call("AddBossWithInfo", "Fungus Beetle", 5.5f, (Func<bool>)(() => TremorWorld.downedFungusBeetle), "Use a [i:" + ItemType("MushroomCrystal") + "]");
-				bossChecklist.Call("AddBossWithInfo", "Heater of Worlds", 5.6f, (Func<bool>)(() => TremorWorld.downedFungusBeetle), "Use a [i:" + ItemType("MoltenHeart") + "] in Underworld");
-				bossChecklist.Call("AddBossWithInfo", "Alchemaster", 6.5f, (Func<bool>)(() => TremorWorld.downedAlchemaster), "Use a [i:" + ItemType("AncientMosaic") + "] at night");
-				bossChecklist.Call("AddBossWithInfo", "Motherboard (Destroyer alt)", 8.01f, (Func<bool>)(() => TremorWorld.downedMotherboard), "Use a [i:" + ItemType("MechanicalBrain") + "] at night");
-				bossChecklist.Call("AddBossWithInfo", "Pixie Queen", 9.6f, (Func<bool>)(() => TremorWorld.downedPixieQueen), "Use a [i:" + ItemType("PixieinaJar") + "] in Hallow at night");
-				bossChecklist.Call("AddBossWithInfo", "Wall of Shadows", 10.7f, (Func<bool>)(() => TremorWorld.downedWallOfShadow), "Throw a [i:" + ItemType("ShadowRelic") + "] into lava in Underworld after beating Plantera and having the Dryad alive ");
-				bossChecklist.Call("AddBossWithInfo", "Frost King", 10.6f, (Func<bool>)(() => TremorWorld.downedFrostKing), "Use a [i:" + ItemType("FrostCrown") + "] in Snow");
-				bossChecklist.Call("AddBossWithInfo", "Cog Lord", 11.4f, (Func<bool>)(() => TremorWorld.downedCogLord), "Use a [i:" + ItemType("ArtifactEngine") + "] at night");
-				bossChecklist.Call("AddBossWithInfo", "Cyber King", 11.5f, (Func<bool>)(() => TremorWorld.downedCyberKing), "Use a [i:" + ItemType("AdvancedCircuit") + "] at night to summon a Mothership which will spawn Cyber King on death");
-				bossChecklist.Call("AddBossWithInfo", "Nova Pillar", 13.5f, (Func<bool>)(() => TremorWorld.DownedNovaPillar), "Kill the Lunatic Cultist outside the dungeon post-Golem");
-				bossChecklist.Call("AddBossWithInfo", "The Dark Emperor", 14.4f, (Func<bool>)(() => TremorWorld.downedDarkEmperor), "Use a [i:" + ItemType("EmperorCrown") + "]");
-				bossChecklist.Call("AddBossWithInfo", "Brutallisk", 14.5f, (Func<bool>)(() => TremorWorld.downedBrutallisk), "Use a [i:" + ItemType("RoyalEgg") + "] in Desert");
-				bossChecklist.Call("AddBossWithInfo", "Space Whale", 14.6f, (Func<bool>)(() => TremorWorld.downedSpaceWhale), "Use a [i:" + ItemType("CosmicKrill") + "]");
-				bossChecklist.Call("AddBossWithInfo", "The Trinity", 14.7f, (Func<bool>)(() => TremorWorld.downedTrinity), "Use a [i:" + ItemType("StoneofKnowledge") + "] at night");
-				bossChecklist.Call("AddBossWithInfo", "Andas", 14.8f, (Func<bool>)(() => TremorWorld.downedAndas), "Use a [i:" + ItemType("InfernoSkull") + "] at Underworld");
+				bossChecklist.Call("AddBossWithInfo", "Rukh", 2.7f, (Func<bool>)(() => TremorWorld.Boss.Rukh.Downed()), "Use a [i:" + ItemType("DesertCrown") + "] in Desert");
+				bossChecklist.Call("AddBossWithInfo", "Tiki Totem", 3.3f, (Func<bool>)(() => TremorWorld.Boss.TikiTotem.Downed()), "Use a [i:" + ItemType("MysteriousDrum") + "] in Jungle at night after beating Eye of Cthulhu");
+				bossChecklist.Call("AddBossWithInfo", "Evil Corn", 3.4f, (Func<bool>)(() => TremorWorld.Boss.EvilCorn.Downed()), "Use a [i:" + ItemType("CursedPopcorn") + "] at night");
+				bossChecklist.Call("AddBossWithInfo", "Storm Jellyfish", 3.5f, (Func<bool>)(() => TremorWorld.Boss.StormJellyfish.Downed()), "Use a [i:" + ItemType("StormJelly") + "]");
+				bossChecklist.Call("AddBossWithInfo", "Ancient Dragon", 3.6f, (Func<bool>)(() => TremorWorld.Boss.AncientDragon.Downed()), "Use a [i:" + ItemType("RustyLantern") + "] in Ruins after pressing with RMB on Ruin Altar and getting Ruin Powers buff");
+				bossChecklist.Call("AddBossWithInfo", "Fungus Beetle", 5.5f, (Func<bool>)(() => TremorWorld.Boss.FungusBeetle.Downed()), "Use a [i:" + ItemType("MushroomCrystal") + "]");
+				bossChecklist.Call("AddBossWithInfo", "Heater of Worlds", 5.6f, (Func<bool>)(() => TremorWorld.Boss.HeaterofWorlds.Downed()), "Use a [i:" + ItemType("MoltenHeart") + "] in Underworld");
+				bossChecklist.Call("AddBossWithInfo", "Alchemaster", 6.5f, (Func<bool>)(() => TremorWorld.Boss.Alchemaster.Downed()), "Use a [i:" + ItemType("AncientMosaic") + "] at night");
+				bossChecklist.Call("AddBossWithInfo", "Motherboard (Destroyer alt)", 8.01f, (Func<bool>)(() => TremorWorld.Boss.Motherboard.Downed()), "Use a [i:" + ItemType("MechanicalBrain") + "] at night");
+				bossChecklist.Call("AddBossWithInfo", "Pixie Queen", 9.6f, (Func<bool>)(() => TremorWorld.Boss.PixieQueen.Downed()), "Use a [i:" + ItemType("PixieinaJar") + "] in Hallow at night");
+				bossChecklist.Call("AddBossWithInfo", "Wall of Shadows", 10.7f, (Func<bool>)(() => TremorWorld.Boss.WallOfShadow.Downed()), "Throw a [i:" + ItemType("ShadowRelic") + "] into lava in Underworld after beating Plantera and having the Dryad alive ");
+				bossChecklist.Call("AddBossWithInfo", "Frost King", 10.6f, (Func<bool>)(() => TremorWorld.Boss.FrostKing.Downed()), "Use a [i:" + ItemType("FrostCrown") + "] in Snow");
+				bossChecklist.Call("AddBossWithInfo", "Cog Lord", 11.4f, (Func<bool>)(() => TremorWorld.Boss.CogLord.Downed()), "Use a [i:" + ItemType("ArtifactEngine") + "] at night");
+				bossChecklist.Call("AddBossWithInfo", "Cyber King", 11.5f, (Func<bool>)(() => TremorWorld.Boss.CyberKing.Downed()), "Use a [i:" + ItemType("AdvancedCircuit") + "] at night to summon a Mothership which will spawn Cyber King on death");
+				bossChecklist.Call("AddBossWithInfo", "Nova Pillar", 13.5f, (Func<bool>)(() => TremorWorld.Boss.NovaPillar.Downed()), "Kill the Lunatic Cultist outside the dungeon post-Golem");
+				bossChecklist.Call("AddBossWithInfo", "The Dark Emperor", 14.4f, (Func<bool>)(() => TremorWorld.Boss.DarkEmperor.Downed()), "Use a [i:" + ItemType("EmperorCrown") + "]");
+				bossChecklist.Call("AddBossWithInfo", "Brutallisk", 14.5f, (Func<bool>)(() => TremorWorld.Boss.Brutallisk.Downed()), "Use a [i:" + ItemType("RoyalEgg") + "] in Desert");
+				bossChecklist.Call("AddBossWithInfo", "Space Whale", 14.6f, (Func<bool>)(() => TremorWorld.Boss.SpaceWhale.Downed()), "Use a [i:" + ItemType("CosmicKrill") + "]");
+				bossChecklist.Call("AddBossWithInfo", "The Trinity", 14.7f, (Func<bool>)(() => TremorWorld.Boss.Trinity.Downed()), "Use a [i:" + ItemType("StoneofKnowledge") + "] at night");
+				bossChecklist.Call("AddBossWithInfo", "Andas", 14.8f, (Func<bool>)(() => TremorWorld.Boss.Andas.Downed()), "Use a [i:" + ItemType("InfernoSkull") + "] at Underworld");
 			}
 		}
 
@@ -207,6 +207,9 @@ namespace Tremor
 			Filters.Scene["Tremor:CogLord"] = new Filter(new ZombieScreenShaderData("FilterMiniTower").UseColor(0.9f, 0.5f, 0.2f).UseOpacity(0.6f), EffectPriority.VeryHigh);
 			SkyManager.Instance["Tremor:CogLord"] = new ZombieSky();
 
+			// Init
+			NPCDrops.Init();
+
 			if (!Main.dedServ)
 			{
 				string[,] musicBoxes =
@@ -229,7 +232,6 @@ namespace Tremor
 					AddMusicBox(GetSoundSlot(SoundType.Music, $"Sounds/Music/{musicBoxes[i, 0]}"), ItemType(musicBoxes[i, 1]), TileType(musicBoxes[i, 2]));
 				}
 
-				TremorGlowMask.Load();
 				GameShaders.Armor.BindShader(ItemType("NovaDye"), new ArmorShaderData(Main.PixelShaderRef, "ArmorSolar")).UseColor(0.8f, 0.7f, 0.3f).UseSecondaryColor(0.8f, 0.7f, 0.3f);
 				NovaSky.PlanetTexture = GetTexture("NovaPillar/NovaPlanet");
 				Filters.Scene["Tremor:Nova"] = new Filter(new NovaData("FilterMiniTower").UseColor(0.8f, 0.7f, 0.3f).UseOpacity(0.82f), EffectPriority.VeryHigh);
@@ -248,449 +250,9 @@ namespace Tremor
 
 		public override void AddRecipes()
 		{
-			List<Tuple<int, int[]>> recipesToDelete = new List<Tuple<int, int[]>>
-			{
-				new Tuple<int, int[]>(ItemID.NightsEdge, new int[] {ItemID.BloodButcherer}),
-				new Tuple<int, int[]>(ItemID.MechanicalWorm, new int[] {ItemID.Vertebrae}),
-				new Tuple<int, int[]>(3544, new int[0]),// Super Healing Potion
-				new Tuple<int, int[]>(3601, new int[0]),// Celestial Sigil
-				new Tuple<int, int[]>(3456, new int[0]),// Celestial Sigil
-				new Tuple<int, int[]>(3457, new int[0]),// Celestial Sigil
-				new Tuple<int, int[]>(3458, new int[0]),// Celestial Sigil
-				new Tuple<int, int[]>(3459, new int[0])// Celestial Sigil
-			};
-
-			foreach (var toDeleteRecipe in recipesToDelete)
-			{
-				var finder = new RecipeFinder();
-				finder.SetResult(toDeleteRecipe.Item1);
-				foreach (var ingredient in toDeleteRecipe.Item2)
-				{
-					finder.AddIngredient(ingredient);
-				}
-				foreach (Recipe foundRecipe in finder.SearchRecipes())
-				{
-					RecipeEditor editor = new RecipeEditor(foundRecipe);
-					editor.DeleteRecipe();
-				}
-			}
-
-			// Pillars Recipes
-			ModRecipe recipe = new ModRecipe(this);
-			recipe.AddIngredient(3456, 1);
-			recipe.AddIngredient(3457, 1);
-			recipe.AddIngredient(3458, 1);
-			recipe.AddIngredient(3459, 1);
-			recipe.AddIngredient(null, "NovaFragment", 1);
-			recipe.SetResult(3544, 4);
-			recipe.AddTile(13);
-			recipe.AddRecipe();
-
-			recipe = new ModRecipe(this);
-			recipe.AddIngredient(3456, 20);
-			recipe.AddIngredient(3457, 20);
-			recipe.AddIngredient(3458, 20);
-			recipe.AddIngredient(3459, 20);
-			recipe.AddIngredient(null, "NovaFragment", 20);
-			recipe.SetResult(3601);
-			recipe.AddTile(412);
-			recipe.AddRecipe();
-
-			recipe = new ModRecipe(this);
-			recipe.AddIngredient(3457, 1);
-			recipe.AddIngredient(3458, 1);
-			recipe.AddIngredient(3459, 1);
-			recipe.AddIngredient(null, "NovaFragment", 1);
-			recipe.SetResult(3456);
-			recipe.AddTile(412);
-			recipe.AddRecipe();
-
-			recipe = new ModRecipe(this);
-			recipe.AddIngredient(3456, 1);
-			recipe.AddIngredient(3458, 1);
-			recipe.AddIngredient(3459, 1);
-			recipe.AddIngredient(null, "NovaFragment", 1);
-			recipe.SetResult(3457);
-			recipe.AddTile(412);
-			recipe.AddRecipe();
-
-			recipe = new ModRecipe(this);
-			recipe.AddIngredient(3456, 1);
-			recipe.AddIngredient(3457, 1);
-			recipe.AddIngredient(3459, 1);
-			recipe.AddIngredient(null, "NovaFragment", 1);
-			recipe.SetResult(3458);
-			recipe.AddTile(412);
-			recipe.AddRecipe();
-
-			recipe = new ModRecipe(this);
-			recipe.AddIngredient(3457, 1);
-			recipe.AddIngredient(3458, 1);
-			recipe.AddIngredient(3456, 1);
-			recipe.AddIngredient(null, "NovaFragment", 1);
-			recipe.SetResult(3459);
-			recipe.AddTile(412);
-			recipe.AddRecipe();
-
-			//////////////////////////
-			recipe = new ModRecipe(this);
-			recipe.AddIngredient(ItemID.SilverBar, 15);
-			recipe.AddIngredient(ItemID.Glass, 5);
-			recipe.AddIngredient(ItemID.ManaCrystal, 2);
-			recipe.SetResult(ItemID.MagicMirror);
-			recipe.AddRecipe();
-
-			recipe = new ModRecipe(this);
-			recipe.AddIngredient(ItemID.Wood, 8);
-			recipe.AddIngredient(ItemID.GoldBar, 2);
-			recipe.SetResult(ItemID.GoldChest);
-			recipe.AddTile(18);
-			recipe.AddRecipe();
-
-			recipe = new ModRecipe(this);
-			recipe.AddIngredient(ItemID.Wood, 8);
-			recipe.AddIngredient(ItemID.PlatinumBar, 2);
-			recipe.SetResult(ItemID.GoldChest);
-			recipe.AddTile(18);
-			recipe.AddRecipe();
-
-			recipe = new ModRecipe(this);
-			recipe.AddIngredient(null, "Band");
-			recipe.AddIngredient(ItemID.ManaCrystal, 2);
-			recipe.SetResult(111, 1);
-			recipe.AddTile(16);
-			recipe.AddRecipe();
-
-			recipe = new ModRecipe(this);
-			recipe.AddIngredient(null, "Band");
-			recipe.AddIngredient(ItemID.LifeCrystal, 2);
-			recipe.SetResult(49, 1);
-			recipe.AddTile(16);
-			recipe.AddRecipe();
-
-			recipe = new ModRecipe(this);
-			recipe.AddIngredient(ItemID.TinBar, 5);
-			recipe.AddIngredient(ItemID.Wood, 1);
-			recipe.SetResult(ItemID.Aglet);
-			recipe.AddTile(16);
-			recipe.AddRecipe();
-
-			recipe = new ModRecipe(this);
-			recipe.AddIngredient(ItemID.CopperBar, 5);
-			recipe.AddIngredient(ItemID.Wood, 1);
-			recipe.SetResult(ItemID.Aglet);
-			recipe.AddTile(16);
-			recipe.AddRecipe();
-
-			recipe = new ModRecipe(this);
-			recipe.AddIngredient(ItemID.Wood, 10);
-			recipe.AddIngredient(ItemID.Gel, 25);
-			recipe.SetResult(ItemID.SlimeStaff, 1);
-			recipe.AddTile(304);
-			recipe.AddRecipe();
-
-			recipe = new ModRecipe(this);
-			recipe.AddIngredient(ItemID.CopperOre, 3);
-			recipe.SetResult(ItemID.TinOre, 2);
-			recipe.AddTile(null, "MineralTransmutator");
-			recipe.AddRecipe();
-
-			recipe = new ModRecipe(this);
-			recipe.AddIngredient(ItemID.TinOre, 3);
-			recipe.SetResult(ItemID.CopperOre, 2);
-			recipe.AddTile(null, "MineralTransmutator");
-			recipe.AddRecipe();
-
-			recipe = new ModRecipe(this);
-			recipe.AddIngredient(ItemID.IronOre, 3);
-			recipe.SetResult(ItemID.LeadOre, 2);
-			recipe.AddTile(null, "MineralTransmutator");
-			recipe.AddRecipe();
-
-			recipe = new ModRecipe(this);
-			recipe.AddIngredient(ItemID.LeadOre, 3);
-			recipe.SetResult(ItemID.IronOre, 2);
-			recipe.AddTile(null, "MineralTransmutator");
-			recipe.AddRecipe();
-
-			recipe = new ModRecipe(this);
-			recipe.AddIngredient(ItemID.SilverOre, 3);
-			recipe.SetResult(ItemID.TungstenOre, 2);
-			recipe.AddTile(null, "MineralTransmutator");
-			recipe.AddRecipe();
-
-			recipe = new ModRecipe(this);
-			recipe.AddIngredient(ItemID.TungstenOre, 3);
-			recipe.SetResult(ItemID.SilverOre, 2);
-			recipe.AddTile(null, "MineralTransmutator");
-			recipe.AddRecipe();
-
-			recipe = new ModRecipe(this);
-			recipe.AddIngredient(ItemID.GoldOre, 3);
-			recipe.SetResult(ItemID.PlatinumOre, 2);
-			recipe.AddTile(null, "MineralTransmutator");
-			recipe.AddRecipe();
-
-			recipe = new ModRecipe(this);
-			recipe.AddIngredient(ItemID.PlatinumOre, 3);
-			recipe.SetResult(ItemID.GoldOre, 2);
-			recipe.AddTile(null, "MineralTransmutator");
-			recipe.AddRecipe();
-
-			recipe = new ModRecipe(this);
-			recipe.AddIngredient(ItemID.DemoniteOre, 5);
-			recipe.SetResult(ItemID.CrimtaneOre, 3);
-			recipe.AddTile(null, "MineralTransmutator");
-			recipe.AddRecipe();
-
-			recipe = new ModRecipe(this);
-			recipe.AddIngredient(ItemID.CrimtaneOre, 5);
-			recipe.SetResult(ItemID.DemoniteOre, 3);
-			recipe.AddTile(null, "MineralTransmutator");
-			recipe.AddRecipe();
-
-			recipe = new ModRecipe(this);
-			recipe.AddIngredient(null, "TrueBloodCarnage", 1);
-			recipe.AddIngredient(674, 1);
-			recipe.AddTile(134);
-			recipe.SetResult(757);
-			recipe.AddRecipe();
-
-			recipe = new ModRecipe(this);
-			recipe.AddIngredient(null, "SoulofMind", 20);
-			recipe.AddIngredient(ItemID.SharkFin, 5);
-			recipe.AddIngredient(ItemID.IllegalGunParts, 1);
-			recipe.AddIngredient(ItemID.Minishark, 1);
-			recipe.SetResult(533);
-			recipe.AddTile(134);
-			recipe.AddRecipe();
-
-			recipe = new ModRecipe(this);
-			recipe.AddIngredient(ItemID.HallowedBar, 4);
-			recipe.AddIngredient(ItemID.SoulofLight, 3);
-			recipe.AddIngredient(null, "SoulofMind", 5);
-			recipe.SetResult(561);
-			recipe.AddTile(134);
-			recipe.AddRecipe();
-
-			recipe = new ModRecipe(this);
-			recipe.AddIngredient(ItemID.HallowedBar, 18);
-			recipe.AddIngredient(ItemID.SoulofFright, 1);
-			recipe.AddIngredient(null, "SoulofMind", 1);
-			recipe.AddIngredient(ItemID.SoulofSight, 1);
-			recipe.SetResult(579);
-			recipe.AddTile(134);
-			recipe.AddRecipe();
-
-			recipe = new ModRecipe(this);
-			recipe.AddIngredient(ItemID.HallowedBar, 18);
-			recipe.AddIngredient(ItemID.SoulofFright, 1);
-			recipe.AddIngredient(null, "SoulofMind", 1);
-			recipe.AddIngredient(ItemID.SoulofSight, 1);
-			recipe.SetResult(990);
-			recipe.AddTile(134);
-			recipe.AddRecipe();
-
-			recipe = new ModRecipe(this);
-			recipe.AddIngredient(ItemID.WarriorEmblem, 1);
-			recipe.AddIngredient(ItemID.SoulofFright, 5);
-			recipe.AddIngredient(null, "SoulofMind", 5);
-			recipe.AddIngredient(ItemID.SoulofSight, 5);
-			recipe.SetResult(935);
-			recipe.AddTile(134);
-			recipe.AddRecipe();
-
-			recipe = new ModRecipe(this);
-			recipe.AddIngredient(ItemID.SummonerEmblem, 1);
-			recipe.AddIngredient(ItemID.SoulofFright, 5);
-			recipe.AddIngredient(null, "SoulofMind", 5);
-			recipe.AddIngredient(ItemID.SoulofSight, 5);
-			recipe.SetResult(935);
-			recipe.AddTile(134);
-			recipe.AddRecipe();
-
-			recipe = new ModRecipe(this);
-			recipe.AddIngredient(ItemID.RangerEmblem, 1);
-			recipe.AddIngredient(ItemID.SoulofFright, 5);
-			recipe.AddIngredient(null, "SoulofMind", 5);
-			recipe.AddIngredient(ItemID.SoulofSight, 5);
-			recipe.SetResult(935);
-			recipe.AddTile(134);
-			recipe.AddRecipe();
-
-			recipe = new ModRecipe(this);
-			recipe.AddIngredient(ItemID.SorcererEmblem, 1);
-			recipe.AddIngredient(ItemID.SoulofFright, 5);
-			recipe.AddIngredient(null, "SoulofMind", 5);
-			recipe.AddIngredient(ItemID.SoulofSight, 5);
-			recipe.SetResult(935);
-			recipe.AddTile(134);
-			recipe.AddRecipe();
-
-			recipe = new ModRecipe(this);
-			recipe.AddIngredient(null, "SharpenedTooth", 5);
-			recipe.AddIngredient(ItemID.TissueSample, 5);
-			recipe.AddIngredient(ItemID.Chain, 2);
-			recipe.SetResult(3212);
-			recipe.AddRecipe();
-
-			recipe = new ModRecipe(this);
-			recipe.AddIngredient(null, "SharpenedTooth", 5);
-			recipe.AddIngredient(ItemID.ShadowScale, 5);
-			recipe.AddIngredient(ItemID.Chain, 2);
-			recipe.SetResult(3212);
-			recipe.AddRecipe();
-
-			recipe = new ModRecipe(this);
-			recipe.AddIngredient(null, "SandstonePlatform", 2);
-			recipe.SetResult(607);
-			recipe.AddRecipe();
-
-			recipe = new ModRecipe(this);
-			recipe.AddIngredient(ItemID.PalladiumOre, 3);
-			recipe.SetResult(ItemID.CobaltOre, 2);
-			recipe.AddTile(null, "RecyclerofMatterTile");
-			recipe.AddRecipe();
-
-			recipe = new ModRecipe(this);
-			recipe.AddIngredient(ItemID.CobaltOre, 3);
-			recipe.SetResult(ItemID.PalladiumOre, 2);
-			recipe.AddTile(null, "RecyclerofMatterTile");
-			recipe.AddRecipe();
-
-			recipe = new ModRecipe(this);
-			recipe.AddIngredient(ItemID.MythrilOre, 3);
-			recipe.SetResult(ItemID.OrichalcumOre, 2);
-			recipe.AddTile(null, "RecyclerofMatterTile");
-			recipe.AddRecipe();
-
-			recipe = new ModRecipe(this);
-			recipe.AddIngredient(ItemID.OrichalcumOre, 3);
-			recipe.SetResult(ItemID.MythrilOre, 2);
-			recipe.AddTile(null, "RecyclerofMatterTile");
-			recipe.AddRecipe();
-
-			recipe = new ModRecipe(this);
-			recipe.AddIngredient(ItemID.TitaniumOre, 3);
-			recipe.SetResult(ItemID.AdamantiteOre, 2);
-			recipe.AddTile(null, "RecyclerofMatterTile");
-			recipe.AddRecipe();
-
-			recipe = new ModRecipe(this);
-			recipe.AddIngredient(ItemID.AdamantiteOre, 3);
-			recipe.SetResult(ItemID.TitaniumOre, 2);
-			recipe.AddTile(null, "RecyclerofMatterTile");
-			recipe.AddRecipe();
-
-			recipe = new ModRecipe(this);
-			recipe.AddIngredient(ItemID.TurtleShell, 1);
-			recipe.AddIngredient(ItemID.ChlorophyteBar, 15);
-			recipe.AddIngredient(ItemID.JungleSpores, 20);
-			recipe.AddIngredient(ItemID.Stinger, 18);
-			recipe.AddIngredient(null, "KeyMold", 1);
-			recipe.SetResult(ItemID.JungleKey, 1);
-			recipe.AddTile(null, "MagicWorkbenchTile");
-			recipe.AddRecipe();
-
-			recipe = new ModRecipe(this);
-			recipe.AddIngredient(ItemID.DemoniteBar, 25);
-			recipe.AddIngredient(ItemID.ShadowScale, 25);
-			recipe.AddIngredient(ItemID.EbonstoneBlock, 25);
-			recipe.AddIngredient(ItemID.VilePowder, 25);
-			recipe.AddIngredient(null, "KeyMold", 1);
-			recipe.SetResult(ItemID.CorruptionKey, 1);
-			recipe.AddTile(null, "MagicWorkbenchTile");
-			recipe.AddRecipe();
-
-			recipe = new ModRecipe(this);
-			recipe.AddIngredient(ItemID.CrimtaneBar, 25);
-			recipe.AddIngredient(ItemID.TissueSample, 25);
-			recipe.AddIngredient(ItemID.CrimstoneBlock, 25);
-			recipe.AddIngredient(ItemID.ViciousPowder, 25);
-			recipe.AddIngredient(null, "KeyMold", 1);
-			recipe.SetResult(ItemID.CrimsonKey, 1);
-			recipe.AddTile(null, "MagicWorkbenchTile");
-			recipe.AddRecipe();
-
-			recipe = new ModRecipe(this);
-			recipe.AddIngredient(ItemID.HallowedBar, 15);
-			recipe.AddIngredient(ItemID.SoulofLight, 10);
-			recipe.AddIngredient(ItemID.SoulofNight, 10);
-			recipe.AddIngredient(ItemID.PurificationPowder, 25);
-			recipe.AddIngredient(null, "KeyMold", 1);
-			recipe.SetResult(ItemID.HallowedKey, 1);
-			recipe.AddTile(null, "MagicWorkbenchTile");
-			recipe.AddRecipe();
-
-			recipe = new ModRecipe(this);
-			recipe.AddIngredient(ItemID.FrostCore, 2);
-			recipe.AddIngredient(ItemID.SnowBlock, 30);
-			recipe.AddIngredient(ItemID.IceBlock, 30);
-			recipe.AddIngredient(null, "KeyMold", 1);
-			recipe.SetResult(ItemID.FrozenKey, 1);
-			recipe.AddTile(null, "MagicWorkbenchTile");
-			recipe.AddRecipe();
-
-			recipe = new ModRecipe(this);
-			recipe.AddIngredient(ItemID.Bone, 80);
-			recipe.SetResult(1320);
-			recipe.AddTile(300);
-			recipe.AddRecipe();
-
-			recipe = new ModRecipe(this);
-			recipe.AddIngredient(ItemID.Wood, 10);
-			recipe.AddIngredient(ItemID.Torch, 5);
-			recipe.SetResult(3069);
-			recipe.AddTile(16);
-			recipe.AddRecipe();
-
-			recipe = new ModRecipe(this);
-			recipe.AddIngredient(ItemID.CobaltBar, 12);
-			recipe.AddIngredient(ItemID.SnowBlock, 25);
-			recipe.AddIngredient(ItemID.IceBlock, 25);
-			recipe.AddIngredient(ItemID.SoulofLight, 6);
-			recipe.AddIngredient(ItemID.SoulofNight, 6);
-			recipe.AddIngredient(ItemID.Glass, 15);
-			recipe.SetResult(602);
-			recipe.AddTile(26);
-			recipe.AddRecipe();
-
-			recipe = new ModRecipe(this);
-			recipe.AddIngredient(ItemID.PalladiumBar, 12);
-			recipe.AddIngredient(ItemID.SnowBlock, 25);
-			recipe.AddIngredient(ItemID.IceBlock, 25);
-			recipe.AddIngredient(ItemID.SoulofLight, 6);
-			recipe.AddIngredient(ItemID.SoulofNight, 6);
-			recipe.AddIngredient(ItemID.Glass, 15);
-			recipe.SetResult(602);
-			recipe.AddTile(26);
-			recipe.AddRecipe();
-
-			recipe = new ModRecipe(this);
-			recipe.AddIngredient(ItemID.Wood, 30);
-			recipe.SetResult(2196);
-			recipe.AddTile(191);
-			recipe.AddRecipe();
-
-			recipe = new ModRecipe(this);
-			recipe.AddIngredient(2766);
-			recipe.SetResult(1261, 75);
-			recipe.AddTile(134);
-			recipe.AddRecipe();
-
-			recipe = new ModRecipe(this);
-			recipe.AddIngredient(2766);
-			recipe.SetResult(1261, 75);
-			recipe.AddTile(134);
-			recipe.AddRecipe();
-
-			recipe = new ModRecipe(this);
-			recipe.AddIngredient(2766, 15);
-			recipe.AddIngredient(ItemID.ChlorophyteBar, 3);
-			recipe.AddIngredient(null, "EssenseofJungle", 1);
-			recipe.SetResult(1293);
-			recipe.AddTile(134);
-			recipe.AddRecipe();
+			// Recipe wrapper
+			RecipeWrapper.AddRecipes(this);
+			RecipeWrapper.RemoveRecipes();
 		}
 
 		public override void ModifyInterfaceLayers(List<GameInterfaceLayer> layers)
@@ -709,7 +271,6 @@ namespace Tremor
 				layers.Insert(index, orionProgress);
 			}
 		}
-
 
 		public void DrawOrionEvent(SpriteBatch spriteBatch)
 		{

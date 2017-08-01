@@ -12,16 +12,16 @@ namespace Tremor.Projectiles
 
 			aiType = ProjectileID.ZephyrFish;
 			Main.projFrames[projectile.type] = 4;
-                        projectile.width = 34;
-                        projectile.height = 40;
+			projectile.width = 34;
+			projectile.height = 40;
 			Main.projPet[projectile.type] = true;
 		}
 
-    public override void SetStaticDefaults()
-    {
-      DisplayName.SetDefault("Stardust Squid");
-       
-    }
+		public override void SetStaticDefaults()
+		{
+			DisplayName.SetDefault("Stardust Squid");
+
+		}
 
 
 		public override bool PreAI()

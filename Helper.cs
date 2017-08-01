@@ -55,6 +55,18 @@ namespace Tremor
 		}
 		#endregion
 
+		public static bool Downed(this TremorWorld.Boss boss)
+			=> TremorWorld.downedBoss[boss];
+
+		public static Item SpawnItem(this ModNPC npc, short type, int stack = 1)
+			=> SpawnItem(npc.npc, type, stack);
+
+		public static Item SpawnItem(this NPC npc, short type, int stack = 1)
+			=> Main.item[Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, type, stack)];
+
+		public static Item SpawnItem(Vector2 position, Vector2 size, short type, int stack = 1)
+			=> Main.item[Item.NewItem((int)position.X, (int)position.Y, (int)size.X, (int)size.Y, type, stack)];
+
 		public static Vector2 RandomPosition(Vector2 pos1, Vector2 pos2)
 		{
 			Random rnd = new Random();
@@ -225,13 +237,14 @@ namespace Tremor
 			return returnedValue;
 		}
 
+		public static bool Chance(int chance)
+			=> Main.rand.Next(chance) == 0;
+
 		/// <summary>*Вычисления того, произойдёт ли событие с заданым шансом в этот раз, или нет*</summary>
 		/// <param name="chance">Шанс события</param>
 		/// <returns>Произойдёт ли событие с заданым шансом, или нет</returns>
 		public static bool Chance(float chance)
-		{
-			return (Main.rand.NextFloat() <= chance);
-		}
+			=> Main.rand.NextFloat() <= chance;
 
 		/// <summary>
 		/// *Используется для плавного перехода одного вектора в другой*

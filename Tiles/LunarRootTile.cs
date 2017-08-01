@@ -26,7 +26,7 @@ namespace Tremor.Tiles
 
     public override void KillMultiTile(int i, int j, int frameX, int frameY)
     {
-        if(Main.rand.Next(1) == 0)
+        if(Main.rand.NextBool())
         {
             Item.NewItem(i * 16, j * 16, 16, 16, 3460, Main.rand.Next(1,3));
         }

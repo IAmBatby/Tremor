@@ -49,7 +49,7 @@ namespace Tremor.NPCs
 				int centerX = (int)(npc.position.X + npc.width / 2) / 16;
 				int centerY = (int)(npc.position.Y + npc.height / 2) / 16;
 				int halfLength = npc.width / 2 / 16 + 1;
-				if (Main.rand.Next(1) == 0)
+				if (Main.rand.NextBool())
 				{
 					Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("HuskofDusk"), Main.rand.Next(2, 5));
 				}
@@ -69,7 +69,7 @@ namespace Tremor.NPCs
 			int x = spawnInfo.spawnTileX;
 			int y = spawnInfo.spawnTileY;
 			int tile = Main.tile[x, y].type;
-			return Main.hardMode && TremorWorld.downedTrinity && !spawnInfo.player.ZoneDungeon && y > Main.rockLayer ? 0.005f : 0f;
+			return Main.hardMode && TremorWorld.Boss.Trinity.Downed() && !spawnInfo.player.ZoneDungeon && y > Main.rockLayer ? 0.005f : 0f;
 		}
 
 		public override void HitEffect(int hitDirection, double damage)
