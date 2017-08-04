@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
@@ -518,66 +519,60 @@ namespace Tremor
 			{
 				return;
 			}
-			if (questFish == mod.ItemType("CornFish") && Main.rand.Next(10) == 0)
-			{
-				caughtType = mod.ItemType("CornFish");
-			}
-			if (questFish == mod.ItemType("SunflowerFish") && Main.rand.Next(10) == 0)
-			{
-				caughtType = mod.ItemType("SunflowerFish");
-			}
-			if (questFish == mod.ItemType("PumpfishFish") && Main.rand.Next(10) == 0)
-			{
-				caughtType = mod.ItemType("PumpfishFish");
-			}
-			if (questFish == mod.ItemType("ParrotFish") && Main.rand.Next(10) == 0)
-			{
-				caughtType = mod.ItemType("ParrotFish");
-			}
-			if (questFish == mod.ItemType("CrateFish") && Main.rand.Next(10) == 0)
-			{
-				caughtType = mod.ItemType("CrateFish");
-			}
-			if (questFish == mod.ItemType("ForkFish") && Main.rand.Next(10) == 0)
-			{
-				caughtType = mod.ItemType("ForkFish");
-			}
-			if (questFish == mod.ItemType("GlassFish") && Main.rand.Next(10) == 0)
-			{
-				caughtType = mod.ItemType("GlassFish");
-			}
-			if (questFish == mod.ItemType("JawFish") && Main.rand.Next(10) == 0)
-			{
-				caughtType = mod.ItemType("JawFish");
-			}
-			if (questFish == mod.ItemType("CoalFish") && Main.rand.Next(10) == 0)
-			{
-				caughtType = mod.ItemType("CoalFish");
-			}
-			if (questFish == mod.ItemType("CultistFish") && Main.rand.Next(10) == 0)
-			{
-				caughtType = mod.ItemType("CultistFish");
-			}
-			if (questFish == mod.ItemType("AlienFish") && Main.rand.Next(10) == 0)
-			{
-				caughtType = mod.ItemType("AlienFish");
-			}
-			if (questFish == mod.ItemType("LunarSquid") && Main.rand.Next(10) == 0)
-			{
-				caughtType = mod.ItemType("LunarSquid");
-			}
-			if (questFish == mod.ItemType("WoodenPiranha") && player.ZoneJungle && Main.rand.Next(10) == 0)
-			{
-				caughtType = mod.ItemType("WoodenPiranha");
-			}
-			if (questFish == mod.ItemType("KeyFish") && player.ZoneDungeon && Main.rand.Next(10) == 0)
-			{
-				caughtType = mod.ItemType("KeyFish");
-			}
 
-			if (Main.hardMode && Main.rand.Next(20) == 0)
+			string[] questFishes =
 			{
-				caughtType = mod.ItemType("GreenPuzzleFragment");
+				"CornFish",
+				"SunflowerFish",
+				"PumpfishFish",
+				"ParrotFish",
+				"CrateFish",
+				"ForkFish",
+				"GlassFish",
+				"JawFish",
+				"CoalFish",
+				"CultistFish",
+				"AlienFish",
+				"LunarSquid",
+
+			};
+
+			string qFish = questFishes.FirstOrDefault(fish => mod.ItemType(fish) == questFish);
+
+			if (qFish != null
+			    && Main.rand.NextBool(10))
+			{
+				caughtType = mod.ItemType(qFish);
+			}
+			else
+			{
+				string[] zoneFish =
+				{
+					"WoodenPiranha",
+					"KeyFish"
+				};
+
+				bool[] zoneCond =
+				{
+					player.ZoneJungle,
+					player.ZoneDungeon
+				};
+
+				qFish = zoneFish.FirstOrDefault(fish => mod.ItemType(fish) == questFish);
+
+				if (qFish != null
+				    && zoneCond[zoneFish.ToList().IndexOf(qFish)]
+				    && Main.rand.NextBool(10))
+				{
+					caughtType = mod.ItemType(qFish);
+				}
+				else
+				{
+					if (Main.hardMode && Main.rand.Next(20) == 0)
+					{
+						caughtType = mod.ItemType("GreenPuzzleFragment");
+					}
+				}
 			}
 		}
 	}

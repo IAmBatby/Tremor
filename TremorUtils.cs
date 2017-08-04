@@ -9,10 +9,11 @@ namespace Tremor
 {
 	public static class TremorUtils
 	{
+		public static bool NextBool(this UnifiedRandom rand, int total)
+			=> rand.Next(total) == 0;
+
 		public static bool NextBool(this UnifiedRandom rand, int chance, int total)
-		{
-			return rand.Next(total) < chance;
-		}
+			=> rand.Next(total) < chance;
 
 		public static void DrawNPCGlowMask(SpriteBatch spriteBatch, NPC npc, Texture2D texture)
 		{
