@@ -46,13 +46,21 @@ namespace Tremor
 
 		public static Dictionary<Boss, bool> downedBoss;
 
+		private void Init()
+		{
+			if (downedBoss == null)
+			{
+				downedBoss = new Dictionary<Boss, bool>();
+				foreach (Boss boss in Enum.GetValues(typeof(Boss)).Cast<Boss>())
+				{
+					downedBoss[boss] = false;
+				}
+			}
+		}
+
 		public override void Initialize()
 		{
-			downedBoss = new Dictionary<Boss, bool>();
-			foreach (Boss boss in Enum.GetValues(typeof(Boss)).Cast<Boss>())
-			{
-				downedBoss[boss] = false;
-			}
+			Init();
 		}
 
 		public override TagCompound Save()
@@ -132,9 +140,11 @@ namespace Tremor
 			}
 		}
 
-
+		//NetReceive is called before Initialize when joining a server
 		public override void NetReceive(BinaryReader reader)
 		{
+			Init();
+
 			int bossCount = reader.ReadInt32();
 			int allocations = reader.ReadInt32();
 
