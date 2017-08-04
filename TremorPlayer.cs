@@ -483,25 +483,25 @@ namespace Tremor
 
 		public override void UpdateBadLifeRegen()
 		{
-			if (dFear)
+			ResetRegen(dFear || healHurt > 0, player);
+
+			player.lifeRegen -= dFear
+				? 10 : healHurt > 0
+				? 120 * healHurt : 0;
+		}
+
+		private void ResetRegen(bool condition, Player player)
+		{
+			if (condition)
 			{
 				if (player.lifeRegen > 0)
 				{
 					player.lifeRegen = 0;
 				}
 				player.lifeRegenTime = 0;
-				player.lifeRegen -= 10;
-			}
-			if (healHurt > 0)
-			{
-				if (player.lifeRegen > 0)
-				{
-					player.lifeRegen = 0;
-				}
-				player.lifeRegenTime = 0;
-				player.lifeRegen -= 120 * healHurt;
 			}
 		}
+
 		public override void UpdateBiomeVisuals()
 		{
 			TremorPlayer modPlayer = Main.player[Main.myPlayer].GetModPlayer<TremorPlayer>(mod);
