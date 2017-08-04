@@ -1,3 +1,4 @@
+using System.Linq;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
@@ -34,60 +35,50 @@ namespace Tremor.NPCs
 		{
 			npc.townNPC = true;
 			npc.friendly = true;
+
 			npc.width = 30;
 			npc.height = 48;
 			npc.aiStyle = 7;
 			npc.damage = 10;
 			npc.defense = 15;
 			npc.lifeMax = 250;
+			npc.knockBackResist = 0.5f;
+
 			npc.HitSound = SoundID.NPCHit1;
 			npc.DeathSound = SoundID.NPCDeath1;
-			npc.knockBackResist = 0.5f;
 			animationType = NPCID.Guide;
 		}
 
 		public override bool CanTownNPCSpawn(int numTownNPCs, int money)
-		{
-			return true;
-		}
+			=> Main.player.Any(player => player.active);
 
 
 		public override string TownNPCName()
 		{
-			switch (WorldGen.genRand.Next(4))
+			string[] names =
 			{
-				case 0:
-					return "Richard";
-				case 1:
-					return "Arthur";
-				case 2:
-					return "Jack";
-				case 3:
-					return "William";
-				case 4:
-					return "Robin";
-				default:
-					return "Wales";
-			}
+				"Richard",
+				"Arthur",
+				"Jack",
+				"William",
+				"Robin",
+				"Wales"
+			};
+			return names[Main.rand.Next(names.Length)];
 		}
 
 		public override string GetChat()
 		{
-			switch (Main.rand.Next(6))
+			string[] chats =
 			{
-				case 0:
-					return "You'd have to be a very good archer in order to shoot an arrow into a knee.";
-				case 1:
-					return "I'd like to get my hands on a goblintech bow. Those things can shoot multiple arrows.";
-				case 2:
-					return "I deal in long distance death! Have a look at my wares.";
-				case 3:
-					return "I will shoot you with my best arrow if you will not buy anything!";
-				case 4:
-					return "Guns? Guns are for cowards!";
-				default:
-					return "You don't need to make arrows. You need to buy them!";
-			}
+				"You'd have to be a very good archer in order to shoot an arrow into a knee.",
+				"I'd like to get my hands on a goblintech bow. Those things can shoot multiple arrows.",
+				"I deal in long distance death! Have a look at my wares.",
+				"I will shoot you with my best arrow if you will not buy anything!",
+				"Guns? Guns are for cowards!",
+				"You don't need to make arrows. You need to buy them!"
+			};
+			return chats[Main.rand.Next(chats.Length)];
 		}
 
 		public override void SetChatButtons(ref string button, ref string button2)
@@ -158,26 +149,15 @@ namespace Tremor.NPCs
 		public override void DrawTownAttackGun(ref float scale, ref int item, ref int closeness) //Allows you to customize how this town NPC's weapon is drawn when this NPC is shooting (this NPC must have an attack type of 1). Scale is a multiplier for the item's drawing size, item is the ID of the item to be drawn, and closeness is how close the item should be drawn to the NPC.
 		{
 			scale = 1f;
-			if (!Main.hardMode)
-			{
-				item = 44;
-			}
-			if (Main.hardMode)
-			{
-				item = 3052;
-			}
+			item = !Main.hardMode
+				? 44 : 3052;
 			closeness = 20;
 		}
+
 		public override void TownNPCAttackProj(ref int projType, ref int attackDelay)//Allows you to determine the projectile type of this town NPC's attack, and how long it takes for the projectile to actually appear
 		{
-			if (!Main.hardMode)
-			{
-				projType = ProjectileID.FlamingArrow;
-			}
-			if (Main.hardMode)
-			{
-				projType = 495;
-			}
+			projType = !Main.hardMode
+				? ProjectileID.FireArrow : ProjectileID.ShadowFlameArrow;
 			attackDelay = 1;
 		}
 
