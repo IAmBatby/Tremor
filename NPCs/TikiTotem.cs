@@ -4,7 +4,9 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
+using Tremor.Items;
 
 namespace Tremor.NPCs
 {
@@ -15,6 +17,7 @@ namespace Tremor.NPCs
 		{
 			DisplayName.SetDefault("Tiki Totem");
 			Main.npcFrameCount[npc.type] = 10;
+			NPCID.Sets.TrailCacheLength[npc.type] = 5;
 		}
 
 		public override void SetDefaults()
@@ -26,34 +29,43 @@ namespace Tremor.NPCs
 			npc.width = 86;
 			npc.height = 162;
 			animationType = 325;
-			npc.boss = true;
 			music = 39;
 			aiType = 77;
 			npc.aiStyle = -1;
 			npc.npcSlots = 15f;
+
+			npc.boss = true;
+			npc.dontTakeDamage = true;
+
+			bossBag = mod.ItemType<TikiTotemBag>();
 			npc.HitSound = SoundID.NPCHit3;
 			npc.DeathSound = SoundID.NPCDeath1;
 			npc.value = Item.buyPrice(0, 0, 60, 0);
-			bossBag = mod.ItemType("TikiTotemBag");
-			NPCID.Sets.TrailCacheLength[npc.type] = 5;
-			npc.dontTakeDamage = true;
+		}
+		
+		public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
+		{
+			npc.lifeMax = (int)(npc.lifeMax * 0.625f * bossLifeScale);
+			npc.damage = (int)(npc.damage * 0.6f);
 		}
 
 		//Variables
-		bool FirstState = true;
-		bool SpawnTiki;
-		int Timer;
-		bool Flag1 = true;
-		bool Flag2 = true;
-		bool Flag3 = true;
-		List<int> TikiSouls = new List<int>();
+		bool _firstState = true;
+		bool _spawnTiki;
+		int _timer;
+		bool _flag1 = true;
+		bool _flag2 = true;
+		bool _flag3 = true;
+		List<int> _tikiSouls = new List<int>();
+
+		// todo: rework the fuck out of this, lol
 		public override void AI()
 		{
 			if (NPC.AnyNPCs(mod.NPCType("HappySoul")) || NPC.AnyNPCs(mod.NPCType("AngerSoul")) || NPC.AnyNPCs(mod.NPCType("IndifferenceSoul")))
 			{
 				npc.position += npc.velocity * 1f;
 			}
-			Timer++;
+			_timer++;
 			for (int num74 = npc.oldPos.Length - 1; num74 > 0; num74--)
 			{
 				npc.oldPos[num74] = npc.oldPos[num74 - 1];
@@ -64,19 +76,19 @@ namespace Tremor.NPCs
 				npc.position.X = Main.player[npc.target].position.X;
 				npc.position.Y = Main.player[npc.target].position.Y - 300f;
 			}
-			if (NPC.CountNPCS(mod.NPCType("TikiSoul")) <= ((Main.expertMode) ? 6 : 3) && Main.time % 60 == 0 && !SpawnTiki)
+			if (NPC.CountNPCS(mod.NPCType("TikiSoul")) <= ((Main.expertMode) ? 6 : 3) && Main.time % 60 == 0 && !_spawnTiki)
 			{
 				NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("TikiSoul"));
 			}
 			if (NPC.CountNPCS(mod.NPCType("TikiSoul")) >= ((Main.expertMode) ? 6 : 3))
 			{
-				SpawnTiki = true;
+				_spawnTiki = true;
 			}
-			if (NPC.CountNPCS(mod.NPCType("TikiSoul")) == 0 && Timer >= 200)
+			if (NPC.CountNPCS(mod.NPCType("TikiSoul")) == 0 && _timer >= 200)
 			{
-				FirstState = false;
+				_firstState = false;
 			}
-			if (FirstState)
+			if (_firstState)
 			{
 				npc.aiStyle = 3;
 			}
@@ -333,11 +345,7 @@ namespace Tremor.NPCs
 				int num1288 = 80;
 				int num1289 = 20;
 				Vector2 position7 = new Vector2(npc.Center.X - num1288 / 2, npc.position.Y + npc.height - num1289);
-				bool flag117 = false;
-				if (npc.position.X < Main.player[npc.target].position.X && npc.position.X + npc.width > Main.player[npc.target].position.X + Main.player[npc.target].width && npc.position.Y + npc.height < Main.player[npc.target].position.Y + Main.player[npc.target].height - 16f)
-				{
-					flag117 = true;
-				}
+				bool flag117 = npc.position.X < Main.player[npc.target].position.X && npc.position.X + npc.width > Main.player[npc.target].position.X + Main.player[npc.target].width && npc.position.Y + npc.height < Main.player[npc.target].position.Y + Main.player[npc.target].height - 16f;
 				if (flag117)
 				{
 					npc.velocity.Y = npc.velocity.Y + 0.5f;
@@ -382,44 +390,38 @@ namespace Tremor.NPCs
 					return;
 				}
 
-				if (npc.life < npc.lifeMax * 0.5f && Flag1)
+				if (npc.life < npc.lifeMax * 0.5f && _flag1)
 				{
-					Flag1 = false;
+					_flag1 = false;
 					NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y + 95, mod.NPCType("HappySoul"));
 				}
-				if (npc.life < npc.lifeMax * 0.3f && Flag2)
+				if (npc.life < npc.lifeMax * 0.3f && _flag2)
 				{
-					Flag2 = false;
+					_flag2 = false;
 					NPC.NewNPC((int)npc.Center.X - 50, (int)npc.Center.Y + 110, mod.NPCType("AngerSoul"));
 				}
-				if (npc.life < npc.lifeMax * 0.1f && Flag3)
+				if (npc.life < npc.lifeMax * 0.1f && _flag3)
 				{
-					Flag3 = false;
+					_flag3 = false;
 					NPC.NewNPC((int)npc.Center.X + 50, (int)npc.Center.Y + 110, mod.NPCType("IndifferenceSoul"));
 				}
 			}
-		}
-
-		public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
-		{
-			npc.lifeMax = (int)(npc.lifeMax * 0.625f * bossLifeScale);
-			npc.damage = (int)(npc.damage * 0.6f);
 		}
 
 		public override void HitEffect(int hitDirection, double damage)
 		{
 			if (npc.life <= 0)
 			{
-				Timer = 0;
-				Gore.NewGore(npc.Center, npc.velocity, mod.GetGoreSlot("Gores/TikiTotemGore1"), 1f);
-				Gore.NewGore(npc.Center, npc.velocity, mod.GetGoreSlot("Gores/TikiTotemGore2"), 1f);
-				Gore.NewGore(npc.Center, npc.velocity, mod.GetGoreSlot("Gores/TikiTotemGore3"), 1f);
+				_timer = 0;
+				for (int i = 0; i < 3; i++)
+				{
+					Gore.NewGore(npc.Center, npc.velocity, mod.GetGoreSlot($"Gores/TikiTotemGore{i + 1}"), 1f);
+				}
 			}
 		}
 
 		public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)
 		{
-			Vector2 drawOrigin = new Vector2(Main.npcTexture[npc.type].Width, Main.npcTexture[npc.type].Height * 0.8f);
 			for (int k = 0; k < npc.oldPos.Length; k++)
 			{
 				Vector2 drawPos = npc.oldPos[k] - Main.screenPosition;
@@ -438,56 +440,50 @@ namespace Tremor.NPCs
 			{
 				npc.DropBossBags();
 			}
-			if (Main.netMode != 1)
-			{
-				int centerX = (int)(npc.Center.X + npc.width / 2) / 16;
-				int centerY = (int)(npc.Center.Y + npc.height / 2) / 16;
-				int halfLength = npc.width / 2 / 16 + 1;
 
-				if (!Main.expertMode && Main.rand.NextBool())
+			object[,] drops = new object[,]
+			{
+				// item, chance, stack
+				{"ToxicBlade", 2, 1},
+				{"JungleAlloy", 2, 1},
+				{"PickaxeofBloom", 3, 1},
+				{"ToxicHilt", 3, 1},
+				{"AngryTotemMask", 7, 1},
+				{"HappyTotemMask", 7, 1},
+				{"IndifferentTotemMask", 7, 1},
+				{ItemID.HealingPotion, 2, Main.rand.Next(6, 18)},
+				{ItemID.ManaPotion, 2, Main.rand.Next(6, 18)},
+			};
+
+			if (!Main.expertMode)
+			{
+				for (int i = 0; i < drops.GetUpperBound(0); i++)
 				{
-					Item.NewItem((int)npc.Center.X, (int)npc.Center.Y, npc.width, npc.height, mod.ItemType("ToxicBlade"));
-				};
-				if (!Main.expertMode && Main.rand.NextBool())
-				{
-					Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("JungleAlloy"));
-				};
-				if (!Main.expertMode && Main.rand.Next(3) == 0)
-				{
-					Item.NewItem((int)npc.Center.X, (int)npc.Center.Y, npc.width, npc.height, mod.ItemType("PickaxeofBloom"));
-				};
-				if (!Main.expertMode && Main.rand.Next(3) == 0)
-				{
-					Item.NewItem((int)npc.Center.X, (int)npc.Center.Y, npc.width, npc.height, mod.ItemType("ToxicHilt"));
-				};
-				if (!Main.expertMode && Main.rand.Next(7) == 0)
-				{
-					Item.NewItem((int)npc.Center.X, (int)npc.Center.Y, npc.width, npc.height, mod.ItemType("AngryTotemMask"));
+					if (Main.rand.NextBool((int)drops[i, 1]))
+					{
+						object drop = drops[i, 0];
+						if (drop is string)
+							Item.NewItem((int)npc.Center.X, (int)npc.Center.Y, npc.width, npc.height, mod.ItemType((string)drop), (int)drops[i, 2]);
+						else if (drop is int)
+							Item.NewItem((int)npc.Center.X, (int)npc.Center.Y, npc.width, npc.height, (int)drop, (int)drops[i, 2]);
+					}
 				}
-				if (!Main.expertMode && Main.rand.Next(7) == 0)
+			}
+
+			if (Main.rand.NextBool(10))
+			{
+				Item.NewItem((int)npc.Center.X, (int)npc.Center.Y, npc.width, npc.height, mod.ItemType("TikiTotemTrophy"));
+			}
+
+			if (!TremorWorld.Boss.TikiTotem.Downed())
+			{
+				TremorWorld.downedBoss[TremorWorld.Boss.TikiTotem] = true;
+
+				string msg = "Ghosts are returning to ruins...";
+				Main.NewText(msg, 193, 139, 77);
+				if (Main.netMode == NetmodeID.MultiplayerClient)
 				{
-					Item.NewItem((int)npc.Center.X, (int)npc.Center.Y, npc.width, npc.height, mod.ItemType("HappyTotemMask"));
-				}
-				if (!Main.expertMode && Main.rand.Next(7) == 0)
-				{
-					Item.NewItem((int)npc.Center.X, (int)npc.Center.Y, npc.width, npc.height, mod.ItemType("IndifferentTotemMask"));
-				}
-				if (!Main.expertMode && Main.rand.NextBool())
-				{
-					Item.NewItem((int)npc.Center.X, (int)npc.Center.Y, npc.width, npc.height, 188, Main.rand.Next(6, 18));
-				}
-				if (!Main.expertMode && Main.rand.NextBool())
-				{
-					Item.NewItem((int)npc.Center.X, (int)npc.Center.Y, npc.width, npc.height, 189, Main.rand.Next(6, 18));
-				}
-				if (Main.rand.Next(10) == 0)
-				{
-					Item.NewItem((int)npc.Center.X, (int)npc.Center.Y, npc.width, npc.height, mod.ItemType("TikiTotemTrophy"));
-				}
-				if (!TremorWorld.Boss.TikiTotem.Downed())
-				{
-					Main.NewText("Ghosts are returning to ruins...", 193, 139, 77);
-					TremorWorld.downedBoss[TremorWorld.Boss.TikiTotem] = true;
+					NetMessage.BroadcastChatMessage(NetworkText.FromLiteral(msg), new Color(193, 139, 77));
 				}
 			}
 		}
