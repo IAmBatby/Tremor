@@ -1,4 +1,5 @@
 using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace Tremor.Items
@@ -32,36 +33,31 @@ namespace Tremor.Items
 
 		public override void OpenBossBag(Player player)
 		{
-			if (Main.rand.Next(7) == 0)
+			object[,] drops = new object[,]
 			{
-				player.QuickSpawnItem(mod.ItemType("AngryTotemMask"));
-			}
-			if (Main.rand.NextBool())
-			{
-				player.QuickSpawnItem(mod.ItemType("JungleAlloy"));
-			}
+				// item, chance, stack
+				{"ToxicBlade", 3, 1},
+				{"JungleAlloy", 1, 1},
+				{"TikiSkull", 1, 1}, // only specific one
+				{"PickaxeofBloom", 3, 1},
+				{"ToxicHilt", 4, 1},
+				{"AngryTotemMask", 7, 1},
+				{"HappyTotemMask", 7, 1},
+				{"IndifferentTotemMask", 7, 1},
+				{ItemID.HealingPotion, 1, Main.rand.Next(5, 16)},
+				{ItemID.ManaPotion, 1, Main.rand.Next(5, 16)},
+			};
 
-			if (Main.rand.Next(7) == 0)
+			for (int i = 0; i < drops.GetUpperBound(0); i++)
 			{
-				player.QuickSpawnItem(mod.ItemType("HappyTotemMask"));
-			}
-
-			if (Main.rand.Next(7) == 0)
-			{
-				player.QuickSpawnItem(mod.ItemType("IndifferentTotemMask"));
-			}
-			player.QuickSpawnItem(mod.ItemType("ToxicBlade"));
-
-			if (Main.rand.Next(3) == 0)
-			{
-				player.QuickSpawnItem(mod.ItemType("ToxicHilt"));
-			}
-
-			player.QuickSpawnItem(mod.ItemType("TikiSkull"));
-
-			if (Main.rand.Next(3) == 0)
-			{
-				player.QuickSpawnItem(mod.ItemType("PickaxeofBloom"));
+				if (Main.rand.NextBool((int)drops[i, 1]))
+				{
+					object drop = drops[i, 0];
+					if (drop is string)
+						player.QuickSpawnItem(mod.ItemType((string)drop), (int)drops[i, 2]);
+					else if (drop is int)
+						player.QuickSpawnItem((int)drop, (int)drops[i, 2]);
+				}
 			}
 		}
 	}
