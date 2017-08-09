@@ -22,12 +22,12 @@ namespace Tremor
 			{
 				if (tooltip.Name == "Damage")
 				{
-					tooltip.text = ((int)(item.damage * modPlayer.alchemistDamage)) + " alchemic damage";
+					tooltip.text = (int)(item.damage * modPlayer.alchemistDamage) + " alchemical damage";
 				}
 
 				if (tooltip.Name == "CritChance")
 				{
-					tooltip.text = (item.crit + modPlayer.alchemistCrit) + "% critical strike chance";
+					tooltip.text = item.crit + modPlayer.alchemistCrit + "% critical strike chance";
 				}
 			}
 
