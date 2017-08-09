@@ -69,27 +69,54 @@ namespace Tremor
 			}
 		}
 
-		public static void DrawItemGlowMask(Texture2D texture, PlayerDrawInfo info)
+		public static void DrawItemGlowMask(Texture2D texture,PlayerDrawInfo info)
 		{
-			Item item = info.drawPlayer.HeldItem;
-			if (info.shadow != 0f || info.drawPlayer.frozen || ((info.drawPlayer.itemAnimation <= 0 || item.useStyle == 0) && (item.holdStyle <= 0 || info.drawPlayer.pulley)) || item.type <= 0 || info.drawPlayer.dead || item.noUseGraphic || (info.drawPlayer.wet && item.noWet))
+			Item item=info.drawPlayer.HeldItem;
+			if(info.shadow!=0f||info.drawPlayer.frozen||((info.drawPlayer.itemAnimation<=0||item.useStyle==0)&&(item.holdStyle<=0||info.drawPlayer.pulley))/*||item.type<=0*/||info.drawPlayer.dead||item.noUseGraphic||(info.drawPlayer.wet&&item.noWet))
 			{
 				return;
+			}
+			Vector2 offset=new Vector2();
+			float rotOffset=0;
+			Vector2 origin=new Vector2();
+			if(item.useStyle==5)
+			{
+				if(Item.staff[item.type])
+				{
+					rotOffset=0.785f*info.drawPlayer.direction;
+					if(info.drawPlayer.gravDir==-1f){rotOffset-=1.57f*info.drawPlayer.direction;}
+					origin=new Vector2(texture.Width*0.5f*(1-info.drawPlayer.direction),(info.drawPlayer.gravDir==-1f)?0:texture.Height);
+					int num86=-(int)origin.X;
+					ItemLoader.HoldoutOrigin(info.drawPlayer,ref origin);
+					offset=new Vector2(origin.X+num86,0);
+				}
+				else
+				{
+					offset=new Vector2(10,texture.Height/2);
+					ItemLoader.HoldoutOffset(info.drawPlayer.gravDir,item.type,ref offset);
+					origin=new Vector2(-offset.X,texture.Height/2);
+					if(info.drawPlayer.direction==-1)
+					{
+						origin.X=texture.Width+offset.X;
+					}
+					offset=new Vector2(texture.Width/2,offset.Y);
+				}
+			}
+			else
+			{
+				origin=new Vector2(texture.Width*0.5f*(1-info.drawPlayer.direction),(info.drawPlayer.gravDir==-1f)?0:texture.Height);
 			}
 			Main.playerDrawData.Add
 			(
 				new DrawData
 				(
-					texture, info.itemLocation - Main.screenPosition,
-					new Rectangle(0, 0, texture.Width, texture.Height),
-					new Color(250, 250, 250, item.alpha),
-					info.drawPlayer.itemRotation,
-					new Vector2
-					(
-						texture.Width * 0.5f * (1 - info.drawPlayer.direction),
-						info.drawPlayer.gravDir == -1f ? 0 : texture.Height
-					),
-					item.scale, info.spriteEffects, 0
+					texture,
+					info.itemLocation-Main.screenPosition+offset,
+					texture.Bounds,
+					new Color(250,250,250,item.alpha),
+					info.drawPlayer.itemRotation+rotOffset,
+					origin,
+					item.scale,info.spriteEffects,0
 				)
 			);
 		}
