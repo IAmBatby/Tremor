@@ -486,7 +486,6 @@ namespace Tremor.NPCs
 				this.SpawnItem((short)mod.ItemType<SoulofMind>(), Main.rand.Next(20, 41));
 				this.SpawnItem(ItemID.GreaterHealingPotion, Main.rand.Next(5, 16));
 				this.SpawnItem(ItemID.HallowedBar, Main.rand.Next(15, 36));
-				this.SpawnItem(ItemID.MechanicalWagonPiece);
 
 				if (Main.rand.Next(7) == 0)
 				{
