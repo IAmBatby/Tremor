@@ -21,8 +21,8 @@ namespace Tremor.Items
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Treasure Bag");
-			Tooltip.SetDefault("Right click to open");
+			DisplayName.SetDefault("Tiki Totem Treasure Bag");
+			Tooltip.SetDefault("{$CommonItemTooltip.RightClickToOpen}");
 		}
 
 
