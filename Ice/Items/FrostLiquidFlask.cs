@@ -25,7 +25,7 @@ namespace Tremor.Ice.Items
 			item.value = 30;
 			item.rare = 1;
 			item.autoReuse = false;
-
+			item.crit = 4;
 		}
 
 		public override void SetStaticDefaults()

@@ -25,6 +25,7 @@ namespace Tremor.Items
 			item.value = Item.sellPrice(0, 2, 0, 0);
 			item.rare = 8;
 			item.autoReuse = false;
+			item.crit = 4;
 		}
 
 		public override void SetStaticDefaults()

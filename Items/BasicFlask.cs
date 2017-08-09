@@ -28,7 +28,6 @@ namespace Tremor.Items
 			item.rare = 1;
 			item.autoReuse = false;
 			item.crit = 4;
-
 			item.ammo = mod.ItemType("BoomFlask");
 		}
 
