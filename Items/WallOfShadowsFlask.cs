@@ -4,7 +4,7 @@ using Terraria.ModLoader;
 
 namespace Tremor.Items
 {
-	public class WallOfShadowsFlask : ModItem
+	public class WallOfShadowsFlask : AlchemistItem
 	{
 		const float ShootRange = 600.0f;
 		const float ShootKN = 1.0f;
@@ -17,13 +17,12 @@ namespace Tremor.Items
 
 		public override void SetDefaults()
 		{
-
 			item.damage = 70;
 			item.knockBack = 3;
 			item.width = 26;
 			item.height = 30;
-
-			item.value = 00250000;
+			item.crit = 4;
+			item.value = Item.sellPrice(gold:5);
 			item.rare = 9;
 			item.expert = true;
 			item.accessory = true;
