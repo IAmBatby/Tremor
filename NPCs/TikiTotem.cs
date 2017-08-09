@@ -444,15 +444,15 @@ namespace Tremor.NPCs
 			object[,] drops = new object[,]
 			{
 				// item, chance, stack
-				{"ToxicBlade", 2, 1},
-				{"JungleAlloy", 2, 1},
+				{"ToxicBlade", 3, 1},
+				{"JungleAlloy", 1, 1},
 				{"PickaxeofBloom", 3, 1},
-				{"ToxicHilt", 3, 1},
+				{"ToxicHilt", 4, 1},
 				{"AngryTotemMask", 7, 1},
 				{"HappyTotemMask", 7, 1},
 				{"IndifferentTotemMask", 7, 1},
-				{ItemID.HealingPotion, 2, Main.rand.Next(6, 18)},
-				{ItemID.ManaPotion, 2, Main.rand.Next(6, 18)},
+				{ItemID.HealingPotion, 1, Main.rand.Next(5, 16)},
+				{ItemID.ManaPotion, 1, Main.rand.Next(5, 16)},
 			};
 
 			if (!Main.expertMode)
@@ -475,16 +475,13 @@ namespace Tremor.NPCs
 				Item.NewItem((int)npc.Center.X, (int)npc.Center.Y, npc.width, npc.height, mod.ItemType("TikiTotemTrophy"));
 			}
 
-			if (!TremorWorld.Boss.TikiTotem.Downed())
-			{
-				TremorWorld.downedBoss[TremorWorld.Boss.TikiTotem] = true;
+			TremorWorld.downedBoss[TremorWorld.Boss.TikiTotem] = true;
 
-				string msg = "Ghosts are returning to ruins...";
-				Main.NewText(msg, 193, 139, 77);
-				if (Main.netMode == NetmodeID.MultiplayerClient)
-				{
-					NetMessage.BroadcastChatMessage(NetworkText.FromLiteral(msg), new Color(193, 139, 77));
-				}
+			string msg = "Ghosts are returning to ruins...";
+			Main.NewText(msg, 193, 139, 77);
+			if (Main.netMode == NetmodeID.MultiplayerClient)
+			{
+				NetMessage.BroadcastChatMessage(NetworkText.FromLiteral(msg), new Color(193, 139, 77));
 			}
 		}
 	}
