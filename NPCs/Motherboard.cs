@@ -483,18 +483,11 @@ namespace Tremor.NPCs
 			}
 			else
 			{
-				if (Main.rand.NextBool())
-				{
-					this.SpawnItem((short)mod.ItemType<SoulofMind>(), Main.rand.Next(20, 40));
-				}
-				if (Main.rand.NextBool())
-				{
-					this.SpawnItem(ItemID.GreaterHealingPotion, Main.rand.Next(5, 15));
-				}
-				if (Main.rand.NextBool())
-				{
-					this.SpawnItem(ItemID.HallowedBar, Main.rand.Next(15, 35));
-				}
+				this.SpawnItem((short)mod.ItemType<SoulofMind>(), Main.rand.Next(20, 41));
+				this.SpawnItem(ItemID.GreaterHealingPotion, Main.rand.Next(5, 16));
+				this.SpawnItem(ItemID.HallowedBar, Main.rand.Next(15, 36));
+				this.SpawnItem(ItemID.MechanicalWagonPiece);
+
 				if (Main.rand.Next(7) == 0)
 				{
 					this.SpawnItem((short)mod.ItemType<MotherboardMask>());
@@ -513,10 +506,10 @@ namespace Tremor.NPCs
 			{
 				this.SpawnItem((short)mod.ItemType<FlaskCore>());
 			}
-
-			if (NPC.downedMoonlord && Main.rand.NextBool())
+			if (NPC.downedMoonlord 
+				&& Main.rand.NextBool(TremorWorld.Boss.Tremode.Downed() ? 1 : 2))
 			{
-				this.SpawnItem((short)mod.ItemType<CarbonSteel>(), Main.rand.Next(6, 12));
+				this.SpawnItem((short)mod.ItemType<CarbonSteel>(), Main.rand.Next(6, 13));
 			}
 		}
 	}

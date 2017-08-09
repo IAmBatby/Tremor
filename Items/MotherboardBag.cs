@@ -1,4 +1,5 @@
 using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace Tremor.Items
@@ -7,7 +8,6 @@ namespace Tremor.Items
 	{
 		public override void SetDefaults()
 		{
-
 			item.maxStack = 999;
 			item.consumable = true;
 			item.width = 24;
@@ -15,16 +15,15 @@ namespace Tremor.Items
 
 			item.rare = 9;
 			item.expert = true;
-			bossBagNPC = mod.NPCType("Motherboard");
+			bossBagNPC = mod.NPCType<NPCs.Motherboard>();
 		}
 
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Treasure Bag");
-			Tooltip.SetDefault("Right click to open");
+			Tooltip.SetDefault("{$CommonItemTooltip.RightClickToOpen}");
 		}
-
-
+		
 		public override bool CanRightClick()
 		{
 			return true;
@@ -32,23 +31,16 @@ namespace Tremor.Items
 
 		public override void OpenBossBag(Player player)
 		{
-			player.QuickSpawnItem(3355);
-			if (Main.rand.NextBool())
-			{
-				player.QuickSpawnItem(mod.ItemType("SoulofMind"), Main.rand.Next(20, 40));
-			}
-			if (Main.rand.NextBool())
-			{
-				player.QuickSpawnItem(499, Main.rand.Next(5, 15));
-			}
-			if (Main.rand.NextBool())
-			{
-				player.QuickSpawnItem(1225, Main.rand.Next(15, 35)); ;
-			}
+			player.QuickSpawnItem(ItemID.MechanicalWagonPiece);
+			player.QuickSpawnItem(mod.ItemType<SoulofMind>(), Main.rand.Next(20, 41));
+			player.QuickSpawnItem(ItemID.GreaterHealingPotion, Main.rand.Next(5, 16));
+			player.QuickSpawnItem(ItemID.HallowedBar, Main.rand.Next(15, 36));
+
 			if (Main.rand.Next(7) == 0)
 			{
-				player.QuickSpawnItem(mod.ItemType("MotherboardMask"));
+				player.QuickSpawnItem(mod.ItemType<MotherboardMask>());
 			}
+
 			player.TryGettingDevArmor();
 		}
 
