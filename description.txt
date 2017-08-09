@@ -6,9 +6,9 @@ See the git or the TCF thread (homepage) for changelogs
 
 What Tremor offers:
 * Over 1600 new items - including new armor sets, weapons for each class, accessories, new materials and banners for every mob.
-* 21 new bosses - every boss has it's own AI, loot, treasure bag with unique expert item.
+* 21 new bosses - every boss has it's own AI, loot, treasure bag with unique expert items.
 * 13 new NPCs - each NPC has it's own stuff to sell. Many NPCs also sell new things after certain bosses are defeated.
-* 2 brand new invasions - new invasions with new interesting mobs, loot and also with new soundtracks.
+* 2 brand new invasions - new invasions with new interesting mobs, loot and also new soundtracks.
 * New Glacier minibiome - a biome that spawns in Snow biome and has new mobs and loot.
 * New ores - some generate in the beginning of the game and some only generate after defeating certain boss.
 * Tremode - Post Moon Lord gamemode with it's own ores, lots of new content, such as armors, weapons, materials, harder monsters and hard bosses.
