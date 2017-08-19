@@ -69,7 +69,7 @@ namespace Tremor
 			}
 		}
 
-		public static void DrawItemGlowMask(Texture2D texture,PlayerDrawInfo info)
+		public static void DrawItemGlowMask(Texture2D texture, PlayerDrawInfo info)
 		{
 			Item item=info.drawPlayer.HeldItem;
 			if(info.shadow!=0f||info.drawPlayer.frozen||((info.drawPlayer.itemAnimation<=0||item.useStyle==0)&&(item.holdStyle<=0||info.drawPlayer.pulley))/*||item.type<=0*/||info.drawPlayer.dead||item.noUseGraphic||(info.drawPlayer.wet&&item.noWet))
