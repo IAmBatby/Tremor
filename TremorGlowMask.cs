@@ -16,7 +16,7 @@ namespace Tremor
 
 		public static void AddGlowMask(int itemType, string texturePath)
 		{
-			ItemGlowMask.Add(itemType, ModLoader.GetTexture(texturePath));
+			ItemGlowMask[itemType]=ModLoader.GetTexture(texturePath);
 		}
 
 		public override void ModifyDrawLayers(List<PlayerLayer> layers)
