@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -9,77 +10,37 @@ using Tremor.Tiles;
 
 namespace Tremor
 {
-	// Our recipe wrapper
-	public sealed class RecipeWrapper
+	// Our recipe related utilities
+	public sealed class RecipeUtils
 	{
-		public static void AddRecipes(Tremor mod)
+		// A helper method we can use in the future
+		private static void QuickRecipe(Mod mod, short resultType, int[,] ingredients, short? reqTileType = null)
+		{
+			var recipe = new ModRecipe(mod);
+			recipe.SetResult(resultType);
+			for (int i = 0; i < ingredients.GetUpperBound(0); i++)
+			{
+				recipe.AddIngredient(ingredients[i, 0], ingredients[i, 1]);
+			}
+			if (reqTileType.HasValue)
+				recipe.AddTile(reqTileType.Value);
+			recipe.AddRecipe();
+		}
+
+		public static void AddRecipes(Mod mod)
 		{
 			#region AddRecipes
-			// Pillars Recipes
+
+			// Quick Recipe example. Too lazy to change all
+			QuickRecipe(mod, ItemID.MagicMirror,
+				new int[,]
+				{
+					{ItemID.SilverBar, 15}, 
+					{ItemID.Glass, 5},
+					{ItemID.ManaCrystal, 2},
+				});
+
 			ModRecipe recipe = new ModRecipe(mod);
-			recipe.AddIngredient(3456);
-			recipe.AddIngredient(3457);
-			recipe.AddIngredient(3458);
-			recipe.AddIngredient(3459);
-			recipe.AddIngredient(mod.ItemType<NovaFragment>());
-			recipe.SetResult(3544, 4);
-			recipe.AddTile(13);
-			recipe.AddRecipe();
-
-			recipe = new ModRecipe(mod);
-			recipe.AddIngredient(3456, 20);
-			recipe.AddIngredient(3457, 20);
-			recipe.AddIngredient(3458, 20);
-			recipe.AddIngredient(3459, 20);
-			recipe.AddIngredient(mod.ItemType<NovaFragment>(), 20);
-			recipe.SetResult(3601);
-			recipe.AddTile(412);
-			recipe.AddRecipe();
-
-			recipe = new ModRecipe(mod);
-			recipe.AddIngredient(3457);
-			recipe.AddIngredient(3458);
-			recipe.AddIngredient(3459);
-			recipe.AddIngredient(mod.ItemType<NovaFragment>());
-			recipe.SetResult(3456);
-			recipe.AddTile(412);
-			recipe.AddRecipe();
-
-			recipe = new ModRecipe(mod);
-			recipe.AddIngredient(3456);
-			recipe.AddIngredient(3458);
-			recipe.AddIngredient(3459);
-			recipe.AddIngredient(mod.ItemType<NovaFragment>());
-			recipe.SetResult(3457);
-			recipe.AddTile(412);
-			recipe.AddRecipe();
-
-			recipe = new ModRecipe(mod);
-			recipe.AddIngredient(3456);
-			recipe.AddIngredient(3457);
-			recipe.AddIngredient(3459);
-			recipe.AddIngredient(mod.ItemType<NovaFragment>());
-			recipe.SetResult(3458);
-			recipe.AddTile(412);
-			recipe.AddRecipe();
-
-			recipe = new ModRecipe(mod);
-			recipe.AddIngredient(3457);
-			recipe.AddIngredient(3458);
-			recipe.AddIngredient(3456);
-			recipe.AddIngredient(mod.ItemType<NovaFragment>());
-			recipe.SetResult(3459);
-			recipe.AddTile(412);
-			recipe.AddRecipe();
-
-			//////////////////////////
-			recipe = new ModRecipe(mod);
-			recipe.AddIngredient(ItemID.SilverBar, 15);
-			recipe.AddIngredient(ItemID.Glass, 5);
-			recipe.AddIngredient(ItemID.ManaCrystal, 2);
-			recipe.SetResult(ItemID.MagicMirror);
-			recipe.AddRecipe();
-
 			recipe = new ModRecipe(mod);
 			recipe.AddIngredient(ItemID.Wood, 8);
 			recipe.AddIngredient(ItemID.GoldBar, 2);
@@ -434,33 +395,52 @@ namespace Tremor
 			#endregion
 		}
 
-		public static void RemoveRecipes()
+		// Adapt certain vanilla recipes to our own 'pillar recipes'
+		// For Night's Edge there is Blood Carnage, for Mechanical Worm there is Mechanical Brain
+		public static void AdaptToNovaRecipes(Mod mod)
 		{
-			List<Tuple<int, int[]>> recipesToDelete = new List<Tuple<int, int[]>>
-			{
-				new Tuple<int, int[]>(ItemID.NightsEdge, new int[] {ItemID.BloodButcherer}),
-				new Tuple<int, int[]>(ItemID.MechanicalWorm, new int[] {ItemID.Vertebrae}),
-				new Tuple<int, int[]>(ItemID.SuperHealingPotion, new int[0]),
-				new Tuple<int, int[]>(ItemID.CelestialSigil, new int[0]),
-				new Tuple<int, int[]>(ItemID.FragmentVortex , new int[0]),
-				new Tuple<int, int[]>(ItemID.FragmentNebula, new int[0]),
-				new Tuple<int, int[]>(ItemID.FragmentSolar, new int[0]),
-				new Tuple<int, int[]>(ItemID.FragmentStardust, new int[0])
-			};
+			//Night's Edge can't be crafted with Blood Butcherer
+			//Mechanical Worm can't be crafted with Vertebrae
 
-			foreach (var toDeleteRecipe in recipesToDelete)
+			// Search night's edge
+			var rFinder = new RecipeFinder();
+			rFinder.SetResult(ItemID.NightsEdge);
+			rFinder.AddIngredient(ItemID.BloodButcherer);
+			// Add to found recipes
+			var foundRecipes = rFinder.SearchRecipes();
+
+			// Search mech worm
+			rFinder = new RecipeFinder();
+			rFinder.SetResult(ItemID.MechanicalWorm);
+			rFinder.AddIngredient(ItemID.Vertebrae);
+			// Add to found recipes
+			foundRecipes = foundRecipes.Concat(rFinder.SearchRecipes()).ToList();
+
+			// For all found recipes, delete them
+			foundRecipes.ForEach(recipe =>
 			{
-				var finder = new RecipeFinder();
-				finder.SetResult(toDeleteRecipe.Item1);
-				foreach (var ingredient in toDeleteRecipe.Item2)
+				var rEditor = new RecipeEditor(recipe);
+				rEditor.DeleteRecipe();
+			});
+
+			//The following recipes (with result of this type) require Nova Fragments for crafting
+			foreach (short resultType in new short[]
+			{
+				ItemID.SuperHealingPotion,
+				ItemID.CelestialSigil,
+				ItemID.FragmentVortex,
+				ItemID.FragmentNebula,
+				ItemID.FragmentSolar,
+				ItemID.FragmentStardust
+			})
+			{
+				rFinder = new RecipeFinder();
+				rFinder.SetResult(resultType);
+				rFinder.SearchRecipes().ForEach(recipe =>
 				{
-					finder.AddIngredient(ingredient);
-				}
-				foreach (Recipe foundRecipe in finder.SearchRecipes())
-				{
-					RecipeEditor editor = new RecipeEditor(foundRecipe);
-					editor.DeleteRecipe();
-				}
+					var rEditor = new RecipeEditor(recipe);
+					rEditor.AddIngredient(mod.ItemType<NovaFragment>(), resultType == ItemID.CelestialSigil ? 20 : 1); // 20 frags for sigil, 1 for others
+				});
 			}
 		}
 	}

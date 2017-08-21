@@ -9,7 +9,6 @@ namespace Tremor.Items
 	{
 		public override void SetDefaults()
 		{
-
 			item.damage = 44;
 			item.melee = true;
 			item.width = 44;
@@ -29,9 +28,7 @@ namespace Tremor.Items
 			DisplayName.SetDefault("Blood Carnage");
 			Tooltip.SetDefault("");
 		}
-
-
-
+		
 		public override void MeleeEffects(Player player, Rectangle hitbox)
 		{
 			int dust = Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, 60);

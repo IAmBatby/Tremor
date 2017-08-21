@@ -253,8 +253,8 @@ namespace Tremor
 		public override void AddRecipes()
 		{
 			// Recipe wrapper
-			RecipeWrapper.AddRecipes(this);
-			RecipeWrapper.RemoveRecipes();
+			RecipeUtils.AddRecipes(this);
+			RecipeUtils.AdaptToNovaRecipes(this);
 		}
 
 		public override void ModifyInterfaceLayers(List<GameInterfaceLayer> layers)
