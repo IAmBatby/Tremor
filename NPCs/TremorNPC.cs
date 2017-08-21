@@ -913,7 +913,7 @@ namespace Tremor.NPCs
 						}
 					}
 
-					TremorWorld.downedBoss[TremorWorld.Boss.Tremode] = true; // Врубаем Тремод
+					TremorWorld.Boss.Tremode.Downed(true); // Врубаем Тремод
 				}
 			}
 

@@ -765,28 +765,20 @@ namespace Tremor.NPCs
 			{
 				npc.DropBossBags();
 			}
-
-			if (Main.netMode != 1)
+			else
 			{
-				int centerX = (int)(npc.position.X + npc.width / 2) / 16;
-				int centerY = (int)(npc.position.Y + npc.height / 2) / 16;
-				int halfLength = npc.width / 2 / 16 + 1;
-
-				if (!Main.expertMode)
+				Helper.DropItems(npc.position, npc.Size, new Drop(mod.ItemType("HeavyBeamCannon"), 1, 1), new Drop(mod.ItemType("Bolter"), 1, 1), new Drop(mod.ItemType("StrikerBlade"), 1, 1), new Drop(0, 0, 0));
+				Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, 499, Main.rand.Next(5, 15));
+				Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("DarknessCloth"), Main.rand.Next(8, 15));
+				if (Main.rand.Next(7) == 0)
 				{
-					Helper.DropItem(new Rectangle((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height), new Drop(mod.ItemType("HeavyBeamCannon"), 1, 1), new Drop(mod.ItemType("Bolter"), 1, 1), new Drop(mod.ItemType("StrikerBlade"), 1, 1), new Drop(0, 0, 0));
-					Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, 499, Main.rand.Next(5, 15));
-					Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("DarknessCloth"), Main.rand.Next(8, 15));
-					if (Main.rand.Next(7) == 0)
-					{
-						Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("WallofShadowMask"));
-					}
+					Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("WallofShadowMask"));
 				}
+			}
 
-				if (Main.rand.Next(10) == 0)
-				{
-					Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("WallofShadowTrophy"));
-				}
+			if (Main.rand.Next(10) == 0)
+			{
+				Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("WallofShadowTrophy"));
 			}
 
 			if (Main.netMode != 1)

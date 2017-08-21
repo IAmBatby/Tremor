@@ -399,29 +399,23 @@ namespace Tremor.NPCs
 			{
 				npc.DropBossBags();
 			}
-			if (Main.netMode != 1)
+			
+			if (!Main.expertMode && Main.rand.NextBool())
 			{
-				int CenterX = (int)(npc.position.X + npc.width / 2) / 16;
-				int CenterY = (int)(npc.position.Y + npc.height / 2) / 16;
-				int halfLength = npc.width / 2 / 16 + 1;
-
-				if (!Main.expertMode && Main.rand.NextBool())
-				{
-					Helper.DropItem(new Rectangle((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height), new Drop(mod.ItemType("RedStorm"), 1, 1), new Drop(mod.ItemType("ShockwaveClaymore"), 1, 1), new Drop(mod.ItemType("CyberCutter"), 1, 1));
-				}
-				Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, 499, Main.rand.Next(6, 25));
-				Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, 500, Main.rand.Next(6, 25));
-
-				if (Main.rand.Next(10) == 0)
-				{
-					Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("CyberKingTrophy"));
-				}
-				if (!Main.expertMode && Main.rand.Next(7) == 0)
-				{
-					Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("CyberKingMask"));
-				}
-				TremorWorld.downedBoss[TremorWorld.Boss.CyberKing] = true;
+				Helper.DropItems(npc.position, npc.Size, new Drop(mod.ItemType("RedStorm"), 1, 1), new Drop(mod.ItemType("ShockwaveClaymore"), 1, 1), new Drop(mod.ItemType("CyberCutter"), 1, 1));
 			}
-		}
+			Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, 499, Main.rand.Next(6, 25));
+			Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, 500, Main.rand.Next(6, 25));
+
+			if (Main.rand.Next(10) == 0)
+			{
+				Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("CyberKingTrophy"));
+			}
+			if (!Main.expertMode && Main.rand.Next(7) == 0)
+			{
+				Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("CyberKingMask"));
+			}
+			TremorWorld.Boss.CyberKing.Downed(true);
+	}
 	}
 }

@@ -10,6 +10,7 @@ namespace Tremor
 {
 	public delegate void ExtraAction();
 
+	// todo: note to self, migrate stuff to utils
 	public static class Helper
 	{
 		#region Spawn helpers
@@ -54,6 +55,9 @@ namespace Tremor
 			return NormalSpawn(spawnInfo) && NoBiome(spawnInfo) && NoZone(spawnInfo);
 		}
 		#endregion
+
+		public static void Downed(this TremorWorld.Boss boss, bool state)
+			=> TremorWorld.downedBoss[boss] = state;
 
 		public static bool Downed(this TremorWorld.Boss boss)
 			=> TremorWorld.downedBoss[boss];
@@ -355,28 +359,30 @@ namespace Tremor
 			Main.spriteBatch.Draw(texture2D, projectile.Center - Main.screenPosition, texture2D.Frame(1, Main.projFrames[projectile.type], 0, projectile.frame), lightColor, projectile.rotation, origin, projectile.scale, effects, 0f);
 		}
 
-		public static void DropItem(Rectangle Area, params Drop[] Drops)
+		public static void DropItems(Vector2 position, Vector2 randomBox, params Drop[] drops)
 		{
-			List<Drop> Sh = new List<Drop>();
-			Drops
-			.ToList()
-			.ForEach(drop =>
+			foreach (Drop drop in drops)
 			{
-				for (int index = 0; index < drop.Chance; index++)
-					Sh.Add(drop);
-			});
-			Drop DroppedItem = Sh[Main.rand.Next(Sh.Count)];
-			Item.NewItem(Area.X, Area.Y, Area.Height, Area.Width, DroppedItem.Item, DroppedItem.Count);
+				if (Main.rand.NextBool(drop.DropChance))
+				{
+					Item.NewItem(position, randomBox, drop.ItemType, drop.StackSize);
+				}
+			}
 		}
 
 	}
 
 	public struct Drop
 	{
-		public int Item; public int Count; public int Chance;
-		public Drop(int item, int count, int chance)
+		public int ItemType { get; }
+		public int StackSize { get; }
+		public int DropChance { get; }
+
+		public Drop(int itemType, int stackSize, int dropChance)
 		{
-			Item = item; Count = count; Chance = chance;
+			ItemType = itemType;
+			StackSize = stackSize;
+			DropChance = dropChance;
 		}
 	}
 }

@@ -802,7 +802,7 @@ namespace Tremor.NPCs
 					TremorWorld.dropComet();
 					//return;
 				}
-				TremorWorld.downedBoss[TremorWorld.Boss.SpaceWhale] = true;
+				TremorWorld.Boss.SpaceWhale.Downed(true);
 
 				if (!Main.expertMode && Main.rand.Next(7) == 0)
 				{

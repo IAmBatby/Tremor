@@ -40,6 +40,7 @@ namespace Tremor.NPCs
 			npc.defense = 40;
 			npc.aiStyle = 6;
 			npc.npcSlots = 5f;
+			npc.knockBackResist = 1f;
 			music = 17;
 
 			npc.noTileCollide = true;
@@ -64,8 +65,7 @@ namespace Tremor.NPCs
 
 		public override void OnHitPlayer(Player player, int damage, bool crit)
 		{
-			if (Main.expertMode 
-				|| Main.rand.NextBool())
+			if (Main.expertMode || Main.rand.NextBool())
 			{
 				player.AddBuff(BuffID.OnFire, 180);
 			}
@@ -244,14 +244,14 @@ namespace Tremor.NPCs
 				if (Main.rand.NextBool())
 					npc.SpawnItem(ItemID.ManaPotion, Main.rand.Next(6, 18));
 
-				if (Helper.Chance(7))
+				if (Main.rand.NextBool(7))
 					npc.SpawnItem((short)mod.ItemType<HeaterOfWorldsMask>());
 			}
-
-			TremorWorld.downedBoss[TremorWorld.Boss.HeaterofWorlds] = true;
-      
-			if (Helper.Chance(10))
+			
+			if (Main.rand.NextBool(10))
 				npc.SpawnItem((short)mod.ItemType<HeaterOfWorldsTrophy>());
+
+			TremorWorld.Boss.HeaterofWorlds.Downed(true);
 		}
 	}
 }

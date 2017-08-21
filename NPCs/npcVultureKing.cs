@@ -249,7 +249,7 @@ namespace Tremor.NPCs
 					Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("SandstoneBar"), Main.rand.Next(10, 18));
 				}
 
-				TremorWorld.downedBoss[TremorWorld.Boss.Rukh] = true;
+				TremorWorld.Boss.Rukh.Downed(true);
 
 			}
 		}

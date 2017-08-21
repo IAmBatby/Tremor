@@ -200,29 +200,21 @@ namespace Tremor.NPCs.AndasBoss
 			{
 				npc.DropBossBags();
 			}
-
-			if (Main.netMode != 1)
+			else
 			{
-				int centerX = (int)(npc.position.X + npc.width / 2) / 16;
-				int centerY = (int)(npc.position.Y + npc.height / 2) / 16;
-				int halfLength = npc.width / 2 / 16 + 1;
+				Helper.DropItems(npc.position, npc.Size, new Drop(mod.ItemType("Inferno"), 1, 1), new Drop(mod.ItemType("GehennaStaff"), 1, 1), new Drop(mod.ItemType("Pandemonium"), 1, 1), new Drop(mod.ItemType("VulcanBlade"), 1, 1), new Drop(mod.ItemType("HellStorm"), 1, 1));
+				Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, 3544, Main.rand.Next(10, 25));
 
-				if (!Main.expertMode)
+				if (Main.rand.Next(7) == 0)
 				{
-					Helper.DropItem(new Rectangle((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height), new Drop(mod.ItemType("Inferno"), 1, 1), new Drop(mod.ItemType("GehennaStaff"), 1, 1), new Drop(mod.ItemType("Pandemonium"), 1, 1), new Drop(mod.ItemType("VulcanBlade"), 1, 1), new Drop(mod.ItemType("HellStorm"), 1, 1));
-					Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, 3544, Main.rand.Next(10, 25));
-
-					if (Main.rand.Next(7) == 0)
-					{
-						Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("AndasMask"));
-					}
-					Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("InfernoSoul"), Main.rand.Next(8, 15));
+					Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("AndasMask"));
 				}
+				Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("InfernoSoul"), Main.rand.Next(8, 15));
+			}
 
-				if (Main.rand.Next(10) == 0)
-				{
-					Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("AndasTrophy"));
-				}
+			if (Main.rand.Next(10) == 0)
+			{
+				Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("AndasTrophy"));
 			}
 
 			if (Main.netMode != 1)

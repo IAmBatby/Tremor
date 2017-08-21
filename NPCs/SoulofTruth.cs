@@ -334,7 +334,7 @@ namespace Tremor.NPCs
 						{
 							WorldGen.TileRunner(WorldGen.genRand.Next(0, Main.maxTilesX), WorldGen.genRand.Next((int)(Main.maxTilesY * .3f), (int)(Main.maxTilesY * .65f)), WorldGen.genRand.Next(9, 15), WorldGen.genRand.Next(9, 15), mod.TileType("AngeliteOreTile"), false, 0f, 0f, false, true);
 						}
-						TremorWorld.downedBoss[TremorWorld.Boss.Trinity] = true;
+						TremorWorld.Boss.Trinity.Downed(true);
 					}
 
 				}

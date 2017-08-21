@@ -315,7 +315,7 @@ namespace Tremor.Invasion
 				}
 				if (!Main.expertMode && Main.rand.NextBool())
 				{
-					Helper.DropItem(new Rectangle((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height), new Drop(mod.ItemType("RocketWand"), 1, 1), new Drop(mod.ItemType("TheEtherealm"), 1, 1), new Drop(mod.ItemType("SoulFlames"), 1, 1));
+					Helper.DropItems(npc.position, npc.Size, new Drop(mod.ItemType("RocketWand"), 1, 1), new Drop(mod.ItemType("TheEtherealm"), 1, 1), new Drop(mod.ItemType("SoulFlames"), 1, 1));
 				}
 				if (Main.rand.Next(10) == 0)
 				{
