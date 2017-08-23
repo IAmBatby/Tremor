@@ -1,0 +1,28 @@
+The previous team has decided to stop their development for Tremor. The mod has now been transferred to Jofairden.
+Tremor is now publicly available on github: https://github.com/Jofairden/Tremor
+Thanks to all the collaborators, Tremor will remain available and bugs will be fixed.
+
+Please report any bugs on the git, by making a new issue.
+All contributions are incredibly helpful, and mentioned in changelogs.
+
+Changelogs for v1.3.2.3:
+
+Fixes:
+ - Glowmask errors for servers have been fixed
+ - Boss HoW and ancient dragon no longer take knockback
+ - Ancient dragon parts are no longer 'bosses', still technically bosses.
+ - Only Ancient dragon head shows in cheat sheet UI.
+ - Fixed Tremor removing a recipe for Super Healing Potion
+
+Motherboard improvements!
+ The code for Motherboards has been refactored and worked on.
+ Hopefully this means there are no more multiplayer issues, or at least less. Please let me know if you encounter any.
+ In addition to improvements, I have repurposed a lot of DD2 event sound effects in the boss fight to really improve on it. (thanks Skiphs for helping!) The boss' death sound was also changed.
+ When Motherboard transitions into her second phase, she also lets out a high pitched screech. All attacks have sound effects, some may be quieter than others.
+
+ Fight changes
+ - Signal drones' AI is improved. They will target a nearby player and home in on them in a grid like fashion. This works together with their attack. Because of this change, the drones themselves have a hefty cooldown for hitting players with a body attack.
+ - The laser beams Motherboard shoots in her first phase now more accurately target the player, instead of random places
+
+ Known issues
+ - When Motherboard her two super laser beams in phase 2 have a long distance from the ground, it is known that this causes a hit on FPS.
