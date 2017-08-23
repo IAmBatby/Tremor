@@ -8,18 +8,42 @@ Thanks to all the collaborators, Tremor will remain available and bugs will be f
 
 # Latest changelogs
 
-## Changelogs for v1.3.2.1: (small patch)
+## Changelogs for v1.3.2.2:
 
 Fixes:
+ - Fixed buff retextures not being unloaded (thanks jopojelly)
+ - Fixed crab staff bad defaults, fixed Baby Slime+Crab desummon problem (thanks jopojelly)
+ - Fixed issues for a ModWorld, potentially fixing load issues for certain worlds
+ - Fixed the "Requesting World Information" bug
+ - Fixed the Archer NPC hurting friendlies and not enemies
+ - Fixed Motherboard drops, fixed Motherboard boss bag drops.
+ -- All items can now drop their maximum amount (previously only maximum amount-1 was possible)
+ -- The following items drop chance fixed from 50% to 100%: Soul of Plight, Greater Healing Potion, Hallowed Bar
+ -- All drop fixes also apply to the boss bag. Boss bag also drops mechanical wagon piece (100%)
+ -- Fixed CarbonSteel drop chance from guaranteed 50% to 100% in Tremode, 50% otherwise
+ - Fixed Tiki Totem drops, fixed Tiki Totem boss bag drops
+ -- Potions now drop 5-15 (previously 5-14)
+ -- ToxicHilt drop chance fixed from 33% to 25%
+ -- ToxicBlade drop chance fixed from 50% to 33%
+ -- JungleAlloy drop chance fixed from 50% to 100%
+ -- Potion drop chances fixed from 50% to 100%
+ -- Boss bag drops all normal drops plus Tiki Skull
+ - Fixed Tiki Totem and Motherboard treasure bag names and fixed their tooltips (now changes language)
+ - Fixed Frost Liquid Flask having no crit chance
+ - Fixed Toxic Flask having no crit chance
+ - Fixed Shadow Flask not being an actual alchemist item, fixed it having no crit chance
+ - Changed 'alchemic' damage to 'alchemical' damage
 
- - Fixed 164 random calls that weren't random at all. They were supposed to be a 1/2 chance, but they weren't. Now they are. This mostly affects item droprates.
- - Fixed 'The type initializer for 'Tremor.RecipeData' threw an exception.'
+ Improvements:
+ - Improved Tremor.cs code slightly
+ - Improved Tremor player quest fish code
+ - Improved Tremor player bad life regen code
 
-Other:
-
- - Did some more code formatting (179 changed files with 14,276 additions and 14,154 deletions)
- - Reworked code for Tremor 'Modworld' in regards to downed boss states.
- - Refactored Heater of Worlds (boss) code. With the refactor, possibly some known and unknown issues have been fixed. The boss is now also spawnable via the Heros/CheatSheet windows.
+ Notes:
+ - Alchemist item crit chance is ONLY VISUAL, there's no normal way of altering crit chance in tML atm.
+ - Motherboard code is still being reworked. Hopefully it can be included in the next patch.
+ - Bosses will be looked at over time. They require a lot of work to be redone, have patience.
+ - Thanks again to all contributors this patch, and also wiki editors for updating info.
 
 # Report bugs
 Please make an [issue](https://github.com/Jofairden/Tremor/issues) to report the bug you found. Please check first if the mod has already been reported.
