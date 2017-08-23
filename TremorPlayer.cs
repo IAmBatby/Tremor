@@ -321,7 +321,6 @@ namespace Tremor
 			public float Depth;
 		}
 		private LightPillar[] _pillars;
-		private Random _random = new Random();
 
 		public static int[] iceWidth = new int[3];
 		public static int[] iceHeight = new int[3];
