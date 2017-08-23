@@ -188,6 +188,8 @@
     <Compile Include="Buffs\ZephyrhornBuff.cs" />
     <Compile Include="Buffs\ZombatBuff.cs" />
     <Compile Include="Buffs\ZootalooBuff.cs" />
+    <Compile Include="CustomDrop.cs" />
+    <Compile Include="RecipeUtils.cs" />
     <Compile Include="TremorGlobalTile.cs" />
     <Compile Include="DungeonGenn\DungeonWorld.cs" />
     <Compile Include="Dusts\Ball.cs" />
@@ -240,7 +242,6 @@
     <Compile Include="NovaPillar\Projectiles\NovaSkullburst.cs" />
     <Compile Include="NovaPillar\Tiles\NovaBlock.cs" />
     <Compile Include="NovaPillar\Tiles\NovaMonolithTile.cs" />
-    <Compile Include="RecipeWrapper.cs" />
     <Compile Include="TremorGlobalItem.cs" />
     <Compile Include="Gores\IceDroplet.cs" />
     <Compile Include="Helper.cs" />
@@ -1910,7 +1911,6 @@
     <Compile Include="Items\ZerokkLegs.cs" />
     <Compile Include="Items\ZombatStaff.cs" />
     <Compile Include="Items\ZootalooEgg.cs" />
-    <Compile Include="Motherboard_CreeperSpawning.cs" />
     <Compile Include="Mounts\Antlion.cs" />
     <Compile Include="Mounts\BrutalliskCrystal.cs" />
     <Compile Include="Mounts\DripplerMount.cs" />
@@ -2140,7 +2140,7 @@
     <Compile Include="NPCs\Shnoot.cs" />
     <Compile Include="NPCs\Shroot.cs" />
     <Compile Include="NPCs\Sighted.cs" />
-    <Compile Include="NPCs\SignalDron.cs" />
+    <Compile Include="NPCs\SignalDrone.cs" />
     <Compile Include="NPCs\SkeletonKnight.cs" />
     <Compile Include="NPCs\Skullker.cs" />
     <Compile Include="NPCs\SnowBat.cs" />
@@ -6134,7 +6134,6 @@
     <Content Include="NPCs\Shnoot.png" />
     <Content Include="NPCs\Shroot.png" />
     <Content Include="NPCs\Sighted.png" />
-    <Content Include="NPCs\SignalDron.png" />
     <Content Include="NPCs\SkeletonKnight.png" />
     <Content Include="NPCs\Skullker.png" />
     <Content Include="NPCs\SnowBat.png" />

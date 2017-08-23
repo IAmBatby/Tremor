@@ -60,7 +60,7 @@ namespace Tremor.NPCs
 					Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("FungusElement"), Main.rand.Next(10, 23));
 				}
 				Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, 28, Main.rand.Next(9, 22));
-				TremorWorld.Boss.FungusBeetle.Downed(true);
+				TremorWorld.Boss.FungusBeetle.Downed();
 			}
 		}
 

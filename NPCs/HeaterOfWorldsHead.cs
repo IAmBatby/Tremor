@@ -251,7 +251,7 @@ namespace Tremor.NPCs
 			if (Main.rand.NextBool(10))
 				npc.SpawnItem((short)mod.ItemType<HeaterOfWorldsTrophy>());
 
-			TremorWorld.Boss.HeaterofWorlds.Downed(true);
+			TremorWorld.Boss.HeaterofWorlds.Downed();
 		}
 	}
 }

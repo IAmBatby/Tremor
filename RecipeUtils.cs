@@ -32,6 +32,7 @@ namespace Tremor
 			#region AddRecipes
 
 			// Quick Recipe example. Too lazy to change all
+			// Ideally, there is separation between what holds data and what processes it
 			QuickRecipe(mod, ItemID.MagicMirror,
 				new int[,]
 				{

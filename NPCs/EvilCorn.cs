@@ -676,7 +676,7 @@ namespace Tremor.NPCs
 				{
 					Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("CornJavelin"), Main.rand.Next(15, 45));
 				}
-				TremorWorld.Boss.EvilCorn.Downed(true);
+				TremorWorld.Boss.EvilCorn.Downed();
 
 			}
 		}

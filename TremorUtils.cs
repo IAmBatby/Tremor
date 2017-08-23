@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.DataStructures;
+using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.Utilities;
 
@@ -9,6 +10,30 @@ namespace Tremor
 {
 	public static class TremorUtils
 	{
+		public static void Downed(this TremorWorld.Boss boss, bool state = true)
+			=> TremorWorld.downedBoss[boss] = state;
+
+		public static bool IsDowned(this TremorWorld.Boss boss)
+			=> TremorWorld.downedBoss[boss];
+
+		public static Item SpawnItem(this ModNPC npc, short type, int stack = 1)
+			=> SpawnItem(npc.npc, type, stack);
+
+		public static Item SpawnItem(this NPC npc, short type, int stack = 1)
+			=> Main.item[Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, type, stack)];
+
+		public static Item SpawnItem(Vector2 position, Vector2 size, short type, int stack = 1)
+			=> Main.item[Item.NewItem((int)position.X, (int)position.Y, (int)size.X, (int)size.Y, type, stack)];
+
+		// Get an ID for a sound name
+		public static int GetIdForSoundName(string soundName)
+		{
+			for (int i = 0; i < SoundID.TrackableLegacySoundCount; i++)
+				if (SoundID.GetTrackableLegacySoundPath(i).EndsWith(soundName))
+					return i;
+			return 0;
+		}
+
 		public static bool NextBool(this UnifiedRandom rand, int total)
 			=> rand.Next(total) == 0;
 

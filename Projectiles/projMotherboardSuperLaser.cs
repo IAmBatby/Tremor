@@ -1,6 +1,7 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
+using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -31,7 +32,6 @@ namespace Tremor.Projectiles
 
 		public override void SetDefaults()
 		{
-
 			projectile.width = 16;
 			projectile.height = 16;
 			projectile.timeLeft = 2;
@@ -46,10 +46,8 @@ namespace Tremor.Projectiles
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Motherboard Super Laser");
-
 		}
-
-
+		
 		bool flag = true;
 		public override void AI()
 		{
@@ -59,8 +57,8 @@ namespace Tremor.Projectiles
 				XOffsetNow = (projectile.ai[1] != 0) ? XOffsetMax : -XOffsetMax;
 			}
 			projectile.Center = new Vector2(Main.npc[(int)projectile.ai[0]].Center.X - 4, Main.npc[(int)projectile.ai[0]].Center.Y + 88f);
-			for (int i = 0; i < DustCount; i++)
-				Dust.NewDust(new Vector2(endPoint.X - 10, endPoint.Y + 10), 20, 20, DustID.Shadowflame);
+			//for (int i = 0; i < DustCount; i++)
+			//	Dust.NewDust(new Vector2(endPoint.X - 10, endPoint.Y + 10), 20, 20, DustID.Shadowflame);
 			if (projectile.ai[1] != 0)
 			{
 				XOffsetNow -= XOffsetStep;
@@ -81,6 +79,27 @@ namespace Tremor.Projectiles
 		{
 			float point = 0f;
 			return Collision.CheckAABBvLineCollision(targetHitbox.TopLeft(), targetHitbox.Size(), projectile.Center, endPoint, 4f, ref point);
+		}
+
+		public override bool OnTileCollide(Vector2 oldVelocity)
+		{
+			for (int i = 0; i < DustCount; i++)
+				Dust.NewDust(new Vector2(endPoint.X - 10, endPoint.Y + 10), 20, 20, DustID.Shadowflame);
+
+			PlayCollidingSound();
+
+			return base.OnTileCollide(oldVelocity);
+		}
+
+		public override void OnHitPlayer(Player target, int damage, bool crit)
+		{
+			PlayCollidingSound();
+		}
+
+		private void PlayCollidingSound()
+		{
+			var zapSound = new LegacySoundStyle(SoundID.Trackable, TremorUtils.GetIdForSoundName($"dd2_sky_dragons_fury_circle_{Main.rand.Next(3)}"));
+			Main.PlayTrackedSound(zapSound.WithPitchVariance(Main.rand.NextFloat()).WithVolume(Main.soundVolume * 1.5f));
 		}
 
 		public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)

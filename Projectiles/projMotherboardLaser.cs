@@ -1,18 +1,19 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
+using Terraria.Audio;
+using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace Tremor.Projectiles
 {
 	public class projMotherboardLaser : ModProjectile
 	{
-		const float YOffset = 95f; // �������� �� Y ����� ������ ������
-		Color LaserColor = Color.Purple; // ���� ������
+		const float YOffset = 95f;
+		Color LaserColor = Color.Purple;
 
 		public override void SetDefaults()
 		{
-
 			projectile.width = 2;
 			projectile.height = 2;
 			projectile.timeLeft = 30;
@@ -26,10 +27,8 @@ namespace Tremor.Projectiles
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Motherboard Laser");
-
 		}
-
-
+		
 		public override void AI()
 		{
 			projectile.Center = new Vector2(Main.npc[(int)projectile.ai[0]].Center.X, Main.npc[(int)projectile.ai[0]].Center.Y + ((projectile.localAI[1] == 1) ? YOffset : 0));
@@ -50,6 +49,23 @@ namespace Tremor.Projectiles
 			float point = 0f;
 			Vector2 endPoint = Main.npc[(int)projectile.ai[1]].Center;
 			return Collision.CheckAABBvLineCollision(targetHitbox.TopLeft(), targetHitbox.Size(), projectile.Center, endPoint, 4f, ref point);
+		}
+
+		public override bool OnTileCollide(Vector2 oldVelocity)
+		{
+			PlayZapSound();
+			return base.OnTileCollide(oldVelocity);
+		}
+
+		public override void OnHitPlayer(Player target, int damage, bool crit)
+		{
+			PlayZapSound();
+		}
+
+		private void PlayZapSound()
+		{
+			var zapSound = new LegacySoundStyle(SoundID.Trackable, TremorUtils.GetIdForSoundName($"dd2_lightning_bug_zap_{Main.rand.Next(3)}"));
+			Main.PlayTrackedSound(zapSound.WithPitchVariance(Main.rand.NextFloat() * .5f).WithVolume(Main.soundVolume * 0.5f));
 		}
 
 		public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)

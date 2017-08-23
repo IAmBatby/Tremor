@@ -205,7 +205,7 @@ namespace Tremor.NovaPillar
 				Item.NewItem((int)npc.position.X + Main.rand.Next(npc.width), (int)npc.position.Y + Main.rand.Next(npc.height), 2, 2, mod.ItemType("NovaFragment"), Main.rand.Next(1, 4));
 			}
 
-			TremorWorld.Boss.NovaPillar.Downed(true);
+			TremorWorld.Boss.NovaPillar.Downed();
 			NovaHandler.TowerX = -1;
 			NovaHandler.TowerY = -1;
 			if (NPC.LunarApocalypseIsUp)

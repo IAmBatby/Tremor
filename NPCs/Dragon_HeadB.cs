@@ -75,7 +75,7 @@ namespace Tremor.NPCs
 				Item.NewItem(npc.position, npc.Size, mod.ItemType<AncientDragonTrophy>());
 			}
 
-			TremorWorld.Boss.AncientDragon.Downed(true);
+			TremorWorld.Boss.AncientDragon.Downed();
 		}
 
 

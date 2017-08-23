@@ -346,7 +346,7 @@ namespace Tremor.NPCs
 						Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("TrueEssense"), Main.rand.Next(10, 25));
 					}
 
-					if (!TremorWorld.Boss.Trinity.Downed())
+					if (!TremorWorld.Boss.Trinity.IsDowned())
 					{
 						Main.NewText("This world has been enlightened with Angelite!", 0, 191, 255);
 						Main.NewText("This world has been attacked with Collapsium!", 255, 20, 147);
@@ -359,7 +359,7 @@ namespace Tremor.NPCs
 						{
 							WorldGen.TileRunner(WorldGen.genRand.Next(0, Main.maxTilesX), WorldGen.genRand.Next((int)(Main.maxTilesY * .3f), (int)(Main.maxTilesY * .65f)), WorldGen.genRand.Next(9, 15), WorldGen.genRand.Next(9, 15), mod.TileType("AngeliteOreTile"), false, 0f, 0f, false, true);
 						}
-						TremorWorld.Boss.Trinity.Downed(true);
+						TremorWorld.Boss.Trinity.Downed();
 					}
 
 				}
