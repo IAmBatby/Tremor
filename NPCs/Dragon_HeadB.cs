@@ -30,7 +30,7 @@ namespace Tremor.NPCs
 			npc.lifeMax = 3100;
 			npc.aiStyle = 6;
 			npc.npcSlots = 1f;
-			npc.knockBackResist = 1f;
+			npc.knockBackResist = 0f;
 
 			npc.noTileCollide = true;
 			npc.behindTiles = true;
