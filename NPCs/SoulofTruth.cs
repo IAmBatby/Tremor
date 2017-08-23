@@ -35,8 +35,6 @@ namespace Tremor.NPCs
 
 		float[] myAI = new float[2];
 
-		Random rnd = new Random();
-
 		public override void SetDefaults()
 		{
 			npc.lifeMax = 60000;
@@ -197,13 +195,13 @@ namespace Tremor.NPCs
 				SetStage(true);
 			SetRotation();
 			CreateDust();
-			if (Power && rnd.Next(5) == 0)
+			if (Power && Main.rand.Next(5) == 0)
 				Shoot();
 		}
 
 		void CreateDust()
 		{
-			if (rnd.Next(3) == 0)
+			if (Main.rand.Next(3) == 0)
 				Dust.NewDust(npc.position, npc.width, npc.height, 59);
 		}
 

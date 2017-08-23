@@ -39,8 +39,6 @@ namespace Tremor.NPCs
 		Color TextColor = Color.Orange;
 		bool StateFlag = true;
 
-		Random rnd = new Random();
-
 		public override void SetDefaults()
 		{
 			npc.lifeMax = 75000;
@@ -208,7 +206,7 @@ namespace Tremor.NPCs
 
 		void CreateDust()
 		{
-			if (rnd.Next(3) == 0)
+			if (Main.rand.Next(3) == 0)
 				Dust.NewDust(npc.position, npc.width, npc.height, 62);
 		}
 

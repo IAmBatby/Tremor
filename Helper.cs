@@ -58,8 +58,7 @@ namespace Tremor
 
 		public static Vector2 RandomPosition(Vector2 pos1, Vector2 pos2)
 		{
-			Random rnd = new Random();
-			return new Vector2(rnd.Next((int)pos1.X, (int)pos2.X) + 1, rnd.Next((int)pos1.Y, (int)pos2.Y) + 1);
+			return new Vector2(Main.rand.Next((int)pos1.X, (int)pos2.X) + 1, Main.rand.Next((int)pos1.Y, (int)pos2.Y) + 1);
 		}
 
 		public static int GetNearestAlivePlayer(NPC npc)
