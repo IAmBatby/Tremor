@@ -19,7 +19,6 @@ namespace Tremor.NovaPillar
 			public float AlphaAmplitude;
 		}
 		private Star[] _stars;
-		private Random _random = new Random();
 		public static Texture2D PlanetTexture;
 		private Texture2D[] _starTextures;
 		public static Texture2D BGTexture;
