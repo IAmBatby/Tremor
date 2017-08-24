@@ -14,7 +14,7 @@ Fixes:
  - Now only Ancient dragon head shows in cheat sheet UI and not the other segments.
  - Fixed Tremor removing a recipe for Super Healing Potion
 
- Other or specific notes:
+Other or specific notes:
  - Robotic Dead Head and Dead Head
  -- Fixed Dead Head accessory not granting throwing crit chance, and not granting alchemical damage and crit chance
  -- Fixed Robotic Dead Head accessory nto granting throwing crit chance, and not granting alchemical damage and crit chance
@@ -25,9 +25,9 @@ Motherboard improvements!
  Hopefully this means there are no more multiplayer issues, or at least less. Please let me know if you encounter any.
  In addition to improvements, I have repurposed a lot of DD2 event sound effects in the boss fight to really improve on it. (thanks Skiphs for helping!) The boss' death sound was also changed. When Motherboard transitions into her second phase, she also lets out a high pitched screech. All attacks have sound effects, some may be quieter than others.
 
- Fight changes
- - Signal drones' AI is improved. They will target a nearby player and home in on them in a grid like fashion. This works together with their attack. Because of this change, the drones themselves have a hefty cooldown for hitting players with a body attack.
- - The laser beams Motherboard shoots in her first phase now more accurately target the player, instead of random places
+ - Fight changes
+ -- Signal drones' AI is improved. They will target a nearby player and home in on them in a grid like fashion. This works together with their attack. Because of this change, the drones themselves have a hefty cooldown for hitting players with a body attack.
+ -- The laser beams Motherboard shoots in her first phase now more accurately target the player, instead of random places
 
- Known issues
- - When Motherboard her two super laser beams in phase 2 have a long distance from the ground, it is known that this causes a hit on FPS. Try to fight her closer to the ground to avoid this issue, I hope I will be able to find the cause of this.
+ - Known issues
+ -- When Motherboard her two super laser beams in phase 2 have a long distance from the ground, it is known that this causes a hit on FPS. Try to fight her closer to the ground to avoid this issue, I hope I will be able to find the cause of this.
