@@ -11,6 +11,7 @@ namespace Tremor
 		{
 			MPlayer modPlayer = player.GetModPlayer<MPlayer>(mod);
 			// We want to multiply the damage we do by our alchemistDamage modifier.
+			// todo: ? do we want magic damage to also have effect here?
 			damage = (int)(damage * modPlayer.alchemistDamage);
 		}
 

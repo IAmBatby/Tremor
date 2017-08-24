@@ -6,10 +6,8 @@ namespace Tremor.Items
 {
 	public class DeadHead : ModItem
 	{
-
 		public override void SetDefaults()
 		{
-
 			item.width = 26;
 			item.height = 20;
 			item.value = 110;
@@ -22,23 +20,32 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Dead Head");
-			Tooltip.SetDefault("Increases damage, critical strike chance and movement speed");
+			Tooltip.SetDefault("4% increased damage and critical strike chance\n15% increased movement speed");
 		}
 
 
 		public override void UpdateAccessory(Player player, bool hideVisual)
-
 		{
 			player.meleeDamage += 0.04f;
 			player.meleeCrit += 4;
+
 			player.magicDamage += 0.04f;
 			player.magicCrit += 4;
+
 			player.rangedDamage += 0.04f;
 			player.rangedCrit += 4;
-			player.minionDamage += 0.04f;
-			//player.minionCrit += 4;
+
 			player.thrownDamage += 0.04f;
+			player.thrownCrit += 4;
+
+			player.minionDamage += 0.04f;
+
 			player.moveSpeed += 0.15f;
+			player.maxRunSpeed += 0.15f;
+
+			MPlayer modPlayer = Main.LocalPlayer.GetModPlayer<MPlayer>(mod);
+			modPlayer.alchemistDamage += 0.04f;
+			modPlayer.alchemistCrit += 4;
 		}
 
 		public override void AddRecipes()

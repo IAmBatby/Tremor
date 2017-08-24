@@ -3,12 +3,10 @@ using Terraria.ModLoader;
 
 namespace Tremor.Items
 {
-	public class DeadHeadII : ModItem
+	public class RoboticDeadHead : ModItem
 	{
-
 		public override void SetDefaults()
 		{
-
 			item.width = 26;
 			item.height = 20;
 			item.value = 110;
@@ -21,22 +19,32 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Robotic Dead Head");
-			Tooltip.SetDefault("Increases all stats");
+			Tooltip.SetDefault("15% increased damage\n12% increased critical strike chance\n25% increased movement speed");
 		}
 
 
 		public override void UpdateAccessory(Player player, bool hideVisual)
-
 		{
 			player.meleeDamage += 0.15f;
 			player.meleeCrit += 12;
+
 			player.magicDamage += 0.15f;
 			player.magicCrit += 12;
+
 			player.rangedDamage += 0.15f;
 			player.rangedCrit += 12;
-			player.minionDamage += 0.15f;
+			
 			player.thrownDamage += 0.15f;
+			player.thrownCrit += 12;
+
+			player.minionDamage += 0.15f;
+
 			player.moveSpeed += 0.25f;
+			player.maxRunSpeed += 0.25f;
+
+			MPlayer modPlayer = Main.LocalPlayer.GetModPlayer<MPlayer>(mod);
+			modPlayer.alchemistDamage += 0.15f;
+			modPlayer.alchemistCrit += 12;
 		}
 
 		public override void AddRecipes()
