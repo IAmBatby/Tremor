@@ -27,8 +27,8 @@ namespace Tremor.NPCs
 			npc.aiStyle = 3;
 			aiType = 482;
 			animationType = 471;
-			banner = npc.type;
-			bannerItem = mod.ItemType("MagiumKeeperBanner");
+			// banner = npc.type;
+			// Todo: bannerItem = mod.ItemType("MagiumKeeperBanner");
 		}
 
 

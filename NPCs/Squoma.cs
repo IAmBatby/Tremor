@@ -28,8 +28,8 @@ namespace Tremor.NPCs
 			npc.HitSound = SoundID.NPCHit53;
 			npc.noGravity = true;
 			npc.DeathSound = SoundID.NPCDeath45;
-			banner = npc.type;
-			bannerItem = mod.ItemType("SquomaBanner");
+			// banner = npc.type;
+			// Todo: bannerItem = mod.ItemType("SquomaBanner");
 		}
 
 		public override void HitEffect(int hitDirection, double damage)

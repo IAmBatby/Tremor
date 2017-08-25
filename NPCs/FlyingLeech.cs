@@ -28,8 +28,8 @@ namespace Tremor.NPCs
 			npc.HitSound = SoundID.NPCHit1;
 			npc.DeathSound = SoundID.NPCDeath1;
 			npc.value = Item.buyPrice(0, 0, 32, 20);
-			banner = npc.type;
-			bannerItem = mod.ItemType("FlyingLeechBanner");
+			// banner = npc.type;
+			// Todo: bannerItem = mod.ItemType("FlyingLeechBanner");
 		}
 
 		public override void ScaleExpertStats(int numPlayers, float bossLifeScale)

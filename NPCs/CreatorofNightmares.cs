@@ -29,8 +29,8 @@ namespace Tremor.NPCs
 			aiType = 604;
 			npc.DeathSound = SoundID.NPCDeath52;
 			npc.value = Item.buyPrice(0, 3, 1, 0);
-			banner = npc.type;
-			bannerItem = mod.ItemType("CreatorofNightmaresBanner");
+			// banner = npc.type;
+			// Todo: bannerItem = mod.ItemType("CreatorofNightmaresBanner");
 		}
 
 

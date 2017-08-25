@@ -30,8 +30,8 @@ namespace Tremor.NPCs
 			npc.noGravity = true;
 			npc.DeathSound = SoundID.NPCDeath6;
 			npc.value = Item.buyPrice(0, 0, 4, 15);
-			banner = npc.type;
-			bannerItem = mod.ItemType("AvengerBanner");
+			// banner = npc.type;
+			// Todo: bannerItem = mod.ItemType("AvengerBanner");
 		}
 
 		public override void ScaleExpertStats(int numPlayers, float bossLifeScale)

@@ -29,8 +29,8 @@ namespace Tremor.NPCs
 			npc.HitSound = SoundID.NPCHit4;
 			npc.DeathSound = SoundID.NPCDeath6;
 			npc.value = Item.buyPrice(0, 0, 50, 7);
-			banner = npc.type;
-			bannerItem = mod.ItemType("EliteBloodmoonWarriorBanner");
+			// banner = npc.type;
+			// Todo: bannerItem = mod.ItemType("EliteBloodmoonWarriorBanner");
 		}
 
 		public override void ScaleExpertStats(int numPlayers, float bossLifeScale)

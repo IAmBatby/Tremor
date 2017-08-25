@@ -32,8 +32,8 @@ namespace Tremor.NPCs
 			npc.noGravity = true;
 			npc.DeathSound = SoundID.NPCDeath4;
 			npc.value = Item.buyPrice(0, 0, 6, 9);
-			banner = npc.type;
-			bannerItem = mod.ItemType("MagiumFlayerBanner");
+			// banner = npc.type;
+			// Todo: bannerItem = mod.ItemType("MagiumFlayerBanner");
 		}
 
 		public override void ScaleExpertStats(int numPlayers, float bossLifeScale)

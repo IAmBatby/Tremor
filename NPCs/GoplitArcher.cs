@@ -30,8 +30,8 @@ namespace Tremor.NPCs
 			npc.buffImmune[20] = true;
 			npc.buffImmune[31] = false;
 			npc.buffImmune[24] = true;
-			banner = npc.type;
-			bannerItem = mod.ItemType("GoplitArcherBanner");
+			// banner = npc.type;
+			// Todo: bannerItem = mod.ItemType("GoplitArcherBanner");
 		}
 
 		public override void ScaleExpertStats(int numPlayers, float bossLifeScale)

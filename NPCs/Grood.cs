@@ -28,8 +28,8 @@ namespace Tremor.NPCs
 			npc.HitSound = SoundID.NPCHit1;
 			npc.DeathSound = SoundID.NPCDeath17;
 			npc.value = Item.buyPrice(0, 0, 5, 24);
-			banner = npc.type;
-			bannerItem = mod.ItemType("GroodBanner");
+			// banner = npc.type;
+			// Todo: bannerItem = mod.ItemType("GroodBanner");
 		}
 
 		public override void NPCLoot()

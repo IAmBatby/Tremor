@@ -29,8 +29,8 @@ namespace Tremor.NPCs
 			npc.DeathSound = SoundID.NPCDeath17;
 			npc.scale = 0.7f;
 			npc.value = Item.buyPrice(0, 0, 1, 24);
-			banner = npc.type;
-			bannerItem = mod.ItemType("ShrootBanner");
+			// banner = npc.type;
+			// Todo: bannerItem = mod.ItemType("ShrootBanner");
 		}
 
 		public override void NPCLoot()

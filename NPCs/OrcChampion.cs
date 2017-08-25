@@ -33,8 +33,8 @@ namespace Tremor.NPCs
 			npc.buffImmune[31] = false;
 			npc.DeathSound = SoundID.NPCDeath27;
 			npc.value = Item.buyPrice(0, 0, 25, 0);
-			banner = npc.type;
-			bannerItem = mod.ItemType("OrcChampionBanner");
+			// banner = npc.type;
+			// Todo: bannerItem = mod.ItemType("OrcChampionBanner");
 		}
 
 		public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
