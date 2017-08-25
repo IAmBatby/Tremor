@@ -184,6 +184,7 @@ namespace Tremor
 
 		public override void Unload()
 		{
+			instance = null;
 			if (!Main.dedServ)
 			{
 				TremorGlowMask.Unload();
