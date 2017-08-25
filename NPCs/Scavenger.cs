@@ -59,8 +59,8 @@ namespace Tremor.NPCs
 			npc.HitSound = SoundID.NPCHit1;
 			npc.DeathSound = SoundID.NPCDeath2;
 			npc.value = Item.buyPrice(0, 0, 8, 0);
-			banner = npc.type;
-			bannerItem = mod.ItemType("ScavengerBanner");
+			// banner = npc.type;
+			// Todo: bannerItem = mod.ItemType("ScavengerBanner");
 		}
 
 		public override void HitEffect(int hitDirection, double damage)

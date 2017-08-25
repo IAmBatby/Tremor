@@ -26,8 +26,9 @@ namespace Tremor.NPCs
 			npc.DeathSound = SoundID.NPCDeath42;
 			npc.value = Item.buyPrice(0, 3, 0, 0);
 			animationType = NPCID.BigMimicHallow;
-			banner = npc.type;
-			bannerItem = mod.ItemType("CoretaurBanner");
+			// banner = npc.type;
+			// Todo: bannerItem = mod.ItemType("CoretaurBanner");
+
 		}
 
 

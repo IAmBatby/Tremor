@@ -29,8 +29,8 @@ namespace Tremor.NPCs
 			npc.HitSound = SoundID.NPCHit2;
 			npc.DeathSound = SoundID.NPCDeath2;
 			npc.value = Item.buyPrice(0, 0, 0, 3);
-			banner = npc.type;
-			bannerItem = mod.ItemType("BoneFishBanner");
+			// banner = npc.type;
+			// Todo: bannerItem = mod.ItemType("BoneFishBanner");
 			NPCID.Sets.TrailCacheLength[npc.type] = 5;
 		}
 

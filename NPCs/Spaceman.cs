@@ -28,8 +28,8 @@ namespace Tremor.NPCs
 			aiType = 73;
 			npc.aiStyle = 3;
 			animationType = 31;
-			banner = npc.type;
-			bannerItem = mod.ItemType("SpacemanBanner");
+			// banner = npc.type;
+			// Todo: bannerItem = mod.ItemType("SpacemanBanner");
 		}
 
 

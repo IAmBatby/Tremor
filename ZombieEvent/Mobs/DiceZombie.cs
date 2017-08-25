@@ -28,8 +28,8 @@ namespace Tremor.ZombieEvent.Mobs
 			npc.HitSound = SoundID.NPCHit1;
 			npc.DeathSound = SoundID.NPCDeath2;
 			npc.value = Item.buyPrice(0, 0, 1);
-			banner = npc.type;
-			bannerItem = mod.ItemType("DiceZombieBanner");
+			// banner = npc.type;
+			// Todo: bannerItem = mod.ItemType("DiceZombieBanner");
 		}
 
 		public override void HitEffect(int hitDirection, double damage)

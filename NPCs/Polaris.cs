@@ -29,8 +29,8 @@ namespace Tremor.NPCs
 			npc.HitSound = SoundID.NPCHit37;
 			npc.DeathSound = SoundID.NPCDeath57;
 			npc.value = Item.buyPrice(0, 0, 6, 9);
-			banner = npc.type;
-			bannerItem = mod.ItemType("PolarisBanner");
+			// banner = npc.type;
+			// Todo: bannerItem = mod.ItemType("PolarisBanner");
 		}
 
 		public override void ScaleExpertStats(int numPlayers, float bossLifeScale)

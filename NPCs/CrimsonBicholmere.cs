@@ -29,7 +29,7 @@ namespace Tremor.NPCs
 			npc.DeathSound = SoundID.NPCDeath23;
 			npc.value = Item.buyPrice(0, 0, 5, 25);
 			banner = npc.type;
-			bannerItem = mod.ItemType("CrimsonBicholmereBanner");
+			bannerItem = mod.ItemType<Items.CrimsonBiholmerBanner>();
 		}
 
 		public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
