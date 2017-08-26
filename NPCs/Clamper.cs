@@ -14,7 +14,7 @@ namespace Tremor.NPCs
 			Main.npcFrameCount[npc.type] = 3;
 		}
 
-		const float Distanse = 1200f; // дистанция отрыва кламперов
+		private const float MaxTargetDistance = 1200f; // maximum distance to target
 
 		public override void SetDefaults()
 		{
@@ -26,8 +26,8 @@ namespace Tremor.NPCs
 			npc.knockBackResist = 0f;
 			npc.width = 36;
 			npc.height = 33;
-			aiType = 6;
-			npc.aiStyle = 5;
+			//aiType = 6;
+			npc.aiStyle = -1; //5
 			npc.HitSound = SoundID.NPCHit4;
 			npc.DeathSound = SoundID.NPCDeath14;
 			animationType = 2;
@@ -41,25 +41,21 @@ namespace Tremor.NPCs
 			}
 		}
 
+		public override bool CheckActive() => false;
+
+		private NPC Motherboard => Main.npc[(int)npc.ai[3]];
+
 		public override void AI()
 		{
-			npc.knockBackResist = 0f;
 			if (npc.ai[2] == 1)
 			{
 				npc.velocity *= 0.999f;
 				return;
 			}
-			if (Main.player[Helper.GetNearestPlayer(npc.Center)].Distance(npc.position) > Distanse)
-			{
-				int n = NPC.NewNPC((int)npc.position.X, (int)npc.position.Y, mod.NPCType("Clamper2"));
-				Main.npc[n].rotation = npc.rotation;
-				Main.npc[n].velocity = npc.velocity;
-				Main.npc[n].life = npc.life;
-				npc.active = false;
-			}
-			int index = (int)npc.ai[3];
-			if (Main.npc[index].type != mod.NPCType("Motherboard") || !Main.npc[index].active)
-				npc.active = false;
+
+			CheckDead();
+
+			// sp/server only, update ais
 			if (Main.netMode != 1)
 			{
 				--npc.localAI[0];
@@ -71,15 +67,45 @@ namespace Tremor.NPCs
 					npc.netUpdate = true;
 				}
 			}
-			npc.TargetClosest(true);
+
+			npc.TargetClosest();
+
+			ControlVelocity();
+			ControlRotation();
+
+		}
+
+		private new void CheckDead()
+		{
+			// turn to loose clamper when target is too far away?
+			if (Main.player[Helper.GetNearestPlayer(npc.Center)].Distance(npc.position) > MaxTargetDistance)
+			{
+				int n = NPC.NewNPC((int)npc.position.X, (int)npc.position.Y, mod.NPCType("Clamper2"));
+				Main.npc[n].rotation = npc.rotation;
+				Main.npc[n].velocity = npc.velocity;
+				Main.npc[n].life = npc.life;
+				npc.active = false;
+				npc.netUpdate = true;
+			}
+			// Motherboard has dead, kill ourselves
+			if (Motherboard.type != mod.NPCType<Motherboard>() || !Motherboard.active)
+			{
+				npc.active = false;
+				npc.netUpdate = true;
+			}
+		}
+
+		private void ControlVelocity()
+		{
+			// random garbage from here, todo: refactor
 			float num1 = 0.2f;
 			float num2 = 10f;
-			if (Main.npc[index].life < Main.npc[index].lifeMax * 0.25)
+			if (Motherboard.life < Motherboard.lifeMax * 0.25)
 				num2 += 5f;
-			if (Main.npc[index].life < Main.npc[index].lifeMax * 0.1)
+			if (Motherboard.life < Motherboard.lifeMax * 0.1)
 				num2 += 5f;
-			float x = Main.npc[index].position.X + Main.npc[index].width / 2;
-			float y = Main.npc[index].position.Y + Main.npc[index].height / 2;
+			float x = Motherboard.position.X + Motherboard.width / 2;
+			float y = Motherboard.position.Y + Motherboard.height / 2;
 			Vector2 vector2 = new Vector2(x, y);
 			float num3 = x + npc.ai[0];
 			float num4 = y + npc.ai[1];
@@ -113,15 +139,15 @@ namespace Tremor.NPCs
 				if (npc.velocity.Y > 0.0 && num10 < 0.0)
 					npc.velocity.Y *= 0.5f;
 			}
-			if (npc.velocity.X > 8.0)
-				npc.velocity.X = 8f;
-			if (npc.velocity.X < -8.0)
-				npc.velocity.X = -8f;
-			if (npc.velocity.Y > 8.0)
-				npc.velocity.Y = 8f;
-			if (npc.velocity.Y < -8.0)
-				npc.velocity.Y = -8f;
-			npc.rotation = Helper.rotateBetween2Points(npc.Center, Main.player[npc.target].Center) + 3.14f;
+			Lighting.AddLight(npc.Center, Color.White.ToVector3());
+			// Limit velocity
+			npc.velocity.X = MathHelper.Clamp(npc.velocity.X, -8.0f, 8.0f);
+			npc.velocity.Y = MathHelper.Clamp(npc.velocity.Y, -8.0f, 8.0f);
 		}
+
+		private void ControlRotation()
+		{
+			npc.rotation = npc.AngleTo(npc.target != -1 ? Main.player[npc.target].Center : Motherboard.Center);
+		}	
 	}
 }

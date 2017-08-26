@@ -13,8 +13,6 @@ namespace Tremor.NPCs
 			Main.npcFrameCount[npc.type] = 3;
 		}
 
-		const int SpeedMulti = 2; // Множитель скорости
-
 		public override void SetDefaults()
 		{
 			npc.noTileCollide = true;
@@ -22,7 +20,7 @@ namespace Tremor.NPCs
 			npc.lifeMax = 2400;
 			npc.damage = 30;
 			npc.defense = 6;
-			npc.knockBackResist = 0.1f;
+			npc.knockBackResist = 0f;
 			npc.width = 36;
 			npc.height = 33;
 			npc.aiStyle = 2;
@@ -33,9 +31,8 @@ namespace Tremor.NPCs
 
 		public override void AI()
 		{
-			npc.knockBackResist = 0f;
-			npc.position += npc.velocity * (SpeedMulti - 1);
-			Lighting.AddLight(npc.Center, new Vector3(Color.OrangeRed.R / 75, Color.OrangeRed.G / 75, Color.OrangeRed.B / 75));
+			npc.position += npc.velocity;
+			Lighting.AddLight(npc.Center, Color.OrangeRed.ToVector3() * 0.01333f);
 		}
 	}
 }

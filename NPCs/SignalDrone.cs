@@ -63,9 +63,7 @@ namespace Tremor.NPCs
 			UpdateMyImmunity();
 		}
 
-		public override bool CheckActive()
-			=> false;
-
+		public override bool CheckActive() => false;
 
 		private void CheckParent()
 		{
