@@ -1,4 +1,7 @@
-﻿using Microsoft.Xna.Framework;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.DataStructures;
@@ -10,6 +13,20 @@ namespace Tremor
 {
 	public static class TremorUtils
 	{
+		public static bool AddUniqueItem(this Chest shop, ref int nextSlot, int type)
+		{
+			if (shop.item.Any(x => x.type == type))
+				return false;
+
+			shop.item[nextSlot].SetDefaults(type);
+			nextSlot++;
+			return true;
+		}
+
+		// todo: take random with weighted array
+		public static T TakeRandom<T>(this T[] source)
+			=> source[Main.rand.Next(source.Length)];
+
 		public static void Downed(this TremorWorld.Boss boss, bool state = true)
 			=> TremorWorld.downedBoss[boss] = state;
 

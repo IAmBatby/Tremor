@@ -2,6 +2,8 @@ using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Tremor.Items;
+using Tremor.Projectiles;
 
 namespace Tremor.NPCs
 {
@@ -48,55 +50,38 @@ namespace Tremor.NPCs
 
 
 		public override bool CanTownNPCSpawn(int numTownNPCs, int money)
-		{
-			if (TremorWorld.Boss.SpaceWhale.IsDowned())
-			{
-				return true;
-			}
-			return false;
-		}
+			=> TremorWorld.Boss.SpaceWhale.IsDowned();
 
 
 		public override string TownNPCName()
 		{
-			switch (WorldGen.genRand.Next(5))
+			string[] names =
 			{
-				case 0:
-					return "Ripley";
-				case 1:
-					return "Dallas";
-				case 2:
-					return "Brett";
-				case 3:
-					return "Kane";
-				case 4:
-					return "Ash";
-				case 5:
-					return "Parker";
-				default:
-					return "Lambert";
-			}
+				"Ripley",
+				"Dallas",
+				"Brett",
+				"Kane",
+				"Ash",
+				"Parker",
+				"Lambert"
+			};
+			return names.TakeRandom();
 		}
 
 		public override string GetChat()
 		{
-			switch (Main.rand.Next(6))
+			// weighted chats?
+			string[] chats =
 			{
-				case 0:
-					return "There is an explanation for anything, you know.";
-				case 1:
-					return "If you get into a trouble remember that somebody will surely save your skin.";
-				case 2:
-					return "My friend always liked to tell me the odds but now he is dead. You should know: Never tell me the odds.";
-				case 3:
-					return "That giant flying fish that you've defeated was making plans to destroy my home-planet. Glad you've killed him.";
-				case 4:
-					return "I suggest you carrying at least small blaster - nobody knows what's on mind of this creatures in this world.";
-				case 5:
-					return "Have you ever heard a tale of a giant three eyed creature with eyes in it hands and tentacles on head? I'm very glad that it is just a stupid story.";
-				default:
-					return "There were some cult of men calling themselve knights and fighting with some kind of light swords on a planet I was travelling once to. As for me, a gun is better than a useless sword.";
-			}
+				"There is an explanation for anything, you know.",
+				"If you get into a trouble remember that somebody will surely save your skin.",
+				"My friend always liked to tell me the odds but now he is dead. You should know: Never tell me the odds.",
+				"That giant flying fish that you've defeated was making plans to destroy my home-planet. Glad you've killed him.",
+				"I suggest you carrying at least small blaster - nobody knows what's on mind of this creatures in this world.",
+				"Have you ever heard a tale of a giant three eyed creature with eyes in it hands and tentacles on head? I'm very glad that it is just a stupid story.",
+				"There were some cult of men calling themselve knights and fighting with some kind of light swords on a planet I was travelling once to. As for me, a gun is better than a useless sword."
+			};
+			return chats.TakeRandom();
 		}
 
 		public override void SetChatButtons(ref string button, ref string button2)
@@ -114,47 +99,40 @@ namespace Tremor.NPCs
 
 		public override void SetupShop(Chest shop, ref int nextSlot)
 		{
-			shop.item[nextSlot].SetDefaults(mod.ItemType("Starmine"));
-			nextSlot++;
-			shop.item[nextSlot].SetDefaults(mod.ItemType("ChainBow"));
-			nextSlot++;
-			shop.item[nextSlot].SetDefaults(mod.ItemType("EnforcerShield"));
-			nextSlot++;
+			// todo: change to data representation with conditionals, loop
+			shop.AddUniqueItem(ref nextSlot, mod.ItemType<Starmine>());
+			shop.AddUniqueItem(ref nextSlot, mod.ItemType<ChainBow>());
+			shop.AddUniqueItem(ref nextSlot, mod.ItemType<EnforcerShield>());
+
 			if (!Main.dayTime)
 			{
-				shop.item[nextSlot].SetDefaults(mod.ItemType("SniperHelmet"));
-				nextSlot++;
-				shop.item[nextSlot].SetDefaults(mod.ItemType("SniperBreastplate"));
-				nextSlot++;
-				shop.item[nextSlot].SetDefaults(mod.ItemType("SniperBoots"));
-				nextSlot++;
+				shop.AddUniqueItem(ref nextSlot, mod.ItemType<SniperHelmet>());
+				shop.AddUniqueItem(ref nextSlot, mod.ItemType<SniperBreastplate>());
+				shop.AddUniqueItem(ref nextSlot, mod.ItemType<SniperBoots>());
 			}
-			if (Main.dayTime)
+			else
 			{
-				shop.item[nextSlot].SetDefaults(mod.ItemType("ParatrooperLens"));
-				nextSlot++;
-				shop.item[nextSlot].SetDefaults(mod.ItemType("StartrooperFlameburstPistol"));
-				nextSlot++;
+				shop.AddUniqueItem(ref nextSlot, mod.ItemType<ParatrooperLens>());
+				shop.AddUniqueItem(ref nextSlot, mod.ItemType<StartrooperFlameburstPistol>());
 			}
+
 			if (TremorWorld.Boss.Trinity.IsDowned())
 			{
-				shop.item[nextSlot].SetDefaults(mod.ItemType("WartimeRocketLauncher"));
-				nextSlot++;
+				if (!Main.dayTime)
+				{
+					shop.AddUniqueItem(ref nextSlot, mod.ItemType<CosmicAssaultRifle>());
+				}
+				shop.AddUniqueItem(ref nextSlot, mod.ItemType<WartimeRocketLauncher>());
 			}
-			if (TremorWorld.Boss.Trinity.IsDowned() && !Main.dayTime)
-			{
-				shop.item[nextSlot].SetDefaults(mod.ItemType("CosmicAssaultRifle"));
-				nextSlot++;
-			}
+
 			if (Main.bloodMoon)
 			{
-				shop.item[nextSlot].SetDefaults(mod.ItemType("ParatrooperShotgun"));
-				nextSlot++;
+				shop.AddUniqueItem(ref nextSlot, mod.ItemType<ParatrooperShotgun>());
 			}
-			if (Main.player[Main.myPlayer].HasItem(mod.ItemType("SuperBigCannon")))
+
+			if (Main.LocalPlayer.HasItem(mod.ItemType<SuperBigCannon>()))
 			{
-				shop.item[nextSlot].SetDefaults(mod.ItemType("SBCCannonballAmmo"), false);
-				nextSlot++;
+				shop.AddUniqueItem(ref nextSlot, mod.ItemType<SBCCannonballAmmo>());
 			}
 		}
 
@@ -172,7 +150,7 @@ namespace Tremor.NPCs
 
 		public override void TownNPCAttackProj(ref int projType, ref int attackDelay)
 		{
-			projType = mod.ProjectileType("StarminePro");
+			projType = mod.ProjectileType<StarminePro>();
 			attackDelay = 4;
 		}
 
@@ -187,12 +165,10 @@ namespace Tremor.NPCs
 			if (npc.life <= 0)
 			{
 				for (int k = 0; k < 20; k++)
-				{
 					Dust.NewDust(npc.position, npc.width, npc.height, 151, 2.5f * hitDirection, -2.5f, 0, default(Color), 0.7f);
-				}
-				Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/StartrooperNGore1"), 1f);
-				Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/StartrooperNGore2"), 1f);
-				Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/StartrooperNGore3"), 1f);
+
+				for (int i = 0; i < 3; i++)
+					Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot($"Gores/StartrooperNGore{i+1}"), 1f);
 			}
 		}
 	}

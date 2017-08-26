@@ -2,10 +2,10 @@ using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Tremor.Items;
 
 namespace Tremor.NPCs
 {
-
 	[AutoloadHead]
 	public class Undertaker : ModNPC
 	{
@@ -47,55 +47,39 @@ namespace Tremor.NPCs
 		}
 
 		public override bool CanTownNPCSpawn(int numTownNPCs, int money)
-		{
-			if (TremorWorld.Boss.Trinity.IsDowned())
-			{
-				return true;
-			}
-			return false;
-		}
-
+			=> TremorWorld.Boss.Trinity.IsDowned();
 
 		public override string TownNPCName()
 		{
-			switch (WorldGen.genRand.Next(5))
+			string[] names =
 			{
-				case 0:
-					return "Tenner";
-				case 1:
-					return "Geyer";
-				case 2:
-					return "Cleve";
-				case 3:
-					return "Ferron";
-				case 4:
-					return "Gasper";
-				case 5:
-					return "Spots";
-				default:
-					return "Hargon";
-			}
+				"Tenner",
+				"Geyer",
+				"Cleve",
+				"Ferron",
+				"Gasper",
+				"Spots",
+				"Hargon"
+			};
+			return names.TakeRandom();
 		}
 
 		public override string GetChat()
 		{
-			switch (Main.rand.Next(6))
+			// weighted chats?
+			string[] chats =
 			{
-				case 0:
-					return "Don't worry. Nobody will get out of the coffin that I have made.";
-				case 1:
-					return "Are you afraid of ghosts? I'm not. But the ghosts are afraid of me.";
-				case 2:
-					return "If you need some help then feel free to ask me. I have a lot of undead things on my side.";
-				case 3:
-					return "What will you prefer to do if this day will be your last day?";
-				case 4:
-					return "Our life is a challenge. To make it easier - buy my stuff.";
-				case 5:
-					return "Don't worry. I'm not a vampire even my eyes are red and my skin is of a strange color.";
-				default:
-					return "Do you prefer blood or tomato juice?";
-			}
+				"Don't worry. Nobody will get out of the coffin that I have made.",
+				"Are you afraid of ghosts? I'm not. But the ghosts are afraid of me.",
+				"If you need some help then feel free to ask me. I have a lot of undead things on my side.",
+				"If you need some help then feel free to ask me. I have a lot of undead things on my side.",
+				"If you need some help then feel free to ask me. I have a lot of undead things on my side.",
+				"What will you prefer to do if this day will be your last day?",
+				"Our life is a challenge. To make it easier - buy my stuff.",
+				"Don't worry. I'm not a vampire even my eyes are red and my skin is of a strange color.",
+				"Do you prefer blood or tomato juice?"
+			};
+			return chats.TakeRandom();
 		}
 
 		public override void SetChatButtons(ref string button, ref string button2)
@@ -113,17 +97,11 @@ namespace Tremor.NPCs
 
 		public override void SetupShop(Chest shop, ref int nextSlot)
 		{
-			shop.item[nextSlot].SetDefaults(mod.ItemType("Skullheart"));
-			nextSlot++;
-			shop.item[nextSlot].SetDefaults(mod.ItemType("SpearofJustice"));
-			nextSlot++;
-			shop.item[nextSlot].SetDefaults(mod.ItemType("TheGhostClaymore"));
-			nextSlot++;
+			shop.AddUniqueItem(ref nextSlot, mod.ItemType<Skullheart>());
+			shop.AddUniqueItem(ref nextSlot, mod.ItemType<SpearofJustice>());
+			shop.AddUniqueItem(ref nextSlot, mod.ItemType<TheGhostClaymore>());
 			if (!Main.dayTime)
-			{
-				shop.item[nextSlot].SetDefaults(mod.ItemType("LivingTombstone"));
-				nextSlot++;
-			}
+				shop.AddUniqueItem(ref nextSlot, mod.ItemType<LivingTombstone>());
 		}
 
 		public override void TownNPCAttackStrength(ref int damage, ref float knockback)
@@ -155,12 +133,10 @@ namespace Tremor.NPCs
 			if (npc.life <= 0)
 			{
 				for (int k = 0; k < 20; k++)
-				{
 					Dust.NewDust(npc.position, npc.width, npc.height, 151, 2.5f * hitDirection, -2.5f, 0, default(Color), 0.7f);
-				}
-				Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/TheUndertakerGore1"), 1f);
-				Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/TheUndertakerGore2"), 1f);
-				Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/TheUndertakerGore3"), 1f);
+
+				for (int i = 0; i < 3; i++)
+					Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot($"Gores/TheUndertakerGore{i+1}"), 1f);
 			}
 		}
 	}
