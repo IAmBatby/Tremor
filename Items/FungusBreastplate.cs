@@ -33,7 +33,7 @@ namespace Tremor.Items
 			player.rangedDamage += 0.13f;
 			player.thrownDamage += 0.13f;
 			player.minionDamage += 0.13f;
-			player.GetModPlayer<MPlayer>(mod).alchemistDamage += 0.13f;
+			player.GetModPlayer<MPlayer>(mod).alchemicalDamage += 0.13f;
 		}
 
 		public override void AddRecipes()

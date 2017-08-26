@@ -99,7 +99,7 @@ namespace Tremor
 							Rectangle rect = npc.getRect();
 							if (rectangle.Intersects(rect) && (npc.noTileCollide || Collision.CanHit(player.position, player.width, player.height, npc.position, npc.width, npc.height)))
 							{
-								float damage = 2f * player.GetModPlayer<MPlayer>(mod).alchemistDamage;
+								float damage = 2f * player.GetModPlayer<MPlayer>(mod).alchemicalDamage;
 								float knockback = 3f;
 								bool crit = false;
 

@@ -33,7 +33,7 @@ namespace Tremor.Ice.Items
 				player.rangedDamage += 0.06f;
 				player.magicDamage += 0.06f;
 				player.thrownDamage += 0.06f;
-				player.GetModPlayer<MPlayer>(mod).alchemistDamage += 0.06f;
+				player.GetModPlayer<MPlayer>(mod).alchemicalDamage += 0.06f;
 			}
 		}
 	}

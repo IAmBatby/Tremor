@@ -28,7 +28,7 @@ namespace Tremor.Items
 
 		public override void UpdateEquip(Player player)
 		{
-			player.GetModPlayer<MPlayer>(mod).alchemistDamage += 0.06f;
+			player.GetModPlayer<MPlayer>(mod).alchemicalDamage += 0.06f;
 		}
 
 		public override void AddRecipes()

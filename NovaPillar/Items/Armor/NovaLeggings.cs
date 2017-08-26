@@ -33,8 +33,8 @@ namespace Tremor.NovaPillar.Items.Armor
 
 		public override void UpdateEquip(Player player)
 		{
-			player.GetModPlayer<MPlayer>(mod).alchemistDamage += 0.18f;
-			player.GetModPlayer<MPlayer>(mod).alchemistCrit += 12;
+			player.GetModPlayer<MPlayer>(mod).alchemicalDamage += 0.18f;
+			player.GetModPlayer<MPlayer>(mod).alchemicalCrit += 12;
 			player.moveSpeed += 0.14f;
 			Lighting.AddLight((int)((player.position.X + player.width / 2) / 16f), (int)((player.position.Y + player.height / 2) / 16f), 0.8f, 0.7f, 0.3f);
 		}

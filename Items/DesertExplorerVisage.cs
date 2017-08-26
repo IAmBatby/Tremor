@@ -39,7 +39,7 @@ namespace Tremor.Items
 
 		public override void UpdateEquip(Player player)
 		{
-			player.GetModPlayer<MPlayer>(mod).alchemistCrit += 15;
+			player.GetModPlayer<MPlayer>(mod).alchemicalCrit += 15;
 		}
 
 		public override bool IsArmorSet(Item head, Item body, Item legs)

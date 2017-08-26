@@ -61,7 +61,7 @@ namespace Tremor.Items
 
 		int GetDamage()
 		{
-			return (10 * (int)Main.player[item.owner].GetModPlayer<MPlayer>(mod).alchemistDamage) + 50;
+			return (10 * (int)Main.player[item.owner].GetModPlayer<MPlayer>(mod).alchemicalDamage) + 50;
 		}
 
 		void Shoot(int Target, int Damage)

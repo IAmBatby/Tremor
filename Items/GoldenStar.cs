@@ -31,19 +31,19 @@ namespace Tremor.Items
 		{
 			if (player.statLife < 50)
 			{
-				player.GetModPlayer<MPlayer>(mod).alchemistDamage += 0.35f;
+				player.GetModPlayer<MPlayer>(mod).alchemicalDamage += 0.35f;
 			}
 			if (player.statLife < 100)
 			{
-				player.GetModPlayer<MPlayer>(mod).alchemistDamage += 0.25f;
+				player.GetModPlayer<MPlayer>(mod).alchemicalDamage += 0.25f;
 			}
 			if (player.statLife < 200)
 			{
-				player.GetModPlayer<MPlayer>(mod).alchemistDamage += 0.15f;
+				player.GetModPlayer<MPlayer>(mod).alchemicalDamage += 0.15f;
 			}
 			if (player.statLife < 300)
 			{
-				player.GetModPlayer<MPlayer>(mod).alchemistDamage += 0.05f;
+				player.GetModPlayer<MPlayer>(mod).alchemicalDamage += 0.05f;
 			}
 		}
 

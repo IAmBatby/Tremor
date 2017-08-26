@@ -42,7 +42,7 @@ namespace Tremor.Items
 
 		public override void UpdateEquip(Player player)
 		{
-			player.GetModPlayer<MPlayer>(mod).alchemistDamage += 0.2f;
+			player.GetModPlayer<MPlayer>(mod).alchemicalDamage += 0.2f;
 			player.thrownDamage += 0.25f;
 		}
 
@@ -54,7 +54,7 @@ namespace Tremor.Items
 		public override void UpdateArmorSet(Player player)
 		{
 			player.setBonus = "Creates dangerous alchemical bubbles and increases alchemic critical strike chance by 35";
-			player.GetModPlayer<MPlayer>(mod).alchemistCrit += 35;
+			player.GetModPlayer<MPlayer>(mod).alchemicalCrit += 35;
 
 			if (--TimeToShoot <= 0)
 			{

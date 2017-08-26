@@ -28,7 +28,7 @@ public class SpecterChestplate : ModItem
 
     public override void UpdateEquip(Player player)
     {
-        player.GetModPlayer<MPlayer>(mod).alchemistDamage += 0.2f;
+        player.GetModPlayer<MPlayer>(mod).alchemicalDamage += 0.2f;
             player.meleeDamage += 0.12f;
             player.maxMinions += 2;
     }

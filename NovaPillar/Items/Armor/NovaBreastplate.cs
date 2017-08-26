@@ -24,8 +24,8 @@ namespace Tremor.NovaPillar.Items.Armor
 
 		public override void UpdateEquip(Player player)
 		{
-			player.GetModPlayer<MPlayer>(mod).alchemistCrit += 20;
-			player.GetModPlayer<MPlayer>(mod).alchemistDamage += 0.25f;
+			player.GetModPlayer<MPlayer>(mod).alchemicalCrit += 20;
+			player.GetModPlayer<MPlayer>(mod).alchemicalDamage += 0.25f;
 			player.GetModPlayer<MPlayer>(mod).novaChestplate = true;
 			Lighting.AddLight((int)((item.position.X + item.width / 2) / 16f), (int)((item.position.Y + item.height / 2) / 16f), 0.0f, 1.27f, 0.64f);
 		}

@@ -32,14 +32,14 @@ namespace Tremor.Items
 			player.meleeDamage += 0.15f;
 			player.rangedDamage += 0.15f;
 			player.thrownDamage += 0.15f;
-			player.GetModPlayer<MPlayer>(mod).alchemistDamage += 0.15f;
+			player.GetModPlayer<MPlayer>(mod).alchemicalDamage += 0.15f;
 			player.statManaMax2 += 100;
 			player.statLifeMax2 += 100;
 			player.meleeCrit += 15;
 			player.magicCrit += 15;
 			player.rangedCrit += 15;
 			player.thrownCrit += 15;
-			player.GetModPlayer<MPlayer>(mod).alchemistCrit += 15;
+			player.GetModPlayer<MPlayer>(mod).alchemicalCrit += 15;
 		}
 
 		public override void AddRecipes()

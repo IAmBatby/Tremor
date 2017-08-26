@@ -32,22 +32,22 @@ namespace Tremor.Items
 			{
 				player.lifeRegen += 6;
 			}
-			player.GetModPlayer<MPlayer>(mod).alchemistCrit += 10;
+			player.GetModPlayer<MPlayer>(mod).alchemicalCrit += 10;
 			if (player.statLife <= player.statLifeMax2)
 			{
-				player.GetModPlayer<MPlayer>(mod).alchemistCrit += 10;
+				player.GetModPlayer<MPlayer>(mod).alchemicalCrit += 10;
 			}
 			if (player.statLife <= 400)
 			{
-				player.GetModPlayer<MPlayer>(mod).alchemistCrit += 15;
+				player.GetModPlayer<MPlayer>(mod).alchemicalCrit += 15;
 			}
 			if (player.statLife <= 300)
 			{
-				player.GetModPlayer<MPlayer>(mod).alchemistCrit += 20;
+				player.GetModPlayer<MPlayer>(mod).alchemicalCrit += 20;
 			}
 			if (player.statLife <= 200)
 			{
-				player.GetModPlayer<MPlayer>(mod).alchemistCrit += 25;
+				player.GetModPlayer<MPlayer>(mod).alchemicalCrit += 25;
 			}
 		}
 

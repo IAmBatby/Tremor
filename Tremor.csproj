@@ -781,7 +781,7 @@
     <Compile Include="Items\DarknessMask.cs" />
     <Compile Include="Items\DeadFlower.cs" />
     <Compile Include="Items\DeadHead.cs" />
-    <Compile Include="Items\DeadHeadII.cs" />
+    <Compile Include="Items\RoboticDeadHead.cs" />
     <Compile Include="Items\DeadlyTreats.cs" />
     <Compile Include="Items\DeadTissue.cs" />
     <Compile Include="Items\DeathBlaze.cs" />

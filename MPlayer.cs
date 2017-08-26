@@ -1,14 +1,22 @@
-﻿using Terraria.ModLoader;
+﻿using Terraria;
+using Terraria.ModLoader;
 
 namespace Tremor
 {
+	// Todo: transfer more to a general class
 	public class MPlayer : ModPlayer
 	{
-		// Our alchemist damage modifier. Every damage that is alchemist damage will be multiplied by this value,
-		// so if a weapon for example does 60 damage and we have 50% alchemist damage increase, it will be:
-		// 60 * 1.5 = 90 damage.
-		public float alchemistDamage;
-		public int alchemistCrit;
+		public static MPlayer GetModPlayer(Player player)
+			=> player.GetModPlayer<MPlayer>();
+
+		// Buffs and debuffs
+		public bool fragileContiion;
+
+		// Alchemist
+		public float alchemicalDamage;
+		public int alchemicalCrit;
+
+		// Undocumented
 		public bool pyro;
 		public bool nitro;
 		public bool spirit;
@@ -22,8 +30,14 @@ namespace Tremor
 
 		public override void ResetEffects()
 		{
-			alchemistDamage = 1;
-			alchemistCrit = 0;
+			// Buffs and debuffs
+			fragileContiion = false;
+
+			// Alchemist
+			alchemicalDamage = 1;
+			alchemicalCrit = 0;
+
+			// Undocumented
 			pyro = false;
 			nitro = false;
 			spirit = false;
@@ -34,6 +48,13 @@ namespace Tremor
 			novaSet = false;
 			novaHelmet = false;
 			novaChestplate = false;
+		}
+
+		public override void PostUpdateMiscEffects()
+		{
+			// Reset conditions
+			if (fragileContiion)
+				player.statDefense = 0;
 		}
 	}
 }

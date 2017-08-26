@@ -62,7 +62,7 @@ namespace Tremor.Items
 			player.magicCrit += 25;
 			player.rangedCrit += 25;
 			player.thrownCrit += 25;
-			player.GetModPlayer<MPlayer>(mod).alchemistCrit += 25;
+			player.GetModPlayer<MPlayer>(mod).alchemicalCrit += 25;
 		}
 
 		public override void ArmorSetShadows(Player player)

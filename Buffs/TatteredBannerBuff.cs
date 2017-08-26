@@ -20,7 +20,7 @@ namespace Tremor.Buffs
 			player.minionDamage += 0.25f;
 			player.magicDamage += 0.25f;
 			player.thrownDamage += 0.25f;
-			player.GetModPlayer<MPlayer>(mod).alchemistDamage += 0.25f;
+			player.GetModPlayer<MPlayer>(mod).alchemicalDamage += 0.25f;
 		}
 	}
 }

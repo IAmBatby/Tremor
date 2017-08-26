@@ -28,8 +28,8 @@ namespace Tremor.Items
 
 		public override void UpdateAccessory(Player player, bool hideVisual)
 		{
-			player.GetModPlayer<MPlayer>(mod).alchemistDamage += 0.12f;
-			player.GetModPlayer<MPlayer>(mod).alchemistCrit += 15;
+			player.GetModPlayer<MPlayer>(mod).alchemicalDamage += 0.12f;
+			player.GetModPlayer<MPlayer>(mod).alchemicalCrit += 15;
 		}
 
 		public override void AddRecipes()

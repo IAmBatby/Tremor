@@ -44,8 +44,8 @@ namespace Tremor.Items
 			player.maxRunSpeed += 0.15f;
 
 			MPlayer modPlayer = Main.LocalPlayer.GetModPlayer<MPlayer>(mod);
-			modPlayer.alchemistDamage += 0.04f;
-			modPlayer.alchemistCrit += 4;
+			modPlayer.alchemicalDamage += 0.04f;
+			modPlayer.alchemicalCrit += 4;
 		}
 
 		public override void AddRecipes()

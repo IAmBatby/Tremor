@@ -40,7 +40,7 @@ namespace Tremor.Items
 			player.magicCrit += 15;
 			player.rangedCrit += 15;
 			player.thrownCrit += 15;
-			player.GetModPlayer<MPlayer>(mod).alchemistCrit += 15;
+			player.GetModPlayer<MPlayer>(mod).alchemicalCrit += 15;
 		}
 
 		public override void AddRecipes()

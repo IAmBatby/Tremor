@@ -28,23 +28,23 @@ namespace Tremor.Items
 			modPlayer.zellariumBody = true;
 			player.lavaImmune = true;
 			player.ignoreWater = true;
-			player.GetModPlayer<MPlayer>(mod).alchemistDamage += 0.3f;
+			player.GetModPlayer<MPlayer>(mod).alchemicalDamage += 0.3f;
 			player.buffImmune[BuffID.CursedInferno] = true;
 			if (player.statLife <= player.statLifeMax2)
 			{
-				player.GetModPlayer<MPlayer>(mod).alchemistDamage += 0.3f;
+				player.GetModPlayer<MPlayer>(mod).alchemicalDamage += 0.3f;
 			}
 			if (player.statLife <= 400)
 			{
-				player.GetModPlayer<MPlayer>(mod).alchemistDamage += 0.4f;
+				player.GetModPlayer<MPlayer>(mod).alchemicalDamage += 0.4f;
 			}
 			if (player.statLife <= 300)
 			{
-				player.GetModPlayer<MPlayer>(mod).alchemistDamage += 0.5f;
+				player.GetModPlayer<MPlayer>(mod).alchemicalDamage += 0.5f;
 			}
 			if (player.statLife <= 200)
 			{
-				player.GetModPlayer<MPlayer>(mod).alchemistDamage += 0.6f;
+				player.GetModPlayer<MPlayer>(mod).alchemicalDamage += 0.6f;
 			}
 		}
 

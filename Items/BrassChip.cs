@@ -24,9 +24,9 @@ namespace Tremor.Items
 		public override void UpdateAccessory(Player player, bool hideVisual)
 		{
 			player.AddBuff(mod.BuffType("BrassChipBuff"), 2);
-			if (player.GetModPlayer<MPlayer>(mod).alchemistCrit >= 30)
+			if (player.GetModPlayer<MPlayer>(mod).alchemicalCrit >= 30)
 			{
-				player.GetModPlayer<MPlayer>(mod).alchemistDamage += 0.1f;
+				player.GetModPlayer<MPlayer>(mod).alchemicalDamage += 0.1f;
 			}
 		}
 	}

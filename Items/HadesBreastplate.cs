@@ -59,7 +59,7 @@ namespace Tremor.Items
 			player.rangedDamage += 0.45f;
 			player.magicDamage += 0.45f;
 			player.minionDamage += 0.45f;
-			player.GetModPlayer<MPlayer>(mod).alchemistDamage += 0.45f;
+			player.GetModPlayer<MPlayer>(mod).alchemicalDamage += 0.45f;
 		}
 	}
 }

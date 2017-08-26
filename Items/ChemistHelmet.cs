@@ -29,7 +29,7 @@ namespace Tremor.Items
 
 		public override void UpdateEquip(Player player)
 		{
-			player.GetModPlayer<MPlayer>(mod).alchemistDamage += 0.06f;
+			player.GetModPlayer<MPlayer>(mod).alchemicalDamage += 0.06f;
 		}
 
 		public override bool IsArmorSet(Item head, Item body, Item legs)
@@ -40,7 +40,7 @@ namespace Tremor.Items
 		public override void UpdateArmorSet(Player player)
 		{
 			player.setBonus = "Increases alchemic critical strike chance by 10%";
-			player.GetModPlayer<MPlayer>(mod).alchemistCrit += 10;
+			player.GetModPlayer<MPlayer>(mod).alchemicalCrit += 10;
 		}
 
 		public override void AddRecipes()

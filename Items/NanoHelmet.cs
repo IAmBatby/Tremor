@@ -38,7 +38,7 @@ namespace Tremor.Items
 			player.rangedCrit += 8;
 			player.magicCrit += 8;
 			player.thrownCrit += 8;
-			player.GetModPlayer<MPlayer>(mod).alchemistCrit += 8;
+			player.GetModPlayer<MPlayer>(mod).alchemicalCrit += 8;
 		}
 
 		public override bool IsArmorSet(Item head, Item body, Item legs)

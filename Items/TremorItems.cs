@@ -12,112 +12,112 @@ namespace Tremor.Items
 			//items damage
 			if (item.type == 1865)
 			{
-				player.GetModPlayer<MPlayer>(mod).alchemistDamage += 0.1f;
+				player.GetModPlayer<MPlayer>(mod).alchemicalDamage += 0.1f;
 			}
 			if (item.type == 3110)
 			{
-				player.GetModPlayer<MPlayer>(mod).alchemistDamage += 0.1f;
+				player.GetModPlayer<MPlayer>(mod).alchemicalDamage += 0.1f;
 			}
 			if (item.type == 899)
 			{
-				player.GetModPlayer<MPlayer>(mod).alchemistDamage += 0.1f;
+				player.GetModPlayer<MPlayer>(mod).alchemicalDamage += 0.1f;
 			}
 			if (item.type == 900)
 			{
-				player.GetModPlayer<MPlayer>(mod).alchemistDamage += 0.1f;
+				player.GetModPlayer<MPlayer>(mod).alchemicalDamage += 0.1f;
 			}
 			if (item.type == 935)
 			{
-				player.GetModPlayer<MPlayer>(mod).alchemistDamage += 0.12f;
+				player.GetModPlayer<MPlayer>(mod).alchemicalDamage += 0.12f;
 			}
 			if (item.type == 1301)
 			{
-				player.GetModPlayer<MPlayer>(mod).alchemistDamage += 0.1f;
+				player.GetModPlayer<MPlayer>(mod).alchemicalDamage += 0.1f;
 			}
 			if (item.type == 552)
 			{
-				player.GetModPlayer<MPlayer>(mod).alchemistDamage += 0.07f;
+				player.GetModPlayer<MPlayer>(mod).alchemicalDamage += 0.07f;
 			}
 			if (item.type == 1208)
 			{
-				player.GetModPlayer<MPlayer>(mod).alchemistDamage += 0.03f;
+				player.GetModPlayer<MPlayer>(mod).alchemicalDamage += 0.03f;
 			}
 			if (item.type == 1209)
 			{
-				player.GetModPlayer<MPlayer>(mod).alchemistDamage += 0.02f;
+				player.GetModPlayer<MPlayer>(mod).alchemicalDamage += 0.02f;
 			}
 			if (item.type == 379)
 			{
-				player.GetModPlayer<MPlayer>(mod).alchemistDamage += 0.05f;
+				player.GetModPlayer<MPlayer>(mod).alchemicalDamage += 0.05f;
 			}
 			if (item.type == 403)
 			{
-				player.GetModPlayer<MPlayer>(mod).alchemistDamage += 0.06f;
+				player.GetModPlayer<MPlayer>(mod).alchemicalDamage += 0.06f;
 			}
 			if (item.type == 1218)
 			{
-				player.GetModPlayer<MPlayer>(mod).alchemistDamage += 0.04f;
+				player.GetModPlayer<MPlayer>(mod).alchemicalDamage += 0.04f;
 			}
 			if (item.type == 1219)
 			{
-				player.GetModPlayer<MPlayer>(mod).alchemistDamage += 0.03f;
+				player.GetModPlayer<MPlayer>(mod).alchemicalDamage += 0.03f;
 			}
 			if (item.type == 1004)
 			{
-				player.GetModPlayer<MPlayer>(mod).alchemistDamage += 0.05f;
+				player.GetModPlayer<MPlayer>(mod).alchemicalDamage += 0.05f;
 			}
 			//items crit chance
 			if (item.type == 374)
 			{
-				player.GetModPlayer<MPlayer>(mod).alchemistCrit += 3;
+				player.GetModPlayer<MPlayer>(mod).alchemicalCrit += 3;
 			}
 			if (item.type == 1208)
 			{
-				player.GetModPlayer<MPlayer>(mod).alchemistCrit += 2;
+				player.GetModPlayer<MPlayer>(mod).alchemicalCrit += 2;
 			}
 			if (item.type == 1209)
 			{
-				player.GetModPlayer<MPlayer>(mod).alchemistCrit += 1;
+				player.GetModPlayer<MPlayer>(mod).alchemicalCrit += 1;
 			}
 			if (item.type == 380)
 			{
-				player.GetModPlayer<MPlayer>(mod).alchemistCrit += 5;
+				player.GetModPlayer<MPlayer>(mod).alchemicalCrit += 5;
 			}
 			if (item.type == 1213)
 			{
-				player.GetModPlayer<MPlayer>(mod).alchemistCrit += 6;
+				player.GetModPlayer<MPlayer>(mod).alchemicalCrit += 6;
 			}
 			if (item.type == 404)
 			{
-				player.GetModPlayer<MPlayer>(mod).alchemistCrit += 4;
+				player.GetModPlayer<MPlayer>(mod).alchemicalCrit += 4;
 			}
 			if (item.type == 1218)
 			{
-				player.GetModPlayer<MPlayer>(mod).alchemistCrit += 3;
+				player.GetModPlayer<MPlayer>(mod).alchemicalCrit += 3;
 			}
 			if (item.type == 1219)
 			{
-				player.GetModPlayer<MPlayer>(mod).alchemistCrit += 3;
+				player.GetModPlayer<MPlayer>(mod).alchemicalCrit += 3;
 			}
 			if (item.type == 3808)
 			{
-				player.GetModPlayer<MPlayer>(mod).alchemistCrit += 10;
+				player.GetModPlayer<MPlayer>(mod).alchemicalCrit += 10;
 			}
 			if (item.type == 551)
 			{
-				player.GetModPlayer<MPlayer>(mod).alchemistCrit += 7;
+				player.GetModPlayer<MPlayer>(mod).alchemicalCrit += 7;
 			}
 			if (item.type == 1004)
 			{
-				player.GetModPlayer<MPlayer>(mod).alchemistCrit += 7;
+				player.GetModPlayer<MPlayer>(mod).alchemicalCrit += 7;
 			}
 			if (item.type == 1317)
 			{
-				player.GetModPlayer<MPlayer>(mod).alchemistCrit += 8;
+				player.GetModPlayer<MPlayer>(mod).alchemicalCrit += 8;
 			}
 			if (item.type == 3873)
 			{
-				player.GetModPlayer<MPlayer>(mod).alchemistCrit += 30;
+				player.GetModPlayer<MPlayer>(mod).alchemicalCrit += 30;
 			}
 		}
 

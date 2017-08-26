@@ -10,9 +10,9 @@ namespace Tremor
 		public override void GetWeaponDamage(Player player, ref int damage)
 		{
 			MPlayer modPlayer = player.GetModPlayer<MPlayer>(mod);
-			// We want to multiply the damage we do by our alchemistDamage modifier.
+			// We want to multiply the damage we do by our alchemicalDamage modifier.
 			// todo: ? do we want magic damage to also have effect here?
-			damage = (int)(damage * modPlayer.alchemistDamage);
+			damage = (int)(damage * modPlayer.alchemicalDamage);
 		}
 
 		public override void ModifyTooltips(List<TooltipLine> tooltips)
@@ -23,16 +23,16 @@ namespace Tremor
 			{
 				if (tooltip.Name == "Damage")
 				{
-					tooltip.text = (int)(item.damage * modPlayer.alchemistDamage) + " alchemical damage";
+					tooltip.text = (int)(item.damage * modPlayer.alchemicalDamage) + " alchemical damage";
 				}
 
 				if (tooltip.Name == "CritChance")
 				{
-					tooltip.text = item.crit + modPlayer.alchemistCrit + "% critical strike chance";
+					tooltip.text = item.crit + modPlayer.alchemicalCrit + "% critical strike chance";
 				}
 			}
 
-			TooltipLine tip = new TooltipLine(mod, "Tremor:Tooltip", (item.crit + modPlayer.alchemistCrit) + "% critical strike chance");
+			TooltipLine tip = new TooltipLine(mod, "Tremor:Tooltip", (item.crit + modPlayer.alchemicalCrit) + "% critical strike chance");
 			tooltips.Insert(2, tip);
 		}
 

@@ -28,7 +28,7 @@ namespace Tremor.Items
 
 		public override void UpdateEquip(Player player)
 		{
-			player.GetModPlayer<MPlayer>(mod).alchemistDamage += 0.29f;
+			player.GetModPlayer<MPlayer>(mod).alchemicalDamage += 0.29f;
 		}
 
 		public override bool IsArmorSet(Item head, Item body, Item legs)
@@ -39,7 +39,7 @@ namespace Tremor.Items
 		public override void UpdateArmorSet(Player player)
 		{
 			player.setBonus = "Increases alchemic critical chance by 25% and summons a powerful leaf crystal to shoot at nearby enemies.";
-			player.GetModPlayer<MPlayer>(mod).alchemistCrit += 22;
+			player.GetModPlayer<MPlayer>(mod).alchemicalCrit += 22;
 			player.AddBuff(60, 60, true);
 		}
 
