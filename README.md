@@ -8,42 +8,44 @@ Thanks to all the collaborators, Tremor will remain available and bugs will be f
 
 # Latest changelogs
 
-## Changelogs for v1.3.2.2:
+## Changelogs for v1.3.2.3
+Please note that the Tremor wiki (by gamepedia) will no longer be endorsed by me, or anyone involving Tremor's development. By no means should this wiki be considered official, and I will advise against using it. I do not deem this wiki a reputable source of information anymore, and neither should you: if you have a question, you can ask me and I will give you an honest answer. 
+
 
 Fixes:
- - Fixed buff retextures not being unloaded (thanks jopojelly)
- - Fixed crab staff bad defaults, fixed Baby Slime+Crab desummon problem (thanks jopojelly)
- - Fixed issues for a ModWorld, potentially fixing load issues for certain worlds
- - Fixed the "Requesting World Information" bug
- - Fixed the Archer NPC hurting friendlies and not enemies
- - Fixed Motherboard drops, fixed Motherboard boss bag drops.
- -- All items can now drop their maximum amount (previously only maximum amount-1 was possible)
- -- The following items drop chance fixed from 50% to 100%: Soul of Plight, Greater Healing Potion, Hallowed Bar
- -- All drop fixes also apply to the boss bag. Boss bag also drops mechanical wagon piece (100%)
- -- Fixed CarbonSteel drop chance from guaranteed 50% to 100% in Tremode, 50% otherwise
- - Fixed Tiki Totem drops, fixed Tiki Totem boss bag drops
- -- Potions now drop 5-15 (previously 5-14)
- -- ToxicHilt drop chance fixed from 33% to 25%
- -- ToxicBlade drop chance fixed from 50% to 33%
- -- JungleAlloy drop chance fixed from 50% to 100%
- -- Potion drop chances fixed from 50% to 100%
- -- Boss bag drops all normal drops plus Tiki Skull
- - Fixed Tiki Totem and Motherboard treasure bag names and fixed their tooltips (now changes language)
- - Fixed Frost Liquid Flask having no crit chance
- - Fixed Toxic Flask having no crit chance
- - Fixed Shadow Flask not being an actual alchemist item, fixed it having no crit chance
- - Changed 'alchemic' damage to 'alchemical' damage
+ - Improved/fixed mod unload (thanks jopojelly)
+ - Fixed missing banner assignments (prep for future tml release) (thanks jopojelly)
+ - Fixed glowmask related errors for servers (thanks Rartrin)
+ - Bosss Heater of Worlds and Ancient Dragon no longer take knockback
+ - Now only Ancient dragon head shows in cheat sheet UI and not the other segments
+ - Fixed Tremor removing a recipe for Super Healing Potion
+ - Fixed Startrooper not being able to get the name 'Parker' and 'Lambert'
+ - Fixed Undertaker not being able to get the name 'Spots' and 'Hargon'
+ - (hopefully:silent changes) Fixed Startrooper and Undertaker allegedly moving in without having killed the required bosses
+ - Fixed the Glass Potion buff not resetting defense to 0
 
- Improvements:
- - Improved Tremor.cs code slightly
- - Improved Tremor player quest fish code
- - Improved Tremor player bad life regen code
+Other or specific notes:
+ - I added hooks to tML to allow for custom crit chance. This mean alchemical crit chance will be a thing when tML updates
+ - Glowmasks now support useStyle 5 (thanks Rartrin)
+ - Improved the Glass Potion (and buff) tooltip
 
- Notes:
- - Alchemist item crit chance is ONLY VISUAL, there's no normal way of altering crit chance in tML atm.
- - Motherboard code is still being reworked. Hopefully it can be included in the next patch.
- - Bosses will be looked at over time. They require a lot of work to be redone, have patience.
- - Thanks again to all contributors this patch, and also wiki editors for updating info.
+ - Robotic Dead Head and Dead Head
+ -- Fixed Dead Head accessory not granting throwing crit chance, and not granting alchemical damage and crit chance
+ -- Fixed Robotic Dead Head accessory nto granting throwing crit chance, and not granting alchemical damage and crit chance
+ -- Improved the tooltips for both Robotic Dead Head and Dead Head
+
+Motherboard improvements!
+ The code for Motherboards has been refactored and worked on.
+ Hopefully this means there are no more multiplayer issues, or at least less. Please let me know if you encounter any.
+ In addition to improvements, I have repurposed a lot of DD2 event sound effects in the boss fight to really improve on it. (thanks Skiphs for helping!)
+ You will see for yourself, the additions and changes to both visual and auditive effects during the fight.
+
+ - Fight changes
+ -- Signal drones' AI is improved. They will target a nearby player and home in on them in a grid like fashion. This works together with their attack. Because of this change, the drones themselves have a hefty cooldown for hitting players with a body attack.
+ -- The laser beams Motherboard shoots in her first phase now more accurately target the player, instead of random places
+
+ - Known issues
+ -- When Motherboard her two super laser beams in phase 2 have a long distance from the ground, it is known that this causes a hit on FPS. Try to fight her closer to the ground to avoid this issue, I hope I will be able to find the cause of this.
 
 # Report bugs
 Please make an [issue](https://github.com/Jofairden/Tremor/issues) to report the bug you found. Please check first if the mod has already been reported.
