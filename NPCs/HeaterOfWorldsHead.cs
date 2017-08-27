@@ -140,7 +140,7 @@ namespace Tremor.NPCs
 					? 430
 					: 490;
 
-			if (Helper.Chance(odds))
+			if (Main.rand.NextBool(odds)))
 			{
 				NPC.NewNPC((int)npc.Center.X - 70, (int)npc.Center.Y, mod.NPCType<MagmaLeechHead>());
 			}

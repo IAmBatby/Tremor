@@ -270,7 +270,7 @@ namespace Tremor.NPCs
 			}
 			if (Timer >= 1700 && Timer < 1775)
 			{
-				if (Helper.Chance(0.3f))
+				if (Main.rand.NextBool(3))
 				{
 					var ShootPos = Main.player[npc.target].position + new Vector2(Main.rand.Next(-1000, 1000), -1000);
 					var ShootVel = new Vector2(Main.rand.NextFloat(-3f, 3f), Main.rand.NextFloat(15f, 20f));
