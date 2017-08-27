@@ -58,11 +58,11 @@ namespace Tremor.NPCs
 		public override void NPCLoot()
 		{			
 			if (Main.rand.Next(3) == 0)
-				npc.SpawnItem((short)mod.ItemType<CarbonSteel>(), Main.rand.Next(1, 3));
+				npc.NewItem((short)mod.ItemType<CarbonSteel>(), Main.rand.Next(1, 3));
 			if (Main.rand.Next(5) == 0)
-				npc.SpawnItem((short)mod.ItemType<GoldenClaw>(), Main.rand.Next(1, 5));
+				npc.NewItem((short)mod.ItemType<GoldenClaw>(), Main.rand.Next(1, 5));
 			if (Main.rand.Next(10) == 0)
-				npc.SpawnItem((short)mod.ItemType<AngryShard>(), Main.rand.Next(1, 3));
+				npc.NewItem((short)mod.ItemType<AngryShard>(), Main.rand.Next(1, 3));
 		}
 
 		public override float SpawnChance(NPCSpawnInfo spawnInfo)

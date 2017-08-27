@@ -55,15 +55,15 @@ namespace Tremor.NPCs
 		public override void NPCLoot()
 		{
 			if (Main.rand.Next(25) == 0)
-				npc.SpawnItem((short)mod.ItemType<HeartofAtis>());
+				npc.NewItem((short)mod.ItemType<HeartofAtis>());
 			if (Main.rand.Next(25) == 0)
-				npc.SpawnItem((short)mod.ItemType<BoneMask>());
+				npc.NewItem((short)mod.ItemType<BoneMask>());
 			//if (Main.hardMode && Main.rand.Next(2) == 0)
-			//	npc.SpawnItem((short)mod.ItemType("RawMeat"));
+			//	npc.NewItem((short)mod.ItemType("RawMeat"));
 			if (Main.rand.NextBool())
-				npc.SpawnItem((short)mod.ItemType<AtisBlood>(), Main.rand.Next(1, 2));
+				npc.NewItem((short)mod.ItemType<AtisBlood>(), Main.rand.Next(1, 2));
 			if (Main.rand.Next(30) == 0)
-				npc.SpawnItem((short)ItemID.ChainKnife);
+				npc.NewItem((short)ItemID.ChainKnife);
 		}
 
 		public override float SpawnChance(NPCSpawnInfo spawnInfo)

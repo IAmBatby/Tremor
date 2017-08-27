@@ -38,13 +38,13 @@ namespace Tremor.NPCs
 		public override void NPCLoot()
 		{
 			if (Main.rand.Next(45) == 0)
-				npc.SpawnItem(ItemID.Hook);
+				npc.NewItem(ItemID.Hook);
 			if (Main.rand.NextBool())
-				npc.SpawnItem(ItemID.WoodenArrow, Main.rand.Next(1, 3));
+				npc.NewItem(ItemID.WoodenArrow, Main.rand.Next(1, 3));
 			if (Main.rand.Next(2) == 0)
-				npc.SpawnItem(ItemID.FlamingArrow, Main.rand.Next(1, 3));
+				npc.NewItem(ItemID.FlamingArrow, Main.rand.Next(1, 3));
 			if (Main.rand.Next(20) == 0)
-				npc.SpawnItem((short)mod.ItemType<TornPapyrus>());
+				npc.NewItem((short)mod.ItemType<TornPapyrus>());
 		}
 
 		public override void HitEffect(int hitDirection, double damage)

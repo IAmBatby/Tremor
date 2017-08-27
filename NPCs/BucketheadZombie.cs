@@ -49,7 +49,7 @@ namespace Tremor.NPCs
 
 		public override void NPCLoot()
 		{
-			npc.SpawnItem((short)mod.ItemType<UntreatedFlesh>());
+			npc.NewItem((short)mod.ItemType<UntreatedFlesh>());
 		}
 
 		public override float SpawnChance(NPCSpawnInfo spawnInfo)

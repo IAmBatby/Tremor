@@ -46,7 +46,7 @@ namespace Tremor.NPCs
 		public override void NPCLoot()
 		{
 			if (Main.rand.NextBool())
-				npc.SpawnItem((short)ItemID.JungleSpores, Main.rand.Next(1, 3));
+				npc.NewItem((short)ItemID.JungleSpores, Main.rand.Next(1, 3));
 		}
 
 		public override float SpawnChance(NPCSpawnInfo spawnInfo)

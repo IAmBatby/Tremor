@@ -69,9 +69,9 @@ namespace Tremor.NPCs
 		public override void NPCLoot()
 		{
 			if (Main.rand.Next(2) == 0)
-				npc.SpawnItem((short)mod.ItemType<Blasticyde>(), Main.rand.Next(1, 3));
+				npc.NewItem((short)mod.ItemType<Blasticyde>(), Main.rand.Next(1, 3));
 			if (Main.rand.NextBool())
-				npc.SpawnItem((short)mod.ItemType<LapisLazuli>(), Main.rand.Next(2, 4));
+				npc.NewItem((short)mod.ItemType<LapisLazuli>(), Main.rand.Next(2, 4));
 		}
 
 		public override float SpawnChance(NPCSpawnInfo spawnInfo)

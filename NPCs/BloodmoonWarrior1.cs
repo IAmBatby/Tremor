@@ -54,9 +54,9 @@ namespace Tremor.NPCs
 		public override void NPCLoot()
 		{
 			if (Main.rand.Next(25) == 0)
-				npc.SpawnItem((short)mod.ItemType<EvilCup>());
+				npc.NewItem((short)mod.ItemType<EvilCup>());
 			if (Main.rand.Next(25) == 0)
-				npc.SpawnItem((short)mod.ItemType<TornPapyrus>());
+				npc.NewItem((short)mod.ItemType<TornPapyrus>());
 		}
 
 		public override float SpawnChance(NPCSpawnInfo spawnInfo)
