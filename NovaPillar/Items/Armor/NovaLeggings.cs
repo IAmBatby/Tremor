@@ -22,7 +22,7 @@ namespace Tremor.NovaPillar.Items.Armor
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Nova Leggings");
-			Tooltip.SetDefault("Increases alchemical damage by 18%\nIncreases alchemical critical strike chance by 12\nIncreases movement speed by 14%");
+			Tooltip.SetDefault("Increases alchemical damage by 18% and critical strike chance by 12%\nIncreases movement speed by 14%");
 		}
 
 
@@ -36,6 +36,7 @@ namespace Tremor.NovaPillar.Items.Armor
 			player.GetModPlayer<MPlayer>(mod).alchemicalDamage += 0.18f;
 			player.GetModPlayer<MPlayer>(mod).alchemicalCrit += 12;
 			player.moveSpeed += 0.14f;
+			player.maxRunSpeed += 0.14f;
 			Lighting.AddLight((int)((player.position.X + player.width / 2) / 16f), (int)((player.position.Y + player.height / 2) / 16f), 0.8f, 0.7f, 0.3f);
 		}
 

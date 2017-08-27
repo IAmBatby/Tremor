@@ -7,14 +7,10 @@ namespace Tremor.NovaPillar.Items.Armor
 	[AutoloadEquip(EquipType.Head)]
 	public class NovaHelmet : ModItem
 	{
-
 		public override void SetDefaults()
 		{
-
 			item.width = 28;
 			item.height = 30;
-
-
 			item.rare = 10;
 			item.defense = 14;
 		}
@@ -22,9 +18,8 @@ namespace Tremor.NovaPillar.Items.Armor
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Nova Helmet");
-			Tooltip.SetDefault("Increases alchemical damage by 12%\nIncreases alchemical critical strike chance by 12\nEnemies are more likely to target you");
+			Tooltip.SetDefault("Increases alchemical damage and critical strike chance by 12%\nEnemies are more likely to target you");
 		}
-
 
 		public override void UpdateEquip(Player player)
 		{
