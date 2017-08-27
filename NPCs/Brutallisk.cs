@@ -108,6 +108,13 @@ namespace Tremor.NPCs
 				timer3 = 0;
 				timer4 = 0;
 			}
+
+			// Boss Minion spawning.
+			int XOffset = 1200;
+			int YOffset = 1200;
+			if (Main.rand.Next(190) == 0)
+				NPC.NewNPC((int)player.Center.X + XOffset, (int)player.Center.Y - YOffset, mod.NPCType<Quetzalcoatl>());
+
 			timer++;
 			if (timer <= 1000)
 			{

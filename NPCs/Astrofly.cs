@@ -1,7 +1,11 @@
-using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+
+using Microsoft.Xna.Framework;
+
+using Tremor.Items;
+using Tremor.Tiles;
 
 namespace Tremor.NPCs
 {
@@ -35,36 +39,12 @@ namespace Tremor.NPCs
 			// Todo: bannerItem = mod.ItemType("AstroflyBanner");
 		}
 
-		public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
-		{
-			npc.lifeMax = npc.lifeMax * 1;
-			npc.damage = npc.damage * 1;
-		}
-
 		public override void NPCLoot()
 		{
-			if (Main.netMode != 1)
-			{
-				int centerX = (int)(npc.position.X + npc.width / 2) / 16;
-				int centerY = (int)(npc.position.Y + npc.height / 2) / 16;
-				int halfLength = npc.width / 2 / 16 + 1;
-				if (Main.rand.Next(2) == 0)
-				{
-					Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("CometiteOre"), Main.rand.Next(2, 5));
-				}
-				if (Main.rand.Next(6) == 0)
-				{
-					Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("HardCometiteOre"), Main.rand.Next(1, 3));
-				}
-			}
-		}
-
-		public override float SpawnChance(NPCSpawnInfo spawnInfo)
-		{
-			int x = spawnInfo.spawnTileX;
-			int y = spawnInfo.spawnTileY;
-			int tile = Main.tile[x, y].type;
-			return spawnInfo.spawnTileY < Main.rockLayer && NPC.downedMoonlord && tile == mod.TileType("CometiteOreTile") || tile == mod.TileType("HardCometiteOreTile") ? 0.005f : 0f;
+			if (Main.rand.Next(2) == 0)
+				npc.SpawnItem((short)mod.ItemType<CometiteOre>(), Main.rand.Next(2, 5));
+			if (Main.rand.Next(6) == 0)
+				npc.SpawnItem((short)mod.ItemType<HardCometiteOre>(), Main.rand.Next(1, 3));
 		}
 
 		public override void HitEffect(int hitDirection, double damage)
@@ -97,7 +77,10 @@ namespace Tremor.NPCs
 			}
 		}
 
-
-
+		public override float SpawnChance(NPCSpawnInfo spawnInfo)
+		{
+			int tile = Main.tile[spawnInfo.spawnTileX, spawnInfo.spawnTileY].type;
+			return spawnInfo.spawnTileY < Main.rockLayer && NPC.downedMoonlord && tile == mod.TileType<CometiteOreTile>() || tile == mod.TileType<HardCometiteOreTile>() ? 0.005f : 0f;
+		}
 	}
 }

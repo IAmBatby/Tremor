@@ -1,8 +1,12 @@
 using System.Linq;
-using Microsoft.Xna.Framework;
+
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+
+using Microsoft.Xna.Framework;
+
+using Tremor.Items;
 
 namespace Tremor.NPCs
 {
@@ -50,8 +54,7 @@ namespace Tremor.NPCs
 		}
 
 		public override bool CanTownNPCSpawn(int numTownNPCs, int money)
-			=> Main.player.Any(player => player.active);
-
+			=> Main.player.Any(player => player.dead);
 
 		public override string TownNPCName()
 		{
@@ -64,7 +67,7 @@ namespace Tremor.NPCs
 				"Robin",
 				"Wales"
 			};
-			return names[Main.rand.Next(names.Length)];
+			return names.TakeRandom();
 		}
 
 		public override string GetChat()
@@ -78,7 +81,7 @@ namespace Tremor.NPCs
 				"Guns? Guns are for cowards!",
 				"You don't need to make arrows. You need to buy them!"
 			};
-			return chats[Main.rand.Next(chats.Length)];
+			return chats.TakeRandom();
 		}
 
 		public override void SetChatButtons(ref string button, ref string button2)
@@ -88,50 +91,35 @@ namespace Tremor.NPCs
 
 		public override void OnChatButtonClicked(bool firstButton, ref bool shop)
 		{
-			if (firstButton)
-			{
-				shop = true;
-			}
+			shop = firstButton;
 		}
 
 		public override void SetupShop(Chest shop, ref int nextSlot)
 		{
-			shop.item[nextSlot].SetDefaults(40);
-			nextSlot++;
-			shop.item[nextSlot].SetDefaults(mod.ItemType("ArcherGlove"));
-			nextSlot++;
-			shop.item[nextSlot].SetDefaults(mod.ItemType("Crossbow"));
-			nextSlot++;
+			shop.item[nextSlot].SetDefaults(ItemID.WoodenArrow);
+			shop.item[nextSlot].SetDefaults(mod.ItemType<ArcherGlove>());
+			shop.item[nextSlot].SetDefaults(mod.ItemType<Crossbow>());
+
 			if (NPC.downedBoss1)
 			{
-				shop.item[nextSlot].SetDefaults(mod.ItemType("Quiver"));
-				nextSlot++;
-				shop.item[nextSlot].SetDefaults(mod.ItemType("MiniGun"));
-				nextSlot++;
-				shop.item[nextSlot].SetDefaults(51);
-				nextSlot++;
+				shop.item[nextSlot].SetDefaults(mod.ItemType<Quiver>());
+				shop.item[nextSlot].SetDefaults(mod.ItemType<MiniGun>());
+				shop.item[nextSlot].SetDefaults(ItemID.JestersArrow);
 			}
 			if (NPC.downedBoss2)
 			{
-				shop.item[nextSlot].SetDefaults(mod.ItemType("DragonGem"));
-				nextSlot++;
-				shop.item[nextSlot].SetDefaults(47);
-				nextSlot++;
+				shop.item[nextSlot].SetDefaults(ItemID.UnholyArrow);
+				shop.item[nextSlot].SetDefaults(mod.ItemType<DragonGem>());
 			}
 
 			if (Main.hardMode)
 			{
-				shop.item[nextSlot].SetDefaults(516);
-				nextSlot++;
-				shop.item[nextSlot].SetDefaults(265);
-				nextSlot++;
+				shop.item[nextSlot].SetDefaults(ItemID.HolyArrow);
+				shop.item[nextSlot].SetDefaults(ItemID.HellfireArrow);
 			}
 
 			if (Main.bloodMoon)
-			{
-				shop.item[nextSlot].SetDefaults(3003);
-				nextSlot++;
-			}
+				shop.item[nextSlot].SetDefaults(ItemID.BoneArrow);
 		}
 
 		public override void TownNPCAttackStrength(ref int damage, ref float knockback)
@@ -149,38 +137,30 @@ namespace Tremor.NPCs
 		public override void DrawTownAttackGun(ref float scale, ref int item, ref int closeness) //Allows you to customize how this town NPC's weapon is drawn when this NPC is shooting (this NPC must have an attack type of 1). Scale is a multiplier for the item's drawing size, item is the ID of the item to be drawn, and closeness is how close the item should be drawn to the NPC.
 		{
 			scale = 1f;
-			item = !Main.hardMode
-				? 44 : 3052;
+			item = !Main.hardMode ? ItemID.DemonBow : ItemID.ShadowFlameBow;
 			closeness = 20;
 		}
 
 		public override void TownNPCAttackProj(ref int projType, ref int attackDelay)//Allows you to determine the projectile type of this town NPC's attack, and how long it takes for the projectile to actually appear
 		{
-			projType = !Main.hardMode
-				? ProjectileID.FireArrow : ProjectileID.ShadowFlameArrow;
+			projType = !Main.hardMode ? ProjectileID.FireArrow : ProjectileID.ShadowFlameArrow;
 			attackDelay = 1;
 		}
 
 		public override void TownNPCAttackProjSpeed(ref float multiplier, ref float gravityCorrection, ref float randomOffset)//Allows you to determine the speed at which this town NPC throws a projectile when it attacks. Multiplier is the speed of the projectile, gravityCorrection is how much extra the projectile gets thrown upwards, and randomOffset allows you to randomize the projectile's velocity in a square centered around the original velocity
 		{
 			multiplier = 7f;
-			// randomOffset = 4f;
-
 		}
-
-
 
 		public override void HitEffect(int hitDirection, double damage)
 		{
 			if (npc.life <= 0)
 			{
 				for (int k = 0; k < 20; k++)
-				{
 					Dust.NewDust(npc.position, npc.width, npc.height, 151, 2.5f * hitDirection, -2.5f, 0, default(Color), 0.7f);
-				}
-				Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/ArcherGore1"), 1f);
-				Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/ArcherGore2"), 1f);
-				Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/ArcherGore3"), 1f);
+
+				for(int i = 0; i < 3; ++i)
+					Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot($"Gores/ArcherGore{i+1}"), 1f);
 			}
 		}
 	}
