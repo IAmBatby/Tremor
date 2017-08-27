@@ -23,7 +23,7 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Chemist Helmet");
-			Tooltip.SetDefault("Increases alchemic damage by 6%");
+			Tooltip.SetDefault("Increases alchemical damage by 6%");
 		}
 
 
@@ -39,7 +39,7 @@ namespace Tremor.Items
 
 		public override void UpdateArmorSet(Player player)
 		{
-			player.setBonus = "Increases alchemic critical strike chance by 10%";
+			player.setBonus = "Increases alchemical critical strike chance by 10%";
 			player.GetModPlayer<MPlayer>(mod).alchemicalCrit += 10;
 		}
 

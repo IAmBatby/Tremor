@@ -22,7 +22,7 @@ namespace Tremor.NovaPillar.Items.Armor
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Nova Helmet");
-			Tooltip.SetDefault("Increases alchemic damage by 12%\nIncreases alchemic critical strike chance by 12\nEnemies are more likely to target you");
+			Tooltip.SetDefault("Increases alchemical damage by 12%\nIncreases alchemical critical strike chance by 12\nEnemies are more likely to target you");
 		}
 
 
@@ -41,7 +41,7 @@ namespace Tremor.NovaPillar.Items.Armor
 
 		public override void UpdateArmorSet(Player player)
 		{
-			player.setBonus = "Increases alchemic damage by 15% and summons alchemical cauldron to protect you";
+			player.setBonus = "Increases alchemical damage by 15% and summons alchemical cauldron to protect you";
 			player.GetModPlayer<MPlayer>(mod).alchemicalDamage += 0.15f;
 			player.GetModPlayer<MPlayer>(mod).novaSet = true;
 			if (player.ownedProjectileCounts[mod.ProjectileType("NovaCauldron")] < 1)

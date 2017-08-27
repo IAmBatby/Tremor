@@ -19,7 +19,7 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Cursed Cauldron");
-			Tooltip.SetDefault("Increases alchemic damage by 15\nIncreases alchemic critical strike chance by 20\nAlchemic weapons confuse enemies");
+			Tooltip.SetDefault("Increases alchemical damage by 15\nIncreases alchemical critical strike chance by 20\nAlchemic weapons confuse enemies");
 			Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(8, 4));
 		}
 

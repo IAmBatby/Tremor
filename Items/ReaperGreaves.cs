@@ -22,7 +22,7 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Reaper Greaves");
-			Tooltip.SetDefault("Increases alchemic damage by 15%");
+			Tooltip.SetDefault("Increases alchemical damage by 15%");
 		}
 
 

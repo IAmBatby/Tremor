@@ -19,7 +19,7 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Alchemist Emblem");
-			Tooltip.SetDefault("15% increased alchemic damage");
+			Tooltip.SetDefault("15% increased alchemical damage");
 		}
 
 

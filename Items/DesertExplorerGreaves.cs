@@ -23,7 +23,7 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Desert Explorer Greaves");
-			Tooltip.SetDefault("Increases alchemic damage by 11%\nIncreases movement speed by 30%");
+			Tooltip.SetDefault("Increases alchemical damage by 11%\nIncreases movement speed by 30%");
 			TremorGlowMask.AddGlowMask(item.type, "Tremor/Items/DesertExplorerGreaves_LegsGlow");
 		}
 

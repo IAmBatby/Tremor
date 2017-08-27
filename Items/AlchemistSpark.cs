@@ -22,7 +22,7 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Alchemist Spark");
-			Tooltip.SetDefault("3% increased alchemic damage\nIncreases alchemic critical strike chance by 8");
+			Tooltip.SetDefault("3% increased alchemical damage\nIncreases alchemical critical strike chance by 8");
 			Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(6, 4));
 		}
 

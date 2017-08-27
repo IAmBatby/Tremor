@@ -19,7 +19,7 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("White Master Chestplate");
-			Tooltip.SetDefault("Massively increases alchemic damage as health lowers\nIncreases alchemic damage by 30%\nEnemy attacks have 10% chance to do no damage to you\nImmune to cursed inferno, lava, and can move through liquids");
+			Tooltip.SetDefault("Massively increases alchemical damage as health lowers\nIncreases alchemical damage by 30%\nEnemy attacks have 10% chance to do no damage to you\nImmune to cursed inferno, lava, and can move through liquids");
 		}
 
 		public override void UpdateEquip(Player player)

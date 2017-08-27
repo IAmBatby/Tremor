@@ -8,7 +8,7 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Brass Chip");
-			Tooltip.SetDefault("Shoots rockets from the sky when a flask is destroyed\nIf alchemic critical strike chance is more than 30 - alchemical damage is increased by 10%");
+			Tooltip.SetDefault("Shoots rockets from the sky when a flask is destroyed\nIf alchemical critical strike chance is more than 30 - alchemical damage is increased by 10%");
 		}
 
 		public override void SetDefaults()

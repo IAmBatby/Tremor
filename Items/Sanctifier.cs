@@ -23,7 +23,7 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Sanctifier");
-			Tooltip.SetDefault("Increases alchemic and throwing damage by 15%");
+			Tooltip.SetDefault("Increases alchemical and throwing damage by 15%");
 		}
 
 

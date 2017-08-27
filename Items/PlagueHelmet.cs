@@ -23,7 +23,7 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Plague Helmet");
-			Tooltip.SetDefault("Increases alchemic damage by 10%");
+			Tooltip.SetDefault("Increases alchemical damage by 10%");
 		}
 
 
@@ -39,7 +39,7 @@ namespace Tremor.Items
 
 		public override void UpdateArmorSet(Player player)
 		{
-			player.setBonus = "Increases size of alchemic clouds";
+			player.setBonus = "Increases size of alchemical clouds";
 			player.AddBuff(mod.BuffType("FlaskExpansionBuff"), 2);
 		}
 

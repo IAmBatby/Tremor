@@ -21,7 +21,7 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Chemist Jacket");
-			Tooltip.SetDefault("Increases alchemic damage by 6%");
+			Tooltip.SetDefault("Increases alchemical damage by 6%");
 		}
 
 

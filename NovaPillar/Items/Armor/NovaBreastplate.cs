@@ -18,7 +18,7 @@ namespace Tremor.NovaPillar.Items.Armor
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Nova Breastplate");
-			Tooltip.SetDefault("Increases alchemic damage by 25%\nIncreases alchemic critical strike chance by 20\nGrants 40% chance to not consume flasks");
+			Tooltip.SetDefault("Increases alchemical damage by 25%\nIncreases alchemical critical strike chance by 20\nGrants 40% chance to not consume flasks");
 		}
 
 

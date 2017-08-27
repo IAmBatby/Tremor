@@ -24,7 +24,7 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Shadow Master Pants");
-			Tooltip.SetDefault("Increases alchemic damage by 25%\nIncreases throwing damage by 15%");
+			Tooltip.SetDefault("Increases alchemical damage by 25%\nIncreases throwing damage by 15%");
 		}
 
 

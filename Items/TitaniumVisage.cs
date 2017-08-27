@@ -22,7 +22,7 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Titanium Visage");
-			Tooltip.SetDefault("Increases alchemic damage by 24%");
+			Tooltip.SetDefault("Increases alchemical damage by 24%");
 		}
 
 
@@ -38,7 +38,7 @@ namespace Tremor.Items
 
 		public override void UpdateArmorSet(Player player)
 		{
-			player.setBonus = "Increases alchemic critical strike chance by 20% and become invulnerable after striking an enemy";
+			player.setBonus = "Increases alchemical critical strike chance by 20% and become invulnerable after striking an enemy";
 			player.GetModPlayer<MPlayer>(mod).alchemicalCrit += 20;
 			player.onHitDodge = true;
 		}

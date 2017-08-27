@@ -22,7 +22,7 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Hallowed Visage");
-			Tooltip.SetDefault("Increases alchemic damage by 27%");
+			Tooltip.SetDefault("Increases alchemical damage by 27%");
 		}
 
 
@@ -38,7 +38,7 @@ namespace Tremor.Items
 
 		public override void UpdateArmorSet(Player player)
 		{
-			player.setBonus = "Increases alchemic critical chance by 23%";
+			player.setBonus = "Increases alchemical critical chance by 23%";
 			player.GetModPlayer<MPlayer>(mod).alchemicalCrit += 23;
 		}
 

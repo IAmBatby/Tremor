@@ -21,7 +21,7 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Hazardous Chemicals");
-			Tooltip.SetDefault("Increases alchemic damage by 5%");
+			Tooltip.SetDefault("Increases alchemical damage by 5%");
 		}
 
 
