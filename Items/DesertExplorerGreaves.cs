@@ -23,7 +23,7 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Desert Explorer Greaves");
-			Tooltip.SetDefault("Increases alchemical damage by 11%\nIncreases movement speed by 30%");
+			Tooltip.SetDefault("Increases alchemical damage by 16%\nIncreases movement speed by 30%");
 			TremorGlowMask.AddGlowMask(item.type, "Tremor/Items/DesertExplorerGreaves_LegsGlow");
 		}
 
@@ -32,6 +32,7 @@ namespace Tremor.Items
 		{
 			player.GetModPlayer<MPlayer>(mod).alchemicalDamage += 0.16f;
 			player.moveSpeed += 0.3f;
+			player.maxRunSpeed += 0.3f;
 		}
 
 		public override void DrawArmorColor(Player drawPlayer, float shadow, ref Color color, ref int glowMask, ref Color glowMaskColor)
