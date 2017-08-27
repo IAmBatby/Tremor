@@ -242,7 +242,6 @@
     <Compile Include="NovaPillar\Projectiles\NovaSkullburst.cs" />
     <Compile Include="NovaPillar\Tiles\NovaBlock.cs" />
     <Compile Include="NovaPillar\Tiles\NovaMonolithTile.cs" />
-    <Compile Include="TremorGlobalItem.cs" />
     <Compile Include="Gores\IceDroplet.cs" />
     <Compile Include="Helper.cs" />
     <Compile Include="Ice\Dungeon\DungeonBlock.cs" />
