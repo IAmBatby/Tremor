@@ -42,7 +42,7 @@ namespace Tremor.NPCs
 		public override void NPCLoot()
 		{
 			if (Main.rand.NextBool())
-				npc.SpawnItem(mod.ItemType<MinotaurHorn>());
+				npc.NewItem(mod.ItemType<MinotaurHorn>());
 		}
 
 		public override void HitEffect(int hitDirection, double damage)

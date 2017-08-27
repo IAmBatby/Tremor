@@ -64,15 +64,15 @@ namespace Tremor.NPCs
 		public override void NPCLoot()
 		{
 			if (Main.rand.Next(20) == 0)
-				npc.SpawnItem(mod.ItemType<DarkDruidMask>());
+				npc.NewItem(mod.ItemType<DarkDruidMask>());
 			if (Main.rand.Next(8) == 0)
-				npc.SpawnItem(ItemID.Ruby);
+				npc.NewItem(ItemID.Ruby);
 			if (Main.rand.Next(8) == 0)
-				npc.SpawnItem(ItemID.Topaz);
+				npc.NewItem(ItemID.Topaz);
 			if (Main.rand.Next(8) == 0)
-				npc.SpawnItem(ItemID.Diamond);
+				npc.NewItem(ItemID.Diamond);
 			if (Main.rand.NextBool())
-				npc.SpawnItem(mod.ItemType<TearsofDeath>(), Main.rand.Next(1, 5));
+				npc.NewItem(mod.ItemType<TearsofDeath>(), Main.rand.Next(1, 5));
 		}
 
 		public override float SpawnChance(NPCSpawnInfo spawnInfo)

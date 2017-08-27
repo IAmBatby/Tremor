@@ -44,9 +44,9 @@ namespace Tremor.NPCs
 		public override void NPCLoot()
 		{
 			if (Main.rand.NextBool())
-				npc.SpawnItem(mod.ItemType<GiantShell>(), Main.rand.Next(1, 3));
+				npc.NewItem(mod.ItemType<GiantShell>(), Main.rand.Next(1, 3));
 			if (Main.rand.Next(3) == 0)
-				npc.SpawnItem(mod.ItemType<LostTurtleKnife>(), Main.rand.Next(10, 55));
+				npc.NewItem(mod.ItemType<LostTurtleKnife>(), Main.rand.Next(10, 55));
 		}
 
 		public override void HitEffect(int hitDirection, double damage)

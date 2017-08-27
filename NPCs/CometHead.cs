@@ -41,9 +41,9 @@ namespace Tremor.NPCs
 		public override void NPCLoot()
 		{
 			if (Main.rand.Next(2) == 0)
-				npc.SpawnItem(mod.ItemType<CometiteOre>());
+				npc.NewItem(mod.ItemType<CometiteOre>());
 			if (Main.rand.Next(5) == 0)
-				npc.SpawnItem(mod.ItemType<ChargedCrystal>());
+				npc.NewItem(mod.ItemType<ChargedCrystal>());
 		}
 
 		public override void HitEffect(int hitDirection, double damage)

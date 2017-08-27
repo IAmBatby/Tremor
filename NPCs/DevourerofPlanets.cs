@@ -40,11 +40,11 @@ namespace Tremor.NPCs
 		public override void NPCLoot()
 		{
 			if (Main.rand.NextBool())
-				npc.SpawnItem(mod.ItemType<HuskofDusk>(), Main.rand.Next(2, 5));
+				npc.NewItem(mod.ItemType<HuskofDusk>(), Main.rand.Next(2, 5));
 			if (Main.rand.Next(10) == 0)
-				npc.SpawnItem(mod.ItemType<EyeofOblivion>());
+				npc.NewItem(mod.ItemType<EyeofOblivion>());
 			if (Main.rand.Next(3) == 0)
-				npc.SpawnItem(mod.ItemType<NightCore>());
+				npc.NewItem(mod.ItemType<NightCore>());
 		}
 
 		public override void HitEffect(int hitDirection, double damage)

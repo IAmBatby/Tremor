@@ -37,9 +37,9 @@ namespace Tremor.NPCs
 		public override void NPCLoot()
 		{
 			if (Main.rand.Next(6) == 0)
-				npc.SpawnItem(ItemID.MagicHat);
+				npc.NewItem(ItemID.MagicHat);
 			if (Main.rand.Next(20) == 0)
-				npc.SpawnItem(mod.ItemType<TornPapyrus>());
+				npc.NewItem(mod.ItemType<TornPapyrus>());
 		}
 
 		public override void HitEffect(int hitDirection, double damage)

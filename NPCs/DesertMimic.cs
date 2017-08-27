@@ -32,9 +32,9 @@ namespace Tremor.NPCs
 		{
 			// Don't know what to do with this loot table.
 			Helper.DropItems(npc.position, npc.Size, new Drop(mod.ItemType("AntlionFury"), 1, 1), new Drop(mod.ItemType("Hurricane"), 1, 2), new Drop(mod.ItemType("SandShuriken"), 1, 2), new Drop(mod.ItemType("CrawlerHook"), 1, 1));
-			npc.SpawnItem(ItemID.GreaterHealingPotion, Main.rand.Next(10));
-			npc.SpawnItem(ItemID.GreaterManaPotion, Main.rand.Next(10));
-			npc.SpawnItem(ItemID.GoldenKey);
+			npc.NewItem(ItemID.GreaterHealingPotion, Main.rand.Next(10));
+			npc.NewItem(ItemID.GreaterManaPotion, Main.rand.Next(10));
+			npc.NewItem(ItemID.GoldenKey);
 		}
 
 		public override float SpawnChance(NPCSpawnInfo spawnInfo)

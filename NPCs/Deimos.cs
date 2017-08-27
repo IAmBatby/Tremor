@@ -50,11 +50,11 @@ namespace Tremor.NPCs
 		public override void NPCLoot()
 		{
 			if (Main.rand.NextBool())
-				npc.SpawnItem(mod.ItemType<EyeofOblivion>());
+				npc.NewItem(mod.ItemType<EyeofOblivion>());
 			if (Main.rand.NextBool())
-				npc.SpawnItem(mod.ItemType<CarbonSteel>(), Main.rand.Next(2, 15));
+				npc.NewItem(mod.ItemType<CarbonSteel>(), Main.rand.Next(2, 15));
 			if (Main.rand.NextBool())
-				npc.SpawnItem(mod.ItemType<ToothofAbraxas>(), Main.rand.Next(2, 16));
+				npc.NewItem(mod.ItemType<ToothofAbraxas>(), Main.rand.Next(2, 16));
 		}
 
 		public override void HitEffect(int hitDirection, double damage)

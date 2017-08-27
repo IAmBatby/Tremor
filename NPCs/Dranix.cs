@@ -42,7 +42,7 @@ namespace Tremor.NPCs
 		public override void NPCLoot()
 		{
 			if (Main.rand.Next(2) == 0)
-				npc.SpawnItem(mod.ItemType<Doomstone>());
+				npc.NewItem(mod.ItemType<Doomstone>());
 		}
 
 		public override void HitEffect(int hitDirection, double damage)

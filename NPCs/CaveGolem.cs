@@ -52,7 +52,7 @@ namespace Tremor.NPCs
 
 		public override void NPCLoot()
 		{
-			npc.SpawnItem(mod.ItemType<ColossusSword>());
+			npc.NewItem(mod.ItemType<ColossusSword>());
 		}
 
 		public override float SpawnChance(NPCSpawnInfo spawnInfo)

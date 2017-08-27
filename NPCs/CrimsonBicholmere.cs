@@ -50,7 +50,7 @@ namespace Tremor.NPCs
 		public override void NPCLoot()
 		{
 			if (Main.rand.NextBool())
-				npc.SpawnItem(ItemID.Vertebrae);
+				npc.NewItem(ItemID.Vertebrae);
 		}
 
 		public override float SpawnChance(NPCSpawnInfo spawnInfo)

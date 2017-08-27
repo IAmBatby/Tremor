@@ -40,7 +40,7 @@ namespace Tremor.NPCs
 		public override void NPCLoot()
 		{
 			if (Main.rand.NextBool())
-				npc.SpawnItem(mod.ItemType<DragonBreath>(), Main.rand.Next(30, 40));
+				npc.NewItem(mod.ItemType<DragonBreath>(), Main.rand.Next(30, 40));
 		}
 
 		public override void HitEffect(int hitDirection, double damage)

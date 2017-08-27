@@ -34,7 +34,7 @@ namespace Tremor.NPCs
 		public override void NPCLoot()
 		{
 			if (Main.rand.Next(2) == 0)
-				npc.SpawnItem(ItemID.Heart);
+				npc.NewItem(ItemID.Heart);
 		}
 
 		public override void HitEffect(int hitDirection, double damage)
