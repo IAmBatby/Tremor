@@ -13,6 +13,21 @@ namespace Tremor
 {
 	public static class TremorUtils
 	{
+		public static NPC NewNPC(this ModItem item, int type, float ai0 = 0f, float ai1 = 0f, float ai2 = 0f, float ai3 = 0f, int target = 255, int start = 0, float offsetX = 0f, float offsetY = 0f)
+			=> NewNPC(item.item, type, ai0, ai1, ai2, ai3, target, start, offsetX, offsetY);
+
+		public static NPC NewNPC(this ModPlayer plr, int type, float ai0 = 0f, float ai1 = 0f, float ai2 = 0f, float ai3 = 0f, int target = 255, int start = 0, float offsetX = 0f, float offsetY = 0f)
+			=> NewNPC(plr.player, type, ai0, ai1, ai2, ai3, target, start, offsetX, offsetY);
+
+		public static NPC NewNPC(this ModProjectile proj, int type, float ai0 = 0f, float ai1 = 0f, float ai2 = 0f, float ai3 = 0f, int target = 255, int start = 0, float offsetX = 0f, float offsetY = 0f)
+			=> NewNPC(proj.projectile, type, ai0, ai1, ai2, ai3, target, start, offsetX, offsetY);
+
+		public static NPC NewNPC(this ModNPC npc, int type, float ai0 = 0f, float ai1 = 0f, float ai2 = 0f, float ai3 = 0f, int target = 255, int start = 0, float offsetX = 0f, float offsetY = 0f)
+			=> NewNPC(npc.npc, type, ai0, ai1, ai2, ai3, target, start, offsetX, offsetY);
+
+		public static NPC NewNPC(this Entity entity, int type, float ai0 = 0f, float ai1 = 0f, float ai2 = 0f, float ai3 = 0f, int target = 255, int start = 0, float offsetX = 0f, float offsetY = 0f)
+			=> Main.npc[NPC.NewNPC((int)(entity.position.X + offsetX), (int)(entity.position.Y + offsetY), type, ai0: ai0, ai1: ai1, ai2: ai2, ai3: ai3, Target: target, Start: start)];
+
 		public static bool AddUniqueItem(this Chest shop, ref int nextSlot, int type)
 		{
 			if (shop.item.Any(x => x.type == type))
