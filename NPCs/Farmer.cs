@@ -1,7 +1,13 @@
-using Microsoft.Xna.Framework;
+using System.Linq;
+
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+
+using Microsoft.Xna.Framework;
+
+using Tremor.Items;
+using Tremor.Projectiles;
 
 namespace Tremor.NPCs
 {
@@ -47,63 +53,35 @@ namespace Tremor.NPCs
 		}
 
 		public override bool CanTownNPCSpawn(int numTownNPCs, int money)
-		{
-			for (int k = 0; k < 255; k++)
-			{
-				Player player = Main.player[k];
-				if (player.active)
-				{
-					for (int j = 0; j < player.inventory.Length; j++)
-					{
-						if (player.inventory[j].type == mod.ItemType("FarmerShovel"))
-						{
-							return true;
-						}
-					}
-				}
-			}
-			return false;
-		}
-
+			=> Main.player.Any(player => player.active && player.inventory.Any(item => item != null && item.type == mod.ItemType("FarmerShovel")));
 
 		public override string TownNPCName()
 		{
-			switch (WorldGen.genRand.Next(4))
+			string[] names =
 			{
-				case 0:
-					return "Trillian";
-				case 1:
-					return "Penelope";
-				case 2:
-					return "Emily";
-				case 3:
-					return "Abigail";
-				case 4:
-					return "Alma";
-				case 5:
-					return "Alexandra";
-				default:
-					return "Peg";
-			}
+				"Trillian",
+				"Penelope",
+				"Emily",
+				"Abigail",
+				"Alma",
+				"Alexandra",
+				"Peg"
+			};
+			return names.TakeRandom();
 		}
 
 		public override string GetChat()
 		{
-			switch (Main.rand.Next(6))
+			string[] chats =
 			{
-				case 0:
-					return "I wonder who had the idea of growing such an evil corn? Don't look at me like this, I have nothing to do with.";
-				case 1:
-					return "There are so many wonderful and amazing plants in this world but there is nothing more amazing like a corn!";
-				case 2:
-					return "Uh... Oh... Did you came to buy a corn? I'm afraid that it can become evil too.";
-				case 3:
-					return "Don't use chemicals on your plants! Chemicals make them being evil and crazy!";
-				case 4:
-					return "Don't you dare to offer me to eat popcorn! After those bad events I just can't eat anything that contains corn!";
-				default:
-					return "Take some water... Add ebonkoi... Wallow some deathweed dust... Mix everything... Oh! Hello! Want to buy something?";
-			}
+				"I wonder who had the idea of growing such an evil corn? Don't look at me like this, I have nothing to do with.",
+				"There are so many wonderful and amazing plants in this world but there is nothing more amazing like a corn!",
+				"Uh... Oh... Did you came to buy a corn? I'm afraid that it can become evil too.",
+				"Don't use chemicals on your plants! Chemicals make them being evil and crazy!",
+				"Don't you dare to offer me to eat popcorn! After those bad events I just can't eat anything that contains corn!",
+				"Take some water... Add ebonkoi... Wallow some deathweed dust... Mix everything... Oh! Hello! Want to buy something?"
+			};
+			return chats.TakeRandom();
 		}
 
 		public override void SetChatButtons(ref string button, ref string button2)
@@ -113,61 +91,38 @@ namespace Tremor.NPCs
 
 		public override void OnChatButtonClicked(bool firstButton, ref bool shop)
 		{
-			if (firstButton)
-			{
-				shop = true;
-			}
+			shop = firstButton;
 		}
 
 		public override void SetupShop(Chest shop, ref int nextSlot)
 		{
-			//shop.item[nextSlot].SetDefaults(mod.ItemType("CornSeed"));
-			//nextSlot++;
+			shop.AddUniqueItem(ref nextSlot, mod.ItemType<CornSeed>());
+
 			if (!NPC.downedBoss1)
-			{
-				shop.item[nextSlot].SetDefaults(mod.ItemType("Pitchfork"));
-				nextSlot++;
-			}
+				shop.AddUniqueItem(ref nextSlot, mod.ItemType<Pitchfork>());
+
 			if (Main.dayTime)
-			{
-				shop.item[nextSlot].SetDefaults(307);
-				nextSlot++;
-			}
-			if (!Main.dayTime)
-			{
-				shop.item[nextSlot].SetDefaults(308);
-				nextSlot++;
-			}
+				shop.AddUniqueItem(ref nextSlot, ItemID.DaybloomSeeds);
+			else
+				shop.AddUniqueItem(ref nextSlot, ItemID.MoonglowSeeds);
+
 			if (NPC.downedSlimeKing)
-			{
-				shop.item[nextSlot].SetDefaults(311);
-				nextSlot++;
-			}
+				shop.AddUniqueItem(ref nextSlot, ItemID.WaterleafSeeds);
 			if (NPC.downedBoss2)
 			{
-				shop.item[nextSlot].SetDefaults(309);
-				nextSlot++;
-				shop.item[nextSlot].SetDefaults(mod.ItemType("EggPlant"));
-				nextSlot++;
+				shop.AddUniqueItem(ref nextSlot, ItemID.BlinkrootSeeds);
+				// Eggplant doesn't exist in Tremor namespace.
+				//shop.AddUniqueItem(ref nextSlot, mod.ItemType<EggPlant>());
 			}
 
 			if (Main.hardMode)
-			{
-				shop.item[nextSlot].SetDefaults(312);
-				nextSlot++;
-			}
+				shop.AddUniqueItem(ref nextSlot, ItemID.FireblossomSeeds);
 
-			if (Main.player[Main.myPlayer].HasItem(mod.ItemType("Carrow")))
-			{
-				shop.item[nextSlot].SetDefaults(mod.ItemType("Carrot"), false);
-				nextSlot++;
-			}
+			if (Main.LocalPlayer.HasItem(mod.ItemType<Carrow>()))
+				shop.AddUniqueItem(ref nextSlot, mod.ItemType<Items.Carrot>());
 
 			if (Main.bloodMoon)
-			{
-				shop.item[nextSlot].SetDefaults(310);
-				nextSlot++;
-			}
+				shop.AddUniqueItem(ref nextSlot, ItemID.DeathweedSeeds);
 		}
 
 		public override void TownNPCAttackStrength(ref int damage, ref float knockback)
@@ -184,7 +139,7 @@ namespace Tremor.NPCs
 
 		public override void TownNPCAttackProj(ref int projType, ref int attackDelay)
 		{
-			projType = mod.ProjectileType("TomatoPro");
+			projType = mod.ProjectileType<TomatoPro>();
 			attackDelay = 4;
 		}
 
@@ -194,18 +149,15 @@ namespace Tremor.NPCs
 			randomOffset = 2f;
 		}
 
-
 		public override void HitEffect(int hitDirection, double damage)
 		{
 			if (npc.life <= 0)
 			{
 				for (int k = 0; k < 20; k++)
-				{
 					Dust.NewDust(npc.position, npc.width, npc.height, 151, 2.5f * hitDirection, -2.5f, 0, default(Color), 0.7f);
-				}
-				Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/FarmerGore1"), 1f);
-				Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/FarmerGore2"), 1f);
-				Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/FarmerGore3"), 1f);
+
+				for(int i = 0; i < 3; ++i)
+					Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot($"Gores/FarmerGore{i+1}"), 1f);
 			}
 		}
 	}

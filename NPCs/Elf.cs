@@ -1,6 +1,10 @@
+using System.Linq;
+
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+
+using Tremor.Items;
 
 namespace Tremor.NPCs
 {
@@ -46,67 +50,37 @@ namespace Tremor.NPCs
 		}
 
 		public override bool CanTownNPCSpawn(int numTownNPCs, int money)
-		{
-			for (int k = 0; k < 255; k++)
-			{
-				Player player = Main.player[k];
-				if (player.active)
-				{
-					for (int j = 0; j < player.inventory.Length; j++)
-					{
-						if (player.inventory[j].type == mod.ItemType("SuspiciousLookingPresent"))
-						{
-							return true;
-						}
-					}
-				}
-			}
-			return false;
-		}
-
+			=> Main.player.Any(player => player.active && player.inventory.Any(item => item != null && item.type == mod.ItemType("SuspiciousLookingPresent")));
 
 		public override string TownNPCName()
 		{
-			switch (WorldGen.genRand.Next(4))
+			string[] names =
 			{
-				case 0:
-					return "Nick";
-				case 1:
-					return "Elfie";
-				case 2:
-					return "Jingle";
-				case 3:
-					return "Chippy";
-				case 4:
-					return "Sparkle";
-				case 5:
-					return "Twinkle";
-				case 6:
-					return "Elvis";
-				case 7:
-					return "Peppermint";
-				default:
-					return "Snowflake";
-			}
+				"Nick",
+				"Elfie",
+				"Jingle",
+				"Chippy",
+				"Sparkle",
+				"Twinkle",
+				"Elvis",
+				"Peppermint",
+				"Snowflake"
+			};
+			return names.TakeRandom();
 		}
 
 		public override string GetChat()
 		{
-			switch (Main.rand.Next(6))
+			string[] chats =
 			{
-				case 0:
-					return "What do you know about reindeers?";
-				case 1:
-					return "I can give you some presents but... You've been naughty this year.";
-				case 2:
-					return "I am Santa's favorite elf!";
-				case 3:
-					return "Jingle bells, jingle bells, jingle all the way!";
-				case 4:
-					return "Someone threw a snowball at me. I don't know who did it but I will find him and throw a snowball at him too.";
-				default:
-					return "I licked an icicle one fine day. It resulted in not much fun.";
-			}
+				"What do you know about reindeers?",
+				"I could give you some presents, but... You've been naughty this year.",
+				"I am Santa's favorite elf!",
+				"Jingle bells, jingle bells, jingle all the way!",
+				"Someone threw a snowball at me. I don't know who did it but I will find him and throw a snowball at him too.",
+				"I licked an icicle one fine day. It resulted in not a lot of pain."
+			};
+			return chats.TakeRandom();
 		}
 
 		public override void SetChatButtons(ref string button, ref string button2)
@@ -116,39 +90,25 @@ namespace Tremor.NPCs
 
 		public override void OnChatButtonClicked(bool firstButton, ref bool shop)
 		{
-			if (firstButton)
-			{
-				shop = true;
-			}
+			shop = firstButton;
 		}
 
 		public override void SetupShop(Chest shop, ref int nextSlot)
 		{
-			shop.item[nextSlot].SetDefaults(mod.ItemType("RedChristmasStocking"));
-			nextSlot++;
-			shop.item[nextSlot].SetDefaults(mod.ItemType("BlueChristmasStocking"));
-			nextSlot++;
-			shop.item[nextSlot].SetDefaults(mod.ItemType("GreenChristmasStocking"));
-			nextSlot++;
-			shop.item[nextSlot].SetDefaults(mod.ItemType("CandyCane"));
-			nextSlot++;
+			shop.AddUniqueItem(ref nextSlot, mod.ItemType<CandyCane>());
+			shop.AddUniqueItem(ref nextSlot, mod.ItemType<RedChristmasStocking>());
+			shop.AddUniqueItem(ref nextSlot, mod.ItemType<BlueChristmasStocking>());
+			shop.AddUniqueItem(ref nextSlot, mod.ItemType<GreenChristmasStocking>());
+
 			if (NPC.downedBoss1)
-			{
-				shop.item[nextSlot].SetDefaults(mod.ItemType("SnowShotgun"));
-				nextSlot++;
-				shop.item[nextSlot].SetDefaults(mod.ItemType("CandyBow"));
-				nextSlot++;
-			}
+				shop.AddUniqueItem(ref nextSlot, mod.ItemType<SnowShotgun>());
+				shop.AddUniqueItem(ref nextSlot, mod.ItemType<CandyBow>());
+
 			if (NPC.downedBoss3)
-			{
-				shop.item[nextSlot].SetDefaults(mod.ItemType("TheSnowBall"));
-				nextSlot++;
-			}
+				shop.AddUniqueItem(ref nextSlot, mod.ItemType<TheSnowBall>());
+
 			if (Main.hardMode)
-			{
-				shop.item[nextSlot].SetDefaults(mod.ItemType("Blizzard"));
-				nextSlot++;
-			}
+				shop.AddUniqueItem(ref nextSlot, mod.ItemType<Blizzard>());
 		}
 
 		public override void TownNPCAttackStrength(ref int damage, ref float knockback)

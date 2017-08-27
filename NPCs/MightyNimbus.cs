@@ -1,11 +1,11 @@
-using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
+using Microsoft.Xna.Framework;
+
 namespace Tremor.NPCs
 {
-
 	public class MightyNimbus : ModNPC
 	{
 		public override void SetStaticDefaults()
@@ -38,12 +38,6 @@ namespace Tremor.NPCs
 			bannerItem = mod.ItemType("MightyNimbusBanner");
 		}
 
-		public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
-		{
-			npc.lifeMax = npc.lifeMax * 1;
-			npc.damage = npc.damage * 1;
-		}
-
 		public override void HitEffect(int hitDirection, double damage)
 		{
 			if (npc.life <= 0)
@@ -52,38 +46,32 @@ namespace Tremor.NPCs
 				Dust.NewDust(npc.position, npc.width, npc.height, 54, 2.5f * hitDirection, -2.5f, 0, default(Color), 0.7f);
 				Dust.NewDust(npc.position, npc.width, npc.height, 54, 2.5f * hitDirection, -2.5f, 0, default(Color), 0.7f);
 				Dust.NewDust(npc.position, npc.width, npc.height, 54, 2.5f * hitDirection, -2.5f, 0, default(Color), 0.7f);
+
 				Gore.NewGore(npc.position, npc.velocity, 99, 1f);
 				Gore.NewGore(npc.position, npc.velocity, 99, 2f);
 				Gore.NewGore(npc.position, npc.velocity, 99, 1f);
 				Gore.NewGore(npc.position, npc.velocity, 99, 2f);
 				Gore.NewGore(npc.position, npc.velocity, 99, 1f);
 				Gore.NewGore(npc.position, npc.velocity, 99, 3f);
+
 				for (int k = 0; k < 20; k++)
-				{
 					Dust.NewDust(npc.position, npc.width, npc.height, 76, 0f, 0f, 200, npc.color, 1f);
-				}
 			}
 		}
 
 		public override void AI()
 		{
-			if (Main.rand.Next(1000) == 0)
+			if (Main.netMode != 1 && Main.rand.Next(1000) == 0)
 			{
-				NPC.NewNPC((int)npc.position.X - 50, (int)npc.position.Y, 250);
-				NPC.NewNPC((int)npc.position.X + 50, (int)npc.position.Y, 250);
+				NPC.NewNPC((int)npc.position.X - 50, (int)npc.position.Y, NPCID.AngryNimbus);
+				NPC.NewNPC((int)npc.position.X + 50, (int)npc.position.Y, NPCID.AngryNimbus);
 			}
+
 			if (Main.rand.Next(700) == 0)
-			{
 				Main.PlaySound(29, (int)npc.position.X, (int)npc.position.Y, Main.rand.Next(41, 44));
-			}
 		}
 
 		public override float SpawnChance(NPCSpawnInfo spawnInfo)
-		{
-			int x = spawnInfo.spawnTileX;
-			int y = spawnInfo.spawnTileY;
-			int tile = Main.tile[x, y].type;
-			return (Helper.NormalSpawn(spawnInfo) && NPC.downedMoonlord && Helper.NoZoneAllowWater(spawnInfo)) && Main.raining && y < Main.worldSurface ? 0.01f : 0f;
-		}
+			=> Helper.NormalSpawn(spawnInfo) && NPC.downedMoonlord && Helper.NoZoneAllowWater(spawnInfo) && Main.raining && spawnInfo.spawnTileY < Main.worldSurface ? 0.01f : 0f;
 	}
 }

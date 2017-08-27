@@ -51,9 +51,6 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\dllReferences\Microsoft.Xna.Framework.Xact.dll</HintPath>
     </Reference>
-    <Reference Include="ReLogic">
-      <HintPath>..\..\..\..\..\GitHub\tModLoader\references\ReLogic.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data" />
@@ -61,7 +58,10 @@
     <Reference Include="System.Xml" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="Terraria">
-      <HintPath>..\..\..\..\..\..\..\Apps\Steam\steamapps\common\Terraria\Terraria.exe</HintPath>
+      <HintPath>..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Terraria\Terraria.exe</HintPath>
+    </Reference>
+    <Reference Include="Terraria.Libraries.ReLogic.ReLogic">
+      <HintPath>..\..\My Games\Terraria\ModLoader\dllReferences\Terraria.Libraries.ReLogic.ReLogic.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -1953,7 +1953,6 @@
     <Compile Include="NPCs\BoneFish.cs" />
     <Compile Include="NPCs\BoneFlyer.cs" />
     <Compile Include="NPCs\Brutallisk.cs" />
-    <Compile Include="NPCs\BrutalliskSpawnMobs.cs" />
     <Compile Include="NPCs\Brute.cs" />
     <Compile Include="NPCs\BucketheadZombie.cs" />
     <Compile Include="NPCs\CaveGolem.cs" />
@@ -1986,7 +1985,6 @@
     <Compile Include="NPCs\DeepwaterVilefish.cs" />
     <Compile Include="NPCs\Deimos.cs" />
     <Compile Include="NPCs\DesertMimic.cs" />
-    <Compile Include="NPCs\DesertMimicSummon.cs" />
     <Compile Include="NPCs\DesertPrincess.cs" />
     <Compile Include="NPCs\DesertPrincess2.cs" />
     <Compile Include="NPCs\DevilishTortoise.cs" />

@@ -1,8 +1,10 @@
 using System;
-using Microsoft.Xna.Framework;
+
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+
+using Microsoft.Xna.Framework;
 
 namespace Tremor.NPCs
 {
@@ -16,6 +18,8 @@ namespace Tremor.NPCs
 
 		int CountFrame;
 		int TimeToAnimation = 4;
+		bool TimetoShoot;
+
 		public override void SetDefaults()
 		{
 			npc.lifeMax = 90;
@@ -31,53 +35,25 @@ namespace Tremor.NPCs
 			npc.value = Item.buyPrice(0, 0, 0, 56);
 		}
 
-		public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
-		{
-			npc.lifeMax = npc.lifeMax * 1;
-			npc.damage = npc.damage * 1;
-		}
-
 		public override void AI()
 		{
 			npc.TargetClosest(true);
-			npc.spriteDirection = npc.direction;
-			Player player = Main.player[npc.target];
 			DoAI();
 			ExpertSetting();
-			PlayAnimation();
 		}
 
 		public void ExpertSetting()
 		{
-			if (Main.expertMode)
-			{
-				if (npc.life > npc.lifeMax * 0.5f)
-				{
-					npc.defense = 13;
-				}
-				if (npc.life < npc.lifeMax * 0.5f && npc.life > npc.lifeMax * 0.3f)
-				{
-					npc.defense = 15;
-				}
-				if (npc.life < npc.lifeMax * 0.3f)
-				{
-					npc.defense = 18;
-				}
-			}
+			if (!Main.expertMode) return;
+
+			if (npc.life > npc.lifeMax * 0.5f)
+				npc.defense = 13;
+			if (npc.life < npc.lifeMax * 0.5f && npc.life > npc.lifeMax * 0.3f)
+				npc.defense = 15;
+			if (npc.life < npc.lifeMax * 0.3f)
+				npc.defense = 18;
 		}
 
-		public void PlayAnimation()
-		{
-			if (--TimeToAnimation <= 0)
-			{
-				if (++CountFrame > 3)
-					CountFrame = 1;
-				TimeToAnimation = 4;
-				npc.frame = GetFrame(CountFrame);
-			}
-		}
-
-		bool TimetoShoot;
 		public void DoAI()
 		{
 			Vector2 VectorPos = new Vector2(npc.position.X + npc.width * 0.5f, npc.position.Y + npc.height * 0.5f);
@@ -569,41 +545,36 @@ namespace Tremor.NPCs
 			}
 		}
 
-		public override float SpawnChance(NPCSpawnInfo spawnInfo)
+		public override void FindFrame(int frameHeight)
 		{
-			int x = spawnInfo.spawnTileX;
-			int y = spawnInfo.spawnTileY;
-			int tile = Main.tile[x, y].type;
-			return (NPC.AnyNPCs(26) || NPC.AnyNPCs(27) || NPC.AnyNPCs(28) || NPC.AnyNPCs(29)) && NPC.downedBoss3 && y < Main.worldSurface ? 0.08f : 0f;
+			if ((npc.frameCounter + Math.Abs(npc.velocity.X)) >= 20)
+			{
+				npc.frame.Y = (npc.frame.Y + frameHeight) % (Main.npcFrameCount[npc.type] * frameHeight);
+				npc.frameCounter = 0;
+			}
+			npc.spriteDirection = npc.direction;
 		}
 
 		public override void NPCLoot()
 		{
 			if (Main.invasionType == InvasionID.GoblinArmy)
 			{
-				Main.invasionProgress++;
+				Main.invasionSize -= 1;
+				if (Main.invasionSize < 0)
+					Main.invasionSize = 0;
+				if (Main.netMode != 1)
+					Main.ReportInvasionProgress(Main.invasionSizeStart - Main.invasionSize, Main.invasionSizeStart, InvasionID.GoblinArmy + 3, 0);
+				if (Main.netMode == 2)
+					NetMessage.SendData(78, -1, -1, null, Main.invasionProgress, Main.invasionProgressMax, Main.invasionProgressIcon, 0f, 0, 0, 0);
 			}
-			if (Main.netMode != 1)
-			{
-				int centerX = (int)(npc.position.X + npc.width / 2) / 16;
-				int centerY = (int)(npc.position.Y + npc.height / 2) / 16;
-				int halfLength = npc.width / 2 / 16 + 1;
 
-				if (Main.rand.Next(2) == 0)
-				{
-					Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, 161, Main.rand.Next(1, 15));
-				}
-
-				if (Main.rand.Next(200) == 0)
-				{
-					Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, 160);
-				}
-			}
+			if (Main.rand.Next(2) == 0)
+				npc.NewItem(ItemID.SpikyBall, Main.rand.Next(1, 16));
+			if (Main.rand.Next(200) == 0)
+				npc.NewItem(ItemID.Harpoon);
 		}
 
-		Rectangle GetFrame(int Num)
-		{
-			return new Rectangle(0, npc.frame.Height * (Num - 1), npc.frame.Width, npc.frame.Height);
-		}
+		public override float SpawnChance(NPCSpawnInfo spawnInfo)
+			=> Main.invasionType == InvasionID.GoblinArmy && NPC.downedBoss3 && spawnInfo.spawnTileY < Main.worldSurface ? 0.08f : 0f;
 	}
 }

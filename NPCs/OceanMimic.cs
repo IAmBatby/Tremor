@@ -1,4 +1,3 @@
-using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -32,16 +31,11 @@ namespace Tremor.NPCs
 		public override void NPCLoot()
 		{
 			Helper.DropItems(npc.position, npc.Size, new Drop(mod.ItemType("TheTide"), 1, 1), new Drop(mod.ItemType("TrueTrident"), 1, 1), new Drop(mod.ItemType("SharkRage"), 1, 1), new Drop(mod.ItemType("OceanAmulet"), 1, 1), new Drop(mod.ItemType("SquidTentacle"), 1, 1));
-			Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, 500, Main.rand.Next(10));
-			Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, 499, Main.rand.Next(10));
+			this.NewItem(ItemID.GreaterHealingPotion, Main.rand.Next(10));
+			this.NewItem(ItemID.GreaterManaPotion, Main.rand.Next(10));
 		}
 
 		public override float SpawnChance(NPCSpawnInfo spawnInfo)
-		{
-			int x = spawnInfo.spawnTileX;
-			int y = spawnInfo.spawnTileY;
-			int tile = Main.tile[x, y].type;
-			return (Helper.NormalSpawn(spawnInfo) && (tile == 53 || tile == 112 || tile == 116 || tile == 234) && Helper.NoZoneAllowWater(spawnInfo) && spawnInfo.water) && Main.hardMode && y < Main.rockLayer && (x < 250 || x > Main.maxTilesX - 250) && !spawnInfo.playerSafe ? 0.01f : 0f;
-		}
+			=> Helper.NormalSpawn(spawnInfo) && (spawnInfo.spawnTileType == 53 || spawnInfo.spawnTileType == 112 || spawnInfo.spawnTileType == 116 || spawnInfo.spawnTileType == 234) && Helper.NoZoneAllowWater(spawnInfo) && spawnInfo.water && Main.hardMode && spawnInfo.spawnTileY < Main.rockLayer && (spawnInfo.spawnTileX < 250 || spawnInfo.spawnTileX > Main.maxTilesX - 250) && !spawnInfo.playerSafe ? 0.01f : 0f;
 	}
 }

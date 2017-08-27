@@ -1,7 +1,10 @@
-using Microsoft.Xna.Framework;
+using System;
+
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+
+using Microsoft.Xna.Framework;
 
 namespace Tremor.NPCs
 {
@@ -30,19 +33,9 @@ namespace Tremor.NPCs
 			npc.value = Item.buyPrice(0, 0, 0, 0);
 		}
 
-		public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
-		{
-			npc.lifeMax = npc.lifeMax * 1;
-			npc.damage = npc.damage * 1;
-		}
-
 		public override void AI()
 		{
-			PlayAnimation();
-			if (Main.player[npc.target].position.X > npc.position.X)
-				npc.spriteDirection = 1;
-			else
-				npc.spriteDirection = -1;
+			npc.TargetClosest(true);
 
 			if (npc.direction == -1 && npc.velocity.X > -2f)
 			{
@@ -106,37 +99,25 @@ namespace Tremor.NPCs
 				}
 			}
 		}
-
-		int Frame;
-		int TimeToAnimation = 6;
-		public void PlayAnimation()
+		
+		public override void FindFrame(int frameHeight)
 		{
-			if (--TimeToAnimation <= 0)
+			if ((npc.frameCounter + Math.Abs(npc.velocity.X)) >= 20)
 			{
-				if (++Frame > 3)
-					Frame = 1;
-				TimeToAnimation = 6;
-				npc.frame = GetFrame(Frame);
+				npc.frame.Y = (npc.frame.Y + frameHeight) % (Main.npcFrameCount[npc.type] * frameHeight);
+				npc.frameCounter = 0;
 			}
+
+			npc.spriteDirection = npc.direction;
 		}
 
-		Rectangle GetFrame(int Num)
+		public override bool CheckDead()
 		{
-			return new Rectangle(0, npc.frame.Height * (Num - 1), npc.frame.Width, npc.frame.Height);
+			npc.SetDefaults(mod.NPCType<GoblinStandardBearer_Balloon>());
+			return false;
 		}
 
 		public override float SpawnChance(NPCSpawnInfo spawnInfo)
-		{
-			int x = spawnInfo.spawnTileX;
-			int y = spawnInfo.spawnTileY;
-			int tile = Main.tile[x, y].type;
-			return (NPC.AnyNPCs(26) || NPC.AnyNPCs(27) || NPC.AnyNPCs(28) || NPC.AnyNPCs(29)) && NPC.downedBoss3 && y < Main.worldSurface ? 0.3f : 0f;
-		}
-
-		public override void NPCLoot()
-		{
-			NPC.NewNPC((int)npc.position.X, (int)npc.position.Y, mod.NPCType("GoblinStandardBearer_Balloon"));
-		}
-
+			=> Main.invasionType == InvasionID.GoblinArmy && NPC.downedBoss3 && spawnInfo.spawnTileY < Main.worldSurface ? 0.3f : 0f;
 	}
 }
