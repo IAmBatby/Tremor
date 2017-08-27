@@ -1,11 +1,13 @@
-using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
+using Microsoft.Xna.Framework;
+
+using Tremor.Items;
+
 namespace Tremor.NPCs
 {
-
 	public class ColossalTortoise : ModNPC
 	{
 		public override void SetStaticDefaults()
@@ -31,39 +33,20 @@ namespace Tremor.NPCs
 			npc.value = Item.buyPrice(0, 4, 15, 0);
 		}
 
-		public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
-		{
-			npc.lifeMax = npc.lifeMax * 1;
-			npc.damage = npc.damage * 1;
-		}
-
 		public override void AI()
 		{
-
 			Lighting.AddLight(npc.position, 1f, 0.3f, 0.3f);
 
-			if (Main.rand.Next(750) == 0)
-			{
-				NPC.NewNPC((int)npc.position.X, (int)npc.position.Y, 153);
-			}
-
+			if (Main.netMode != 1 && Main.rand.Next(750) == 0)
+				NPC.NewNPC((int)npc.position.X, (int)npc.position.Y, NPCID.GiantTortoise);
 		}
+
 		public override void NPCLoot()
 		{
-			if (Main.netMode != 1)
-			{
-				int centerX = (int)(npc.position.X + npc.width / 2) / 16;
-				int centerY = (int)(npc.position.Y + npc.height / 2) / 16;
-				int halfLength = npc.width / 2 / 16 + 1;
-				if (Main.rand.NextBool())
-				{
-					Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("GiantShell"), Main.rand.Next(1, 3));
-				}
-				if (Main.rand.Next(3) == 0)
-				{
-					Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("LostTurtleKnife"), Main.rand.Next(10, 55));
-				}
-			}
+			if (Main.rand.NextBool())
+				npc.SpawnItem(mod.ItemType<GiantShell>(), Main.rand.Next(1, 3));
+			if (Main.rand.Next(3) == 0)
+				npc.SpawnItem(mod.ItemType<LostTurtleKnife>(), Main.rand.Next(10, 55));
 		}
 
 		public override void HitEffect(int hitDirection, double damage)
@@ -85,8 +68,7 @@ namespace Tremor.NPCs
 			}
 			else
 			{
-
-				for (int k = 0; k < damage / npc.lifeMax * 50.0; k++)
+				for (int k = 0; k < damage / npc.lifeMax * 50; k++)
 				{
 					Dust.NewDust(npc.position, npc.width, npc.height, 3, hitDirection, -2f, 0, default(Color), 0.7f);
 					Dust.NewDust(npc.position, npc.width, npc.height, 5, hitDirection, -1f, 0, default(Color), 0.7f);
@@ -95,12 +77,6 @@ namespace Tremor.NPCs
 		}
 
 		public override float SpawnChance(NPCSpawnInfo spawnInfo)
-		{
-			int x = spawnInfo.spawnTileX;
-			int y = spawnInfo.spawnTileY;
-			int tile = Main.tile[x, y].type;
-			return (Helper.NormalSpawn(spawnInfo) && Helper.NoZoneAllowWater(spawnInfo)) && spawnInfo.player.ZoneJungle && NPC.downedMoonlord && Main.hardMode && y < Main.worldSurface ? 0.0002f : 0f;
-		}
-
+			=> Helper.NormalSpawn(spawnInfo) && Helper.NoZoneAllowWater(spawnInfo) && spawnInfo.player.ZoneJungle && NPC.downedMoonlord && Main.hardMode && spawnInfo.spawnTileY < Main.worldSurface ? 0.0002f : 0f;
 	}
 }
