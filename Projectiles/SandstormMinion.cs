@@ -97,7 +97,7 @@ namespace Tremor.Projectiles
 
 		void Dust()
 		{
-			if (Helper.Chance(DustChance))
+			if (Main.rand.NextBool((int)DustChance))
 				Terraria.Dust.NewDust(projectile.position, projectile.width, projectile.height, DustType);
 			foreach (Dust dust in Main.dust)
 			{

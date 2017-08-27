@@ -75,18 +75,18 @@ namespace Tremor.NPCs
 		{
 			if (Main.rand.Next(2) == 0)
 			{
-				npc.SpawnItem((short)ItemID.Sapphire, 2);
-				npc.SpawnItem((short)ItemID.Ruby, 2);
-				npc.SpawnItem((short)ItemID.Emerald, 2);
+				npc.NewItem((short)ItemID.Sapphire, 2);
+				npc.NewItem((short)ItemID.Ruby, 2);
+				npc.NewItem((short)ItemID.Emerald, 2);
 			}
 			if (Main.rand.Next(2) == 0)
 			{
-				npc.SpawnItem((short)ItemID.Topaz, 2);
-				npc.SpawnItem((short)ItemID.Amethyst, 2);
-				npc.SpawnItem((short)ItemID.Diamond, 2);
+				npc.NewItem((short)ItemID.Topaz, 2);
+				npc.NewItem((short)ItemID.Amethyst, 2);
+				npc.NewItem((short)ItemID.Diamond, 2);
 			}
 			if (Main.rand.Next(32) == 0)
-				npc.SpawnItem((short)mod.ItemType<ThunderRay>());
+				npc.NewItem((short)mod.ItemType<ThunderRay>());
 		}
 
 		public override void HitEffect(int hitDirection, double damage)

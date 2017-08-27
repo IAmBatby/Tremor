@@ -48,19 +48,19 @@ namespace Tremor
 		public static bool IsDowned(this TremorWorld.Boss boss)
 			=> TremorWorld.downedBoss[boss];
 
-		public static Item SpawnItem(this ModPlayer plr, int type, int stack = 1)
-			=> SpawnItem(plr.player, type, stack);
+		public static Item NewItem(this ModPlayer plr, int type, int stack = 1)
+			=> NewItem(plr.player, type, stack);
 
-		public static Item SpawnItem(this ModProjectile proj, int type, int stack = 1)
-			=> SpawnItem(proj.projectile, type, stack);
+		public static Item NewItem(this ModProjectile proj, int type, int stack = 1)
+			=> NewItem(proj.projectile, type, stack);
 
-		public static Item SpawnItem(this ModNPC npc, int type, int stack = 1)
-			=> SpawnItem(npc.npc, type, stack);
+		public static Item NewItem(this ModNPC npc, int type, int stack = 1)
+			=> NewItem(npc.npc, type, stack);
 
-		public static Item SpawnItem(this Entity entity, int type, int stack = 1)
+		public static Item NewItem(this Entity entity, int type, int stack = 1)
 			=> Main.item[Item.NewItem((int)entity.position.X, (int)entity.position.Y, entity.width, entity.height, type, stack)];
 
-		public static Item SpawnItem(Vector2 position, Vector2 size, short type, int stack = 1)
+		public static Item NewItem(Vector2 position, Vector2 size, int type, int stack = 1)
 			=> Main.item[Item.NewItem((int)position.X, (int)position.Y, (int)size.X, (int)size.Y, type, stack)];
 
 		// Get an ID for a sound name

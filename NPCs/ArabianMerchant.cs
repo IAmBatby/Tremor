@@ -139,7 +139,7 @@ namespace Tremor.NPCs
 		public override void NPCLoot()
 		{
 			if (Main.rand.NextBool())
-				npc.SpawnItem((short)mod.ItemType<WhiteTurban>());
+				npc.NewItem((short)mod.ItemType<WhiteTurban>());
 		}
 
 		public override void HitEffect(int hitDirection, double damage)

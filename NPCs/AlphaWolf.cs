@@ -35,13 +35,13 @@ namespace Tremor.NPCs
 		public override void NPCLoot()
 		{
 			if (Main.rand.Next(2) == 0)
-				npc.SpawnItem((short)mod.ItemType<WolfPelt>(), Main.rand.Next(2, 3));
+				npc.NewItem((short)mod.ItemType<WolfPelt>(), Main.rand.Next(2, 3));
 			if (Main.rand.Next(25) == 0)
-				npc.SpawnItem((short)mod.ItemType<FurHat>());
+				npc.NewItem((short)mod.ItemType<FurHat>());
 			if (Main.rand.NextBool())
-				npc.SpawnItem((short)mod.ItemType<AlphaClaw>());
+				npc.NewItem((short)mod.ItemType<AlphaClaw>());
 			if (Main.rand.Next(25) == 0)
-				npc.SpawnItem((short)mod.ItemType<FurCoat>());
+				npc.NewItem((short)mod.ItemType<FurCoat>());
 		}
 
 		public override void HitEffect(int hitDirection, double damage)

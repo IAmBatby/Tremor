@@ -37,7 +37,7 @@ namespace Tremor.NPCs
 		public override void NPCLoot()
 		{
 			if (Main.rand.NextBool())
-				npc.SpawnItem(ItemID.Bone);
+				npc.NewItem(ItemID.Bone);
 		}
 
 		public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)

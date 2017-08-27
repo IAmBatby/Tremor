@@ -42,9 +42,9 @@ namespace Tremor.NPCs
 		public override void NPCLoot()
 		{
 			if (Main.rand.Next(2) == 0)
-				npc.SpawnItem((short)mod.ItemType<CometiteOre>(), Main.rand.Next(2, 5));
+				npc.NewItem((short)mod.ItemType<CometiteOre>(), Main.rand.Next(2, 5));
 			if (Main.rand.Next(6) == 0)
-				npc.SpawnItem((short)mod.ItemType<HardCometiteOre>(), Main.rand.Next(1, 3));
+				npc.NewItem((short)mod.ItemType<HardCometiteOre>(), Main.rand.Next(1, 3));
 		}
 
 		public override void HitEffect(int hitDirection, double damage)

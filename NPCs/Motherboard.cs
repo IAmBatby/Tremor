@@ -534,38 +534,38 @@ namespace Tremor.NPCs
 			{
 				if (Main.rand.NextBool())
 				{
-					this.SpawnItem((short)mod.ItemType<SoulofMind>(), Main.rand.Next(20, 40));
+					this.NewItem((short)mod.ItemType<SoulofMind>(), Main.rand.Next(20, 40));
 				}
 				if (Main.rand.NextBool())
 				{
-					this.SpawnItem(ItemID.GreaterHealingPotion, Main.rand.Next(5, 15));
+					this.NewItem(ItemID.GreaterHealingPotion, Main.rand.Next(5, 15));
 				}
 				if (Main.rand.NextBool())
 				{
-					this.SpawnItem(ItemID.HallowedBar, Main.rand.Next(15, 35));
+					this.NewItem(ItemID.HallowedBar, Main.rand.Next(15, 35));
 				}
 				if (Main.rand.Next(7) == 0)
 				{
-					this.SpawnItem((short)mod.ItemType<MotherboardMask>());
+					this.NewItem((short)mod.ItemType<MotherboardMask>());
 				}
 			}
 
 			if (Main.rand.Next(10) == 0)
 			{
-				this.SpawnItem((short)mod.ItemType<MotherboardTrophy>());
+				this.NewItem((short)mod.ItemType<MotherboardTrophy>());
 			}
 			if (Main.rand.Next(3) == 0)
 			{
-				this.SpawnItem((short)mod.ItemType<BenderLegs>());
+				this.NewItem((short)mod.ItemType<BenderLegs>());
 			}
 			if (Main.rand.Next(10) == 0)
 			{
-				this.SpawnItem((short)mod.ItemType<FlaskCore>());
+				this.NewItem((short)mod.ItemType<FlaskCore>());
 			}
 
 			if (NPC.downedMoonlord && Main.rand.NextBool())
 			{
-				this.SpawnItem((short)mod.ItemType<CarbonSteel>(), Main.rand.Next(6, 12));
+				this.NewItem((short)mod.ItemType<CarbonSteel>(), Main.rand.Next(6, 12));
 			}
 		}
 

@@ -35,11 +35,11 @@ namespace Tremor.NPCs
 		public override void NPCLoot()
 		{
 			if (Main.rand.NextBool())
-				npc.SpawnItem(ItemID.Bone, Main.rand.Next(1, 3));
+				npc.NewItem(ItemID.Bone, Main.rand.Next(1, 3));
 			if (Main.rand.Next(6) == 0)
-				npc.SpawnItem(ItemID.HealingPotion, Main.rand.Next(1, 3));
+				npc.NewItem(ItemID.HealingPotion, Main.rand.Next(1, 3));
 			if (Main.rand.Next(6) == 0)
-				npc.SpawnItem(ItemID.ManaPotion, Main.rand.Next(1, 3));
+				npc.NewItem(ItemID.ManaPotion, Main.rand.Next(1, 3));
 		}
 
 		public override void HitEffect(int hitDirection, double damage)

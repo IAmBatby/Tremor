@@ -55,7 +55,7 @@ namespace Tremor.NPCs
 
 		private void DustFX()
 		{
-			if (Helper.Chance(3))
+			if (Main.rand.NextBool(3))
 			{
 				for (int i = 0; i < 2; i++)
 				{
