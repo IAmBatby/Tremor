@@ -3,3 +3,4 @@ Changelogs for v1.3.2.4:
 - Items that grant movement speed now also increase the player's maximum run speed by that amount, this ensures the movement speed bonus actually has effect.
 - Improved several tooltips, notibly Desert Explorer Greaves said it granted 11% alchemical damage, but it actually granted 16%
 - Fixed all tooltips still saying 'alchemic', now changed to say 'alchemical'
+- Improved Phantablast, and gave it a tooltip
