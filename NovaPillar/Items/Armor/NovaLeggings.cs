@@ -7,14 +7,10 @@ namespace Tremor.NovaPillar.Items.Armor
 	[AutoloadEquip(EquipType.Legs)]
 	public class NovaLeggings : ModItem
 	{
-
 		public override void SetDefaults()
 		{
-
 			item.width = 26;
 			item.height = 16;
-
-
 			item.rare = 10;
 			item.defense = 16;
 		}
@@ -24,7 +20,6 @@ namespace Tremor.NovaPillar.Items.Armor
 			DisplayName.SetDefault("Nova Leggings");
 			Tooltip.SetDefault("Increases alchemical damage by 18% and critical strike chance by 12%\nIncreases movement speed by 14%");
 		}
-
 
 		public override Color? GetAlpha(Color lightColor)
 		{

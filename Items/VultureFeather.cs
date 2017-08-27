@@ -25,6 +25,7 @@ namespace Tremor.Items
 		public override void UpdateAccessory(Player player, bool hideVisual)
 		{
 			player.moveSpeed += 0.15f;
+			player.maxRunSpeed += 0.15f;
 		}
 	}
 }

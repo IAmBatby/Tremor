@@ -28,10 +28,11 @@ namespace Tremor.Items
 		public override void UpdateAccessory(Player player, bool hideVisual)
 
 		{
-			player.kbBuff = true;
 			player.accRunSpeed = 6.75f;
 			player.rocketBoots = 3;
 			player.moveSpeed += 0.1f;
+			player.maxRunSpeed += 0.1f;
+			player.kbBuff = true;
 			player.iceSkate = true;
 		}
 

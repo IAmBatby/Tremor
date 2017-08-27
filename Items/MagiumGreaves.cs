@@ -30,6 +30,7 @@ namespace Tremor.Items
 		public override void UpdateEquip(Player player)
 		{
 			player.moveSpeed += 0.2f;
+			player.maxRunSpeed += 0.2f;
 			player.statManaMax2 += 40;
 		}
 

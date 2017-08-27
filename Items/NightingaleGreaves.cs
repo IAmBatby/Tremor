@@ -27,6 +27,7 @@ namespace Tremor.Items
 		public override void UpdateEquip(Player player)
 		{
 			player.moveSpeed += 0.10f;
+			player.maxRunSpeed += 0.10f;
 		}
 
 		public override void AddRecipes()
