@@ -83,7 +83,6 @@ namespace Tremor.NPCs
 				int n = NPC.NewNPC((int)npc.position.X, (int)npc.position.Y, mod.NPCType("Clamper2"));
 				Main.npc[n].rotation = npc.rotation;
 				Main.npc[n].velocity = npc.velocity;
-				Main.npc[n].life = npc.life;
 				npc.active = false;
 				npc.netUpdate = true;
 			}
