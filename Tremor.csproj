@@ -7176,6 +7176,9 @@
     <None Include="Gores\Thumbs.db" />
     <None Include="Items\DrippingSaddle.csNotWork" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Motherboard\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSHARP.Targets" />
   <ProjectExtensions>
     <VisualStudio AllowExistingFolder="true" />
