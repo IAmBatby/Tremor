@@ -1,7 +1,11 @@
-using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+
+using Microsoft.Xna.Framework;
+
+using Tremor.Items;
+using Tremor.Projectiles.Alchemic;
 
 namespace Tremor.NPCs
 {
@@ -11,7 +15,6 @@ namespace Tremor.NPCs
 		public override string Texture => "Tremor/NPCs/Alchemist";
 
 		public override string[] AltTextures => new[] { "Tremor/NPCs/Alchemist" };
-
 
 		public override bool Autoload(ref string name)
 		{
@@ -47,56 +50,38 @@ namespace Tremor.NPCs
 			animationType = NPCID.GoblinTinkerer;
 		}
 
-		public override bool CanTownNPCSpawn(int numTownNPCs, int money)
-		{
-			if (NPC.downedBoss1)
-			{
-				return true;
-			}
-			return false;
-		}
-
+		public override bool CanTownNPCSpawn(int numTownNPCs, int money) 
+			=> NPC.downedBoss1;
 
 		public override string TownNPCName()
 		{
-			switch (WorldGen.genRand.Next(5))
+			string[] names =
 			{
-				case 0:
-					return "Rizo";
-				case 1:
-					return "Albert";
-				case 2:
-					return "Bernando";
-				case 3:
-					return "Seefeld";
-				case 4:
-					return "Raymond";
-				case 5:
-					return "Paracelsus";
-				default:
-					return "Nerxius";
-			}
+				"Rizo",
+				"Albert",
+				"Bernando",
+				"Seefeld",
+				"Raymond",
+				"Paracelsus",
+				"Nerxius"
+			};
+			return names.TakeRandom();
 		}
 
 		public override string GetChat()
 		{
-			switch (Main.rand.Next(6))
+			// weighted chats?
+			string[] chats =
 			{
-				case 0:
-					return "Love is just a chain of chemical reactions. So that you know.";
-				case 1:
-					return "If you wanna know, it was hard to press these gel cubes.";
-				case 2:
-					return "Wanna try something new? I think you may be interested in... BOOM FLASKS! ";
-				case 3:
-					return "The man who passes the sentence should throw the flask...";
-				case 4:
-					return "I'm gonna have to throw EVERY SINGLE FLASK in this house!";
-				case 5:
-					return "What? You don't like my hairstyle? Your isn't better.";
-				default:
-					return "If you think that I'm a terrorist just because I sell exploding flasks? You're wrong. There are even worse people who sell worse things.";
-			}
+				"Love is just a chain of chemical reactions. So that you know.",
+				"If you wanna know, it was hard to press these gel cubes.",
+				"Wanna try something new? I think you may be interested in... BOOM FLASKS!",
+				"The man who passes the sentence should throw the flask...",
+				"I'm gonna have to throw EVERY SINGLE FLASK in this house!",
+				"What? You don't like my hairstyle? Your isn't better.",
+				"If you think that I'm a terrorist just because I sell exploding flasks? You're wrong. There are even worse people who sell worse things."
+			};
+			return chats.TakeRandom();
 		}
 
 		public override void SetChatButtons(ref string button, ref string button2)
@@ -106,106 +91,61 @@ namespace Tremor.NPCs
 
 		public override void OnChatButtonClicked(bool firstButton, ref bool shop)
 		{
-			if (firstButton)
-			{
-				shop = true;
-			}
+			shop = firstButton;
 		}
 
 		public override void SetupShop(Chest shop, ref int nextSlot)
 		{
-			shop.item[nextSlot].SetDefaults(mod.ItemType("BasicFlask"));
-			nextSlot++;
-			shop.item[nextSlot].SetDefaults(mod.ItemType("HazardousChemicals"));
-			nextSlot++;
-			shop.item[nextSlot].SetDefaults(ItemID.StinkPotion);
-			nextSlot++;
-			shop.item[nextSlot].SetDefaults(ItemID.LovePotion);
-			nextSlot++;
-			if (NPC.downedBoss2)
-			{
-				shop.item[nextSlot].SetDefaults(mod.ItemType("Nitro"));
-				nextSlot++;
-			}
+			shop.AddUniqueItem(ref nextSlot, mod.ItemType<BasicFlask>());
+			shop.AddUniqueItem(ref nextSlot, mod.ItemType<HazardousChemicals>());
+			shop.AddUniqueItem(ref nextSlot, ItemID.StinkPotion);
+			shop.AddUniqueItem(ref nextSlot, ItemID.LovePotion);
+
 			if (TremorWorld.Boss.Alchemaster.IsDowned())
-			{
-				shop.item[nextSlot].SetDefaults(mod.ItemType("Pyro"));
-				nextSlot++;
-			}
-			if (!Main.hardMode && Main.dayTime)
-			{
-				shop.item[nextSlot].SetDefaults(mod.ItemType("LesserHealingFlack"));
-				nextSlot++;
-			}
+				shop.AddUniqueItem(ref nextSlot, mod.ItemType<Pyro>());
+
 			if (Main.hardMode)
 			{
-				shop.item[nextSlot].SetDefaults(mod.ItemType("ConcentratedTincture"));
-				nextSlot++;
+				if(Main.dayTime)
+					shop.AddUniqueItem(ref nextSlot, mod.ItemType<BigHealingFlack>());
+				else
+					shop.AddUniqueItem(ref nextSlot, mod.ItemType<BigManaFlask>());
+
+				shop.AddUniqueItem(ref nextSlot, mod.ItemType<BlackCauldron>());
+				shop.AddUniqueItem(ref nextSlot, mod.ItemType<LesserVenomFlask>());
+				shop.AddUniqueItem(ref nextSlot, mod.ItemType<ConcentratedTincture>());
 			}
-			if (Main.hardMode && Main.dayTime)
+			else
 			{
-				shop.item[nextSlot].SetDefaults(mod.ItemType("BigHealingFlack"));
-				nextSlot++;
+				if (Main.dayTime)
+						shop.AddUniqueItem(ref nextSlot, mod.ItemType<LesserHealingFlack>());
+				else
+					shop.AddUniqueItem(ref nextSlot, mod.ItemType<LesserManaFlask>());
 			}
-			if (!Main.hardMode && !Main.dayTime)
-			{
-				shop.item[nextSlot].SetDefaults(mod.ItemType("LesserManaFlask"));
-				nextSlot++;
-			}
-			if (Main.hardMode && !Main.dayTime)
-			{
-				shop.item[nextSlot].SetDefaults(mod.ItemType("BigManaFlask"));
-				nextSlot++;
-			}
-			if (Main.netMode == 1)
-			{
-				shop.item[nextSlot].SetDefaults(mod.ItemType("HealthSupportFlask"));
-				nextSlot++;
-				shop.item[nextSlot].SetDefaults(mod.ItemType("ManaSupportFlask"));
-				nextSlot++;
-			}
+			
+			shop.AddUniqueItem(ref nextSlot, mod.ItemType<HealthSupportFlask>());
+			shop.AddUniqueItem(ref nextSlot, mod.ItemType<ManaSupportFlask>());
+
 			if (Main.player[Main.myPlayer].ZoneSnow)
-			{
-				shop.item[nextSlot].SetDefaults(mod.ItemType("FreezeFlask"));
-				nextSlot++;
-			}
+				shop.AddUniqueItem(ref nextSlot, mod.ItemType<FreezeFlask>());
 			if (Main.player[Main.myPlayer].ZoneJungle)
-			{
-				shop.item[nextSlot].SetDefaults(mod.ItemType("LesserPoisonFlask"));
-				nextSlot++;
-			}
+				shop.AddUniqueItem(ref nextSlot, mod.ItemType<LesserPoisonFlask>());
+
 			if (NPC.downedBoss1)
-			{
-				shop.item[nextSlot].SetDefaults(mod.ItemType("BoomFlask"));
-				nextSlot++;
-			}
+				shop.AddUniqueItem(ref nextSlot, mod.ItemType<BoomFlask>());
 			if (NPC.downedBoss2)
 			{
-				shop.item[nextSlot].SetDefaults(mod.ItemType("BurningFlask"));
-				nextSlot++;
+				shop.AddUniqueItem(ref nextSlot, mod.ItemType<Nitro>());
+				shop.AddUniqueItem(ref nextSlot, mod.ItemType<BurningFlask>());
 			}
 			if (NPC.downedBoss3)
-			{
-				shop.item[nextSlot].SetDefaults(mod.ItemType("GoldFlask"));
-				nextSlot++;
-			}
-			if (Main.hardMode)
-			{
-				shop.item[nextSlot].SetDefaults(mod.ItemType("LesserVenomFlask"));
-				nextSlot++;
-				shop.item[nextSlot].SetDefaults(mod.ItemType("BlackCauldron"));
-				nextSlot++;
-			}
+				shop.AddUniqueItem(ref nextSlot, mod.ItemType<GoldFlask>());
+
 			if (NPC.downedGolemBoss)
-			{
-				shop.item[nextSlot].SetDefaults(mod.ItemType("CthulhuBlood"));
-				nextSlot++;
-			}
+				shop.AddUniqueItem(ref nextSlot, mod.ItemType<CthulhuBlood>());
+
 			if (NPC.downedPlantBoss && Main.bloodMoon)
-			{
-				shop.item[nextSlot].SetDefaults(mod.ItemType("AlchemistGlove"));
-				nextSlot++;
-			}
+				shop.AddUniqueItem(ref nextSlot, mod.ItemType<AlchemistGlove>());
 		}
 
 		public override void TownNPCAttackStrength(ref int damage, ref float knockback)
@@ -222,7 +162,7 @@ namespace Tremor.NPCs
 
 		public override void TownNPCAttackProj(ref int projType, ref int attackDelay)
 		{
-			projType = mod.ProjectileType("BasicFlaskPro");
+			projType = mod.ProjectileType<BasicFlaskPro>();
 			attackDelay = 5;
 		}
 
@@ -237,12 +177,10 @@ namespace Tremor.NPCs
 			if (npc.life <= 0)
 			{
 				for (int k = 0; k < 20; k++)
-				{
 					Dust.NewDust(npc.position, npc.width, npc.height, 151, 2.5f * hitDirection, -2.5f, 0, default(Color), 0.7f);
-				}
-				Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/AlchemistGore1"), 1f);
-				Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/AlchemistGore2"), 1f);
-				Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/AlchemistGore3"), 1f);
+
+				for(int i = 0; i < 3; ++i)
+					Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot($"Gores/AlchemistGore{i+1}"), 1f);
 			}
 		}
 	}

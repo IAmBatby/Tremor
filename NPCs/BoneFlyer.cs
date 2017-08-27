@@ -1,11 +1,11 @@
-using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
+using Microsoft.Xna.Framework;
+
 namespace Tremor.NPCs
 {
-
 	public class BoneFlyer : ModNPC
 	{
 		public override void SetStaticDefaults()
@@ -32,32 +32,14 @@ namespace Tremor.NPCs
 			bannerItem = mod.ItemType("BoneFlyerBanner");
 		}
 
-		public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
-		{
-			npc.lifeMax = npc.lifeMax * 1;
-			npc.damage = npc.damage * 1;
-		}
-
 		public override void NPCLoot()
 		{
-			if (Main.netMode != 1)
-			{
-				int centerX = (int)(npc.position.X + npc.width / 2) / 16;
-				int centerY = (int)(npc.position.Y + npc.height / 2) / 16;
-				int halfLength = npc.width / 2 / 16 + 1;
-				if (Main.rand.NextBool())
-				{
-					Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, 154, Main.rand.Next(1, 2));
-				}
-				if (Main.rand.Next(6) == 0)
-				{
-					Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, 189, Main.rand.Next(1, 2));
-				}
-				if (Main.rand.Next(6) == 0)
-				{
-					Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, 188, Main.rand.Next(1, 2));
-				}
-			}
+			if (Main.rand.NextBool())
+				npc.SpawnItem(ItemID.Bone, Main.rand.Next(1, 3));
+			if (Main.rand.Next(6) == 0)
+				npc.SpawnItem(ItemID.HealingPotion, Main.rand.Next(1, 3));
+			if (Main.rand.Next(6) == 0)
+				npc.SpawnItem(ItemID.ManaPotion, Main.rand.Next(1, 3));
 		}
 
 		public override void HitEffect(int hitDirection, double damage)
@@ -65,9 +47,8 @@ namespace Tremor.NPCs
 			if (npc.life <= 0)
 			{
 				for (int k = 0; k < 20; k++)
-				{
 					Dust.NewDust(npc.position, npc.width, npc.height, 151, 2.5f * hitDirection, -2.5f, 0, default(Color), 0.7f);
-				}
+
 				Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/FlyerGore1"), 1f);
 				Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/FlyerGore2"), 1f);
 				Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/FlyerGore2"), 1f);
@@ -78,11 +59,7 @@ namespace Tremor.NPCs
 
 		public override float SpawnChance(NPCSpawnInfo spawnInfo)
 		{
-			int x = spawnInfo.spawnTileX;
-			int y = spawnInfo.spawnTileY;
-			int tile = Main.tile[x, y].type;
-			return (Helper.NoZoneAllowWater(spawnInfo)) && spawnInfo.player.ZoneDungeon && y > Main.rockLayer ? 0.01f : 0f;
+			return (Helper.NoZoneAllowWater(spawnInfo)) && spawnInfo.player.ZoneDungeon && spawnInfo.spawnTileY > Main.rockLayer ? 0.01f : 0f;
 		}
-
 	}
 }

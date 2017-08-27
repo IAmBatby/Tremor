@@ -1,7 +1,11 @@
-using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+
+using Microsoft.Xna.Framework;
+
+using Tremor.Items;
+using Tremor.Projectiles;
 
 namespace Tremor.NPCs
 {
@@ -29,6 +33,7 @@ namespace Tremor.NPCs
 			NPCID.Sets.AttackTime[npc.type] = 30;
 			NPCID.Sets.AttackAverageChance[npc.type] = 30;
 		}
+
 		public override void SetDefaults()
 		{
 			npc.townNPC = true;
@@ -47,55 +52,38 @@ namespace Tremor.NPCs
 			animationType = NPCID.Guide;
 		}
 
-		public override bool CanTownNPCSpawn(int numTownNPCs, int money)
-		{
-			if (TremorWorld.Boss.Rukh.IsDowned())
-			{
-				return true;
-			}
-			return false;
-		}
+		public override bool CanTownNPCSpawn(int numTownNPCs, int money) 
+			=> TremorWorld.Boss.Rukh.IsDowned();
 
 		public override string TownNPCName()
 		{
-			switch (WorldGen.genRand.Next(5))
+			string[] names =
 			{
-				case 0:
-					return "Badruddin";
-				case 1:
-					return "Galib";
-				case 2:
-					return "Salavat";
-				case 3:
-					return "Zafar";
-				case 4:
-					return "Valid";
-				case 5:
-					return "Tunak";
-				default:
-					return "Nadim";
-			}
+				"Badruddin",
+				"Galib",
+				"Salavat",
+				"Zafar",
+				"Valid",
+				"Tunak",
+				"Nadim"
+			};
+			return names.TakeRandom();
 		}
 
 		public override string GetChat()
 		{
-			switch (Main.rand.Next(6))
+			// weighted chats?
+			string[] chats =
 			{
-				case 0:
-					return "Salam aleykum! Do you need anything?";
-				case 1:
-					return "I got some sand in my pockets. I think throwing it will hurt your eyes.";
-				case 2:
-					return "My wear was absolutely white long time ago. Maybe I should wash it with this perfect yellow water?";
-				case 3:
-					return "There are stories about what happened in the sands of this desert. But I won't tell you anything.";
-				case 4:
-					return "In case something will happen with me... I bequeath you all my sand.";
-				case 5:
-					return "The sands are telling me that... That... Ugh... That you will buy everything!";
-				default:
-					return "The sands are moving... Be careful or you will be sucked into unknown depths!";
-			}
+				"Salam aleykum! Do you need anything?",
+				"I got some sand in my pockets. I think throwing it will hurt your eyes.",
+				"My wear was absolutely white long time ago. Maybe I should wash it with this perfect yellow water?",
+				"There are stories about what happened in the sands of this desert. But I won't tell you anything.",
+				"In case something will happen with me... I bequeath you all my sand.",
+				"The sands are telling me that... That... Ugh... That you will buy everything!",
+				"The sands are moving... Be careful or you will be sucked into unknown depths!"
+			};
+			return chats.TakeRandom();
 		}
 
 		public override void SetChatButtons(ref string button, ref string button2)
@@ -105,41 +93,29 @@ namespace Tremor.NPCs
 
 		public override void OnChatButtonClicked(bool firstButton, ref bool shop)
 		{
-			if (firstButton)
-			{
-				shop = true;
-			}
+			shop = firstButton;
 		}
 
 		public override void SetupShop(Chest shop, ref int nextSlot)
 		{
-			shop.item[nextSlot].SetDefaults(mod.ItemType("GenieLamp"));
-			nextSlot++;
-			shop.item[nextSlot].SetDefaults(mod.ItemType("JavaHood"));
-			nextSlot++;
-			shop.item[nextSlot].SetDefaults(mod.ItemType("JavaRobe"));
-			nextSlot++;
-			shop.item[nextSlot].SetDefaults(mod.ItemType("SandstoneRing"));
-			nextSlot++;
+			shop.AddUniqueItem(ref nextSlot, mod.ItemType<GenieLamp>());
+			shop.AddUniqueItem(ref nextSlot, mod.ItemType<JavaHood>());
+			shop.AddUniqueItem(ref nextSlot, mod.ItemType<JavaRobe>());
+			shop.AddUniqueItem(ref nextSlot, mod.ItemType<SandstoneRing>());
+
 			if (NPC.downedBoss1)
 			{
-				shop.item[nextSlot].SetDefaults(mod.ItemType("FossilSugar"));
-				nextSlot++;
-				shop.item[nextSlot].SetDefaults(mod.ItemType("DesertCrown"));
-				nextSlot++;
+				shop.AddUniqueItem(ref nextSlot, mod.ItemType<FossilSugar>());
+				shop.AddUniqueItem(ref nextSlot, mod.ItemType<DesertCrown>());
 			}
 			if (NPC.downedBoss2)
 			{
-				shop.item[nextSlot].SetDefaults(3378);
-				nextSlot++;
-				shop.item[nextSlot].SetDefaults(3379);
-				nextSlot++;
+				shop.AddUniqueItem(ref nextSlot, ItemID.BoneJavelin);
+				shop.AddUniqueItem(ref nextSlot, ItemID.BoneDagger);
 			}
+
 			if (Main.hardMode)
-			{
-				shop.item[nextSlot].SetDefaults(mod.ItemType("DesertEagle"));
-				nextSlot++;
-			}
+				shop.AddUniqueItem(ref nextSlot, mod.ItemType<DesertEagle>());
 		}
 
 		public override void TownNPCAttackStrength(ref int damage, ref float knockback)
@@ -156,22 +132,14 @@ namespace Tremor.NPCs
 
 		public override void TownNPCAttackProj(ref int projType, ref int attackDelay)
 		{
-			projType = mod.ProjectileType("Sand");
+			projType = mod.ProjectileType<Sand>();
 			attackDelay = 4;
 		}
 
 		public override void NPCLoot()
 		{
-			if (Main.netMode != 1)
-			{
-				int centerX = (int)(npc.position.X + npc.width / 2) / 16;
-				int centerY = (int)(npc.position.Y + npc.height / 2) / 16;
-				int halfLength = npc.width / 2 / 16 + 1;
-				if (Main.rand.NextBool())
-				{
-					Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("WhiteTurban"));
-				};
-			}
+			if (Main.rand.NextBool())
+				npc.SpawnItem((short)mod.ItemType<WhiteTurban>());
 		}
 
 		public override void HitEffect(int hitDirection, double damage)
@@ -179,15 +147,12 @@ namespace Tremor.NPCs
 			if (npc.life <= 0)
 			{
 				for (int k = 0; k < 20; k++)
-				{
 					Dust.NewDust(npc.position, npc.width, npc.height, 151, 2.5f * hitDirection, -2.5f, 0, default(Color), 0.7f);
-				}
-				Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/ArabianMerchantGore1"), 1f);
-				Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/ArabianMerchantGore2"), 1f);
-				Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/ArabianMerchantGore3"), 1f);
+
+				for (int i = 0; i < 3; i++)
+					Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot($"Gores/ArabianMerchantGore{i+1}"), 1f);
 			}
 		}
-
 
 		public override void TownNPCAttackProjSpeed(ref float multiplier, ref float gravityCorrection, ref float randomOffset)
 		{

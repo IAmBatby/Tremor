@@ -1,12 +1,12 @@
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+
 namespace Tremor.NPCs
 {
-
 	public class BoneFish : ModNPC
 	{
 		public override void SetStaticDefaults()
@@ -34,24 +34,10 @@ namespace Tremor.NPCs
 			NPCID.Sets.TrailCacheLength[npc.type] = 5;
 		}
 
-		public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
-		{
-			npc.lifeMax = npc.lifeMax * 1;
-			npc.damage = npc.damage * 1;
-		}
-
 		public override void NPCLoot()
 		{
-			if (Main.netMode != 1)
-			{
-				int centerX = (int)(npc.position.X + npc.width / 2) / 16;
-				int centerY = (int)(npc.position.Y + npc.height / 2) / 16;
-				int halfLength = npc.width / 2 / 16 + 1;
-				if (Main.rand.NextBool())
-				{
-					Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, 154);
-				};
-			}
+			if (Main.rand.NextBool())
+				npc.SpawnItem(ItemID.Bone);
 		}
 
 		public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)
@@ -59,36 +45,26 @@ namespace Tremor.NPCs
 			Vector2 drawOrigin = new Vector2(Main.npcTexture[npc.type].Width, Main.npcTexture[npc.type].Height * 0.8f);
 			for (int k = 0; k < npc.oldPos.Length; k++)
 			{
-				SpriteEffects effect = SpriteEffects.None;
-				if (npc.direction == 1) { effect = SpriteEffects.FlipHorizontally; }
-				if (npc.direction == -1) { effect = SpriteEffects.None; }
-				Vector2 drawPos = npc.oldPos[k] - Main.screenPosition;
+				SpriteEffects effect = npc.direction == 1 ? SpriteEffects.FlipHorizontally : SpriteEffects.None;
 				Color color = npc.GetAlpha(lightColor) * ((npc.oldPos.Length - k) / (float)npc.oldPos.Length);
-				Rectangle frame = new Rectangle(0, 0, 38, 26);
-				frame.Y += 164 * (k / 60);
+				Rectangle frame = new Rectangle(0, 164 * (k / 60), 38, 26);
 
-
-				spriteBatch.Draw(Main.npcTexture[npc.type], drawPos, frame, color, 0, Vector2.Zero, npc.scale, effect, 1f);
+				spriteBatch.Draw(Main.npcTexture[npc.type], npc.oldPos[k] - Main.screenPosition, frame, color, 0, Vector2.Zero, npc.scale, effect, 1f);
 			}
 			return true;
 		}
 
 		public override void AI()
 		{
-			for (int num74 = npc.oldPos.Length - 1; num74 > 0; num74--)
-			{
-				npc.oldPos[num74] = npc.oldPos[num74 - 1];
-			}
+			for (int i = npc.oldPos.Length - 1; i > 0; i--)
+				npc.oldPos[i] = npc.oldPos[i - 1];
 			npc.oldPos[0] = npc.position;
 		}
 
 		public override void HitEffect(int hitDirection, double damage)
 		{
 			if (npc.life <= 0)
-			{
 				Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/BoneFishGore"), 1f);
-			}
 		}
-
 	}
 }
