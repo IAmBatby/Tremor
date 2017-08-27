@@ -33,10 +33,10 @@ namespace Tremor
 		public static bool IsDowned(this TremorWorld.Boss boss)
 			=> TremorWorld.downedBoss[boss];
 
-		public static Item SpawnItem(this ModNPC npc, short type, int stack = 1)
+		public static Item SpawnItem(this ModNPC npc, int type, int stack = 1)
 			=> SpawnItem(npc.npc, type, stack);
 
-		public static Item SpawnItem(this NPC npc, short type, int stack = 1)
+		public static Item SpawnItem(this NPC npc, int type, int stack = 1)
 			=> Main.item[Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, type, stack)];
 
 		public static Item SpawnItem(Vector2 position, Vector2 size, short type, int stack = 1)
