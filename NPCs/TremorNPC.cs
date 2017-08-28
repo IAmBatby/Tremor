@@ -1,6 +1,7 @@
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+
 using Tremor.Items;
 
 namespace Tremor.NPCs
@@ -9,7 +10,6 @@ namespace Tremor.NPCs
 	{
 		public override void NPCLoot(NPC npc)
 		{
-
 			if (NPC.downedMoonlord)
 			{
 				if (npc.type == 147)
@@ -875,13 +875,12 @@ namespace Tremor.NPCs
 					mod.ItemType("CursedSoul"), Main.rand.Next(1, 5));
 			}
 
-			if (npc.type == 398)
+			if (npc.type == NPCID.MoonLordCore)
 			{
-				if (!TremorWorld.Boss.Tremode.IsDowned()) // Смотрим есть ли Тремод
+				if (!TremorWorld.Boss.Tremode.IsDowned())
 				{
 					Main.NewText("Nightmares became reality!", 90, 0, 157);
 					Main.NewText("The moon slowly drifts towards the Earth...", 0, 255, 255);
-
 
 					for (int k = 0; k < (int)((double)(Main.maxTilesX * Main.maxTilesY) * 6E-05); k++)
 					{
@@ -913,22 +912,19 @@ namespace Tremor.NPCs
 						}
 					}
 
-					TremorWorld.Boss.Tremode.Downed(); // Врубаем Тремод
+					TremorWorld.Boss.Tremode.Downed();
 				}
 			}
-
-
 		}
 
 		public override void SetupShop(int type, Chest shop, ref int nextSlot)
 		{
 			if (type == NPCID.Merchant && Main.bloodMoon)
 			{
-				shop.item[nextSlot].SetDefaults(mod.ItemType<RedPuzzleFragment>());
+				shop.AddUniqueItem(ref nextSlot, mod.ItemType<RedPuzzleFragment>());
 				nextSlot++;
 			}
 		}
-
 
 		public override void SetDefaults(NPC npc)
 		{

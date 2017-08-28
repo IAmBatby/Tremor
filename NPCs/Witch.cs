@@ -1,11 +1,16 @@
-using Microsoft.Xna.Framework;
+using System.Linq;
+
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
+using Microsoft.Xna.Framework;
+
+using Tremor.Items;
+using Tremor.Projectiles;
+
 namespace Tremor.NPCs
 {
-
 	[AutoloadHead]
 	public class Witch : ModNPC
 	{
@@ -48,57 +53,33 @@ namespace Tremor.NPCs
 		}
 
 		public override bool CanTownNPCSpawn(int numTownNPCs, int money)
-		{
-			for (int k = 0; k < 255; k++)
-			{
-				Player player = Main.player[k];
-				if (player.active)
-				{
-					for (int j = 0; j < player.inventory.Length; j++)
-					{
-						if (player.inventory[j].type == 1774)
-						{
-							return true;
-						}
-					}
-				}
-			}
-			return false;
-		}
+			=> Main.player.Any(player => player.active && player.inventory.Any(item => item != null && item.type == ItemID.GoodieBag));
 
 
 		public override string TownNPCName()
 		{
-			switch (WorldGen.genRand.Next(4))
+			string[] names =
 			{
-				case 0:
-					return "Circe";
-				case 1:
-					return "Kikimora";
-				case 2:
-					return "Morgana";
-				default:
-					return "Hecate";
-			}
+				"Circe",
+				"Kikimora",
+				"Morgana",
+				"Hecate"
+			};
+			return names.TakeRandom();
 		}
 
 		public override string GetChat()
 		{
-			switch (Main.rand.Next(6))
+			string[] chats =
 			{
-				case 0:
-					return "<cackle> Welcome dearies! I hope you don't mind the body parts. I was cleaning.";
-				case 1:
-					return "Eye of a newt! Tongue of a cat! Blood of a dryad... a little more blood.";
-				case 2:
-					return "Don't pull my nose! It's not a mask!";
-				case 3:
-					return "The moon has a secret dearies! One that you'll know soon enough!";
-				case 4:
-					return "This is halloween! Or isn't it?";
-				default:
-					return "Blood for the blood moon! Skulls for the skull cap...or was it something else?";
-			}
+				"<cackle> Welcome dearies! I hope you don't mind the body parts. I was just cleaning up.",
+				"Eye of a newt! Tongue of a cat! Blood of a dryad... a little more blood.",
+				"Don't pull my nose! It's not a mask!",
+				"The moon has a secret dearies! One that you'll know soon enough!",
+				"This is halloween! Or is it?",
+				"Blood for the blood moon! Skulls for the skull cap... Or was it something else?"
+			};
+			return chats.TakeRandom();
 		}
 
 		public override void SetChatButtons(ref string button, ref string button2)
@@ -108,37 +89,22 @@ namespace Tremor.NPCs
 
 		public override void OnChatButtonClicked(bool firstButton, ref bool shop)
 		{
-			if (firstButton)
-			{
-				shop = true;
-			}
+			shop = firstButton;
 		}
 
 		public override void SetupShop(Chest shop, ref int nextSlot)
 		{
-			shop.item[nextSlot].SetDefaults(mod.ItemType("PlagueMask"));
-			nextSlot++;
-			shop.item[nextSlot].SetDefaults(mod.ItemType("PlagueRobe"));
-			nextSlot++;
-			shop.item[nextSlot].SetDefaults(mod.ItemType("SacrificalScythe"));
-			nextSlot++;
-			shop.item[nextSlot].SetDefaults(mod.ItemType("Scarecrow"));
-			nextSlot++;
+			shop.AddUniqueItem(ref nextSlot, mod.ItemType<PlagueMask>());
+			shop.AddUniqueItem(ref nextSlot, mod.ItemType<PlagueRobe>());
+			shop.AddUniqueItem(ref nextSlot, mod.ItemType<SacrificalScythe>());
+			shop.AddUniqueItem(ref nextSlot, mod.ItemType<Scarecrow>());
+
 			if (NPC.downedBoss1)
-			{
-				shop.item[nextSlot].SetDefaults(mod.ItemType("BoomSpear"));
-				nextSlot++;
-			}
+				shop.AddUniqueItem(ref nextSlot, mod.ItemType<BoomSpear>());
 			if (NPC.downedBoss2)
-			{
-				shop.item[nextSlot].SetDefaults(mod.ItemType("BlackRose"));
-				nextSlot++;
-			}
+				shop.AddUniqueItem(ref nextSlot, mod.ItemType<BlackRose>());
 			if (NPC.downedBoss3)
-			{
-				shop.item[nextSlot].SetDefaults(mod.ItemType("Pumpspell"));
-				nextSlot++;
-			}
+				shop.AddUniqueItem(ref nextSlot, mod.ItemType<Pumpspell>());
 		}
 
 		public override void TownNPCAttackStrength(ref int damage, ref float knockback)
@@ -155,7 +121,7 @@ namespace Tremor.NPCs
 
 		public override void TownNPCAttackProj(ref int projType, ref int attackDelay)
 		{
-			projType = mod.ProjectileType("PumpkinPro");
+			projType = mod.ProjectileType<PumpkinPro>();
 			attackDelay = 2;
 		}
 
@@ -170,12 +136,10 @@ namespace Tremor.NPCs
 			if (npc.life <= 0)
 			{
 				for (int k = 0; k < 20; k++)
-				{
 					Dust.NewDust(npc.position, npc.width, npc.height, 151, 2.5f * hitDirection, -2.5f, 0, default(Color), 0.7f);
-				}
-				Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/WitchGore1"), 1f);
-				Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/WitchGore2"), 1f);
-				Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/WitchGore3"), 1f);
+
+				for (int i = 0; i < 3; i++)
+					Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot($"Gores/WitchGore{i + 1}"), 1f);
 			}
 		}
 	}

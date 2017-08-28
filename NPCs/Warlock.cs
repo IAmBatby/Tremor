@@ -1,11 +1,13 @@
-using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
+using Microsoft.Xna.Framework;
+
+using Tremor.Items;
+
 namespace Tremor.NPCs
 {
-
 	[AutoloadHead]
 	public class Warlock : ModNPC
 	{
@@ -48,31 +50,20 @@ namespace Tremor.NPCs
 		}
 
 		public override bool CanTownNPCSpawn(int numTownNPCs, int money)
-		{
-			if (NPC.downedBoss2)
-				return true;
-			return false;
-		}
-
-
+			=> NPC.downedBoss2;
 
 		public override string TownNPCName()
 		{
-			switch (WorldGen.genRand.Next(4))
+			string[] names =
 			{
-				case 0:
-					return "Azazel";
-				case 1:
-					return "Baphomet";
-				case 2:
-					return "Vaal";
-				case 3:
-					return "Dis";
-				case 4:
-					return "Nisroke";
-				default:
-					return "Sabnak";
-			}
+				"Azazel",
+				"Baphomet",
+				"Vaal",
+				"Dis",
+				"Nisroke",
+				"Sabnak"
+			};
+			return names.TakeRandom();
 		}
 
 		public override string GetChat()
@@ -91,52 +82,37 @@ namespace Tremor.NPCs
 
 		public override void OnChatButtonClicked(bool firstButton, ref bool shop)
 		{
-			if (firstButton)
-			{
-				shop = true;
-			}
+			shop = firstButton;
 		}
 
 		public override void SetupShop(Chest shop, ref int nextSlot)
 		{
+			shop.AddUniqueItem(ref nextSlot, mod.ItemType<StrongBelt>());
+
 			if (NPC.downedBoss3)
-			{
-				shop.item[nextSlot].SetDefaults(mod.ItemType("BallnChain"));
-				nextSlot++;
-			}
+				shop.AddUniqueItem(ref nextSlot, mod.ItemType<BallnChain>());
+
 			if (WorldGen.crimson)
 			{
-				shop.item[nextSlot].SetDefaults(mod.ItemType("ViciousHelmet"));
-				nextSlot++;
-				shop.item[nextSlot].SetDefaults(mod.ItemType("ViciousChestplate"));
-				nextSlot++;
-				shop.item[nextSlot].SetDefaults(mod.ItemType("ViciousLeggings"));
-				nextSlot++;
+				shop.AddUniqueItem(ref nextSlot, mod.ItemType<ViciousHelmet>());
+				shop.AddUniqueItem(ref nextSlot, mod.ItemType<ViciousChestplate>());
+				shop.AddUniqueItem(ref nextSlot, mod.ItemType<ViciousLeggings>());
+			}
+			else
+			{
+				shop.AddUniqueItem(ref nextSlot, mod.ItemType<VileHelmet>());
+				shop.AddUniqueItem(ref nextSlot, mod.ItemType<VileChestplate>());
+				shop.AddUniqueItem(ref nextSlot, mod.ItemType<VileLeggings>());
 			}
 
-			if (!WorldGen.crimson)
-			{
-				shop.item[nextSlot].SetDefaults(mod.ItemType("VileHelmet"));
-				nextSlot++;
-				shop.item[nextSlot].SetDefaults(mod.ItemType("VileChestplate"));
-				nextSlot++;
-				shop.item[nextSlot].SetDefaults(mod.ItemType("VileLeggings"));
-				nextSlot++;
-			}
-			shop.item[nextSlot].SetDefaults(mod.ItemType("StrongBelt"));
-			nextSlot++;
 			if (Main.hardMode)
 			{
-				shop.item[nextSlot].SetDefaults(mod.ItemType("Necronomicon"));
-				nextSlot++;
-				shop.item[nextSlot].SetDefaults(mod.ItemType("Zephyrhorn"));
-				nextSlot++;
+				shop.AddUniqueItem(ref nextSlot, mod.ItemType<Necronomicon>());
+				shop.AddUniqueItem(ref nextSlot, mod.ItemType<Zephyrhorn>());
 			}
+
 			if (NPC.downedMechBoss1 && NPC.downedMechBoss2 && NPC.downedMechBoss3)
-			{
-				shop.item[nextSlot].SetDefaults(mod.ItemType("NecroWarhammer"));
-				nextSlot++;
-			}
+				shop.AddUniqueItem(ref nextSlot, mod.ItemType<NecroWarhammer>());
 		}
 
 		public override void TownNPCAttackStrength(ref int damage, ref float knockback)
@@ -169,12 +145,10 @@ namespace Tremor.NPCs
 			if (npc.life <= 0)
 			{
 				for (int k = 0; k < 20; k++)
-				{
 					Dust.NewDust(npc.position, npc.width, npc.height, 151, 2.5f * hitDirection, -2.5f, 0, default(Color), 0.7f);
-				}
-				Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/WarlockGore1"), 1f);
-				Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/WarlockGore2"), 1f);
-				Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/WarlockGore3"), 1f);
+
+				for (int i = 0; i < 3; i++)
+					Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot($"Gores/WarlockGore{i + 1}"), 1f);
 			}
 		}
 	}

@@ -4,7 +4,6 @@ using Terraria.ModLoader;
 
 namespace Tremor.NPCs
 {
-
 	public class Zarprite : ModNPC
 	{
 		public override void SetStaticDefaults()
@@ -32,28 +31,21 @@ namespace Tremor.NPCs
 			bannerItem = mod.ItemType("ZarpriteBanner");
 		}
 
-		public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
-		{
-			npc.lifeMax = npc.lifeMax * 1;
-			npc.damage = npc.damage * 1;
-		}
-
 		public override void HitEffect(int hitDirection, double damage)
 		{
 			if (npc.life <= 0)
 			{
 				Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/ZarpriteGore"), 1f);
-				NPC.NewNPC((int)npc.position.X - 6, (int)npc.position.Y + 6, mod.NPCType("Parasprite"));
-				NPC.NewNPC((int)npc.position.X + 6, (int)npc.position.Y, mod.NPCType("Parasprite"));
-				NPC.NewNPC((int)npc.position.X, (int)npc.position.Y - 6, mod.NPCType("Parasprite"));
+
+				if (Main.netMode == 1) return;
+
+				NPC.NewNPC((int)npc.position.X - 6, (int)npc.position.Y + 6, mod.NPCType<Parasprite>());
+				NPC.NewNPC((int)npc.position.X + 6, (int)npc.position.Y, mod.NPCType<Parasprite>());
+				NPC.NewNPC((int)npc.position.X, (int)npc.position.Y - 6, mod.NPCType<Parasprite>());
 			}
 		}
+
 		public override float SpawnChance(NPCSpawnInfo spawnInfo)
-		{
-			int x = spawnInfo.spawnTileX;
-			int y = spawnInfo.spawnTileY;
-			int tile = Main.tile[x, y].type;
-			return (Helper.NoZoneAllowWater(spawnInfo)) && y > Main.rockLayer ? 0.01f : 0f;
-		}
+			=> (Helper.NoZoneAllowWater(spawnInfo)) && spawnInfo.spawnTileY > Main.rockLayer ? 0.01f : 0f;
 	}
 }

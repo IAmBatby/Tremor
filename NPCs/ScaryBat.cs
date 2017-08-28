@@ -1,11 +1,11 @@
-using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
+using Microsoft.Xna.Framework;
+
 namespace Tremor.NPCs
 {
-
 	public class ScaryBat : ModNPC
 	{
 		public override void SetStaticDefaults()
@@ -13,8 +13,6 @@ namespace Tremor.NPCs
 			DisplayName.SetDefault("Scary Bat");
 			Main.npcFrameCount[npc.type] = 4;
 		}
-
-		const int SpeedMulti = 3; // �����⥫� ᪮���
 
 		public override void SetDefaults()
 		{
@@ -37,20 +35,12 @@ namespace Tremor.NPCs
 			npc.behindTiles = true;
 		}
 
-		public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
-		{
-			npc.lifeMax = npc.lifeMax * 1;
-			npc.damage = npc.damage * 1;
-		}
-
 		public override void HitEffect(int hitDirection, double damage)
 		{
 			if (npc.life <= 0)
 			{
 				for (int k = 0; k < 60; k++)
-				{
 					Dust.NewDust(npc.position, npc.width, npc.height, 54, 2.5f * hitDirection, -2.5f, 0, default(Color), 0.7f);
-				}
 			}
 			else
 			{
@@ -66,11 +56,6 @@ namespace Tremor.NPCs
 		}
 
 		public override float SpawnChance(NPCSpawnInfo spawnInfo)
-		{
-			int x = spawnInfo.spawnTileX;
-			int y = spawnInfo.spawnTileY;
-			int tile = Main.tile[x, y].type;
-			return (Helper.NoZoneAllowWater(spawnInfo)) && NPC.downedPlantBoss && y > Main.rockLayer ? 0.01f : 0f;
-		}
+			=> Helper.NoZoneAllowWater(spawnInfo) && NPC.downedPlantBoss && spawnInfo.spawnTileY > Main.rockLayer ? 0.01f : 0f;
 	}
 }
