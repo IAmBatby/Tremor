@@ -8,14 +8,14 @@ using Microsoft.Xna.Framework;
 
 using Tremor.Items;
 
-namespace Tremor.NPCs
+namespace Tremor.NPCs.TownNPCs
 {
 	[AutoloadHead]
 	public class Archer : ModNPC
 	{
-		public override string Texture => "Tremor/NPCs/Archer";
+		public override string Texture => "Tremor/NPCs/TownNPCs/Archer";
 
-		public override string[] AltTextures => new[] { "Tremor/NPCs/Archer" };
+		public override string[] AltTextures => new[] { "Tremor/NPCs/TownNPCs/Archer" };
 
 		public override bool Autoload(ref string name)
 		{

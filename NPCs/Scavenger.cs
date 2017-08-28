@@ -4,6 +4,8 @@ using Terraria.ModLoader;
 
 using Microsoft.Xna.Framework;
 
+using Tremor.Items;
+
 namespace Tremor.NPCs
 {
 	public class Scavenger : ModNPC

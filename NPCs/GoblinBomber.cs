@@ -278,7 +278,7 @@ namespace Tremor.NPCs
 
 		public override void FindFrame(int frameHeight)
 		{
-			if ((npc.frameCounter + Math.Abs(npc.velocity.X)) >= 20)
+			if ((npc.frameCounter += Math.Abs(npc.velocity.X)) >= 20)
 			{
 				npc.frame.Y = (npc.frame.Y + frameHeight) % (Main.npcFrameCount[npc.type] * frameHeight);
 				npc.frameCounter = 0;

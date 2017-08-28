@@ -1,3 +1,5 @@
+using System.Linq;
+
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -5,28 +7,29 @@ using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
 
 using Tremor.Items;
+using Tremor.Projectiles;
 
-namespace Tremor.NPCs
+namespace Tremor.NPCs.TownNPCs
 {
 	[AutoloadHead]
-	public class LadyMoon : ModNPC
+	public class Witch : ModNPC
 	{
-		public override string Texture => "Tremor/NPCs/LadyMoon";
+		public override string Texture => "Tremor/NPCs/TownNPCs/Witch";
 
-		public override string[] AltTextures => new[] { "Tremor/NPCs/LadyMoon" };
+		public override string[] AltTextures => new[] { "Tremor/NPCs/TownNPCs/Witch" };
 
 		public override bool Autoload(ref string name)
 		{
-			name = "Lady Moon";
+			name = "Witch";
 			return mod.Properties.Autoload;
 		}
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Lady Moon");
-			Main.npcFrameCount[npc.type] = 21;
+			DisplayName.SetDefault("Witch");
+			Main.npcFrameCount[npc.type] = 26;
 			NPCID.Sets.ExtraFramesCount[npc.type] = 5;
-			NPCID.Sets.AttackFrameCount[npc.type] = 2;
+			NPCID.Sets.AttackFrameCount[npc.type] = 5;
 			NPCID.Sets.DangerDetectRange[npc.type] = 1000;
 			NPCID.Sets.AttackType[npc.type] = 0;
 			NPCID.Sets.AttackTime[npc.type] = 30;
@@ -37,33 +40,30 @@ namespace Tremor.NPCs
 		{
 			npc.townNPC = true;
 			npc.friendly = true;
-			npc.width = 30;
-			npc.height = 48;
+			npc.width = 32;
+			npc.height = 54;
 			npc.aiStyle = 7;
-			npc.damage = 20;
+			npc.damage = 10;
 			npc.defense = 15;
 			npc.lifeMax = 250;
 			npc.HitSound = SoundID.NPCHit1;
 			npc.DeathSound = SoundID.NPCDeath1;
 			npc.knockBackResist = 0.5f;
-			animationType = NPCID.Dryad;
+			animationType = NPCID.Guide;
 		}
 
 		public override bool CanTownNPCSpawn(int numTownNPCs, int money)
-			=> NPC.downedMoonlord;
+			=> Main.player.Any(player => player.active && player.inventory.Any(item => item != null && item.type == ItemID.GoodieBag));
 
 
 		public override string TownNPCName()
 		{
 			string[] names =
 			{
-				"Atria",
-				"Mintaka",
-				"Nashira",
-				"Rana",
-				"Talita",
-				"Zosma",
-				"Pleyona"
+				"Circe",
+				"Kikimora",
+				"Morgana",
+				"Hecate"
 			};
 			return names.TakeRandom();
 		}
@@ -72,13 +72,12 @@ namespace Tremor.NPCs
 		{
 			string[] chats =
 			{
-				"There are so many beautiful things in this world! What can be more beautiful than a big shining star? Maybe only an exploding big shining star!",
-				"I hope this world doesn't have crazy kings that want to kill you. You're not one of them, are you!?",
-				"I have heard about an space station called Death Star that can destroy any planet or star! Can you show me this station?",
-				"I believe I can fly! I believe I can touch the sk-... Sorry, I forgot that I'm not alone here!",
-				"What do you call a man who watches an exploding star? A STARk man!",
-				"I was in a strange castle one day. There were mechanical things saying EXTERMINATE. Were they your minions?",
-				"Planets are burning, stars are exploding, but the prices for my spacy things are not changing!"
+				"<cackle> Welcome dearies! I hope you don't mind the body parts. I was just cleaning up.",
+				"Eye of a newt! Tongue of a cat! Blood of a dryad... a little more blood.",
+				"Don't pull my nose! It's not a mask!",
+				"The moon has a secret dearies! One that you'll know soon enough!",
+				"This is halloween! Or is it?",
+				"Blood for the blood moon! Skulls for the skull cap... Or was it something else?"
 			};
 			return chats.TakeRandom();
 		}
@@ -95,22 +94,22 @@ namespace Tremor.NPCs
 
 		public override void SetupShop(Chest shop, ref int nextSlot)
 		{
-			shop.AddUniqueItem(ref nextSlot, mod.ItemType("DimensionalTopHat"));
-			shop.AddUniqueItem(ref nextSlot, mod.ItemType("ExtraterrestrialRubies"));
-			shop.AddUniqueItem(ref nextSlot, mod.ItemType("UnchargedBand"));
-			if (!Main.dayTime)
-				shop.AddUniqueItem(ref nextSlot, mod.ItemType("ManaBooster"));
-			if (Main.dayTime)
-				shop.AddUniqueItem(ref nextSlot, mod.ItemType("HealthBooster"));
-			if (Main.bloodMoon)
-				shop.AddUniqueItem(ref nextSlot, mod.ItemType("ChainedRocket"));
-			if (Main.eclipse)
-				shop.AddUniqueItem(ref nextSlot, mod.ItemType("Infusion"));
+			shop.AddUniqueItem(ref nextSlot, mod.ItemType<PlagueMask>());
+			shop.AddUniqueItem(ref nextSlot, mod.ItemType<PlagueRobe>());
+			shop.AddUniqueItem(ref nextSlot, mod.ItemType<SacrificalScythe>());
+			shop.AddUniqueItem(ref nextSlot, mod.ItemType<Scarecrow>());
+
+			if (NPC.downedBoss1)
+				shop.AddUniqueItem(ref nextSlot, mod.ItemType<BoomSpear>());
+			if (NPC.downedBoss2)
+				shop.AddUniqueItem(ref nextSlot, mod.ItemType<BlackRose>());
+			if (NPC.downedBoss3)
+				shop.AddUniqueItem(ref nextSlot, mod.ItemType<Pumpspell>());
 		}
 
 		public override void TownNPCAttackStrength(ref int damage, ref float knockback)
 		{
-			damage = 165;
+			damage = 25;
 			knockback = 4f;
 		}
 
@@ -122,8 +121,8 @@ namespace Tremor.NPCs
 
 		public override void TownNPCAttackProj(ref int projType, ref int attackDelay)
 		{
-			projType = 12;
-			attackDelay = 4;
+			projType = mod.ProjectileType<PumpkinPro>();
+			attackDelay = 2;
 		}
 
 		public override void TownNPCAttackProjSpeed(ref float multiplier, ref float gravityCorrection, ref float randomOffset)
@@ -139,8 +138,8 @@ namespace Tremor.NPCs
 				for (int k = 0; k < 20; k++)
 					Dust.NewDust(npc.position, npc.width, npc.height, 151, 2.5f * hitDirection, -2.5f, 0, default(Color), 0.7f);
 
-				for(int i = 0; i < 3; ++i)
-					Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot($"Gores/FarmerGore{i+1}"), 1f);
+				for (int i = 0; i < 3; i++)
+					Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot($"Gores/WitchGore{i + 1}"), 1f);
 			}
 		}
 	}

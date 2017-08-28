@@ -4,13 +4,13 @@ using Terraria.ModLoader;
 
 using Microsoft.Xna.Framework;
 
-namespace Tremor.NPCs
+namespace Tremor.CogLord.NPCs
 {
-	public class GogLordGog : ModNPC
+	public class CogLordCog : ModNPC
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Brass Gear");
+			DisplayName.SetDefault("Cog");
 		}
 
 		public override void SetDefaults()

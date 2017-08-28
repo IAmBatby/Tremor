@@ -9,14 +9,14 @@ using Microsoft.Xna.Framework;
 using Tremor.Items;
 using Tremor.Projectiles;
 
-namespace Tremor.NPCs
+namespace Tremor.NPCs.TownNPCs
 {
 	[AutoloadHead]
 	public class Farmer : ModNPC
 	{
-		public override string Texture => "Tremor/NPCs/Farmer";
+		public override string Texture => "Tremor/NPCs/TownNPCs/Farmer";
 
-		public override string[] AltTextures => new[] { "Tremor/NPCs/Farmer" };
+		public override string[] AltTextures => new[] { "Tremor/NPCs/TownNPCs/Farmer" };
 
 		public override bool Autoload(ref string name)
 		{

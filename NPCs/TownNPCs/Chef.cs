@@ -7,14 +7,14 @@ using Microsoft.Xna.Framework.Graphics;
 
 using Tremor.Items;
 
-namespace Tremor.NPCs
+namespace Tremor.NPCs.TownNPCs
 {
 	[AutoloadHead]
 	public class Chef : ModNPC
 	{
-		public override string Texture => "Tremor/NPCs/Chef";
+		public override string Texture => "Tremor/NPCs/TownNPCs/Chef";
 
-		public override string[] AltTextures => new[] { "Tremor/NPCs/Chef" };
+		public override string[] AltTextures => new[] { "Tremor/NPCs/TownNPCs/Chef" };
 
 		public override bool Autoload(ref string name)
 		{

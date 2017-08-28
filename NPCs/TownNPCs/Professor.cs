@@ -1,5 +1,3 @@
-using System.Linq;
-
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -8,14 +6,14 @@ using Microsoft.Xna.Framework;
 
 using Tremor.Items;
 
-namespace Tremor.NPCs
+namespace Tremor.NPCs.TownNPCs
 {
 	[AutoloadHead]
 	public class Professor : ModNPC
 	{
-		public override string Texture => "Tremor/NPCs/Professor";
+		public override string Texture => "Tremor/NPCs/TownNPCs/Professor";
 
-		public override string[] AltTextures => new[] { "Tremor/NPCs/Professor" };
+		public override string[] AltTextures => new[] { "Tremor/NPCs/TownNPCs/Professor" };
 
 		public override bool Autoload(ref string name)
 		{
