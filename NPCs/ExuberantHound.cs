@@ -1,12 +1,13 @@
 using System;
-using Microsoft.Xna.Framework;
+
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
+using Microsoft.Xna.Framework;
+
 namespace Tremor.NPCs
 {
-
 	public class ExuberantHound : ModNPC
 	{
 		public override void SetStaticDefaults()
@@ -33,6 +34,88 @@ namespace Tremor.NPCs
 			// Todo: bannerItem = mod.ItemType("ExuberantHoundBanner");
 		}
 
+		/*
+		 * 
+		 * 
+		 * 
+		 */
+
+		public override void AI()
+		{
+			Vector2 npcCenter = new Vector2(npc.position.X + npc.width * 0.5f, npc.position.Y + npc.height * 0.5f);
+			float targetX = Main.player[npc.target].position.X + Main.player[npc.target].width * 0.5f - npcCenter.X;
+			float targetY = Main.player[npc.target].position.Y - npcCenter.Y;
+			float targetLength = (float)Math.Sqrt(targetX * targetX + targetY * targetY);
+
+			if (npc.ai[2] == 1f)
+			{
+				npc.ai[1]++;
+				npc.velocity.X = npc.velocity.X * 0.7f;
+				if (npc.ai[1] < 30f)
+				{
+					Vector2 newDustLocation = npc.Center + Vector2.UnitX * npc.spriteDirection * -20f;
+					Dust newDust = Main.dust[Dust.NewDust(newDustLocation, 0, 0, 242, 0f, 0f, 0, default(Color), 1f)];
+					Vector2 randomDirection = Vector2.UnitY.RotatedByRandom(Math.PI * 2);
+					newDust.position = newDustLocation + randomDirection * 20f;
+					newDust.velocity = -randomDirection * 2f;
+					newDust.scale = 0.5f + randomDirection.X * -npc.spriteDirection;
+					newDust.fadeIn = 1f;
+					newDust.noGravity = true;
+				}
+				else if (npc.ai[1] == 30f)
+				{
+					for (int i = 0; i < 20; i++)
+					{
+						Vector2 newDustLocation = npc.Center + Vector2.UnitX * npc.spriteDirection * -20f;
+						Dust newDust = Main.dust[Dust.NewDust(newDustLocation, 0, 0, 242, 0f, 0f, 0, default(Color), 1f)];
+						Vector2 randomDirection = Vector2.UnitY.RotatedByRandom(Math.PI * 2);
+						newDust.position = newDustLocation + randomDirection * 4f;
+						newDust.velocity = randomDirection * 4f + Vector2.UnitX * Main.rand.NextFloat() * npc.spriteDirection * -5f;
+						newDust.scale = 0.5f + randomDirection.X * -npc.spriteDirection;
+						newDust.fadeIn = 1f;
+						newDust.noGravity = true;
+					}
+				}
+				
+				if (npc.velocity.X > -0.5f && npc.velocity.X < 0.5f)
+					npc.velocity.X = 0f;
+
+				if (npc.ai[1] == 30f && Main.netMode != 1)
+				{
+					int projectileDamage = Main.expertMode ? 35 : 50;
+					Projectile.NewProjectile(npc.Center.X + npc.spriteDirection * -20, npc.Center.Y, npc.spriteDirection * -7, 0f, ProjectileID.MartianTurretBolt, projectileDamage, 0f, Main.myPlayer, npc.target, 0f);
+				}
+
+				if (npc.ai[1] >= 60f)
+				{
+					npc.ai[1] = -Main.rand.Next(320, 601);
+					npc.ai[2] = 0f;
+				}
+			}
+			else
+			{
+				npc.ai[1]++;
+				if (npc.ai[1] >= 180f && targetLength < 500f && npc.velocity.Y == 0f)
+				{
+					npc.ai[1] = 0f;
+					npc.ai[2] = 1f;
+					npc.netUpdate = true;
+				}
+				else if (npc.velocity.Y == 0f && targetLength < 100f && Math.Abs(npc.velocity.X) > 3f && ((npc.Center.X < Main.player[npc.target].Center.X && npc.velocity.X > 0f) || (npc.Center.X > Main.player[npc.target].Center.X && npc.velocity.X < 0f)))
+				{
+					npc.velocity.Y = npc.velocity.Y - 4f;
+				}
+			}
+		}
+
+		public override void NPCLoot()
+		{
+			if (Main.rand.NextBool())
+				npc.NewItem(mod.ItemType("ConcentratedEther"), Main.rand.Next(2, 4));
+			if (Main.rand.Next(5) == 0)
+				npc.NewItem(mod.ItemType("ToothofAbraxas"), Main.rand.Next(1, 3));
+		}
+
 		public override void HitEffect(int hitDirection, double damage)
 		{
 			if (npc.life <= 0)
@@ -51,8 +134,7 @@ namespace Tremor.NPCs
 			}
 			else
 			{
-
-				for (int k = 0; k < damage / npc.lifeMax * 50.0; k++)
+				for (int k = 0; k < damage / npc.lifeMax * 50; k++)
 				{
 					Dust.NewDust(npc.position, npc.width, npc.height, 226, hitDirection, -2f, 0, default(Color), 0.7f);
 					Dust.NewDust(npc.position, npc.width, npc.height, 27, hitDirection, -1f, 0, default(Color), 0.7f);
@@ -60,98 +142,7 @@ namespace Tremor.NPCs
 			}
 		}
 
-
-		public override void NPCLoot()
-		{
-			if (Main.netMode != 1)
-			{
-				int centerX = (int)(npc.position.X + npc.width / 2) / 16;
-				int centerY = (int)(npc.position.Y + npc.height / 2) / 16;
-				int halfLength = npc.width / 2 / 16 + 1;
-				if (Main.rand.NextBool())
-				{
-					Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("ConcentratedEther"), Main.rand.Next(2, 4));
-				};
-				if (Main.rand.Next(5) == 0)
-				{
-					Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("ToothofAbraxas"), Main.rand.Next(1, 2));
-				};
-			}
-		}
-
-		public override void AI()
-		{
-			Vector2 vector72 = new Vector2(npc.position.X + npc.width * 0.5f, npc.position.Y + npc.height * 0.5f);
-			float num738 = Main.player[npc.target].position.X + Main.player[npc.target].width * 0.5f - vector72.X;
-			float num739 = Main.player[npc.target].position.Y - vector72.Y;
-			float num740 = (float)Math.Sqrt(num738 * num738 + num739 * num739);
-
-			if (npc.ai[2] == 1f)
-			{
-				npc.ai[1] += 1f;
-				npc.velocity.X = npc.velocity.X * 0.7f;
-				if (npc.ai[1] < 30f)
-				{
-					Vector2 vector73 = npc.Center + Vector2.UnitX * npc.spriteDirection * -20f;
-					Dust dust11 = Main.dust[Dust.NewDust(vector73, 0, 0, 242, 0f, 0f, 0, default(Color), 1f)];
-					Vector2 vector74 = Vector2.UnitY.RotatedByRandom(6.2831854820251465);
-					dust11.position = vector73 + vector74 * 20f;
-					dust11.velocity = -vector74 * 2f;
-					dust11.scale = 0.5f + vector74.X * -(float)npc.spriteDirection;
-					dust11.fadeIn = 1f;
-					dust11.noGravity = true;
-				}
-				else if (npc.ai[1] == 30f)
-				{
-					for (int num743 = 0; num743 < 20; num743++)
-					{
-						Vector2 vector75 = npc.Center + Vector2.UnitX * npc.spriteDirection * -20f;
-						Dust dust12 = Main.dust[Dust.NewDust(vector75, 0, 0, 242, 0f, 0f, 0, default(Color), 1f)];
-						Vector2 vector76 = Vector2.UnitY.RotatedByRandom(6.2831854820251465);
-						dust12.position = vector75 + vector76 * 4f;
-						dust12.velocity = vector76 * 4f + Vector2.UnitX * Main.rand.NextFloat() * npc.spriteDirection * -5f;
-						dust12.scale = 0.5f + vector76.X * -(float)npc.spriteDirection;
-						dust12.fadeIn = 1f;
-						dust12.noGravity = true;
-					}
-				}
-				if (npc.velocity.X > -0.5f && npc.velocity.X < 0.5f)
-				{
-					npc.velocity.X = 0f;
-				}
-				if (npc.ai[1] == 30f && Main.netMode != 1)
-				{
-					int num744 = Main.expertMode ? 35 : 50;
-					Projectile.NewProjectile(npc.Center.X + npc.spriteDirection * -20, npc.Center.Y, npc.spriteDirection * -7, 0f, 435, num744, 0f, Main.myPlayer, npc.target, 0f);
-				}
-				if (npc.ai[1] >= 60f)
-				{
-					npc.ai[1] = -(float)Main.rand.Next(320, 601);
-					npc.ai[2] = 0f;
-				}
-			}
-			else
-			{
-				npc.ai[1] += 1f;
-				if (npc.ai[1] >= 180f && num740 < 500f && npc.velocity.Y == 0f)
-				{
-					npc.ai[1] = 0f;
-					npc.ai[2] = 1f;
-					npc.netUpdate = true;
-				}
-				else if (npc.velocity.Y == 0f && num740 < 100f && Math.Abs(npc.velocity.X) > 3f && ((npc.Center.X < Main.player[npc.target].Center.X && npc.velocity.X > 0f) || (npc.Center.X > Main.player[npc.target].Center.X && npc.velocity.X < 0f)))
-				{
-					npc.velocity.Y = npc.velocity.Y - 4f;
-				}
-			}
-		}
-
 		public override float SpawnChance(NPCSpawnInfo spawnInfo)
-		{
-			int x = spawnInfo.spawnTileX;
-			int y = spawnInfo.spawnTileY;
-			int tile = Main.tile[x, y].type;
-			return (Helper.NormalSpawn(spawnInfo) && Helper.NoZoneAllowWater(spawnInfo)) && NPC.downedMoonlord && Main.hardMode && !Main.dayTime && y < Main.worldSurface ? 0.001f : 0f;
-		}
+			=> (Helper.NormalSpawn(spawnInfo) && Helper.NoZoneAllowWater(spawnInfo)) && NPC.downedMoonlord && Main.hardMode && !Main.dayTime && spawnInfo.spawnTileY < Main.worldSurface ? 0.001f : 0f;
 	}
 }

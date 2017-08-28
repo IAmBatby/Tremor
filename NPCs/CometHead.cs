@@ -1,12 +1,15 @@
 using System.Linq;
-using Microsoft.Xna.Framework;
+
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
+using Microsoft.Xna.Framework;
+
+using Tremor.Items;
+
 namespace Tremor.NPCs
 {
-
 	public class CometHead : ModNPC
 	{
 		public override void SetStaticDefaults()
@@ -35,34 +38,12 @@ namespace Tremor.NPCs
 			npc.value = Item.buyPrice(0, 0, 4, 9);
 		}
 
-		public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
-		{
-			npc.lifeMax = npc.lifeMax * 1;
-			npc.damage = npc.damage * 1;
-		}
-
-
-		public override float SpawnChance(NPCSpawnInfo spawnInfo)
-		{
-			int[] TileArray2 = { mod.TileType("CometiteOreTile"), mod.TileType("HardCometiteOreTile") };
-			return TileArray2.Contains(Main.tile[spawnInfo.spawnTileX, spawnInfo.spawnTileY].type) ? 15f : 0f;
-		}
 		public override void NPCLoot()
 		{
-			if (Main.netMode != 1)
-			{
-				int centerX = (int)(npc.position.X + npc.width / 2) / 16;
-				int centerY = (int)(npc.position.Y + npc.height / 2) / 16;
-				int halfLength = npc.width / 2 / 16 + 1;
-				if (Main.rand.Next(2) == 0)
-				{
-					Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("CometiteOre"), Main.rand.Next(1, 2));
-				}
-				if (Main.rand.Next(5) == 0)
-				{
-					Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("ChargedCrystal"), Main.rand.Next(1, 2));
-				}
-			}
+			if (Main.rand.Next(2) == 0)
+				npc.NewItem(mod.ItemType<CometiteOre>());
+			if (Main.rand.Next(5) == 0)
+				npc.NewItem(mod.ItemType<ChargedCrystal>());
 		}
 
 		public override void HitEffect(int hitDirection, double damage)
@@ -74,6 +55,7 @@ namespace Tremor.NPCs
 				Dust.NewDust(npc.position, npc.width, npc.height, 59, 2.5f * hitDirection, -2.5f, 0, default(Color), 0.7f);
 				Dust.NewDust(npc.position, npc.width, npc.height, 59, 2.5f * hitDirection, -2.5f, 0, default(Color), 2.7f);
 				Dust.NewDust(npc.position, npc.width, npc.height, 59, 2.5f * hitDirection, -2.5f, 0, default(Color), 0.7f);
+
 				for (int k = 0; k < 20; k++)
 				{
 					Dust.NewDust(npc.position, npc.width, npc.height, 59, 2.5f * hitDirection, -2.5f, 0, default(Color), 1.7f);
@@ -84,5 +66,10 @@ namespace Tremor.NPCs
 			}
 		}
 
+		public override float SpawnChance(NPCSpawnInfo spawnInfo)
+		{
+			int[] cometTiles = { mod.TileType("CometiteOreTile"), mod.TileType("HardCometiteOreTile") };
+			return cometTiles.Contains(Main.tile[spawnInfo.spawnTileX, spawnInfo.spawnTileY].type) ? 15f : 0f;
+		}
 	}
 }

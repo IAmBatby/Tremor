@@ -1,10 +1,16 @@
-using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
+using Microsoft.Xna.Framework;
+
+using Tremor.Items;
+
 namespace Tremor.NPCs
 {
+	/*
+	 * Rework AI into something more comprehensible and functional.
+	 */
 	public class MagiumKeeper : ModNPC
 	{
 		public override void SetStaticDefaults()
@@ -29,13 +35,6 @@ namespace Tremor.NPCs
 			animationType = 471;
 			// banner = npc.type;
 			// Todo: bannerItem = mod.ItemType("MagiumKeeperBanner");
-		}
-
-
-		public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
-		{
-			npc.lifeMax = npc.lifeMax * 1;
-			npc.damage = npc.damage * 1;
 		}
 
 		public override void AI()
@@ -267,20 +266,10 @@ namespace Tremor.NPCs
 
 		public override void NPCLoot()
 		{
-			if (Main.netMode != 1)
-			{
-				int centerX = (int)(npc.position.X + npc.width / 2) / 16;
-				int centerY = (int)(npc.position.Y + npc.height / 2) / 16;
-				int halfLength = npc.width / 2 / 16 + 1;
-				if (Main.rand.NextBool())
-				{
-					Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("MagiumShard"), Main.rand.Next(5, 12));
-				};
-				if (Main.rand.NextBool())
-				{
-					Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("RuneBar"), Main.rand.Next(6, 16));
-				};
-			}
+			if (Main.rand.NextBool())
+				this.NewItem(mod.ItemType<MagiumShard>(), Main.rand.Next(5, 12));
+			if (Main.rand.NextBool())
+				this.NewItem(mod.ItemType<RuneBar>(), Main.rand.Next(6, 16));
 		}
 
 		public override void HitEffect(int hitDirection, double damage)
@@ -308,11 +297,6 @@ namespace Tremor.NPCs
 		}
 
 		public override float SpawnChance(NPCSpawnInfo spawnInfo)
-		{
-			int x = spawnInfo.spawnTileX;
-			int y = spawnInfo.spawnTileY;
-			int tile = Main.tile[x, y].type;
-			return (Helper.NoZoneAllowWater(spawnInfo)) && Main.hardMode && y > Main.rockLayer ? 0.0003f : 0f;
-		}
+			=> Helper.NoZoneAllowWater(spawnInfo) && Main.hardMode && spawnInfo.spawnTileY > Main.rockLayer ? 0.0003f : 0f;
 	}
 }

@@ -1,15 +1,16 @@
 using System;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
+
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace Tremor.NPCs
 {
 	public class MagmaLeechHead : ModNPC
 	{
-
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Magma Leech");
@@ -52,46 +53,32 @@ namespace Tremor.NPCs
 			npc.lavaImmune = true;
 		}
 
-		public override void OnHitPlayer(Player player, int damage, bool crit)
-		{
-			if (Main.rand.NextBool())
-			{
-				player.AddBuff(24, 180, true);
-			}
-		}
-
-
 		public override void AI()
 		{
-
 			if (Main.rand.Next(3) == 0)
 			{
 				Dust.NewDust(npc.position, npc.width, npc.height, 6, 0f, 0f, 200, npc.color, 1f);
 				Dust.NewDust(npc.position, npc.width, npc.height, 6, 0f, 0f, 200, npc.color, 1f);
 			}
 
-			npc.position += npc.velocity * (2 - 1);
+			npc.position += npc.velocity;
 
-			if (!TailSpawned)
+			if (!TailSpawned && Main.netMode != 1)
 			{
 				int Previous = npc.whoAmI;
-				for (int num36 = 0; num36 < 14; num36++)
+				for (int i = 0; i < 14; i++)
 				{
-					int lol = 0;
-					if (num36 >= 0 && num36 < 13)
-					{
-						lol = NPC.NewNPC((int)npc.position.X + (npc.width / 2), (int)npc.position.Y + (npc.width / 2), mod.NPCType("MagmaLeechBody"), npc.whoAmI);
-					}
+					int newNPCIndex = 0;
+					if (i < 13)
+						newNPCIndex = NPC.NewNPC((int)npc.position.X + (npc.width / 2), (int)npc.position.Y + (npc.width / 2), mod.NPCType("MagmaLeechBody"), npc.whoAmI);
 					else
-					{
-						lol = NPC.NewNPC((int)npc.position.X + (npc.width / 2), (int)npc.position.Y + (npc.width / 2), mod.NPCType("MagmaLeechTail"), npc.whoAmI);
-					}
-					Main.npc[lol].realLife = npc.whoAmI;
-					Main.npc[lol].ai[2] = npc.whoAmI;
-					Main.npc[lol].ai[1] = Previous;
-					Main.npc[Previous].ai[0] = lol;
-					//NetMessage.SendData(23, -1, -1, "", lol, 0f, 0f, 0f, 0);
-					Previous = lol;
+						newNPCIndex = NPC.NewNPC((int)npc.position.X + (npc.width / 2), (int)npc.position.Y + (npc.width / 2), mod.NPCType("MagmaLeechTail"), npc.whoAmI);
+					Main.npc[newNPCIndex].realLife = npc.whoAmI;
+					Main.npc[newNPCIndex].ai[2] = npc.whoAmI;
+					Main.npc[newNPCIndex].ai[1] = Previous;
+					Main.npc[Previous].ai[0] = newNPCIndex;
+					NetMessage.SendData(23, -1, -1, null, newNPCIndex, 0f, 0f, 0f, 0, 0, 0);
+					Previous = newNPCIndex;
 				}
 				TailSpawned = true;
 			}
@@ -105,6 +92,13 @@ namespace Tremor.NPCs
 				npc.netUpdate = true;
 			}
 		}
+
+		public override void OnHitPlayer(Player player, int damage, bool crit)
+		{
+			if (Main.rand.NextBool())
+				player.AddBuff(BuffID.OnFire, 180, true);
+		}
+
 		public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)
 		{
 			Texture2D drawTexture = Main.npcTexture[npc.type];

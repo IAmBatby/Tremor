@@ -1,7 +1,10 @@
-using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+
+using Microsoft.Xna.Framework;
+
+using Tremor.Items;
 
 namespace Tremor.NPCs
 {
@@ -47,47 +50,35 @@ namespace Tremor.NPCs
 		}
 
 		public override bool CanTownNPCSpawn(int numTownNPCs, int money)
-		{
-			return true;
-		}
+			=> true;
 
 
 		public override string TownNPCName()
 		{
-			switch (WorldGen.genRand.Next(4))
+			string[] names =
 			{
-				case 0:
-					return "Merdok";
-				case 1:
-					return "Avalon";
-				case 2:
-					return "Aron";
-				case 3:
-					return "Harry";
-				case 4:
-					return "Edgar";
-				default:
-					return "Marco";
-			}
+				"Merdok",
+				"Avalon",
+				"Aron",
+				"Harry",
+				"Edgar",
+				"Marco"
+			};
+			return names.TakeRandom();
 		}
 
 		public override string GetChat()
 		{
-			switch (Main.rand.Next(6))
+			string[] chats =
 			{
-				case 0:
-					return "You'll never find me trapped underground.";
-				case 1:
-					return "I can share the magic with you for free. Almost free.";
-				case 2:
-					return "Sorcery is all about control. It's different from magic in that it requires symbols and fetishes.";
-				case 3:
-					return "Sorry. I don't do parties.";
-				case 4:
-					return "Don't touch that if you want to keep your hand. It's still quite unstable.";
-				default:
-					return "I want to get the rabbit out of the hat! You want? Don't want a rabbit? Seriously? Someone in this house will buy my rabbits or not!";
-			}
+				"You'll never find me trapped underground.",
+				"Sorcery is all about control. It's different from magic in that it requires symbols and fetishes.",
+				"I can share the magic with you for free. Well... Almost free.",
+				"Sorry. I don't do parties.",
+				"Don't touch that if you want to keep your hand. It's still quite unstable.",
+				"I want to get the rabbit out of the hat! Do you want it? You don't want a rabbit? Seriously!?"
+			};
+			return chats.TakeRandom();
 		}
 
 		public override void SetChatButtons(ref string button, ref string button2)
@@ -97,43 +88,29 @@ namespace Tremor.NPCs
 
 		public override void OnChatButtonClicked(bool firstButton, ref bool shop)
 		{
-			if (firstButton)
-			{
-				shop = true;
-			}
+			shop = firstButton;
 		}
 
 		public override void SetupShop(Chest shop, ref int nextSlot)
 		{
-			shop.item[nextSlot].SetDefaults(mod.ItemType("BurningTome"));
-			nextSlot++;
-			shop.item[nextSlot].SetDefaults(mod.ItemType("RazorleavesTome"));
-			nextSlot++;
-			shop.item[nextSlot].SetDefaults(2019);
-			nextSlot++;
-			shop.item[nextSlot].SetDefaults(mod.ItemType("EnchantedShield"));
-			nextSlot++;
+			shop.AddUniqueItem(ref nextSlot, ItemID.Bunny);
+			shop.AddUniqueItem(ref nextSlot, mod.ItemType<BurningTome>());
+			shop.AddUniqueItem(ref nextSlot, mod.ItemType<RazorleavesTome>());
+			shop.AddUniqueItem(ref nextSlot, mod.ItemType<EnchantedShield>());
 			if (NPC.downedBoss1)
 			{
-				shop.item[nextSlot].SetDefaults(mod.ItemType("StarfallTome"));
-				nextSlot++;
-				shop.item[nextSlot].SetDefaults(mod.ItemType("GoldenHat"));
-				nextSlot++;
-				shop.item[nextSlot].SetDefaults(mod.ItemType("GoldenRobe"));
-				nextSlot++;
+				shop.AddUniqueItem(ref nextSlot, mod.ItemType<StarfallTome>());
+				shop.AddUniqueItem(ref nextSlot, mod.ItemType<GoldenHat>());
+				shop.AddUniqueItem(ref nextSlot, mod.ItemType<GoldenRobe>());
 			}
 			if (NPC.downedBoss2)
 			{
-				shop.item[nextSlot].SetDefaults(mod.ItemType("LightningTome"));
-				nextSlot++;
-				shop.item[nextSlot].SetDefaults(mod.ItemType("Bloomstone"));
-				nextSlot++;
+				shop.AddUniqueItem(ref nextSlot, mod.ItemType<LightningTome>());
+				shop.AddUniqueItem(ref nextSlot, mod.ItemType<Bloomstone>());
 			}
+
 			if (Main.hardMode)
-			{
-				shop.item[nextSlot].SetDefaults(mod.ItemType("ManaDagger"));
-				nextSlot++;
-			}
+				shop.AddUniqueItem(ref nextSlot, mod.ItemType<ManaDagger>());
 		}
 
 		public override void TownNPCAttackStrength(ref int damage, ref float knockback)
@@ -165,12 +142,10 @@ namespace Tremor.NPCs
 			if (npc.life <= 0)
 			{
 				for (int k = 0; k < 20; k++)
-				{
 					Dust.NewDust(npc.position, npc.width, npc.height, 151, 2.5f * hitDirection, -2.5f, 0, default(Color), 0.7f);
-				}
-				Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/SorcererGore1"), 1f);
-				Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/SorcererGore2"), 1f);
-				Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/SorcererGore3"), 1f);
+
+				for(int i = 0; i < 3; ++i)
+					Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot($"Gores/SorcererGore{i+1}"), 1f);
 			}
 		}
 	}

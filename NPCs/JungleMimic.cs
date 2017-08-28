@@ -1,4 +1,3 @@
-using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -31,17 +30,12 @@ namespace Tremor.NPCs
 
 		public override void NPCLoot()
 		{
-			Helper.DropItems(npc.position, npc.Size, new Drop(mod.ItemType("SporeBlade"), 1, 1), new Drop(mod.ItemType("TechnologyofDionysus"), 1, 2), new Drop(mod.ItemType("LivingWoodThreepeater"), 1, 2), new Drop(mod.ItemType("UnfathomableFlower"), 1, 1), new Drop(0, 0, 0));
-			Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, 500, Main.rand.Next(10));
-			Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, 499, Main.rand.Next(10));
+			Helper.DropItems(npc.position, npc.Size, new Drop(mod.ItemType("SporeBlade"), 1, 1), new Drop(mod.ItemType("TechnologyofDionysus"), 1, 2), new Drop(mod.ItemType("LivingWoodThreepeater"), 1, 2), new Drop(mod.ItemType("UnfathomableFlower"), 1, 1));
+			this.NewItem(ItemID.GreaterHealingPotion, Main.rand.Next(10));
+			this.NewItem(ItemID.GreaterManaPotion, Main.rand.Next(10));
 		}
 
 		public override float SpawnChance(NPCSpawnInfo spawnInfo)
-		{
-			int x = spawnInfo.spawnTileX;
-			int y = spawnInfo.spawnTileY;
-			int tile = Main.tile[x, y].type;
-			return (Helper.NoZoneAllowWater(spawnInfo)) && Main.hardMode && spawnInfo.player.ZoneJungle && y > Main.rockLayer ? 0.003f : 0f;
-		}
+			=> (Helper.NoZoneAllowWater(spawnInfo)) && Main.hardMode && spawnInfo.player.ZoneJungle && spawnInfo.spawnTileY > Main.rockLayer ? 0.003f : 0f;
 	}
 }

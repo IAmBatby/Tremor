@@ -1,11 +1,13 @@
-using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
+using Microsoft.Xna.Framework;
+
+using Tremor.Items;
+
 namespace Tremor.NPCs
 {
-
 	public class Grood : ModNPC
 	{
 		public override void SetStaticDefaults()
@@ -34,31 +36,11 @@ namespace Tremor.NPCs
 
 		public override void NPCLoot()
 		{
-			if (Main.netMode != 1)
-			{
-				int centerX = (int)(npc.position.X + npc.width / 2) / 16;
-				int centerY = (int)(npc.position.Y + npc.height / 2) / 16;
-				int halfLength = npc.width / 2 / 16 + 1;
-				if (Main.rand.Next(23) == 0)
-				{
-					Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("YellowPuzzleFragment"));
-				}
-				if (Main.rand.Next(30) == 0)
-				{
-					Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("GiantRedFeather"));
-				}
-			}
-		}
-
-		public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
-		{
-			npc.lifeMax = npc.lifeMax * 1;
-			npc.damage = npc.damage * 1;
-		}
-
-		public override float SpawnChance(NPCSpawnInfo spawnInfo)
-		{
-			return spawnInfo.spawnTileY < Main.rockLayer && Main.hardMode && Main.dayTime ? 0.001f : 0f;
+			if (Main.rand.Next(23) == 0)
+				this.NewItem(mod.ItemType<YellowPuzzleFragment>());
+			// No GiantRedFeather class in Tremor namespace.
+			//if (Main.rand.Next(30) == 0)
+			//	this.NewItem(mod.ItemType<GiantRedFeather>());
 		}
 
 		public override void HitEffect(int hitDirection, double damage)
@@ -66,9 +48,8 @@ namespace Tremor.NPCs
 			if (npc.life <= 0)
 			{
 				for (int k = 0; k < 60; k++)
-				{
 					Dust.NewDust(npc.position, npc.width, npc.height, 5, 2.5f * hitDirection, -2.5f, 0, default(Color), 0.7f);
-				}
+
 				Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/GroodGore1"), 1f);
 				Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/GroodGore2"), 1f);
 				Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/GroodGore2"), 1f);
@@ -77,7 +58,7 @@ namespace Tremor.NPCs
 			}
 			else
 			{
-				for (int k = 0; k < damage / npc.lifeMax * 50.0; k++)
+				for (int k = 0; k < damage / npc.lifeMax * 50; k++)
 				{
 					Dust.NewDust(npc.position, npc.width, npc.height, 5, hitDirection, -1f, 0, default(Color), 0.7f);
 					Dust.NewDust(npc.position, npc.width, npc.height, 5, hitDirection, -1f, 0, default(Color), 0.7f);
@@ -85,5 +66,8 @@ namespace Tremor.NPCs
 				}
 			}
 		}
+
+		public override float SpawnChance(NPCSpawnInfo spawnInfo)
+			=> spawnInfo.spawnTileY < Main.rockLayer && Main.hardMode && Main.dayTime ? 0.001f : 0f;
 	}
 }

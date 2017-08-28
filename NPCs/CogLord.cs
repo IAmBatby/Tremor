@@ -88,9 +88,14 @@ namespace Tremor.NPCs
 			spriteBatch.Draw(drawTexture, drawPos, npc.frame, Color.White, npc.rotation, origin, npc.scale, effects, 0);
 			return false;
 		}
-
+		int t;
 		public override void AI()
 		{
+			if ((t++ % 100) == 0)
+			{
+				NPC.NewNPC((int)((Main.player[npc.target].position.X - 500) + Main.rand.Next(1000)), (int)((Main.player[npc.target].position.Y - 500) + Main.rand.Next(1000)), mod.NPCType("GogLordGog"));
+				t = 0;
+			}
 			npc.TargetClosest();
 			if (Main.dayTime)
 			{

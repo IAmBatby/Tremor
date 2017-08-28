@@ -1,7 +1,10 @@
-using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+
+using Microsoft.Xna.Framework;
+
+using Tremor.Items;
 
 namespace Tremor.NPCs
 {
@@ -46,53 +49,35 @@ namespace Tremor.NPCs
 			animationType = NPCID.GoblinTinkerer;
 		}
 
-
-		public override bool CanTownNPCSpawn(int numTownNPCs, int money)
-		{
-			return true;
-		}
-
-
+		public override bool CanTownNPCSpawn(int numTownNPCs, int money) => true;
+		
 		public override string TownNPCName()
 		{
-			switch (WorldGen.genRand.Next(5))
+			string[] names =
 			{
-				case 0:
-					return "Wheatly";
-				case 1:
-					return "Daniel";
-				case 2:
-					return "Crox";
-				case 3:
-					return "Geralt";
-				case 4:
-					return "Roland";
-				case 5:
-					return "Rishel";
-				default:
-					return "Hodor";
-			}
+				"Wheatly",
+				"Daniel",
+				"Crox",
+				"Geralt",
+				"Roland",
+				"Hodor"
+			};
+			return names.TakeRandom();
 		}
 
 		public override string GetChat()
 		{
-			switch (Main.rand.Next(6))
+			string[] chats =
 			{
-				case 0:
-					return "Well met, brave adventurer.";
-				case 1:
-					return "A balanced weapon can mean the difference between victory and defeat.";
-				case 2:
-					return "I am not overly fond of the bovine hordes. Best to leave them alone really.";
-				case 3:
-					return "Do you have a weapon? Needs about 20% more coolness!";
-				case 4:
-					return "Hail and good morrow my Liege!";
-				case 5:
-					return "I was in a strange castle one day. There were mechanical things saying EXTERMINATE. Were they your minions?";
-				default:
-					return "Have you ever met a knight whose name is Sir Uncle Slime? He is best friend of mine.";
-			}
+				"Well met, brave adventurer.",
+				"A balanced weapon can mean the difference between victory and defeat.",
+				"I am not overly fond of the bovine hordes. Best to leave them alone, really.",
+				"Do you have a weapon? Needs about 20% more coolness!",
+				"Hail and good morrow my Liege!",
+				"I was in a strange castle one day. There were mechanical things saying EXTERMINATE. Were they your minions?",
+				"Have you ever met a knight whose name is Sir Uncle Slime? He is a good friend of mine."
+			};
+			return chats.TakeRandom();
 		}
 
 		public override void SetChatButtons(ref string button, ref string button2)
@@ -102,56 +87,40 @@ namespace Tremor.NPCs
 
 		public override void OnChatButtonClicked(bool firstButton, ref bool shop)
 		{
-			if (firstButton)
-			{
-				shop = true;
-			}
+			shop = firstButton;
 		}
 
 		public override void SetupShop(Chest shop, ref int nextSlot)
 		{
-			shop.item[nextSlot].SetDefaults(mod.ItemType("ThrowingAxe"));
-			nextSlot++;
-			shop.item[nextSlot].SetDefaults(mod.ItemType("RustySword"));
-			nextSlot++;
-			shop.item[nextSlot].SetDefaults(mod.ItemType("RipperKnife"));
-			nextSlot++;
+			shop.AddUniqueItem(ref nextSlot, mod.ItemType<ThrowingAxe>());
+			shop.AddUniqueItem(ref nextSlot, mod.ItemType<RustySword>());
+			shop.AddUniqueItem(ref nextSlot, mod.ItemType<RipperKnife>());
+
 			if (NPC.downedBoss1)
 			{
-				shop.item[nextSlot].SetDefaults(mod.ItemType("TombRaider"));
-				nextSlot++;
-				shop.item[nextSlot].SetDefaults(mod.ItemType("SpikeShield"));
-				nextSlot++;
+				shop.AddUniqueItem(ref nextSlot, mod.ItemType<TombRaider>());
+				shop.AddUniqueItem(ref nextSlot, mod.ItemType<SpikeShield>());
 			}
 			if (NPC.downedBoss2)
 			{
-				shop.item[nextSlot].SetDefaults(mod.ItemType("TwilightHorns"));
-				nextSlot++;
-				shop.item[nextSlot].SetDefaults(mod.ItemType("ToxicRazorknife"));
-				nextSlot++;
+				shop.AddUniqueItem(ref nextSlot, mod.ItemType<TwilightHorns>());
+				shop.AddUniqueItem(ref nextSlot, mod.ItemType<ToxicRazorknife>());
 			}
 			if (NPC.downedBoss3)
 			{
-				shop.item[nextSlot].SetDefaults(mod.ItemType("NecromancerClaymore"));
-				nextSlot++;
-				shop.item[nextSlot].SetDefaults(mod.ItemType("Shovel"));
-				nextSlot++;
+				shop.AddUniqueItem(ref nextSlot, mod.ItemType<NecromancerClaymore>());
+				shop.AddUniqueItem(ref nextSlot, mod.ItemType<Shovel>());
 			}
+
 			if (Main.hardMode)
 			{
-				shop.item[nextSlot].SetDefaults(mod.ItemType("GoldenThrowingAxe"));
-				nextSlot++;
+				shop.AddUniqueItem(ref nextSlot, mod.ItemType<GoldenThrowingAxe>());
+
+				if(Main.bloodMoon)
+					shop.AddUniqueItem(ref nextSlot, mod.ItemType<Oppressor>());
 			}
 			if (NPC.downedMechBossAny)
-			{
-				shop.item[nextSlot].SetDefaults(mod.ItemType("PrizmaticSword"));
-				nextSlot++;
-			}
-			if (Main.hardMode && Main.bloodMoon)
-			{
-				shop.item[nextSlot].SetDefaults(mod.ItemType("Oppressor"));
-				nextSlot++;
-			}
+				shop.AddUniqueItem(ref nextSlot, mod.ItemType<PrizmaticSword>());
 		}
 
 		public override void TownNPCAttackStrength(ref int damage, ref float knockback)
@@ -168,7 +137,7 @@ namespace Tremor.NPCs
 
 		public override void TownNPCAttackProj(ref int projType, ref int attackDelay)
 		{
-			projType = mod.ProjectileType("ThrowingAxe");
+			projType = mod.ProjectileType<Projectiles.ThrowingAxe>();
 			attackDelay = 4;
 		}
 
@@ -183,12 +152,10 @@ namespace Tremor.NPCs
 			if (npc.life <= 0)
 			{
 				for (int k = 0; k < 20; k++)
-				{
 					Dust.NewDust(npc.position, npc.width, npc.height, 151, 2.5f * hitDirection, -2.5f, 0, default(Color), 0.7f);
-				}
-				Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/KnightGore1"), 1f);
-				Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/KnightGore2"), 1f);
-				Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/KnightGore3"), 1f);
+
+				for(int i = 0; i < 3; ++i)
+					Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot($"Gores/KnightGore{i+1}"), 1f);
 			}
 		}
 	}

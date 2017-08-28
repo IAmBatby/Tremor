@@ -1,8 +1,11 @@
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+
+using Tremor.Items;
 
 namespace Tremor.NPCs
 {
@@ -47,59 +50,39 @@ namespace Tremor.NPCs
 			animationType = NPCID.GoblinTinkerer;
 		}
 
-
 		public override bool CanTownNPCSpawn(int numTownNPCs, int money)
-		{
-			if (NPC.downedBoss2)
-			{
-				return true;
-			}
-			return false;
-		}
-
+			=> NPC.downedBoss2;
 
 		public override string TownNPCName()
 		{
-			switch (WorldGen.genRand.Next(5))
+			string[] names =
 			{
-				case 0:
-					return "Richard";
-				case 1:
-					return "Oliver";
-				case 2:
-					return "Alan";
-				case 3:
-					return "Gordon";
-				case 4:
-					return "Umeril";
-				case 5:
-					return "Anthony";
-				case 6:
-					return "Jerome";
-				default:
-					return "Liam";
-			}
+				"Richard",
+				"Oliver",
+				"Alan",
+				"Gordon",
+				"Umeril",
+				"Anthony",
+				"Jerome",
+				"Liam"
+			};
+			return names.TakeRandom();
 		}
 
 		public override string GetChat()
 		{
-			switch (Main.rand.Next(6))
+			// weighted chats?
+			string[] chats =
 			{
-				case 0:
-					return "This crab is so undercooked, it's still singing under the sea!";
-				case 1:
-					return "This needs more salt! And a dash of powdered blinkroot.";
-				case 2:
-					return "Any Oaf can make a bowl of soup, while I create culinary art";
-				case 3:
-					return "Somebody have stolen my knife. I think I will cut this guy with the knife when I will find it.";
-				case 4:
-					return "No! I will not add vile powder to this flambe.";
-				case 5:
-					return "Hello there! How's it goin'?";
-				default:
-					return "Do you know recipes of unusual food? No? THEN GO AND FIND THEM FOR ME OR I WILL CU-... Oh. Sorry.";
-			}
+				"This crab is so undercooked, it's still singing under the sea!",
+				"This needs more salt! And a dash of powdered blinkroot.",
+				"Any Oaf can make a bowl of soup, while I create culinary art.",
+				"Somebody stole my knife. I think I will cut the thief with the knife when I find it.",
+				"No! I will not add vile powder to this flambe.",
+				"Hello there! How's it goin'?",
+				"Do you know recipes of unusual food? No? THEN GO AND FIND THEM FOR ME OR I WILL CU-... Oh. Sorry."
+			};
+			return chats.TakeRandom();
 		}
 
 		public override void SetChatButtons(ref string button, ref string button2)
@@ -109,37 +92,23 @@ namespace Tremor.NPCs
 
 		public override void OnChatButtonClicked(bool firstButton, ref bool shop)
 		{
-			if (firstButton)
-			{
-				shop = true;
-			}
+			shop = firstButton;
 		}
 
 		public override void SetupShop(Chest shop, ref int nextSlot)
 		{
-			shop.item[nextSlot].SetDefaults(mod.ItemType("ButcherAxe"));
-			nextSlot++;
-			shop.item[nextSlot].SetDefaults(mod.ItemType("Knife"));
-			nextSlot++;
-			if (NPC.AnyNPCs(mod.NPCType("Farmer")))
-			{
-				shop.item[nextSlot].SetDefaults(mod.ItemType("Carrow"));
-				nextSlot++;
-			}
-			shop.item[nextSlot].SetDefaults(mod.ItemType("ChefHat"));
-			nextSlot++;
-			shop.item[nextSlot].SetDefaults(mod.ItemType("Durian"));
-			nextSlot++;
+			shop.AddUniqueItem(ref nextSlot, mod.ItemType<Knife>());
+			shop.AddUniqueItem(ref nextSlot, mod.ItemType<Durian>());
+			shop.AddUniqueItem(ref nextSlot, mod.ItemType<ChefHat>());
+			shop.AddUniqueItem(ref nextSlot, mod.ItemType<ButcherAxe>());
+
+			if (NPC.AnyNPCs(mod.NPCType<Farmer>()))
+				shop.AddUniqueItem(ref nextSlot, mod.ItemType<Carrow>());
+
 			if (Main.bloodMoon)
-			{
-				shop.item[nextSlot].SetDefaults(mod.ItemType("CursedPopcorn"));
-				nextSlot++;
-			}
+				shop.AddUniqueItem(ref nextSlot, mod.ItemType<CursedPopcorn>());
 			if (NPC.downedBoss2)
-			{
-				shop.item[nextSlot].SetDefaults(mod.ItemType("ChickenLegMace"));
-				nextSlot++;
-			}
+				shop.AddUniqueItem(ref nextSlot, mod.ItemType<ChickenLegMace>());
 		}
 
 		public override void TownNPCAttackStrength(ref int damage, ref float knockback)
@@ -154,11 +123,10 @@ namespace Tremor.NPCs
 			randExtraCooldown = 10;
 		}
 
-
 		public override void DrawTownAttackSwing(ref Texture2D item, ref int itemSize, ref float scale, ref Vector2 offset)//Allows you to customize how this town NPC's weapon is drawn when this NPC is swinging it (this NPC must have an attack type of 3). ItemType is the Texture2D instance of the item to be drawn (use Main.itemTexture[id of item]), itemSize is the width and height of the item's hitbox
 		{
 			scale = 1f;
-			item = Main.itemTexture[mod.ItemType("ButcherAxe")]; //this defines the item that this npc will use
+			item = Main.itemTexture[mod.ItemType<ButcherAxe>()]; //this defines the item that this npc will use
 			itemSize = 40;
 		}
 
@@ -173,12 +141,10 @@ namespace Tremor.NPCs
 			if (npc.life <= 0)
 			{
 				for (int k = 0; k < 20; k++)
-				{
 					Dust.NewDust(npc.position, npc.width, npc.height, 151, 2.5f * hitDirection, -2.5f, 0, default(Color), 0.7f);
-				}
-				Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/ChefGore1"), 1f);
-				Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/ChefGore2"), 1f);
-				Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/ChefGore3"), 1f);
+
+				for(int i = 0; i < 3; ++i)
+					Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot($"Gores/ChefGore{i+1}"), 1f);
 			}
 		}
 	}

@@ -1,11 +1,11 @@
-using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
+using Microsoft.Xna.Framework;
+
 namespace Tremor.NPCs
 {
-
 	public class FlamingReaper : ModNPC
 	{
 		public override void SetStaticDefaults()
@@ -30,22 +30,13 @@ namespace Tremor.NPCs
 			npc.value = Item.buyPrice(0, 0, 0, 9);
 		}
 
-		public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
-		{
-			npc.lifeMax = npc.lifeMax * 1;
-			npc.damage = npc.damage * 1;
-		}
-
 		public override void HitEffect(int hitDirection, double damage)
 		{
 			if (npc.life <= 0)
 			{
 				for (int k = 0; k < 20; k++)
-				{
 					Dust.NewDust(npc.position, npc.width, npc.height, 6, 2.5f * hitDirection, -2.5f, 0, default(Color), 0.7f);
-				}
 			}
 		}
-
 	}
 }

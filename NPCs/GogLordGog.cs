@@ -1,8 +1,8 @@
-﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using Terraria;
+﻿using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+
+using Microsoft.Xna.Framework;
 
 namespace Tremor.NPCs
 {
@@ -28,42 +28,54 @@ namespace Tremor.NPCs
 			npc.HitSound = SoundID.NPCHit4;
 			npc.DeathSound = SoundID.NPCDeath10;
 			npc.value = Item.buyPrice(0, 1, 0, 0);
+
+			npc.alpha = 244;
+			npc.scale = 0.25F;
 		}
-
-		int timer;
-		public override void AI()
+		
+		public override bool PreAI()
 		{
-			float Num1 = Main.mouseTextColor / 200f - 0.35f;
-			Num1 *= 0.5f;
-			npc.scale = Num1 + 0.95f;
-			timer++;
-			npc.velocity.X = 0f;
-			npc.velocity.Y = 0f;
-
-			if (timer >= 200)
+			if(npc.ai[0] == 0) // First update/spawn sequence.
 			{
-				npc.alpha++;
-				npc.alpha++;
+				npc.localAI[0] = Main.rand.NextBool() ? -Main.rand.Next(1, 11) : Main.rand.Next(1, 11);
+				npc.ai[0] = 1;
+			}
+			else if (npc.ai[0] == 1) // 'Appear' sequence.
+			{
+				if(npc.scale < 1)
+					npc.scale += 0.75F / 60;
+				else
+					npc.scale = 1;
+
+				if ((npc.alpha -= 4) <= 0)
+				{
+					if (npc.ai[1]++ >= 120)
+					{
+						npc.scale = 1;
+						npc.ai[0] = 2;
+					}
+					npc.alpha = 0;
+				}
+			}
+			else if (npc.ai[0] == 2) // 'Disappear' sequence.
+			{
+				npc.scale -= 0.75F / 60;
+				if ((npc.alpha += 4) >= 255)
+				{
+					npc.life = -1;
+					npc.active = false;
+					npc.checkDead();
+				}
 			}
 
-			if (npc.alpha >= 255)
-			{
-				npc.life = -1;
-				npc.active = false;
-				npc.checkDead();
-			}
-		}
-
-		public override bool PreDraw(SpriteBatch spriteBatch, Color drawColor)
-		{
-			Texture2D drawTexture = Main.npcTexture[npc.type];
-			Vector2 origin = new Vector2((drawTexture.Width / 2) * 0.5F, (drawTexture.Height / Main.npcFrameCount[npc.type]) * 0.5F);
-			Vector2 drawPos = new Vector2(
-				npc.position.X - Main.screenPosition.X + (npc.width / 2) - (Main.npcTexture[npc.type].Width / 2) * npc.scale / 2f + origin.X * npc.scale,
-				npc.position.Y - Main.screenPosition.Y + npc.height - Main.npcTexture[npc.type].Height * npc.scale / Main.npcFrameCount[npc.type] + 4f + origin.Y * npc.scale + npc.gfxOffY);
-			SpriteEffects effects = npc.spriteDirection == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally;
-			spriteBatch.Draw(drawTexture, drawPos, npc.frame, Color.White, npc.rotation, origin, npc.scale, effects, 0);
+			npc.velocity *= Vector2.Zero;
+			npc.rotation += (npc.localAI[0] * 0.05F) / npc.Opacity;
 			return false;
+		}
+
+		public override bool CanHitPlayer(Player target, ref int cooldownSlot)
+		{
+			return npc.alpha <= 125;
 		}
 	}
 }

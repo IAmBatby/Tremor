@@ -1,11 +1,11 @@
-using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
+using Microsoft.Xna.Framework;
+
 namespace Tremor.NPCs
 {
-
 	public class TempleSlime : ModNPC
 	{
 		public override void SetStaticDefaults()
@@ -31,6 +31,12 @@ namespace Tremor.NPCs
 			npc.value = Item.buyPrice(0, 0, 12, 15);
 		}
 
+		public override void NPCLoot()
+		{
+			if (Main.rand.NextBool())
+				this.NewItem(ItemID.LihzahrdPowerCell);
+		}
+
 		public override void HitEffect(int hitDirection, double damage)
 		{
 			if (npc.life <= 0)
@@ -40,40 +46,15 @@ namespace Tremor.NPCs
 					Dust.NewDust(npc.position, npc.width, npc.height, 4, 2.5f * hitDirection, -2.5f, 0, Color.Brown, 0.7f);
 					Dust.NewDust(npc.position, npc.width, npc.height, 4, 2.5f * hitDirection, -2.5f, 0, Color.Brown, 0.7f);
 				}
+
 				Dust.NewDust(npc.position, npc.width, npc.height, 4, 2.5f * hitDirection, -2.5f, 0, Color.Brown, 0.7f);
 				Dust.NewDust(npc.position, npc.width, npc.height, 4, 2.5f * hitDirection, -2.5f, 0, Color.Brown, 1.7f);
 				Dust.NewDust(npc.position, npc.width, npc.height, 4, 2.5f * hitDirection, -2.5f, 0, Color.Brown, 0.7f);
 				Dust.NewDust(npc.position, npc.width, npc.height, 4, 2.5f * hitDirection, -2.5f, 0, Color.Brown, 1.7f);
 			}
-		}
-
-		public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
-		{
-			npc.lifeMax = npc.lifeMax * 1;
-			npc.damage = npc.damage * 1;
 		}
 
 		public override float SpawnChance(NPCSpawnInfo spawnInfo)
-		{
-			int x = spawnInfo.spawnTileX;
-			int y = spawnInfo.spawnTileY;
-			int tile = Main.tile[x, y].type;
-			return Main.hardMode && (tile == 226) && NPC.downedMoonlord && y > Main.rockLayer ? 0.005f : 0f;
-		}
-
-		public override void NPCLoot()
-		{
-			if (Main.netMode != 1)
-			{
-				int centerX = (int)(npc.position.X + npc.width / 2) / 16;
-				int centerY = (int)(npc.position.Y + npc.height / 2) / 16;
-				int halfLength = npc.width / 2 / 16 + 1;
-				if (Main.rand.NextBool())
-				{
-					Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, 1293);
-				};
-			}
-		}
-
+			=> Main.hardMode && spawnInfo.spawnTileType == TileID.LihzahrdBrick && NPC.downedMoonlord && spawnInfo.spawnTileY > Main.rockLayer ? 0.005f : 0f;
 	}
 }

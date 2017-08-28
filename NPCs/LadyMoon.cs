@@ -1,7 +1,10 @@
-using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+
+using Microsoft.Xna.Framework;
+
+using Tremor.Items;
 
 namespace Tremor.NPCs
 {
@@ -47,53 +50,37 @@ namespace Tremor.NPCs
 		}
 
 		public override bool CanTownNPCSpawn(int numTownNPCs, int money)
-		{
-			if (NPC.downedMoonlord)
-			{
-				return true;
-			}
-			return false;
-		}
+			=> NPC.downedMoonlord;
 
 
 		public override string TownNPCName()
 		{
-			switch (WorldGen.genRand.Next(4))
+			string[] names =
 			{
-				case 0:
-					return "Atria";
-				case 1:
-					return "Mintaka";
-				case 2:
-					return "Nashira";
-				case 3:
-					return "Rana";
-				case 4:
-					return "Talita";
-				case 5:
-					return "Zosma";
-				default:
-					return "Pleyona";
-			}
+				"Atria",
+				"Mintaka",
+				"Nashira",
+				"Rana",
+				"Talita",
+				"Zosma",
+				"Pleyona"
+			};
+			return names.TakeRandom();
 		}
 
 		public override string GetChat()
 		{
-			switch (Main.rand.Next(6))
+			string[] chats =
 			{
-				case 0:
-					return "There are so many beautiful things in this world! What can be more beautiful than a big shining star? Maybe only an exploding big shining star!";
-				case 1:
-					return "I hope this world don't have crazy kings who wanna kill you? Aren't you one of them!?";
-				case 2:
-					return "I have heard about an space station called Death Star that can destroy any planet or star! Can you show me this station? ";
-				case 3:
-					return "I believe I can fly! I believe I can touch the sk-... Sorry, I forgot that I'm not alone here!";
-				case 4:
-					return "How are you going to call a man that watches an exploding star? A STARk man!";
-				default:
-					return "Planets are burning, stars are exploding, but my prices for my spacy things are not changing! ";
-			}
+				"There are so many beautiful things in this world! What can be more beautiful than a big shining star? Maybe only an exploding big shining star!",
+				"I hope this world doesn't have crazy kings that want to kill you. You're not one of them, are you!?",
+				"I have heard about an space station called Death Star that can destroy any planet or star! Can you show me this station?",
+				"I believe I can fly! I believe I can touch the sk-... Sorry, I forgot that I'm not alone here!",
+				"What do you call a man who watches an exploding star? A STARk man!",
+				"I was in a strange castle one day. There were mechanical things saying EXTERMINATE. Were they your minions?",
+				"Planets are burning, stars are exploding, but the prices for my spacy things are not changing!"
+			};
+			return chats.TakeRandom();
 		}
 
 		public override void SetChatButtons(ref string button, ref string button2)
@@ -103,40 +90,22 @@ namespace Tremor.NPCs
 
 		public override void OnChatButtonClicked(bool firstButton, ref bool shop)
 		{
-			if (firstButton)
-			{
-				shop = true;
-			}
+			shop = firstButton;
 		}
 
 		public override void SetupShop(Chest shop, ref int nextSlot)
 		{
-			shop.item[nextSlot].SetDefaults(mod.ItemType("DimensionalTopHat"));
-			nextSlot++;
-			shop.item[nextSlot].SetDefaults(mod.ItemType("ExtraterrestrialRubies"));
-			nextSlot++;
-			shop.item[nextSlot].SetDefaults(mod.ItemType("UnchargedBand"));
-			nextSlot++;
+			shop.AddUniqueItem(ref nextSlot, mod.ItemType("DimensionalTopHat"));
+			shop.AddUniqueItem(ref nextSlot, mod.ItemType("ExtraterrestrialRubies"));
+			shop.AddUniqueItem(ref nextSlot, mod.ItemType("UnchargedBand"));
 			if (!Main.dayTime)
-			{
-				shop.item[nextSlot].SetDefaults(mod.ItemType("ManaBooster"));
-				nextSlot++;
-			}
+				shop.AddUniqueItem(ref nextSlot, mod.ItemType("ManaBooster"));
 			if (Main.dayTime)
-			{
-				shop.item[nextSlot].SetDefaults(mod.ItemType("HealthBooster"));
-				nextSlot++;
-			}
+				shop.AddUniqueItem(ref nextSlot, mod.ItemType("HealthBooster"));
 			if (Main.bloodMoon)
-			{
-				shop.item[nextSlot].SetDefaults(mod.ItemType("ChainedRocket"));
-				nextSlot++;
-			}
+				shop.AddUniqueItem(ref nextSlot, mod.ItemType("ChainedRocket"));
 			if (Main.eclipse)
-			{
-				shop.item[nextSlot].SetDefaults(mod.ItemType("Infusion"));
-				nextSlot++;
-			}
+				shop.AddUniqueItem(ref nextSlot, mod.ItemType("Infusion"));
 		}
 
 		public override void TownNPCAttackStrength(ref int damage, ref float knockback)
@@ -163,18 +132,15 @@ namespace Tremor.NPCs
 			randomOffset = 2f;
 		}
 
-
 		public override void HitEffect(int hitDirection, double damage)
 		{
 			if (npc.life <= 0)
 			{
 				for (int k = 0; k < 20; k++)
-				{
 					Dust.NewDust(npc.position, npc.width, npc.height, 151, 2.5f * hitDirection, -2.5f, 0, default(Color), 0.7f);
-				}
-				Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/FarmerGore1"), 1f);
-				Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/FarmerGore2"), 1f);
-				Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/FarmerGore3"), 1f);
+
+				for(int i = 0; i < 3; ++i)
+					Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot($"Gores/FarmerGore{i+1}"), 1f);
 			}
 		}
 	}

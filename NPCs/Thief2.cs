@@ -1,7 +1,10 @@
-using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+
+using Microsoft.Xna.Framework;
+
+using Tremor.Items;
 
 namespace Tremor.NPCs
 {
@@ -34,66 +37,31 @@ namespace Tremor.NPCs
 
 		public override void NPCLoot()
 		{
-			if (Main.netMode != 1)
-			{
-				int centerX = (int)(npc.position.X + npc.width / 2) / 16;
-				int centerY = (int)(npc.position.Y + npc.height / 2) / 16;
-				int halfLength = npc.width / 2 / 16 + 1;
-				if (Main.rand.Next(20) == 0)
-				{
-					Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("LeatherHat"));
-				};
-				if (Main.rand.Next(20) == 0)
-				{
-					Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("LeatherGreaves"));
-				};
-				if (Main.rand.Next(20) == 0)
-				{
-					Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("LeatherShirt"));
-				};
-				if (Main.rand.Next(20) == 0)
-				{
-					Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("ChainCoif"));
-				};
-				if (Main.rand.Next(20) == 0)
-				{
-					Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("ChainGreaves"));
-				};
-				if (Main.rand.Next(20) == 0)
-				{
-					Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("Chainmail"));
-				};
-				if (Main.rand.Next(3) == 0)
-				{
-					Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, 28);
-				};
-				if (Main.rand.Next(3) == 0)
-				{
-					Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, 31);
-				};
-				if (Main.rand.Next(3) == 0)
-				{
-					Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, 8);
-				};
-				if (Main.rand.Next(3) == 0)
-				{
-					Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, 85);
-				};
-				if (Main.rand.Next(3) == 0)
-				{
-					Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, 110);
-				};
-				if (Main.rand.Next(3) == 0)
-				{
-					Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, 259);
-				};
-			}
-		}
+			if (Main.rand.Next(20) == 0)
+				this.NewItem(mod.ItemType<LeatherHat>());
+			if (Main.rand.Next(20) == 0)
+				this.NewItem(mod.ItemType<LeatherGreaves>());
+			if (Main.rand.Next(20) == 0)
+				this.NewItem(mod.ItemType<LeatherShirt>());
+			if (Main.rand.Next(20) == 0)
+				this.NewItem(mod.ItemType<ChainCoif>());
+			if (Main.rand.Next(20) == 0)
+				this.NewItem(mod.ItemType<ChainGreaves>());
+			if (Main.rand.Next(20) == 0)
+				this.NewItem(mod.ItemType<Chainmail>());
 
-		public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
-		{
-			npc.lifeMax = npc.lifeMax * 1;
-			npc.damage = npc.damage * 1;
+			if (Main.rand.Next(3) == 0)
+				this.NewItem(ItemID.LesserHealingPotion);
+			if (Main.rand.Next(3) == 0)
+				this.NewItem(ItemID.LesserManaPotion);
+			if (Main.rand.Next(3) == 0)
+				this.NewItem(ItemID.Bottle);
+			if (Main.rand.Next(3) == 0)
+				this.NewItem(ItemID.Torch);
+			if (Main.rand.Next(3) == 0)
+				this.NewItem(ItemID.Chain);
+			if (Main.rand.Next(3) == 0)
+				this.NewItem(ItemID.Leather);
 		}
 
 		public override void HitEffect(int hitDirection, double damage)
@@ -101,9 +69,8 @@ namespace Tremor.NPCs
 			if (npc.life <= 0)
 			{
 				for (int k = 0; k < 20; k++)
-				{
 					Dust.NewDust(npc.position, npc.width, npc.height, 5, 2.5f * hitDirection, -2.5f, 0, default(Color), 0.7f);
-				}
+
 				Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/Thief2Gore1"), 1f);
 				Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/Thief2Gore2"), 1f);
 				Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/Thief2Gore2"), 1f);
@@ -113,12 +80,6 @@ namespace Tremor.NPCs
 		}
 
 		public override float SpawnChance(NPCSpawnInfo spawnInfo)
-		{
-			if (!NPC.downedBoss2)
-			{
-				return spawnInfo.spawnTileY < Main.rockLayer && Main.dayTime ? 0.02f : 0f;
-			}
-			return spawnInfo.spawnTileY < Main.rockLayer && Main.dayTime ? 0.002f : 0f;
-		}
+			=> spawnInfo.spawnTileY < Main.rockLayer && Main.dayTime ? (NPC.downedBoss2 ? 0.02f : 0.002f) : 0f;
 	}
 }

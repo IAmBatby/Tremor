@@ -1,7 +1,9 @@
-using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+
+using Microsoft.Xna.Framework;
+
 using Tremor.Items;
 
 namespace Tremor.NPCs
@@ -30,6 +32,7 @@ namespace Tremor.NPCs
 			NPCID.Sets.AttackTime[npc.type] = 30;
 			NPCID.Sets.AttackAverageChance[npc.type] = 30;
 		}
+
 		public override void SetDefaults()
 		{
 			npc.townNPC = true;
@@ -89,10 +92,7 @@ namespace Tremor.NPCs
 
 		public override void OnChatButtonClicked(bool firstButton, ref bool shop)
 		{
-			if (firstButton)
-			{
-				shop = true;
-			}
+			shop = firstButton;
 		}
 
 		public override void SetupShop(Chest shop, ref int nextSlot)

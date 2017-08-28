@@ -19,7 +19,7 @@ namespace Tremor.NPCs
 
 		public override bool Autoload(ref string name)
 		{
-			name = "Arcer";
+			name = "Archer";
 			return mod.Properties.Autoload;
 		}
 
@@ -96,30 +96,30 @@ namespace Tremor.NPCs
 
 		public override void SetupShop(Chest shop, ref int nextSlot)
 		{
-			shop.item[nextSlot].SetDefaults(ItemID.WoodenArrow);
-			shop.item[nextSlot].SetDefaults(mod.ItemType<ArcherGlove>());
-			shop.item[nextSlot].SetDefaults(mod.ItemType<Crossbow>());
+			shop.AddUniqueItem(ref nextSlot, ItemID.WoodenArrow);
+			shop.AddUniqueItem(ref nextSlot, mod.ItemType<ArcherGlove>());
+			shop.AddUniqueItem(ref nextSlot, mod.ItemType<Crossbow>());
 
 			if (NPC.downedBoss1)
 			{
-				shop.item[nextSlot].SetDefaults(mod.ItemType<Quiver>());
-				shop.item[nextSlot].SetDefaults(mod.ItemType<MiniGun>());
-				shop.item[nextSlot].SetDefaults(ItemID.JestersArrow);
+				shop.AddUniqueItem(ref nextSlot, mod.ItemType<Quiver>());
+				shop.AddUniqueItem(ref nextSlot, mod.ItemType<MiniGun>());
+				shop.AddUniqueItem(ref nextSlot, ItemID.JestersArrow);
 			}
 			if (NPC.downedBoss2)
 			{
-				shop.item[nextSlot].SetDefaults(ItemID.UnholyArrow);
-				shop.item[nextSlot].SetDefaults(mod.ItemType<DragonGem>());
+				shop.AddUniqueItem(ref nextSlot, ItemID.UnholyArrow);
+				shop.AddUniqueItem(ref nextSlot, mod.ItemType<DragonGem>());
 			}
 
 			if (Main.hardMode)
 			{
-				shop.item[nextSlot].SetDefaults(ItemID.HolyArrow);
-				shop.item[nextSlot].SetDefaults(ItemID.HellfireArrow);
+				shop.AddUniqueItem(ref nextSlot, ItemID.HolyArrow);
+				shop.AddUniqueItem(ref nextSlot, ItemID.HellfireArrow);
 			}
-
+			
 			if (Main.bloodMoon)
-				shop.item[nextSlot].SetDefaults(ItemID.BoneArrow);
+				shop.AddUniqueItem(ref nextSlot, ItemID.BoneArrow);
 		}
 
 		public override void TownNPCAttackStrength(ref int damage, ref float knockback)

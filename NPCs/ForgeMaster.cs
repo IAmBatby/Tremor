@@ -1,7 +1,13 @@
-using Microsoft.Xna.Framework;
+using System.Linq;
+
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+
+using Microsoft.Xna.Framework;
+
+using Tremor.Items;
+using Tremor.Projectiles;
 
 namespace Tremor.NPCs
 {
@@ -30,7 +36,6 @@ namespace Tremor.NPCs
 			NPCID.Sets.AttackAverageChance[npc.type] = 30;
 		}
 
-
 		public override void SetDefaults()
 		{
 			npc.townNPC = true;
@@ -46,64 +51,37 @@ namespace Tremor.NPCs
 			npc.knockBackResist = 0.5f;
 			animationType = NPCID.Guide;
 		}
-
+		
 		public override bool CanTownNPCSpawn(int numTownNPCs, int money)
-		{
-			for (int k = 0; k < 255; k++)
-			{
-				Player player = Main.player[k];
-				if (player.active)
-				{
-					for (int j = 0; j < player.inventory.Length; j++)
-					{
-						if (player.inventory[j].type == mod.ItemType("JungleAlloy"))
-						{
-							return true;
-						}
-					}
-				}
-			}
-			return false;
-		}
-
+		   => Main.player.Any(player => player.active && player.inventory.Any(item => item != null && item.type == mod.ItemType("JungleAlloy")));
+		
 		public override string TownNPCName()
 		{
-			switch (WorldGen.genRand.Next(5))
+			string[] names =
 			{
-				case 0:
-					return "Gefest";
-				case 1:
-					return "Aule";
-				case 2:
-					return "Agarorn";
-				case 3:
-					return "Treak";
-				case 4:
-					return "Haymer";
-				default:
-					return "Golan";
-			}
+				"Gefest",
+				"Aule",
+				"Agarorn",
+				"Treak",
+				"Haymer",
+				"Golan"
+			};
+			return names.TakeRandom();
 		}
 
 		public override string GetChat()
 		{
-			switch (Main.rand.Next(6))
+			string[] chats =
 			{
-				case 0:
-					return "You can't lift my hammer? Not surprising! That's because you are not worthy!";
-				case 1:
-					return "Strangely but nobody uses hammers for making bars. How do you just put ore into furnaces and get bars!? That is insane!";
-				case 2:
-					return "Valar Morghulis! Oh wait, that's not the Braavos! Forget what I've said.";
-				case 3:
-					return "What? You ask me who am I?! I am the son of the Vulcan and the Vulcan is the mighty anvilborn!";
-				case 4:
-					return "My bars are better because I make them with my hammer. If you won't buy my bars I will make a bar from you.";
-				case 5:
-					return "You wonder why people call me Forge Master!? What means you don't believe I'm the real Master of Forges!?";
-				default:
-					return "Be careful when working with forges. I got burnt once when I was taking off a bar from it. That's why I'm wearing such armor!";
-			}
+				"You can't lift my hammer? Not surprising! That's because you are not worthy!",
+				"Strangely but nobody uses hammers for making bars. How do you just put ore into furnaces and get bars!? That is insane!",
+				"Valar Morghulis! Oh wait, that's not the Braavos! Forget what I've said.",
+				"What? You ask me who am I?! I am the son of the Vulcan and the Vulcan is the mighty anvilborn!",
+				"My bars are better because I make them with my hammer. If you won't buy my bars I will make a bar from you.",
+				"You wonder why people call me Forge Master!? What means you don't believe I'm the real Master of Forges!?",
+				"Be careful when working with forges. I got burnt once when I was taking off a bar from it. That's why I'm wearing such armor!"
+			};
+			return chats.TakeRandom();
 		}
 
 		public override void SetChatButtons(ref string button, ref string button2)
@@ -113,112 +91,68 @@ namespace Tremor.NPCs
 
 		public override void OnChatButtonClicked(bool firstButton, ref bool shop)
 		{
-			if (firstButton)
-			{
-				shop = true;
-			}
+			shop = firstButton;
 		}
 
 		public override void SetupShop(Chest shop, ref int nextSlot)
 		{
-			shop.item[nextSlot].SetDefaults(mod.ItemType("GreatAnvil"));
-			nextSlot++;
+			shop.AddUniqueItem(ref nextSlot, mod.ItemType("GreatAnvil"));
+
 			if (Main.dayTime)
 			{
-				shop.item[nextSlot].SetDefaults(ItemID.CopperBar);
-				nextSlot++;
-				shop.item[nextSlot].SetDefaults(ItemID.IronBar);
-				nextSlot++;
-				shop.item[nextSlot].SetDefaults(ItemID.SilverBar);
-				nextSlot++;
+				shop.AddUniqueItem(ref nextSlot, ItemID.CopperBar);
+				shop.AddUniqueItem(ref nextSlot, ItemID.IronBar);
+				shop.AddUniqueItem(ref nextSlot, ItemID.SilverBar);
+
+				if (NPC.downedBoss2)
+					shop.AddUniqueItem(ref nextSlot, ItemID.GoldBar);
+				if (NPC.downedBoss3)
+					shop.AddUniqueItem(ref nextSlot, ItemID.DemoniteBar);
+
+				if (NPC.downedMechBossAny)
+				{
+					shop.AddUniqueItem(ref nextSlot, ItemID.CobaltBar);
+					shop.AddUniqueItem(ref nextSlot, ItemID.MythrilBar);
+					shop.AddUniqueItem(ref nextSlot, ItemID.AdamantiteBar);
+				}
 			}
-			if (!Main.dayTime)
+			else
 			{
-				shop.item[nextSlot].SetDefaults(ItemID.TinBar);
-				nextSlot++;
-				shop.item[nextSlot].SetDefaults(ItemID.LeadBar);
-				nextSlot++;
-				shop.item[nextSlot].SetDefaults(ItemID.TungstenBar);
-				nextSlot++;
+				shop.AddUniqueItem(ref nextSlot, ItemID.TinBar);
+				shop.AddUniqueItem(ref nextSlot, ItemID.LeadBar);
+				shop.AddUniqueItem(ref nextSlot, ItemID.TungstenBar);
+
+				if (NPC.downedBoss2)
+					shop.AddUniqueItem(ref nextSlot, ItemID.PlatinumBar);
+				if (NPC.downedBoss3)
+					shop.AddUniqueItem(ref nextSlot, ItemID.CrimtaneBar);
+
+				if (NPC.downedMechBossAny)
+				{
+					shop.AddUniqueItem(ref nextSlot, ItemID.PalladiumBar);
+					shop.AddUniqueItem(ref nextSlot, ItemID.OrichalcumBar);
+					shop.AddUniqueItem(ref nextSlot, ItemID.TitaniumBar);
+				}
 			}
 
-			if (NPC.downedBoss2 && Main.dayTime)
-			{
-				shop.item[nextSlot].SetDefaults(ItemID.GoldBar);
-				nextSlot++;
-			}
-			if (NPC.downedBoss2 && !Main.dayTime)
-			{
-				shop.item[nextSlot].SetDefaults(ItemID.PlatinumBar);
-				nextSlot++;
-			}
 			if (NPC.downedBoss2)
-			{
-				shop.item[nextSlot].SetDefaults(mod.ItemType("PoisonRod"));
-				nextSlot++;
-			}
-
-			if (NPC.downedBoss3 && Main.dayTime)
-			{
-				shop.item[nextSlot].SetDefaults(ItemID.DemoniteBar);
-				nextSlot++;
-			}
-			if (NPC.downedBoss3 && !Main.dayTime)
-			{
-				shop.item[nextSlot].SetDefaults(ItemID.CrimtaneBar);
-				nextSlot++;
-			}
+				shop.AddUniqueItem(ref nextSlot, mod.ItemType<PoisonRod>());
 			if (NPC.downedBoss3)
 			{
-				shop.item[nextSlot].SetDefaults(mod.ItemType("BurningHammer"));
-				nextSlot++;
-				shop.item[nextSlot].SetDefaults(mod.ItemType("PerfectBehemoth"));
-				nextSlot++;
+				shop.AddUniqueItem(ref nextSlot, mod.ItemType<BurningHammer>());
+				shop.AddUniqueItem(ref nextSlot, mod.ItemType<PerfectBehemoth>());
 			}
+			if (NPC.downedPlantBoss)
+				shop.AddUniqueItem(ref nextSlot, ItemID.HallowedBar);
+			if (NPC.downedGolemBoss)
+				shop.AddUniqueItem(ref nextSlot, ItemID.ChlorophyteBar);
+			if (NPC.downedAncientCultist)
+				shop.AddUniqueItem(ref nextSlot, ItemID.SpectreBar);
 
 			if (Main.hardMode)
 			{
-				shop.item[nextSlot].SetDefaults(mod.ItemType("GoldenMace"));
-				nextSlot++;
-				shop.item[nextSlot].SetDefaults(ItemID.HellstoneBar);
-				nextSlot++;
-			}
-
-			if (NPC.downedMechBossAny && Main.dayTime)
-			{
-				shop.item[nextSlot].SetDefaults(ItemID.CobaltBar);
-				nextSlot++;
-				shop.item[nextSlot].SetDefaults(ItemID.MythrilBar);
-				nextSlot++;
-				shop.item[nextSlot].SetDefaults(ItemID.AdamantiteBar);
-				nextSlot++;
-			}
-			if (NPC.downedMechBossAny && !Main.dayTime)
-			{
-				shop.item[nextSlot].SetDefaults(ItemID.PalladiumBar);
-				nextSlot++;
-				shop.item[nextSlot].SetDefaults(ItemID.OrichalcumBar);
-				nextSlot++;
-				shop.item[nextSlot].SetDefaults(ItemID.TitaniumBar);
-				nextSlot++;
-			}
-
-			if (NPC.downedPlantBoss)
-			{
-				shop.item[nextSlot].SetDefaults(ItemID.HallowedBar);
-				nextSlot++;
-			}
-
-			if (NPC.downedGolemBoss)
-			{
-				shop.item[nextSlot].SetDefaults(ItemID.ChlorophyteBar);
-				nextSlot++;
-			}
-
-			if (NPC.downedAncientCultist)
-			{
-				shop.item[nextSlot].SetDefaults(ItemID.SpectreBar);
-				nextSlot++;
+				shop.AddUniqueItem(ref nextSlot, mod.ItemType<GoldenMace>());
+				shop.AddUniqueItem(ref nextSlot, ItemID.HellstoneBar);
 			}
 		}
 
@@ -236,8 +170,14 @@ namespace Tremor.NPCs
 
 		public override void TownNPCAttackProj(ref int projType, ref int attackDelay)
 		{
-			projType = mod.ProjectileType("BurningHammerPro");
+			projType = mod.ProjectileType<BurningHammerPro>();
 			attackDelay = 4;
+		}
+
+		public override void TownNPCAttackProjSpeed(ref float multiplier, ref float gravityCorrection, ref float randomOffset)
+		{
+			multiplier = 12f;
+			randomOffset = 2f;
 		}
 
 		public override void HitEffect(int hitDirection, double damage)
@@ -245,22 +185,11 @@ namespace Tremor.NPCs
 			if (npc.life <= 0)
 			{
 				for (int k = 0; k < 20; k++)
-				{
 					Dust.NewDust(npc.position, npc.width, npc.height, 151, 2.5f * hitDirection, -2.5f, 0, default(Color), 0.7f);
-				}
-				Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/BlackSmithGore1"), 1f);
-				Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/BlackSmithGore2"), 1f);
-				Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/BlackSmithGore3"), 1f);
-				Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/BlackSmithGore4"), 1f);
 
+				for (int i = 0; i < 4; ++i)
+					Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot($"Gores/BlackSmithGore{i + 1}"), 1f);
 			}
-		}
-
-
-		public override void TownNPCAttackProjSpeed(ref float multiplier, ref float gravityCorrection, ref float randomOffset)
-		{
-			multiplier = 12f;
-			randomOffset = 2f;
 		}
 	}
 }

@@ -4,7 +4,6 @@ using Terraria.ModLoader;
 
 namespace Tremor.NPCs
 {
-
 	public class Lizard : ModNPC
 	{
 		public override void SetStaticDefaults()
@@ -27,12 +26,6 @@ namespace Tremor.NPCs
 			npc.HitSound = SoundID.NPCHit1;
 			npc.DeathSound = SoundID.NPCDeath1;
 			npc.value = Item.buyPrice(0, 0, 0, 0);
-		}
-
-		public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
-		{
-			npc.lifeMax = npc.lifeMax * 1;
-			npc.damage = npc.damage * 1;
 		}
 
 		public override void HitEffect(int hitDirection, double damage)

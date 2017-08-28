@@ -1,8 +1,10 @@
 using System;
-using Microsoft.Xna.Framework;
+
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+
+using Microsoft.Xna.Framework;
 
 namespace Tremor.NPCs
 {
@@ -28,32 +30,12 @@ namespace Tremor.NPCs
 			npc.DeathSound = SoundID.NPCDeath1;
 			npc.value = Item.buyPrice(0, 0, 1, 21);
 		}
-
-		public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
-		{
-			npc.lifeMax = npc.lifeMax * 1;
-			npc.damage = npc.damage * 1;
-		}
-
-		int TimeToAnimation = 4;
-		int Frame;
+		
 		public override void AI()
 		{
 			npc.TargetClosest(true);
 			npc.spriteDirection = npc.direction;
-			PlayAnimation();
 			DoAI();
-		}
-
-		public void PlayAnimation()
-		{
-			if (--TimeToAnimation <= 0)
-			{
-				if (++Frame > 3)
-					Frame = 1;
-				TimeToAnimation = 4;
-				npc.frame = GetFrame(Frame);
-			}
 		}
 
 		public void DoAI()
@@ -294,78 +276,21 @@ namespace Tremor.NPCs
 			}
 		}
 
+		public override void FindFrame(int frameHeight)
+		{
+			if ((npc.frameCounter + Math.Abs(npc.velocity.X)) >= 20)
+			{
+				npc.frame.Y = (npc.frame.Y + frameHeight) % (Main.npcFrameCount[npc.type] * frameHeight);
+				npc.frameCounter = 0;
+			}
+			npc.spriteDirection = npc.direction;
+		}
+
 		public override void OnHitPlayer(Player player, int damage, bool crit)
 		{
 			npc.life = -1;
-			npc.active = false;
+			HitEffect(-1, 0);
 			npc.checkDead();
-			Main.PlaySound(2, (int)npc.position.X, (int)npc.position.Y, 62);
-			npc.position.X = npc.position.X + npc.width / 2;
-			npc.position.Y = npc.position.Y + npc.height / 2;
-			npc.width = 80;
-			npc.height = 80;
-			npc.position.X = npc.position.X - npc.width / 2;
-			npc.position.Y = npc.position.Y - npc.height / 2;
-			for (int num628 = 0; num628 < 40; num628++)
-			{
-				int num629 = Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, 31, 0f, 0f, 100, default(Color), 2f);
-				Main.dust[num629].velocity *= 3f;
-				if (Main.rand.Next(2) == 0)
-				{
-					Main.dust[num629].scale = 0.5f;
-					Main.dust[num629].fadeIn = 1f + Main.rand.Next(10) * 0.1f;
-				}
-			}
-			for (int num630 = 0; num630 < 70; num630++)
-			{
-				int num631 = Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, 6, 0f, 0f, 100, default(Color), 3f);
-				Main.dust[num631].noGravity = true;
-				Main.dust[num631].velocity *= 5f;
-				num631 = Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, 6, 0f, 0f, 100, default(Color), 2f);
-				Main.dust[num631].velocity *= 2f;
-			}
-			for (int num632 = 0; num632 < 3; num632++)
-			{
-				float scaleFactor10 = 0.33f;
-				if (num632 == 1)
-				{
-					scaleFactor10 = 0.66f;
-				}
-				if (num632 == 2)
-				{
-					scaleFactor10 = 1f;
-				}
-				int num633 = Gore.NewGore(new Vector2(npc.position.X + npc.width / 2 - 24f, npc.position.Y + npc.height / 2 - 24f), default(Vector2), Main.rand.Next(61, 64), 1f);
-				Main.gore[num633].velocity *= scaleFactor10;
-				Gore expr_13E6D_cp_0 = Main.gore[num633];
-				expr_13E6D_cp_0.velocity.X = expr_13E6D_cp_0.velocity.X + 1f;
-				Gore expr_13E8D_cp_0 = Main.gore[num633];
-				expr_13E8D_cp_0.velocity.Y = expr_13E8D_cp_0.velocity.Y + 1f;
-				num633 = Gore.NewGore(new Vector2(npc.position.X + npc.width / 2 - 24f, npc.position.Y + npc.height / 2 - 24f), default(Vector2), Main.rand.Next(61, 64), 2f);
-				Main.gore[num633].velocity *= scaleFactor10;
-				Gore expr_13F30_cp_0 = Main.gore[num633];
-				expr_13F30_cp_0.velocity.X = expr_13F30_cp_0.velocity.X - 1f;
-				Gore expr_13F50_cp_0 = Main.gore[num633];
-				expr_13F50_cp_0.velocity.Y = expr_13F50_cp_0.velocity.Y + 1f;
-				num633 = Gore.NewGore(new Vector2(npc.position.X + npc.width / 2 - 24f, npc.position.Y + npc.height / 2 - 24f), default(Vector2), Main.rand.Next(61, 64), 1f);
-				Main.gore[num633].velocity *= scaleFactor10;
-				Gore expr_13FF3_cp_0 = Main.gore[num633];
-				expr_13FF3_cp_0.velocity.X = expr_13FF3_cp_0.velocity.X + 1f;
-				Gore expr_14013_cp_0 = Main.gore[num633];
-				expr_14013_cp_0.velocity.Y = expr_14013_cp_0.velocity.Y - 1f;
-				num633 = Gore.NewGore(new Vector2(npc.position.X + npc.width / 2 - 24f, npc.position.Y + npc.height / 2 - 24f), default(Vector2), Main.rand.Next(61, 64), 1f);
-				Main.gore[num633].velocity *= scaleFactor10;
-				Gore expr_140B6_cp_0 = Main.gore[num633];
-				expr_140B6_cp_0.velocity.X = expr_140B6_cp_0.velocity.X - 1f;
-				Gore expr_140D6_cp_0 = Main.gore[num633];
-				expr_140D6_cp_0.velocity.Y = expr_140D6_cp_0.velocity.Y - 1f;
-			}
-			npc.position.X = npc.position.X + npc.width / 2;
-			npc.position.Y = npc.position.Y + npc.height / 2;
-			npc.width = 10;
-			npc.height = 10;
-			npc.position.X = npc.position.X - npc.width / 2;
-			npc.position.Y = npc.position.Y - npc.height / 2;
 		}
 
 		public override void HitEffect(int hitDirection, double damage)
@@ -379,7 +304,8 @@ namespace Tremor.NPCs
 				npc.height = 80;
 				npc.position.X = npc.position.X - npc.width / 2;
 				npc.position.Y = npc.position.Y - npc.height / 2;
-				for (int num628 = 0; num628 < 40; num628++)
+
+				for (int i = 0; i < 40; i++)
 				{
 					int num629 = Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, 31, 0f, 0f, 100, default(Color), 2f);
 					Main.dust[num629].velocity *= 3f;
@@ -389,7 +315,7 @@ namespace Tremor.NPCs
 						Main.dust[num629].fadeIn = 1f + Main.rand.Next(10) * 0.1f;
 					}
 				}
-				for (int num630 = 0; num630 < 70; num630++)
+				for (int i = 0; i < 70; i++)
 				{
 					int num631 = Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, 6, 0f, 0f, 100, default(Color), 3f);
 					Main.dust[num631].noGravity = true;
@@ -408,30 +334,25 @@ namespace Tremor.NPCs
 					{
 						scaleFactor10 = 1f;
 					}
-					int num633 = Gore.NewGore(new Vector2(npc.position.X + npc.width / 2 - 24f, npc.position.Y + npc.height / 2 - 24f), default(Vector2), Main.rand.Next(61, 64), 1f);
-					Main.gore[num633].velocity *= scaleFactor10;
-					Gore expr_13E6D_cp_0 = Main.gore[num633];
-					expr_13E6D_cp_0.velocity.X = expr_13E6D_cp_0.velocity.X + 1f;
-					Gore expr_13E8D_cp_0 = Main.gore[num633];
-					expr_13E8D_cp_0.velocity.Y = expr_13E8D_cp_0.velocity.Y + 1f;
-					num633 = Gore.NewGore(new Vector2(npc.position.X + npc.width / 2 - 24f, npc.position.Y + npc.height / 2 - 24f), default(Vector2), Main.rand.Next(61, 64), 2f);
-					Main.gore[num633].velocity *= scaleFactor10;
-					Gore expr_13F30_cp_0 = Main.gore[num633];
-					expr_13F30_cp_0.velocity.X = expr_13F30_cp_0.velocity.X - 1f;
-					Gore expr_13F50_cp_0 = Main.gore[num633];
-					expr_13F50_cp_0.velocity.Y = expr_13F50_cp_0.velocity.Y + 1f;
-					num633 = Gore.NewGore(new Vector2(npc.position.X + npc.width / 2 - 24f, npc.position.Y + npc.height / 2 - 24f), default(Vector2), Main.rand.Next(61, 64), 1f);
-					Main.gore[num633].velocity *= scaleFactor10;
-					Gore expr_13FF3_cp_0 = Main.gore[num633];
-					expr_13FF3_cp_0.velocity.X = expr_13FF3_cp_0.velocity.X + 1f;
-					Gore expr_14013_cp_0 = Main.gore[num633];
-					expr_14013_cp_0.velocity.Y = expr_14013_cp_0.velocity.Y - 1f;
-					num633 = Gore.NewGore(new Vector2(npc.position.X + npc.width / 2 - 24f, npc.position.Y + npc.height / 2 - 24f), default(Vector2), Main.rand.Next(61, 64), 1f);
-					Main.gore[num633].velocity *= scaleFactor10;
-					Gore expr_140B6_cp_0 = Main.gore[num633];
-					expr_140B6_cp_0.velocity.X = expr_140B6_cp_0.velocity.X - 1f;
-					Gore expr_140D6_cp_0 = Main.gore[num633];
-					expr_140D6_cp_0.velocity.Y = expr_140D6_cp_0.velocity.Y - 1f;
+					Gore gore = Main.gore[Gore.NewGore(new Vector2(npc.position.X + npc.width / 2 - 24f, npc.position.Y + npc.height / 2 - 24f), default(Vector2), Main.rand.Next(61, 64))];
+					gore.velocity *= scaleFactor10;
+					gore.velocity.X = gore.velocity.X + 1f;
+					gore.velocity.Y = gore.velocity.Y + 1f;
+
+					gore = Main.gore[Gore.NewGore(new Vector2(npc.position.X + npc.width / 2 - 24f, npc.position.Y + npc.height / 2 - 24f), default(Vector2), Main.rand.Next(61, 64), 2f)];
+					gore.velocity *= scaleFactor10;
+					gore.velocity.X = gore.velocity.X - 1f;
+					gore.velocity.Y = gore.velocity.Y + 1f;
+
+					gore = Main.gore[Gore.NewGore(new Vector2(npc.position.X + npc.width / 2 - 24f, npc.position.Y + npc.height / 2 - 24f), default(Vector2), Main.rand.Next(61, 64))];
+					gore.velocity *= scaleFactor10;
+					gore.velocity.X = gore.velocity.X + 1f;
+					gore.velocity.Y = gore.velocity.Y - 1f;
+
+					gore = Main.gore[Gore.NewGore(new Vector2(npc.position.X + npc.width / 2 - 24f, npc.position.Y + npc.height / 2 - 24f), default(Vector2), Main.rand.Next(61, 64))];
+					gore.velocity *= scaleFactor10;
+					gore.velocity.X = gore.velocity.X - 1f;
+					gore.velocity.Y = gore.velocity.Y - 1f;
 				}
 				npc.position.X = npc.position.X + npc.width / 2;
 				npc.position.Y = npc.position.Y + npc.height / 2;
@@ -446,37 +367,22 @@ namespace Tremor.NPCs
 		{
 			if (Main.invasionType == InvasionID.GoblinArmy)
 			{
-				Main.invasionProgress++;
+				Main.invasionSize -= 1;
+				if (Main.invasionSize < 0)
+					Main.invasionSize = 0;
+				if (Main.netMode != 1)
+					Main.ReportInvasionProgress(Main.invasionSizeStart - Main.invasionSize, Main.invasionSizeStart, InvasionID.GoblinArmy + 3, 0);
+				if (Main.netMode == 2)
+					NetMessage.SendData(78, -1, -1, null, Main.invasionProgress, Main.invasionProgressMax, Main.invasionProgressIcon, 0f, 0, 0, 0);
 			}
-			if (Main.netMode != 1)
-			{
-				int centerX = (int)(npc.position.X + npc.width / 2) / 16;
-				int centerY = (int)(npc.position.Y + npc.height / 2) / 16;
-				int halfLength = npc.width / 2 / 16 + 1;
 
-				if (Main.rand.Next(2) == 0)
-				{
-					Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, 161, Main.rand.Next(1, 15));
-				}
-
-				if (Main.rand.Next(200) == 0)
-				{
-					Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, 160);
-				}
-			}
-		}
-
-		Rectangle GetFrame(int Num)
-		{
-			return new Rectangle(0, npc.frame.Height * (Num - 1), npc.frame.Width, npc.frame.Height);
+			if (Main.rand.Next(2) == 0)
+				npc.NewItem(ItemID.SpikyBall, Main.rand.Next(1, 16));
+			if (Main.rand.Next(200) == 0)
+				npc.NewItem(ItemID.Harpoon);
 		}
 
 		public override float SpawnChance(NPCSpawnInfo spawnInfo)
-		{
-			int x = spawnInfo.spawnTileX;
-			int y = spawnInfo.spawnTileY;
-			int tile = Main.tile[x, y].type;
-			return (NPC.AnyNPCs(26) || NPC.AnyNPCs(27) || NPC.AnyNPCs(28) || NPC.AnyNPCs(29)) && NPC.downedBoss3 && y < Main.worldSurface ? 0.08f : 0f;
-		}
+			=> Main.invasionType == InvasionID.GoblinArmy && NPC.downedBoss3 && spawnInfo.spawnTileY < Main.worldSurface ? 0.08f : 0f;
 	}
 }

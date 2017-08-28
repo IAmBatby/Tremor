@@ -1,8 +1,9 @@
 ﻿using System;
-using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+
+using Microsoft.Xna.Framework;
 
 namespace Tremor.NPCs
 {
@@ -35,10 +36,8 @@ namespace Tremor.NPCs
 
 		public override void HitEffect(int hitDirection, double damage)
 		{
-			if (npc.life <= 0)
-			{
-				NPC.NewNPC((int)npc.position.X, (int)npc.position.Y, mod.NPCType("Clamper2"));
-			}
+			if (Main.netMode != 1 && npc.life <= 0)
+				NPC.NewNPC((int)npc.position.X, (int)npc.position.Y, mod.NPCType<Clamper2>());
 		}
 
 		public override bool CheckActive() => false;
@@ -80,7 +79,7 @@ namespace Tremor.NPCs
 			// turn to loose clamper when target is too far away?
 			if (Main.player[Helper.GetNearestPlayer(npc.Center)].Distance(npc.position) > MaxTargetDistance)
 			{
-				int n = NPC.NewNPC((int)npc.position.X, (int)npc.position.Y, mod.NPCType("Clamper2"));
+				int n = NPC.NewNPC((int)npc.position.X, (int)npc.position.Y, mod.NPCType<Clamper2>());
 				Main.npc[n].rotation = npc.rotation;
 				Main.npc[n].velocity = npc.velocity;
 				npc.active = false;

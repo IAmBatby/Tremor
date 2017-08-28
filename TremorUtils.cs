@@ -200,5 +200,14 @@ namespace Tremor
 				scale, SpriteEffects.None, 0f
 			);
 		}
+
+		// DO NOT remove this method
+		// The trick here is to reference System.Core is some way, in any class
+		// This is a trick to get the mod to compile with extension methods
+		// Normally you would get an error, this is a workaround trick for now
+		public static void RedundantFunc()
+		{
+			var something = System.Linq.Enumerable.Range(1, 10);
+		}
 	}
 }

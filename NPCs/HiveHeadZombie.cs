@@ -1,11 +1,11 @@
-using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
+using Microsoft.Xna.Framework;
+
 namespace Tremor.NPCs
 {
-
 	public class HiveHeadZombie : ModNPC
 	{
 		public override void SetStaticDefaults()
@@ -32,35 +32,28 @@ namespace Tremor.NPCs
 			bannerItem = mod.ItemType("HiveHeadZombieBanner");
 		}
 
-		public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
-		{
-			npc.lifeMax = npc.lifeMax * 1;
-			npc.damage = npc.damage * 1;
-		}
-
 		public override void HitEffect(int hitDirection, double damage)
 		{
 			if (npc.life <= 0)
 			{
 				for (int k = 0; k < 20; k++)
-				{
 					Dust.NewDust(npc.position, npc.width, npc.height, 151, 2.5f * hitDirection, -2.5f, 0, default(Color), 0.7f);
+
+				Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/ZombieGore1"), 1f);
+				Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/ZombieGore2"), 1f);
+				Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/ZombieGore1"), 1f);
+				Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/ZombieGore2"), 1f);
+
+				if (Main.netMode != 1)
+				{
+					NPC.NewNPC((int)npc.position.X - 22, (int)npc.position.Y + 55, NPCID.Bee);
+					NPC.NewNPC((int)npc.position.X + 37, (int)npc.position.Y, NPCID.Bee);
+					NPC.NewNPC((int)npc.position.X, (int)npc.position.Y - 48, NPCID.Bee);
 				}
-				Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/ZombieGore1"), 1f);
-				Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/ZombieGore2"), 1f);
-				Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/ZombieGore1"), 1f);
-				Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/ZombieGore2"), 1f);
-				NPC.NewNPC((int)npc.position.X - 22, (int)npc.position.Y + 55, 210);
-				NPC.NewNPC((int)npc.position.X + 37, (int)npc.position.Y, 210);
-				NPC.NewNPC((int)npc.position.X, (int)npc.position.Y - 48, 210);
 			}
 		}
+
 		public override float SpawnChance(NPCSpawnInfo spawnInfo)
-		{
-			int x = spawnInfo.spawnTileX;
-			int y = spawnInfo.spawnTileY;
-			int tile = Main.tile[x, y].type;
-			return (Helper.NormalSpawn(spawnInfo) && Helper.NoZoneAllowWater(spawnInfo)) && NPC.downedQueenBee && !Main.dayTime && y < Main.worldSurface ? 0.01f : 0f;
-		}
+			=> (Helper.NormalSpawn(spawnInfo) && Helper.NoZoneAllowWater(spawnInfo)) && NPC.downedQueenBee && !Main.dayTime && spawnInfo.spawnTileY < Main.worldSurface ? 0.01f : 0f;
 	}
 }

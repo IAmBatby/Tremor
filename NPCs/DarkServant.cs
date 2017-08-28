@@ -1,11 +1,13 @@
-using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
+using Microsoft.Xna.Framework;
+
+using Tremor.Items;
+
 namespace Tremor.NPCs
 {
-
 	public class DarkServant : ModNPC
 	{
 		public override void SetStaticDefaults()
@@ -30,7 +32,6 @@ namespace Tremor.NPCs
 			npc.value = Item.buyPrice(0, 0, 0, 0);
 		}
 
-
 		public override void HitEffect(int hitDirection, double damage)
 		{
 			if (npc.life <= 0)
@@ -40,6 +41,7 @@ namespace Tremor.NPCs
 					Dust.NewDust(npc.position, npc.width, npc.height, 191, 2.5f * hitDirection, -2.5f, 0, Color.Green, 0.7f);
 					Dust.NewDust(npc.position, npc.width, npc.height, 191, 2.5f * hitDirection, -2.5f, 0, Color.Green, 0.7f);
 				}
+
 				Dust.NewDust(npc.position, npc.width, npc.height, 191, 2.5f * hitDirection, -2.5f, 0, Color.Green, 0.7f);
 				Dust.NewDust(npc.position, npc.width, npc.height, 191, 2.5f * hitDirection, -2.5f, 0, Color.Green, 0.7f);
 				Dust.NewDust(npc.position, npc.width, npc.height, 191, 2.5f * hitDirection, -2.5f, 0, Color.Green, 0.7f);
@@ -52,17 +54,8 @@ namespace Tremor.NPCs
 
 		public override void NPCLoot()
 		{
-			if (Main.netMode != 1)
-			{
-				int centerX = (int)(npc.position.X + npc.width / 2) / 16;
-				int centerY = (int)(npc.position.Y + npc.height / 2) / 16;
-				int halfLength = npc.width / 2 / 16 + 1;
-
-				if (Main.rand.Next(6) == 0)
-				{
-					Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("DarkGel"));
-				}
-			}
+			if (Main.rand.Next(6) == 0)
+				npc.NewItem(mod.ItemType<DarkGel>());
 		}
 	}
 }
