@@ -2,17 +2,16 @@ Changelogs for v1.3.2.4:
 
 Thanks to Eldrazi for many contributions for this patch.
 
-- Items that grant movement speed now also increase the player's maximum run speed by that amount, this ensures the movement speed bonus actually has effect.
-- Improved a multitude of item tooltips
+- Items that grant movement speed now also increase the player's maximum run speed by that amount, this ensures the movement speed bonus actually has effect when at capped speed
+- Improved certain items' tooltips
 - Fixed all tooltips still saying 'alchemic', now changed to say 'alchemical'
-- Improved Phantablast
+- Improved and buffed Phantablast
 - Fixed many town NPCs not being able to receive their last 2 possible names
 - Fixed certain town NPCs their shops
 - Fixed certain town NPCs 'can spawns', some may not have been able to spawn before when they should
-- Merged certain ModPlayer files
+- Merged certain ModPlayer files, this possibly improves mod load speed
 - Many code was shortened, possibly reducing the mod size
 - Removed certain drop code for items that don't exist in the mod
-- Removed many npc expert scaling that did not scale anything. Please leave a suggestion when you find an appropiate scaling for an npc.
+- Removed many npc expert scaling that did not actually scale anything. Please leave a suggestion when you find an appropiate scaling for an npc
 - Improved certain npc framing to update based on velocity
-
-
+- Added new features for 'weighted' strings, implemented for town NPCs. This means you will see certain names and chats appear more often
