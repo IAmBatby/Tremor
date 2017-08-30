@@ -1,10 +1,9 @@
-﻿using Terraria;
+﻿using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-using Microsoft.Xna.Framework;
-
-namespace Tremor.NPCs
+namespace Tremor.CogLord.NPCs
 {
 	public class GogLordGog : ModNPC
 	{

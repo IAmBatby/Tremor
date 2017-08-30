@@ -1,6 +1,7 @@
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Tremor.Invasion;
 
 namespace Tremor.ZombieEvent.Items
 {

@@ -3,11 +3,10 @@ using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.ModLoader;
-using Tremor.Invasion;
 
 //using Terraria.Content.Fonts;
 
-namespace Tremor
+namespace Tremor.Invasion
 {
 	public class CyberWrathInvasion : ModPlayer
 	{

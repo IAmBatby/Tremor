@@ -2050,7 +2050,7 @@
     <Compile Include="NPCs\GoblinBomber.cs" />
     <Compile Include="NPCs\GoblinStandardBearer.cs" />
     <Compile Include="NPCs\GoblinStandardBearer_Balloon.cs" />
-    <Compile Include="NPCs\GogLordGog.cs" />
+    <Compile Include="CogLord\NPCs\GogLordGog.cs" />
     <Compile Include="NPCs\GoplitArcher.cs" />
     <Compile Include="NPCs\GoplitOfficer.cs" />
     <Compile Include="NPCs\GraniteBeetle.cs" />
@@ -6015,7 +6015,6 @@
     <Content Include="NPCs\GoblinBomber.png" />
     <Content Include="NPCs\GoblinStandardBearer.png" />
     <Content Include="NPCs\GoblinStandardBearer_Balloon.png" />
-    <Content Include="NPCs\GogLordGog.png" />
     <Content Include="NPCs\GoplitArcher.png" />
     <Content Include="NPCs\GoplitOfficer.png" />
     <Content Include="NPCs\GraniteBeetle.png" />

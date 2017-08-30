@@ -1,7 +1,7 @@
 ﻿using Terraria;
 using Terraria.ModLoader;
 
-namespace Tremor.DungeonGenn
+namespace Tremor.Tiles
 {
 	public class RuinBlocks : GlobalTile
 	{
