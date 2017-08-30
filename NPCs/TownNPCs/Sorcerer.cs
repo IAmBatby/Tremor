@@ -3,14 +3,10 @@ using Terraria.ID;
 using Terraria.ModLoader;
 
 using Microsoft.Xna.Framework;
-
+using Tremor;
 using Tremor.Items;
 
-<<<<<<< HEAD:NPCs/Sorcerer.cs
-namespace Tremor.NPCs
-=======
 namespace Tremor.NPCs.TownNPCs
->>>>>>> 8a3d4a60999e67c80df4daede405453dd106fc9d:NPCs/TownNPCs/Sorcerer.cs
 {
 	[AutoloadHead]
 	public class Sorcerer : ModNPC

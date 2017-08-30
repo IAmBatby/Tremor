@@ -3,14 +3,10 @@ using Terraria.ID;
 using Terraria.ModLoader;
 
 using Microsoft.Xna.Framework;
-
+using Tremor;
 using Tremor.Items;
 
-<<<<<<< HEAD:NPCs/LadyMoon.cs
-namespace Tremor.NPCs
-=======
 namespace Tremor.NPCs.TownNPCs
->>>>>>> 8a3d4a60999e67c80df4daede405453dd106fc9d:NPCs/TownNPCs/LadyMoon.cs
 {
 	[AutoloadHead]
 	public class LadyMoon : ModNPC
@@ -99,19 +95,6 @@ namespace Tremor.NPCs.TownNPCs
 
 		public override void SetupShop(Chest shop, ref int nextSlot)
 		{
-<<<<<<< HEAD:NPCs/LadyMoon.cs
-			shop.AddUniqueItem(ref nextSlot, mod.ItemType("DimensionalTopHat"));
-			shop.AddUniqueItem(ref nextSlot, mod.ItemType("ExtraterrestrialRubies"));
-			shop.AddUniqueItem(ref nextSlot, mod.ItemType("UnchargedBand"));
-			if (!Main.dayTime)
-				shop.AddUniqueItem(ref nextSlot, mod.ItemType("ManaBooster"));
-			if (Main.dayTime)
-				shop.AddUniqueItem(ref nextSlot, mod.ItemType("HealthBooster"));
-			if (Main.bloodMoon)
-				shop.AddUniqueItem(ref nextSlot, mod.ItemType("ChainedRocket"));
-			if (Main.eclipse)
-				shop.AddUniqueItem(ref nextSlot, mod.ItemType("Infusion"));
-=======
 			shop.AddUniqueItem(ref nextSlot, mod.ItemType<DimensionalTopHat>());
 			shop.AddUniqueItem(ref nextSlot, mod.ItemType<ExtraterrestrialRubies>());
 			shop.AddUniqueItem(ref nextSlot, mod.ItemType<UnchargedBand>());
@@ -123,7 +106,6 @@ namespace Tremor.NPCs.TownNPCs
 				shop.AddUniqueItem(ref nextSlot, mod.ItemType<ChainedRocket>());
 			if (Main.eclipse)
 				shop.AddUniqueItem(ref nextSlot, mod.ItemType<Infusion>());
->>>>>>> 8a3d4a60999e67c80df4daede405453dd106fc9d:NPCs/TownNPCs/LadyMoon.cs
 		}
 
 		public override void TownNPCAttackStrength(ref int damage, ref float knockback)

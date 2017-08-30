@@ -4,14 +4,11 @@ using Terraria.ModLoader;
 
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-
+using Tremor;
 using Tremor.Items;
+using Tremor.NPCs.TownNPCs;
 
-<<<<<<< HEAD:NPCs/Chef.cs
-namespace Tremor.NPCs
-=======
 namespace Tremor.NPCs.TownNPCs
->>>>>>> 8a3d4a60999e67c80df4daede405453dd106fc9d:NPCs/TownNPCs/Chef.cs
 {
 	[AutoloadHead]
 	public class Chef : ModNPC

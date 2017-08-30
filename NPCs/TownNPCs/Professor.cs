@@ -1,8 +1,3 @@
-<<<<<<< HEAD:NPCs/Professor.cs
-using System.Linq;
-
-=======
->>>>>>> 8a3d4a60999e67c80df4daede405453dd106fc9d:NPCs/TownNPCs/Professor.cs
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -11,11 +6,7 @@ using Microsoft.Xna.Framework;
 
 using Tremor.Items;
 
-<<<<<<< HEAD:NPCs/Professor.cs
-namespace Tremor.NPCs
-=======
 namespace Tremor.NPCs.TownNPCs
->>>>>>> 8a3d4a60999e67c80df4daede405453dd106fc9d:NPCs/TownNPCs/Professor.cs
 {
 	[AutoloadHead]
 	public class Professor : ModNPC
@@ -58,7 +49,7 @@ namespace Tremor.NPCs.TownNPCs
 			animationType = NPCID.GoblinTinkerer;
 		}
 
-		public override bool CanTownNPCSpawn(int numTownNPCs, int money) 
+		public override bool CanTownNPCSpawn(int numTownNPCs, int money)
 			=> Main.hardMode;
 
 		public override string TownNPCName()
@@ -151,8 +142,8 @@ namespace Tremor.NPCs.TownNPCs
 				for (int k = 0; k < 20; k++)
 					Dust.NewDust(npc.position, npc.width, npc.height, 151, 2.5f * hitDirection, -2.5f, 0, default(Color), 0.7f);
 
-				for(int i = 0; i < 3; ++i)
-					Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot($"Gores/ProfessorGore{i+1}"), 1f);
+				for (int i = 0; i < 3; ++i)
+					Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot($"Gores/ProfessorGore{i + 1}"), 1f);
 			}
 		}
 	}
