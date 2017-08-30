@@ -8,11 +8,64 @@ using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.Utilities;
+using Tremor.NPCs;
 
 namespace Tremor
 {
+	// literally just a tuple
+	public class WeightedString
+	{
+		public readonly string Message;
+		public readonly double Weight;
+
+		public static Tuple<string, double> Tuple(string message, double weight = 1d)
+			=> new Tuple<string, double>(message, weight);
+
+		public Tuple<string, double> Tuple()
+			=> Tuple(Message, Weight);
+
+		public WeightedString(string message, double weight = 1d)
+		{
+			Message = message;
+			Weight = weight;
+		}
+	}
+
 	public static class TremorUtils
 	{
+		public static WeightedString[] ToWeightedStringCollection(this string[] strings, params double[] weights)
+		{
+			WeightedString[] chats = new WeightedString[strings.Length];
+			int weightCount = weights.Length;
+			for (int i = 0; i < strings.Length; i++)
+			{
+				chats[i] = new WeightedString(strings[i], i < weightCount ? weights[i] : 1d);
+			}
+			return chats;
+		}
+
+		public static WeightedRandom<string> ToWeightedCollection(this WeightedString[] strings)
+			=> new WeightedRandom<string>(strings.Select(x => new Tuple<string, double>(x.Message, x.Weight)).ToArray());
+
+		public static WeightedRandom<string> ToWeightedCollectionWithWeight(this string[] strings)
+		{
+			WeightedRandom<string> weightedCollection = new WeightedRandom<string>();
+			for (int i = 0; i < strings.Length; i++)
+			{
+				string str = strings[i];
+				string[] split = str.Split(':');
+				double weight = split.Length > 1 ? double.Parse(split[1]) : 1d;
+				weightedCollection.Add(split[0], weight);
+			}
+			return weightedCollection;
+		}
+
+		public static WeightedRandom<string> ToWeightedCollection(this string[] strings)
+			=> new WeightedRandom<string>(strings.Select(x => x.ToWeightedTuple()).ToArray());
+
+		public static Tuple<string, double> ToWeightedTuple(this string message, double weight = 1d)
+			=> WeightedString.Tuple(message, weight);
+
 		public static NPC NewNPC(this ModItem item, int type, float ai0 = 0f, float ai1 = 0f, float ai2 = 0f, float ai3 = 0f, int target = 255, int start = 0, float offsetX = 0f, float offsetY = 0f)
 			=> NewNPC(item.item, type, ai0, ai1, ai2, ai3, target, start, offsetX, offsetY);
 
@@ -38,8 +91,7 @@ namespace Tremor
 			return true;
 		}
 
-		// todo: take random with weighted array
-		public static T TakeRandom<T>(this T[] source)
+		public static T Get<T>(this T[] source)
 			=> source[Main.rand.Next(source.Length)];
 
 		public static void Downed(this TremorWorld.Boss boss, bool state = true)
