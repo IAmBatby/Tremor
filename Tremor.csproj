@@ -51,6 +51,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\dllReferences\Microsoft.Xna.Framework.Xact.dll</HintPath>
     </Reference>
+    <Reference Include="ReLogic, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\GitHub\tModLoader\references\ReLogic.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data" />
@@ -188,7 +192,28 @@
     <Compile Include="Buffs\ZephyrhornBuff.cs" />
     <Compile Include="Buffs\ZombatBuff.cs" />
     <Compile Include="Buffs\ZootalooBuff.cs" />
+    <Compile Include="CogLord\NPCs\CogLord.cs" />
+    <Compile Include="CogLord\NPCs\CogLordArm.cs" />
+    <Compile Include="CogLord\NPCs\CogLordArmSecond.cs" />
+    <Compile Include="CogLord\NPCs\CogLordCog.cs" />
+    <Compile Include="CogLord\NPCs\CogLordGun.cs" />
+    <Compile Include="CogLord\NPCs\CogLordHand.cs" />
+    <Compile Include="CogLord\NPCs\CogLordProbe.cs" />
     <Compile Include="CustomDrop.cs" />
+    <Compile Include="NPCs\TownNPCs\Alchemist.cs" />
+    <Compile Include="NPCs\TownNPCs\ArabianMerchant.cs" />
+    <Compile Include="NPCs\TownNPCs\Archer.cs" />
+    <Compile Include="NPCs\TownNPCs\Chef.cs" />
+    <Compile Include="NPCs\TownNPCs\Farmer.cs" />
+    <Compile Include="NPCs\TownNPCs\ForgeMaster.cs" />
+    <Compile Include="NPCs\TownNPCs\Knight.cs" />
+    <Compile Include="NPCs\TownNPCs\LadyMoon.cs" />
+    <Compile Include="NPCs\TownNPCs\Professor.cs" />
+    <Compile Include="NPCs\TownNPCs\Sorcerer.cs" />
+    <Compile Include="NPCs\TownNPCs\Startrooper.cs" />
+    <Compile Include="NPCs\TownNPCs\Undertaker.cs" />
+    <Compile Include="NPCs\TownNPCs\Warlock.cs" />
+    <Compile Include="NPCs\TownNPCs\Witch.cs" />
     <Compile Include="RecipeUtils.cs" />
     <Compile Include="TremorGlobalTile.cs" />
     <Compile Include="DungeonGenn\DungeonWorld.cs" />
@@ -1921,7 +1946,6 @@
     <Compile Include="NPCs\Abomination.cs" />
     <Compile Include="NPCs\Agloomination.cs" />
     <Compile Include="NPCs\Alchemaster.cs" />
-    <Compile Include="NPCs\Alchemist.cs" />
     <Compile Include="NPCs\AlphaWolf.cs" />
     <Compile Include="NPCs\AncientCursedSkull.cs" />
     <Compile Include="NPCs\AndasBoss\Andas.cs" />
@@ -1933,9 +1957,7 @@
     <Compile Include="NPCs\AndasBoss\UndeadWyrmHead.cs" />
     <Compile Include="NPCs\AndasBoss\UndeadWyrmTail.cs" />
     <Compile Include="NPCs\AngerSoul.cs" />
-    <Compile Include="NPCs\ArabianMerchant.cs" />
     <Compile Include="NPCs\ArchDemon.cs" />
-    <Compile Include="NPCs\Archer.cs" />
     <Compile Include="NPCs\ArmoredJellyfish.cs" />
     <Compile Include="NPCs\Astrofly.cs" />
     <Compile Include="NPCs\Atis.cs" />
@@ -1956,16 +1978,9 @@
     <Compile Include="NPCs\Brute.cs" />
     <Compile Include="NPCs\BucketheadZombie.cs" />
     <Compile Include="NPCs\CaveGolem.cs" />
-    <Compile Include="NPCs\Chef.cs" />
     <Compile Include="NPCs\Clamper.cs" />
     <Compile Include="NPCs\Clamper2.cs" />
     <Compile Include="NPCs\CloudSlime.cs" />
-    <Compile Include="NPCs\CogLord.cs" />
-    <Compile Include="NPCs\CogLordArm.cs" />
-    <Compile Include="NPCs\CogLordArmSecond.cs" />
-    <Compile Include="NPCs\CogLordGun.cs" />
-    <Compile Include="NPCs\CogLordHand.cs" />
-    <Compile Include="NPCs\CogLordProbe.cs" />
     <Compile Include="NPCs\ColossalTortoise.cs" />
     <Compile Include="NPCs\CometHead.cs" />
     <Compile Include="NPCs\ConjurerSkeleton.cs" />
@@ -2010,7 +2025,6 @@
     <Compile Include="NPCs\FallenWarrior1.cs" />
     <Compile Include="NPCs\FallenWarrior2.cs" />
     <Compile Include="NPCs\FallenWarrior3.cs" />
-    <Compile Include="NPCs\Farmer.cs" />
     <Compile Include="NPCs\FatFlinx.cs" />
     <Compile Include="NPCs\FireBeetle.cs" />
     <Compile Include="NPCs\FlamingReaper.cs" />
@@ -2018,7 +2032,6 @@
     <Compile Include="NPCs\FlyingJelly.cs" />
     <Compile Include="NPCs\FlyingLeech.cs" />
     <Compile Include="NPCs\ForestSpirit.cs" />
-    <Compile Include="NPCs\ForgeMaster.cs" />
     <Compile Include="NPCs\FrostBeetle.cs" />
     <Compile Include="NPCs\FrostKing.cs" />
     <Compile Include="NPCs\FungusBeetle.cs" />
@@ -2064,12 +2077,9 @@
     <Compile Include="NPCs\InfectedZombie.cs" />
     <Compile Include="NPCs\IronGiant.cs" />
     <Compile Include="NPCs\JungleMimic.cs" />
-    <Compile Include="NPCs\JungleMimicSummon.cs" />
     <Compile Include="NPCs\JungleSpirit.cs" />
-    <Compile Include="NPCs\Knight.cs" />
     <Compile Include="NPCs\KnightZombie.cs" />
     <Compile Include="NPCs\KnightZombieSword.cs" />
-    <Compile Include="NPCs\LadyMoon.cs" />
     <Compile Include="NPCs\Leprechaun.cs" />
     <Compile Include="NPCs\LihzahrdWarrior.cs" />
     <Compile Include="NPCs\LittleMushroomBug.cs" />
@@ -2096,7 +2106,6 @@
     <Compile Include="NPCs\npcVultureKing.cs" />
     <Compile Include="NPCs\Observer.cs" />
     <Compile Include="NPCs\OceanMimic.cs" />
-    <Compile Include="NPCs\OceanMimicSummon.cs" />
     <Compile Include="NPCs\OmegaWolf.cs" />
     <Compile Include="NPCs\Orc.cs" />
     <Compile Include="NPCs\OrcChampion.cs" />
@@ -2116,7 +2125,6 @@
     <Compile Include="NPCs\PossessedHornet1.cs" />
     <Compile Include="NPCs\PossessedHornet2.cs" />
     <Compile Include="NPCs\PossessedHound.cs" />
-    <Compile Include="NPCs\Professor.cs" />
     <Compile Include="NPCs\PyramidHead.cs" />
     <Compile Include="NPCs\PyramidRider.cs" />
     <Compile Include="NPCs\QuartzBeetle.cs" />
@@ -2145,7 +2153,6 @@
     <Compile Include="NPCs\SnowEater.cs" />
     <Compile Include="NPCs\SnowmanBomber.cs" />
     <Compile Include="NPCs\SnowmanWarrior.cs" />
-    <Compile Include="NPCs\Sorcerer.cs" />
     <Compile Include="NPCs\SoulofHope.cs" />
     <Compile Include="NPCs\SoulofTrust.cs" />
     <Compile Include="NPCs\SoulofTruth.cs" />
@@ -2155,7 +2162,6 @@
     <Compile Include="NPCs\SpiderMan.cs" />
     <Compile Include="NPCs\SquidZombie.cs" />
     <Compile Include="NPCs\Squoma.cs" />
-    <Compile Include="NPCs\Startrooper.cs" />
     <Compile Include="NPCs\StormJellyfish.cs" />
     <Compile Include="NPCs\SupremePossessedArmor.cs" />
     <Compile Include="NPCs\TempleSlime.cs" />
@@ -2169,7 +2175,6 @@
     <Compile Include="NPCs\Thief3.cs" />
     <Compile Include="NPCs\ThinMan.cs" />
     <Compile Include="NPCs\ThunderBones.cs" />
-    <Compile Include="NPCs\TikiSorcerer.cs" />
     <Compile Include="NPCs\TikiSoul.cs" />
     <Compile Include="NPCs\TikiTotem.cs" />
     <Compile Include="NPCs\TikiWarrior.cs" />
@@ -2184,11 +2189,8 @@
     <Compile Include="NPCs\UndeadWarrior2.cs" />
     <Compile Include="NPCs\UndeadWarrior3.cs" />
     <Compile Include="NPCs\UndeadWarrior4.cs" />
-    <Compile Include="NPCs\Undertaker.cs" />
     <Compile Include="NPCs\WallOfShadow.cs" />
     <Compile Include="NPCs\WallOfShadowEye.cs" />
-    <Compile Include="NPCs\Warlock.cs" />
-    <Compile Include="NPCs\Witch.cs" />
     <Compile Include="NPCs\Woodling.cs" />
     <Compile Include="NPCs\WoodlingWarrior.cs" />
     <Compile Include="NPCs\Woody.cs" />
@@ -3058,6 +3060,15 @@
     <Content Include="Changelogs\v1.3.2.3.txt" />
     <Content Include="Changelogs\v1.3.2.2.txt" />
     <Content Include="Changelogs\v1.3.2.txt" />
+    <Content Include="CogLord\NPCs\CogLord.png" />
+    <Content Include="CogLord\NPCs\CogLordArm.png" />
+    <Content Include="CogLord\NPCs\CogLordArmSecond.png" />
+    <Content Include="CogLord\NPCs\CogLordBody.png" />
+    <Content Include="CogLord\NPCs\CogLordCog.png" />
+    <Content Include="CogLord\NPCs\CogLordGun.png" />
+    <Content Include="CogLord\NPCs\CogLordHand.png" />
+    <Content Include="CogLord\NPCs\CogLordProbe.png" />
+    <Content Include="CogLord\NPCs\CogLord_Head_Boss.png" />
     <Content Include="description.txt" />
     <Content Include="Dusts\Ball.png" />
     <Content Include="Dusts\ClusterFlame.png" />
@@ -5890,8 +5901,6 @@
     <Content Include="NPCs\Agloomination.png" />
     <Content Include="NPCs\Alchemaster.png" />
     <Content Include="NPCs\Alchemaster_Head_Boss.png" />
-    <Content Include="NPCs\Alchemist.png" />
-    <Content Include="NPCs\Alchemist_Head.png" />
     <Content Include="NPCs\AlphaWolf.png" />
     <Content Include="NPCs\AncientCursedSkull.png" />
     <Content Include="NPCs\AndasBoss\Andas.png" />
@@ -5906,11 +5915,7 @@
     <Content Include="NPCs\AndasBoss\UndeadWyrmTail.png" />
     <Content Include="NPCs\AngerSoul.png" />
     <Content Include="NPCs\AngerSoul_Head_Boss.png" />
-    <Content Include="NPCs\ArabianMerchant.png" />
-    <Content Include="NPCs\ArabianMerchant_Head.png" />
     <Content Include="NPCs\ArchDemon.png" />
-    <Content Include="NPCs\Archer.png" />
-    <Content Include="NPCs\Archer_Head.png" />
     <Content Include="NPCs\ArmoredJellyfish.png" />
     <Content Include="NPCs\Astrofly.png" />
     <Content Include="NPCs\Atis.png" />
@@ -5932,19 +5937,9 @@
     <Content Include="NPCs\Brute.png" />
     <Content Include="NPCs\BucketheadZombie.png" />
     <Content Include="NPCs\CaveGolem.png" />
-    <Content Include="NPCs\Chef.png" />
-    <Content Include="NPCs\Chef_Head.png" />
     <Content Include="NPCs\Clamper.png" />
     <Content Include="NPCs\Clamper2.png" />
     <Content Include="NPCs\CloudSlime.png" />
-    <Content Include="NPCs\CogLord.png" />
-    <Content Include="NPCs\CogLordArm.png" />
-    <Content Include="NPCs\CogLordArmSecond.png" />
-    <Content Include="NPCs\CogLordBody.png" />
-    <Content Include="NPCs\CogLordGun.png" />
-    <Content Include="NPCs\CogLordHand.png" />
-    <Content Include="NPCs\CogLordProbe.png" />
-    <Content Include="NPCs\CogLord_Head_Boss.png" />
     <Content Include="NPCs\ColossalTortoise.png" />
     <Content Include="NPCs\CometHead.png" />
     <Content Include="NPCs\ConjurerSkeleton.png" />
@@ -5993,8 +5988,6 @@
     <Content Include="NPCs\FallenWarrior1.png" />
     <Content Include="NPCs\FallenWarrior2.png" />
     <Content Include="NPCs\FallenWarrior3.png" />
-    <Content Include="NPCs\Farmer.png" />
-    <Content Include="NPCs\Farmer_Head.png" />
     <Content Include="NPCs\FatFlinx.png" />
     <Content Include="NPCs\FireBeetle.png" />
     <Content Include="NPCs\FlamingReaper.png" />
@@ -6002,8 +5995,6 @@
     <Content Include="NPCs\FlyingJelly.png" />
     <Content Include="NPCs\FlyingLeech.png" />
     <Content Include="NPCs\ForestSpirit.png" />
-    <Content Include="NPCs\ForgeMaster.png" />
-    <Content Include="NPCs\ForgeMaster_Head.png" />
     <Content Include="NPCs\FrostBeetle.png" />
     <Content Include="NPCs\FrostKing.png" />
     <Content Include="NPCs\FrostKing_Head_Boss.png" />
@@ -6055,12 +6046,8 @@
     <Content Include="NPCs\IronGiant.png" />
     <Content Include="NPCs\JungleMimic.png" />
     <Content Include="NPCs\JungleSpirit.png" />
-    <Content Include="NPCs\Knight.png" />
     <Content Include="NPCs\KnightZombie.png" />
     <Content Include="NPCs\KnightZombieSword.png" />
-    <Content Include="NPCs\Knight_Head.png" />
-    <Content Include="NPCs\LadyMoon.png" />
-    <Content Include="NPCs\LadyMoon_Head.png" />
     <Content Include="NPCs\Leprechaun.png" />
     <Content Include="NPCs\LihzahrdWarrior.png" />
     <Content Include="NPCs\LittleMushroomBug.png" />
@@ -6113,8 +6100,6 @@
     <Content Include="NPCs\PossessedHornet1.png" />
     <Content Include="NPCs\PossessedHornet2.png" />
     <Content Include="NPCs\PossessedHound.png" />
-    <Content Include="NPCs\Professor.png" />
-    <Content Include="NPCs\Professor_Head.png" />
     <Content Include="NPCs\PyramidHead.png" />
     <Content Include="NPCs\PyramidRider.png" />
     <Content Include="NPCs\QuartzBeetle.png" />
@@ -6135,6 +6120,7 @@
     <Content Include="NPCs\Shnoot.png" />
     <Content Include="NPCs\Shroot.png" />
     <Content Include="NPCs\Sighted.png" />
+    <Content Include="NPCs\SignalDrone.png" />
     <Content Include="NPCs\SkeletonKnight.png" />
     <Content Include="NPCs\Skullker.png" />
     <Content Include="NPCs\SnowBat.png" />
@@ -6142,8 +6128,6 @@
     <Content Include="NPCs\SnowEater.png" />
     <Content Include="NPCs\SnowmanBomber.png" />
     <Content Include="NPCs\SnowmanWarrior.png" />
-    <Content Include="NPCs\Sorcerer.png" />
-    <Content Include="NPCs\Sorcerer_Head.png" />
     <Content Include="NPCs\SoulofHope.png" />
     <Content Include="NPCs\SoulofHope_Head_Boss.png" />
     <Content Include="NPCs\SoulofTrust.png" />
@@ -6157,8 +6141,6 @@
     <Content Include="NPCs\SpiderMan.png" />
     <Content Include="NPCs\SquidZombie.png" />
     <Content Include="NPCs\Squoma.png" />
-    <Content Include="NPCs\Startrooper.png" />
-    <Content Include="NPCs\Startrooper_Head.png" />
     <Content Include="NPCs\StormJellyfish.png" />
     <Content Include="NPCs\StormJellyfish_Head_Boss.png" />
     <Content Include="NPCs\SupremePossessedArmor.png" />
@@ -6181,6 +6163,34 @@
     <Content Include="NPCs\TikiTotem.png" />
     <Content Include="NPCs\TikiTotem_Head_Boss.png" />
     <Content Include="NPCs\TikiWarrior.png" />
+    <Content Include="NPCs\TownNPCs\Alchemist.png" />
+    <Content Include="NPCs\TownNPCs\Alchemist_Head.png" />
+    <Content Include="NPCs\TownNPCs\ArabianMerchant.png" />
+    <Content Include="NPCs\TownNPCs\ArabianMerchant_Head.png" />
+    <Content Include="NPCs\TownNPCs\Archer.png" />
+    <Content Include="NPCs\TownNPCs\Archer_Head.png" />
+    <Content Include="NPCs\TownNPCs\Chef.png" />
+    <Content Include="NPCs\TownNPCs\Chef_Head.png" />
+    <Content Include="NPCs\TownNPCs\Farmer.png" />
+    <Content Include="NPCs\TownNPCs\Farmer_Head.png" />
+    <Content Include="NPCs\TownNPCs\ForgeMaster.png" />
+    <Content Include="NPCs\TownNPCs\ForgeMaster_Head.png" />
+    <Content Include="NPCs\TownNPCs\Knight.png" />
+    <Content Include="NPCs\TownNPCs\Knight_Head.png" />
+    <Content Include="NPCs\TownNPCs\LadyMoon.png" />
+    <Content Include="NPCs\TownNPCs\LadyMoon_Head.png" />
+    <Content Include="NPCs\TownNPCs\Professor.png" />
+    <Content Include="NPCs\TownNPCs\Professor_Head.png" />
+    <Content Include="NPCs\TownNPCs\Sorcerer.png" />
+    <Content Include="NPCs\TownNPCs\Sorcerer_Head.png" />
+    <Content Include="NPCs\TownNPCs\Startrooper.png" />
+    <Content Include="NPCs\TownNPCs\Startrooper_Head.png" />
+    <Content Include="NPCs\TownNPCs\Undertaker.png" />
+    <Content Include="NPCs\TownNPCs\Undertaker_Head.png" />
+    <Content Include="NPCs\TownNPCs\Warlock.png" />
+    <Content Include="NPCs\TownNPCs\Warlock_Head.png" />
+    <Content Include="NPCs\TownNPCs\Witch.png" />
+    <Content Include="NPCs\TownNPCs\Witch_Head.png" />
     <Content Include="NPCs\TwilightBat.png" />
     <Content Include="NPCs\UndeadArchaeologist.png" />
     <Content Include="NPCs\UndeadArchaeologist2.png" />
@@ -6190,18 +6200,12 @@
     <Content Include="NPCs\UndeadWarrior2.png" />
     <Content Include="NPCs\UndeadWarrior3.png" />
     <Content Include="NPCs\UndeadWarrior4.png" />
-    <Content Include="NPCs\Undertaker.png" />
-    <Content Include="NPCs\Undertaker_Head.png" />
     <Content Include="NPCs\WallOfShadow.png" />
     <Content Include="NPCs\WallOfShadowChain.png" />
     <Content Include="NPCs\WallOfShadowEye.png" />
     <Content Include="NPCs\WallOfShadow_Head_Boss.png" />
     <Content Include="NPCs\WallOfShadow_Head_Boss1.png" />
     <Content Include="NPCs\WallOfShadow_Wall.png" />
-    <Content Include="NPCs\Warlock.png" />
-    <Content Include="NPCs\Warlock_Head.png" />
-    <Content Include="NPCs\Witch.png" />
-    <Content Include="NPCs\Witch_Head.png" />
     <Content Include="NPCs\Woodling.png" />
     <Content Include="NPCs\WoodlingWarrior.png" />
     <Content Include="NPCs\Woody.png" />
