@@ -7,14 +7,14 @@ using Microsoft.Xna.Framework;
 using Tremor.Items;
 using Tremor.Projectiles.Alchemic;
 
-namespace Tremor.NPCs
+namespace Tremor.NPCs.TownNPCs
 {
 	[AutoloadHead]
 	public class Alchemist : ModNPC
 	{
-		public override string Texture => "Tremor/NPCs/Alchemist";
+		public override string Texture => "Tremor/NPCs/TownNPCs/Alchemist";
 
-		public override string[] AltTextures => new[] { "Tremor/NPCs/Alchemist" };
+		public override string[] AltTextures => new[] { "Tremor/NPCs/TownNPCs/Alchemist" };
 
 		public override bool Autoload(ref string name)
 		{

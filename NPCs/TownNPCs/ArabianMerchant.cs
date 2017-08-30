@@ -7,14 +7,14 @@ using Microsoft.Xna.Framework;
 using Tremor.Items;
 using Tremor.Projectiles;
 
-namespace Tremor.NPCs
+namespace Tremor.NPCs.TownNPCs
 {
 	[AutoloadHead]
 	public class ArabianMerchant : ModNPC
 	{
-		public override string Texture => "Tremor/NPCs/ArabianMerchant";
+		public override string Texture => "Tremor/NPCs/TownNPCs/ArabianMerchant";
 
-		public override string[] AltTextures => new[] { "Tremor/NPCs/ArabianMerchant" };
+		public override string[] AltTextures => new[] { "Tremor/NPCs/TownNPCs/ArabianMerchant" };
 
 		public override bool Autoload(ref string name)
 		{

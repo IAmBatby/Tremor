@@ -5,14 +5,14 @@ using Terraria.ModLoader;
 using Tremor.Items;
 using Tremor.Projectiles;
 
-namespace Tremor.NPCs
+namespace Tremor.NPCs.TownNPCs
 {
 	[AutoloadHead]
 	public class Startrooper : ModNPC
 	{
-		public override string Texture => "Tremor/NPCs/Startrooper";
+		public override string Texture => "Tremor/NPCs/TownNPCs/Startrooper";
 
-		public override string[] AltTextures => new[] { "Tremor/NPCs/Startrooper" };
+		public override string[] AltTextures => new[] { "Tremor/NPCs/TownNPCs/Startrooper" };
 
 		public override bool Autoload(ref string name)
 		{
