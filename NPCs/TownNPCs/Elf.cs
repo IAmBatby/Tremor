@@ -1,12 +1,11 @@
 using System.Linq;
-
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-
+using Terraria.Utilities;
 using Tremor.Items;
 
-namespace Tremor.NPCs
+namespace Tremor.NPCs.TownNPCs
 {
 	[AutoloadHead]
 	public class Elf : ModNPC
@@ -52,36 +51,33 @@ namespace Tremor.NPCs
 		public override bool CanTownNPCSpawn(int numTownNPCs, int money)
 			=> Main.player.Any(player => player.active && player.inventory.Any(item => item != null && item.type == mod.ItemType("SuspiciousLookingPresent")));
 
-		public override string TownNPCName()
+		private readonly WeightedRandom<string> _names = new[]
 		{
-			string[] names =
-			{
-				"Nick",
-				"Elfie",
-				"Jingle",
-				"Chippy",
-				"Sparkle",
-				"Twinkle",
-				"Elvis",
-				"Peppermint",
-				"Snowflake"
-			};
-			return names.TakeRandom();
-		}
+			"Nick",
+			"Elfie:2",
+			"Jingle",
+			"Sparkle:2",
+			"Twinkle",
+			"Elvis",
+			"Peppermint",
+			"Snowflake:2"
+		}.ToWeightedCollectionWithWeight();
+
+		public override string TownNPCName()
+			=> _names.Get();
+
+		private readonly WeightedRandom<string> _chats = new[]
+		{
+			"What do you know about reindeers?",
+			"I could give you some presents, but... You've been naughty this year.",
+			"I am Santa's favorite elf!",
+			"Jingle bells, jingle bells, jingle all the way!",
+			"Someone threw a snowball at me. I don't know who did it but I will find him and throw a snowball at him too.",
+			"I licked an icicle one fine day. It resulted in not a lot of pain."
+		}.ToWeightedCollection();
 
 		public override string GetChat()
-		{
-			string[] chats =
-			{
-				"What do you know about reindeers?",
-				"I could give you some presents, but... You've been naughty this year.",
-				"I am Santa's favorite elf!",
-				"Jingle bells, jingle bells, jingle all the way!",
-				"Someone threw a snowball at me. I don't know who did it but I will find him and throw a snowball at him too.",
-				"I licked an icicle one fine day. It resulted in not a lot of pain."
-			};
-			return chats.TakeRandom();
-		}
+			=> _chats.Get();
 
 		public override void SetChatButtons(ref string button, ref string button2)
 		{
@@ -102,7 +98,7 @@ namespace Tremor.NPCs
 
 			if (NPC.downedBoss1)
 				shop.AddUniqueItem(ref nextSlot, mod.ItemType<SnowShotgun>());
-				shop.AddUniqueItem(ref nextSlot, mod.ItemType<CandyBow>());
+			shop.AddUniqueItem(ref nextSlot, mod.ItemType<CandyBow>());
 
 			if (NPC.downedBoss3)
 				shop.AddUniqueItem(ref nextSlot, mod.ItemType<TheSnowBall>());
