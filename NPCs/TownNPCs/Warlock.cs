@@ -12,9 +12,9 @@ namespace Tremor.NPCs.TownNPCs
 	[AutoloadHead]
 	public class Warlock : ModNPC
 	{
-		public override string Texture => "Tremor/NPCs/TownNPCs/Warlock";
+		public override string Texture => $"{typeof(Warlock).NamespaceToPath()}/Warlock";
 
-		public override string[] AltTextures => new[] { "Tremor/NPCs/TownNPCs/Warlock" };
+		public override string[] AltTextures => new[] { $"{typeof(Warlock).NamespaceToPath()}/Warlock" };
 
 		public override bool Autoload(ref string name)
 		{

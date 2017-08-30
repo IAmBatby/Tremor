@@ -11,9 +11,9 @@ namespace Tremor.NPCs.TownNPCs
 	[AutoloadHead]
 	public class Knight : ModNPC
 	{
-		public override string Texture => "Tremor/NPCs/TownNPCs/Knight";
+		public override string Texture => $"{typeof(Knight).NamespaceToPath()}/Knight";
 
-		public override string[] AltTextures => new[] { "Tremor/NPCs/TownNPCs/Knight" };
+		public override string[] AltTextures => new[] { $"{typeof(Knight).NamespaceToPath()}/Knight" };
 
 		public override bool Autoload(ref string name)
 		{

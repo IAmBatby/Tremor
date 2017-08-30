@@ -14,9 +14,9 @@ namespace Tremor.NPCs.TownNPCs
 	[AutoloadHead]
 	public class Chef : ModNPC
 	{
-		public override string Texture => "Tremor/NPCs/TownNPCs/Chef";
+		public override string Texture => $"{typeof(Chef).NamespaceToPath()}/Chef";
 
-		public override string[] AltTextures => new[] { "Tremor/NPCs/TownNPCs/Chef" };
+		public override string[] AltTextures => new[] { $"{typeof(Chef).NamespaceToPath()}/Chef" };
 
 		public override bool Autoload(ref string name)
 		{

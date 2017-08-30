@@ -12,9 +12,9 @@ namespace Tremor.NPCs.TownNPCs
 	[AutoloadHead]
 	public class LadyMoon : ModNPC
 	{
-		public override string Texture => "Tremor/NPCs/TownNPCs/LadyMoon";
+		public override string Texture => $"{typeof(LadyMoon).NamespaceToPath()}/LadyMoon";
 
-		public override string[] AltTextures => new[] { "Tremor/NPCs/TownNPCs/LadyMoon" };
+		public override string[] AltTextures => new[] { $"{typeof(LadyMoon).NamespaceToPath()}/LadyMoon" };
 
 		public override bool Autoload(ref string name)
 		{

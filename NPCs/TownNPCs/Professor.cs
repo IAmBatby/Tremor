@@ -11,9 +11,9 @@ namespace Tremor.NPCs.TownNPCs
 	[AutoloadHead]
 	public class Professor : ModNPC
 	{
-		public override string Texture => "Tremor/NPCs/TownNPCs/Professor";
+		public override string Texture => $"{typeof(Professor).NamespaceToPath()}/Professor";
 
-		public override string[] AltTextures => new[] { "Tremor/NPCs/TownNPCs/Professor" };
+		public override string[] AltTextures => new[] { $"{typeof(Professor).NamespaceToPath()}/Professor" };
 
 		public override bool Autoload(ref string name)
 		{

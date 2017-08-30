@@ -33,6 +33,9 @@ namespace Tremor
 
 	public static class TremorUtils
 	{
+		public static string NamespaceToPath(this Type type)
+			=> type.Namespace?.Replace('.', '/');
+
 		public static WeightedString[] ToWeightedStringCollection(this string[] strings, params double[] weights)
 		{
 			WeightedString[] chats = new WeightedString[strings.Length];

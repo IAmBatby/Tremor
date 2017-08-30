@@ -12,9 +12,9 @@ namespace Tremor.NPCs.TownNPCs
 	[AutoloadHead]
 	public class Sorcerer : ModNPC
 	{
-		public override string Texture => "Tremor/NPCs/TownNPCs/Sorcerer";
+		public override string Texture => $"{typeof(Sorcerer).NamespaceToPath()}/Sorcerer";
 
-		public override string[] AltTextures => new[] { "Tremor/NPCs/TownNPCs/Sorcerer" };
+		public override string[] AltTextures => new[] { $"{typeof(Sorcerer).NamespaceToPath()}/Sorcerer" };
 
 		public override bool Autoload(ref string name)
 		{

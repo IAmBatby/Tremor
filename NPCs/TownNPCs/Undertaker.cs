@@ -11,9 +11,9 @@ namespace Tremor.NPCs.TownNPCs
 	[AutoloadHead]
 	public class Undertaker : ModNPC
 	{
-		public override string Texture => "Tremor/NPCs/TownNPCs/Undertaker";
+		public override string Texture => $"{typeof(Undertaker).NamespaceToPath()}/Undertaker";
 
-		public override string[] AltTextures => new[] { "Tremor/NPCs/TownNPCs/Undertaker" };
+		public override string[] AltTextures => new[] { $"{typeof(Undertaker).NamespaceToPath()}/Undertaker" };
 
 		public override bool Autoload(ref string name)
 		{

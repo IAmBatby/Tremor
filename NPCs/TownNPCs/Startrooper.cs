@@ -11,9 +11,9 @@ namespace Tremor.NPCs.TownNPCs
 	[AutoloadHead]
 	public class Startrooper : ModNPC
 	{
-		public override string Texture => "Tremor/NPCs/TownNPCs/Startrooper";
+		public override string Texture => $"{typeof(Startrooper).NamespaceToPath()}/Startrooper";
 
-		public override string[] AltTextures => new[] { "Tremor/NPCs/TownNPCs/Startrooper" };
+		public override string[] AltTextures => new[] { $"{typeof(Startrooper).NamespaceToPath()}/Startrooper" };
 
 		public override bool Autoload(ref string name)
 		{

@@ -12,9 +12,9 @@ namespace Tremor.NPCs.TownNPCs
 	[AutoloadHead]
 	public class ArabianMerchant : ModNPC
 	{
-		public override string Texture => "Tremor/NPCs/TownNPCs/ArabianMerchant";
+		public override string Texture => $"{typeof(ArabianMerchant).NamespaceToPath()}/ArabianMerchant";
 
-		public override string[] AltTextures => new[] { "Tremor/NPCs/TownNPCs/ArabianMerchant" };
+		public override string[] AltTextures => new[] { $"{typeof(ArabianMerchant).NamespaceToPath()}/ArabianMerchant" };
 
 		public override bool Autoload(ref string name)
 		{

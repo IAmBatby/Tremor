@@ -14,9 +14,9 @@ namespace Tremor.NPCs.TownNPCs
 	[AutoloadHead]
 	public class Farmer : ModNPC
 	{
-		public override string Texture => "Tremor/NPCs/TownNPCs/Farmer";
+		public override string Texture => $"{typeof(Farmer).NamespaceToPath()}/Farmer";
 
-		public override string[] AltTextures => new[] { "Tremor/NPCs/TownNPCs/Farmer" };
+		public override string[] AltTextures => new[] { $"{typeof(Farmer).NamespaceToPath()}/Farmer" };
 
 		public override bool Autoload(ref string name)
 		{

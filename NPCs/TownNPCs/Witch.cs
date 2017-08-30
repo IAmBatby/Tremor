@@ -15,9 +15,9 @@ namespace Tremor.NPCs.TownNPCs
 	[AutoloadHead]
 	public class Witch : ModNPC
 	{
-		public override string Texture => "Tremor/NPCs/TownNPCs/Witch";
+		public override string Texture => $"{typeof(Witch).NamespaceToPath()}/Witch";
 
-		public override string[] AltTextures => new[] { "Tremor/NPCs/TownNPCs/Witch" };
+		public override string[] AltTextures => new[] { $"{typeof(Witch).NamespaceToPath()}/Witch" };
 
 		public override bool Autoload(ref string name)
 		{

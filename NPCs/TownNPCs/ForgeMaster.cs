@@ -14,9 +14,9 @@ namespace Tremor.NPCs.TownNPCs
 	[AutoloadHead]
 	public class ForgeMaster : ModNPC
 	{
-		public override string Texture => "Tremor/NPCs/TownNPCs/ForgeMaster";
+		public override string Texture => $"{typeof(ForgeMaster).NamespaceToPath()}/ForgeMaster";
 
-		public override string[] AltTextures => new[] { "Tremor/NPCs/TownNPCs/ForgeMaster" };
+		public override string[] AltTextures => new[] { $"{typeof(ForgeMaster).NamespaceToPath()}/ForgeMaster" };
 
 		public override bool Autoload(ref string name)
 		{

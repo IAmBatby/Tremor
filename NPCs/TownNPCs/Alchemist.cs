@@ -12,9 +12,9 @@ namespace Tremor.NPCs.TownNPCs
 	[AutoloadHead]
 	public class Alchemist : ModNPC
 	{
-		public override string Texture => "Tremor/NPCs/TownNPCs/Alchemist";
+		public override string Texture => $"{typeof(Alchemist).NamespaceToPath()}/Alchemist";
 
-		public override string[] AltTextures => new[] { "Tremor/NPCs/TownNPCs/Alchemist" };
+		public override string[] AltTextures => new[] { $"{typeof(Alchemist).NamespaceToPath()}/Alchemist" };
 
 		public override bool Autoload(ref string name)
 		{

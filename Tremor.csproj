@@ -2014,7 +2014,7 @@
     <Compile Include="NPCs\DreadBeetle.cs" />
     <Compile Include="NPCs\DungeonKeeper.cs" />
     <Compile Include="NPCs\ElderObserver.cs" />
-    <Compile Include="NPCs\Elf.cs" />
+    <Compile Include="NPCs\TownNPCs\Elf.cs" />
     <Compile Include="NPCs\EliteBloodmoonWarrior.cs" />
     <Compile Include="NPCs\EnragedBat.cs" />
     <Compile Include="NPCs\EvilCorn.cs" />
@@ -5976,8 +5976,8 @@
     <Content Include="NPCs\DreadBeetle.png" />
     <Content Include="NPCs\DungeonKeeper.png" />
     <Content Include="NPCs\ElderObserver.png" />
-    <Content Include="NPCs\Elf.png" />
-    <Content Include="NPCs\Elf_Head.png" />
+    <Content Include="NPCs\TownNPCs\Elf.png" />
+    <Content Include="NPCs\TownNPCs\Elf_Head.png" />
     <Content Include="NPCs\EliteBloodmoonWarrior.png" />
     <Content Include="NPCs\EnragedBat.png" />
     <Content Include="NPCs\EvilCorn.png" />
