@@ -3,7 +3,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 
 using Microsoft.Xna.Framework;
-
+using Terraria.Utilities;
 using Tremor.Items;
 using Tremor.Projectiles.Alchemic;
 
@@ -53,36 +53,32 @@ namespace Tremor.NPCs.TownNPCs
 		public override bool CanTownNPCSpawn(int numTownNPCs, int money) 
 			=> NPC.downedBoss1;
 
-		public override string TownNPCName()
+		private readonly WeightedRandom<string> _names = new[]
 		{
-			string[] names =
-			{
-				"Rizo",
-				"Albert",
-				"Bernando",
-				"Seefeld",
-				"Raymond",
-				"Paracelsus",
-				"Nerxius"
-			};
-			return names.TakeRandom();
-		}
+			"Rizo:2",
+			"Albert",
+			"Bernando",
+			"Seefeld",
+			"Raymond",
+			"Paracelsus:3",
+			"Nerxius:2"
+		}.ToWeightedCollectionWithWeight();
+
+		public override string TownNPCName()
+			=> _names.Get();
+
+		private readonly WeightedRandom<string> _chats = new WeightedRandom<string>(
+			"Love is just a chain of chemical reactions. So that you know.".ToWeightedTuple(2),
+			"If you wanna know, it was hard to press these gel cubes.".ToWeightedTuple(),
+			"Wanna try something new? I think you may be interested in... BOOM FLASKS!".ToWeightedTuple(3),
+			"The man who passes the sentence should throw the flask...".ToWeightedTuple(2),
+			"I'm gonna have to throw EVERY SINGLE FLASK in this house!".ToWeightedTuple(),
+			"What? You don't like my hairstyle? Your isn't better.".ToWeightedTuple(.5),
+			"If you think that I'm a terrorist just because I sell exploding flasks? You're wrong. There are even worse people who sell worse things.".ToWeightedTuple()
+		);
 
 		public override string GetChat()
-		{
-			// weighted chats?
-			string[] chats =
-			{
-				"Love is just a chain of chemical reactions. So that you know.",
-				"If you wanna know, it was hard to press these gel cubes.",
-				"Wanna try something new? I think you may be interested in... BOOM FLASKS!",
-				"The man who passes the sentence should throw the flask...",
-				"I'm gonna have to throw EVERY SINGLE FLASK in this house!",
-				"What? You don't like my hairstyle? Your isn't better.",
-				"If you think that I'm a terrorist just because I sell exploding flasks? You're wrong. There are even worse people who sell worse things."
-			};
-			return chats.TakeRandom();
-		}
+			=> _chats.Get();
 
 		public override void SetChatButtons(ref string button, ref string button2)
 		{

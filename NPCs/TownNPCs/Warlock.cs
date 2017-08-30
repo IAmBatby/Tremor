@@ -3,6 +3,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 
 using Microsoft.Xna.Framework;
+using Terraria.Utilities;
 using Tremor;
 using Tremor.Items;
 
@@ -52,28 +53,26 @@ namespace Tremor.NPCs.TownNPCs
 		public override bool CanTownNPCSpawn(int numTownNPCs, int money)
 			=> NPC.downedBoss2;
 
-		public override string TownNPCName()
+		private readonly WeightedRandom<string> _names = new[]
 		{
-			string[] names =
-			{
-				"Azazel",
-				"Baphomet",
-				"Vaal",
-				"Dis",
-				"Nisroke",
-				"Sabnak"
-			};
-			return names.TakeRandom();
-		}
+			"Azazel:2",
+			"Baphomet",
+			"Vaal:3",
+			"Dis",
+			"Nisroke",
+			"Sabnak"
+		}.ToWeightedCollectionWithWeight();
+
+		public override string TownNPCName()
+			=> _names.Get();
+
+		private readonly WeightedRandom<string> _chats = new[]
+		{
+			"..."
+		}.ToWeightedCollection();
 
 		public override string GetChat()
-		{
-			switch (Main.rand.Next(6))
-			{
-				default:
-					return "...";
-			}
-		}
+			=> _chats.Get();
 
 		public override void SetChatButtons(ref string button, ref string button2)
 		{

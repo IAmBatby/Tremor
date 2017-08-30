@@ -3,7 +3,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 
 using Microsoft.Xna.Framework;
-
+using Terraria.Utilities;
 using Tremor.Items;
 
 namespace Tremor.NPCs.TownNPCs
@@ -52,35 +52,33 @@ namespace Tremor.NPCs.TownNPCs
 		public override bool CanTownNPCSpawn(int numTownNPCs, int money)
 			=> Main.hardMode;
 
-		public override string TownNPCName()
+		private readonly WeightedRandom<string> _names = new[]
 		{
-			string[] names =
-			{
-				"James",
-				"Harold",
-				"Steven",
-				"David",
-				"John",
-				"Brus Bunner",
-				"Alfred"
-			};
-			return names.TakeRandom();
-		}
+			"James:2",
+			"Harold:2",
+			"Steven",
+			"David",
+			"John",
+			"Brus Bunner",
+			"Alfred"
+		}.ToWeightedCollectionWithWeight();
+
+		public override string TownNPCName()
+			=> _names.Get();
+
+		private readonly WeightedRandom<string> _chats = new[]
+		{
+			"Don't mind my appearance. This is just the result of a failed experiment.",
+			"Do you have a carrot? Oh, never mind.",
+			"Imagine that in all those rabbits that you have killed were imprisoned soul of common people! Just think about it...",
+			"Someday we'll all feel the cold embrace of death. Bring me some more carrot soup before this happens.",
+			"Magic allows you to do what cannot be done scientifically. The main thing is not to overdo it, if you know what I mean.",
+			"I  don't like people that like how wizards 'magically' grab rabbits out of their magic hats. It's horrible!",
+			"I studied the anomalies in this world a long time ago. During this time, I became the anomaly myself. Funny."
+		}.ToWeightedCollection();
 
 		public override string GetChat()
-		{
-			string[] chats =
-			{
-				"Don't mind my appearance. This is just the result of a failed experiment.",
-				"Do you have a carrot? Oh, never mind.",
-				"Imagine that in all those rabbits that you have killed were imprisoned soul of common people! Just think about it...",
-				"Someday we'll all feel the cold embrace of death. Bring me some more carrot soup before this happens.",
-				"Magic allows you to do what cannot be done scientifically. The main thing is not to overdo it, if you know what I mean.",
-				"I  don't like people that like how wizards 'magically' grab rabbits out of their magic hats. It's horrible!",
-				"I studied the anomalies in this world a long time ago. During this time, I became the anomaly myself. Funny."
-			};
-			return chats.TakeRandom();
-		}
+			=> _chats.Get();
 
 		public override void SetChatButtons(ref string button, ref string button2)
 		{

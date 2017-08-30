@@ -5,6 +5,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 
 using Microsoft.Xna.Framework;
+using Terraria.Utilities;
 using Tremor;
 using Tremor.Items;
 using Tremor.Projectiles;
@@ -55,32 +56,29 @@ namespace Tremor.NPCs.TownNPCs
 		public override bool CanTownNPCSpawn(int numTownNPCs, int money)
 			=> Main.player.Any(player => player.active && player.inventory.Any(item => item != null && item.type == ItemID.GoodieBag));
 
+		private readonly WeightedRandom<string> _names = new[]
+		{
+			"Circe",
+			"Kikimora:2",
+			"Morgana",
+			"Hecate"
+		}.ToWeightedCollectionWithWeight();
 
 		public override string TownNPCName()
+			=> _names.Get();
+
+		private readonly WeightedRandom<string> _chats = new[]
 		{
-			string[] names =
-			{
-				"Circe",
-				"Kikimora",
-				"Morgana",
-				"Hecate"
-			};
-			return names.TakeRandom();
-		}
+			"<cackle> Welcome dearies! I hope you don't mind the body parts. I was just cleaning up.",
+			"Eye of a newt! Tongue of a cat! Blood of a dryad... a little more blood.",
+			"Don't pull my nose! It's not a mask!",
+			"The moon has a secret dearies! One that you'll know soon enough!",
+			"This is halloween! Or is it?",
+			"Blood for the blood moon! Skulls for the skull cap... Or was it something else?"
+		}.ToWeightedCollection();
 
 		public override string GetChat()
-		{
-			string[] chats =
-			{
-				"<cackle> Welcome dearies! I hope you don't mind the body parts. I was just cleaning up.",
-				"Eye of a newt! Tongue of a cat! Blood of a dryad... a little more blood.",
-				"Don't pull my nose! It's not a mask!",
-				"The moon has a secret dearies! One that you'll know soon enough!",
-				"This is halloween! Or is it?",
-				"Blood for the blood moon! Skulls for the skull cap... Or was it something else?"
-			};
-			return chats.TakeRandom();
-		}
+			=> _chats.Get();
 
 		public override void SetChatButtons(ref string button, ref string button2)
 		{

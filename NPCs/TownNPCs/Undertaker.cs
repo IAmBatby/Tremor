@@ -3,7 +3,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 
 using Microsoft.Xna.Framework;
-
+using Terraria.Utilities;
 using Tremor.Items;
 
 namespace Tremor.NPCs.TownNPCs
@@ -52,38 +52,33 @@ namespace Tremor.NPCs.TownNPCs
 		public override bool CanTownNPCSpawn(int numTownNPCs, int money)
 			=> TremorWorld.Boss.Trinity.IsDowned();
 
-		public override string TownNPCName()
+		private readonly WeightedRandom<string> _names = new[]
 		{
-			string[] names =
-			{
-				"Tenner",
-				"Geyer",
-				"Cleve",
-				"Ferron",
-				"Gasper",
-				"Spots",
-				"Hargon"
-			};
-			return names.TakeRandom();
-		}
+			"Tenner",
+			"Geyer",
+			"Cleve",
+			"Ferron",
+			"Gasper",
+			"Spots",
+			"Hargon:3"
+		}.ToWeightedCollectionWithWeight();
+
+		public override string TownNPCName()
+			=> _names.Get();
+
+		private readonly WeightedRandom<string> _chats = new[]
+		{
+			"Don't worry. Nobody will get out of the coffin that I have made.",
+			"Are you afraid of ghosts? I'm not. But the ghosts are afraid of me.",
+			"If you need some help then feel free to ask me. I have a lot of undead things on my side.:3",
+			"What will you prefer to do if this day will be your last day?",
+			"Our life is a challenge. To make it easier - buy my stuff.",
+			"Don't worry. I'm not a vampire even my eyes are red and my skin is of a strange color.",
+			"Do you prefer blood or tomato juice?"
+		}.ToWeightedCollectionWithWeight();
 
 		public override string GetChat()
-		{
-			// weighted chats?
-			string[] chats =
-			{
-				"Don't worry. Nobody will get out of the coffin that I have made.",
-				"Are you afraid of ghosts? I'm not. But the ghosts are afraid of me.",
-				"If you need some help then feel free to ask me. I have a lot of undead things on my side.",
-				"If you need some help then feel free to ask me. I have a lot of undead things on my side.",
-				"If you need some help then feel free to ask me. I have a lot of undead things on my side.",
-				"What will you prefer to do if this day will be your last day?",
-				"Our life is a challenge. To make it easier - buy my stuff.",
-				"Don't worry. I'm not a vampire even my eyes are red and my skin is of a strange color.",
-				"Do you prefer blood or tomato juice?"
-			};
-			return chats.TakeRandom();
-		}
+			=> _chats.Get();
 
 		public override void SetChatButtons(ref string button, ref string button2)
 		{

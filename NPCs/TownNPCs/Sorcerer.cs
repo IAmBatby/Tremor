@@ -3,6 +3,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 
 using Microsoft.Xna.Framework;
+using Terraria.Utilities;
 using Tremor;
 using Tremor.Items;
 
@@ -53,33 +54,31 @@ namespace Tremor.NPCs.TownNPCs
 			=> true;
 
 
-		public override string TownNPCName()
+		private readonly WeightedRandom<string> _names = new[]
 		{
-			string[] names =
-			{
-				"Merdok",
-				"Avalon",
-				"Aron",
-				"Harry",
-				"Edgar",
-				"Marco"
-			};
-			return names.TakeRandom();
-		}
+			"Merdok:2",
+			"Avalon:3",
+			"Aron",
+			"Harry",
+			"Edgar",
+			"Marco"
+		}.ToWeightedCollectionWithWeight();
+
+		public override string TownNPCName()
+			=> _names.Get();
+
+		private readonly WeightedRandom<string> _chats = new[]
+		{
+			"You'll never find me trapped underground.",
+			"Sorcery is all about control. It's different from magic in that it requires symbols and fetishes.",
+			"I can share the magic with you for free. Well... Almost free.",
+			"Sorry. I don't do parties.",
+			"Don't touch that if you want to keep your hand. It's still quite unstable.",
+			"I want to get the rabbit out of the hat! Do you want it? You don't want a rabbit? Seriously!?"
+		}.ToWeightedCollection();
 
 		public override string GetChat()
-		{
-			string[] chats =
-			{
-				"You'll never find me trapped underground.",
-				"Sorcery is all about control. It's different from magic in that it requires symbols and fetishes.",
-				"I can share the magic with you for free. Well... Almost free.",
-				"Sorry. I don't do parties.",
-				"Don't touch that if you want to keep your hand. It's still quite unstable.",
-				"I want to get the rabbit out of the hat! Do you want it? You don't want a rabbit? Seriously!?"
-			};
-			return chats.TakeRandom();
-		}
+			=> _chats.Get();
 
 		public override void SetChatButtons(ref string button, ref string button2)
 		{

@@ -5,7 +5,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 
 using Microsoft.Xna.Framework;
-
+using Terraria.Utilities;
 using Tremor.Items;
 using Tremor.Projectiles;
 
@@ -54,35 +54,33 @@ namespace Tremor.NPCs.TownNPCs
 		
 		public override bool CanTownNPCSpawn(int numTownNPCs, int money)
 		   => Main.player.Any(player => player.active && player.inventory.Any(item => item != null && item.type == mod.ItemType("JungleAlloy")));
-		
-		public override string TownNPCName()
+
+		private readonly WeightedRandom<string> _names = new[]
 		{
-			string[] names =
-			{
-				"Gefest",
-				"Aule",
-				"Agarorn",
-				"Treak",
-				"Haymer",
-				"Golan"
-			};
-			return names.TakeRandom();
-		}
+			"Gefest:2",
+			"Aule",
+			"Agarorn:2",
+			"Treak",
+			"Haymer",
+			"Golan"
+		}.ToWeightedCollectionWithWeight();
+
+		public override string TownNPCName()
+			=> _names.Get();
+
+		private readonly WeightedRandom<string> _chats = new[]
+		{
+			"You can't lift my hammer? Not surprising! That's because you are not worthy!",
+			"Strangely but nobody uses hammers for making bars. How do you just put ore into furnaces and get bars!? That is insane!",
+			"Valar Morghulis! Oh wait, that's not the Braavos! Forget what I've said.",
+			"What? You ask me who am I?! I am the son of the Vulcan and the Vulcan is the mighty anvilborn!",
+			"My bars are better because I make them with my hammer. If you won't buy my bars I will make a bar from you.",
+			"You wonder why people call me Forge Master!? What means you don't believe I'm the real Master of Forges!?",
+			"Be careful when working with forges. I got burnt once when I was taking off a bar from it. That's why I'm wearing such armor!"
+		}.ToWeightedCollection();
 
 		public override string GetChat()
-		{
-			string[] chats =
-			{
-				"You can't lift my hammer? Not surprising! That's because you are not worthy!",
-				"Strangely but nobody uses hammers for making bars. How do you just put ore into furnaces and get bars!? That is insane!",
-				"Valar Morghulis! Oh wait, that's not the Braavos! Forget what I've said.",
-				"What? You ask me who am I?! I am the son of the Vulcan and the Vulcan is the mighty anvilborn!",
-				"My bars are better because I make them with my hammer. If you won't buy my bars I will make a bar from you.",
-				"You wonder why people call me Forge Master!? What means you don't believe I'm the real Master of Forges!?",
-				"Be careful when working with forges. I got burnt once when I was taking off a bar from it. That's why I'm wearing such armor!"
-			};
-			return chats.TakeRandom();
-		}
+			=> _chats.Get();
 
 		public override void SetChatButtons(ref string button, ref string button2)
 		{

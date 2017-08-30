@@ -3,7 +3,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 
 using Microsoft.Xna.Framework;
-
+using Terraria.Utilities;
 using Tremor.Items;
 using Tremor.Projectiles;
 
@@ -52,39 +52,36 @@ namespace Tremor.NPCs.TownNPCs
 			animationType = NPCID.Guide;
 		}
 
-		public override bool CanTownNPCSpawn(int numTownNPCs, int money) 
+		public override bool CanTownNPCSpawn(int numTownNPCs, int money)
 			=> TremorWorld.Boss.Rukh.IsDowned();
 
-		public override string TownNPCName()
+		private readonly WeightedRandom<string> _names = new[]
 		{
-			string[] names =
-			{
-				"Badruddin",
-				"Galib",
-				"Salavat",
-				"Zafar",
-				"Valid",
-				"Tunak",
-				"Nadim"
-			};
-			return names.TakeRandom();
-		}
+			"Badruddin:2",
+			"Galib",
+			"Salavat",
+			"Zafar",
+			"Valid",
+			"Tunak",
+			"Nadim:3"
+		}.ToWeightedCollectionWithWeight();
+
+		public override string TownNPCName()
+			=> _names.Get();
+
+		private readonly WeightedRandom<string> _chats = new[]
+		{
+			new WeightedString("Salam aleykum! Do you need anything?"),
+			new WeightedString("I got some sand in my pockets. I think throwing it will hurt your eyes.", 2),
+			new WeightedString("My wear was absolutely white long time ago. Maybe I should wash it with this perfect yellow water?", 2),
+			new WeightedString("There are stories about what happened in the sands of this desert. But I won't tell you anything.", .5),
+			new WeightedString("In case something will happen with me... I bequeath you all my sand.", .75),
+			new WeightedString("The sands are telling me that... That... Ugh... That you will buy everything!", 3),
+			new WeightedString("The sands are moving... Be careful or you will be sucked into unknown depths!")
+		}.ToWeightedCollection();
 
 		public override string GetChat()
-		{
-			// weighted chats?
-			string[] chats =
-			{
-				"Salam aleykum! Do you need anything?",
-				"I got some sand in my pockets. I think throwing it will hurt your eyes.",
-				"My wear was absolutely white long time ago. Maybe I should wash it with this perfect yellow water?",
-				"There are stories about what happened in the sands of this desert. But I won't tell you anything.",
-				"In case something will happen with me... I bequeath you all my sand.",
-				"The sands are telling me that... That... Ugh... That you will buy everything!",
-				"The sands are moving... Be careful or you will be sucked into unknown depths!"
-			};
-			return chats.TakeRandom();
-		}
+			=> _chats.Get();
 
 		public override void SetChatButtons(ref string button, ref string button2)
 		{
@@ -150,7 +147,7 @@ namespace Tremor.NPCs.TownNPCs
 					Dust.NewDust(npc.position, npc.width, npc.height, 151, 2.5f * hitDirection, -2.5f, 0, default(Color), 0.7f);
 
 				for (int i = 0; i < 3; i++)
-					Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot($"Gores/ArabianMerchantGore{i+1}"), 1f);
+					Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot($"Gores/ArabianMerchantGore{i + 1}"), 1f);
 			}
 		}
 

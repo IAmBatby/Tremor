@@ -3,7 +3,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 
 using Microsoft.Xna.Framework;
-
+using Terraria.Utilities;
 using Tremor.Items;
 
 namespace Tremor.NPCs.TownNPCs
@@ -50,35 +50,33 @@ namespace Tremor.NPCs.TownNPCs
 		}
 
 		public override bool CanTownNPCSpawn(int numTownNPCs, int money) => true;
-		
-		public override string TownNPCName()
+
+		private readonly WeightedRandom<string> _names = new[]
 		{
-			string[] names =
-			{
-				"Wheatly",
-				"Daniel",
-				"Crox",
-				"Geralt",
-				"Roland",
-				"Hodor"
-			};
-			return names.TakeRandom();
-		}
+			"Wheatly",
+			"Daniel:3",
+			"Crox",
+			"Geralt:2",
+			"Roland",
+			"Hodor:4"
+		}.ToWeightedCollectionWithWeight();
+
+		public override string TownNPCName()
+			=> _names.Get();
+
+		private readonly WeightedRandom<string> _chats = new[]
+		{
+			"Well met, brave adventurer.",
+			"A balanced weapon can mean the difference between victory and defeat.",
+			"I am not overly fond of the bovine hordes. Best to leave them alone, really.",
+			"Do you have a weapon? Needs about 20% more coolness!",
+			"Hail and good morrow my Liege!",
+			"I was in a strange castle one day. There were mechanical things saying EXTERMINATE. Were they your minions?",
+			"Have you ever met a knight whose name is Sir Uncle Slime? He is a good friend of mine."
+		}.ToWeightedCollection();
 
 		public override string GetChat()
-		{
-			string[] chats =
-			{
-				"Well met, brave adventurer.",
-				"A balanced weapon can mean the difference between victory and defeat.",
-				"I am not overly fond of the bovine hordes. Best to leave them alone, really.",
-				"Do you have a weapon? Needs about 20% more coolness!",
-				"Hail and good morrow my Liege!",
-				"I was in a strange castle one day. There were mechanical things saying EXTERMINATE. Were they your minions?",
-				"Have you ever met a knight whose name is Sir Uncle Slime? He is a good friend of mine."
-			};
-			return chats.TakeRandom();
-		}
+			=> Name == "Hodor" ? Name : _chats.Get();
 
 		public override void SetChatButtons(ref string button, ref string button2)
 		{

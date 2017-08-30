@@ -4,6 +4,7 @@ using Terraria.ModLoader;
 
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Terraria.Utilities;
 using Tremor;
 using Tremor.Items;
 using Tremor.NPCs.TownNPCs;
@@ -54,37 +55,34 @@ namespace Tremor.NPCs.TownNPCs
 		public override bool CanTownNPCSpawn(int numTownNPCs, int money)
 			=> NPC.downedBoss2;
 
-		public override string TownNPCName()
+		private readonly WeightedRandom<string> _names = new[]
 		{
-			string[] names =
-			{
-				"Richard",
-				"Oliver",
-				"Alan",
-				"Gordon",
-				"Umeril",
-				"Anthony",
-				"Jerome",
-				"Liam"
-			};
-			return names.TakeRandom();
-		}
+			"Richard",
+			"Oliver:2",
+			"Alan",
+			"Gordon",
+			"Umeril:2",
+			"Anthony",
+			"Jerome:2",
+			"Liam"
+		}.ToWeightedCollectionWithWeight();
+
+		public override string TownNPCName()
+			=> _names.Get();
+
+		private readonly WeightedRandom<string> _chats = new[]
+		{
+			"This crab is so undercooked, it's still singing under the sea!",
+			"This needs more salt! And a dash of powdered blinkroot.",
+			"Any Oaf can make a bowl of soup, while I create culinary art.",
+			"Somebody stole my knife. I think I will cut the thief with the knife when I find it.",
+			"No! I will not add vile powder to this flambe.",
+			"Hello there! How's it goin'?",
+			"Do you know recipes of unusual food? No? THEN GO AND FIND THEM FOR ME OR I WILL CU-... Oh. Sorry."
+		}.ToWeightedCollection();
 
 		public override string GetChat()
-		{
-			// weighted chats?
-			string[] chats =
-			{
-				"This crab is so undercooked, it's still singing under the sea!",
-				"This needs more salt! And a dash of powdered blinkroot.",
-				"Any Oaf can make a bowl of soup, while I create culinary art.",
-				"Somebody stole my knife. I think I will cut the thief with the knife when I find it.",
-				"No! I will not add vile powder to this flambe.",
-				"Hello there! How's it goin'?",
-				"Do you know recipes of unusual food? No? THEN GO AND FIND THEM FOR ME OR I WILL CU-... Oh. Sorry."
-			};
-			return chats.TakeRandom();
-		}
+			=> _chats.Get();
 
 		public override void SetChatButtons(ref string button, ref string button2)
 		{

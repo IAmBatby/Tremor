@@ -2,6 +2,7 @@ using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Terraria.Utilities;
 using Tremor.Items;
 using Tremor.Projectiles;
 
@@ -48,41 +49,36 @@ namespace Tremor.NPCs.TownNPCs
 			animationType = NPCID.GoblinTinkerer;
 		}
 
-
 		public override bool CanTownNPCSpawn(int numTownNPCs, int money)
 			=> TremorWorld.Boss.SpaceWhale.IsDowned();
 
+		private readonly WeightedRandom<string> _names = new[]
+		{
+			"Ripley:2",
+			"Dallas",
+			"Brett",
+			"Kane:2",
+			"Ash",
+			"Parker",
+			"Lambert"
+		}.ToWeightedCollectionWithWeight();
 
 		public override string TownNPCName()
+			=> _names.Get();
+
+		private readonly WeightedRandom<string> _chats = new[]
 		{
-			string[] names =
-			{
-				"Ripley",
-				"Dallas",
-				"Brett",
-				"Kane",
-				"Ash",
-				"Parker",
-				"Lambert"
-			};
-			return names.TakeRandom();
-		}
+			"There is an explanation for anything, you know.",
+			"If you get into a trouble remember that somebody will surely save your skin.",
+			"My friend always liked to tell me the odds but now he is dead. You should know: Never tell me the odds.",
+			"That giant flying fish that you've defeated was making plans to destroy my home-planet. Glad you've killed him.",
+			"I suggest you carrying at least small blaster - nobody knows what's on mind of this creatures in this world.",
+			"Have you ever heard a tale of a giant three eyed creature with eyes in it hands and tentacles on head? I'm very glad that it is just a stupid story.",
+			"There were some cult of men calling themselve knights and fighting with some kind of light swords on a planet I was travelling once to. As for me, a gun is better than a useless sword."
+		}.ToWeightedCollection();
 
 		public override string GetChat()
-		{
-			// weighted chats?
-			string[] chats =
-			{
-				"There is an explanation for anything, you know.",
-				"If you get into a trouble remember that somebody will surely save your skin.",
-				"My friend always liked to tell me the odds but now he is dead. You should know: Never tell me the odds.",
-				"That giant flying fish that you've defeated was making plans to destroy my home-planet. Glad you've killed him.",
-				"I suggest you carrying at least small blaster - nobody knows what's on mind of this creatures in this world.",
-				"Have you ever heard a tale of a giant three eyed creature with eyes in it hands and tentacles on head? I'm very glad that it is just a stupid story.",
-				"There were some cult of men calling themselve knights and fighting with some kind of light swords on a planet I was travelling once to. As for me, a gun is better than a useless sword."
-			};
-			return chats.TakeRandom();
-		}
+			=> _chats.Get();
 
 		public override void SetChatButtons(ref string button, ref string button2)
 		{

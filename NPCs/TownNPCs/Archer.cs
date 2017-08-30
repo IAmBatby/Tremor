@@ -5,7 +5,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 
 using Microsoft.Xna.Framework;
-
+using Terraria.Utilities;
 using Tremor.Items;
 
 namespace Tremor.NPCs.TownNPCs
@@ -56,33 +56,30 @@ namespace Tremor.NPCs.TownNPCs
 		public override bool CanTownNPCSpawn(int numTownNPCs, int money)
 			=> Main.player.Any(player => player.dead);
 
-		public override string TownNPCName()
+		private readonly WeightedRandom<string> _names = new[]
 		{
-			string[] names =
-			{
-				"Richard",
-				"Arthur",
-				"Jack",
-				"William",
-				"Robin",
-				"Wales"
-			};
-			return names.TakeRandom();
-		}
+			"Richard",
+			"Arthur:2",
+			"Jack",
+			"William:2",
+			"Robin",
+			"Wales"
+		}.ToWeightedCollectionWithWeight();
+
+		public override string TownNPCName()
+			=> _names.Get();
+
+		private readonly WeightedRandom<string> _chats = new WeightedRandom<string>(
+			"You'd have to be a very good archer in order to shoot an arrow into a knee.".ToWeightedTuple(2),
+			"I'd like to get my hands on a goblintech bow. Those things can shoot multiple arrows.".ToWeightedTuple(.5),
+			"I deal in long distance death! Have a look at my wares.".ToWeightedTuple(),
+			"I will shoot you with my best arrow if you will not buy anything!".ToWeightedTuple(),
+			"Guns? Guns are for cowards!".ToWeightedTuple(),
+			"You don't need to make arrows. You need to buy them!".ToWeightedTuple()
+		);
 
 		public override string GetChat()
-		{
-			string[] chats =
-			{
-				"You'd have to be a very good archer in order to shoot an arrow into a knee.",
-				"I'd like to get my hands on a goblintech bow. Those things can shoot multiple arrows.",
-				"I deal in long distance death! Have a look at my wares.",
-				"I will shoot you with my best arrow if you will not buy anything!",
-				"Guns? Guns are for cowards!",
-				"You don't need to make arrows. You need to buy them!"
-			};
-			return chats.TakeRandom();
-		}
+			=> _chats.Get();
 
 		public override void SetChatButtons(ref string button, ref string button2)
 		{

@@ -5,7 +5,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 
 using Microsoft.Xna.Framework;
-
+using Terraria.Utilities;
 using Tremor.Items;
 using Tremor.Projectiles;
 
@@ -55,34 +55,32 @@ namespace Tremor.NPCs.TownNPCs
 		public override bool CanTownNPCSpawn(int numTownNPCs, int money)
 			=> Main.player.Any(player => player.active && player.inventory.Any(item => item != null && item.type == mod.ItemType("FarmerShovel")));
 
-		public override string TownNPCName()
+		private readonly WeightedRandom<string> _names = new[]
 		{
-			string[] names =
-			{
-				"Trillian",
-				"Penelope",
-				"Emily",
-				"Abigail",
-				"Alma",
-				"Alexandra",
-				"Peg"
-			};
-			return names.TakeRandom();
-		}
+			"Trillian:2",
+			"Penelope:2",
+			"Emily",
+			"Abigail",
+			"Alma",
+			"Alexandra",
+			"Peg"
+		}.ToWeightedCollectionWithWeight();
+
+		public override string TownNPCName()
+			=> _names.Get();
+
+		private readonly WeightedRandom<string> _chats = new[]
+		{
+			"I wonder who had the idea of growing such an evil corn? Don't look at me like this, I have nothing to do with.",
+			"There are so many wonderful and amazing plants in this world but there is nothing more amazing like a corn!",
+			"Uh... Oh... Did you came to buy a corn? I'm afraid that it can become evil too.",
+			"Don't use chemicals on your plants! Chemicals make them being evil and crazy!",
+			"Don't you dare to offer me to eat popcorn! After those bad events I just can't eat anything that contains corn!",
+			"Take some water... Add ebonkoi... Wallow some deathweed dust... Mix everything... Oh! Hello! Want to buy something?"
+		}.ToWeightedCollection();
 
 		public override string GetChat()
-		{
-			string[] chats =
-			{
-				"I wonder who had the idea of growing such an evil corn? Don't look at me like this, I have nothing to do with.",
-				"There are so many wonderful and amazing plants in this world but there is nothing more amazing like a corn!",
-				"Uh... Oh... Did you came to buy a corn? I'm afraid that it can become evil too.",
-				"Don't use chemicals on your plants! Chemicals make them being evil and crazy!",
-				"Don't you dare to offer me to eat popcorn! After those bad events I just can't eat anything that contains corn!",
-				"Take some water... Add ebonkoi... Wallow some deathweed dust... Mix everything... Oh! Hello! Want to buy something?"
-			};
-			return chats.TakeRandom();
-		}
+			=> _chats.Get();
 
 		public override void SetChatButtons(ref string button, ref string button2)
 		{
