@@ -3069,6 +3069,7 @@
     <Content Include="CogLord\NPCs\CogLordHand.png" />
     <Content Include="CogLord\NPCs\CogLordProbe.png" />
     <Content Include="CogLord\NPCs\CogLord_Head_Boss.png" />
+    <Content Include="CogLord\NPCs\GogLordGog.png" />
     <Content Include="description.txt" />
     <Content Include="Dusts\Ball.png" />
     <Content Include="Dusts\ClusterFlame.png" />
