@@ -9,14 +9,14 @@ using Microsoft.Xna.Framework;
 using Tremor.Items;
 using Tremor.Projectiles;
 
-namespace Tremor.NPCs
+namespace Tremor.NPCs.TownNPCs
 {
 	[AutoloadHead]
 	public class ForgeMaster : ModNPC
 	{
-		public override string Texture => "Tremor/NPCs/ForgeMaster";
+		public override string Texture => "Tremor/NPCs/TownNPCs/ForgeMaster";
 
-		public override string[] AltTextures => new[] { "Tremor/NPCs/ForgeMaster" };
+		public override string[] AltTextures => new[] { "Tremor/NPCs/TownNPCs/ForgeMaster" };
 
 		public override bool Autoload(ref string name)
 		{

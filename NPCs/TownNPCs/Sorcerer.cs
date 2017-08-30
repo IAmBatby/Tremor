@@ -6,27 +6,31 @@ using Microsoft.Xna.Framework;
 
 using Tremor.Items;
 
+<<<<<<< HEAD:NPCs/Sorcerer.cs
 namespace Tremor.NPCs
+=======
+namespace Tremor.NPCs.TownNPCs
+>>>>>>> 8a3d4a60999e67c80df4daede405453dd106fc9d:NPCs/TownNPCs/Sorcerer.cs
 {
 	[AutoloadHead]
-	public class Knight : ModNPC
+	public class Sorcerer : ModNPC
 	{
-		public override string Texture => "Tremor/NPCs/Knight";
+		public override string Texture => "Tremor/NPCs/TownNPCs/Sorcerer";
 
-		public override string[] AltTextures => new[] { "Tremor/NPCs/Knight" };
+		public override string[] AltTextures => new[] { "Tremor/NPCs/TownNPCs/Sorcerer" };
 
 		public override bool Autoload(ref string name)
 		{
-			name = "Knight";
+			name = "Sorcerer";
 			return mod.Properties.Autoload;
 		}
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Knight");
-			Main.npcFrameCount[npc.type] = 25;
+			DisplayName.SetDefault("Sorcerer");
+			Main.npcFrameCount[npc.type] = 26;
 			NPCID.Sets.ExtraFramesCount[npc.type] = 5;
-			NPCID.Sets.AttackFrameCount[npc.type] = 4;
+			NPCID.Sets.AttackFrameCount[npc.type] = 5;
 			NPCID.Sets.DangerDetectRange[npc.type] = 1000;
 			NPCID.Sets.AttackType[npc.type] = 0;
 			NPCID.Sets.AttackTime[npc.type] = 30;
@@ -37,8 +41,8 @@ namespace Tremor.NPCs
 		{
 			npc.townNPC = true;
 			npc.friendly = true;
-			npc.width = 30;
-			npc.height = 44;
+			npc.width = 32;
+			npc.height = 54;
 			npc.aiStyle = 7;
 			npc.damage = 10;
 			npc.defense = 15;
@@ -46,21 +50,23 @@ namespace Tremor.NPCs
 			npc.HitSound = SoundID.NPCHit1;
 			npc.DeathSound = SoundID.NPCDeath1;
 			npc.knockBackResist = 0.5f;
-			animationType = NPCID.GoblinTinkerer;
+			animationType = NPCID.Guide;
 		}
 
-		public override bool CanTownNPCSpawn(int numTownNPCs, int money) => true;
-		
+		public override bool CanTownNPCSpawn(int numTownNPCs, int money)
+			=> true;
+
+
 		public override string TownNPCName()
 		{
 			string[] names =
 			{
-				"Wheatly",
-				"Daniel",
-				"Crox",
-				"Geralt",
-				"Roland",
-				"Hodor"
+				"Merdok",
+				"Avalon",
+				"Aron",
+				"Harry",
+				"Edgar",
+				"Marco"
 			};
 			return names.TakeRandom();
 		}
@@ -69,13 +75,12 @@ namespace Tremor.NPCs
 		{
 			string[] chats =
 			{
-				"Well met, brave adventurer.",
-				"A balanced weapon can mean the difference between victory and defeat.",
-				"I am not overly fond of the bovine hordes. Best to leave them alone, really.",
-				"Do you have a weapon? Needs about 20% more coolness!",
-				"Hail and good morrow my Liege!",
-				"I was in a strange castle one day. There were mechanical things saying EXTERMINATE. Were they your minions?",
-				"Have you ever met a knight whose name is Sir Uncle Slime? He is a good friend of mine."
+				"You'll never find me trapped underground.",
+				"Sorcery is all about control. It's different from magic in that it requires symbols and fetishes.",
+				"I can share the magic with you for free. Well... Almost free.",
+				"Sorry. I don't do parties.",
+				"Don't touch that if you want to keep your hand. It's still quite unstable.",
+				"I want to get the rabbit out of the hat! Do you want it? You don't want a rabbit? Seriously!?"
 			};
 			return chats.TakeRandom();
 		}
@@ -92,40 +97,29 @@ namespace Tremor.NPCs
 
 		public override void SetupShop(Chest shop, ref int nextSlot)
 		{
-			shop.AddUniqueItem(ref nextSlot, mod.ItemType<ThrowingAxe>());
-			shop.AddUniqueItem(ref nextSlot, mod.ItemType<RustySword>());
-			shop.AddUniqueItem(ref nextSlot, mod.ItemType<RipperKnife>());
-
+			shop.AddUniqueItem(ref nextSlot, ItemID.Bunny);
+			shop.AddUniqueItem(ref nextSlot, mod.ItemType<BurningTome>());
+			shop.AddUniqueItem(ref nextSlot, mod.ItemType<RazorleavesTome>());
+			shop.AddUniqueItem(ref nextSlot, mod.ItemType<EnchantedShield>());
 			if (NPC.downedBoss1)
 			{
-				shop.AddUniqueItem(ref nextSlot, mod.ItemType<TombRaider>());
-				shop.AddUniqueItem(ref nextSlot, mod.ItemType<SpikeShield>());
+				shop.AddUniqueItem(ref nextSlot, mod.ItemType<StarfallTome>());
+				shop.AddUniqueItem(ref nextSlot, mod.ItemType<GoldenHat>());
+				shop.AddUniqueItem(ref nextSlot, mod.ItemType<GoldenRobe>());
 			}
 			if (NPC.downedBoss2)
 			{
-				shop.AddUniqueItem(ref nextSlot, mod.ItemType<TwilightHorns>());
-				shop.AddUniqueItem(ref nextSlot, mod.ItemType<ToxicRazorknife>());
-			}
-			if (NPC.downedBoss3)
-			{
-				shop.AddUniqueItem(ref nextSlot, mod.ItemType<NecromancerClaymore>());
-				shop.AddUniqueItem(ref nextSlot, mod.ItemType<Shovel>());
+				shop.AddUniqueItem(ref nextSlot, mod.ItemType<LightningTome>());
+				shop.AddUniqueItem(ref nextSlot, mod.ItemType<Bloomstone>());
 			}
 
 			if (Main.hardMode)
-			{
-				shop.AddUniqueItem(ref nextSlot, mod.ItemType<GoldenThrowingAxe>());
-
-				if(Main.bloodMoon)
-					shop.AddUniqueItem(ref nextSlot, mod.ItemType<Oppressor>());
-			}
-			if (NPC.downedMechBossAny)
-				shop.AddUniqueItem(ref nextSlot, mod.ItemType<PrizmaticSword>());
+				shop.AddUniqueItem(ref nextSlot, mod.ItemType<ManaDagger>());
 		}
 
 		public override void TownNPCAttackStrength(ref int damage, ref float knockback)
 		{
-			damage = 25;
+			damage = 22;
 			knockback = 4f;
 		}
 
@@ -137,7 +131,7 @@ namespace Tremor.NPCs
 
 		public override void TownNPCAttackProj(ref int projType, ref int attackDelay)
 		{
-			projType = mod.ProjectileType<Projectiles.ThrowingAxe>();
+			projType = 124;
 			attackDelay = 4;
 		}
 
@@ -155,7 +149,7 @@ namespace Tremor.NPCs
 					Dust.NewDust(npc.position, npc.width, npc.height, 151, 2.5f * hitDirection, -2.5f, 0, default(Color), 0.7f);
 
 				for(int i = 0; i < 3; ++i)
-					Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot($"Gores/KnightGore{i+1}"), 1f);
+					Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot($"Gores/SorcererGore{i+1}"), 1f);
 			}
 		}
 	}

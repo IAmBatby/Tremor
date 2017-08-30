@@ -1,3 +1,5 @@
+using System.Linq;
+
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -5,25 +7,30 @@ using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
 
 using Tremor.Items;
+using Tremor.Projectiles;
 
+<<<<<<< HEAD:NPCs/Witch.cs
 namespace Tremor.NPCs
+=======
+namespace Tremor.NPCs.TownNPCs
+>>>>>>> 8a3d4a60999e67c80df4daede405453dd106fc9d:NPCs/TownNPCs/Witch.cs
 {
 	[AutoloadHead]
-	public class Sorcerer : ModNPC
+	public class Witch : ModNPC
 	{
-		public override string Texture => "Tremor/NPCs/Sorcerer";
+		public override string Texture => "Tremor/NPCs/TownNPCs/Witch";
 
-		public override string[] AltTextures => new[] { "Tremor/NPCs/Sorcerer" };
+		public override string[] AltTextures => new[] { "Tremor/NPCs/TownNPCs/Witch" };
 
 		public override bool Autoload(ref string name)
 		{
-			name = "Sorcerer";
+			name = "Witch";
 			return mod.Properties.Autoload;
 		}
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Sorcerer");
+			DisplayName.SetDefault("Witch");
 			Main.npcFrameCount[npc.type] = 26;
 			NPCID.Sets.ExtraFramesCount[npc.type] = 5;
 			NPCID.Sets.AttackFrameCount[npc.type] = 5;
@@ -50,19 +57,17 @@ namespace Tremor.NPCs
 		}
 
 		public override bool CanTownNPCSpawn(int numTownNPCs, int money)
-			=> true;
+			=> Main.player.Any(player => player.active && player.inventory.Any(item => item != null && item.type == ItemID.GoodieBag));
 
 
 		public override string TownNPCName()
 		{
 			string[] names =
 			{
-				"Merdok",
-				"Avalon",
-				"Aron",
-				"Harry",
-				"Edgar",
-				"Marco"
+				"Circe",
+				"Kikimora",
+				"Morgana",
+				"Hecate"
 			};
 			return names.TakeRandom();
 		}
@@ -71,12 +76,12 @@ namespace Tremor.NPCs
 		{
 			string[] chats =
 			{
-				"You'll never find me trapped underground.",
-				"Sorcery is all about control. It's different from magic in that it requires symbols and fetishes.",
-				"I can share the magic with you for free. Well... Almost free.",
-				"Sorry. I don't do parties.",
-				"Don't touch that if you want to keep your hand. It's still quite unstable.",
-				"I want to get the rabbit out of the hat! Do you want it? You don't want a rabbit? Seriously!?"
+				"<cackle> Welcome dearies! I hope you don't mind the body parts. I was just cleaning up.",
+				"Eye of a newt! Tongue of a cat! Blood of a dryad... a little more blood.",
+				"Don't pull my nose! It's not a mask!",
+				"The moon has a secret dearies! One that you'll know soon enough!",
+				"This is halloween! Or is it?",
+				"Blood for the blood moon! Skulls for the skull cap... Or was it something else?"
 			};
 			return chats.TakeRandom();
 		}
@@ -93,29 +98,22 @@ namespace Tremor.NPCs
 
 		public override void SetupShop(Chest shop, ref int nextSlot)
 		{
-			shop.AddUniqueItem(ref nextSlot, ItemID.Bunny);
-			shop.AddUniqueItem(ref nextSlot, mod.ItemType<BurningTome>());
-			shop.AddUniqueItem(ref nextSlot, mod.ItemType<RazorleavesTome>());
-			shop.AddUniqueItem(ref nextSlot, mod.ItemType<EnchantedShield>());
-			if (NPC.downedBoss1)
-			{
-				shop.AddUniqueItem(ref nextSlot, mod.ItemType<StarfallTome>());
-				shop.AddUniqueItem(ref nextSlot, mod.ItemType<GoldenHat>());
-				shop.AddUniqueItem(ref nextSlot, mod.ItemType<GoldenRobe>());
-			}
-			if (NPC.downedBoss2)
-			{
-				shop.AddUniqueItem(ref nextSlot, mod.ItemType<LightningTome>());
-				shop.AddUniqueItem(ref nextSlot, mod.ItemType<Bloomstone>());
-			}
+			shop.AddUniqueItem(ref nextSlot, mod.ItemType<PlagueMask>());
+			shop.AddUniqueItem(ref nextSlot, mod.ItemType<PlagueRobe>());
+			shop.AddUniqueItem(ref nextSlot, mod.ItemType<SacrificalScythe>());
+			shop.AddUniqueItem(ref nextSlot, mod.ItemType<Scarecrow>());
 
-			if (Main.hardMode)
-				shop.AddUniqueItem(ref nextSlot, mod.ItemType<ManaDagger>());
+			if (NPC.downedBoss1)
+				shop.AddUniqueItem(ref nextSlot, mod.ItemType<BoomSpear>());
+			if (NPC.downedBoss2)
+				shop.AddUniqueItem(ref nextSlot, mod.ItemType<BlackRose>());
+			if (NPC.downedBoss3)
+				shop.AddUniqueItem(ref nextSlot, mod.ItemType<Pumpspell>());
 		}
 
 		public override void TownNPCAttackStrength(ref int damage, ref float knockback)
 		{
-			damage = 22;
+			damage = 25;
 			knockback = 4f;
 		}
 
@@ -127,8 +125,8 @@ namespace Tremor.NPCs
 
 		public override void TownNPCAttackProj(ref int projType, ref int attackDelay)
 		{
-			projType = 124;
-			attackDelay = 4;
+			projType = mod.ProjectileType<PumpkinPro>();
+			attackDelay = 2;
 		}
 
 		public override void TownNPCAttackProjSpeed(ref float multiplier, ref float gravityCorrection, ref float randomOffset)
@@ -144,8 +142,8 @@ namespace Tremor.NPCs
 				for (int k = 0; k < 20; k++)
 					Dust.NewDust(npc.position, npc.width, npc.height, 151, 2.5f * hitDirection, -2.5f, 0, default(Color), 0.7f);
 
-				for(int i = 0; i < 3; ++i)
-					Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot($"Gores/SorcererGore{i+1}"), 1f);
+				for (int i = 0; i < 3; i++)
+					Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot($"Gores/WitchGore{i + 1}"), 1f);
 			}
 		}
 	}

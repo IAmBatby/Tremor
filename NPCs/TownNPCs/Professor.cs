@@ -1,5 +1,8 @@
+<<<<<<< HEAD:NPCs/Professor.cs
 using System.Linq;
 
+=======
+>>>>>>> 8a3d4a60999e67c80df4daede405453dd106fc9d:NPCs/TownNPCs/Professor.cs
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -8,14 +11,18 @@ using Microsoft.Xna.Framework;
 
 using Tremor.Items;
 
+<<<<<<< HEAD:NPCs/Professor.cs
 namespace Tremor.NPCs
+=======
+namespace Tremor.NPCs.TownNPCs
+>>>>>>> 8a3d4a60999e67c80df4daede405453dd106fc9d:NPCs/TownNPCs/Professor.cs
 {
 	[AutoloadHead]
 	public class Professor : ModNPC
 	{
-		public override string Texture => "Tremor/NPCs/Professor";
+		public override string Texture => "Tremor/NPCs/TownNPCs/Professor";
 
-		public override string[] AltTextures => new[] { "Tremor/NPCs/Professor" };
+		public override string[] AltTextures => new[] { "Tremor/NPCs/TownNPCs/Professor" };
 
 		public override bool Autoload(ref string name)
 		{

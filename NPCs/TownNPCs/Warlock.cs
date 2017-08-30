@@ -6,25 +6,29 @@ using Microsoft.Xna.Framework;
 
 using Tremor.Items;
 
+<<<<<<< HEAD:NPCs/Warlock.cs
 namespace Tremor.NPCs
+=======
+namespace Tremor.NPCs.TownNPCs
+>>>>>>> 8a3d4a60999e67c80df4daede405453dd106fc9d:NPCs/TownNPCs/Warlock.cs
 {
 	[AutoloadHead]
-	public class Undertaker : ModNPC
+	public class Warlock : ModNPC
 	{
-		public override string Texture => "Tremor/NPCs/Undertaker";
+		public override string Texture => "Tremor/NPCs/TownNPCs/Warlock";
 
-		public override string[] AltTextures => new[] { "Tremor/NPCs/Undertaker" };
+		public override string[] AltTextures => new[] { "Tremor/NPCs/TownNPCs/Warlock" };
 
 		public override bool Autoload(ref string name)
 		{
-			name = "Undertaker";
+			name = "Warlock";
 			return mod.Properties.Autoload;
 		}
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Undertaker");
-			Main.npcFrameCount[npc.type] = 25;
+			DisplayName.SetDefault("Warlock");
+			Main.npcFrameCount[npc.type] = 26;
 			NPCID.Sets.ExtraFramesCount[npc.type] = 5;
 			NPCID.Sets.AttackFrameCount[npc.type] = 4;
 			NPCID.Sets.DangerDetectRange[npc.type] = 1000;
@@ -37,52 +41,42 @@ namespace Tremor.NPCs
 		{
 			npc.townNPC = true;
 			npc.friendly = true;
-			npc.width = 30;
-			npc.height = 44;
+			npc.width = 40;
+			npc.height = 52;
 			npc.aiStyle = 7;
 			npc.damage = 10;
 			npc.defense = 15;
 			npc.lifeMax = 250;
-			npc.HitSound = SoundID.NPCHit1;
-			npc.DeathSound = SoundID.NPCDeath1;
+			npc.HitSound = SoundID.NPCHit2;
+			npc.DeathSound = SoundID.NPCDeath2;
 			npc.knockBackResist = 0.5f;
 			animationType = NPCID.Guide;
 		}
 
 		public override bool CanTownNPCSpawn(int numTownNPCs, int money)
-			=> TremorWorld.Boss.Trinity.IsDowned();
+			=> NPC.downedBoss2;
 
 		public override string TownNPCName()
 		{
 			string[] names =
 			{
-				"Tenner",
-				"Geyer",
-				"Cleve",
-				"Ferron",
-				"Gasper",
-				"Spots",
-				"Hargon"
+				"Azazel",
+				"Baphomet",
+				"Vaal",
+				"Dis",
+				"Nisroke",
+				"Sabnak"
 			};
 			return names.TakeRandom();
 		}
 
 		public override string GetChat()
 		{
-			// weighted chats?
-			string[] chats =
+			switch (Main.rand.Next(6))
 			{
-				"Don't worry. Nobody will get out of the coffin that I have made.",
-				"Are you afraid of ghosts? I'm not. But the ghosts are afraid of me.",
-				"If you need some help then feel free to ask me. I have a lot of undead things on my side.",
-				"If you need some help then feel free to ask me. I have a lot of undead things on my side.",
-				"If you need some help then feel free to ask me. I have a lot of undead things on my side.",
-				"What will you prefer to do if this day will be your last day?",
-				"Our life is a challenge. To make it easier - buy my stuff.",
-				"Don't worry. I'm not a vampire even my eyes are red and my skin is of a strange color.",
-				"Do you prefer blood or tomato juice?"
-			};
-			return chats.TakeRandom();
+				default:
+					return "...";
+			}
 		}
 
 		public override void SetChatButtons(ref string button, ref string button2)
@@ -97,16 +91,37 @@ namespace Tremor.NPCs
 
 		public override void SetupShop(Chest shop, ref int nextSlot)
 		{
-			shop.AddUniqueItem(ref nextSlot, mod.ItemType<Skullheart>());
-			shop.AddUniqueItem(ref nextSlot, mod.ItemType<SpearofJustice>());
-			shop.AddUniqueItem(ref nextSlot, mod.ItemType<TheGhostClaymore>());
-			if (!Main.dayTime)
-				shop.AddUniqueItem(ref nextSlot, mod.ItemType<LivingTombstone>());
+			shop.AddUniqueItem(ref nextSlot, mod.ItemType<StrongBelt>());
+
+			if (NPC.downedBoss3)
+				shop.AddUniqueItem(ref nextSlot, mod.ItemType<BallnChain>());
+
+			if (WorldGen.crimson)
+			{
+				shop.AddUniqueItem(ref nextSlot, mod.ItemType<ViciousHelmet>());
+				shop.AddUniqueItem(ref nextSlot, mod.ItemType<ViciousChestplate>());
+				shop.AddUniqueItem(ref nextSlot, mod.ItemType<ViciousLeggings>());
+			}
+			else
+			{
+				shop.AddUniqueItem(ref nextSlot, mod.ItemType<VileHelmet>());
+				shop.AddUniqueItem(ref nextSlot, mod.ItemType<VileChestplate>());
+				shop.AddUniqueItem(ref nextSlot, mod.ItemType<VileLeggings>());
+			}
+
+			if (Main.hardMode)
+			{
+				shop.AddUniqueItem(ref nextSlot, mod.ItemType<Necronomicon>());
+				shop.AddUniqueItem(ref nextSlot, mod.ItemType<Zephyrhorn>());
+			}
+
+			if (NPC.downedMechBoss1 && NPC.downedMechBoss2 && NPC.downedMechBoss3)
+				shop.AddUniqueItem(ref nextSlot, mod.ItemType<NecroWarhammer>());
 		}
 
 		public override void TownNPCAttackStrength(ref int damage, ref float knockback)
 		{
-			damage = 150;
+			damage = 20;
 			knockback = 4f;
 		}
 
@@ -118,7 +133,7 @@ namespace Tremor.NPCs
 
 		public override void TownNPCAttackProj(ref int projType, ref int attackDelay)
 		{
-			projType = 645;
+			projType = 270;
 			attackDelay = 5;
 		}
 
@@ -128,6 +143,7 @@ namespace Tremor.NPCs
 			randomOffset = 2f;
 		}
 
+
 		public override void HitEffect(int hitDirection, double damage)
 		{
 			if (npc.life <= 0)
@@ -136,7 +152,7 @@ namespace Tremor.NPCs
 					Dust.NewDust(npc.position, npc.width, npc.height, 151, 2.5f * hitDirection, -2.5f, 0, default(Color), 0.7f);
 
 				for (int i = 0; i < 3; i++)
-					Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot($"Gores/TheUndertakerGore{i+1}"), 1f);
+					Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot($"Gores/WarlockGore{i + 1}"), 1f);
 			}
 		}
 	}

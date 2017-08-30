@@ -1,11 +1,13 @@
 ﻿using System;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
+
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace Tremor.NPCs
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+
+namespace Tremor.CogLord.NPCs
 {
 	[AutoloadBossHead]
 	public class CogLord : ModNPC
@@ -17,13 +19,10 @@ namespace Tremor.NPCs
 		}
 
 		//Framework
-		Vector2 CogHands = new Vector2(-1, -1);
+		public int[] cogHands = new int[2];
 
 		//Bool variables
-		bool Ram => ((CogHands.X == -1 && CogHands.Y == -1) || npc.ai[1] == 1);
-		bool FirstAI = true;
-		bool SecondAI = true;
-		bool NeedCheck;
+		//bool Ram => ((CogHands.X == -1 && CogHands.Y == -1) || npc.ai[1] == 1);
 		bool Flag = true;
 		bool Flag1 = true;
 		bool Flag2 = true;
@@ -54,20 +53,25 @@ namespace Tremor.NPCs
 		string RightHandName = "CogLordGun";
 		public override void SetDefaults()
 		{
-			npc.lifeMax = 45000;
-			npc.damage = 25;
-			npc.defense = 5;
-			npc.knockBackResist = 0.0f;
 			npc.width = 86;
 			npc.height = 124;
-			npc.aiStyle = 11;
+
+			npc.damage = 25;
+			npc.defense = 5;
+			npc.lifeMax = 45000;
+			npc.knockBackResist = 0.0f;
+
+			npc.aiStyle = -1;
+
+			npc.boss = true;
 			npc.noGravity = true;
 			npc.noTileCollide = true;
+
 			npc.HitSound = SoundID.NPCHit4;
 			npc.DeathSound = SoundID.NPCDeath10;
-			npc.boss = true;
-			music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/Boss6");
+
 			bossBag = mod.ItemType("CogLordBag");
+			music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/Boss6");
 		}
 
 		public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
@@ -76,67 +80,18 @@ namespace Tremor.NPCs
 			npc.damage = (int)(npc.damage * 0.6f);
 		}
 
-		public override bool PreDraw(SpriteBatch spriteBatch, Color drawColor)
-		{
-			spriteBatch.Draw(mod.GetTexture("NPCs/CogLordBody"), npc.Center - Main.screenPosition, null, Color.White, 0f, new Vector2(44, -18), 1f, SpriteEffects.None, 0f);
-			Texture2D drawTexture = Main.npcTexture[npc.type];
-			Vector2 origin = new Vector2((drawTexture.Width / 2) * 0.5F, (drawTexture.Height / Main.npcFrameCount[npc.type]) * 0.5F);
-			Vector2 drawPos = new Vector2(
-				npc.position.X - Main.screenPosition.X + (npc.width / 2) - (Main.npcTexture[npc.type].Width / 2) * npc.scale / 2f + origin.X * npc.scale,
-				npc.position.Y - Main.screenPosition.Y + npc.height - Main.npcTexture[npc.type].Height * npc.scale / Main.npcFrameCount[npc.type] + 4f + origin.Y * npc.scale + npc.gfxOffY);
-			SpriteEffects effects = npc.spriteDirection == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally;
-			spriteBatch.Draw(drawTexture, drawPos, npc.frame, Color.White, npc.rotation, origin, npc.scale, effects, 0);
-			return false;
-		}
 		int t;
-		public override void AI()
+		public override bool PreAI()
 		{
 			if ((t++ % 100) == 0)
 			{
-				NPC.NewNPC((int)((Main.player[npc.target].position.X - 500) + Main.rand.Next(1000)), (int)((Main.player[npc.target].position.Y - 500) + Main.rand.Next(1000)), mod.NPCType("GogLordGog"));
-				t = 0;
+				NPC.NewNPC((int)((Main.player[npc.target].position.X - 500) + Main.rand.Next(1000)), (int)((Main.player[npc.target].position.Y - 500) + Main.rand.Next(1000)), mod.NPCType("CogLordCog"));
 			}
-			npc.TargetClosest();
-			if (Main.dayTime)
-			{
-				Timer = 0;
-			}
-			if (NPC.AnyNPCs(mod.NPCType("CogLordProbe")))
-			{
-				npc.dontTakeDamage = true;
-			}
-			else
-				npc.dontTakeDamage = false;
-			if (!Main.expertMode)
-				npc.position += npc.velocity * 1.7f;
-			else
-				npc.position += npc.velocity * 1.02f;
-			Timer++;
-			Animation();
-			for (int i = 0; i < Main.dust.Length; i++)
-			{
-				if (Main.dust[i].type == DustID.Blood && npc.Distance(Main.dust[i].position) < DistanseBlood)
-				{
-					Main.dust[i].scale /= 1000000f;
-					Main.dust[i].active = false;
-				}
-			}
-			foreach (NPC npc2 in Main.npc)
-			{
-				if (npc2.type == 36)
-				{
-					npc2.active = false;
-					npc2.life = 0;
-					npc2.checkDead();
-				}
-			}
-			foreach (var proj in Main.projectile)
-			{
-				if (proj.type == ProjectileID.Skull && Vector2.Distance(proj.Center, npc.Center) < 100f)
-				{
-					proj.active = false;
-				}
-			}
+
+			npc.TargetClosest(true);
+
+			npc.dontTakeDamage = NPC.AnyNPCs(mod.NPCType<CogLordProbe>());
+
 			if (npc.life < npc.lifeMax * 0.6f && Flag)
 			{
 				Flag = false;
@@ -144,9 +99,13 @@ namespace Tremor.NPCs
 					CogMessage("Low health is detected. Launching support drones.");
 				else
 					CogMessage("Low health is detected. Launching support drone.");
-				if (Main.expertMode)
-					NPC.NewNPC((int)npc.Center.X - 100, (int)npc.Center.Y - 100, mod.NPCType("CogLordProbe"), 0, npc.whoAmI, 0, 200);
-				NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("CogLordProbe"), 0, npc.whoAmI, 0, 200);
+
+				if (Main.netMode != 1)
+				{
+					if (Main.expertMode)
+						Main.npc[NPC.NewNPC((int)npc.Center.X - 100, (int)npc.Center.Y - 100, mod.NPCType<CogLordProbe>(), 0, npc.whoAmI, 0, 200)].netUpdate = true;
+					Main.npc[NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType<CogLordProbe>(), 0, npc.whoAmI, 0, 200)].netUpdate = true;
+				}
 			}
 			if (npc.life < npc.lifeMax * 0.4f && Flag1)
 			{
@@ -155,9 +114,13 @@ namespace Tremor.NPCs
 					CogMessage("Low health is detected. Launching support drones.");
 				else
 					CogMessage("Low health is detected. Launching support drone.");
-				if (Main.expertMode)
-					NPC.NewNPC((int)npc.Center.X - 100, (int)npc.Center.Y - 100, mod.NPCType("CogLordProbe"), 0, npc.whoAmI, 0, 200);
-				NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("CogLordProbe"), 0, npc.whoAmI, 0, 200);
+
+				if (Main.netMode != 1)
+				{
+					if (Main.expertMode)
+						Main.npc[NPC.NewNPC((int)npc.Center.X - 100, (int)npc.Center.Y - 100, mod.NPCType<CogLordProbe>(), 0, npc.whoAmI, 0, 200)].netUpdate = true;
+					Main.npc[NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType<CogLordProbe>(), 0, npc.whoAmI, 0, 200)].netUpdate = true;
+				}
 			}
 			if (npc.life < npc.lifeMax * 0.2f && Flag2)
 			{
@@ -166,42 +129,42 @@ namespace Tremor.NPCs
 					CogMessage("Low health is detected. Launching support drones.");
 				else
 					CogMessage("Low health is detected. Launching support drone.");
-				if (Main.expertMode)
-					NPC.NewNPC((int)npc.Center.X - 100, (int)npc.Center.Y - 100, mod.NPCType("CogLordProbe"), 0, npc.whoAmI, 0, 200);
-				NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("CogLordProbe"), 0, npc.whoAmI, 0, 200);
+
+				if (Main.netMode != 1)
+				{
+					if (Main.expertMode)
+						Main.npc[NPC.NewNPC((int)npc.Center.X - 100, (int)npc.Center.Y - 100, mod.NPCType<CogLordProbe>(), 0, npc.whoAmI, 0, 200)].netUpdate = true;
+					Main.npc[NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType<CogLordProbe>(), 0, npc.whoAmI, 0, 200)].netUpdate = true;
+				}
 			}
-			if (FirstAI)
+
+			// First update, spawn Arms.
+			if(npc.ai[0] == 0)
 			{
-				FirstAI = false;
-			}
-			else
-			{
-				if (SecondAI)
+				if (Main.netMode != 1)
 				{
 					MakeHands();
-					SecondAI = false;
-					NeedCheck = true;
+					/*CheckHands();*/
+
+					//if (CogHands.Y != -1)
+					//	Main.npc[(int)CogHands.Y].ai[1] = 1;
 				}
+				npc.ai[0] = 1;
 			}
-			if (!Ram)
+			else if(npc.ai[0] == 1)
 			{
-				if (NeedCheck)
-					CheckHands();
-				if (CogHands.Y != -1 && NeedCheck)
-				{
-					Main.npc[(int)CogHands.Y].localAI[3] = 0;
-				}
+				NormalMovement();
 			}
-			else
+
+			/*if(Ram)
 			{
 				if (Rockets)
 				{
 					Rockets = false;
 					CogMessage("Protocol 10 is activated: Preparing for rocket storm.");
 				}
-				npc.frame = GetFrame(5);
-				Rotation += RotationSpeed;
-				npc.rotation = Rotation;
+				//Rotation += RotationSpeed;
+				//npc.rotation = Rotation;
 				if ((int)(Main.time % 120) == 0)
 				{
 					for (int k = 0; k < ((Main.expertMode) ? 2 : 1); k++)
@@ -213,12 +176,10 @@ namespace Tremor.NPCs
 						Main.projectile[i].friendly = false;
 					}
 				}
-				if (NeedCheck)
-					CheckHands();
-				if (CogHands.Y != -1 && NeedCheck)
-				{
-					Main.npc[(int)CogHands.Y].localAI[3] = 1;
-				}
+
+				CheckHands();
+				if (CogHands.Y != -1)
+					Main.npc[(int)CogHands.Y].ai[1] = 0;
 			}
 			if (Timer == 400)
 			{
@@ -289,41 +250,131 @@ namespace Tremor.NPCs
 			{
 				Rockets = true;
 				Timer = 0;
-			}
-			Rotation = 0;
+			}*/
+
+			return false;
 		}
 
-		public void CheckHands()
+		protected void NormalMovement()
 		{
-			if (CogHands.X != -1)
-				if (!((Main.npc[(int)CogHands.X].type == mod.NPCType(LeftHandName) && Main.npc[(int)CogHands.X].ai[1] == npc.whoAmI) && Main.npc[(int)CogHands.X].active))
-					CogHands.X = -1;
-			if (CogHands.Y != -1)
-				if (!((Main.npc[(int)CogHands.Y].type == mod.NPCType(RightHandName) && Main.npc[(int)CogHands.Y].ai[1] == npc.whoAmI) && Main.npc[(int)CogHands.Y].active))
-					CogHands.Y = -1;
+			Player player = Main.player[npc.target];
+
+			npc.rotation = npc.velocity.X / 15f;
+
+			int maxYSpeed = 4;
+			float yAcceleration = 0.02F;
+			int maxXSpeed = 10;
+			float xAcceleration = 0.05F;
+
+			if (npc.position.Y > player.position.Y - 250f)
+			{
+				if (npc.velocity.Y > 0f)
+					npc.velocity.Y = npc.velocity.Y * 0.98f;
+				npc.velocity.Y = npc.velocity.Y - yAcceleration;
+			}
+			else if (npc.position.Y < player.position.Y - 250f)
+			{
+				if (npc.velocity.Y < 0f)
+					npc.velocity.Y = npc.velocity.Y * 0.98f;
+				npc.velocity.Y = npc.velocity.Y + yAcceleration;
+			}
+			if (npc.position.X + (npc.width / 2) > player.position.X + (player.width / 2))
+			{
+				if (npc.velocity.X > 0f)
+					npc.velocity.X = npc.velocity.X * 0.98f;
+				npc.velocity.X = npc.velocity.X - xAcceleration;
+			}
+			if (npc.position.X + (npc.width / 2) < player.position.X + (player.width / 2))
+			{
+				if (npc.velocity.X < 0f)
+					npc.velocity.X = npc.velocity.X * 0.98f;
+				npc.velocity.X = npc.velocity.X + xAcceleration;
+			}
+
+			npc.velocity.X = MathHelper.Clamp(npc.velocity.X, -maxXSpeed, maxXSpeed);
+			npc.velocity.Y = MathHelper.Clamp(npc.velocity.Y, -maxYSpeed, maxYSpeed);
+			/*
+							this.ai[2] += 1f;
+							if (this.ai[2] >= 800f)
+							{
+								this.ai[2] = 0f;
+								this.ai[1] = 1f;
+								this.TargetClosest(true);
+								this.netUpdate = true;
+							}
+							this.rotation = this.velocity.X / 15f;
+							float num167 = 0.02f;
+							float num168 = 2f;
+							float num169 = 0.05f;
+							float num170 = 8f;
+							if (Main.expertMode)
+							{
+								num167 = 0.03f;
+								num168 = 4f;
+								num169 = 0.07f;
+								num170 = 9.5f;
+							}*/
+		}
+
+		public override void FindFrame(int frameHeight)
+		{
+			if(npc.ai[0] == 2)
+				npc.frame.Y = 4 * frameHeight;
+			else if(npc.frameCounter++ >= 8)
+			{
+				npc.frame.Y = (npc.frame.Y + frameHeight) % ((Main.npcFrameCount[npc.type]-1) * frameHeight);
+				npc.frameCounter = 0;
+			}
 		}
 
 		public void MakeHands()
 		{
-			CogHands.X = NPC.NewNPC((int)npc.Center.X - 50, (int)npc.Center.Y, mod.NPCType(LeftHandName), 0, 1, npc.whoAmI);
-			CogHands.Y = NPC.NewNPC((int)npc.Center.X + 50, (int)npc.Center.Y, mod.NPCType(RightHandName), 0, -1, npc.whoAmI);
-		}
+			// Create the Left Hand.
+			cogHands[0] = NPC.NewNPC((int)npc.Center.X - 50, (int)npc.Center.Y, mod.NPCType(LeftHandName), 0, npc.whoAmI);
+			// Create the Left Arm parts.
+			int upperLeftArm = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType<CogLordArm>());
+			int lowerLeftArm = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType<CogLordArmSecond>());
 
-		public void Animation()
-		{
-			if (--TimeToAnimation <= 0)
-			{
-				if (++CurrentFrame > 4)
-					CurrentFrame = 1;
-				TimeToAnimation = AnimationRate;
-				npc.frame = GetFrame(CurrentFrame);
-			}
-		}
+			// Set the targets of the Upper Left Arm.
+			Main.npc[upperLeftArm].ai[0] = npc.whoAmI;
+			Main.npc[upperLeftArm].ai[1] = lowerLeftArm;
+			// Set the targets of the Lower Left Arm.
+			Main.npc[lowerLeftArm].ai[0] = cogHands[0];
+			Main.npc[lowerLeftArm].ai[1] = upperLeftArm;
 
-		Rectangle GetFrame(int Number)
-		{
-			return new Rectangle(0, npc.frame.Height * (Number - 1), npc.frame.Width, npc.frame.Height);
+			// Create the Right Hand.
+			cogHands[1] = NPC.NewNPC((int)npc.Center.X + 50, (int)npc.Center.Y, mod.NPCType(RightHandName), 0, npc.whoAmI);
+			// Create the Right Arm parts.
+			int upperRightArm = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType<CogLordArm>());
+			int lowerRightArm = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType<CogLordArmSecond>());
+
+			// Set the targets of the Upper Right Arm.
+			Main.npc[upperRightArm].ai[0] = npc.whoAmI;
+			Main.npc[upperRightArm].ai[1] = lowerRightArm;
+			// Set the targets of the Lower Right Arm.
+			Main.npc[lowerRightArm].ai[0] = cogHands[1];
+			Main.npc[lowerRightArm].ai[1] = upperRightArm;
+
+			// Make sure everything is correctly updated over the net.
+			Main.npc[upperLeftArm].netUpdate = true;
+			Main.npc[lowerLeftArm].netUpdate = true;
+
+			Main.npc[upperRightArm].netUpdate = true;
+			Main.npc[lowerRightArm].netUpdate = true;
+
+			Main.npc[cogHands[0]].netUpdate = true;
+			Main.npc[cogHands[1]].netUpdate = true;
 		}
+		/*public void CheckHands()
+		{
+			if (CogHands.X != -1)
+				if (Main.npc[(int)CogHands.X].type != mod.NPCType(LeftHandName) || Main.npc[(int)CogHands.X].ai[0] != npc.whoAmI || !Main.npc[(int)CogHands.X].active)
+					CogHands.X = -1;
+
+			if (CogHands.Y != -1)
+				if (Main.npc[(int)CogHands.Y].type != mod.NPCType(RightHandName) || Main.npc[(int)CogHands.Y].ai[0] != npc.whoAmI || !Main.npc[(int)CogHands.Y].active)
+					CogHands.Y = -1;
+		}*/
 
 		public void CogMessage(string Message)
 		{
@@ -371,5 +422,21 @@ namespace Tremor.NPCs
 				Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("BrassNugget"), Main.rand.Next(18, 32));
 			}
 		}
+
+		public override bool PreDraw(SpriteBatch spriteBatch, Color drawColor)
+		{
+			spriteBatch.Draw(mod.GetTexture("CogLord/NPCs/CogLordBody"), npc.Center - Main.screenPosition, null, Color.White, 0f, new Vector2(44, -18), 1f, SpriteEffects.None, 0f);
+
+			Texture2D drawTexture = Main.npcTexture[npc.type];
+			Vector2 origin = new Vector2((drawTexture.Width / 2) * 0.5F, (drawTexture.Height / Main.npcFrameCount[npc.type]) * 0.5F);
+			Vector2 drawPos = new Vector2(
+				npc.position.X - Main.screenPosition.X + (npc.width / 2) - (Main.npcTexture[npc.type].Width / 2) * npc.scale / 2f + origin.X * npc.scale,
+				npc.position.Y - Main.screenPosition.Y + npc.height - Main.npcTexture[npc.type].Height * npc.scale / Main.npcFrameCount[npc.type] + 4f + origin.Y * npc.scale + npc.gfxOffY);
+			SpriteEffects effects = npc.spriteDirection == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally;
+			spriteBatch.Draw(drawTexture, drawPos, npc.frame, Color.White, npc.rotation, origin, npc.scale, effects, 0);
+			return false;
+		}
 	}
 }
+ 
+ 
