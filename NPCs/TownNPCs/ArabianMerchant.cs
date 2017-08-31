@@ -71,13 +71,13 @@ namespace Tremor.NPCs.TownNPCs
 
 		private readonly WeightedRandom<string> _chats = new[]
 		{
-			new WeightedString("Salam aleykum! Do you need anything?"),
-			new WeightedString("I got some sand in my pockets. I think throwing it will hurt your eyes.", 2),
-			new WeightedString("My wear was absolutely white long time ago. Maybe I should wash it with this perfect yellow water?", 2),
-			new WeightedString("There are stories about what happened in the sands of this desert. But I won't tell you anything.", .5),
-			new WeightedString("In case something will happen with me... I bequeath you all my sand.", .75),
-			new WeightedString("The sands are telling me that... That... Ugh... That you will buy everything!", 3),
-			new WeightedString("The sands are moving... Be careful or you will be sucked into unknown depths!")
+			new WeightedObject<string>("Salam aleykum! Do you need anything?"),
+			new WeightedObject<string>("I got some sand in my pockets. I think throwing it will hurt your eyes.", 2),
+			new WeightedObject<string>("My wear was absolutely white long time ago. Maybe I should wash it with this perfect yellow water?", 2),
+			new WeightedObject<string>("There are stories about what happened in the sands of this desert. But I won't tell you anything.", .5),
+			new WeightedObject<string>("In case something will happen with me... I bequeath you all my sand.", .75),
+			new WeightedObject<string>("The sands are telling me that... That... Ugh... That you will buy everything!", 3),
+			new WeightedObject<string>("The sands are moving... Be careful or you will be sucked into unknown depths!")
 		}.ToWeightedCollection();
 
 		public override string GetChat()

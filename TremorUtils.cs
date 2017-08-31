@@ -12,22 +12,21 @@ using Tremor.NPCs;
 
 namespace Tremor
 {
-	// literally just a tuple
-	public class WeightedString
+	public class WeightedObject<T>
 	{
-		public readonly string Message;
-		public readonly double Weight;
+		public T Obj;
+		public double Weight;
 
-		public static Tuple<string, double> Tuple(string message, double weight = 1d)
-			=> new Tuple<string, double>(message, weight);
+		public static Tuple<T, double> Tuple(T obj, double weight = 1d)
+			=> new Tuple<T, double>(obj, weight);
 
-		public Tuple<string, double> Tuple()
-			=> Tuple(Message, Weight);
+		public Tuple<T, double> Tuple()
+			=> Tuple(Obj, Weight);
 
-		public WeightedString(string message, double weight = 1d)
+		public WeightedObject(T obj, double weight = 1d)
 		{
-			Message = message;
-			Weight = weight;
+			this.Obj = obj;
+			this.Weight = weight;
 		}
 	}
 
@@ -36,19 +35,19 @@ namespace Tremor
 		public static string NamespaceToPath(this Type type)
 			=> type.Namespace?.Replace('.', '/');
 
-		public static WeightedString[] ToWeightedStringCollection(this string[] strings, params double[] weights)
+		public static WeightedObject<string>[] ToWeightedStringCollection(this string[] strings, params double[] weights)
 		{
-			WeightedString[] chats = new WeightedString[strings.Length];
+			WeightedObject<string>[] chats = new WeightedObject<string>[strings.Length];
 			int weightCount = weights.Length;
 			for (int i = 0; i < strings.Length; i++)
 			{
-				chats[i] = new WeightedString(strings[i], i < weightCount ? weights[i] : 1d);
+				chats[i] = new WeightedObject<string>(strings[i], i < weightCount ? weights[i] : 1d);
 			}
 			return chats;
 		}
 
-		public static WeightedRandom<string> ToWeightedCollection(this WeightedString[] strings)
-			=> new WeightedRandom<string>(strings.Select(x => new Tuple<string, double>(x.Message, x.Weight)).ToArray());
+		public static WeightedRandom<string> ToWeightedCollection(this WeightedObject<string>[] strings)
+			=> new WeightedRandom<string>(strings.Select(x => new Tuple<string, double>(x.Obj, x.Weight)).ToArray());
 
 		public static WeightedRandom<string> ToWeightedCollectionWithWeight(this string[] strings)
 		{
@@ -67,7 +66,7 @@ namespace Tremor
 			=> new WeightedRandom<string>(strings.Select(x => x.ToWeightedTuple()).ToArray());
 
 		public static Tuple<string, double> ToWeightedTuple(this string message, double weight = 1d)
-			=> WeightedString.Tuple(message, weight);
+			=> WeightedObject<string>.Tuple(message, weight);
 
 		public static NPC NewNPC(this ModItem item, int type, float ai0 = 0f, float ai1 = 0f, float ai2 = 0f, float ai3 = 0f, int target = 255, int start = 0, float offsetX = 0f, float offsetY = 0f)
 			=> NewNPC(item.item, type, ai0, ai1, ai2, ai3, target, start, offsetX, offsetY);
