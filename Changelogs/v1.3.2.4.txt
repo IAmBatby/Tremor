@@ -4,7 +4,7 @@ Thanks to Eldrazi for many contributions for this patch.
 
 - Items that grant movement speed now also increase the player's maximum run speed by that amount, this ensures the movement speed bonus actually has effect when at capped speed
 - Improved certain items' tooltips
-- Fixed all tooltips still saying 'alchemic', now changed to say 'alchemical'
+- Fixed all tooltips still saying 'alchemic' changed to say 'alchemical'
 - Improved and buffed Phantablast
 - Fixed many town NPCs not being able to receive their last 2 possible names
 - Fixed certain town NPCs their shops
@@ -14,4 +14,5 @@ Thanks to Eldrazi for many contributions for this patch.
 - Removed certain drop code for items that don't exist in the mod
 - Removed many npc expert scaling that did not actually scale anything. Please leave a suggestion when you find an appropiate scaling for an npc
 - Improved certain npc framing to update based on velocity
-- Added new features for 'weighted' strings, implemented for town NPCs. This means you will see certain names and chats appear more often
+- Added new features for 'weighted' strings, implemented for town NPCs. This means you will see certain names and chats appear more often than others
+- Fixed detached clampers (from the Motherboard fight) having incorrect life values
