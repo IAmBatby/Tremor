@@ -22,7 +22,7 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Orichalcum Visage");
-			Tooltip.SetDefault("Increases alchemical damage by 20%");
+			Tooltip.SetDefault("20% increased alchemical damage");
 		}
 
 
@@ -38,7 +38,7 @@ namespace Tremor.Items
 
 		public override void UpdateArmorSet(Player player)
 		{
-			player.setBonus = "Increases alchemical critical strike chance by 16% and flower petals will fall on your target for extra damage";
+			player.setBonus = "Flower petals will fall on your target for extra damage\n16% increased alchemical critical strike chance";
 			player.GetModPlayer<MPlayer>(mod).alchemicalCrit += 16;
 			player.onHitPetal = true;
 		}

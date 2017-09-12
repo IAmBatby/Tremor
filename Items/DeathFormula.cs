@@ -22,7 +22,7 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Death Formula");
-			Tooltip.SetDefault("Increases alchemical critical strike chance by 20%");
+			Tooltip.SetDefault("20% increased alchemical critical strike chance");
 		}
 
 

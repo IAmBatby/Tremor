@@ -22,7 +22,7 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Chlorophyte Visage");
-			Tooltip.SetDefault("Increases alchemical damage by 29%");
+			Tooltip.SetDefault("29% increased alchemical damage");
 		}
 
 
@@ -38,8 +38,8 @@ namespace Tremor.Items
 
 		public override void UpdateArmorSet(Player player)
 		{
-			player.setBonus = "Increases alchemical critical chance by 25% and summons a powerful leaf crystal to shoot at nearby enemies.";
-			player.GetModPlayer<MPlayer>(mod).alchemicalCrit += 22;
+			player.setBonus = "Summons a powerful leaf crystal to shoot at nearby enemies\n25% increased alchemical critical strike chance";
+			player.GetModPlayer<MPlayer>(mod).alchemicalCrit += 25;
 			player.AddBuff(60, 60, true);
 		}
 

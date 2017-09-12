@@ -22,7 +22,7 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Cobalt Visage");
-			Tooltip.SetDefault("Increases alchemical damage by 18%");
+			Tooltip.SetDefault("18% increased alchemical damage");
 		}
 
 
@@ -38,7 +38,7 @@ namespace Tremor.Items
 
 		public override void UpdateArmorSet(Player player)
 		{
-			player.setBonus = "Increases alchemical critical strike chance by 12%";
+			player.setBonus = "12% increased alchemical critical strike chance";
 			player.GetModPlayer<MPlayer>(mod).alchemicalCrit += 12;
 		}
 

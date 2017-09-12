@@ -23,7 +23,7 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Alchemist Focus");
-			Tooltip.SetDefault("6% increased alchemical damage\nIncreases alchemical critical strike chance by 12");
+			Tooltip.SetDefault("6% increased alchemical damage\n12% increased alchemical critical strike chance");
 			Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(6, 4));
 		}
 

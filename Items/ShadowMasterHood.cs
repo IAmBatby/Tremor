@@ -8,25 +8,20 @@ namespace Tremor.Items
 	[AutoloadEquip(EquipType.Head)]
 	public class ShadowMasterHood : ModItem
 	{
-		const int ShootType = ProjectileID.HeatRay; // ��� ��������
-		const float ShootRange = 600.0f; // ��������� ��������
-		const float ShootKN = 1.0f; // ������������ 
-		const int ShootRate = 120; // ������� �������� (60 - 1 �������)
-		const int ShootCount = 2; // ������� �� �������
-		const float ShootSpeed = 20f; // �������� �������� (��� ������ - ���������)
-		const int spread = 45; // �������
-		const float spreadMult = 0.045f; // ����������� ��������
+		private const float ShootRange = 600.0f;
+		private const float ShootKN = 1.0f;
+		private const int ShootRate = 120;
+		private const int ShootCount = 2;
+		private const float ShootSpeed = 20f;
+		private const int spread = 45;
+		private const float spreadMult = 0.045f;
 
-		int TimeToShoot = ShootRate;
-
-
+		private int TimeToShoot = ShootRate;
 
 		public override void SetDefaults()
 		{
-
 			item.width = 38;
 			item.height = 22;
-
 
 			item.value = 10000;
 			item.rare = 11;
@@ -36,9 +31,8 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Shadow Master Hood");
-			Tooltip.SetDefault("Increases alchemical damage by 25%\nIncreases throwing damage by 15%");
+			Tooltip.SetDefault("20% increased alchemical damage\n25% increased throwing damage");
 		}
-
 
 		public override void UpdateEquip(Player player)
 		{
@@ -53,7 +47,7 @@ namespace Tremor.Items
 
 		public override void UpdateArmorSet(Player player)
 		{
-			player.setBonus = "Creates dangerous alchemical bubbles and increases alchemical critical strike chance by 35";
+			player.setBonus = "Creates dangerous alchemical bubbles\n35% increased alchemical critical strike chance";
 			player.GetModPlayer<MPlayer>(mod).alchemicalCrit += 35;
 
 			if (--TimeToShoot <= 0)
