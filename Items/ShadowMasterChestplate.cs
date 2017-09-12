@@ -7,14 +7,10 @@ namespace Tremor.Items
 	[AutoloadEquip(EquipType.Body)]
 	public class ShadowMasterChestplate : ModItem
 	{
-
 		public override void SetDefaults()
 		{
-
 			item.width = 38;
 			item.height = 22;
-
-
 			item.value = 10000;
 			item.rare = 11;
 			item.defense = 25;
@@ -23,9 +19,8 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Shadow Master Chestplate");
-			Tooltip.SetDefault("Increases alchemical damage by 25%\nIncreases throwing damage by 15%");
+			Tooltip.SetDefault("25% increased alchemical damage\n15% increased throwing damage");
 		}
-
 
 		public override void UpdateEquip(Player player)
 		{

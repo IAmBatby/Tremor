@@ -8,7 +8,6 @@ namespace Tremor.Items
 	{
 		public override void SetDefaults()
 		{
-
 			item.damage = 240;
 			item.width = 58;
 			item.height = 30;
@@ -30,7 +29,6 @@ namespace Tremor.Items
 			DisplayName.SetDefault("Gurumaster");
 			Tooltip.SetDefault("");
 		}
-
 
 		public override Vector2? HoldoutOffset()
 		{

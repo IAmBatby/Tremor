@@ -11,7 +11,6 @@ namespace Tremor.Items
 			item.consumable = true;
 			item.width = 24;
 			item.height = 24;
-
 			item.rare = 9;
 			item.expert = true;
 			bossBagNPC = mod.NPCType("Alchemaster");
