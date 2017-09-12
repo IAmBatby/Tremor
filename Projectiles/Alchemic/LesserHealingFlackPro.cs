@@ -9,6 +9,12 @@ namespace Tremor.Projectiles.Alchemic
 {
 	public class LesserHealingFlackPro : ModProjectile
 	{
+		public override void SetStaticDefaults()
+		{
+			ProjectileID.Sets.TrailCacheLength[projectile.type] = 5;
+			ProjectileID.Sets.TrailingMode[projectile.type] = 2;
+		}
+
 		public override void SetDefaults()
 		{
 			projectile.width = 18;
@@ -23,9 +29,6 @@ namespace Tremor.Projectiles.Alchemic
 			}
 			else
 				projectile.penetrate = 1;
-
-			ProjectileID.Sets.TrailCacheLength[projectile.type] = 5;
-			ProjectileID.Sets.TrailingMode[projectile.type] = 2;
 		}
 
 		public override void AI()

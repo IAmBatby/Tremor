@@ -4,7 +4,7 @@ Thanks to Eldrazi for many contributions for this patch.
 
 - Items that grant movement speed now also increase the player's maximum run speed by that amount, this ensures the movement speed bonus actually has effect when at capped speed
 - Improved certain items' tooltips
-- Fixed all tooltips still saying 'alchemic' changed to say 'alchemical'
+- Fixed all tooltips still saying 'alchemic' changed to say 'alchemical', alchemic weaponry deal alchemical damage
 - Improved and buffed Phantablast
 - Fixed many town NPCs not being able to receive their last 2 possible names
 - Fixed certain town NPCs their shops
@@ -18,6 +18,9 @@ Thanks to Eldrazi for many contributions for this patch.
 - Fixed detached clampers (from the Motherboard fight) having incorrect life values
 - Implemented actual crit chance and knockback for alchemical weapons. Increases to alchemical crit is no longer just visual in the tooltip but actually takes effect (Knockback for alchemical weapons is implemented, but no items give it yet, leave your suggestions)
 - Improved certain tooltips for alchemist class related items (please note I still probably missed many)
-- Fixed certain alchemist class items not granting the right amount of increased damage or critical strike chance
+- Fixed certain alchemist items not granting the right amount of increased damage or critical strike chance
 - Glacier ice wall can now only spread to other ice or snow
 - All treasure bag tooltips 'right click to open' will now translate properly
+- Improved Nova alchemist flask shadow trail opacity
+- Improved Shadow cloud opacity and added fade-out (many alchemist clouds need this)
+- MY GOD, fixed so much more formatting.. MY GOD!!!

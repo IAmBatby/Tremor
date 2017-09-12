@@ -17,8 +17,6 @@ namespace Tremor.Projectiles.Alchemic
 			projectile.timeLeft = 600;
 		}
 
-
-
 		public override void AI()
 		{
 			projectile.rotation = 0f;

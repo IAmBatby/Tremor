@@ -7,7 +7,6 @@ namespace Tremor.Projectiles
 	{
 		public override void SetDefaults()
 		{
-
 			projectile.width = 52;
 			projectile.height = 52;
 			projectile.penetrate = -1;
@@ -23,7 +22,6 @@ namespace Tremor.Projectiles
 			DisplayName.SetDefault("Wall Of Shadows Boom");
 
 		}
-
 
 		public override bool PreAI()
 		{
