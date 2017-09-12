@@ -19,13 +19,7 @@ namespace Tremor.Projectiles.Alchemic
 			ProjectileID.Sets.TrailingMode[projectile.type] = 2;
 		}
 
-		public override void ModifyHitNPC(NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
-		{
-			if (Main.rand.Next(1, 101) <= Main.player[projectile.owner].GetModPlayer<MPlayer>(mod).alchemicalCrit)
-			{
-				crit = true;
-			}
-		}
+
 
 		public override void Kill(int timeLeft)
 		{

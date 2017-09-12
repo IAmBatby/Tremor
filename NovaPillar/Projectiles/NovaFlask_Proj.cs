@@ -10,6 +10,12 @@ namespace Tremor.NovaPillar.Projectiles
 {
 	public class NovaFlask_Proj : ModProjectile
 	{
+		public override void SetStaticDefaults()
+		{
+			ProjectileID.Sets.TrailCacheLength[projectile.type] = 5;
+			ProjectileID.Sets.TrailingMode[projectile.type] = 0;
+		}
+
 		public override void SetDefaults()
 		{
 			projectile.width = 18;
@@ -23,8 +29,6 @@ namespace Tremor.NovaPillar.Projectiles
 			}
 			else
 				projectile.penetrate = 1;
-			ProjectileID.Sets.TrailCacheLength[projectile.type] = 5;
-			ProjectileID.Sets.TrailingMode[projectile.type] = 0;
 		}
 
 		public override Color? GetAlpha(Color lightColor)
@@ -62,13 +66,7 @@ namespace Tremor.NovaPillar.Projectiles
 			return false;
 		}
 
-		public override void ModifyHitNPC(NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
-		{
-			if (Main.rand.Next(1, 101) <= Main.player[projectile.owner].GetModPlayer<MPlayer>(mod).alchemicalCrit)
-			{
-				crit = true;
-			}
-		}
+
 
 		public override void AI()
 		{
@@ -174,7 +172,8 @@ namespace Tremor.NovaPillar.Projectiles
 			for (int k = 0; k < projectile.oldPos.Length; k++)
 			{
 				Vector2 drawPos = projectile.oldPos[k] - Main.screenPosition + drawOrigin + new Vector2(0f, projectile.gfxOffY);
-				spriteBatch.Draw(Main.projectileTexture[projectile.type], drawPos, null, Color.White, projectile.rotation, drawOrigin, projectile.scale, SpriteEffects.None, 0f);
+				Color color = projectile.GetAlpha(lightColor) * ((float)(projectile.oldPos.Length - k) / (float)projectile.oldPos.Length);
+				spriteBatch.Draw(Main.projectileTexture[projectile.type], drawPos, null, color, projectile.rotation, drawOrigin, projectile.scale, SpriteEffects.None, 0f);
 			}
 			return true;
 		}
