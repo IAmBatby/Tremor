@@ -7,21 +7,18 @@ namespace Tremor.Items
 	{
 		public override void SetDefaults()
 		{
-
 			item.maxStack = 999;
 			item.consumable = true;
 			item.width = 32;
 			item.height = 32;
-
 			item.rare = 0;
 		}
 
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Money Sack");
-			Tooltip.SetDefault("Right click to open");
+			Tooltip.SetDefault("{$CommonItemTooltip.RightClickToOpen}");
 		}
-
 
 		public override bool CanRightClick()
 		{

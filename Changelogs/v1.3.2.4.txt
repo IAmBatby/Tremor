@@ -20,3 +20,4 @@ Thanks to Eldrazi for many contributions for this patch.
 - Improved certain tooltips for alchemist class related items (please note I still probably missed many)
 - Fixed certain alchemist class items not granting the right amount of increased damage or critical strike chance
 - Glacier ice wall can now only spread to other ice or snow
+- All treasure bag tooltips 'right click to open' will now translate properly

@@ -61,11 +61,8 @@
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Xml.Linq" />
-    <Reference Include="Terraria">
-      <HintPath>..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Terraria\Terraria.exe</HintPath>
-    </Reference>
-    <Reference Include="Terraria.Libraries.ReLogic.ReLogic">
-      <HintPath>..\..\My Games\Terraria\ModLoader\dllReferences\Terraria.Libraries.ReLogic.ReLogic.dll</HintPath>
+    <Reference Include="tModLoader">
+      <HintPath>..\..\..\..\..\..\..\Apps\Steam\steamapps\common\Terraria\tModLoader.exe</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

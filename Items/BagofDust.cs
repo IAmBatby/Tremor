@@ -6,7 +6,6 @@ namespace Tremor.Items
 	{
 		public override void SetDefaults()
 		{
-
 			item.width = 22;
 			item.height = 36;
 			item.value = 10000;
@@ -18,8 +17,5 @@ namespace Tremor.Items
 			DisplayName.SetDefault("Bag of Dust");
 			Tooltip.SetDefault("Used for crafting bags with a variety of dust");
 		}
-
-
-
 	}
 }
