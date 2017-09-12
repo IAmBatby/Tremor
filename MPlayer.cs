@@ -14,6 +14,8 @@ namespace Tremor
 
 		// Alchemist
 		public float alchemicalDamage;
+		public float alchemicalKbAddition;
+		public float alchemicalKbMult;
 		public int alchemicalCrit;
 
 		// Undocumented
@@ -34,7 +36,9 @@ namespace Tremor
 			fragileContiion = false;
 
 			// Alchemist
-			alchemicalDamage = 1;
+			alchemicalDamage = 1f;
+			alchemicalKbAddition = 0f;
+			alchemicalKbMult = 1f;
 			alchemicalCrit = 0;
 
 			// Undocumented

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ModLoader;
@@ -7,6 +8,19 @@ namespace Tremor
 {
 	public abstract class AlchemistItem : ModItem
 	{
+		public override void GetWeaponKnockback(Player player, ref float knockback)
+		{
+			MPlayer modPlayer = player.GetModPlayer<MPlayer>(mod);
+			knockback += modPlayer.alchemicalKbAddition;
+			knockback *= modPlayer.alchemicalKbMult;
+		}
+
+		public override void GetWeaponCrit(Player player, ref int crit)
+		{
+			MPlayer modPlayer = player.GetModPlayer<MPlayer>(mod);
+			crit += modPlayer.alchemicalCrit;
+		}
+
 		public override void GetWeaponDamage(Player player, ref int damage)
 		{
 			MPlayer modPlayer = player.GetModPlayer<MPlayer>(mod);
@@ -17,23 +31,14 @@ namespace Tremor
 
 		public override void ModifyTooltips(List<TooltipLine> tooltips)
 		{
-			MPlayer modPlayer = Main.LocalPlayer.GetModPlayer<MPlayer>(mod);
-
-			foreach (TooltipLine tooltip in tooltips)
+			var tt = tooltips.FirstOrDefault(x => x.Name == "Damage" && x.mod == "Terraria");
+			if (tt != null)
 			{
-				if (tooltip.Name == "Damage")
-				{
-					tooltip.text = (int)(item.damage * modPlayer.alchemicalDamage) + " alchemical damage";
-				}
-
-				if (tooltip.Name == "CritChance")
-				{
-					tooltip.text = item.crit + modPlayer.alchemicalCrit + "% critical strike chance";
-				}
+				// take reverse for 'damage',  grab translation
+				var split = tt.text.Split(' ');
+				// todo: translation alchemical
+				tt.text = split.First() + " alchemical " + split.Last();
 			}
-
-			TooltipLine tip = new TooltipLine(mod, "Tremor:Tooltip", (item.crit + modPlayer.alchemicalCrit) + "% critical strike chance");
-			tooltips.Insert(2, tip);
 		}
 
 		public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
