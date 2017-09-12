@@ -4,6 +4,7 @@ using Terraria.ModLoader;
 
 namespace Tremor.Items
 {
+	// todo: redo
 	public class WallOfShadowsFlask : AlchemistItem
 	{
 		const float ShootRange = 600.0f;
@@ -31,9 +32,8 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Flask of Shadows");
-			Tooltip.SetDefault("Casts shadow flask at nearby enemies \nThe less health, the more count of flasks");
+			Tooltip.SetDefault("Casts shadow flask at nearby enemies\nThe less health, the more count of flasks");
 		}
-
 
 		public override void UpdateAccessory(Player player, bool hideVisual)
 		{

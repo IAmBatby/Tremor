@@ -10,54 +10,52 @@ using Terraria.ModLoader;
 
 namespace Tremor.NPCs
 {
+	// todo: REEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE
 	[AutoloadBossHead]
 	public class WallOfShadow : ModNPC
 	{
-		#region "Константы"
-		const int AnimationRate = 8; // Частота смены кадров (То, сколько кадров не будет сменятся кадр)
-		const int FrameCount = 4; // Кол-во кадров
 
-		const int ShootRate = 70; // Частота выстрела. Будет производить 60/ShootRate выстрелов в секунду
-		const int ShootDamage = 15; // Урон от выстрела
-		int ShootType; // Тип выстрела (задаётся в SetDefaults())
-		const float ShootKnockback = 1; // Отбрасование от выстрела
-		float ShootSpeed = 20; // Скорость выстрела
+		private const int AnimationRate = 8;
+		private const int FrameCount = 4;
 
-		const float DistortPercent = 0.15f; // Процент деформации статов (неточности) (1.0 == 100%)
+		private const int ShootRate = 70;
+		private const int ShootDamage = 15;
+		private int ShootType;
+		private const float ShootKnockback = 1;
+		private float ShootSpeed = 20;
 
-		const int MinionsID = 61; // ID вуртулек
-		const int MinionsCount = 4; // Кол-во вуртулек которых заспавнит
+		private const float DistortPercent = 0.15f; // 1 == 100%
 
-		const int StateTime_Flying = 600; // Сколько будет летать в воздухе до призыва миньонов
-		const int StateTime_Minions = 120; // Сколько времени будет спавнить вуртулек
+		private const int MinionsID = 61;
+		private const int MinionsCount = 4; 
 
-		const int FlyingAI = 2;
-		const int MinionsAI = 0;
+		private const int StateTime_Flying = 600;
+		private const int StateTime_Minions = 120;
 
-		const float MinionsState_XDeaccelerationPower = 0.05f; // Скорость замедления по X
-		const float MinionsState_YMaxSpeed = 2.80f; // Макс. скорость взлёта во время спавна миньонов
-		const float MinionsStete_YSpeedStep = 0.02f; // Скорость увеличения скорости по Y во время спавна миньонов
+		private const int FlyingAI = 2;
+		private const int MinionsAI = 0;
 
-		const int States = 2;
-		#endregion
+		private const float MinionsState_XDeaccelerationPower = 0.05f;
+		private const float MinionsState_YMaxSpeed = 2.80f;
+		private const float MinionsStete_YSpeedStep = 0.02f;
 
-		#region "Переменные"
-		int TimeToAnimation = AnimationRate;
-		int Frame = 0;
-		bool Shoots = true;
-		int TimeToShoot = ShootRate;
-		int State = 0;
-		int TimeToState = StateTime_Flying;
-		bool runAway = false;
-		#endregion
+		private const int States = 2;
 
-		int MagicBoltCooldown
+		private int TimeToAnimation = AnimationRate;
+		private int Frame = 0;
+		private bool Shoots = true;
+		private int TimeToShoot = ShootRate;
+		private int State = 0;
+		private int TimeToState = StateTime_Flying;
+		private bool runAway = false;
+
+		private int MagicBoltCooldown
 		{
 			get { return (int)npc.ai[2]; }
 			set { npc.ai[2] = value; }
 		}
 
-		int LaserCooldown
+		private int LaserCooldown
 		{
 			get { return (int)npc.ai[0]; }
 			set { npc.ai[0] = value; }
@@ -66,8 +64,8 @@ namespace Tremor.NPCs
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Wall of Shadows");
+			Main.npcFrameCount[npc.type] = 2;
 		}
-
 
 		public override void SetDefaults()
 		{
@@ -88,7 +86,6 @@ namespace Tremor.NPCs
 			npc.HitSound = SoundID.NPCHit8;
 			npc.DeathSound = SoundID.NPCDeath10;
 			music = MusicID.Boss4;
-			Main.npcFrameCount[npc.type] = 2;
 			bossBag = mod.ItemType("WallofShadowBag");
 		}
 
@@ -101,10 +98,12 @@ namespace Tremor.NPCs
 		public override void ModifyHitPlayer(Player target, ref int damage, ref bool crit)
 		{
 			if (Main.expertMode)
-				target.AddBuff(153, 240);
+			{
+				target.AddBuff(BuffID.ShadowFlame, 240);
+			}
 		}
 
-		void ShootBall()
+		private void ShootBall()
 		{
 			MagicBoltCooldown--;
 			if (MagicBoltCooldown <= 60 && MagicBoltCooldown % ((Main.expertMode) ? 12 : 20) == 0 && Main.netMode != 1)
@@ -123,7 +122,7 @@ namespace Tremor.NPCs
 			}
 		}
 
-		void Shoot()
+		private void Shoot()
 		{
 			if (!Shoots && npc.target < 0) //если не время для не стрельбы, то вырубаем автоматом
 				return;
@@ -142,7 +141,7 @@ namespace Tremor.NPCs
 			}
 		}
 
-		void ShootSuper()
+		private void ShootSuper()
 		{
 			LaserCooldown--;
 			if (LaserCooldown <= 60 && LaserCooldown % ((Main.expertMode) ? 4 : 7) == 0 && Main.netMode != 1)
@@ -159,521 +158,548 @@ namespace Tremor.NPCs
 
 		public override bool PreAI()
 		{
-			Player player = Main.player[npc.target];
-			npc.position.Y = player.position.Y;
-			player.AddBuff(22, 1);
-			if (player.dead)
-			{
 				npc.TargetClosest(false);
-				npc.velocity.Y = npc.velocity.Y + 1f;
-				if (npc.position.Y > Main.worldSurface * 16.0)
+				if (npc.target != -1)
 				{
-					npc.velocity.Y = npc.velocity.Y + 1f;
-				}
-				if (npc.position.Y > Main.rockLayer * 16.0)
-				{
-					for (int num957 = 0; num957 < 200; num957++)
+					Player player = Main.player[npc.target];
+					npc.position.Y = player.position.Y;
+					player.AddBuff(22, 1);
+					if (player.dead)
 					{
-						if (Main.npc[num957].aiStyle == npc.aiStyle)
+						npc.TargetClosest(false);
+						npc.velocity.Y = npc.velocity.Y + 1f;
+						if (npc.position.Y > Main.worldSurface * 16.0)
 						{
-							Main.npc[num957].active = false;
+							npc.velocity.Y = npc.velocity.Y + 1f;
 						}
-					}
-				}
-			}
-
-			ShootBall();
-			ShootSuper();
-			if (npc.life < npc.lifeMax * 0.5f)
-			{
-				Main.npcHeadBossTexture[NPCID.Sets.BossHeadTextures[npc.type]] = mod.GetTexture("NPCs/WallOfShadow_Head_Boss1");
-				Shoot();
-
-				if ((int)(Main.time % 360) == 0)
-				{
-					int index = NPC.NewNPC((int)(npc.position.X + (npc.width / 2)), (int)(npc.position.Y + (npc.height / 2) + 20.0), mod.NPCType("ShadowSteed"), 1, 0.0f, 0.0f, 0.0f, 0.0f, byte.MaxValue);
-					Main.npc[index].velocity.X = npc.direction * 6;
-				}
-
-				if (npc.localAI[0] == 0.0)
-				{
-					npc.localAI[0] = 1f;
-					Main.wofB = -1;
-					Main.wofT = -1;
-				}
-
-				npc.ai[1]++;
-				if (npc.ai[2] == 0)
-				{
-					if (npc.life < npc.lifeMax * 0.5F)
-						npc.ai[1]++;
-					if (npc.life < npc.lifeMax * 0.2F)
-						npc.ai[1]++;
-					if (npc.ai[1] > 2700.0)
-						npc.ai[2] = 1f;
-				}
-				if (npc.ai[2] > 0 && npc.ai[1] > 60)
-				{
-					int spawnCooldown = 3;
-					if (npc.life < npc.lifeMax * 0.3)
-						++spawnCooldown;
-					npc.ai[2]++;
-					npc.ai[1] = 0;
-					if (npc.ai[2] > spawnCooldown)
-						npc.ai[2] = 0;
-
-					if (Main.netMode != 1)
-					{
-						// Spawn... a Shadow Steed?
-						//int index = NPC.NewNPC((int)(npc.position.X + (npc.width / 2)), (int)(npc.position.Y + (npc.height / 2) + 20.0), mod.NPCType("ShadowSteed"), 1, 0.0f, 0.0f, 0.0f, 0.0f, (int)byte.MaxValue);
-						//int index2 = NPC.NewNPC((int)(npc.position.X + (npc.width / 2)), (int)(npc.position.Y + (npc.height / 2) + 20.0), mod.NPCType("ShadowSteed"), 1, 0.0f, 0.0f, 0.0f, 0.0f, (int)byte.MaxValue);
-						//NPC.NewNPC((int)(npc.position.X + (npc.width / 2)), (int)(npc.position.Y + (npc.height / 2) + 10.0), mod.NPCType("ShadowSteed"), 1, 0.0f, 0.0f, 0.0f, 0.0f, (int)byte.MaxValue);
-						//NPC.NewNPC((int)(npc.position.X + (npc.width / 2)), (int)(npc.position.Y + (npc.height / 2) + 30.0), mod.NPCType("ShadowSteed"), 1, 0.0f, 0.0f, 0.0f, 0.0f, (int)byte.MaxValue);
-						//Main.npc[index].velocity.X = npc.direction * 6;
-						//Main.npc[index2].velocity.X = npc.direction * 6;
-					}
-				}
-
-
-
-				Main.wof = npc.whoAmI;
-				int npcTileX = (int)(npc.position.X / 16);
-				int npcRightXTile = (int)((npc.position.X + npc.width) / 16);
-				int npcCenterYTile = (int)((npc.position.Y + (npc.height / 2)) / 16);
-				int solidTiles = 0;
-				int npcBottom = npcCenterYTile + 7;
-				while (solidTiles < 15 && npcBottom > Main.maxTilesY - 200)
-				{
-					++npcBottom;
-					for (int i = npcTileX; i <= npcRightXTile; ++i)
-					{
-						try
+						if (npc.position.Y > Main.rockLayer * 16.0)
 						{
-							if (!WorldGen.SolidTile(i, npcBottom))
+							for (int num957 = 0; num957 < 200; num957++)
 							{
-								if (Main.tile[i, npcBottom].liquid <= 0)
-									continue;
-							}
-							++solidTiles;
-						}
-						catch
-						{
-							solidTiles += 15;
-						}
-					}
-				}
-				int num5 = npcBottom + 4;
-				if (Main.wofB == -1)
-					Main.wofB = num5 * 16;
-				else if (Main.wofB > num5 * 16)
-				{
-					--Main.wofB;
-					if (Main.wofB < num5 * 16)
-						Main.wofB = num5 * 16;
-				}
-				else if (Main.wofB < num5 * 16)
-				{
-					++Main.wofB;
-					if (Main.wofB > num5 * 16)
-						Main.wofB = num5 * 16;
-				}
-
-				int num6 = 0;
-				int j2 = npcCenterYTile - 7;
-				while (num6 < 15 && j2 < Main.maxTilesY - 10)
-				{
-					--j2;
-					for (int i = npcTileX; i <= npcRightXTile; ++i)
-					{
-						try
-						{
-							if (!WorldGen.SolidTile(i, j2))
-							{
-								if (Main.tile[i, j2].liquid <= 0)
-									continue;
-							}
-							++num6;
-						}
-						catch
-						{
-							num6 += 15;
-						}
-					}
-				}
-				int num7 = j2 - 4;
-				if (Main.wofT == -1)
-					Main.wofT = num7 * 16;
-				else if (Main.wofT > num7 * 16)
-				{
-					--Main.wofT;
-					if (Main.wofT < num7 * 16)
-						Main.wofT = num7 * 16;
-				}
-				else if (Main.wofT < num7 * 16)
-				{
-					++Main.wofT;
-					if (Main.wofT > num7 * 16)
-						Main.wofT = num7 * 16;
-				}
-
-				#region Movement
-				float num8 = ((Main.wofB + Main.wofT) / 2 - npc.height / 2);
-				if (npc.position.Y > num8 + 1.0)
-					npc.velocity.Y = -1f;
-				else if (npc.position.Y < num8 - 1.0)
-					npc.velocity.Y = 1f;
-				npc.velocity.Y = 0.0f;
-				npc.position.Y = num8;
-				float speed = 1.5f;
-				if (npc.life < npc.lifeMax * 0.75)
-					speed += 0.25f;
-				if (npc.life < npc.lifeMax * 0.5)
-					speed += 0.4f;
-				if (npc.life < npc.lifeMax * 0.25)
-					speed += 0.5f;
-				if (npc.life < npc.lifeMax * 0.1)
-					speed += 0.6f;
-				if (npc.life < npc.lifeMax * 0.66 && Main.expertMode)
-					speed += 0.3f;
-				if (npc.life < npc.lifeMax * 0.33 && Main.expertMode)
-					speed += 0.3f;
-				if (npc.life < npc.lifeMax * 0.05 && Main.expertMode)
-					speed += 0.6f;
-				if (npc.life < npc.lifeMax * 0.035 && Main.expertMode)
-					speed += 0.6f;
-				if (npc.life < npc.lifeMax * 0.025 && Main.expertMode)
-					speed += 0.6f;
-				if (Main.expertMode)
-					speed = speed * 1.35f + 0.35f;
-				if (npc.velocity.X == 0.0)
-				{
-					npc.TargetClosest(true);
-					npc.velocity.X = npc.direction;
-				}
-				if (npc.velocity.X < 0.0)
-				{
-					npc.velocity.X = -speed;
-					npc.direction = -1;
-				}
-				else
-				{
-					npc.velocity.X = speed;
-					npc.direction = 1;
-				}
-				#endregion
-
-				#region Mouth Rotation
-				npc.spriteDirection = npc.direction;
-				Vector2 vector2 = new Vector2(npc.position.X + npc.width * 0.5f, npc.position.Y + npc.height * 0.5f);
-				float num10 = Main.player[npc.target].position.X + (Main.player[npc.target].width / 2) - vector2.X;
-				float num11 = Main.player[npc.target].position.Y + (Main.player[npc.target].height / 2) - vector2.Y;
-				float num12 = (float)Math.Sqrt(num10 * num10 + num11 * num11);
-				float num13 = num10 * num12;
-				float num14 = num11 * num12;
-				npc.rotation = npc.direction <= 0 ? (Main.player[npc.target].position.X + (Main.player[npc.target].width / 2) >= npc.position.X + (npc.width / 2) ? 0 : (float)Math.Atan2(num14, num13) + 3.14f) : (Main.player[npc.target].position.X + (Main.player[npc.target].width / 2) <= npc.position.X + (npc.width / 2) ? 0 : (float)Math.Atan2(-num14, -num13) + 3.14f);
-				#endregion
-
-				for (int i = 0; i < 255; ++i)
-				{
-					if (Main.player[i].active && !Main.player[i].dead)
-					{
-						if (Main.player[i].Center.X > npc.Center.X && Main.player[i].direction == -1 && npc.direction == -1 && Vector2.Distance(Main.player[i].Center, npc.Center) <= 480f)
-						{
-							Main.player[i].AddBuff(BuffID.TheTongue, 600);
-						}
-					}
-				}
-
-				for (int i = 0; i < 255; ++i)
-				{
-					if (Main.player[i].active && !Main.player[i].dead)
-					{
-						if (Main.player[i].Center.X < npc.Center.X && Main.player[i].direction == 1 && npc.direction == 1 && Vector2.Distance(Main.player[i].Center, npc.Center) <= 480f)
-						{
-							Main.player[i].AddBuff(BuffID.TheTongue, 600);
-						}
-					}
-				}
-
-
-				if (npc.localAI[0] != 1.0 || Main.netMode == 1)
-					return false;
-				npc.localAI[0] = 2f;
-			}
-
-			if (npc.life > npc.lifeMax * 0.5f)
-			{
-				Main.npcHeadBossTexture[NPCID.Sets.BossHeadTextures[npc.type]] = mod.GetTexture("NPCs/WallOfShadow_Head_Boss");
-				Shoot();
-				if (npc.position.X < 160 || npc.position.X > (Main.maxTilesX - 10) * 16)
-					npc.active = false;
-				if (npc.localAI[0] == 0.0)
-				{
-					npc.localAI[0] = 1f;
-					Main.wofB = -1;
-					Main.wofT = -1;
-				}
-
-				npc.ai[1]++;
-				if (npc.ai[2] == 0)
-				{
-					if (npc.life < npc.lifeMax * 0.5F)
-						npc.ai[1]++;
-					if (npc.life < npc.lifeMax * 0.2F)
-						npc.ai[1]++;
-					if (npc.ai[1] > 2700.0)
-						npc.ai[2] = 1f;
-				}
-				if (npc.ai[2] > 0 && npc.ai[1] > 60)
-				{
-					int spawnCooldown = 3;
-					if (npc.life < npc.lifeMax * 0.3)
-						++spawnCooldown;
-					npc.ai[2]++;
-					npc.ai[1] = 0;
-					if (npc.ai[2] > spawnCooldown)
-						npc.ai[2] = 0;
-
-					if (Main.netMode != 1)
-					{
-
-					}
-				}
-
-
-
-				Main.wof = npc.whoAmI;
-				int npcTileX = (int)(npc.position.X / 16);
-				int npcRightXTile = (int)((npc.position.X + npc.width) / 16);
-				int npcCenterYTile = (int)((npc.position.Y + (npc.height / 2)) / 16);
-				int solidTiles = 0;
-				int npcBottom = npcCenterYTile + 7;
-				while (solidTiles < 15 && npcBottom > Main.maxTilesY - 200)
-				{
-					++npcBottom;
-					for (int i = npcTileX; i <= npcRightXTile; ++i)
-					{
-						try
-						{
-							if (!WorldGen.SolidTile(i, npcBottom))
-							{
-								if (Main.tile[i, npcBottom].liquid <= 0)
-									continue;
-							}
-							++solidTiles;
-						}
-						catch
-						{
-							solidTiles += 15;
-						}
-					}
-				}
-				int num5 = npcBottom + 4;
-				if (Main.wofB == -1)
-					Main.wofB = num5 * 16;
-				else if (Main.wofB > num5 * 16)
-				{
-					--Main.wofB;
-					if (Main.wofB < num5 * 16)
-						Main.wofB = num5 * 16;
-				}
-				else if (Main.wofB < num5 * 16)
-				{
-					++Main.wofB;
-					if (Main.wofB > num5 * 16)
-						Main.wofB = num5 * 16;
-				}
-
-				int num6 = 0;
-				int j2 = npcCenterYTile - 7;
-				while (num6 < 15 && j2 < Main.maxTilesY - 10)
-				{
-					--j2;
-					for (int i = npcTileX; i <= npcRightXTile; ++i)
-					{
-						try
-						{
-							if (!WorldGen.SolidTile(i, j2))
-							{
-								if (Main.tile[i, j2].liquid <= 0)
-									continue;
-							}
-							++num6;
-						}
-						catch
-						{
-							num6 += 15;
-						}
-					}
-				}
-				int num7 = j2 - 4;
-				if (Main.wofT == -1)
-					Main.wofT = num7 * 16;
-				else if (Main.wofT > num7 * 16)
-				{
-					--Main.wofT;
-					if (Main.wofT < num7 * 16)
-						Main.wofT = num7 * 16;
-				}
-				else if (Main.wofT < num7 * 16)
-				{
-					++Main.wofT;
-					if (Main.wofT > num7 * 16)
-						Main.wofT = num7 * 16;
-				}
-
-				#region Movement
-				float num8 = ((Main.wofB + Main.wofT) / 2 - npc.height / 2);
-				if (npc.position.Y > num8 + 1.0)
-					npc.velocity.Y = -1f;
-				else if (npc.position.Y < num8 - 1.0)
-					npc.velocity.Y = 1f;
-				npc.velocity.Y = 0.0f;
-				npc.position.Y = num8;
-				float speed = 1.5f;
-				if (npc.life < npc.lifeMax * 0.75)
-					speed += 0.25f;
-				if (npc.life < npc.lifeMax * 0.5)
-					speed += 0.4f;
-				if (npc.life < npc.lifeMax * 0.25)
-					speed += 0.5f;
-				if (npc.life < npc.lifeMax * 0.1)
-					speed += 0.6f;
-				if (npc.life < npc.lifeMax * 0.66 && Main.expertMode)
-					speed += 0.3f;
-				if (npc.life < npc.lifeMax * 0.33 && Main.expertMode)
-					speed += 0.3f;
-				if (npc.life < npc.lifeMax * 0.05 && Main.expertMode)
-					speed += 0.6f;
-				if (npc.life < npc.lifeMax * 0.035 && Main.expertMode)
-					speed += 0.6f;
-				if (npc.life < npc.lifeMax * 0.025 && Main.expertMode)
-					speed += 0.6f;
-				if (Main.expertMode)
-					speed = speed * 1.35f + 0.35f;
-				if (npc.velocity.X == 0.0)
-				{
-					npc.TargetClosest(true);
-					npc.velocity.X = npc.direction;
-				}
-				if (npc.velocity.X < 0.0)
-				{
-					npc.velocity.X = -speed;
-					npc.direction = -1;
-				}
-				else
-				{
-					npc.velocity.X = speed;
-					npc.direction = 1;
-				}
-				#endregion
-
-				#region Mouth Rotation
-				npc.spriteDirection = npc.direction;
-				Vector2 vector2 = new Vector2(npc.position.X + npc.width * 0.5f, npc.position.Y + npc.height * 0.5f);
-				float num10 = Main.player[npc.target].position.X + (Main.player[npc.target].width / 2) - vector2.X;
-				float num11 = Main.player[npc.target].position.Y + (Main.player[npc.target].height / 2) - vector2.Y;
-				float num12 = (float)Math.Sqrt(num10 * num10 + num11 * num11);
-				float num13 = num10 * num12;
-				float num14 = num11 * num12;
-				npc.rotation = npc.direction <= 0 ? (Main.player[npc.target].position.X + (Main.player[npc.target].width / 2) >= npc.position.X + (npc.width / 2) ? 0 : (float)Math.Atan2(num14, num13) + 3.14f) : (Main.player[npc.target].position.X + (Main.player[npc.target].width / 2) <= npc.position.X + (npc.width / 2) ? 0 : (float)Math.Atan2(-num14, -num13) + 3.14f);
-				#endregion
-
-				for (int i = 0; i < 255; ++i)
-				{
-					if (Main.player[i].active && !Main.player[i].dead)
-					{
-						if (Main.player[i].Center.X > npc.Center.X && Main.player[i].direction == -1 && npc.direction == -1 && Vector2.Distance(Main.player[i].Center, npc.Center) <= 480f)
-						{
-							Main.player[i].AddBuff(BuffID.TheTongue, 600);
-						}
-					}
-				}
-
-				for (int i = 0; i < 255; ++i)
-				{
-					if (Main.player[i].active && !Main.player[i].dead)
-					{
-						if (Main.player[i].Center.X < npc.Center.X && Main.player[i].direction == 1 && npc.direction == 1 && Vector2.Distance(Main.player[i].Center, npc.Center) <= 480f)
-						{
-							Main.player[i].AddBuff(BuffID.TheTongue, 600);
-						}
-					}
-				}
-
-				//if (Main.expertMode && Main.netMode != 1)
-				//{
-				int num15 = (int)(1.0 + npc.life / npc.lifeMax * 10.0);
-				int num16 = num15 * num15;
-				if (num16 < 400)
-					num16 = (num16 * 19 + 400) / 20;
-				if (num16 < 60)
-					num16 = (num16 * 3 + 60) / 4;
-				if (num16 < 20)
-					num16 = (num16 + 20) / 2;
-				int maxValue1 = (int)(num16 * 0.7);
-				if (Main.rand.Next(maxValue1) == 0)
-				{
-					int index1 = 0;
-					float[] numArray = new float[10];
-					for (int index2 = 0; index2 < 200; ++index2)
-					{
-						if (index1 < 10 && Main.npc[index2].active && Main.npc[index2].type == mod.NPCType("ShadowHand"))
-						{
-							numArray[index1] = Main.npc[index2].ai[0];
-							++index1;
-						}
-					}
-					int maxValue2 = 1 + index1 * 2;
-					if (index1 < 10 && Main.rand.Next(maxValue2) <= 1)
-					{
-						int num17 = -1;
-						for (int index2 = 0; index2 < 1000; ++index2)
-						{
-							int num18 = Main.rand.Next(20);
-							float num19 = (float)(num18 * 0.100000001490116 - 0.0500000007450581);
-							bool flag = true;
-							for (int index3 = 0; index3 < index1; ++index3)
-							{
-								if (num19 == (double)numArray[index3])
+								if (Main.npc[num957].aiStyle == npc.aiStyle)
 								{
-									flag = false;
+									Main.npc[num957].active = false;
+								}
+							}
+						}
+					}
+				}
+
+				ShootBall();
+				ShootSuper();
+				if (npc.life < npc.lifeMax * 0.5f)
+				{
+					Main.npcHeadBossTexture[NPCID.Sets.BossHeadTextures[npc.type]] = mod.GetTexture("NPCs/WallOfShadow_Head_Boss1");
+					Shoot();
+
+					if ((int) (Main.time % 360) == 0)
+					{
+						int index = NPC.NewNPC((int) (npc.position.X + (npc.width / 2)), (int) (npc.position.Y + (npc.height / 2) + 20.0),
+							mod.NPCType("ShadowSteed"), 1, 0.0f, 0.0f, 0.0f, 0.0f, byte.MaxValue);
+						Main.npc[index].velocity.X = npc.direction * 6;
+					}
+
+					if (npc.localAI[0] == 0.0)
+					{
+						npc.localAI[0] = 1f;
+						Main.wofB = -1;
+						Main.wofT = -1;
+					}
+
+					npc.ai[1]++;
+					if (npc.ai[2] == 0)
+					{
+						if (npc.life < npc.lifeMax * 0.5F)
+							npc.ai[1]++;
+						if (npc.life < npc.lifeMax * 0.2F)
+							npc.ai[1]++;
+						if (npc.ai[1] > 2700.0)
+							npc.ai[2] = 1f;
+					}
+					if (npc.ai[2] > 0 && npc.ai[1] > 60)
+					{
+						int spawnCooldown = 3;
+						if (npc.life < npc.lifeMax * 0.3)
+							++spawnCooldown;
+						npc.ai[2]++;
+						npc.ai[1] = 0;
+						if (npc.ai[2] > spawnCooldown)
+							npc.ai[2] = 0;
+
+						if (Main.netMode != 1)
+						{
+							// Spawn... a Shadow Steed?
+							//int index = NPC.NewNPC((int)(npc.position.X + (npc.width / 2)), (int)(npc.position.Y + (npc.height / 2) + 20.0), mod.NPCType("ShadowSteed"), 1, 0.0f, 0.0f, 0.0f, 0.0f, (int)byte.MaxValue);
+							//int index2 = NPC.NewNPC((int)(npc.position.X + (npc.width / 2)), (int)(npc.position.Y + (npc.height / 2) + 20.0), mod.NPCType("ShadowSteed"), 1, 0.0f, 0.0f, 0.0f, 0.0f, (int)byte.MaxValue);
+							//NPC.NewNPC((int)(npc.position.X + (npc.width / 2)), (int)(npc.position.Y + (npc.height / 2) + 10.0), mod.NPCType("ShadowSteed"), 1, 0.0f, 0.0f, 0.0f, 0.0f, (int)byte.MaxValue);
+							//NPC.NewNPC((int)(npc.position.X + (npc.width / 2)), (int)(npc.position.Y + (npc.height / 2) + 30.0), mod.NPCType("ShadowSteed"), 1, 0.0f, 0.0f, 0.0f, 0.0f, (int)byte.MaxValue);
+							//Main.npc[index].velocity.X = npc.direction * 6;
+							//Main.npc[index2].velocity.X = npc.direction * 6;
+						}
+					}
+
+					Main.wof = npc.whoAmI;
+					int npcTileX = (int) (npc.position.X / 16);
+					int npcRightXTile = (int) ((npc.position.X + npc.width) / 16);
+					int npcCenterYTile = (int) ((npc.position.Y + (npc.height / 2)) / 16);
+					int solidTiles = 0;
+					int npcBottom = npcCenterYTile + 7;
+					while (solidTiles < 15 && npcBottom > Main.maxTilesY - 200)
+					{
+						++npcBottom;
+						for (int i = npcTileX; i <= npcRightXTile; ++i)
+						{
+							try
+							{
+								if (!WorldGen.SolidTile(i, npcBottom))
+								{
+									if (Main.tile[i, npcBottom].liquid <= 0)
+										continue;
+								}
+								++solidTiles;
+							}
+							catch
+							{
+								solidTiles += 15;
+							}
+						}
+					}
+					int num5 = npcBottom + 4;
+					if (Main.wofB == -1)
+						Main.wofB = num5 * 16;
+					else if (Main.wofB > num5 * 16)
+					{
+						--Main.wofB;
+						if (Main.wofB < num5 * 16)
+							Main.wofB = num5 * 16;
+					}
+					else if (Main.wofB < num5 * 16)
+					{
+						++Main.wofB;
+						if (Main.wofB > num5 * 16)
+							Main.wofB = num5 * 16;
+					}
+
+					int num6 = 0;
+					int j2 = npcCenterYTile - 7;
+					while (num6 < 15 && j2 < Main.maxTilesY - 10)
+					{
+						--j2;
+						for (int i = npcTileX; i <= npcRightXTile; ++i)
+						{
+							try
+							{
+								if (!WorldGen.SolidTile(i, j2))
+								{
+									if (Main.tile[i, j2].liquid <= 0)
+										continue;
+								}
+								++num6;
+							}
+							catch
+							{
+								num6 += 15;
+							}
+						}
+					}
+					int num7 = j2 - 4;
+					if (Main.wofT == -1)
+						Main.wofT = num7 * 16;
+					else if (Main.wofT > num7 * 16)
+					{
+						--Main.wofT;
+						if (Main.wofT < num7 * 16)
+							Main.wofT = num7 * 16;
+					}
+					else if (Main.wofT < num7 * 16)
+					{
+						++Main.wofT;
+						if (Main.wofT > num7 * 16)
+							Main.wofT = num7 * 16;
+					}
+
+					#region Movement
+
+					float num8 = ((Main.wofB + Main.wofT) / 2 - npc.height / 2);
+					if (npc.position.Y > num8 + 1.0)
+						npc.velocity.Y = -1f;
+					else if (npc.position.Y < num8 - 1.0)
+						npc.velocity.Y = 1f;
+					npc.velocity.Y = 0.0f;
+					npc.position.Y = num8;
+					float speed = 1.5f;
+					if (npc.life < npc.lifeMax * 0.75)
+						speed += 0.25f;
+					if (npc.life < npc.lifeMax * 0.5)
+						speed += 0.4f;
+					if (npc.life < npc.lifeMax * 0.25)
+						speed += 0.5f;
+					if (npc.life < npc.lifeMax * 0.1)
+						speed += 0.6f;
+					if (npc.life < npc.lifeMax * 0.66 && Main.expertMode)
+						speed += 0.3f;
+					if (npc.life < npc.lifeMax * 0.33 && Main.expertMode)
+						speed += 0.3f;
+					if (npc.life < npc.lifeMax * 0.05 && Main.expertMode)
+						speed += 0.6f;
+					if (npc.life < npc.lifeMax * 0.035 && Main.expertMode)
+						speed += 0.6f;
+					if (npc.life < npc.lifeMax * 0.025 && Main.expertMode)
+						speed += 0.6f;
+					if (Main.expertMode)
+						speed = speed * 1.35f + 0.35f;
+					if (npc.velocity.X == 0.0)
+					{
+						npc.TargetClosest(true);
+						npc.velocity.X = npc.direction;
+					}
+					if (npc.velocity.X < 0.0)
+					{
+						npc.velocity.X = -speed;
+						npc.direction = -1;
+					}
+					else
+					{
+						npc.velocity.X = speed;
+						npc.direction = 1;
+					}
+
+					#endregion
+
+					#region Mouth Rotation
+
+					npc.spriteDirection = npc.direction;
+					Vector2 vector2 = new Vector2(npc.position.X + npc.width * 0.5f, npc.position.Y + npc.height * 0.5f);
+					float num10 = Main.player[npc.target].position.X + (Main.player[npc.target].width / 2) - vector2.X;
+					float num11 = Main.player[npc.target].position.Y + (Main.player[npc.target].height / 2) - vector2.Y;
+					float num12 = (float) Math.Sqrt(num10 * num10 + num11 * num11);
+					float num13 = num10 * num12;
+					float num14 = num11 * num12;
+					npc.rotation = npc.direction <= 0
+						? (Main.player[npc.target].position.X + (Main.player[npc.target].width / 2) >= npc.position.X + (npc.width / 2)
+							? 0
+							: (float) Math.Atan2(num14, num13) + 3.14f)
+						: (Main.player[npc.target].position.X + (Main.player[npc.target].width / 2) <= npc.position.X + (npc.width / 2)
+							? 0
+							: (float) Math.Atan2(-num14, -num13) + 3.14f);
+
+					#endregion
+
+					for (int i = 0; i < 255; ++i)
+					{
+						if (Main.player[i].active && !Main.player[i].dead)
+						{
+							if (Main.player[i].Center.X > npc.Center.X && Main.player[i].direction == -1 && npc.direction == -1 &&
+							    Vector2.Distance(Main.player[i].Center, npc.Center) <= 480f)
+							{
+								Main.player[i].AddBuff(BuffID.TheTongue, 600);
+							}
+						}
+					}
+
+					for (int i = 0; i < 255; ++i)
+					{
+						if (Main.player[i].active && !Main.player[i].dead)
+						{
+							if (Main.player[i].Center.X < npc.Center.X && Main.player[i].direction == 1 && npc.direction == 1 &&
+							    Vector2.Distance(Main.player[i].Center, npc.Center) <= 480f)
+							{
+								Main.player[i].AddBuff(BuffID.TheTongue, 600);
+							}
+						}
+					}
+
+
+					if (npc.localAI[0] != 1.0 || Main.netMode == 1)
+						return false;
+					npc.localAI[0] = 2f;
+				}
+
+				if (npc.life > npc.lifeMax * 0.5f)
+				{
+					Main.npcHeadBossTexture[NPCID.Sets.BossHeadTextures[npc.type]] = mod.GetTexture("NPCs/WallOfShadow_Head_Boss");
+					Shoot();
+					if (npc.position.X < 160 || npc.position.X > (Main.maxTilesX - 10) * 16)
+						npc.active = false;
+					if (npc.localAI[0] == 0.0)
+					{
+						npc.localAI[0] = 1f;
+						Main.wofB = -1;
+						Main.wofT = -1;
+					}
+
+					npc.ai[1]++;
+					if (npc.ai[2] == 0)
+					{
+						if (npc.life < npc.lifeMax * 0.5F)
+							npc.ai[1]++;
+						if (npc.life < npc.lifeMax * 0.2F)
+							npc.ai[1]++;
+						if (npc.ai[1] > 2700.0)
+							npc.ai[2] = 1f;
+					}
+					if (npc.ai[2] > 0 && npc.ai[1] > 60)
+					{
+						int spawnCooldown = 3;
+						if (npc.life < npc.lifeMax * 0.3)
+							++spawnCooldown;
+						npc.ai[2]++;
+						npc.ai[1] = 0;
+						if (npc.ai[2] > spawnCooldown)
+							npc.ai[2] = 0;
+
+						if (Main.netMode != 1)
+						{
+
+						}
+					}
+
+					Main.wof = npc.whoAmI;
+					int npcTileX = (int) (npc.position.X / 16);
+					int npcRightXTile = (int) ((npc.position.X + npc.width) / 16);
+					int npcCenterYTile = (int) ((npc.position.Y + (npc.height / 2)) / 16);
+					int solidTiles = 0;
+					int npcBottom = npcCenterYTile + 7;
+					while (solidTiles < 15 && npcBottom > Main.maxTilesY - 200)
+					{
+						++npcBottom;
+						for (int i = npcTileX; i <= npcRightXTile; ++i)
+						{
+							try
+							{
+								if (!WorldGen.SolidTile(i, npcBottom))
+								{
+									if (Main.tile[i, npcBottom].liquid <= 0)
+										continue;
+								}
+								++solidTiles;
+							}
+							catch
+							{
+								solidTiles += 15;
+							}
+						}
+					}
+					int num5 = npcBottom + 4;
+					if (Main.wofB == -1)
+						Main.wofB = num5 * 16;
+					else if (Main.wofB > num5 * 16)
+					{
+						--Main.wofB;
+						if (Main.wofB < num5 * 16)
+							Main.wofB = num5 * 16;
+					}
+					else if (Main.wofB < num5 * 16)
+					{
+						++Main.wofB;
+						if (Main.wofB > num5 * 16)
+							Main.wofB = num5 * 16;
+					}
+
+					int num6 = 0;
+					int j2 = npcCenterYTile - 7;
+					while (num6 < 15 && j2 < Main.maxTilesY - 10)
+					{
+						--j2;
+						for (int i = npcTileX; i <= npcRightXTile; ++i)
+						{
+							try
+							{
+								if (!WorldGen.SolidTile(i, j2))
+								{
+									if (Main.tile[i, j2].liquid <= 0)
+										continue;
+								}
+								++num6;
+							}
+							catch
+							{
+								num6 += 15;
+							}
+						}
+					}
+					int num7 = j2 - 4;
+					if (Main.wofT == -1)
+						Main.wofT = num7 * 16;
+					else if (Main.wofT > num7 * 16)
+					{
+						--Main.wofT;
+						if (Main.wofT < num7 * 16)
+							Main.wofT = num7 * 16;
+					}
+					else if (Main.wofT < num7 * 16)
+					{
+						++Main.wofT;
+						if (Main.wofT > num7 * 16)
+							Main.wofT = num7 * 16;
+					}
+
+					#region Movement
+
+					float num8 = ((Main.wofB + Main.wofT) / 2 - npc.height / 2);
+					if (npc.position.Y > num8 + 1.0)
+						npc.velocity.Y = -1f;
+					else if (npc.position.Y < num8 - 1.0)
+						npc.velocity.Y = 1f;
+					npc.velocity.Y = 0.0f;
+					npc.position.Y = num8;
+					float speed = 1.5f;
+					if (npc.life < npc.lifeMax * 0.75)
+						speed += 0.25f;
+					if (npc.life < npc.lifeMax * 0.5)
+						speed += 0.4f;
+					if (npc.life < npc.lifeMax * 0.25)
+						speed += 0.5f;
+					if (npc.life < npc.lifeMax * 0.1)
+						speed += 0.6f;
+					if (npc.life < npc.lifeMax * 0.66 && Main.expertMode)
+						speed += 0.3f;
+					if (npc.life < npc.lifeMax * 0.33 && Main.expertMode)
+						speed += 0.3f;
+					if (npc.life < npc.lifeMax * 0.05 && Main.expertMode)
+						speed += 0.6f;
+					if (npc.life < npc.lifeMax * 0.035 && Main.expertMode)
+						speed += 0.6f;
+					if (npc.life < npc.lifeMax * 0.025 && Main.expertMode)
+						speed += 0.6f;
+					if (Main.expertMode)
+						speed = speed * 1.35f + 0.35f;
+					if (npc.velocity.X == 0.0)
+					{
+						npc.TargetClosest(true);
+						npc.velocity.X = npc.direction;
+					}
+					if (npc.velocity.X < 0.0)
+					{
+						npc.velocity.X = -speed;
+						npc.direction = -1;
+					}
+					else
+					{
+						npc.velocity.X = speed;
+						npc.direction = 1;
+					}
+
+					#endregion
+
+					#region Mouth Rotation
+
+					npc.spriteDirection = npc.direction;
+					Vector2 vector2 = new Vector2(npc.position.X + npc.width * 0.5f, npc.position.Y + npc.height * 0.5f);
+					float num10 = Main.player[npc.target].position.X + (Main.player[npc.target].width / 2) - vector2.X;
+					float num11 = Main.player[npc.target].position.Y + (Main.player[npc.target].height / 2) - vector2.Y;
+					float num12 = (float) Math.Sqrt(num10 * num10 + num11 * num11);
+					float num13 = num10 * num12;
+					float num14 = num11 * num12;
+					npc.rotation = npc.direction <= 0
+						? (Main.player[npc.target].position.X + (Main.player[npc.target].width / 2) >= npc.position.X + (npc.width / 2)
+							? 0
+							: (float) Math.Atan2(num14, num13) + 3.14f)
+						: (Main.player[npc.target].position.X + (Main.player[npc.target].width / 2) <= npc.position.X + (npc.width / 2)
+							? 0
+							: (float) Math.Atan2(-num14, -num13) + 3.14f);
+
+					#endregion
+
+					for (int i = 0; i < 255; ++i)
+					{
+						if (Main.player[i].active && !Main.player[i].dead)
+						{
+							if (Main.player[i].Center.X > npc.Center.X && Main.player[i].direction == -1 && npc.direction == -1 &&
+							    Vector2.Distance(Main.player[i].Center, npc.Center) <= 480f)
+							{
+								Main.player[i].AddBuff(BuffID.TheTongue, 600);
+							}
+						}
+					}
+
+					for (int i = 0; i < 255; ++i)
+					{
+						if (Main.player[i].active && !Main.player[i].dead)
+						{
+							if (Main.player[i].Center.X < npc.Center.X && Main.player[i].direction == 1 && npc.direction == 1 &&
+							    Vector2.Distance(Main.player[i].Center, npc.Center) <= 480f)
+							{
+								Main.player[i].AddBuff(BuffID.TheTongue, 600);
+							}
+						}
+					}
+
+					//if (Main.expertMode && Main.netMode != 1)
+					//{
+					int num15 = (int) (1.0 + npc.life / npc.lifeMax * 10.0);
+					int num16 = num15 * num15;
+					if (num16 < 400)
+						num16 = (num16 * 19 + 400) / 20;
+					if (num16 < 60)
+						num16 = (num16 * 3 + 60) / 4;
+					if (num16 < 20)
+						num16 = (num16 + 20) / 2;
+					int maxValue1 = (int) (num16 * 0.7);
+					if (Main.rand.Next(maxValue1) == 0)
+					{
+						int index1 = 0;
+						float[] numArray = new float[10];
+						for (int index2 = 0; index2 < 200; ++index2)
+						{
+							if (index1 < 10 && Main.npc[index2].active && Main.npc[index2].type == mod.NPCType("ShadowHand"))
+							{
+								numArray[index1] = Main.npc[index2].ai[0];
+								++index1;
+							}
+						}
+						int maxValue2 = 1 + index1 * 2;
+						if (index1 < 10 && Main.rand.Next(maxValue2) <= 1)
+						{
+							int num17 = -1;
+							for (int index2 = 0; index2 < 1000; ++index2)
+							{
+								int num18 = Main.rand.Next(20);
+								float num19 = (float) (num18 * 0.100000001490116 - 0.0500000007450581);
+								bool flag = true;
+								for (int index3 = 0; index3 < index1; ++index3)
+								{
+									if (num19 == (double) numArray[index3])
+									{
+										flag = false;
+										break;
+									}
+								}
+								if (flag)
+								{
+									num17 = num18;
 									break;
 								}
 							}
-							if (flag)
+							if (num17 >= 0)
 							{
-								num17 = num18;
-								break;
+								int index2 = NPC.NewNPC((int) npc.position.X, (int) num8, mod.NPCType("ShadowHand"), npc.whoAmI, 0.0f, 0.0f,
+									0.0f, 0.0f, 255);
+								Main.npc[index2].ai[0] = (num17 * 0.100000001490116F - 0.0500000007450581F);
 							}
 						}
-						if (num17 >= 0)
-						{
-							int index2 = NPC.NewNPC((int)npc.position.X, (int)num8, mod.NPCType("ShadowHand"), npc.whoAmI, 0.0f, 0.0f, 0.0f, 0.0f, 255);
-							Main.npc[index2].ai[0] = (num17 * 0.100000001490116F - 0.0500000007450581F);
-						}
 					}
-				}
-				//}
-				if (npc.localAI[0] != 1.0 || Main.netMode == 1)
-					return false;
-				npc.localAI[0] = 2f;
+					//}
+					if (npc.localAI[0] != 1.0 || Main.netMode == 1)
+						return false;
+					npc.localAI[0] = 2f;
 
-				float num20 = ((((Main.wofB + Main.wofT) / 2) + Main.wofB) / 2.0F);
-				for (int index1 = 0; index1 < 11; ++index1)
-				{
-					int index2 = NPC.NewNPC((int)npc.position.X, (int)num20, mod.NPCType("ShadowHand"), npc.whoAmI, 0.0f, 0.0f, 0.0f, 0.0f, 255);
-					Main.npc[index2].ai[0] = (index1 * 0.100000001490116F - 0.0500000007450581F);
+					float num20 = ((((Main.wofB + Main.wofT) / 2) + Main.wofB) / 2.0F);
+					for (int index1 = 0; index1 < 11; ++index1)
+					{
+						int index2 = NPC.NewNPC((int) npc.position.X, (int) num20, mod.NPCType("ShadowHand"), npc.whoAmI, 0.0f, 0.0f,
+							0.0f, 0.0f, 255);
+						Main.npc[index2].ai[0] = (index1 * 0.100000001490116F - 0.0500000007450581F);
+					}
+
 				}
 
-			}
 
 			return false;
 		}
 
 		public override void FindFrame(int frameHeight)
 		{
-			///---------------------------------------------------------------------------------------------------------------
 			int frameWidth = 96; // I'm just hardcoding this, since this is the frame width of one frame along the X axis.
 			npc.spriteDirection = npc.direction;
 
@@ -713,51 +739,24 @@ namespace Tremor.NPCs
 		{
 			if (npc.life <= 0)
 			{
-				Gore.NewGore(npc.position, npc.velocity, 99, 2f);
-				Gore.NewGore(npc.position, npc.velocity, 99, 3f);
-				Gore.NewGore(npc.position, npc.velocity, 99, 4f);
-				Gore.NewGore(npc.position, npc.velocity, 99, 5f);
-				Gore.NewGore(npc.position, npc.velocity, 99, 4f);
-				Gore.NewGore(npc.position, npc.velocity, 99, 3f);
-				Gore.NewGore(npc.position, npc.velocity, 99, 2f);
-				Gore.NewGore(npc.position, npc.velocity, 99, 1f);
-				Gore.NewGore(npc.position, npc.velocity, 99, 2f);
-				Gore.NewGore(npc.position, npc.velocity, 99, 3f);
-				Gore.NewGore(npc.position, npc.velocity, 99, 3f);
-				Gore.NewGore(npc.position, npc.velocity, 99, 4f);
-				Gore.NewGore(npc.position, npc.velocity, 99, 4f);
-				Gore.NewGore(npc.position, npc.velocity, 99, 3f);
-				Gore.NewGore(npc.position, npc.velocity, 99, 2f);
-				Gore.NewGore(npc.position, npc.velocity, 99, 3f);
-				Gore.NewGore(npc.position, npc.velocity, 99, 4f);
-				Gore.NewGore(npc.position, npc.velocity, 99, 5f);
-				Gore.NewGore(npc.position, npc.velocity, 99, 4f);
-				Gore.NewGore(npc.position, npc.velocity, 99, 3f);
-				Gore.NewGore(npc.position, npc.velocity, 99, 2f);
-				Gore.NewGore(npc.position, npc.velocity, 99, 1f);
-				Gore.NewGore(npc.position, npc.velocity, 99, 2f);
-				Gore.NewGore(npc.position, npc.velocity, 99, 3f);
-				Gore.NewGore(npc.position, npc.velocity, 99, 3f);
-				Gore.NewGore(npc.position, npc.velocity, 99, 4f);
-				Gore.NewGore(npc.position, npc.velocity, 99, 4f);
-				Gore.NewGore(npc.position, npc.velocity, 99, 3f);
-				Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/WallOfShadowGore1"), 1f);
-				Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/WallOfShadowGore1"), 1f);
-				Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/WallOfShadowGore2"), 1f);
-				Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/WallOfShadowGore2"), 1f);
-				Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/WallOfShadowGore2"), 1f);
-				Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/WallOfShadowGore2"), 1f);
-				Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/WallOfShadowGore2"), 1f);
-				Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/WallOfShadowGore2"), 1f);
-				Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/WallOfShadowGore2"), 1f);
-				Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/WallOfShadowGore2"), 1f);
-				Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/WallOfShadowGore2"), 1f);
-				Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/WallOfShadowGore2"), 1f);
-				Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/WallOfShadowGore2"), 1f);
-				Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/WallOfShadowGore2"), 1f);
+				for (int i = 1; i <= 27; i++)
+				{
+					float x = 
+						  i <= 2  ? 1f
+						: i <= 8  ? 2f
+						: i <= 18 ? 3f
+						: i <= 26 ? 4f
+						: 5f;
+					Gore.NewGore(npc.position, npc.velocity, 99, x);
+				}
+
+				for (int i = 1; i <= 13; i++)
+				{
+					int x = i <= 2 ? 1 : 2;
+					Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/WallOfShadowGore" + x));
+				}
 			}
 		}
-
 
 		public override void NPCLoot()
 		{
@@ -808,8 +807,6 @@ namespace Tremor.NPCs
 			}
 		}
 
-
-
 		public override bool PreDraw(SpriteBatch spriteBatch, Color drawColor)
 		{
 			Texture2D shadowChain = mod.GetTexture("NPCs/WallOfShadowChain");
@@ -854,11 +851,7 @@ namespace Tremor.NPCs
 					float num6 = npc.position.X + (npc.width / 2);
 					float num7 = npc.position.Y;
 					float num8 = (Main.wofB - Main.wofT);
-					bool flag2 = false;
-					if (Main.npc[j].frameCounter > 7.0)
-					{
-						flag2 = true;
-					}
+					bool flag2 = Main.npc[j].frameCounter > 7.0;
 					num7 = Main.wofT + num8 * Main.npc[j].ai[0];
 					Vector2 vector2 = new Vector2(Main.npc[j].position.X + (Main.npc[j].width / 2), Main.npc[j].position.Y + (Main.npc[j].height / 2));
 					float num9 = num6 - vector2.X;
@@ -972,7 +965,6 @@ namespace Tremor.NPCs
 
 			SpriteEffects effects = npc.spriteDirection == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally;
 			spriteBatch.Draw(drawTexture, drawPos, npc.frame, drawColor, npc.rotation, origin, npc.scale, effects, 0);
-
 
 			return false;
 		}
