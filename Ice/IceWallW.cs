@@ -18,13 +18,13 @@ namespace Tremor.Ice
 			item.useStyle = 1;
 			item.consumable = true;
 			item.createWall = mod.WallType("IceWall");
-			ItemID.Sets.ExtractinatorMode[item.type] = item.type;
 		}
 
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Everfrost Wall");
 			Tooltip.SetDefault("");
+			ItemID.Sets.ExtractinatorMode[item.type] = item.type;
 		}
 
 	}

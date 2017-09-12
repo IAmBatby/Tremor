@@ -6,7 +6,6 @@ namespace Tremor.Ice.Items
 	{
 		public override void SetDefaults()
 		{
-
 			item.width = 12;
 			item.height = 12;
 			item.maxStack = 999;
@@ -24,7 +23,6 @@ namespace Tremor.Ice.Items
 			DisplayName.SetDefault("Glacier Wood Wall");
 			Tooltip.SetDefault("");
 		}
-
 
 		public override void AddRecipes()
 		{

@@ -19,3 +19,4 @@ Thanks to Eldrazi for many contributions for this patch.
 - Implemented actual crit chance and knockback for alchemical weapons. Increases to alchemical crit is no longer just visual in the tooltip but actually takes effect (Knockback for alchemical weapons is implemented, but no items give it yet, leave your suggestions)
 - Improved certain tooltips for alchemist class related items (please note I still probably missed many)
 - Fixed certain alchemist class items not granting the right amount of increased damage or critical strike chance
+- Glacier ice wall can now only spread to other ice or snow
