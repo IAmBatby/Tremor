@@ -23,4 +23,5 @@ Thanks to Eldrazi for many contributions for this patch.
 - All treasure bag tooltips 'right click to open' will now translate properly
 - Improved Nova alchemist flask shadow trail opacity
 - Improved Shadow cloud opacity and added fade-out (many alchemist clouds need this)
+- Fixed Wall of Shadows not being able to spawn
 - MY GOD, fixed so much more formatting.. MY GOD!!!
