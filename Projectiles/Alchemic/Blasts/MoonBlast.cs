@@ -4,7 +4,7 @@ using Terraria.ModLoader;
 
 namespace Tremor.Projectiles.Alchemic.Blasts
 {
-	public class MoonBlast : ModProjectile
+	public class MoonBlast : AlchemistProjectile
 	{
 		public override void SetStaticDefaults()
 		{
@@ -37,7 +37,5 @@ namespace Tremor.Projectiles.Alchemic.Blasts
 			if (projectile.frame >= 7)
 			{ projectile.Kill(); }
 		}
-
-
 	}
 }

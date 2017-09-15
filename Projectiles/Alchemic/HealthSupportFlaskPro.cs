@@ -6,7 +6,7 @@ using Terraria.ModLoader;
 
 namespace Tremor.Projectiles.Alchemic
 {
-	public class HealthSupportFlaskPro : ModProjectile
+	public class HealthSupportFlaskPro : AlchemistProjectile
 	{
 		public override void SetStaticDefaults()
 		{

@@ -3,7 +3,7 @@ using Terraria.ModLoader;
 
 namespace Tremor.Projectiles.Alchemic
 {
-	public class HealthSupportCloudPro : ModProjectile
+	public class HealthSupportCloudPro : AlchemistProjectile
 	{
 		public override void SetDefaults()
 		{
@@ -15,13 +15,10 @@ namespace Tremor.Projectiles.Alchemic
 			projectile.timeLeft = 600;
 		}
 
-
-
 		public override void AI()
 		{
 			projectile.rotation = 0f;
 		}
-
 
 		public override void OnHitPlayer(Player target, int damage, bool crit)
 		{
@@ -29,6 +26,5 @@ namespace Tremor.Projectiles.Alchemic
 			target.statLife += newLife;
 			target.HealEffect(newLife);
 		}
-
 	}
 }

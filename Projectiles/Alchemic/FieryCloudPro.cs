@@ -3,7 +3,7 @@ using Terraria.ModLoader;
 
 namespace Tremor.Projectiles.Alchemic
 {
-	public class FieryCloudPro : ModProjectile
+	public class FieryCloudPro : AlchemistProjectile
 	{
 		public override void SetDefaults()
 		{
@@ -17,13 +17,10 @@ namespace Tremor.Projectiles.Alchemic
 			projectile.light = 1.0f;
 		}
 
-
-
 		public override void AI()
 		{
 			projectile.rotation = 0f;
 		}
-
 
 		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
 		{

@@ -3,7 +3,7 @@ using Terraria.ModLoader;
 
 namespace Tremor.Projectiles.Alchemic
 {
-	public class DepressionCloudPro : ModProjectile
+	public class DepressionCloudPro : AlchemistProjectile
 	{
 		public override void SetDefaults()
 		{
@@ -16,12 +16,9 @@ namespace Tremor.Projectiles.Alchemic
 			projectile.timeLeft = 600;
 		}
 
-
-
 		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
 		{
 			target.AddBuff(mod.BuffType("Sad"), 180, false);
 		}
-
 	}
 }

@@ -3,11 +3,44 @@ using System.Linq;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ModLoader;
+using Tremor.Items;
 
 namespace Tremor
 {
+	public abstract class AlchemistProjectile : ModProjectile
+	{
+		// todo: this can PROBABLY be removed when tmodloader updates
+		public override void ModifyHitNPC(NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
+		{
+			Player owner = null;
+			if (projectile.owner != -1)
+				owner = Main.player[projectile.owner];
+			else if (projectile.owner == 255)
+				owner = Main.LocalPlayer;
+
+			ModItem mItem = owner?.HeldItem.modItem;
+			if (mItem != null)
+			{
+				int cc = owner.HeldItem.crit;
+				(mItem as AlchemistItem)?.GetWeaponCrit(owner, ref cc);
+				crit = crit || Main.rand.Next(1, 101) <= cc;
+			}
+		}
+	}
+
 	public abstract class AlchemistItem : ModItem
 	{
+		// make-safe
+		public override void SetDefaults()
+		{
+			item.melee = false;
+			item.ranged = false;
+			item.magic = false;
+			item.thrown = false;
+			item.summon = false;
+			item.crit = 4;
+		}
+
 		public override void GetWeaponKnockback(Player player, ref float knockback)
 		{
 			MPlayer modPlayer = player.GetModPlayer<MPlayer>(mod);
@@ -15,6 +48,7 @@ namespace Tremor
 			knockback *= modPlayer.alchemicalKbMult;
 		}
 
+		// todo: borked, tml requires update, manual work still needed
 		public override void GetWeaponCrit(Player player, ref int crit)
 		{
 			MPlayer modPlayer = player.GetModPlayer<MPlayer>(mod);
@@ -26,7 +60,15 @@ namespace Tremor
 			MPlayer modPlayer = player.GetModPlayer<MPlayer>(mod);
 			// We want to multiply the damage we do by our alchemicalDamage modifier.
 			// todo: ? do we want magic damage to also have effect here?
-			damage = (int)(damage * modPlayer.alchemicalDamage);
+			damage = (int)(damage * modPlayer.alchemicalDamage + 5E-06f);
+		}
+
+		// todo: this can be removed when tmodloader updates
+		public override void ModifyHitNPC(Player player, NPC target, ref int damage, ref float knockBack, ref bool crit)
+		{
+			int cc = item.crit;
+			GetWeaponCrit(player, ref cc);
+			crit = crit || Main.rand.Next(1, 101) <= cc;
 		}
 
 		public override void ModifyTooltips(List<TooltipLine> tooltips)
@@ -35,9 +77,30 @@ namespace Tremor
 			if (tt != null)
 			{
 				// take reverse for 'damage',  grab translation
-				var split = tt.text.Split(' ');
+				string[] split = tt.text.Split(' ');
 				// todo: translation alchemical
 				tt.text = split.First() + " alchemical " + split.Last();
+			}
+			
+			// todo: this can be removed when tmodloader updates
+			if (item.crit > 0)
+			{
+				int crit = item.crit;
+				GetWeaponCrit(Main.LocalPlayer, ref crit);
+				tt = tooltips.FirstOrDefault(x => x.Name == "CritChance" && x.mod == "Terraria");
+				if (tt != null)
+				{
+					tt.text = crit + "% " + tt.text.Split(' ').Skip(1);
+				}
+				else
+				{
+					TooltipLine ttl = new TooltipLine(mod, "CritChance", crit + "% critical strike chance");
+					int index = tooltips.FindIndex(x => x.Name == "Damage" && x.mod == "Terraria");
+					if (index != -1)
+					{
+						tooltips.Insert(index + 1, ttl);
+					}
+				}
 			}
 		}
 

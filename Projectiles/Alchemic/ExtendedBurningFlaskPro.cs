@@ -7,8 +7,14 @@ using Terraria.ModLoader;
 
 namespace Tremor.Projectiles.Alchemic
 {
-	public class ExtendedBurningFlaskPro : ModProjectile
+	public class ExtendedBurningFlaskPro : AlchemistProjectile
 	{
+		public override void SetStaticDefaults()
+		{
+			ProjectileID.Sets.TrailCacheLength[projectile.type] = 5;
+			ProjectileID.Sets.TrailingMode[projectile.type] = 2;
+		}
+
 		public override void SetDefaults()
 		{
 			projectile.width = 18;
@@ -16,6 +22,7 @@ namespace Tremor.Projectiles.Alchemic
 			projectile.friendly = true;
 			projectile.aiStyle = 2;
 			projectile.penetrate = 1;
+			// todo: move
 			if (Main.player[Main.myPlayer].buffType.Contains(mod.BuffType("BouncingCasingBuff")))
 			{
 				projectile.penetrate = 3;
@@ -23,8 +30,7 @@ namespace Tremor.Projectiles.Alchemic
 			else
 				projectile.penetrate = 1;
 			projectile.timeLeft = 1200;
-			ProjectileID.Sets.TrailCacheLength[projectile.type] = 5;
-			ProjectileID.Sets.TrailingMode[projectile.type] = 2;
+			
 		}
 
 		public override void AI()

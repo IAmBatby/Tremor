@@ -7,7 +7,7 @@ using Terraria.ModLoader;
 
 namespace Tremor.Projectiles.Alchemic
 {
-	public class MoonDustFlaskPro : ModProjectile
+	public class MoonDustFlaskPro : AlchemistProjectile
 	{
 		public override void SetStaticDefaults()
 		{

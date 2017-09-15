@@ -4,7 +4,7 @@ using Terraria.ModLoader;
 
 namespace Tremor.Projectiles.Alchemic.Blasts
 {
-	public class ManaBlast : ModProjectile
+	public class ManaBlast : AlchemistProjectile
 	{
 		public override void SetStaticDefaults()
 		{

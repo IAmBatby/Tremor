@@ -3,8 +3,8 @@ using Terraria.ModLoader;
 
 namespace Tremor.Projectiles.Alchemic
 {
-	public class ToxicFlaskCloud : ModProjectile
-    {
+	public class ToxicFlaskCloud : AlchemistProjectile
+	{
         public override void SetDefaults()
         {
             projectile.width = 32;

@@ -3,7 +3,7 @@ using Terraria.ModLoader;
 
 namespace Tremor.Projectiles.Alchemic
 {
-	public class ZellariumCloudPro : ModProjectile
+	public class ZellariumCloudPro : AlchemistProjectile
 	{
 		public override void SetDefaults()
 		{

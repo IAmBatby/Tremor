@@ -5,7 +5,7 @@ using Terraria.ModLoader;
 
 namespace Tremor.Projectiles.Alchemic
 {
-	public class ShadowCloudPro : ModProjectile
+	public class ShadowCloudPro : AlchemistProjectile
 	{
 		public override void SetDefaults()
 		{

@@ -3,7 +3,7 @@ using Terraria.ModLoader;
 
 namespace Tremor.Projectiles.Alchemic
 {
-	public class ClusterCloudPro : ModProjectile
+	public class ClusterCloudPro : AlchemistProjectile
 	{
 		public override void SetDefaults()
 		{
@@ -16,12 +16,9 @@ namespace Tremor.Projectiles.Alchemic
 			projectile.timeLeft = 600;
 		}
 
-
-
 		public override void AI()
 		{
 			projectile.rotation = 0f;
 		}
-
 	}
 }

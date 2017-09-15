@@ -3,7 +3,7 @@ using Terraria.ModLoader;
 
 namespace Tremor.Projectiles.Alchemic
 {
-	public class FrostCloudPro : ModProjectile
+	public class FrostCloudPro : AlchemistProjectile
 	{
 		public override void SetDefaults()
 		{
@@ -16,15 +16,12 @@ namespace Tremor.Projectiles.Alchemic
 			projectile.timeLeft = 600;
 			projectile.light = 1.0f;
 		}
-
-
-
+		
 		public override void AI()
 		{
 			projectile.rotation = 0f;
 		}
-
-
+		
 		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
 		{
 			if (Main.rand.Next(2) == 0)
@@ -32,6 +29,5 @@ namespace Tremor.Projectiles.Alchemic
 				target.AddBuff(44, 180, false);
 			}
 		}
-
 	}
 }

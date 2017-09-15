@@ -3,7 +3,7 @@ using Terraria.ModLoader;
 
 namespace Tremor.Projectiles.Alchemic
 {
-	public class LittleHealingCloudPro : ModProjectile
+	public class LittleHealingCloudPro : AlchemistProjectile
 	{
 		public override void SetDefaults()
 		{
