@@ -90,7 +90,7 @@ namespace Tremor
 				tt = tooltips.FirstOrDefault(x => x.Name == "CritChance" && x.mod == "Terraria");
 				if (tt != null)
 				{
-					tt.text = crit + "% " + tt.text.Split(' ').Skip(1);
+					tt.text = crit + "% " + string.Join(" ", tt.text.Split(' ').Skip(1).ToArray());
 				}
 				else
 				{
