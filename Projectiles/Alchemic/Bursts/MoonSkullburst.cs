@@ -4,7 +4,7 @@ using Terraria.ModLoader;
 
 namespace Tremor.Projectiles.Alchemic.Bursts
 {
-	public class MoonSkullburst : ModProjectile
+	public class MoonSkullburst : AlchemistProjectile
 	{
 		public override void SetDefaults()
 		{
@@ -22,13 +22,7 @@ namespace Tremor.Projectiles.Alchemic.Bursts
 			return Color.White;
 		}
 
-		public override void ModifyHitNPC(NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
-		{
-			if (Main.rand.Next(1, 101) <= Main.player[projectile.owner].GetModPlayer<MPlayer>(mod).alchemicalCrit)
-			{
-				crit = true;
-			}
-		}
+
 
 		public override void AI()
 		{

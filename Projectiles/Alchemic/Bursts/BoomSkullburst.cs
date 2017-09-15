@@ -4,7 +4,7 @@ using Terraria.ModLoader;
 
 namespace Tremor.Projectiles.Alchemic.Bursts
 {
-	public class BoomSkullburst : ModProjectile
+	public class BoomSkullburst : AlchemistProjectile
 	{
 		public override void SetDefaults()
 		{
@@ -17,13 +17,7 @@ namespace Tremor.Projectiles.Alchemic.Bursts
 			projectile.penetrate = -1;
 		}
 
-		public override void ModifyHitNPC(NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
-		{
-			if (Main.rand.Next(1, 101) <= Main.player[projectile.owner].GetModPlayer<MPlayer>(mod).alchemicalCrit)
-			{
-				crit = true;
-			}
-		}
+
 
 
 		public override void Kill(int timeLeft)
