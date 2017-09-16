@@ -27,5 +27,4 @@ namespace Tremor.ZombieEvent.Items
       DisplayName.SetDefault("Rotten Hand");
       Tooltip.SetDefault("");
     }
-
 }}

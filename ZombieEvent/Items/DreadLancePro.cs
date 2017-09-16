@@ -18,5 +18,4 @@ namespace Tremor.ZombieEvent.Items
             target.AddBuff(39, 180, false);
         }
     }
-
 }}

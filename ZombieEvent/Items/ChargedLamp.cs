@@ -53,5 +53,4 @@ namespace Tremor.ZombieEvent.Items
       DisplayName.SetDefault("Charged Lamp");
       Tooltip.SetDefault("Releases electric blasts in all directions");
     }
-
 }}

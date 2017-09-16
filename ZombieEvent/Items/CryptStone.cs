@@ -18,5 +18,4 @@ namespace Tremor.ZombieEvent.Items
       DisplayName.SetDefault("Crypt Stone");
       Tooltip.SetDefault("");
     }
-
 }}

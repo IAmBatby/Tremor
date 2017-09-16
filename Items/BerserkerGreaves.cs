@@ -39,5 +39,4 @@ namespace Tremor.Items
 			recipe.AddRecipe();
 		}
 	}
-
 }

@@ -76,5 +76,4 @@ int GetTarget()
                 int i = Projectile.NewProjectile(Main.player[item.owner].Center.X, Main.player[item.owner].Center.Y, velocity.X, velocity.Y, ShootType, Damage, ShootKN, item.owner);
             }
         }
-
 }}

@@ -52,5 +52,4 @@ public override bool Shoot(Player player, ref Vector2 position, ref float speedX
         recipe.SetResult(this);
         recipe.AddRecipe();
     }
-
 }}

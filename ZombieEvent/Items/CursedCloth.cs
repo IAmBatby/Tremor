@@ -18,5 +18,4 @@ namespace Tremor.ZombieEvent.Items
       DisplayName.SetDefault("Cursed Cloth");
       Tooltip.SetDefault("");
     }
-
 }}

@@ -19,5 +19,4 @@ namespace Tremor.ZombieEvent.Items
       DisplayName.SetDefault("Cursed Ink");
       Tooltip.SetDefault("");
     }
-
 }}

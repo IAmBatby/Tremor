@@ -29,5 +29,4 @@ namespace Tremor.Items
 			player.meleeDamage += 0.22f;
 		}
 	}
-
 }

@@ -52,5 +52,4 @@ namespace Tremor.Tiles
 			g = 0.0f;
 			b = 0.7f;
 		}
-
 }}

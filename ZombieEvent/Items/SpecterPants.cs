@@ -39,5 +39,4 @@ public class SpecterPants : ModItem
         recipe.AddTile(null, "MagicWorkbenchTile");
             recipe.AddRecipe();
         }
-
 }}

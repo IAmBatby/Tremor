@@ -34,5 +34,4 @@ namespace Tremor.ZombieEvent.Items
 	//player.minionCrit += 8;
         player.shroomiteStealth = true;
         }
-
 }}

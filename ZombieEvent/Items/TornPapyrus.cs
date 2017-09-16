@@ -19,5 +19,4 @@ namespace Tremor.ZombieEvent.Items
       DisplayName.SetDefault("Torn Papyrus");
       Tooltip.SetDefault("");
     }
-
 }}

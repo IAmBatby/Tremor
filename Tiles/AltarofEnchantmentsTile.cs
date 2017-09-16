@@ -28,5 +28,4 @@ namespace Tremor.Tiles
             Item.NewItem(i * 16, j * 16, 48, 48, mod.ItemType("AltarofEnchantments"));
         }
     }
-
 }}

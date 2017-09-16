@@ -19,5 +19,4 @@ namespace Tremor.ZombieEvent.Items
       DisplayName.SetDefault("Rupicide");
       Tooltip.SetDefault("");
     }
-
 }}

@@ -31,5 +31,4 @@ namespace Tremor.ZombieEvent.Items
       DisplayName.SetDefault("Dread Lance");
       Tooltip.SetDefault("Inflicts cursed flames on enemies");
     }
-
 }}

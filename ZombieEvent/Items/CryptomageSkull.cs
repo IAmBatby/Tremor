@@ -19,5 +19,4 @@ public class CryptomageSkull : ModItem
       DisplayName.SetDefault("Cryptomage Skull");
       Tooltip.SetDefault("");
     }
-
 }}

@@ -59,5 +59,4 @@ public override bool Shoot(Player player, ref Vector2 position, ref float speedX
         {
             return new Vector2(-18, -4);
         }
-
 }}
