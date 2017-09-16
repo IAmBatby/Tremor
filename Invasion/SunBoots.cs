@@ -14,7 +14,6 @@ namespace Tremor.Invasion
 			item.value = 00150000;
 			item.rare = 11;
 
-
 			item.accessory = true;
 		}
 

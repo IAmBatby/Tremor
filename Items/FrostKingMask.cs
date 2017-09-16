@@ -6,8 +6,6 @@ namespace Tremor.Items
 	public class FrostKingMask : ModItem
 	{
 
-
-
 		public override void SetDefaults()
 		{
 

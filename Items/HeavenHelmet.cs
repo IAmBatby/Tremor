@@ -7,9 +7,6 @@ namespace Tremor.Items
 	public class HeavenHelmet : ModItem
 	{
 
-
-
-
 		public override void SetDefaults()
 		{
 
@@ -26,7 +23,6 @@ namespace Tremor.Items
 			DisplayName.SetDefault("Heaven Helmet");
 			Tooltip.SetDefault("Increases ranged critical strike chance by 12");
 		}
-
 
 		public override void UpdateEquip(Player player)
 		{

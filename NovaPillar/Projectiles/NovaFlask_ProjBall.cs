@@ -30,8 +30,6 @@ namespace Tremor.NovaPillar.Projectiles
 			return Color.White;
 		}
 
-
-
 		public override void AI()
 		{
 			projectile.frameCounter++;
@@ -207,7 +205,6 @@ namespace Tremor.NovaPillar.Projectiles
 					Main.projectile[h].scale = 0.8f;
 				}
 
-
 				if (Main.player[Main.myPlayer].buffType.Contains(mod.BuffType("RoundBlastBuff")) && Main.player[Main.myPlayer].buffType.Contains(mod.BuffType("ReinforcedBurstBuff")))
 				{
 					Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 62);
@@ -264,7 +261,6 @@ namespace Tremor.NovaPillar.Projectiles
 					int g = Projectile.NewProjectile(projectile.position.X + 30, projectile.position.Y - 30, 3, -3, mod.ProjectileType("NovaSkull"), projectile.damage * 2, 1f, projectile.owner);
 					int h = Projectile.NewProjectile(projectile.position.X - 30, projectile.position.Y - 30, -3, -3, mod.ProjectileType("NovaSkull"), projectile.damage * 2, 1f, projectile.owner);
 				}
-
 
 				if (Main.player[Main.myPlayer].buffType.Contains(mod.BuffType("SquareBlastBuff")) && Main.player[Main.myPlayer].buffType.Contains(mod.BuffType("ReinforcedBurstBuff")))
 				{

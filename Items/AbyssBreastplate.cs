@@ -13,7 +13,6 @@ namespace Tremor.Items
 			item.width = 38;
 			item.height = 22;
 
-
 			item.value = 18000;
 			item.rare = 7;
 			item.defense = 22;
@@ -24,7 +23,6 @@ namespace Tremor.Items
 			DisplayName.SetDefault("Abyss Breastplate");
 			Tooltip.SetDefault("14% increased minion damage\nIncreases your max number of minions");
 		}
-
 
 		public override void UpdateEquip(Player player)
 		{

@@ -8,7 +8,6 @@ namespace Tremor.Items
 	public class HarpyMask : ModItem
 	{
 
-
 		public override void SetDefaults()
 		{
 
@@ -25,7 +24,6 @@ namespace Tremor.Items
 			DisplayName.SetDefault("Harpy Mask");
 			Tooltip.SetDefault("10% increased ranged damage");
 		}
-
 
 		public override void UpdateEquip(Player player)
 		{

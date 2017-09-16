@@ -98,7 +98,6 @@ namespace Tremor.Invasion
 
 			InvasionWorld.CyberWrathPoints = InvasionWorld.CyberWrathPoints1;
 
-
 			if (InvasionWorld.CyberWrathPoints1 == 15)
 			{
 				NPC.NewNPC((int)player.Center.X, (int)player.Center.Y - YOffset, mod.NPCType("Violeum"));
@@ -181,7 +180,6 @@ namespace Tremor.Invasion
 			{
 				InvasionWorld.CyberWrathPoints1 = 98;
 			}
-
 
 			if (InvasionWorld.CyberWrathPoints1 == 100 && !NPC.AnyNPCs(mod.NPCType("Titan_")) && !NPC.AnyNPCs(mod.NPCType("Titan")))
 			{

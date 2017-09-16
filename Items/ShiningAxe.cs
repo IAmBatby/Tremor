@@ -34,7 +34,6 @@ namespace Tremor.Items
 			Tooltip.SetDefault("Magical throwing axe!");
 		}
 
-
 		public override bool CanUseItem(Player player)
 		{
 			for (int i = 0; i < 1000; ++i)
@@ -46,7 +45,6 @@ namespace Tremor.Items
 			}
 			return true;
 		}
-
 
 		public override void AddRecipes()
 		{

@@ -28,7 +28,6 @@ namespace Tremor.Projectiles
 
 		}
 
-
 		public override void AI()
 		{
 			projectile.soundDelay--;

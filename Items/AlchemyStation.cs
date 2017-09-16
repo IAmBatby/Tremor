@@ -28,7 +28,6 @@ namespace Tremor.Items
 			Tooltip.SetDefault("Allows you to create unusual potions and transformation of different materials");
 		}
 
-
 		public override void AddRecipes()
 		{
 			ModRecipe recipe = new ModRecipe(mod);

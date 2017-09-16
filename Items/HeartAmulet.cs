@@ -22,7 +22,6 @@ namespace Tremor.Items
 			Tooltip.SetDefault("You respawn with 80% of maximum health after death");
 		}
 
-
 		public override void UpdateAccessory(Player player, bool hideVisual)
 		{
 			TremorPlayer modPlayer = (TremorPlayer)player.GetModPlayer(mod, "TremorPlayer");

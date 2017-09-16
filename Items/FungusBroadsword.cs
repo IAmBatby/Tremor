@@ -30,7 +30,6 @@ namespace Tremor.Items
 			DisplayName.SetDefault("Fungus Broadsword");
 		}
 
-
 		public override void AddRecipes()
 		{
 			ModRecipe recipe = new ModRecipe(mod);

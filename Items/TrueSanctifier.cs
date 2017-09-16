@@ -25,7 +25,6 @@ namespace Tremor.Items
 			Tooltip.SetDefault("Increases alchemical and throwing damage by 30%");
 		}
 
-
 		public override void UpdateAccessory(Player player, bool hideVisual)
 		{
 			player.GetModPlayer<MPlayer>(mod).alchemicalDamage += 0.3f;

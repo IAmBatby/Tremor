@@ -8,8 +8,6 @@ namespace Tremor.Items
 	public class PalladiumHat : ModItem
 	{
 
-
-
 		public override void SetDefaults()
 		{
 
@@ -26,7 +24,6 @@ namespace Tremor.Items
 			DisplayName.SetDefault("Palladium Hat");
 			Tooltip.SetDefault("Increases minion damage by 18%");
 		}
-
 
 		public override void UpdateEquip(Player player)
 		{

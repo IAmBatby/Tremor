@@ -52,7 +52,6 @@ namespace Tremor.NPCs.AndasBoss
 			npc.lavaImmune = true;
 		}
 
-
 		public override void AI()
 		{
 			npc.position += npc.velocity * (2 - 1);

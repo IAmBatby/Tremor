@@ -28,9 +28,6 @@ namespace Tremor.Projectiles
 
 		}
 
-
-
-
 		public override void AI()
 		{
 			int num613 = 10;

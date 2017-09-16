@@ -8,8 +8,6 @@ namespace Tremor.Items
 	public class PalladiumHeader : ModItem
 	{
 
-
-
 		public override void SetDefaults()
 		{
 
@@ -26,7 +24,6 @@ namespace Tremor.Items
 			DisplayName.SetDefault("Palladium Header");
 			Tooltip.SetDefault("Increases thrown damage by 18%");
 		}
-
 
 		public override void UpdateEquip(Player player)
 		{

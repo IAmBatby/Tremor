@@ -30,7 +30,6 @@ namespace Tremor.Items
 			Tooltip.SetDefault("");
 		}
 
-
 		public override bool UseItem(Player player)
 		{
 			if (Main.player[Main.myPlayer].active && Main.player[Main.myPlayer].FindBuffIndex(mod.BuffType("HealthRecharging")) != -1)

@@ -27,7 +27,6 @@ namespace Tremor.Items
 			Tooltip.SetDefault("Summons the Plantera");
 		}
 
-
 		public override bool CanUseItem(Player player)
 		{
 			return Main.hardMode && NPC.downedMechBoss1 && NPC.downedMechBoss2 && NPC.downedMechBoss3 && !NPC.AnyNPCs(NPCID.Plantera);

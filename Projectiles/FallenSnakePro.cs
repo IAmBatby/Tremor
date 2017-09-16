@@ -21,7 +21,6 @@ namespace Tremor.Projectiles
 
 		}
 
-
 		public override bool PreAI()
 		{
 			if (Main.rand.Next(3) == 0)

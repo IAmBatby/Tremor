@@ -23,7 +23,6 @@ namespace Tremor.Items
 			Tooltip.SetDefault("Increases mining speed by 12%");
 		}
 
-
 		public override void UpdateEquip(Player player)
 		{
 			player.pickSpeed -= 0.12f;
@@ -45,7 +44,6 @@ namespace Tremor.Items
 		{
 			player.armorEffectDrawOutlines = true;
 		}
-
 
 		public override void AddRecipes()
 		{

@@ -7,7 +7,6 @@ namespace Tremor.Items
 	public class SteelGreaves : ModItem
 	{
 
-
 		public override void SetDefaults()
 		{
 
@@ -24,7 +23,6 @@ namespace Tremor.Items
 			DisplayName.SetDefault("Steel Greaves");
 			Tooltip.SetDefault("3% increased magic critical strike chance");
 		}
-
 
 		public override void UpdateEquip(Player player)
 		{

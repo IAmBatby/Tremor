@@ -7,7 +7,6 @@ namespace Tremor.Items
 	public class NanoGreaves : ModItem
 	{
 
-
 		public override void SetDefaults()
 		{
 
@@ -24,7 +23,6 @@ namespace Tremor.Items
 			DisplayName.SetDefault("Nano Greaves");
 			Tooltip.SetDefault("20% increased movement speed");
 		}
-
 
 		public override void UpdateEquip(Player player)
 		{

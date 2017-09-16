@@ -23,7 +23,6 @@ namespace Tremor.Items
 			Tooltip.SetDefault("'Great for impersonating devs!'");
 		}
 
-
 		public override void UpdateEquip(Player player)
 		{
 			if (player.name == "Error 404")

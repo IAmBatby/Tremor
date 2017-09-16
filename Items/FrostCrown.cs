@@ -27,7 +27,6 @@ namespace Tremor.Items
 			Tooltip.SetDefault("Summons the Frost King");
 		}
 
-
 		public override bool CanUseItem(Player player)
 		{
 			return NPC.downedMechBossAny && !NPC.AnyNPCs(mod.NPCType("FrostKing")) && player.ZoneSnow;

@@ -30,7 +30,6 @@ namespace Tremor.Items
 			Tooltip.SetDefault("Strong enough to destroy Demon Altars");
 		}
 
-
 		public override void AddRecipes()
 		{
 			ModRecipe recipe = new ModRecipe(mod);

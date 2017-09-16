@@ -12,7 +12,6 @@ namespace Tremor.Items
 			item.width = 22;
 			item.height = 44;
 
-
 			item.value = 1200;
 			item.rare = 2;
 			item.accessory = true;
@@ -24,7 +23,6 @@ namespace Tremor.Items
 			DisplayName.SetDefault("Obsidian Heart");
 			Tooltip.SetDefault("Increases life regeneration\nGrants immunity to fire blocks");
 		}
-
 
 		public override void UpdateAccessory(Player player, bool hideVisual)
 		{

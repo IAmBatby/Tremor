@@ -68,7 +68,6 @@ namespace Tremor.Items
 				player.QuickSpawnItem(mod.ItemType("MechaSprayer"));
 			}
 
-
 			// Dev. Items
 
 			if (Main.hardMode && context == "bossBag" && Main.rand.Next(30) == 0)

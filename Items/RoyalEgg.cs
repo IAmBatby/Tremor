@@ -28,7 +28,6 @@ namespace Tremor.Items
 			Tooltip.SetDefault("Summons the Brutallisk");
 		}
 
-
 		public override bool CanUseItem(Player player)
 		{
 			return NPC.downedMoonlord && !NPC.AnyNPCs(mod.NPCType("Brutallisk")) && player.ZoneDesert;

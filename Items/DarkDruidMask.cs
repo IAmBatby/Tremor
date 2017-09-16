@@ -6,7 +6,6 @@ namespace Tremor.Items
 	public class DarkDruidMask : ModItem
 	{
 
-
 		public override void SetDefaults()
 		{
 

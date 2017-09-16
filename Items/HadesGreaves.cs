@@ -10,7 +10,6 @@ namespace Tremor.Items
 	public class HadesGreaves : ModItem
 	{
 
-
 		public override void SetDefaults()
 		{
 
@@ -27,7 +26,6 @@ namespace Tremor.Items
 			DisplayName.SetDefault("Hades Greaves");
 			Tooltip.SetDefault("Increases movement speed\nAllows to dash\nDouble tap a direction\nAllows you to walk on liquids");
 		}
-
 
 		public override void AddRecipes()
 		{

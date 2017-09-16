@@ -35,7 +35,6 @@ namespace Tremor.Items
 			Tooltip.SetDefault("Inflicts Shadow Flames on foes");
 		}
 
-
 		public override void AddRecipes()
 		{
 			ModRecipe recipe = new ModRecipe(mod);

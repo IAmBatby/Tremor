@@ -36,7 +36,6 @@ namespace Tremor.Invasion
 			Tooltip.SetDefault("Feel the power of the Titan");
 		}
 
-
 		public override void MeleeEffects(Player player, Rectangle hitbox)
 		{
 			if (Main.rand.Next(3) == 0)

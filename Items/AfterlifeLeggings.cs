@@ -13,7 +13,6 @@ namespace Tremor.Items
 			item.width = 38;
 			item.height = 22;
 
-
 			item.value = 10000;
 			item.rare = 6;
 			item.defense = 9;
@@ -24,7 +23,6 @@ namespace Tremor.Items
 			DisplayName.SetDefault("Afterlife Leggings");
 			Tooltip.SetDefault("Higher jump height\nIncreases movement speed");
 		}
-
 
 		public override void UpdateEquip(Player player)
 		{

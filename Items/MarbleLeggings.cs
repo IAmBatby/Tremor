@@ -8,10 +8,8 @@ namespace Tremor.Items
 	public class MarbleLeggings : ModItem
 	{
 
-
 		public override void SetDefaults()
 		{
-
 
 			item.defense = 2;
 			item.width = 22;
@@ -25,7 +23,6 @@ namespace Tremor.Items
 			DisplayName.SetDefault("Marble Leggings");
 			Tooltip.SetDefault("10% increased throwing critical strike chance");
 		}
-
 
 		public override void UpdateEquip(Player p)
 		{

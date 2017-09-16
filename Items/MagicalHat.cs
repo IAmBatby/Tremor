@@ -25,7 +25,6 @@ namespace Tremor.Items
 			Tooltip.SetDefault("3% increased magic damage");
 		}
 
-
 		public override void UpdateEquip(Player player)
 		{
 			player.magicDamage += 0.03f;

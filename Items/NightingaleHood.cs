@@ -11,7 +11,6 @@ namespace Tremor.Items
 		public override void SetDefaults()
 		{
 
-
 			item.defense = 5;
 			item.width = 26;
 			item.height = 32;
@@ -24,7 +23,6 @@ namespace Tremor.Items
 			DisplayName.SetDefault("Nightingale Hood");
 			Tooltip.SetDefault("Increases life regeneration");
 		}
-
 
 		public override void UpdateEquip(Player player)
 		{
@@ -46,7 +44,6 @@ namespace Tremor.Items
 		{
 			player.armorEffectDrawShadowLokis = true;
 		}
-
 
 		public override void AddRecipes()
 		{

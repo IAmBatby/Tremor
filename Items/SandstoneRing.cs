@@ -13,7 +13,6 @@ namespace Tremor.Items
 			item.height = 20;
 			item.value = 10000;
 
-
 			item.rare = 1;
 			item.accessory = true;
 			item.defense = 3;
@@ -24,7 +23,6 @@ namespace Tremor.Items
 			DisplayName.SetDefault("Sandstone Ring ");
 			Tooltip.SetDefault("5% increased melee damage\nIncreases melee critical strike chance by 5");
 		}
-
 
 		public override void UpdateAccessory(Player player, bool hideVisual)
 

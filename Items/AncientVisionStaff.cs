@@ -36,7 +36,6 @@ namespace Tremor.Items
 			Tooltip.SetDefault("Summons an ancient vision to fight for you.");
 		}
 
-
 		public override bool AltFunctionUse(Player player)
 		{
 			return true;

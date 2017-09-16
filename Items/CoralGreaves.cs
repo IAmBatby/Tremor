@@ -7,7 +7,6 @@ namespace Tremor.Items
 	public class CoralGreaves : ModItem
 	{
 
-
 		public override void SetDefaults()
 		{
 
@@ -23,7 +22,6 @@ namespace Tremor.Items
 			DisplayName.SetDefault("Coral Greaves");
 			Tooltip.SetDefault("");
 		}
-
 
 		public override void AddRecipes()
 		{

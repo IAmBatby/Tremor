@@ -40,8 +40,6 @@ namespace Tremor.Projectiles.Minions
        
     }
 
-
-
         void Shoot()
         {
             if (--TimeToShoot <= 0)
@@ -68,7 +66,6 @@ namespace Tremor.Projectiles.Minions
                 Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, Velocity.X, Velocity.Y, ShootType, ShootDamage, ShootKnockback, projectile.owner);
             }
         }
-
 
         public override void AI()
         {

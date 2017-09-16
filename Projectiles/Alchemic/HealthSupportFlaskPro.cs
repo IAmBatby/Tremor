@@ -46,6 +46,5 @@ namespace Tremor.Projectiles.Alchemic
 			}
 		}
 
-
 	}
 }

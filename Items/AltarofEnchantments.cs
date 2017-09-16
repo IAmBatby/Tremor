@@ -28,7 +28,6 @@ namespace Tremor.Items
 			Tooltip.SetDefault("Allows you to improve some items");
 		}
 
-
 		public override void AddRecipes()
 		{
 			ModRecipe recipe = new ModRecipe(mod);

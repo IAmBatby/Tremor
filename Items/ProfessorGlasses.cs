@@ -6,7 +6,6 @@ namespace Tremor.Items
 	public class ProfessorGlasses : ModItem
 	{
 
-
 		public override void SetDefaults()
 		{
 
@@ -22,7 +21,6 @@ namespace Tremor.Items
 			DisplayName.SetDefault("Professor Glasses");
 			Tooltip.SetDefault("");
 		}
-
 
 		public override void DrawHair(ref bool drawHair, ref bool drawAltHair)
 		{

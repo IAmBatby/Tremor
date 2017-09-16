@@ -29,7 +29,6 @@ namespace Tremor.Items
 			Tooltip.SetDefault("Summons the Evil Corn");
 		}
 
-
 		public override bool CanUseItem(Player player)
 		{
 			return !Main.dayTime && !NPC.AnyNPCs(mod.NPCType("EvilCorn"));

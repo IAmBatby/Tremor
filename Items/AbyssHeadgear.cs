@@ -10,7 +10,6 @@ namespace Tremor.Items
 	public class AbyssHeadgear : ModItem
 	{
 
-
 		const int ShootType = 496; // ��� ����५�
 		const float ShootRange = 100.0f; // ���쭮��� ����५�
 		const float ShootKN = 1.0f; // ����뢠��� 
@@ -28,7 +27,6 @@ namespace Tremor.Items
 			item.width = 38;
 			item.height = 22;
 
-
 			item.value = 18000;
 			item.rare = 7;
 			item.defense = 11;
@@ -39,7 +37,6 @@ namespace Tremor.Items
 			DisplayName.SetDefault("Abyss Headgear");
 			Tooltip.SetDefault("14% increased minion damage\nIncreases maximum health by 40");
 		}
-
 
 		public override void UpdateEquip(Player player)
 		{

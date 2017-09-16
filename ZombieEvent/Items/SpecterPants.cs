@@ -13,7 +13,6 @@ public class SpecterPants : ModItem
         item.width = 38;
         item.height = 22;
 
-
         item.value = 10000;
         item.rare = 11;
         item.defense = 15;
@@ -24,7 +23,6 @@ public class SpecterPants : ModItem
       DisplayName.SetDefault("Specter Pants");
       Tooltip.SetDefault("Increases melee damage by 10%\nIncreases minion damage by 10%");
     }
-
 
     public override void UpdateEquip(Player player)
     {

@@ -17,7 +17,6 @@ namespace Tremor.Items
 			item.useTime = 15;
 			item.shoot = 207;
 
-
 			item.shootSpeed = 20f;
 			item.useAnimation = 15;
 			item.useStyle = 5;

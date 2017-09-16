@@ -17,9 +17,6 @@ namespace Tremor.Projectiles.Alchemic.Bursts
 			projectile.penetrate = -1;
 		}
 
-
-
-
 		public override void Kill(int timeLeft)
 		{
 			Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 62);

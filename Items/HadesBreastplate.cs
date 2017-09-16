@@ -27,7 +27,6 @@ namespace Tremor.Items
 			Tooltip.SetDefault("Increases maximum life by 50\nIncreases defense when under 100 health\n45% increased all damage");
 		}
 
-
 		public override void AddRecipes()
 		{
 			ModRecipe recipe = new ModRecipe(mod);

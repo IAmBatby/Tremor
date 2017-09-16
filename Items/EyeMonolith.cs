@@ -28,6 +28,5 @@ namespace Tremor.Items
 			Tooltip.SetDefault("15% increased minion damage if placed");
 		}
 
-
 	}
 }

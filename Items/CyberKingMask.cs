@@ -6,8 +6,6 @@ namespace Tremor.Items
 	public class CyberKingMask : ModItem
 	{
 
-
-
 		public override void SetDefaults()
 		{
 

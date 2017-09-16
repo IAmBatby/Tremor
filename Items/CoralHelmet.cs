@@ -8,7 +8,6 @@ namespace Tremor.Items
 	public class CoralHelmet : ModItem
 	{
 
-
 		public override void SetDefaults()
 		{
 
@@ -25,7 +24,6 @@ namespace Tremor.Items
 			DisplayName.SetDefault("Coral Helmet");
 			Tooltip.SetDefault("Allows you to swim");
 		}
-
 
 		public override void UpdateEquip(Player player)
 		{

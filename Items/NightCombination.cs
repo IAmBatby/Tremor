@@ -22,7 +22,6 @@ namespace Tremor.Items
 			Tooltip.SetDefault("Increases life regeneration, melee damage\nMakes you glow during night");
 		}
 
-
 		public override void UpdateAccessory(Player player, bool hideVisual)
 
 		{

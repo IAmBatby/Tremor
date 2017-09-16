@@ -22,7 +22,6 @@ namespace Tremor.Items
 			Tooltip.SetDefault("5% increased critical strike chance");
 		}
 
-
 		public override void UpdateAccessory(Player player, bool hideVisual)
 		{
 			player.rangedCrit += 5;

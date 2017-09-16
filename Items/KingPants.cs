@@ -6,7 +6,6 @@ namespace Tremor.Items
 	public class KingPants : ModItem
 	{
 
-
 		public override void SetDefaults()
 		{
 

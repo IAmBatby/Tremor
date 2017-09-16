@@ -409,7 +409,6 @@ namespace Tremor.NPCs
 						}
 					}
 
-
 					if (npc.localAI[0] != 1.0 || Main.netMode == 1)
 						return false;
 					npc.localAI[0] = 2f;
@@ -693,7 +692,6 @@ namespace Tremor.NPCs
 					}
 
 				}
-
 
 			return false;
 		}

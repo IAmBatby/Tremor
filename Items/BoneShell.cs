@@ -14,7 +14,6 @@ namespace Tremor.Items
 			item.width = 22;
 			item.height = 18;
 
-
 			item.value = 25000;
 			item.rare = 4;
 			item.defense = 9;
@@ -25,7 +24,6 @@ namespace Tremor.Items
 			DisplayName.SetDefault("Bone Shell");
 			Tooltip.SetDefault("25% increased thrown damage\n6% increased ranged damage");
 		}
-
 
 		public override void UpdateEquip(Player p)
 		{

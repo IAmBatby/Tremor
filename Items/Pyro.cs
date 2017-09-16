@@ -36,7 +36,6 @@ namespace Tremor.Items
 			Tooltip.SetDefault("Alchemical flasks leaves an explosion");
 		}
 
-
 		public override void UpdateAccessory(Player player, bool hideVisual)
 		{
 			MPlayer modPlayer = (MPlayer)player.GetModPlayer(mod, "MPlayer");

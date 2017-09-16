@@ -40,8 +40,6 @@ namespace Tremor.Projectiles.Minions
        
     }
 
-
-
         void Shoot()
         {
             if (--TimeToShoot <= 0)
@@ -73,7 +71,6 @@ public override Color? GetAlpha(Color lightColor)
 { 
 return Color.White; 
 }
-
 
         public override void AI()
         {

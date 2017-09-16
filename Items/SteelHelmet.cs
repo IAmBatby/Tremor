@@ -7,7 +7,6 @@ namespace Tremor.Items
 	public class SteelHelmet : ModItem
 	{
 
-
 		public override void SetDefaults()
 		{
 
@@ -24,7 +23,6 @@ namespace Tremor.Items
 			DisplayName.SetDefault("Steel Helmet");
 			Tooltip.SetDefault("3% increased melee critical strike chance");
 		}
-
 
 		public override void UpdateEquip(Player player)
 		{

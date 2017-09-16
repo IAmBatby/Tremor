@@ -12,7 +12,6 @@ namespace Tremor.Items
 
 			item.width = 250;
 
-
 			item.height = 28;
 			item.value = 35000;
 			item.rare = 2;
@@ -24,7 +23,6 @@ namespace Tremor.Items
 			DisplayName.SetDefault("Golden Robe");
 			Tooltip.SetDefault("5% decreased magic damage\nIncreases maximum mana by 40");
 		}
-
 
 		public override void UpdateEquip(Player player)
 		{

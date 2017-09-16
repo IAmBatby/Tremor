@@ -28,7 +28,6 @@ namespace Tremor.Items
 			Tooltip.SetDefault("75% increased movement speed");
 		}
 
-
 		public override bool UseItem(Player player)
 		{
 			player.AddBuff(mod.BuffType("ScamperBuff"), 14400);

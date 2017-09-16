@@ -29,12 +29,10 @@ namespace Tremor.Items
 			Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(5, 4));
 		}
 
-
 		public override Color? GetAlpha(Color lightColor)
 		{
 			return Color.Yellow;
 		}
-
 
 		public override void AddRecipes()
 		{

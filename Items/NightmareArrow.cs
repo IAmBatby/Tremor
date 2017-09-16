@@ -29,7 +29,6 @@ namespace Tremor.Items
 			Tooltip.SetDefault("'Enemies die... from fear.'");
 		}
 
-
 		public override void AddRecipes()
 		{
 			ModRecipe recipe = new ModRecipe(mod);

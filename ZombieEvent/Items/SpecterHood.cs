@@ -25,7 +25,6 @@ public class SpecterHood : ModItem
         item.width = 38;
         item.height = 22;
 
-
         item.value = 10000;
         item.rare = 11;
         item.defense = 8;
@@ -36,7 +35,6 @@ public class SpecterHood : ModItem
       DisplayName.SetDefault("Specter Hood");
       Tooltip.SetDefault("Increases melee damage by 10%\nIncreases minion damage by 10%");
     }
-
 
     public override void UpdateEquip(Player player)
     {

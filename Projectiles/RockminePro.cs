@@ -26,8 +26,6 @@ namespace Tremor.Projectiles
 
 		}
 
-
-
 		public override bool OnTileCollide(Vector2 oldVelocity)
 		{
 			projectile.penetrate--;
@@ -133,7 +131,6 @@ namespace Tremor.Projectiles
 				}
 			}
 		}
-
 
 	}
 }

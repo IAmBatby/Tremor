@@ -18,8 +18,6 @@ namespace Tremor.Projectiles
 			projectile.light = 0.5f;
 		}
 
-
-
 		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
 		{
 			int newLife = 1;

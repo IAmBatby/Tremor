@@ -37,7 +37,6 @@ namespace Tremor.Items
 			Tooltip.SetDefault("Alchemical flasks leave five explosions");
 		}
 
-
 		public override void AddRecipes()
 		{
 			ModRecipe recipe = new ModRecipe(mod);

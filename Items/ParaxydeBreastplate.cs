@@ -23,13 +23,11 @@ namespace Tremor.Items
 			Tooltip.SetDefault("Increases melee and magic criticals strike chance by 15");
 		}
 
-
 		public override void UpdateEquip(Player player)
 		{
 			player.magicCrit += 15;
 			player.meleeCrit += 15;
 		}
-
 
 		public override void AddRecipes()
 		{

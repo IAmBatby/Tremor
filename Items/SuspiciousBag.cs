@@ -14,7 +14,6 @@ namespace Tremor.Items
 			item.height = 34;
 			item.value = 20000;
 
-
 			item.rare = 11;
 		}
 
@@ -23,7 +22,6 @@ namespace Tremor.Items
 			DisplayName.SetDefault("Suspicious Bag");
 			Tooltip.SetDefault("Right click to open\n'Contains powerful treasures'");
 		}
-
 
 		public override bool CanRightClick()
 		{

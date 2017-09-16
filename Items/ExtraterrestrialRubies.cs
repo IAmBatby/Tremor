@@ -21,13 +21,11 @@ namespace Tremor.Items
 			Tooltip.SetDefault("Increases maximum life by 100\nGreatly increases life regeneration");
 		}
 
-
 		public override void UpdateAccessory(Player player, bool hideVisual)
 		{
 			player.statLifeMax2 += 100;
 			player.lifeRegen = +20;
 		}
-
 
 	}
 }

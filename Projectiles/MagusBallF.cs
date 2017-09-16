@@ -24,7 +24,6 @@ namespace Tremor.Projectiles
 
 		}
 
-
 		public override bool PreAI()
 		{
 			for (int i = 0; i < 10; i++)

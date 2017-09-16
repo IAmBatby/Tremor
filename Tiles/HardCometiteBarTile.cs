@@ -24,7 +24,6 @@ namespace Tremor.Tiles
         Main.tileSolid[Type] = true;
     }
 
-
         public override bool Drop(int i, int j)
         {
             Item.NewItem(i * 16, j * 16, 32, 32, mod.ItemType("HardCometiteBar"));

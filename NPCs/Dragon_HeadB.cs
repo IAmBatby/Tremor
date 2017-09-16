@@ -78,7 +78,6 @@ namespace Tremor.NPCs
 			TremorWorld.Boss.AncientDragon.Downed();
 		}
 
-
 		public override void AI()
 		{
 			npc.position += npc.velocity * (2 - 1);

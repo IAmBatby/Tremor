@@ -16,7 +16,6 @@ namespace Tremor.ZombieEvent.Items
         item.rare = 3;
         item.defense = 3;
 
-
         item.accessory = true;
     }
 
@@ -25,7 +24,6 @@ namespace Tremor.ZombieEvent.Items
       DisplayName.SetDefault("Scary Cloak");
       Tooltip.SetDefault("Makes the player invisible\nIncreases magic and summon damage and critical strike chanse by 8");
     }
-
 
     public override void UpdateAccessory(Player player, bool hideVisual)
 

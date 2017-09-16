@@ -27,7 +27,6 @@ namespace Tremor.Items
 			item.shootSpeed = 5f;
 			item.useAmmo = AmmoID.Bullet;
 
-
 		}
 
 		public override void SetStaticDefaults()
@@ -35,7 +34,6 @@ namespace Tremor.Items
 			DisplayName.SetDefault("The Ultimate Boomstick");
 			Tooltip.SetDefault("Has a chance to shoot moon flames\n'What can be better than a giant shotgun!?'");
 		}
-
 
 		public override Vector2? HoldoutOffset()
 		{
@@ -51,7 +49,6 @@ namespace Tremor.Items
 			{
 				type = 645;
 			}
-
 
 			for (int i = 0; i < 1; ++i) // Will shoot 3 bullets.
 			{

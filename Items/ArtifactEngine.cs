@@ -30,7 +30,6 @@ namespace Tremor.Items
 			Tooltip.SetDefault("Summons Cog Lord");
 		}
 
-
 		public override bool CanUseItem(Player player)
 		{
 			return !Main.dayTime && Main.hardMode && NPC.downedMechBossAny && !NPC.AnyNPCs(mod.NPCType("CogLord"));

@@ -21,13 +21,10 @@ namespace Tremor.Projectiles.Alchemic.Bursts
 			Main.projFrames[projectile.type] = 15;
 		}
 
-
 		public override Color? GetAlpha(Color lightColor)
 		{
 			return Color.White;
 		}
-
-
 
 		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
 		{
@@ -38,7 +35,6 @@ namespace Tremor.Projectiles.Alchemic.Bursts
 
 		public override void AI()
 		{
-
 
 			int num613 = 10;
 			int num614 = 15;
@@ -75,8 +71,6 @@ namespace Tremor.Projectiles.Alchemic.Bursts
 					projectile.alpha = 150;
 				}
 			}
-
-
 
 		}
 	}

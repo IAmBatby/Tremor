@@ -22,7 +22,6 @@ namespace Tremor.NovaPillar.Items
 			Tooltip.SetDefault("");
 		}
 
-
 		public override void AddRecipes()
 		{
 			var recipe = new ModRecipe(mod);

@@ -23,7 +23,6 @@ namespace Tremor.Ice.Items
 			Tooltip.SetDefault("10% increased melee and ranged damage");
 		}
 
-
 		public override void UpdateEquip(Player player)
 		{
 			player.meleeDamage += 0.1f;

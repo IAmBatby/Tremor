@@ -14,7 +14,6 @@ namespace Tremor.ZombieEvent.Items
         item.width = 36;
         item.height = 24;
 
-
         item.useTime = 15;
         item.useAnimation = 15;
         item.shoot = 1;
@@ -34,7 +33,6 @@ namespace Tremor.ZombieEvent.Items
       DisplayName.SetDefault("Rupicide Repeater");
       Tooltip.SetDefault("Quickly launches arrows\n20% to shoot a fiery burst");
     }
-
 
     public override void AddRecipes()
     {

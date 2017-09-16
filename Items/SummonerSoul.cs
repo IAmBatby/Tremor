@@ -14,7 +14,6 @@ namespace Tremor.Items
 			item.width = 22;
 			item.height = 22;
 
-
 			item.rare = 2;
 			item.accessory = true;
 			item.value = 100000;

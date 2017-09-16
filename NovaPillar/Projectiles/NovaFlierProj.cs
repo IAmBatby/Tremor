@@ -30,7 +30,6 @@ namespace Tremor.NovaPillar.Projectiles
 			projectile.rotation = (float)Math.Atan2(projectile.velocity.Y, projectile.velocity.X) + 1.57f;
 		}
 
-
 		public override void Kill(int timeLeft)
 		{
 			for (int i = 0; i < 5; i++)

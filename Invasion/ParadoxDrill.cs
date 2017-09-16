@@ -18,7 +18,6 @@ namespace Tremor.Invasion
 			item.useAnimation = 12;
 			item.channel = true;
 
-
 			item.noUseGraphic = true;
 			item.noMelee = true;
 			item.useStyle = 5;
@@ -36,7 +35,6 @@ namespace Tremor.Invasion
 			DisplayName.SetDefault("Paradox Drill");
 			Tooltip.SetDefault("Press LMB to use drill\nPress RMB to use axe and hammer");
 		}
-
 
 		public override bool AltFunctionUse(Player player)
 		{

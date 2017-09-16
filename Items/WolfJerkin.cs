@@ -14,7 +14,6 @@ namespace Tremor.Items
 			item.height = 26;
 			item.rare = 1;
 
-
 			item.value = 100;
 			item.defense = 4;
 		}
@@ -24,7 +23,6 @@ namespace Tremor.Items
 			DisplayName.SetDefault("Wolf Jerkin");
 			Tooltip.SetDefault("6% increased minion damage\nIncreases your max number of minions");
 		}
-
 
 		public override void UpdateEquip(Player player)
 		{

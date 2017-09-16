@@ -29,7 +29,6 @@ namespace Tremor.Projectiles
 
 		}
 
-
 		public override void AI()
 		{
 			float Light = 0.635f * (3 - (Hits - 1));

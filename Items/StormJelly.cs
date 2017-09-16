@@ -27,7 +27,6 @@ namespace Tremor.Items
 			Tooltip.SetDefault("Summons Storm Jellyfish");
 		}
 
-
 		public override bool CanUseItem(Player player)
 		{
 			return NPC.downedBoss1 && !NPC.AnyNPCs(mod.NPCType("StormJellyfish"));

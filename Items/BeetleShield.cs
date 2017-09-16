@@ -16,7 +16,6 @@ namespace Tremor.Items
 			item.value = 123110;
 			item.rare = 8;
 
-
 			item.accessory = true;
 		}
 
@@ -25,7 +24,6 @@ namespace Tremor.Items
 			DisplayName.SetDefault("Beetle Shield");
 			Tooltip.SetDefault("The less health, the more defense\nMaximum life increased by 50");
 		}
-
 
 		public override void UpdateAccessory(Player player, bool hideVisual)
 

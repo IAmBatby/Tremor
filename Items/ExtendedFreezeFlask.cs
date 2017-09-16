@@ -28,7 +28,6 @@ namespace Tremor.Items
 			item.rare = 1;
 			item.autoReuse = false;
 
-
 			item.ammo = mod.ItemType("BoomFlask");
 		}
 
@@ -38,12 +37,10 @@ namespace Tremor.Items
 			Tooltip.SetDefault("Throws a flask that explodes into clouds\nClouds deal damage to enemies and freeze them");
 		}
 
-
 		public override void PickAmmo(Player player, ref int type, ref float speed, ref int damage, ref float knockback)
 		{
 			type = mod.ProjectileType("FrostCloudPro");
 		}
-
 
 		public override void UpdateInventory(Player player)
 		{

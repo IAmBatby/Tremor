@@ -6,7 +6,6 @@ namespace Tremor.Items
 	public class HummerGreaves : ModItem
 	{
 
-
 		public override void SetDefaults()
 		{
 

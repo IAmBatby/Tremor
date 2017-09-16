@@ -34,7 +34,6 @@ namespace Tremor.Items
 			Tooltip.SetDefault("Shoots out a ghostly sword that inflicts Ichor on enemies");
 		}
 
-
 		public override void MeleeEffects(Player player, Rectangle hitbox)
 		{
 			if (Main.rand.Next(3) == 0)

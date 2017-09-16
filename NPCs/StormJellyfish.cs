@@ -123,7 +123,6 @@ namespace Tremor.NPCs
 			return move * (speed / (float)Math.Sqrt(move.X * move.X + move.Y * move.Y));
 		}
 
-
 		public override void NPCLoot()
 		{
 			if (Main.netMode != 1)

@@ -28,7 +28,6 @@ namespace Tremor.Projectiles
 
 		}
 
-
 		public override void AI()
 		{
 			projectile.localAI[0] += 1f;

@@ -9,7 +9,6 @@ namespace Tremor.Items
 		public override void SetDefaults()
 		{
 
-
 			item.width = 34;
 			item.height = 18;
 			item.rare = 9;
@@ -20,7 +19,6 @@ namespace Tremor.Items
 			DisplayName.SetDefault("Hummer's Breastplate");
 			Tooltip.SetDefault("'Great for impersonating devs!'");
 		}
-
 
 		public override void UpdateEquip(Player player)
 		{

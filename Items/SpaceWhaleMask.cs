@@ -6,8 +6,6 @@ namespace Tremor.Items
 	public class SpaceWhaleMask : ModItem
 	{
 
-
-
 		public override void SetDefaults()
 		{
 

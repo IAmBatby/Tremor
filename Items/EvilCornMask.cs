@@ -6,8 +6,6 @@ namespace Tremor.Items
 	public class EvilCornMask : ModItem
 	{
 
-
-
 		public override void SetDefaults()
 		{
 

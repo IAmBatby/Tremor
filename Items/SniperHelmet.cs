@@ -7,13 +7,11 @@ namespace Tremor.Items
 	public class SniperHelmet : ModItem
 	{
 
-
 		public override void SetDefaults()
 		{
 
 			item.width = 26;
 			item.height = 26;
-
 
 			item.value = 1000000;
 			item.rare = 1;
@@ -49,7 +47,6 @@ namespace Tremor.Items
 			player.rangedDamage *= 1.15f;
 			player.moveSpeed -= 0.20f;
 		}
-
 
 	}
 }

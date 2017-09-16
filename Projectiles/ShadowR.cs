@@ -27,7 +27,6 @@ namespace Tremor.Projectiles
 
 		}
 
-
 		int time2 = 6;
 		int time = 6;
 

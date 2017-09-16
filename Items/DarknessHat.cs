@@ -15,7 +15,6 @@ namespace Tremor.Items
 			item.defense = 22;
 			item.width = 26;
 
-
 			item.height = 32;
 			item.value = 600000;
 			item.rare = 11;
@@ -26,7 +25,6 @@ namespace Tremor.Items
 			DisplayName.SetDefault("Hat of Darkness");
 			Tooltip.SetDefault("Increases life regeneration\nIncreases maximum mana by 80");
 		}
-
 
 		public override bool IsArmorSet(Item head, Item body, Item legs)
 		{

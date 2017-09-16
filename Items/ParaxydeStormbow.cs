@@ -35,7 +35,6 @@ namespace Tremor.Items
 			Tooltip.SetDefault("Has 33% chance to shoot paraxyde crystal");
 		}
 
-
 		public override Vector2? HoldoutOffset()
 		{
 			return new Vector2(-8, -2);

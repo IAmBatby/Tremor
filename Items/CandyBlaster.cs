@@ -35,7 +35,6 @@ namespace Tremor.Items
 			Tooltip.SetDefault("Spends bullets and fires candies");
 		}
 
-
 		public override bool ConsumeAmmo(Player p)
 		{
 			return Main.rand.Next(3) == 0;
@@ -51,7 +50,6 @@ namespace Tremor.Items
 		{
 			return Vector2.Zero;
 		}
-
 
 		public override void AddRecipes()
 		{

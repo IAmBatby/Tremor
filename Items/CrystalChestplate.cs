@@ -25,7 +25,6 @@ namespace Tremor.Items
 			Tooltip.SetDefault("30% increased throwing velocity");
 		}
 
-
 		public override void UpdateEquip(Player p)
 		{
 			p.thrownVelocity += 0.3f;

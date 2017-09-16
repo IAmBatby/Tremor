@@ -26,7 +26,6 @@ namespace Tremor.Items
 			DisplayName.SetDefault("Glass Door");
 		}
 
-
 		public override void AddRecipes()
 		{
 			ModRecipe recipe = new ModRecipe(mod);

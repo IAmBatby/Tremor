@@ -15,7 +15,6 @@ namespace Tremor.Items
 			item.width = 46;
 			item.height = 32;
 
-
 			item.useTime = 9;
 			item.useAnimation = 9;
 			item.shoot = 1;
@@ -34,7 +33,6 @@ namespace Tremor.Items
 			DisplayName.SetDefault("Bolter");
 			Tooltip.SetDefault("Quickly launches arrows\nHas 50% chance to shoot a Hellfire arrow");
 		}
-
 
 		public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
 		{

@@ -6,7 +6,6 @@ namespace Tremor.Items
 	public class LeatherShirt : ModItem
 	{
 
-
 		public override void SetDefaults()
 		{
 

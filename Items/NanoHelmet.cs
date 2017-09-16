@@ -9,15 +9,11 @@ namespace Tremor.Items
 	public class NanoHelmet : ModItem
 	{
 
-
-
-
 		public override void SetDefaults()
 		{
 
 			item.width = 32;
 			item.height = 26;
-
 
 			item.value = 60000;
 			item.rare = 6;
@@ -29,7 +25,6 @@ namespace Tremor.Items
 			DisplayName.SetDefault("Nano Helmet");
 			Tooltip.SetDefault("Maximum mana increased by 60\nIncreases critical strike chance by 8%");
 		}
-
 
 		public override void UpdateEquip(Player player)
 		{

@@ -27,7 +27,6 @@ namespace Tremor.Items
 			Tooltip.SetDefault("Summons the Mothership");
 		}
 
-
 		public override bool CanUseItem(Player player)
 		{
 			return !NPC.AnyNPCs(mod.NPCType("Mothership")) && NPC.downedPlantBoss && !Main.dayTime && Main.netMode != 1;

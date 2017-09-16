@@ -27,9 +27,6 @@ namespace Tremor.Projectiles
 
 		}
 
-
-
-
 		public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)
 		{
 			Vector2 drawOrigin = new Vector2(Main.projectileTexture[projectile.type].Width * 0.5f, projectile.height * 0.5f);

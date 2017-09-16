@@ -30,7 +30,6 @@ namespace Tremor.Items
 			Tooltip.SetDefault("25% chance to confuse enemy");
 		}
 
-
 		public override void OnHitNPC(Player player, NPC target, int damage, float knockback, bool crit)
 		{
 			if (Main.rand.Next(4) == 0)

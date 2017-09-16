@@ -8,7 +8,6 @@ namespace Tremor.Items
 	public class BrassGreaves : ModItem
 	{
 
-
 		public override void SetDefaults()
 		{
 
@@ -25,7 +24,6 @@ namespace Tremor.Items
 			DisplayName.SetDefault("Brass Greaves");
 			Tooltip.SetDefault("15% increased movement speed");
 		}
-
 
 		public override void UpdateEquip(Player player)
 		{

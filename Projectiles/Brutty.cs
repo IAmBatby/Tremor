@@ -22,7 +22,6 @@ namespace Tremor.Projectiles
 
 		}
 
-
 		public override bool PreAI()
 		{
 			Player player = Main.player[projectile.owner];

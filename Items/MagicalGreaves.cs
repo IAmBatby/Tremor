@@ -8,7 +8,6 @@ namespace Tremor.Items
 	public class MagicalGreaves : ModItem
 	{
 
-
 		public override void SetDefaults()
 		{
 

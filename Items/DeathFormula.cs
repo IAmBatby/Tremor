@@ -25,7 +25,6 @@ namespace Tremor.Items
 			Tooltip.SetDefault("20% increased alchemical critical strike chance");
 		}
 
-
 		public override void UpdateAccessory(Player player, bool hideVisual)
 		{
 			player.GetModPlayer<MPlayer>(mod).alchemicalCrit += 20;

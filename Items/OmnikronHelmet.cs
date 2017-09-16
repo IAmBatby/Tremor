@@ -10,7 +10,6 @@ namespace Tremor.Items
 	public class OmnikronHelmet : ModItem
 	{
 
-
 		public override void SetDefaults()
 		{
 
@@ -27,7 +26,6 @@ namespace Tremor.Items
 			DisplayName.SetDefault("Omnikron Helmet");
 			Tooltip.SetDefault("Increased all critical strike chances by 25%");
 		}
-
 
 		public override void ModifyTooltips(List<TooltipLine> tooltips)
 		{
@@ -69,8 +67,6 @@ namespace Tremor.Items
 		{
 			player.armorEffectDrawOutlines = true;
 		}
-
-
 
 		public override void AddRecipes()
 		{

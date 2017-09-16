@@ -24,7 +24,6 @@ namespace Tremor.Items
 			Tooltip.SetDefault("20% chance not to consume ammo");
 		}
 
-
 		public override void UpdateAccessory(Player player, bool hideVisual)
 
 		{

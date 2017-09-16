@@ -35,7 +35,6 @@ namespace Tremor.Items
 			Tooltip.SetDefault("Alchemical flasks leave death flames");
 		}
 
-
 		public override void UpdateAccessory(Player player, bool hideVisual)
 		{
 			MPlayer modPlayer = (MPlayer)player.GetModPlayer(mod, "MPlayer");

@@ -32,7 +32,6 @@ namespace Tremor.Items
 			Tooltip.SetDefault("");
 		}
 
-
 		public override void AddRecipes()
 		{
 			ModRecipe recipe = new ModRecipe(mod);
@@ -43,7 +42,6 @@ namespace Tremor.Items
 			recipe.AddTile(16);
 			recipe.AddRecipe();
 		}
-
 
 		public override void MeleeEffects(Player player, Rectangle hitbox)
 		{

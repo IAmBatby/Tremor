@@ -8,7 +8,6 @@ namespace Tremor.Items
 	public class LivingWoodMask : ModItem
 	{
 
-
 		public override void SetDefaults()
 		{
 
@@ -25,7 +24,6 @@ namespace Tremor.Items
 			DisplayName.SetDefault("Living Wood Mask");
 			Tooltip.SetDefault("Increases minion damage by 4%");
 		}
-
 
 		public override void UpdateEquip(Player player)
 		{

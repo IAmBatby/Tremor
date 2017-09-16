@@ -14,7 +14,6 @@ namespace Tremor.Ice.Mobs
 			Main.npcFrameCount[npc.type] = 3;
 		}
 
-
 		public override void SetDefaults()
 		{
 			npc.lifeMax = 50;

@@ -11,7 +11,6 @@ namespace Tremor.Items
 			item.width = 22;
 			item.height = 44;
 
-
 			item.value = 15000;
 			item.rare = 3;
 			item.defense = 3;
@@ -23,7 +22,6 @@ namespace Tremor.Items
 			DisplayName.SetDefault("Water Storm");
 			Tooltip.SetDefault("Increases magic critical strike chance by 10%\nIncreases maximum mana by 40");
 		}
-
 
 		public override void UpdateAccessory(Player player, bool hideVisual)
 		{

@@ -24,7 +24,6 @@ namespace Tremor.Projectiles
 
 		}
 
-
 		public override void AI()
 		{
 			Lighting.AddLight(projectile.Center, new Vector3(0, 0, 1.5f));

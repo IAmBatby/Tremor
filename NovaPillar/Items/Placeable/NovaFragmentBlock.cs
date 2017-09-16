@@ -27,7 +27,6 @@ namespace Tremor.NovaPillar.Items.Placeable
 			DisplayName.SetDefault("Nova Fragment Block");
 		}
 
-
 		public override void AddRecipes()
 		{
 			var recipe = new ModRecipe(mod);

@@ -7,7 +7,6 @@ namespace Tremor.Items
 	public class HeavenLeggings : ModItem
 	{
 
-
 		public override void SetDefaults()
 		{
 
@@ -24,7 +23,6 @@ namespace Tremor.Items
 			DisplayName.SetDefault("Heaven Leggings");
 			Tooltip.SetDefault("15% decreased movement speed");
 		}
-
 
 		public override void UpdateEquip(Player player)
 		{

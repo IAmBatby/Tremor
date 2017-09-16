@@ -8,7 +8,6 @@ namespace Tremor.Items
 	public class PlagueGreaves : ModItem
 	{
 
-
 		public override void SetDefaults()
 		{
 
@@ -25,7 +24,6 @@ namespace Tremor.Items
 			DisplayName.SetDefault("Plague Greaves");
 			Tooltip.SetDefault("Increases alchemical damage by 10%");
 		}
-
 
 		public override void UpdateEquip(Player player)
 		{

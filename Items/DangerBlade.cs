@@ -26,7 +26,6 @@ namespace Tremor.Items
 			DisplayName.SetDefault("Danger Blade");
 		}
 
-
 		public override void ModifyTooltips(List<TooltipLine> tooltips)
 		{
 			tooltips[0].overrideColor = new Color(238, 194, 73);

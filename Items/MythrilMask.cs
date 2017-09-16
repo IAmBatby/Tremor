@@ -8,8 +8,6 @@ namespace Tremor.Items
 	public class MythrilMask : ModItem
 	{
 
-
-
 		public override void SetDefaults()
 		{
 
@@ -26,7 +24,6 @@ namespace Tremor.Items
 			DisplayName.SetDefault("Mythril Mask");
 			Tooltip.SetDefault("Increases minion damage by 20%");
 		}
-
 
 		public override void UpdateEquip(Player player)
 		{

@@ -28,12 +28,10 @@ namespace Tremor.Items
 			Tooltip.SetDefault("Summons the Alchemaster");
 		}
 
-
 		public override bool CanUseItem(Player player)
 		{
 			return !Main.dayTime && Main.hardMode && !NPC.AnyNPCs(mod.NPCType("Alchemaster"));
 		}
-
 
 		public override bool UseItem(Player player)
 		{

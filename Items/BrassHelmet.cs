@@ -14,7 +14,6 @@ namespace Tremor.Items
 			item.width = 20;
 			item.height = 20;
 
-
 			item.value = 400;
 			item.rare = 5;
 			item.defense = 8;
@@ -25,7 +24,6 @@ namespace Tremor.Items
 			DisplayName.SetDefault("Brass Helmet");
 			Tooltip.SetDefault("10% increased melee damage\nIncreases melee critical strike chance by 8");
 		}
-
 
 		public override void UpdateEquip(Player player)
 		{

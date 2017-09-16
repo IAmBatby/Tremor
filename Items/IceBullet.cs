@@ -29,7 +29,6 @@ namespace Tremor.Items
 			Tooltip.SetDefault("25% chance to inflict frostburn");
 		}
 
-
 		public override void AddRecipes()
 		{
 			ModRecipe recipe = new ModRecipe(mod);

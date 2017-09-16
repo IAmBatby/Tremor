@@ -22,7 +22,6 @@ namespace Tremor.Items
 			Tooltip.SetDefault("'Charged with the essence of sands'");
 		}
 
-
 		public override void AddRecipes()
 		{
 			ModRecipe recipe = new ModRecipe(mod);

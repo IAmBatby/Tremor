@@ -8,8 +8,6 @@ namespace Tremor.Items
 	public class TitaniumHood : ModItem
 	{
 
-
-
 		public override void SetDefaults()
 		{
 
@@ -26,7 +24,6 @@ namespace Tremor.Items
 			DisplayName.SetDefault("Titanium Hood");
 			Tooltip.SetDefault("Increases minion damage by 24%");
 		}
-
 
 		public override void UpdateEquip(Player player)
 		{

@@ -34,7 +34,6 @@ namespace Tremor.NovaPillar.Items.Weapons
 			Tooltip.SetDefault("Shoots a burst of nova balls which explode into flames when hit enemy or after some time,\n flames explode into damaging bursts when hit enemy or after some time.");
 		}
 
-
 		public override Vector2? HoldoutOffset()
 		{
 			return new Vector2(-15, 0);

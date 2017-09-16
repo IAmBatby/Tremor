@@ -33,7 +33,6 @@ namespace Tremor.NovaPillar.Items.Weapons
 			TremorGlowMask.AddGlowMask(item.type, "Tremor/NovaPillar/Items/Weapons/NovaHamaxe_Glow");
 		}
 
-
 		public override void AddRecipes()
 		{
 			ModRecipe recipe = new ModRecipe(mod);

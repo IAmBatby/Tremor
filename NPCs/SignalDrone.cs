@@ -55,7 +55,6 @@ namespace Tremor.NPCs
 		public override bool CanHitPlayer(Player target, ref int cooldownSlot)
 			=> _immuneTime <= 0;
 
-
 		public override void AI()
 		{
 			CheckParent();

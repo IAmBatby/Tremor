@@ -7,14 +7,11 @@ namespace Tremor.Items
 	public class ParaxydeHelmet : ModItem
 	{
 
-
-
 		public override void SetDefaults()
 		{
 
 			item.width = 38;
 			item.height = 22;
-
 
 			item.value = 10000;
 			item.rare = 5;
@@ -26,7 +23,6 @@ namespace Tremor.Items
 			DisplayName.SetDefault("Paraxyde Helmet");
 			Tooltip.SetDefault("Increases magic damage by 12%\nIncreases melee damage by 16%");
 		}
-
 
 		public override void UpdateEquip(Player player)
 		{

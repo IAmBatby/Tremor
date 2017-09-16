@@ -29,6 +29,5 @@ namespace Tremor.Items
 			Tooltip.SetDefault("'Actually it snaps in two'");
 		}
 
-
 	}
 }

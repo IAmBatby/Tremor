@@ -27,7 +27,6 @@ namespace Tremor.Items
 			Tooltip.SetDefault("Increases life regeneration\nLowers visibilty");
 		}
 
-
 		public override bool UseItem(Player player)
 		{
 			player.AddBuff(22, 10000, true);

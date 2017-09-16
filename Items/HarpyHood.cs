@@ -8,7 +8,6 @@ namespace Tremor.Items
 	public class HarpyHood : ModItem
 	{
 
-
 		public override void SetDefaults()
 		{
 
@@ -25,7 +24,6 @@ namespace Tremor.Items
 			DisplayName.SetDefault("Harpy Hood");
 			Tooltip.SetDefault("10% increased magic damage");
 		}
-
 
 		public override void UpdateEquip(Player player)
 		{

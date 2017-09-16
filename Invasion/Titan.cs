@@ -30,7 +30,6 @@ namespace Tremor.Invasion
 			Main.npcFrameCount[npc.type] = 4;
 		}
 
-
 		Vector2 Hands = new Vector2(-1, -1);
 		public static readonly int arenaWidth = (int)(1.3f * NPC.sWidth);
 		public override void SetDefaults()
@@ -142,7 +141,6 @@ namespace Tremor.Invasion
 				npc.velocity.Y = (float)(Math.Sin(rotation) * 46) * -1;
 				npc.netUpdate = true;
 			}
-
 
 			npc.netUpdate = false;
 			npc.ai[0]++;

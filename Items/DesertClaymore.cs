@@ -37,7 +37,6 @@ namespace Tremor.Items
 			Tooltip.SetDefault("");
 		}
 
-
 		public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
 		{
 			Projectile.NewProjectile(position.X, position.Y, 0, 0, type, damage, knockBack, player.whoAmI, player.direction);

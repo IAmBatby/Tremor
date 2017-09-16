@@ -29,7 +29,6 @@ namespace Tremor.Items
 			Tooltip.SetDefault("Pulsing with pure energy");
 		}
 
-
 		public override void AddRecipes()
 		{
 			ModRecipe recipe = new ModRecipe(mod);

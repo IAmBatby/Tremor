@@ -14,7 +14,6 @@ namespace Tremor.Items
 			item.width = 18;
 			item.height = 22;
 
-
 			item.value = 13500;
 			item.rare = 8;
 			item.defense = 13;
@@ -26,7 +25,6 @@ namespace Tremor.Items
 			Tooltip.SetDefault("Increases alchemical damage by 16%\nIncreases movement speed by 30%");
 			TremorGlowMask.AddGlowMask(item.type, "Tremor/Items/DesertExplorerGreaves_LegsGlow");
 		}
-
 
 		public override void UpdateEquip(Player player)
 		{

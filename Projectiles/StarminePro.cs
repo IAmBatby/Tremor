@@ -28,8 +28,6 @@ namespace Tremor.Projectiles
 
 		}
 
-
-
 		public override void AI()
 		{
 			if (Main.rand.Next(3) == 0)

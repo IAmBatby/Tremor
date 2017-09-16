@@ -501,7 +501,6 @@ namespace Tremor.NPCs
 			}
 		}
 
-
 		public override float SpawnChance(NPCSpawnInfo spawnInfo)
 		{
 			return spawnInfo.player.ZoneJungle && NPC.downedPlantBoss ? 0.001f : 0f;

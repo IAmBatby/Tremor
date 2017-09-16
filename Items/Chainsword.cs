@@ -30,6 +30,5 @@ namespace Tremor.Items
 			Tooltip.SetDefault("'It looks like a sword, but its actually a saw! Buy yours today!'");
 		}
 
-
 	}
 }

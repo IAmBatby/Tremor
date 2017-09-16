@@ -28,7 +28,6 @@ namespace Tremor.Items
 			Tooltip.SetDefault("Summons Blood Moon");
 		}
 
-
 		public override bool CanUseItem(Player player)
 		{
 			if (!Main.dayTime && !Main.bloodMoon)

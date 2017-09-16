@@ -24,7 +24,6 @@ namespace Tremor.Items
 			Tooltip.SetDefault("Increases monsters spawn rate");
 		}
 
-
 		public override void UpdateAccessory(Player player, bool hideVisual)
 		{
 			player.enemySpawns = true;

@@ -10,7 +10,6 @@ namespace Tremor.Items
 	public class OmnikronMask : ModItem
 	{
 
-
 		public override void SetDefaults()
 		{
 
@@ -27,7 +26,6 @@ namespace Tremor.Items
 			DisplayName.SetDefault("Omnikron Mask");
 			Tooltip.SetDefault("20% increased all damage");
 		}
-
 
 		public override void ModifyTooltips(List<TooltipLine> tooltips)
 		{
@@ -70,8 +68,6 @@ namespace Tremor.Items
 		{
 			player.armorEffectDrawOutlines = true;
 		}
-
-
 
 		public override void AddRecipes()
 		{

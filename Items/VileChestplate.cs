@@ -12,7 +12,6 @@ namespace Tremor.Items
 			item.width = 38;
 			item.height = 22;
 
-
 			item.value = 30000;
 			item.rare = 1;
 			item.defense = 4;
@@ -23,7 +22,6 @@ namespace Tremor.Items
 			DisplayName.SetDefault("Vile Chestplate");
 			Tooltip.SetDefault("8% increased minion damage\nIncreases your max number of minions");
 		}
-
 
 		public override void UpdateEquip(Player player)
 		{

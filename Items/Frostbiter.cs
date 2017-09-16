@@ -35,7 +35,6 @@ namespace Tremor.Items
 			Tooltip.SetDefault("");
 		}
 
-
 		public override void AddRecipes()
 		{
 			ModRecipe recipe = new ModRecipe(mod);
@@ -47,8 +46,6 @@ namespace Tremor.Items
 			recipe.AddTile(134);
 			recipe.AddRecipe();
 		}
-
-
 
 		public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
 		{
@@ -72,8 +69,6 @@ namespace Tremor.Items
 				}
 
 				Projectile.NewProjectile(vector2.X, vector2.Y, vX, vY, 118, damage, knockBack, Main.myPlayer);
-
-
 
 			}
 			return false;

@@ -14,7 +14,6 @@ namespace Tremor.Items
 			item.width = 38;
 			item.height = 22;
 
-
 			item.value = 200;
 			item.rare = 1;
 			item.defense = 2;
@@ -25,7 +24,6 @@ namespace Tremor.Items
 			DisplayName.SetDefault("Living Wood Breastplate");
 			Tooltip.SetDefault("Increases minion damage by 4%\nIncreases your max number of minions");
 		}
-
 
 		public override void UpdateEquip(Player player)
 		{

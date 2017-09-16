@@ -22,8 +22,6 @@ namespace Tremor.Projectiles.Alchemic.Bursts
 			return Color.White;
 		}
 
-
-
 		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
 		{
 			if (Main.rand.Next(5) == 0)

@@ -7,8 +7,6 @@ namespace Tremor.Items
 	public class InvarHat : ModItem
 	{
 
-
-
 		public override void SetDefaults()
 		{
 
@@ -25,7 +23,6 @@ namespace Tremor.Items
 			DisplayName.SetDefault("Invar Hat");
 			Tooltip.SetDefault("10% increased melee speed");
 		}
-
 
 		public override void UpdateEquip(Player player)
 		{

@@ -14,7 +14,6 @@ namespace Tremor.Items
 			item.width = 20;
 			item.height = 20;
 
-
 			item.value = 400;
 			item.rare = 5;
 			item.defense = 8;
@@ -25,7 +24,6 @@ namespace Tremor.Items
 			DisplayName.SetDefault("Brass Headgear");
 			Tooltip.SetDefault("10% increased magical damage\nIncreases magical critical strike chance by 8");
 		}
-
 
 		public override void UpdateEquip(Player player)
 		{

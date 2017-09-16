@@ -6,8 +6,6 @@ namespace Tremor.Items
 	public class LeatherGreaves : ModItem
 	{
 
-
-
 		public override void SetDefaults()
 		{
 
@@ -23,7 +21,6 @@ namespace Tremor.Items
 			DisplayName.SetDefault("Leather Greaves");
 			Tooltip.SetDefault("");
 		}
-
 
 	}
 }

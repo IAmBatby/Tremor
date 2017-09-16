@@ -21,7 +21,6 @@ namespace Tremor.Items
 			Tooltip.SetDefault("Increases maximum life by 100\n15% increased critical strike chance");
 		}
 
-
 		public override void UpdateAccessory(Player player, bool hideVisual)
 		{
 			player.statLifeMax2 += 100;
@@ -30,7 +29,6 @@ namespace Tremor.Items
 			player.magicCrit += 5;
 			player.thrownCrit += 5;
 		}
-
 
 	}
 }

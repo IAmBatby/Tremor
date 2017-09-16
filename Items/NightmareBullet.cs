@@ -29,7 +29,6 @@ namespace Tremor.Items
 			Tooltip.SetDefault("'Can bounce off blocks.'");
 		}
 
-
 		public override void AddRecipes()
 		{
 			ModRecipe recipe = new ModRecipe(mod);

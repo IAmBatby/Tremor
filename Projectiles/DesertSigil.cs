@@ -35,7 +35,6 @@ namespace Tremor.Projectiles
 
 		}
 
-
 		public override bool OnTileCollide(Vector2 oldVelocity)
 		{
 			return false;
@@ -67,7 +66,6 @@ namespace Tremor.Projectiles
 				Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, Velocity.X, Velocity.Y, ShootType, ShootDamage, ShootKnockback, projectile.owner);
 			}
 		}
-
 
 		public override void AI()
 		{

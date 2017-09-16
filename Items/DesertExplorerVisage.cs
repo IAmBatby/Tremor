@@ -25,7 +25,6 @@ namespace Tremor.Items
 			TremorGlowMask.AddGlowMask(item.type, "Tremor/Items/DesertExplorerVisage_HeadGlow");
 		}
 
-
 		public override void ArmorSetShadows(Player player)
 		{
 			player.armorEffectDrawShadowSubtle = true;

@@ -8,7 +8,6 @@ namespace Tremor.Items
 	public class PlagueHelmet : ModItem
 	{
 
-
 		public override void SetDefaults()
 		{
 
@@ -25,7 +24,6 @@ namespace Tremor.Items
 			DisplayName.SetDefault("Plague Helmet");
 			Tooltip.SetDefault("Increases alchemical damage by 10%");
 		}
-
 
 		public override void UpdateEquip(Player player)
 		{

@@ -8,8 +8,6 @@ namespace Tremor.Items
 	public class ChlorophyteHat : ModItem
 	{
 
-
-
 		public override void SetDefaults()
 		{
 
@@ -26,7 +24,6 @@ namespace Tremor.Items
 			DisplayName.SetDefault("Chlorophyte Hat");
 			Tooltip.SetDefault("Increases minion damage by 25%");
 		}
-
 
 		public override void UpdateEquip(Player player)
 		{

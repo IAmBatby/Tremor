@@ -23,8 +23,6 @@ namespace Tremor.Projectiles.Alchemic.Bursts
 			return Color.White;
 		}
 
-
-
 		public override void AI()
 		{
 			projectile.frameCounter++;

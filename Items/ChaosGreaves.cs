@@ -7,14 +7,12 @@ namespace Tremor.Items
 	public class ChaosGreaves : ModItem
 	{
 
-
 		public override void SetDefaults()
 		{
 
 			item.width = 22;
 			item.height = 18;
 			item.value = 6000;
-
 
 			item.rare = 5;
 			item.defense = 11;
@@ -25,7 +23,6 @@ namespace Tremor.Items
 			DisplayName.SetDefault("Chaos Greaves");
 			Tooltip.SetDefault("Increased life max by 25\nIncreased wing time");
 		}
-
 
 		public override void UpdateEquip(Player p)
 		{

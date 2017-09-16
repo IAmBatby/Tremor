@@ -37,12 +37,10 @@ namespace Tremor.Items
 			Tooltip.SetDefault("Shoots a cosmic beam");
 		}
 
-
 		public override void ModifyTooltips(List<TooltipLine> tooltips)
 		{
 			tooltips[0].overrideColor = new Color(238, 194, 73);
 		}
-
 
 		public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
 		{
@@ -114,7 +112,6 @@ namespace Tremor.Items
 		{
 			return Vector2.Zero;
 		}
-
 
 		public override void AddRecipes()
 		{

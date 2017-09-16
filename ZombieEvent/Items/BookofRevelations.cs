@@ -21,7 +21,6 @@ namespace Tremor.ZombieEvent.Items
             item.autoReuse = false;
             item.noMelee = true;
 
-
         }
 
         public override void SetStaticDefaults()
@@ -38,7 +37,6 @@ namespace Tremor.ZombieEvent.Items
         recipe.SetResult(this);
         recipe.AddRecipe();
     }
-
 
         public override bool UseItem(Player player)
         {

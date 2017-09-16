@@ -6,7 +6,6 @@ namespace Tremor.Items
 	public class ArcherGreaves : ModItem
 	{
 
-
 		public override void SetDefaults()
 		{
 

@@ -21,7 +21,6 @@ namespace Tremor.Items
 			Tooltip.SetDefault("Reduces the cooldown of healing potions\nAutomatically uses mana potions when needed");
 		}
 
-
 		public override void UpdateAccessory(Player player, bool hideVisual)
 		{
 			player.potionDelayTime = 2700;

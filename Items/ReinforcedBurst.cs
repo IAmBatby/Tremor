@@ -36,7 +36,6 @@ namespace Tremor.Items
 			Tooltip.SetDefault("Alchemical flasks leave three death flames");
 		}
 
-
 		public override void AddRecipes()
 		{
 			ModRecipe recipe = new ModRecipe(mod);

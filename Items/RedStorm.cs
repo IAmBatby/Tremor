@@ -18,7 +18,6 @@ namespace Tremor.Items
 			item.width = 22;
 			item.height = 46;
 
-
 			item.useTime = 7;
 			item.useAnimation = 30;
 			item.useStyle = 5;
@@ -37,8 +36,6 @@ namespace Tremor.Items
 			DisplayName.SetDefault("Red Storm");
 			Tooltip.SetDefault("Causes red lasers to fall from sky\n");
 		}
-
-
 
 		public override bool ConsumeAmmo(Player p)
 		{

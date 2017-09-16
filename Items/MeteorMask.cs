@@ -7,8 +7,6 @@ namespace Tremor.Items
 	public class MeteorMask : ModItem
 	{
 
-
-
 		public override void SetDefaults()
 		{
 
@@ -25,7 +23,6 @@ namespace Tremor.Items
 			DisplayName.SetDefault("Meteor Mask");
 			Tooltip.SetDefault("Increases magic critical strike chance by 9");
 		}
-
 
 		public override void UpdateEquip(Player player)
 		{

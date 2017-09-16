@@ -15,7 +15,6 @@ namespace Tremor.NPCs
 			Main.npcFrameCount[npc.type] = 6;
 		}
 
-
 		public override void HitEffect(int hitDirection, double damage)
 		{
 			if (npc.life <= 0)
@@ -52,7 +51,6 @@ namespace Tremor.NPCs
 			bossBag = mod.ItemType("CyberKingBag");
 		}
 
-
 		public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
 		{
 			npc.lifeMax = (int)(npc.lifeMax * 0.625f * bossLifeScale);
@@ -71,7 +69,6 @@ namespace Tremor.NPCs
 				NPC.NewNPC((int)npc.position.X, (int)npc.position.Y + 60, mod.NPCType("Cybermite"));
 				NPC.NewNPC((int)npc.position.X, (int)npc.position.Y - 60, mod.NPCType("Cybermite"));
 			}
-
 
 			bool allDead = false;
 			for (int i = 0; i < Main.player.Length; i++)

@@ -26,7 +26,6 @@ namespace Tremor.Projectiles
 
 		}
 
-
 		// Now this is where the chain magic happens. You don't have to try to figure this whole thing out.
 		// Just make sure that you edit the first line (which starts with 'Texture2D texture') correctly.
 		public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)

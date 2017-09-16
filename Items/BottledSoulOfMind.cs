@@ -16,7 +16,6 @@ namespace Tremor.Items
 			item.autoReuse = true;
 			item.useAnimation = 15;
 
-
 			item.useTime = 10;
 			item.useStyle = 1;
 			item.consumable = true;
@@ -31,7 +30,6 @@ namespace Tremor.Items
 			DisplayName.SetDefault("Bottled Soul of Mind");
 			Tooltip.SetDefault("Shows the location of enemies if worn\nShows the location of treasure and ore if placed");
 		}
-
 
 		public override void AddRecipes()
 		{

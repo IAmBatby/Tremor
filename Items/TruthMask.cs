@@ -6,8 +6,6 @@ namespace Tremor.Items
 	public class TruthMask : ModItem
 	{
 
-
-
 		public override void SetDefaults()
 		{
 

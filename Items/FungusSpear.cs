@@ -32,7 +32,6 @@ namespace Tremor.Items
 			Tooltip.SetDefault("Has a chance to inflict confusion on enemies");
 		}
 
-
 		public override void AddRecipes()
 		{
 			ModRecipe recipe = new ModRecipe(mod);

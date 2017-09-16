@@ -26,7 +26,6 @@ namespace Tremor.Projectiles
 
 		}
 
-
 		public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)
 		{
 			Texture2D texture = ModLoader.GetTexture("Tremor/Projectiles/AncientFlail_Chain");

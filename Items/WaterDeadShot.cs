@@ -17,7 +17,6 @@ namespace Tremor.Items
 			item.ranged = true;
 			item.shoot = 27;
 
-
 			item.shootSpeed = 23f;
 			item.useAnimation = 30;
 			item.useStyle = 5;
@@ -34,7 +33,6 @@ namespace Tremor.Items
 			DisplayName.SetDefault("Water Dead Shot");
 			Tooltip.SetDefault("Shoots water streams\nUses arrows as ammo");
 		}
-
 
 		public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
 		{

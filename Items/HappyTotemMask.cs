@@ -6,8 +6,6 @@ namespace Tremor.Items
 	public class HappyTotemMask : ModItem
 	{
 
-
-
 		public override void SetDefaults()
 		{
 

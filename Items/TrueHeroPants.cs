@@ -9,7 +9,6 @@ namespace Tremor.Items
 	public class TrueHeroPants : ModItem
 	{
 
-
 		public override void SetDefaults()
 		{
 
@@ -26,7 +25,6 @@ namespace Tremor.Items
 			DisplayName.SetDefault("True Hero Pants");
 			Tooltip.SetDefault("Gives one of three true blades");
 		}
-
 
 		public override void ModifyTooltips(List<TooltipLine> tooltips)
 		{
@@ -49,6 +47,5 @@ namespace Tremor.Items
 			recipe.AddRecipe();
 		}
 	}
-
 
 }

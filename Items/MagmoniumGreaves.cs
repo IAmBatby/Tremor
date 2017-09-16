@@ -7,7 +7,6 @@ namespace Tremor.Items
 	public class MagmoniumGreaves : ModItem
 	{
 
-
 		public override void SetDefaults()
 		{
 			item.defense = 15;
@@ -22,7 +21,6 @@ namespace Tremor.Items
 			DisplayName.SetDefault("Magmonium Greaves");
 			Tooltip.SetDefault("10% increased melee speed\n10% reduced mana usage");
 		}
-
 
 		public override void UpdateEquip(Player player)
 		{

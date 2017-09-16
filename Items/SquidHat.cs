@@ -6,7 +6,6 @@ namespace Tremor.Items
 	public class SquidHat : ModItem
 	{
 
-
 		public override void SetDefaults()
 		{
 
@@ -20,7 +19,6 @@ namespace Tremor.Items
 			DisplayName.SetDefault("Squid Hat");
 			Tooltip.SetDefault("");
 		}
-
 
 	}
 }

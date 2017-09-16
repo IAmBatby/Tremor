@@ -8,8 +8,6 @@ namespace Tremor.Items
 	public class TitaniumHeader : ModItem
 	{
 
-
-
 		public override void SetDefaults()
 		{
 
@@ -26,7 +24,6 @@ namespace Tremor.Items
 			DisplayName.SetDefault("Titanium Header");
 			Tooltip.SetDefault("Increases thrown damage by 24%");
 		}
-
 
 		public override void UpdateEquip(Player player)
 		{

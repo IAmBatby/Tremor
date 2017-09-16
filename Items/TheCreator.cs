@@ -11,7 +11,6 @@ namespace Tremor.Items
 			item.width = 22;
 			item.height = 44;
 
-
 			item.value = 10000;
 			item.rare = 4;
 			item.defense = 9;
@@ -23,7 +22,6 @@ namespace Tremor.Items
 			DisplayName.SetDefault("The Creator");
 			Tooltip.SetDefault("15% increased all damage and crit\nIncreases maximum mana and health by 100");
 		}
-
 
 		public override void UpdateAccessory(Player player, bool hideVisual)
 		{

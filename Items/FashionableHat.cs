@@ -6,7 +6,6 @@ namespace Tremor.Items
 	public class FashionableHat : ModItem
 	{
 
-
 		public override void SetDefaults()
 		{
 
@@ -22,7 +21,6 @@ namespace Tremor.Items
 			DisplayName.SetDefault("Fashionable Hat");
 			Tooltip.SetDefault("");
 		}
-
 
 	}
 }

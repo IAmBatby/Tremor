@@ -24,7 +24,6 @@ namespace Tremor.Ice.Items
 			Tooltip.SetDefault("10% increased move speed and increased jump height");
 		}
 
-
 		public override void UpdateAccessory(Player player, bool hideVisual)
 
 		{

@@ -19,7 +19,6 @@ namespace Tremor.Items
 			item.useTime = 7;
 			item.mana = 20;
 
-
 			item.useAnimation = 30;
 			item.useStyle = 5;
 			item.shootSpeed = 30f;
@@ -35,7 +34,6 @@ namespace Tremor.Items
 			DisplayName.SetDefault("Crystal Hail");
 			Tooltip.SetDefault("Causes crystals to fall from the sky\n'Made of pure friendship''");
 		}
-
 
 		public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
 		{

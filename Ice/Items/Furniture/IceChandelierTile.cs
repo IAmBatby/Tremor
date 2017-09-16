@@ -33,7 +33,6 @@ namespace Tremor.Ice.Items.Furniture
 			b = 0.9f;
 		}
 
-
 		public override void KillMultiTile(int i, int j, int frameX, int frameY)
 		{
 			if (frameX == 0)

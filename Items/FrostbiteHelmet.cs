@@ -8,8 +8,6 @@ namespace Tremor.Items
 	public class FrostbiteHelmet : ModItem
 	{
 
-
-
 		public override void SetDefaults()
 		{
 
@@ -25,7 +23,6 @@ namespace Tremor.Items
 			DisplayName.SetDefault("Frostbite Helmet");
 			Tooltip.SetDefault("");
 		}
-
 
 		public override bool IsArmorSet(Item head, Item body, Item legs)
 		{

@@ -7,7 +7,6 @@ namespace Tremor.Items
 	public class SamuraiGeaves : ModItem
 	{
 
-
 		public override void SetDefaults()
 		{
 
@@ -24,7 +23,6 @@ namespace Tremor.Items
 			DisplayName.SetDefault("Samurai Legguards");
 			Tooltip.SetDefault("Increases movement speed by 50%");
 		}
-
 
 		public override void UpdateEquip(Player player)
 		{

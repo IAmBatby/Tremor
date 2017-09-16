@@ -28,7 +28,6 @@ namespace Tremor.Items
 			item.crit = 4;
 			item.useAmmo = mod.ItemType("BoomFlask");
 
-
 		}
 
 		public override void SetStaticDefaults()
@@ -36,7 +35,6 @@ namespace Tremor.Items
 			DisplayName.SetDefault("Nightmare Sprayer");
 			Tooltip.SetDefault("Uses flasks as ammo\nSprays alchemical clouds");
 		}
-
 
 		public override void AddRecipes()
 		{

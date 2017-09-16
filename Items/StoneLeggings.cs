@@ -8,7 +8,6 @@ namespace Tremor.Items
 	public class StoneLeggings : ModItem
 	{
 
-
 		public override void SetDefaults()
 		{
 
@@ -25,7 +24,6 @@ namespace Tremor.Items
 			DisplayName.SetDefault("Stone Leggings");
 			Tooltip.SetDefault("4% increased melee damage");
 		}
-
 
 		public override void UpdateEquip(Player player)
 		{

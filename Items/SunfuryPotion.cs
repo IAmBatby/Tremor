@@ -28,7 +28,6 @@ namespace Tremor.Items
 			Tooltip.SetDefault("Increases all stats during daytime");
 		}
 
-
 		public override bool UseItem(Player player)
 		{
 			player.AddBuff(mod.BuffType("DayHunting"), 14400);

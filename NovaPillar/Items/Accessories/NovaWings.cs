@@ -21,7 +21,6 @@ namespace Tremor.NovaPillar.Items.Accessories
 			Tooltip.SetDefault("Allows flight and slow fall");
 		}
 
-
 		public override void UpdateAccessory(Player player, bool hideVisual)
 		{
 			player.wingTimeMax = 334;

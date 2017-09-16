@@ -7,7 +7,6 @@ namespace Tremor.Items
 	public class ArcherHelmet : ModItem
 	{
 
-
 		public override void SetDefaults()
 		{
 
@@ -23,7 +22,6 @@ namespace Tremor.Items
 			DisplayName.SetDefault("Archer Helmet");
 			Tooltip.SetDefault("");
 		}
-
 
 		public override bool IsArmorSet(Item head, Item body, Item legs)
 		{

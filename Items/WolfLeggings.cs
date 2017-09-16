@@ -7,14 +7,12 @@ namespace Tremor.Items
 	public class WolfLeggings : ModItem
 	{
 
-
 		public override void SetDefaults()
 		{
 
 			item.width = 22;
 			item.height = 18;
 			item.rare = 1;
-
 
 			item.value = 100;
 			item.defense = 3;
@@ -25,7 +23,6 @@ namespace Tremor.Items
 			DisplayName.SetDefault("Wolf Leggings");
 			Tooltip.SetDefault("6% increased minion damage\nIncreases movement speed");
 		}
-
 
 		public override void UpdateEquip(Player player)
 		{

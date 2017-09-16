@@ -33,7 +33,6 @@ namespace Tremor.Items
 			Tooltip.SetDefault("Shoots spiky brass cogs on use");
 		}
 
-
 		public override void UpdateInventory(Player player)
 		{
 			if (Main.player[Main.myPlayer].buffType.Contains(mod.BuffType("SteamSwordBuff")))

@@ -24,8 +24,6 @@ namespace Tremor.Items
 			Tooltip.SetDefault("Allows flight\nHas infinite flight time\nHas big flight speed");
 		}
 
-
-
 		public override void UpdateAccessory(Player player, bool hideVisual)
 		{
 			player.wingTimeMax = 9999999;

@@ -16,7 +16,6 @@ namespace Tremor.Items
 			item.autoReuse = true;
 			item.useAnimation = 15;
 
-
 			item.useTime = 10;
 			item.useStyle = 1;
 			item.consumable = true;
@@ -31,7 +30,6 @@ namespace Tremor.Items
 			DisplayName.SetDefault("Bottled Soul of Flight");
 			Tooltip.SetDefault("Grants Shiny Red Baloon effect if worn\n20% increased jump height if placed");
 		}
-
 
 		public override void AddRecipes()
 		{

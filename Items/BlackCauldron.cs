@@ -12,7 +12,6 @@ namespace Tremor.Items
 			item.width = 22;
 			item.height = 44;
 
-
 			item.value = 100000;
 			item.rare = 4;
 			item.accessory = true;
@@ -24,7 +23,6 @@ namespace Tremor.Items
 			Tooltip.SetDefault("Increased alchemical damage by 12%\nAlchemical weapons confuse your enemies");
 			Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(8, 4));
 		}
-
 
 		public override void UpdateAccessory(Player player, bool hideVisual)
 		{

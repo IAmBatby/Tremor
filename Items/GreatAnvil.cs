@@ -27,6 +27,5 @@ namespace Tremor.Items
 			Tooltip.SetDefault("Allows to produce heavy weapons");
 		}
 
-
 	}
 }

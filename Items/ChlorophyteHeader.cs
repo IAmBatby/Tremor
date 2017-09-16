@@ -8,8 +8,6 @@ namespace Tremor.Items
 	public class ChlorophyteHeader : ModItem
 	{
 
-
-
 		public override void SetDefaults()
 		{
 
@@ -26,7 +24,6 @@ namespace Tremor.Items
 			DisplayName.SetDefault("Chlorophyte Header");
 			Tooltip.SetDefault("Increases thrown damage by 28%");
 		}
-
 
 		public override void UpdateEquip(Player player)
 		{

@@ -14,7 +14,6 @@ namespace Tremor.Items
 			item.width = 22;
 			item.height = 22;
 
-
 			item.accessory = true;
 			item.defense = 4;
 			item.rare = 3;
@@ -27,7 +26,6 @@ namespace Tremor.Items
 			DisplayName.SetDefault("Warrior Soul");
 			Tooltip.SetDefault("10% increased melee damage\nIncreases melee critical strike chance by 15");
 		}
-
 
 		public override void UpdateAccessory(Player player, bool hideVisual)
 		{

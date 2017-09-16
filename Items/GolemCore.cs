@@ -24,6 +24,5 @@ namespace Tremor.Items
 			Tooltip.SetDefault("The ancient and mysterious mechanism");
 		}
 
-
 	}
 }

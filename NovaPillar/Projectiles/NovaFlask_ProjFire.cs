@@ -23,8 +23,6 @@ namespace Tremor.NovaPillar.Projectiles
 			return Color.White;
 		}
 
-
-
 		public override bool PreAI()
 		{
 			projectile.frameCounter++;

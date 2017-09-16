@@ -29,7 +29,6 @@ namespace Tremor.Items
 			Tooltip.SetDefault("'Sewn from pieces of flesh'");
 		}
 
-
 		public override void AddRecipes()
 		{
 			ModRecipe recipe = new ModRecipe(mod);

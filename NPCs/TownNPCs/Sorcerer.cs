@@ -53,7 +53,6 @@ namespace Tremor.NPCs.TownNPCs
 		public override bool CanTownNPCSpawn(int numTownNPCs, int money)
 			=> true;
 
-
 		private readonly WeightedRandom<string> _names = new[]
 		{
 			"Merdok:2",

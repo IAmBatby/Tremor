@@ -36,7 +36,6 @@ namespace Tremor.Items
 			Tooltip.SetDefault("Summons an fiery exploding bolt");
 		}
 
-
 		public override void MeleeEffects(Player player, Rectangle hitbox)
 		{
 			if (Main.rand.Next(3) == 0)

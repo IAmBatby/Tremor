@@ -28,12 +28,10 @@ namespace Tremor.Projectiles
 
 		}
 
-
 		public override Color? GetAlpha(Color lightColor)
 		{
 			return Color.White;
 		}
-
 
 		public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)
 		{

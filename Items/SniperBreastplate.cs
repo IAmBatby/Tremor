@@ -13,7 +13,6 @@ namespace Tremor.Items
 			item.width = 30;
 			item.height = 22;
 
-
 			item.value = 1000000;
 			item.rare = 11;
 			item.defense = 40;
@@ -25,13 +24,11 @@ namespace Tremor.Items
 			Tooltip.SetDefault("20% increased ranged damage\n20% decreased movement speed");
 		}
 
-
 		public override void UpdateEquip(Player player)
 		{
 			player.rangedDamage *= 1.2f;
 			player.moveSpeed -= 0.20f;
 		}
-
 
 	}
 }

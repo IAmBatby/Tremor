@@ -13,7 +13,6 @@ namespace Tremor.Items
 			item.height = 30;
 			item.value = 15000;
 
-
 			item.rare = 2;
 			item.accessory = true;
 			item.defense = 2;
@@ -24,7 +23,6 @@ namespace Tremor.Items
 			DisplayName.SetDefault("Enchanted Shield");
 			Tooltip.SetDefault("Increases maximum mana by 40\n10% decreased magic damage");
 		}
-
 
 		public override void UpdateEquip(Player player)
 		{

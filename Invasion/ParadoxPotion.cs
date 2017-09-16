@@ -28,7 +28,6 @@ namespace Tremor.Invasion
 			Tooltip.SetDefault("Restores 300 health");
 		}
 
-
 		public override bool CanUseItem(Player player)
 		{
 			if (player.FindBuffIndex(BuffID.PotionSickness) == -1)

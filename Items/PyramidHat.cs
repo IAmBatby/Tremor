@@ -6,7 +6,6 @@ namespace Tremor.Items
 	public class PyramidHat : ModItem
 	{
 
-
 		public override void SetDefaults()
 		{
 
@@ -20,7 +19,6 @@ namespace Tremor.Items
 			DisplayName.SetDefault("Pyramid Hat");
 			Tooltip.SetDefault("");
 		}
-
 
 	}
 }

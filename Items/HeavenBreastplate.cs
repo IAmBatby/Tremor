@@ -24,7 +24,6 @@ namespace Tremor.Items
 			Tooltip.SetDefault("12% increased ranged damage");
 		}
 
-
 		public override void UpdateEquip(Player player)
 		{
 			player.rangedDamage += 0.12f;

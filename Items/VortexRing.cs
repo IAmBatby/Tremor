@@ -22,7 +22,6 @@ namespace Tremor.Items
 			Tooltip.SetDefault("20% increased ranged damage\nIncreases ranged critical strike chance by 15\n25% chance not to consume ammo");
 		}
 
-
 		public override void UpdateAccessory(Player player, bool hideVisual)
 		{
 			player.rangedDamage += 0.2f;

@@ -35,7 +35,6 @@ namespace Tremor.Items
 			Tooltip.SetDefault("Alchemic weapons throw two flasks instead of one");
 		}
 
-
 		public override void UpdateAccessory(Player player, bool hideVisual)
 		{
 			MPlayer modPlayer = (MPlayer)player.GetModPlayer(mod, "MPlayer");

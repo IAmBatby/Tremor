@@ -19,14 +19,11 @@ namespace Tremor.Items
 
 		int TimeToShoot = ShootRate;
 
-
-
 		public override void SetDefaults()
 		{
 
 			item.width = 38;
 			item.height = 22;
-
 
 			item.value = 10000;
 			item.rare = 11;
@@ -38,7 +35,6 @@ namespace Tremor.Items
 			DisplayName.SetDefault("White Gold Helmet");
 			Tooltip.SetDefault("Increases ranged damage by 20%\nIncreases melee damage by 20%");
 		}
-
 
 		public override void UpdateEquip(Player player)
 		{

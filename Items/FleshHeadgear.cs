@@ -7,13 +7,11 @@ namespace Tremor.Items
 	public class FleshHeadgear : ModItem
 	{
 
-
 		public override void SetDefaults()
 		{
 
 			item.width = 38;
 			item.height = 22;
-
 
 			item.value = 18000;
 			item.rare = 1;
@@ -25,7 +23,6 @@ namespace Tremor.Items
 			DisplayName.SetDefault("Flesh Headgear");
 			Tooltip.SetDefault("9% increased minion damage\nIncreases your max number of minions");
 		}
-
 
 		public override void UpdateEquip(Player player)
 		{

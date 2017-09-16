@@ -31,7 +31,6 @@ namespace Tremor.Projectiles.Minions
        
     }
 
-
     public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
     {
             target.AddBuff(20, 80, false);
@@ -51,7 +50,6 @@ namespace Tremor.Projectiles.Minions
 				}
       return false;
 		}
-
 
 		public override void CheckActive()
 		{

@@ -29,7 +29,6 @@ namespace Tremor.Items
 			Tooltip.SetDefault("25% increased all damage if placed");
 		}
 
-
 		public override void AddRecipes()
 		{
 			ModRecipe recipe = new ModRecipe(mod);

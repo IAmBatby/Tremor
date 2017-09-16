@@ -35,7 +35,6 @@ namespace Tremor.Items
 			Tooltip.SetDefault("Summons a bramble bush to spit spikes at your enemies");
 		}
 
-
 		public override bool AltFunctionUse(Player player)
 		{
 			return true;

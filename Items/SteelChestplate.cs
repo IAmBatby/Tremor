@@ -24,7 +24,6 @@ namespace Tremor.Items
 			Tooltip.SetDefault("3% increased ranged critical strike chance");
 		}
 
-
 		public override void UpdateEquip(Player player)
 		{
 			player.rangedCrit += 3;

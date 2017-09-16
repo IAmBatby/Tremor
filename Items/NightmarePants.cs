@@ -6,7 +6,6 @@ namespace Tremor.Items
 	public class NightmarePants : ModItem
 	{
 
-
 		public override void SetDefaults()
 		{
 
@@ -22,7 +21,6 @@ namespace Tremor.Items
 			DisplayName.SetDefault("Nightmare Pants");
 			Tooltip.SetDefault("");
 		}
-
 
 		public override void AddRecipes()
 		{

@@ -22,7 +22,6 @@ namespace Tremor.Items
 			Tooltip.SetDefault("'Can be used in ritual of shadows if thrown into lava in underground and the Dryad is alive...'\nSummons Wall of Shadows");
 		}
 
-
 		public override void AddRecipes()
 		{
 			ModRecipe recipe = new ModRecipe(mod);
@@ -106,7 +105,6 @@ namespace Tremor.Items
 			int Y = num4 * 16;
 			NPC.SpawnOnPlayer(Main.myPlayer, mod.NPCType("WallOfShadow"));
 		}
-
 
 	}
 }

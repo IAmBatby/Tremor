@@ -24,7 +24,6 @@ namespace Tremor.Items
 			Tooltip.SetDefault("18% increased minion damage\n20% increased minion knockback");
 		}
 
-
 		public override void UpdateEquip(Player player)
 		{
 			player.minionDamage += 0.18f;

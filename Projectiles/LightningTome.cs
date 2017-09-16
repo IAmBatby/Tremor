@@ -30,7 +30,6 @@ namespace Tremor.Projectiles
 
 		}
 
-
 		public override void Kill(int timeLeft)
 		{
 			for (int k = 0; k < 40; k++)
@@ -39,8 +38,6 @@ namespace Tremor.Projectiles
 			}
 			Main.PlaySound(0, (int)projectile.position.X, (int)projectile.position.Y, 0);
 		}
-
-
 
 		public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)
 		{

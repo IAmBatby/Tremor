@@ -66,8 +66,6 @@ namespace Tremor.NovaPillar.Projectiles
 			return false;
 		}
 
-
-
 		public override void AI()
 		{
 			if (Main.player[Main.myPlayer].buffType.Contains(mod.BuffType("TheCadenceBuff")))

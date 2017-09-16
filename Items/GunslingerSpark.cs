@@ -13,7 +13,6 @@ namespace Tremor.Items
 			item.width = 22;
 			item.height = 22;
 
-
 			item.rare = 1;
 			item.accessory = true;
 			item.value = 20000;
@@ -25,7 +24,6 @@ namespace Tremor.Items
 			Tooltip.SetDefault("3% increased ranged damage\nIncreases ranged critical strike chance by 8");
 			Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(6, 4));
 		}
-
 
 		public override void UpdateAccessory(Player player, bool hideVisual)
 		{

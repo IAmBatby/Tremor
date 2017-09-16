@@ -31,7 +31,6 @@ namespace Tremor.Projectiles
 			DisplayName.SetDefault("Ball n Chain");
 		}
 
-
 		public override void AI()
 		{
 			Rotation += RotationSpeed;

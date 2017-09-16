@@ -7,7 +7,6 @@ namespace Tremor.Items
 	public class RedSteelHeadgear : ModItem
 	{
 
-
 		public override void SetDefaults()
 		{
 
@@ -25,12 +24,10 @@ namespace Tremor.Items
 			Tooltip.SetDefault("10% increased melee damage");
 		}
 
-
 		public override void UpdateEquip(Player player)
 		{
 			player.meleeDamage += 0.1f;
 		}
-
 
 		public override bool IsArmorSet(Item head, Item body, Item legs)
 		{

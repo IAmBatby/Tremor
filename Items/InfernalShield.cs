@@ -18,7 +18,6 @@ namespace Tremor.Items
 
 		int TimeToShoot = ShootRate;
 
-
 		public override void SetDefaults()
 		{
 
@@ -36,7 +35,6 @@ namespace Tremor.Items
 			DisplayName.SetDefault("Infernal Shield");
 			Tooltip.SetDefault("Casts fireballs at nearby enemies");
 		}
-
 
 		public override void UpdateAccessory(Player player, bool hideVisual)
 		{

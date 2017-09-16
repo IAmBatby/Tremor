@@ -55,13 +55,11 @@ namespace Tremor.NPCs
 		public static bool phase2;
 		public static bool phase3;
 
-
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Pixie Queen");
 			Main.npcFrameCount[npc.type] = 8;
 		}
-
 
 		public override void SetDefaults()
 		{

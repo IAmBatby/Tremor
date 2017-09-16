@@ -33,7 +33,6 @@ namespace Tremor.Projectiles
 
 		}
 
-
 		bool FirstAI = true;
 		public override void AI()
 		{

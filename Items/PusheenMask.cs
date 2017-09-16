@@ -7,7 +7,6 @@ namespace Tremor.Items
 	public class PusheenMask : ModItem
 	{
 
-
 		public override void SetDefaults()
 		{
 
@@ -22,7 +21,6 @@ namespace Tremor.Items
 			DisplayName.SetDefault("Pusheen Mask");
 			Tooltip.SetDefault("'Meow?'");
 		}
-
 
 		public override void AddRecipes()
 		{

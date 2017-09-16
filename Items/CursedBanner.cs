@@ -28,7 +28,6 @@ namespace Tremor.Items
 			Tooltip.SetDefault("Increases all critical strike chance by 25 if placed");
 		}
 
-
 		public override void AddRecipes()
 		{
 			ModRecipe recipe = new ModRecipe(mod);

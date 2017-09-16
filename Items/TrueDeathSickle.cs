@@ -34,7 +34,6 @@ namespace Tremor.Items
 			Tooltip.SetDefault("");
 		}
 
-
 		public override bool UseItemFrame(Player player)
 		{
 			player.bodyFrame.Y = 3 * player.bodyFrame.Height;

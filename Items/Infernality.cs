@@ -31,7 +31,6 @@ namespace Tremor.Items
 			Tooltip.SetDefault("'For the glory of Satan of course!'");
 		}
 
-
 		public override void AddRecipes()
 		{
 			ModRecipe recipe = new ModRecipe(mod);

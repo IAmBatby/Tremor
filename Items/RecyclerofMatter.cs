@@ -27,7 +27,6 @@ namespace Tremor.Items
 			Tooltip.SetDefault("Allows to convert hardmode metals to their alternatives");
 		}
 
-
 		public override void AddRecipes()
 		{
 			ModRecipe recipe = new ModRecipe(mod);

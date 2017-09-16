@@ -9,7 +9,6 @@ namespace Tremor.Items
 	public class BrutalliskHelmet : ModItem
 	{
 
-
 		public override void SetDefaults()
 		{
 
@@ -25,7 +24,6 @@ namespace Tremor.Items
 			DisplayName.SetDefault("Brutallisk Helmet");
 			Tooltip.SetDefault("Increases maximum life by 40\n15% increased melee speed");
 		}
-
 
 		public override void UpdateEquip(Player player)
 		{

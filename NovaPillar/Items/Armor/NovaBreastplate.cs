@@ -20,7 +20,6 @@ namespace Tremor.NovaPillar.Items.Armor
 			Tooltip.SetDefault("Increases alchemical damage by 25% and critical strike chance by 20%\nGrants 40% chance to not consume flasks");
 		}
 
-
 		public override void UpdateEquip(Player player)
 		{
 			player.GetModPlayer<MPlayer>(mod).alchemicalCrit += 20;

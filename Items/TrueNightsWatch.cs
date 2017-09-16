@@ -11,7 +11,6 @@ namespace Tremor.Items
 			item.width = 22;
 			item.height = 44;
 
-
 			item.value = 10000;
 			item.rare = 4;
 			item.defense = 6;
@@ -23,7 +22,6 @@ namespace Tremor.Items
 			DisplayName.SetDefault("True Night's Watch");
 			Tooltip.SetDefault("12% increased melee, magic, minion, ranged damage and crit\nIncreases maximum mana and health by 80");
 		}
-
 
 		public override void UpdateAccessory(Player player, bool hideVisual)
 		{

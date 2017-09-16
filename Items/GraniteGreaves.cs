@@ -7,7 +7,6 @@ namespace Tremor.Items
 	public class GraniteGreaves : ModItem
 	{
 
-
 		public override void SetDefaults()
 		{
 

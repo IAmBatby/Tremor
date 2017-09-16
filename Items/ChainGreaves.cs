@@ -6,7 +6,6 @@ namespace Tremor.Items
 	public class ChainGreaves : ModItem
 	{
 
-
 		public override void SetDefaults()
 		{
 

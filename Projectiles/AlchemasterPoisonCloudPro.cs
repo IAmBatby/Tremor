@@ -24,8 +24,6 @@ namespace Tremor.Projectiles
 
 		}
 
-
-
 		public override void OnHitPlayer(Player target, int damage, bool crit)
 		{
 			if (Main.rand.NextBool())

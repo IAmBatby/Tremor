@@ -19,8 +19,6 @@ namespace Tremor.Projectiles
 
 		}
 
-
-
 		public override void AI()
 		{
 			projectile.velocity.Y += projectile.ai[0];

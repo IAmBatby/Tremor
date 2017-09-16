@@ -13,7 +13,6 @@ namespace Tremor.Items
 			item.width = 38;
 			item.height = 22;
 
-
 			item.value = 16500;
 			item.rare = 8;
 			item.defense = 17;
@@ -24,7 +23,6 @@ namespace Tremor.Items
 			DisplayName.SetDefault("Desert Explorer Breastplate");
 			Tooltip.SetDefault("Increases alchemical damage by 19%\nIncreases throwing damage by 35%");
 		}
-
 
 		public override void UpdateEquip(Player player)
 		{

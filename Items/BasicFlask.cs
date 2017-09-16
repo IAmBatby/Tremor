@@ -37,7 +37,6 @@ namespace Tremor.Items
 			Tooltip.SetDefault("Throws a flask that explodes into clouds");
 		}
 
-
 		public override void PickAmmo(Player player, ref int type, ref float speed, ref int damage, ref float knockback)
 		{
 			type = mod.ProjectileType("CloudPro");

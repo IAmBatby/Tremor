@@ -54,7 +54,6 @@ namespace Tremor.ZombieEvent.Mobs
 			}
 		}
 
-
 		public override void NPCLoot()
 		{
 			if (Main.netMode != 1)

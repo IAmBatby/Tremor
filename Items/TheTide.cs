@@ -21,7 +21,6 @@ namespace Tremor.Items
 			item.knockBack = 6;
 			item.value = 50000;
 
-
 			item.rare = 5;
 			item.UseSound = SoundID.Item11;
 			item.autoReuse = true;
@@ -35,7 +34,6 @@ namespace Tremor.Items
 			DisplayName.SetDefault("The Tide");
 			Tooltip.SetDefault("Shoots fast moving water bolts\nUses bullets as ammo");
 		}
-
 
 		public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
 		{

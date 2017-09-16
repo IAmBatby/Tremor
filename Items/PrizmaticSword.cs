@@ -31,7 +31,6 @@ namespace Tremor.Items
 			Tooltip.SetDefault("Grants mana upon hitting an enemy");
 		}
 
-
 		public override void OnHitNPC(Player player, NPC target, int damage, float knockback, bool crit)
 		{
 			player.statMana += damage / 6;
@@ -47,5 +46,4 @@ namespace Tremor.Items
 		}
 	}
 }
-
 

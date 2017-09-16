@@ -44,8 +44,6 @@ namespace Tremor.Projectiles
 			return false;
 		}
 
-
-
 		public override void AI()
 		{
 			Dust.NewDust(projectile.position + projectile.velocity, projectile.width, projectile.height, 173, projectile.velocity.X * 0.5f, projectile.velocity.Y * 0.5f);

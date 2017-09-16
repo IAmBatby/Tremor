@@ -7,13 +7,11 @@ namespace Tremor.Items
 	public class VileHelmet : ModItem
 	{
 
-
 		public override void SetDefaults()
 		{
 
 			item.width = 38;
 			item.height = 22;
-
 
 			item.value = 30000;
 			item.rare = 1;
@@ -25,7 +23,6 @@ namespace Tremor.Items
 			DisplayName.SetDefault("Vile Helmet");
 			Tooltip.SetDefault("6% increased minion damage\nIncreases your max number of minions");
 		}
-
 
 		public override void UpdateEquip(Player player)
 		{

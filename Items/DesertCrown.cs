@@ -28,7 +28,6 @@ namespace Tremor.Items
 			Tooltip.SetDefault("Summons the Rukh");
 		}
 
-
 		public override bool CanUseItem(Player player)
 		{
 			return !NPC.AnyNPCs(mod.NPCType("npcVultureKing")) && player.ZoneDesert;

@@ -26,7 +26,6 @@ namespace Tremor.Items
 			Tooltip.SetDefault("Gives one of three true blades");
 		}
 
-
 		public override void UpdateEquip(Player player)
 		{
 			player.AddBuff(mod.BuffType("SecondTrueBlade"), 2);

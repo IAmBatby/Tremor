@@ -22,7 +22,6 @@ namespace Tremor.Items
 			Tooltip.SetDefault("20% increased melee damage\nIncreases melee critical strike chance by 15\nCasts a ring of fire");
 		}
 
-
 		public override void UpdateAccessory(Player player, bool hideVisual)
 
 		{

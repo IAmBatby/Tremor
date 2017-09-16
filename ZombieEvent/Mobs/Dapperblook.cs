@@ -36,7 +36,6 @@ namespace Tremor.ZombieEvent.Mobs
 			// Todo: bannerItem = mod.ItemType("Dapperblook");
 		}
 
-
 		public override void AI()
 		{
 			if (NPC.AnyNPCs(mod.NPCType("Cryptomage")))

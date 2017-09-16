@@ -8,8 +8,6 @@ namespace Tremor.Items
 	public class HallowedHeader : ModItem
 	{
 
-
-
 		public override void SetDefaults()
 		{
 
@@ -26,7 +24,6 @@ namespace Tremor.Items
 			DisplayName.SetDefault("Hallowed Header");
 			Tooltip.SetDefault("Increases thrown damage by 26%");
 		}
-
 
 		public override void UpdateEquip(Player player)
 		{

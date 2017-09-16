@@ -7,7 +7,6 @@ namespace Tremor.Items
 	public class OrcishGreaves : ModItem
 	{
 
-
 		public override void SetDefaults()
 		{
 
@@ -24,7 +23,6 @@ namespace Tremor.Items
 			DisplayName.SetDefault("Orcish Greaves");
 			Tooltip.SetDefault("7% increased melee damage");
 		}
-
 
 		public override void UpdateEquip(Player player)
 		{

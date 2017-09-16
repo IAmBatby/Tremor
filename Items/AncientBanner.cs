@@ -29,7 +29,6 @@ namespace Tremor.Items
 			Tooltip.SetDefault("Increases life regeneration if placed");
 		}
 
-
 		public override void AddRecipes()
 		{
 			ModRecipe recipe = new ModRecipe(mod);

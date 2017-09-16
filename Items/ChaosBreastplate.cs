@@ -25,7 +25,6 @@ namespace Tremor.Items
 			Tooltip.SetDefault("Increases movement speed");
 		}
 
-
 		public override void UpdateEquip(Player player)
 		{
 			player.moveSpeed += 0.20f;

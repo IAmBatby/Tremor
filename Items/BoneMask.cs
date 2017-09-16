@@ -6,7 +6,6 @@ namespace Tremor.Items
 	public class BoneMask : ModItem
 	{
 
-
 		public override void SetDefaults()
 		{
 

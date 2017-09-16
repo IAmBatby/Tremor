@@ -34,7 +34,6 @@ namespace Tremor.NovaPillar.Items.Weapons
 			Tooltip.SetDefault("Shoots out a nova flask that explodes into two balls\nBalls explode into flames after some time or when they hit enemy\nFlames explode into damagin bursts after some time or when they hit enemy");
 		}
 
-
 		public override void UpdateInventory(Player player)
 		{
 			MPlayer modPlayer = player.GetModPlayer<MPlayer>(mod);

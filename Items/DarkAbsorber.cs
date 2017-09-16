@@ -25,7 +25,6 @@ namespace Tremor.Items
 			Tooltip.SetDefault("Gives health when in Corruption");
 		}
 
-
 		public override void UpdateAccessory(Player player, bool hideVisual)
 		{
 			if (player.ZoneCorrupt)

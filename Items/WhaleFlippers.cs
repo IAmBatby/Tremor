@@ -24,7 +24,6 @@ namespace Tremor.Items
 			Tooltip.SetDefault("Allows flight and slow fall");
 		}
 
-
 		//these wings use the same values as the solar wings
 
 		public override void UpdateAccessory(Player player, bool hideVisual)

@@ -7,7 +7,6 @@ namespace Tremor.Items
 	public class DimensionalTopHat : ModItem
 	{
 
-
 		public override void SetDefaults()
 		{
 
@@ -24,7 +23,6 @@ namespace Tremor.Items
 			Tooltip.SetDefault("Grants clairvoyance\n25% increased magic and minion damage\nGreatly increases mana regeneration");
 		}
 
-
 		public override void UpdateEquip(Player player)
 		{
 			player.minionDamage += 0.25f;
@@ -32,7 +30,6 @@ namespace Tremor.Items
 			player.AddBuff(29, 60, true);
 			player.manaRegen += 25;
 		}
-
 
 	}
 }

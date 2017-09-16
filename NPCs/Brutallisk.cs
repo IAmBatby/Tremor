@@ -68,7 +68,6 @@ namespace Tremor.NPCs
 			npc.damage = (int)(npc.damage * 0.6f);
 		}
 
-
 		public override void HitEffect(int hitDirection, double damage)
 		{
 			if (npc.life <= 0)
@@ -500,7 +499,6 @@ namespace Tremor.NPCs
 			{
 				NPC.NewNPC((int)npc.position.Y + 100, (int)npc.position.Y, mod.NPCType("Quetzalcoatl"));
 			}
-
 
 		}
 

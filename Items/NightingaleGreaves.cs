@@ -7,7 +7,6 @@ namespace Tremor.Items
 	public class NightingaleGreaves : ModItem
 	{
 
-
 		public override void SetDefaults()
 		{
 			item.defense = 6;
@@ -22,7 +21,6 @@ namespace Tremor.Items
 			DisplayName.SetDefault("Nightingale Greaves");
 			Tooltip.SetDefault("Increases movement speed by 10%");
 		}
-
 
 		public override void UpdateEquip(Player player)
 		{

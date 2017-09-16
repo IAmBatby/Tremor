@@ -8,7 +8,6 @@ namespace Tremor.Items
 	public class VineHood : ModItem
 	{
 
-
 		public override void SetDefaults()
 		{
 

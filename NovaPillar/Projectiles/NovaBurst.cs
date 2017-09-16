@@ -17,8 +17,6 @@ namespace Tremor.NovaPillar.Projectiles
 			projectile.penetrate = -1;
 		}
 
-
-
 		public override Color? GetAlpha(Color lightColor)
 		{
 			return Color.White;

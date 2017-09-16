@@ -30,7 +30,6 @@ namespace Tremor.Items
 			Tooltip.SetDefault("Summons Heater of Worlds");
 		}
 
-
 		public override bool CanUseItem(Player player)
 		{
 			return player.position.Y / 16f > Main.maxTilesY - 200 && NPC.downedBoss2 && !NPC.AnyNPCs(mod.NPCType("HeaterOfWorldsHead"));

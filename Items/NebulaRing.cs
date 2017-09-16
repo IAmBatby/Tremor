@@ -22,7 +22,6 @@ namespace Tremor.Items
 			Tooltip.SetDefault("20% increased magic damage\nIncreases magic critical strike chance by 15\nIncreases maximum mana by 80");
 		}
 
-
 		public override void UpdateAccessory(Player player, bool hideVisual)
 
 		{

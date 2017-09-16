@@ -28,7 +28,6 @@ namespace Tremor.Items
 			Tooltip.SetDefault("Summons the Dark Emperor");
 		}
 
-
 		public override bool CanUseItem(Player player)
 		{
 			return NPC.downedMoonlord && !NPC.AnyNPCs(mod.NPCType("TheDarkEmperor"));

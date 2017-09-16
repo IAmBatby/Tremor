@@ -26,7 +26,6 @@ namespace Tremor.NovaPillar.Items
 			Tooltip.SetDefault("'The constituents of stars are contained in this fragment'");
 		}
 
-
 		public override void PostUpdate()
 		{
 			Lighting.AddLight(item.Center, new Vector3(0.8f, 0.7f, 0.3f) * Main.essScale);

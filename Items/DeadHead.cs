@@ -23,7 +23,6 @@ namespace Tremor.Items
 			Tooltip.SetDefault("4% increased damage and critical strike chance\n15% increased movement speed");
 		}
 
-
 		public override void UpdateAccessory(Player player, bool hideVisual)
 		{
 			player.meleeDamage += 0.04f;

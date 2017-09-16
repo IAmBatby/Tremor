@@ -25,7 +25,6 @@ namespace Tremor.Items
 			Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(8, 4));
 		}
 
-
 		public override void ModifyTooltips(List<TooltipLine> tooltips)
 		{
 			tooltips[0].overrideColor = new Color(238, 194, 73);

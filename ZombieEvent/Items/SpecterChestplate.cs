@@ -13,7 +13,6 @@ public class SpecterChestplate : ModItem
         item.width = 38;
         item.height = 22;
 
-
         item.value = 10000;
         item.rare = 11;
         item.defense = 22;
@@ -24,7 +23,6 @@ public class SpecterChestplate : ModItem
       DisplayName.SetDefault("Specter Chestplate");
       Tooltip.SetDefault("Increases melee damage by 12%\nIncreases maximum number of minions by 2");
     }
-
 
     public override void UpdateEquip(Player player)
     {

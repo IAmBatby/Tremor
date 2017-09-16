@@ -303,9 +303,6 @@ namespace Tremor.NPCs
 				int centerY = (int)(npc.position.Y + npc.height / 2) / 16;
 				int halfLength = npc.width / 2 / 16 + 1;
 
-
-
-
 				if (!NPC.AnyNPCs(mod.NPCType("SoulofTruth")) && !NPC.AnyNPCs(mod.NPCType("SoulofTrust")))
 				{
 
@@ -325,7 +322,6 @@ namespace Tremor.NPCs
 						Main.NewText("This world has been enlightened with Angelite!", 0, 191, 255);
 						Main.NewText("This world has been attacked with Collapsium!", 255, 20, 147);
 
-
 						for (int k = 0; k < (int)((double)(Main.maxTilesX * Main.maxTilesY) * 6E-05); k++)
 						{
 							WorldGen.TileRunner(WorldGen.genRand.Next(0, Main.maxTilesX), WorldGen.genRand.Next((int)(Main.maxTilesY * .3f), (int)(Main.maxTilesY * .65f)), WorldGen.genRand.Next(9, 15), WorldGen.genRand.Next(9, 15), mod.TileType("CollapsiumOreTile"), false, 0f, 0f, false, true);
@@ -338,7 +334,6 @@ namespace Tremor.NPCs
 					}
 
 				}
-
 
 				if (!Main.expertMode && Main.rand.Next(7) == 0)
 				{

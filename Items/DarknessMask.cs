@@ -39,7 +39,6 @@ namespace Tremor.Items
 		public override void UpdateArmorSet(Player player)
 		{
 
-
 			if (Math.Abs(player.velocity.X) + Math.Abs(player.velocity.Y) > 1f && !player.rocketFrame) // Makes sure the player is actually moving
 			{
 				for (int k = 0; k < 2; k++)

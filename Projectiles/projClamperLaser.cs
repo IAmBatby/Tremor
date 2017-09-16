@@ -42,7 +42,6 @@ namespace Tremor.Projectiles
 
 		}
 
-
 		public override void AI()
 		{
 			projectile.Center = Main.npc[(int)projectile.ai[0]].Center + Offset;

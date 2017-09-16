@@ -7,8 +7,6 @@ namespace Tremor.Items
 	public class AncientMeteorHelmet : ModItem
 	{
 
-
-
 		public override void SetDefaults()
 		{
 
@@ -25,7 +23,6 @@ namespace Tremor.Items
 			DisplayName.SetDefault("Ancient Meteor Helmet");
 			Tooltip.SetDefault("7% increased magic damage");
 		}
-
 
 		public override void UpdateEquip(Player player)
 		{

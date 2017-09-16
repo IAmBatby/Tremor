@@ -13,7 +13,6 @@ namespace Tremor.NPCs
 			Main.npcFrameCount[npc.type] = 2;
 		}
 
-
 		public override void SetDefaults()
 		{
 			npc.lifeMax = 780;

@@ -23,7 +23,6 @@ namespace Tremor.Items
 			Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(8, 4));
 		}
 
-
 		public override void UpdateAccessory(Player player, bool hideVisual)
 		{
 			player.GetModPlayer<MPlayer>(mod).alchemicalDamage += 0.15f;

@@ -33,7 +33,6 @@ namespace Tremor.Invasion
 			animationType = 3;
 		}
 
-
 		public override void NPCLoot()
 		{
 

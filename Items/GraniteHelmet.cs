@@ -8,7 +8,6 @@ namespace Tremor.Items
 	public class GraniteHelmet : ModItem
 	{
 
-
 		public override void SetDefaults()
 		{
 

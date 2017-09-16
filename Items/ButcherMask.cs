@@ -6,8 +6,6 @@ namespace Tremor.Items
 	public class ButcherMask : ModItem
 	{
 
-
-
 		public override void SetDefaults()
 		{
 

@@ -31,7 +31,6 @@ namespace Tremor.Projectiles
 
 		}
 
-
 		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
 		{
 			target.AddBuff(31, 60, false);

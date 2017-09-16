@@ -33,7 +33,6 @@ namespace Tremor.Items
 			Tooltip.SetDefault("Consumes gel as ammo");
 		}
 
-
 		public override void AddRecipes()
 		{
 			ModRecipe recipe = new ModRecipe(mod);

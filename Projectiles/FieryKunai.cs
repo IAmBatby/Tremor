@@ -22,7 +22,6 @@ namespace Tremor.Projectiles
 
 		}
 
-
 		public override void Kill(int timeLeft)
 		{
 			for (int k = 0; k < 5; k++)

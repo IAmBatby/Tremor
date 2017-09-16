@@ -21,7 +21,6 @@ namespace Tremor.Invasion
 			Tooltip.SetDefault("");
 		}
 
-
 		public override bool DrawHead()
 		{
 			return false;

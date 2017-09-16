@@ -39,12 +39,10 @@ namespace Tremor.Items
 			Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(5, 4));
 		}
 
-
 		public override Color? GetAlpha(Color lightColor)
 		{
 			return Color.Yellow;
 		}
-
 
 		public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
 		{

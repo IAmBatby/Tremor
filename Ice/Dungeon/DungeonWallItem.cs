@@ -27,7 +27,6 @@ namespace Tremor.Ice.Dungeon
 			Tooltip.SetDefault("");
 		}
 
-
 		public override void AddRecipes()
 		{
 			ModRecipe recipe = new ModRecipe(mod);

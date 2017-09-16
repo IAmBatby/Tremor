@@ -6,8 +6,6 @@ namespace Tremor.Items
 	public class BrutalliskMask : ModItem
 	{
 
-
-
 		public override void SetDefaults()
 		{
 

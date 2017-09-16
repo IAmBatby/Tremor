@@ -32,7 +32,6 @@ namespace Tremor.Projectiles
 
 		}
 
-
 		public override void AI()
 		{
 			int dustType = 74;

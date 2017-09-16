@@ -7,7 +7,6 @@ namespace Tremor.Items
 	public class DarknessLeggings : ModItem
 	{
 
-
 		public override void SetDefaults()
 		{
 

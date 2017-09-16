@@ -24,7 +24,6 @@ namespace Tremor.Items
 			item.UseSound = SoundID.Item11;
 			item.autoReuse = true;
 
-
 			item.useAmmo = AmmoID.Sand;
 		}
 
@@ -33,7 +32,6 @@ namespace Tremor.Items
 			DisplayName.SetDefault("Antlion Fury");
 			Tooltip.SetDefault("Quickly shoots sand blocks\nUses sand blocks as ammo");
 		}
-
 
 		public override Vector2? HoldoutOffset()
 		{

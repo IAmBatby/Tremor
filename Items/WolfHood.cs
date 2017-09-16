@@ -7,7 +7,6 @@ namespace Tremor.Items
 	public class WolfHood : ModItem
 	{
 
-
 		public override void SetDefaults()
 		{
 
@@ -24,7 +23,6 @@ namespace Tremor.Items
 			DisplayName.SetDefault("Wolf Hood");
 			Tooltip.SetDefault("6% increased minion damage");
 		}
-
 
 		public override void UpdateEquip(Player player)
 		{

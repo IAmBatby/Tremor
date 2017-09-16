@@ -15,7 +15,6 @@ namespace Tremor.Items
 			item.magic = true;
 			item.mana = 12;
 
-
 			item.useTime = 8;
 			item.useAnimation = 8;
 			item.useStyle = 5;

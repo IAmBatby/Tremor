@@ -34,7 +34,6 @@ namespace Tremor.Items
 			Tooltip.SetDefault("Throws an exploding dagger");
 		}
 
-
 		public override void AddRecipes()
 		{
 			ModRecipe recipe = new ModRecipe(mod);

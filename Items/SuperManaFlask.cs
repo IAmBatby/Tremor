@@ -27,7 +27,6 @@ namespace Tremor.Items
 			item.rare = 8;
 			item.autoReuse = false;
 
-
 			item.ammo = mod.ItemType("BoomFlask");
 		}
 
@@ -36,7 +35,6 @@ namespace Tremor.Items
 			DisplayName.SetDefault("Super Mana Flask");
 			Tooltip.SetDefault("Throws a flask that explodes into clouds\nClouds deal damage to enemies and restore mana");
 		}
-
 
 		public override void PickAmmo(Player player, ref int type, ref float speed, ref int damage, ref float knockback)
 		{

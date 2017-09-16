@@ -52,12 +52,6 @@ namespace Tremor.Invasion
 			return new Rectangle(0, npc.frame.Height * (Number - 1), npc.frame.Width, npc.frame.Height);
 		}
 
-
-
-
-
-
-
 		public override void HitEffect(int hitDirection, double damage)
 		{
 
@@ -93,7 +87,6 @@ namespace Tremor.Invasion
 				SetupCrystals(arenaWidth / 2, false);
 				FirstAttack = false;
 			}
-
 
 			if (player.dead)
 			{

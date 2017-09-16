@@ -23,7 +23,6 @@ public class TornWings : ModItem
       Tooltip.SetDefault("");
     }
 
-
     public override void UpdateAccessory(Player player, bool hideVisual)
     {
         player.wingTimeMax = 25;

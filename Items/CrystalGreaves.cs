@@ -8,10 +8,8 @@ namespace Tremor.Items
 	public class CrystalGreaves : ModItem
 	{
 
-
 		public override void SetDefaults()
 		{
-
 
 			item.defense = 5;
 			item.width = 22;
@@ -25,7 +23,6 @@ namespace Tremor.Items
 			DisplayName.SetDefault("Crystal Greaves");
 			Tooltip.SetDefault("20% increased throwing critical strike chance");
 		}
-
 
 		public override void UpdateEquip(Player p)
 		{

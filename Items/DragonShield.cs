@@ -23,7 +23,6 @@ namespace Tremor.Items
 			Tooltip.SetDefault("Allows to dash\nDouble tap a direction\n60% increased movement speed");
 		}
 
-
 		public override void UpdateEquip(Player player)
 		{
 			player.dash = 1;

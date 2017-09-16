@@ -54,8 +54,6 @@ namespace Tremor.ZombieEvent.Items
       Tooltip.SetDefault("Releases shadow tentacles in all directions");
     }
 
-    
-
     public override void AddRecipes()
     {
         ModRecipe recipe = new ModRecipe(mod);

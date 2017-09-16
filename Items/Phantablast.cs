@@ -36,7 +36,6 @@ namespace Tremor.Items
 			Tooltip.SetDefault("Fires your ammo in a blast\n50% chance to not consume ammo");
 		}
 
-
 		public override Vector2? HoldoutOffset()
 		{
 			return new Vector2(-18, -4);

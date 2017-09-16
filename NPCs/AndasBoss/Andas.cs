@@ -132,7 +132,6 @@ namespace Tremor.NPCs.AndasBoss
 				npc.position.Y = (Main.player[npc.target].position.Y - 500) + Main.rand.Next(1000);
 			}
 
-
 			if (Timer == 850)
 			{
 				for (int i = 0; i < 50; i++)
@@ -147,7 +146,6 @@ namespace Tremor.NPCs.AndasBoss
 				npc.position.X = (Main.player[npc.target].position.X - 500) + Main.rand.Next(1000);
 				npc.position.Y = (Main.player[npc.target].position.Y - 500) + Main.rand.Next(1000);
 			}
-
 
 			if (Timer == 1000)
 			{

@@ -31,7 +31,6 @@ namespace Tremor.Projectiles
 
 		}
 
-
 		public override void Kill(int timeLeft)
 		{
 			for (int num158 = 0; num158 < 20; num158++)
@@ -119,8 +118,6 @@ namespace Tremor.Projectiles
 				Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, vector64.X, vector64.Y, mod.ProjectileType("VoidRingPro"), projectile.damage / 2, projectile.knockBack, projectile.owner, -10f, 0f);
 			}
 		}
-
-
 
 		public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)
 		{

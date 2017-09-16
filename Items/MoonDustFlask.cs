@@ -36,7 +36,6 @@ namespace Tremor.Items
 			Tooltip.SetDefault("Throws a flask that explodes into moon exlposions");
 		}
 
-
 		public override void UpdateInventory(Player player)
 		{
 			if (player.FindBuffIndex(mod.BuffType("LongFuseBuff")) != -1)

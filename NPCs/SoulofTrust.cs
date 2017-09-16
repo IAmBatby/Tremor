@@ -169,7 +169,6 @@ namespace Tremor.NPCs
 				Main.dust[num706].velocity *= 0.6f;
 			}
 
-
 			if (npc.target != -1 && !RunAway) //если(пнс.цель не варно -1 И не убегать)
 				if (!Main.player[npc.target].active) //если (не мой.игрок[нпс.цель].активный)
 				{
@@ -327,9 +326,6 @@ namespace Tremor.NPCs
 				int centerY = (int)(npc.position.Y + npc.height / 2) / 16;
 				int halfLength = npc.width / 2 / 16 + 1;
 
-
-
-
 				if (!NPC.AnyNPCs(mod.NPCType("SoulofHope")) && !NPC.AnyNPCs(mod.NPCType("SoulofTruth")))
 				{
 
@@ -361,7 +357,6 @@ namespace Tremor.NPCs
 					}
 
 				}
-
 
 				if (!Main.expertMode && Main.rand.Next(7) == 0)
 				{

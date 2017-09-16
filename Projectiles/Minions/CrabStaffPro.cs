@@ -30,7 +30,6 @@ namespace Tremor.Projectiles.Minions
 			DisplayName.SetDefault("Crab Staff");
 		}
 
-
 		public override bool TileCollideStyle(ref int width, ref int height, ref bool fallThrough)
 		{
 			fallThrough = false;

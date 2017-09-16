@@ -21,6 +21,5 @@ namespace Tremor.Items
 			Tooltip.SetDefault("");
 		}
 
-
 	}
 }

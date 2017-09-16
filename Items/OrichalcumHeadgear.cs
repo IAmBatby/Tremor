@@ -8,8 +8,6 @@ namespace Tremor.Items
 	public class OrichalcumHeadgear : ModItem
 	{
 
-
-
 		public override void SetDefaults()
 		{
 
@@ -26,7 +24,6 @@ namespace Tremor.Items
 			DisplayName.SetDefault("Orichalcum Headgear");
 			Tooltip.SetDefault("Increases minion damage by 20%");
 		}
-
 
 		public override void UpdateEquip(Player player)
 		{

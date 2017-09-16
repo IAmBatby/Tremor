@@ -7,13 +7,11 @@ namespace Tremor.Items
 	public class EnchantedHelmet : ModItem
 	{
 
-
 		public override void SetDefaults()
 		{
 
 			item.width = 24;
 			item.height = 24;
-
 
 			item.value = 10000;
 			item.rare = 2;
@@ -26,7 +24,6 @@ namespace Tremor.Items
 			Tooltip.SetDefault("Increases maximum mana by 20\nIncreases maximum health by 15");
 		}
 
-
 		public override void UpdateEquip(Player player)
 		{
 			player.statManaMax2 += 20;
@@ -37,7 +34,6 @@ namespace Tremor.Items
 		{
 			return body.type == mod.ItemType("EnchantedBreastplate") && legs.type == mod.ItemType("EnchantedGreaves");
 		}
-
 
 		public override void UpdateArmorSet(Player player)
 		{

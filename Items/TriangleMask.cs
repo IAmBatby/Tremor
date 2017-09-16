@@ -6,7 +6,6 @@ namespace Tremor.Items
 	public class TriangleMask : ModItem
 	{
 
-
 		public override void SetDefaults()
 		{
 
@@ -21,7 +20,6 @@ namespace Tremor.Items
 			DisplayName.SetDefault("Triangle Mask");
 			Tooltip.SetDefault("");
 		}
-
 
 	}
 }

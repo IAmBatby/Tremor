@@ -63,12 +63,10 @@ namespace Tremor.Ice.Mobs
 		private const float maxLength = 400f;
 		private const float maxLengthSpeed = 2.5f;
 
-
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Coldtrap");
 		}
-
 
 		public override void SetDefaults()
 		{

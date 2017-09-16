@@ -26,7 +26,6 @@ namespace Tremor.Projectiles
 
 		}
 
-
 		float smooth = 2f;
 
 		public override bool OnTileCollide(Vector2 oldVelocity)

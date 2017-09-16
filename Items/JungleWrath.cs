@@ -23,7 +23,6 @@ namespace Tremor.Items
 			Tooltip.SetDefault("6% increased magic and minion damage");
 		}
 
-
 		public override void UpdateAccessory(Player player, bool hideVisual)
 		{
 			player.magicDamage += 0.06f;

@@ -79,7 +79,6 @@ namespace Tremor.NPCs
 					if (Main.rand.Next(7) == 1)
 						Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("IceSoul"));
 
-
 				}
 			}
 
@@ -477,7 +476,6 @@ namespace Tremor.NPCs
 					mod.ItemType("HeavenLeggings"));
 			}
 
-
 			if (npc.type == 13 && Main.rand.Next(20) == 0)
 			{
 				Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height,
@@ -634,7 +632,6 @@ namespace Tremor.NPCs
 				Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height,
 					mod.ItemType("ClusterShard"), Main.rand.Next(1, 2));
 			}
-
 
 			if ((npc.type == 175 || npc.type == 205 || npc.type == 226) && NPC.downedMoonlord && Main.rand.Next(4) == 0)
 			{

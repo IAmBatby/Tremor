@@ -24,7 +24,6 @@ namespace Tremor.Items
 			Tooltip.SetDefault("Increases life regeneration");
 		}
 
-
 		public override void UpdateEquip(Player player)
 		{
 			player.lifeRegen += 5;

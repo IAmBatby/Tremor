@@ -24,13 +24,11 @@ namespace Tremor.Items
 			Tooltip.SetDefault("Increases melee and ranged critical strike chances by 25%");
 		}
 
-
 		public override void UpdateEquip(Player player)
 		{
 			player.rangedCrit += 25;
 			player.meleeCrit += 25;
 		}
-
 
 		public override void AddRecipes()
 		{

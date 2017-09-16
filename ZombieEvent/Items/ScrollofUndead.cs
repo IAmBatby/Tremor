@@ -28,7 +28,6 @@ namespace Tremor.ZombieEvent.Items
       Tooltip.SetDefault("Begins the Night of the Undead");
     }
 
-
     public override bool CanUseItem(Player player)
     {
             CyberWrathInvasion modPlayer = Main.player[Main.myPlayer].GetModPlayer<CyberWrathInvasion>(mod);

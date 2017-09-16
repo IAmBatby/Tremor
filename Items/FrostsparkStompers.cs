@@ -14,7 +14,6 @@ namespace Tremor.Items
 			item.value = 110000;
 			item.rare = 3;
 
-
 			item.accessory = true;
 		}
 
@@ -23,7 +22,6 @@ namespace Tremor.Items
 			DisplayName.SetDefault("Frostspark Stompers");
 			Tooltip.SetDefault("Increases movement speed by 10% and increases knockback effect\nAllows flight, super fast running, and extra mobility on ice");
 		}
-
 
 		public override void UpdateAccessory(Player player, bool hideVisual)
 

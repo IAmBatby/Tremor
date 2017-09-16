@@ -53,7 +53,6 @@ namespace Tremor.NPCs
 		bool runAway;
 		#endregion
 
-
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Rukh");

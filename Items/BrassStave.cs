@@ -26,7 +26,6 @@ namespace Tremor.Items
 			item.shoot = 443;
 			item.shootSpeed = 12f;
 
-
 			Item.staff[item.type] = true; //this makes the useStyle animate as a staff instead of as a gun
 		}
 
@@ -35,7 +34,6 @@ namespace Tremor.Items
 			DisplayName.SetDefault("Brass Stave");
 			Tooltip.SetDefault("Shoots fast thin bolts\nPress RMB for powerful attack");
 		}
-
 
 		public override bool AltFunctionUse(Player player)
 		{
@@ -88,7 +86,6 @@ namespace Tremor.Items
 			}
 			return base.CanUseItem(player);
 		}
-
 
 		public override void UpdateInventory(Player player)
 		{

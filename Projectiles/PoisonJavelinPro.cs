@@ -26,8 +26,6 @@ namespace Tremor.Projectiles
 
 		}
 
-
-
 		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
 		{
 			if (Main.rand.Next(2) == 0)
@@ -78,7 +76,6 @@ namespace Tremor.Projectiles
 				}
 			}
 		}
-
 
 		public override void AI()
 		{

@@ -7,14 +7,11 @@ namespace Tremor.Items
 	public class DakkharnsMask : ModItem
 	{
 
-
-
 		public override void SetDefaults()
 		{
 
 			item.width = 38;
 			item.height = 22;
-
 
 			item.value = 1000000;
 			item.rare = 11;
@@ -26,7 +23,6 @@ namespace Tremor.Items
 			DisplayName.SetDefault("Dakkharn Mask");
 			Tooltip.SetDefault("Summons and ancient predator to defend you from foes\nPredator attacks enemies and inflicts curses");
 		}
-
 
 		public override void UpdateEquip(Player player)
 		{

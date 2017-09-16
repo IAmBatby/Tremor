@@ -26,7 +26,6 @@ namespace Tremor.Items
 			item.consumable = true;
 			item.autoReuse = false;
 
-
 		}
 
 		public override void SetStaticDefaults()
@@ -34,7 +33,6 @@ namespace Tremor.Items
 			DisplayName.SetDefault("Duke Flask");
 			Tooltip.SetDefault("Throws a flask that explodes into water tornados\nTornados deal damage to enemies");
 		}
-
 
 		public override void UpdateInventory(Player player)
 		{

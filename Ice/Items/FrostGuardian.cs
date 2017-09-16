@@ -28,8 +28,6 @@ namespace Tremor.Ice.Items
 			player.moveSpeed += 0.20f;
 		}
 
-
-
 		public override void UpdateAccessory(Player player, bool hideVisual)
 		{
 			player.meleeDamage += 0.05f;

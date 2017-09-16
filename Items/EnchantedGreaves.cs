@@ -7,13 +7,11 @@ namespace Tremor.Items
 	public class EnchantedGreaves : ModItem
 	{
 
-
 		public override void SetDefaults()
 		{
 
 			item.width = 22;
 			item.height = 18;
-
 
 			item.value = 10000;
 			item.rare = 2;
@@ -25,7 +23,6 @@ namespace Tremor.Items
 			DisplayName.SetDefault("Enchanted Greaves");
 			Tooltip.SetDefault("Increases maximum mana by 20\nIncreases maximum health by 15");
 		}
-
 
 		public override void UpdateEquip(Player player)
 		{

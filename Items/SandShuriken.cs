@@ -8,7 +8,6 @@ namespace Tremor.Items
 		public override void SetDefaults()
 		{
 
-
 			item.damage = 27;
 			item.thrown = true;
 			item.width = 26;

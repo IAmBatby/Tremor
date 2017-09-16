@@ -38,6 +38,5 @@ namespace Tremor.Items
 			Tooltip.SetDefault("'A weapon of a true man killer'");
 		}
 
-
 	}
 }

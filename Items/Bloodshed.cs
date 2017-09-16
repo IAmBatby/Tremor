@@ -11,8 +11,6 @@ namespace Tremor.Items
 			item.width = 22;
 			item.height = 44;
 
-
-
 			item.value = 10000;
 			item.rare = 3;
 			item.defense = 6;
@@ -24,7 +22,6 @@ namespace Tremor.Items
 			DisplayName.SetDefault("Bloodshed");
 			Tooltip.SetDefault("8% increased melee, magic and minion damage\nIncreases maximum mana and health by 60\nIncreases melee and magic critical strike chance by 10%");
 		}
-
 
 		public override void UpdateAccessory(Player player, bool hideVisual)
 		{

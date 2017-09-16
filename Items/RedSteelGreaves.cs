@@ -7,7 +7,6 @@ namespace Tremor.Items
 	public class RedSteelGreaves : ModItem
 	{
 
-
 		public override void SetDefaults()
 		{
 
@@ -24,8 +23,6 @@ namespace Tremor.Items
 			DisplayName.SetDefault("Red Steel Greaves");
 			Tooltip.SetDefault("20% increased movement speed");
 		}
-
-
 
 		public override void UpdateEquip(Player player)
 		{

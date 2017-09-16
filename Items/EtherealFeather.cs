@@ -22,7 +22,6 @@ namespace Tremor.Items
 			Tooltip.SetDefault("Allows you to fall slowly");
 		}
 
-
 		public override void UpdateAccessory(Player player, bool hideVisual)
 		{
 			player.slowFall = true;

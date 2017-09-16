@@ -6,7 +6,6 @@ namespace Tremor.Items
 	public class PlagueMask : ModItem
 	{
 
-
 		public override void SetDefaults()
 		{
 

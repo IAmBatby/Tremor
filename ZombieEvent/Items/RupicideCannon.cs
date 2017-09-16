@@ -35,8 +35,6 @@ namespace Tremor.ZombieEvent.Items
       Tooltip.SetDefault("Shoots magical blasts");
     }
 
-
-
 public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
 {
         int proj = Projectile.NewProjectile(position.X, position.Y, speedX, speedY, 675, damage, knockBack, Main.myPlayer);
@@ -56,7 +54,6 @@ public override bool Shoot(Player player, ref Vector2 position, ref float speedX
         recipe.SetResult(this);
         recipe.AddRecipe();
     }
-
 
     public override Vector2? HoldoutOffset()
         {

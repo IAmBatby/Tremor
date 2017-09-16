@@ -25,7 +25,6 @@ namespace Tremor.Items
 			Tooltip.SetDefault("");
 		}
 
-
 		public override void UpdateEquip(Player player)
 		{
 		}

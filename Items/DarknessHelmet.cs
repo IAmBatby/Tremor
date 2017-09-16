@@ -15,7 +15,6 @@ namespace Tremor.Items
 			item.defense = 22;
 			item.width = 26;
 
-
 			item.height = 32;
 			item.value = 600000;
 			item.rare = 11;
@@ -27,7 +26,6 @@ namespace Tremor.Items
 			Tooltip.SetDefault("Increases life regeneration\nIncreases melee speed by 25%");
 		}
 
-
 		public override bool IsArmorSet(Item head, Item body, Item legs)
 		{
 			return body.type == mod.ItemType("DarknessBreastplate") && legs.type == mod.ItemType("DarknessGreaves");
@@ -38,7 +36,6 @@ namespace Tremor.Items
 			longTrail = true;
 			Main.NewText("1", 175, 75, 255);
 		}
-
 
 		public override void UpdateEquip(Player player)
 		{

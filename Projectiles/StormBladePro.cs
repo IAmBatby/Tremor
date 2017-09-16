@@ -27,7 +27,6 @@ namespace Tremor.Projectiles
 
 		}
 
-
 		public override void AI()
 		{
 			projectile.velocity.Y += projectile.ai[0];
@@ -45,7 +44,6 @@ namespace Tremor.Projectiles
 			}
 			Main.PlaySound(0, (int)projectile.position.X, (int)projectile.position.Y, 0);
 		}
-
 
 	}
 }

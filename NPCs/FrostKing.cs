@@ -15,7 +15,6 @@ namespace Tremor.NPCs
 			Main.npcFrameCount[npc.type] = 8;
 		}
 
-
 		private float timeToNextFrame;
 		private int frame;
 

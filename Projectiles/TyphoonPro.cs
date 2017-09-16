@@ -28,8 +28,6 @@ namespace Tremor.Projectiles
 
 		}
 
-
-
 		public override void AI()
 		{
 			int num613 = 10;
@@ -114,7 +112,6 @@ namespace Tremor.Projectiles
 				projectile.position.X = projectile.position.X + num624 * -(float)projectile.direction;
 			}
 		}
-
 
 	}
 }

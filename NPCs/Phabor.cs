@@ -58,7 +58,6 @@ namespace Tremor.NPCs
 			}
 		}
 
-
 		public override void NPCLoot()
 		{
 			if (Main.rand.NextBool())

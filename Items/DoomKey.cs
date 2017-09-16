@@ -28,7 +28,6 @@ namespace Tremor.Items
 			Tooltip.SetDefault("Summons the Skeletron");
 		}
 
-
 		public override bool CanUseItem(Player player)
 		{
 			return !Main.dayTime && !NPC.AnyNPCs(35);

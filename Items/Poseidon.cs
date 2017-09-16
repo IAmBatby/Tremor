@@ -43,6 +43,5 @@ namespace Tremor.Items
 		//	return base.Shoot(player, ref position, ref speedX, ref speedY, ref type, ref damage, ref knockBack);
 		//}	
 
-
 	}
 }

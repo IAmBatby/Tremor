@@ -14,7 +14,6 @@ namespace Tremor.ZombieEvent.Mobs
 			Main.npcFrameCount[npc.type] = 10;
 		}
 
-
 		public override void SetDefaults()
 		{
 			npc.lifeMax = 500;

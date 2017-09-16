@@ -22,7 +22,6 @@ namespace Tremor.Items
 			Tooltip.SetDefault("20% increased minion damage\nIncreases your maximum number of minions");
 		}
 
-
 		public override void UpdateAccessory(Player player, bool hideVisual)
 
 		{

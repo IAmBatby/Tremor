@@ -7,8 +7,6 @@ namespace Tremor.Items
 	public class InvarHelmet : ModItem
 	{
 
-
-
 		public override void SetDefaults()
 		{
 
@@ -24,7 +22,6 @@ namespace Tremor.Items
 			DisplayName.SetDefault("Invar Helmet");
 			Tooltip.SetDefault("");
 		}
-
 
 		public override bool IsArmorSet(Item head, Item body, Item legs)
 		{

@@ -28,7 +28,6 @@ namespace Tremor.Items
 			Tooltip.SetDefault("Teleports you to your last death point upon use");
 		}
 
-
 		public override bool UseItem(Player player)
 		{
 			if (player.lastDeathPostion != player.position && player.showLastDeath)

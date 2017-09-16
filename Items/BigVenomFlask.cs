@@ -28,7 +28,6 @@ namespace Tremor.Items
 			item.rare = 4;
 			item.autoReuse = false;
 
-
 			item.ammo = mod.ItemType("BoomFlask");
 		}
 
@@ -37,7 +36,6 @@ namespace Tremor.Items
 			DisplayName.SetDefault("Big Venom Flask");
 			Tooltip.SetDefault("Throws a flask that explodes into venom clouds\nClouds deal damage to enemies and poison them");
 		}
-
 
 		public override void PickAmmo(Player player, ref int type, ref float speed, ref int damage, ref float knockback)
 		{

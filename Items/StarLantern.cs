@@ -22,7 +22,6 @@ namespace Tremor.Items
 			Tooltip.SetDefault("25% increased magic damage\nEmits aura of light");
 		}
 
-
 		public override void UpdateAccessory(Player player, bool hideVisual)
 		{
 			player.AddBuff(11, 10);

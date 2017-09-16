@@ -35,7 +35,6 @@ namespace Tremor.Items
 			Tooltip.SetDefault("Shoots a burst of bullets\nBullets explode into firebals\n75% chance not to consume ammo");
 		}
 
-
 		public override void ModifyTooltips(List<TooltipLine> tooltips)
 		{
 			tooltips[0].overrideColor = new Color(238, 194, 73);

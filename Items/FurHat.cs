@@ -6,8 +6,6 @@ namespace Tremor.Items
 	public class FurHat : ModItem
 	{
 
-
-
 		public override void SetDefaults()
 		{
 

@@ -32,7 +32,6 @@ namespace Tremor.Items
 			Tooltip.SetDefault("Shoots a burning fist that explodes on contact and erupts burning bolts");
 		}
 
-
 		public override void AddRecipes()
 		{
 			ModRecipe recipe = new ModRecipe(mod);

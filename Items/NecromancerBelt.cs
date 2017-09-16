@@ -23,7 +23,6 @@ namespace Tremor.Items
 			Tooltip.SetDefault("Increases minion knockback by 20%\nIncreases your maximum number of minions");
 		}
 
-
 		public override void UpdateAccessory(Player player, bool hideVisual)
 
 		{

@@ -6,8 +6,6 @@ namespace Tremor.Items
 	public class PixieQueenMask : ModItem
 	{
 
-
-
 		public override void SetDefaults()
 		{
 

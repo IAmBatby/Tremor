@@ -23,7 +23,6 @@ namespace Tremor.Items
 			Tooltip.SetDefault("Increases maximum life by 40\n15% increased melee speed\n25% increased all damage");
 		}
 
-
 		public override void UpdateEquip(Player player)
 		{
 			player.statLifeMax2 += 40;

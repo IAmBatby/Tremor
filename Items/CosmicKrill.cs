@@ -41,7 +41,6 @@ namespace Tremor.Items
 			return true;
 		}
 
-
 		public override bool CanUseItem(Player player)
 		{
 			return NPC.downedMoonlord && !NPC.AnyNPCs(mod.NPCType("SpaceWhale"));

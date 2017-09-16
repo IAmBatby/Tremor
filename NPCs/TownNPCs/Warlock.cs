@@ -138,7 +138,6 @@ namespace Tremor.NPCs.TownNPCs
 			randomOffset = 2f;
 		}
 
-
 		public override void HitEffect(int hitDirection, double damage)
 		{
 			if (npc.life <= 0)

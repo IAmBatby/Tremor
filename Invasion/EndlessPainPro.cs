@@ -99,6 +99,5 @@ namespace Tremor.Invasion
 			return Color.White;
 		}
 
-
 	}
 }

@@ -27,8 +27,6 @@ namespace Tremor.Projectiles.Alchemic.Bursts
 			return Color.White;
 		}
 
-
-
 		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
 		{
 			if (Main.player[Main.myPlayer].buffType.Contains(mod.BuffType("ConcentratedTinctureBuff")))
@@ -47,7 +45,6 @@ namespace Tremor.Projectiles.Alchemic.Bursts
 
 		public override void AI()
 		{
-
 
 			int num613 = 10;
 			int num614 = 15;
@@ -84,8 +81,6 @@ namespace Tremor.Projectiles.Alchemic.Bursts
 					projectile.alpha = 150;
 				}
 			}
-
-
 
 		}
 	}

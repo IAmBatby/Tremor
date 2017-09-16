@@ -6,8 +6,6 @@ namespace Tremor.Items
 	public class VultureKingMask : ModItem
 	{
 
-
-
 		public override void SetDefaults()
 		{
 

@@ -22,7 +22,6 @@ namespace Tremor.Items
 			Tooltip.SetDefault("15% increased throwing damage");
 		}
 
-
 		public override void UpdateAccessory(Player player, bool hideVisual)
 		{
 			player.thrownDamage += 0.15f;

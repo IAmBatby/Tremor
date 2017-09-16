@@ -21,7 +21,6 @@ namespace Tremor.Items
 			Tooltip.SetDefault("Increases movement speed by 15%");
 		}
 
-
 		public override void UpdateAccessory(Player player, bool hideVisual)
 		{
 			player.moveSpeed += 0.15f;

@@ -15,8 +15,6 @@ namespace Tremor.NPCs
 			Main.npcFrameCount[npc.type] = 8;
 		}
 
-
-
 		public override void SetDefaults()
 		{
 			npc.width = 500;
@@ -36,7 +34,6 @@ namespace Tremor.NPCs
 			animationType = 370;
 			bossBag = mod.ItemType("SpaceWhaleTreasureBag");
 		}
-
 
 		public override void HitEffect(int hitDirection, double damage)
 		{
@@ -788,7 +785,6 @@ namespace Tremor.NPCs
 				int CenterX = (int)(npc.Center.X + npc.width / 2) / 16;
 				int CenterY = (int)(npc.Center.Y + npc.height / 2) / 16;
 				int halfLength = npc.width / 2 / 16 + 1;
-
 
 				if (!TremorWorld.Boss.SpaceWhale.IsDowned())
 				{

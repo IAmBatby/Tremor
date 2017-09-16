@@ -24,7 +24,6 @@ namespace Tremor.Items
 			Tooltip.SetDefault("7% increased melee critical strike chance");
 		}
 
-
 		public override void UpdateEquip(Player player)
 		{
 			player.meleeCrit += 7;

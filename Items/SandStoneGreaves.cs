@@ -7,7 +7,6 @@ namespace Tremor.Items
 	public class SandStoneGreaves : ModItem
 	{
 
-
 		public override void SetDefaults()
 		{
 
@@ -24,7 +23,6 @@ namespace Tremor.Items
 			DisplayName.SetDefault("Dune Greaves");
 			Tooltip.SetDefault("10% increased movement speed");
 		}
-
 
 		public override void UpdateEquip(Player player)
 		{

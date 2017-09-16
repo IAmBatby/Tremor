@@ -36,7 +36,6 @@ namespace Tremor.Items
 			Tooltip.SetDefault("A vial of exploding chemicals");
 		}
 
-
 		public override void UpdateInventory(Player player)
 		{
 			if (Main.player[Main.myPlayer].buffType.Contains(mod.BuffType("LongFuseBuff")))

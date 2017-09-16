@@ -15,7 +15,6 @@ namespace Tremor.Items
 			item.height = 30;
 			item.maxStack = 20;
 
-
 			item.rare = 5;
 			item.useAnimation = 45;
 			item.useTime = 45;
@@ -28,7 +27,6 @@ namespace Tremor.Items
 			DisplayName.SetDefault("Pixie in a Jar");
 			Tooltip.SetDefault("Summons the Pixie Queen\n'I think something wants to get out of the jar...'");
 		}
-
 
 		public override bool CanUseItem(Player player)
 		{

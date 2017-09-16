@@ -41,7 +41,6 @@ namespace Tremor.NPCs
 			npc.damage = (int)(npc.damage * 0.6f);
 		}
 
-
 		public override bool PreAI()
 		{
 			if (npc.justHit)
@@ -204,7 +203,6 @@ namespace Tremor.NPCs
 				mod.NPCType("ShadowHandTwo"));
 			}
 		}
-
 
 		public override void FindFrame(int frameHeight)
 		{

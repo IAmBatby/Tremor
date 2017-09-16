@@ -23,7 +23,6 @@ namespace Tremor.Items
 			Tooltip.SetDefault("Summons annoying dog");
 		}
 
-
 		public override void UseStyle(Player player)
 		{
 			if (player.whoAmI == Main.myPlayer && player.itemTime == 0)

@@ -37,7 +37,6 @@ namespace Tremor.Items
 			Tooltip.SetDefault("Summons a cyber saw to fight for you.");
 		}
 
-
 		public override bool AltFunctionUse(Player player)
 		{
 			return true;

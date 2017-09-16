@@ -42,7 +42,6 @@ namespace Tremor.Projectiles
 
 		}
 
-
 		public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)
 		{
 			if (Charge == MAX_CHARGE)
@@ -175,7 +174,6 @@ namespace Tremor.Projectiles
 				}
 			}
 			#endregion
-
 
 			#region Set laser tail position and dusts
 			if (Charge < MAX_CHARGE) return;

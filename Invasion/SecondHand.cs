@@ -24,7 +24,6 @@ namespace Tremor.Invasion
 			Tooltip.SetDefault("Increases tile and wall placement range");
 		}
 
-
 		public override void UpdateAccessory(Player player, bool hideVisual)
 
 		{

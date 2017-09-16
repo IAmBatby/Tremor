@@ -7,7 +7,6 @@ namespace Tremor.Items
 	public class ChemistPants : ModItem
 	{
 
-
 		public override void SetDefaults()
 		{
 
@@ -24,7 +23,6 @@ namespace Tremor.Items
 			DisplayName.SetDefault("Chemist Pants");
 			Tooltip.SetDefault("Increases alchemical damage by 6%");
 		}
-
 
 		public override void UpdateEquip(Player player)
 		{

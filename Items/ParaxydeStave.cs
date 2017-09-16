@@ -19,7 +19,6 @@ namespace Tremor.Items
 			item.useTime = 20;
 			item.mana = 10;
 
-
 			item.useAnimation = 20;
 			item.useStyle = 1;
 			item.shootSpeed = 10f;
@@ -36,7 +35,6 @@ namespace Tremor.Items
 			DisplayName.SetDefault("Paraxyde Stave");
 			Tooltip.SetDefault("Summons paraxyde crystals to fall from the sky\n");
 		}
-
 
 		public override void AddRecipes()
 		{

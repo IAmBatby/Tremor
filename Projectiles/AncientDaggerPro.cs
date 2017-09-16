@@ -111,6 +111,5 @@ namespace Tremor.Projectiles
 			return Color.White;
 		}
 
-
 	}
 }

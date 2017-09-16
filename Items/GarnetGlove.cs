@@ -33,7 +33,6 @@ namespace Tremor.Items
 			Tooltip.SetDefault("'Made of love'");
 		}
 
-
 		public override void AddRecipes()
 		{
 			ModRecipe recipe = new ModRecipe(mod);

@@ -28,7 +28,6 @@ namespace Tremor.Items
 			Tooltip.SetDefault("Summons Tiki Totem");
 		}
 
-
 		public override bool CanUseItem(Player player)
 		{
 			return !Main.dayTime && player.ZoneJungle && !NPC.AnyNPCs(mod.NPCType("TikiTotem"));

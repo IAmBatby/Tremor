@@ -54,5 +54,4 @@ namespace Tremor.ZombieEvent.Items
       Tooltip.SetDefault("Releases electric blasts in all directions");
     }
 
-    
 }}

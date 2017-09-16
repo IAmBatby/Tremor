@@ -53,8 +53,6 @@ namespace Tremor.Items
 			Tooltip.SetDefault("Creates nuclear beams.");
 		}
 
-
-
 		public override void AddRecipes()
 		{
 			ModRecipe recipe = new ModRecipe(mod);

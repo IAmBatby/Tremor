@@ -18,7 +18,6 @@ namespace Tremor.Items
 			item.autoReuse = true;
 			item.useAnimation = 15;
 
-
 			item.useTime = 10;
 			item.useStyle = 1;
 			item.consumable = true;
@@ -31,7 +30,6 @@ namespace Tremor.Items
 			DisplayName.SetDefault("Divine Forge");
 			Tooltip.SetDefault("Combines the function of the anvil, furnace and the ancient manipulator\nAllows you to work with heavenly materials");
 		}
-
 
 		public override void ModifyTooltips(List<TooltipLine> tooltips)
 		{

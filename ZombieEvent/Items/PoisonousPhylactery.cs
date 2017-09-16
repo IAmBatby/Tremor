@@ -26,7 +26,6 @@ namespace Tremor.ZombieEvent.Items
         item.value = 2500;
         item.rare = 5;
 
-
         item.accessory = true;
     }
 
@@ -36,8 +35,6 @@ namespace Tremor.ZombieEvent.Items
       Tooltip.SetDefault("Melee attacks inflicts poison on enemies\nShoots out poison bolts at enemies");
       Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(6, 4));
     }
-
-
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {

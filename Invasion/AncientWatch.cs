@@ -27,7 +27,6 @@ namespace Tremor.Invasion
 			Tooltip.SetDefault("Summons Paradox Cohort");
 		}
 
-
 		public override bool CanUseItem(Player player)
 		{
 			CyberWrathInvasion modPlayer = Main.player[Main.myPlayer].GetModPlayer<CyberWrathInvasion>(mod);

@@ -26,7 +26,6 @@ namespace Tremor.Items
 			Tooltip.SetDefault("Melee attacks inflict fire damage\n30% decreased mana cost\nIncreases maximum life by 150");
 		}
 
-
 		public override void AddRecipes()
 		{
 			ModRecipe recipe = new ModRecipe(mod);

@@ -21,7 +21,6 @@ namespace Tremor.Items
 			Tooltip.SetDefault("Greatly reduces movement speed\nProlonged after hit invicibility\nGreatly increases life regeneration");
 		}
 
-
 		public override void UpdateAccessory(Player player, bool hideVisual)
 		{
 			player.moveSpeed -= 0.4f;

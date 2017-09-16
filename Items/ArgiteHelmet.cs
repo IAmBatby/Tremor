@@ -9,7 +9,6 @@ namespace Tremor.Items
 	public class ArgiteHelmet : ModItem
 	{
 
-
 		public override void SetDefaults()
 		{
 
@@ -27,7 +26,6 @@ namespace Tremor.Items
 			Tooltip.SetDefault("10% increased melee speed");
 		}
 
-
 		public override void UpdateEquip(Player player)
 		{
 			player.meleeSpeed += 0.1f;
@@ -43,7 +41,6 @@ namespace Tremor.Items
 
 			player.setBonus = "Your body become spiky";
 			player.thorns = 1;
-
 
 			if (Math.Abs(player.velocity.X) + Math.Abs(player.velocity.Y) > 1f && !player.rocketFrame) // Makes sure the player is actually moving
 			{

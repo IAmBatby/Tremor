@@ -14,7 +14,6 @@ namespace Tremor.Items
 			item.height = 34;
 			item.value = 20000;
 
-
 			item.rare = 5;
 		}
 
@@ -23,7 +22,6 @@ namespace Tremor.Items
 			DisplayName.SetDefault("Pirate Chest");
 			Tooltip.SetDefault("Right click to open\n'Contains precious things'");
 		}
-
 
 		public override bool CanRightClick()
 		{

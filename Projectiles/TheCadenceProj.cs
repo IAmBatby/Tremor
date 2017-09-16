@@ -20,8 +20,6 @@ namespace Tremor.Projectiles
 			projectile.timeLeft = 600;
 		}
 
-
-
 		public override void AI()
 		{
 			if (projectile.ai[1] == 0f)

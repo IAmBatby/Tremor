@@ -21,7 +21,6 @@ namespace Tremor.Items
 			Tooltip.SetDefault("Prolonged after hit invincibility\nGreatly increased life regeneration\nIncreases maximum life by 140");
 		}
 
-
 		public override void UpdateAccessory(Player player, bool hideVisual)
 		{
 			player.moveSpeed -= 0.2f;

@@ -149,7 +149,6 @@ namespace Tremor
 			return NearestPlayer;
 		}
 
-
 		/// <summary>
 		/// *Используется для вычислиения инерции от точки до точки с заданой скоростью*
 		/// </summary>

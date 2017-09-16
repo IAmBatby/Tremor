@@ -24,7 +24,6 @@ namespace Tremor.Items
 			Tooltip.SetDefault("Increases melee damage and speed as health lowers\nIncreased invincibility after taking damage");
 		}
 
-
 		public override void UpdateAccessory(Player player, bool hideVisual)
 
 		{

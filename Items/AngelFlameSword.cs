@@ -30,7 +30,6 @@ namespace Tremor.Items
 			Tooltip.SetDefault("Ignites your enemies");
 		}
 
-
 		public override void AddRecipes()
 		{
 			ModRecipe recipe = new ModRecipe(mod);

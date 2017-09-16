@@ -24,7 +24,6 @@ namespace Tremor.Items
 			Tooltip.SetDefault("The less health, the more crit chance...");
 		}
 
-
 		public override void UpdateAccessory(Player player, bool hideVisual)
 
 		{

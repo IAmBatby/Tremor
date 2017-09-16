@@ -31,7 +31,6 @@ namespace Tremor.Items
 			Tooltip.SetDefault("Summons the Motherboard");
 		}
 
-
 		public override bool CanUseItem(Player player)
 		{
 			return Main.hardMode && !Main.dayTime && !NPC.AnyNPCs(mod.NPCType("Motherboard"));
@@ -43,7 +42,6 @@ namespace Tremor.Items
 			Main.PlaySound(SoundID.Roar, player.position, 0);
 			return true;
 		}
-
 
 		public override void AddRecipes()
 		{

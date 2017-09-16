@@ -28,7 +28,6 @@ namespace Tremor.Items
 			Tooltip.SetDefault("Summons Fungus Beetle");
 		}
 
-
 		public override bool CanUseItem(Player player)
 		{
 			return NPC.downedBoss3 && !NPC.AnyNPCs(mod.NPCType("FungusBeetle"));

@@ -13,7 +13,6 @@ namespace Tremor.Items
 			item.width = 26;
 			item.height = 18;
 
-
 			item.value = 60000;
 			item.rare = 6;
 			item.defense = 17;
@@ -24,7 +23,6 @@ namespace Tremor.Items
 			DisplayName.SetDefault("Nano Breastplate");
 			Tooltip.SetDefault("8% increased all damage\n10% increases melee speed");
 		}
-
 
 		public override void UpdateEquip(Player player)
 		{

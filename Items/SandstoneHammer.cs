@@ -8,7 +8,6 @@ namespace Tremor.Items
 		public override void SetDefaults()
 		{
 
-
 			item.autoReuse = true;
 			item.useStyle = 1;
 			item.useAnimation = 45;
@@ -30,7 +29,6 @@ namespace Tremor.Items
 			DisplayName.SetDefault("Dune Hammer");
 			Tooltip.SetDefault("");
 		}
-
 
 		public override void AddRecipes()
 		{

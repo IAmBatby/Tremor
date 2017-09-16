@@ -36,8 +36,6 @@ namespace Tremor.Items
 			Tooltip.SetDefault("Fires a constant powerful beam");
 		}
 
-
-
 		public override Vector2? HoldoutOffset()
 		{
 			return new Vector2(0, -1);

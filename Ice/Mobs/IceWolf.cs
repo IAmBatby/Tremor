@@ -36,7 +36,6 @@ namespace Tremor.Ice.Mobs
 			npc.damage = npc.damage * 1;
 		}
 
-
 		public override void ModifyHitPlayer(Player target, ref int damage, ref bool crit)
 		{
 			target.AddBuff(44, 60);

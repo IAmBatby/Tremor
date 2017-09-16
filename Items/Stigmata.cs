@@ -24,7 +24,6 @@ namespace Tremor.Items
 			Tooltip.SetDefault("The less health, the more damage...");
 		}
 
-
 		public override void UpdateAccessory(Player player, bool hideVisual)
 
 		{

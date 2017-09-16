@@ -24,7 +24,6 @@ namespace Tremor.Items
 			Tooltip.SetDefault("{$CommonItemTooltip.RightClickToOpen}");
 		}
 
-
 		public override bool CanRightClick()
 		{
 			return true;

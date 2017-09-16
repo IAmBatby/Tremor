@@ -22,7 +22,6 @@ namespace Tremor.Items
 			Tooltip.SetDefault("'Great for impersonating devs!'");
 		}
 
-
 		public override bool IsArmorSet(Item head, Item body, Item legs)
 		{
 			return body.type == mod.ItemType("ZerokkBody") && legs.type == mod.ItemType("ZerokkLegs");

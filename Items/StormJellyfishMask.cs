@@ -6,8 +6,6 @@ namespace Tremor.Items
 	public class StormJellyfishMask : ModItem
 	{
 
-
-
 		public override void SetDefaults()
 		{
 

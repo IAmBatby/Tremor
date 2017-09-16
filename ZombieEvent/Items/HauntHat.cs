@@ -23,7 +23,6 @@ namespace Tremor.ZombieEvent.Items
       Tooltip.SetDefault("Summons a friendly ghost");
     }
 
-
 		public override void UseStyle(Player player)
 		{
 			if (player.whoAmI == Main.myPlayer && player.itemTime == 0)

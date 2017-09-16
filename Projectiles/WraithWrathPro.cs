@@ -20,9 +20,6 @@ namespace Tremor.Projectiles
 
 		}
 
-
-
-
 		public override void AI()
 		{
 			if (projectile.localAI[0] == 0f)

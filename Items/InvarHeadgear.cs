@@ -7,8 +7,6 @@ namespace Tremor.Items
 	public class InvarHeadgear : ModItem
 	{
 
-
-
 		public override void SetDefaults()
 		{
 
@@ -25,7 +23,6 @@ namespace Tremor.Items
 			DisplayName.SetDefault("Invar Headgear");
 			Tooltip.SetDefault("6% increased melee damage");
 		}
-
 
 		public override void UpdateEquip(Player player)
 		{

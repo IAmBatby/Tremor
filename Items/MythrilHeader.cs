@@ -8,8 +8,6 @@ namespace Tremor.Items
 	public class MythrilHeader : ModItem
 	{
 
-
-
 		public override void SetDefaults()
 		{
 
@@ -26,7 +24,6 @@ namespace Tremor.Items
 			DisplayName.SetDefault("Mythril Header");
 			Tooltip.SetDefault("Increases thrown damage by 20%");
 		}
-
 
 		public override void UpdateEquip(Player player)
 		{

@@ -70,7 +70,6 @@ namespace Tremor.NPCs
 			return true;
 		}
 
-
 		public override void NPCLoot()
 		{
 			if (Main.rand.Next(2) == 0)

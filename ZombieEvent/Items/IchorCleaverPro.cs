@@ -15,14 +15,10 @@ namespace Tremor.ZombieEvent.Items
                                    Main.projFrames[projectile.type] = 28;
     }
 
-
-
-
 		public override Color? GetAlpha(Color lightColor)
 		{
 			return Color.White;
 		}
-
 
     public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
     {
@@ -31,7 +27,6 @@ namespace Tremor.ZombieEvent.Items
             target.AddBuff(69, 500, false);
         }
     }
-
 
     public override void OnHitPvp(Player target, int damage, bool crit)
     {

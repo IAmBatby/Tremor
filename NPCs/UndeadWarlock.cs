@@ -75,7 +75,6 @@ namespace Tremor.NPCs
 			}
 		}
 
-
 		public override float SpawnChance(NPCSpawnInfo spawnInfo)
 			=> Helper.NormalSpawn(spawnInfo) && Helper.NoZoneAllowWater(spawnInfo) && NPC.downedBoss3 && !Main.dayTime && spawnInfo.spawnTileY < Main.worldSurface ? 0.008f : 0f;
 	}

@@ -8,14 +8,12 @@ namespace Tremor.Items
 	public class RavenHeadgear : ModItem
 	{
 
-
 		public override void SetDefaults()
 		{
 
 			item.width = 18;
 			item.height = 18;
 			item.value = 10000;
-
 
 			item.rare = 4;
 			item.defense = 9;
@@ -26,7 +24,6 @@ namespace Tremor.Items
 			DisplayName.SetDefault("Raven Headgear");
 			Tooltip.SetDefault("5% increased melee damage\nIncreases melee critical strike chance by 5");
 		}
-
 
 		public override void UpdateEquip(Player player)
 		{

@@ -16,7 +16,6 @@ namespace Tremor.Items
 			item.height = 30;
 			item.maxStack = 1;
 
-
 			item.value = 3000;
 			item.rare = 2;
 			item.useTime = 40;
@@ -31,7 +30,6 @@ namespace Tremor.Items
 			DisplayName.SetDefault("Rusty Lantern");
 			Tooltip.SetDefault("Summons Ancient Dragon\nCan be only used near Ruin Altar");
 		}
-
 
 		public override bool CanUseItem(Player player)
 		{

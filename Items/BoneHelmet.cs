@@ -13,7 +13,6 @@ namespace Tremor.Items
 		public override void SetDefaults()
 		{
 
-
 			item.defense = 5;
 			item.width = 26;
 			item.height = 22;
@@ -26,7 +25,6 @@ namespace Tremor.Items
 			DisplayName.SetDefault("Bone Helmet");
 			Tooltip.SetDefault("25% increased throwing velocity");
 		}
-
 
 		public override void UpdateEquip(Player p)
 		{
@@ -43,7 +41,6 @@ namespace Tremor.Items
 			player.setBonus = "Increases defense by 6";
 			player.boneArmor = true;
 			player.statDefense += 6;
-
 
 			if (Math.Abs(player.velocity.X) + Math.Abs(player.velocity.Y) > 1f && !player.rocketFrame) // Makes sure the player is actually moving
 			{

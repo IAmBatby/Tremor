@@ -30,7 +30,6 @@ namespace Tremor.Items
 			Tooltip.SetDefault("Starts the Martian Madness");
 		}
 
-
 		public override bool CanUseItem(Player player)
 		{
 			return Main.hardMode && NPC.downedGolemBoss;

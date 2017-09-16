@@ -36,7 +36,6 @@ namespace Tremor.Items
 			Tooltip.SetDefault("Causes pirahnas to fall from the sky");
 		}
 
-
 		public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
 		{
 			type = mod.ProjectileType("PirahnaPro");

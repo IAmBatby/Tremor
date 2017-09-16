@@ -64,7 +64,6 @@ namespace Tremor.Invasion
 			}
 		}
 
-
 		void Shoot()
 		{
 			float NearestNPCDist = ShootDistance;

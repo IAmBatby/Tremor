@@ -24,7 +24,6 @@ namespace Tremor.Tiles
         Main.tileSolid[Type] = true;
     }
 
-
     public override void KillMultiTile(int i, int j, int frameX, int frameY)
     {
         if(frameX == 0)

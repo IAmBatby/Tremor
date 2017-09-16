@@ -6,8 +6,6 @@ namespace Tremor.Items
 	public class HopeMask : ModItem
 	{
 
-
-
 		public override void SetDefaults()
 		{
 

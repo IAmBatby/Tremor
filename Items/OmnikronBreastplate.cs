@@ -25,7 +25,6 @@ namespace Tremor.Items
 			Tooltip.SetDefault("Increases all damage by 20%");
 		}
 
-
 		public override void ModifyTooltips(List<TooltipLine> tooltips)
 		{
 			tooltips[0].overrideColor = new Color(238, 194, 73);

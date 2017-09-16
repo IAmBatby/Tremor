@@ -6,8 +6,6 @@ namespace Tremor.Items
 	public class HeaterOfWorldsMask : ModItem
 	{
 
-
-
 		public override void SetDefaults()
 		{
 

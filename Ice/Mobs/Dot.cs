@@ -13,7 +13,6 @@ namespace Tremor.Ice.Mobs
 			DisplayName.SetDefault("Coldtrap");
 		}
 
-
 		public override void SetDefaults()
 		{
 			npc.lifeMax = 20;

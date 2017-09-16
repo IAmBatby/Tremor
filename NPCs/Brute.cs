@@ -66,7 +66,6 @@ namespace Tremor.NPCs
 				Main.PlaySound(22, (int)npc.position.X, (int)npc.position.Y, 1);
 		}
 
-
 		public override float SpawnChance(NPCSpawnInfo spawnInfo)
 		{
 			return Helper.NormalSpawn(spawnInfo) && Helper.NoZoneAllowWater(spawnInfo) && NPC.downedMoonlord && Main.hardMode && !Main.dayTime && spawnInfo.spawnTileY < Main.worldSurface ? 0.001f : 0f;

@@ -28,7 +28,6 @@ namespace Tremor.Items
 			Tooltip.SetDefault("Summons the Trinity");
 		}
 
-
 		public override bool CanUseItem(Player player)
 		{
 			return !Main.dayTime && Main.hardMode && NPC.downedMechBossAny && !NPC.AnyNPCs(mod.NPCType("SoulofHope")) && !NPC.AnyNPCs(mod.NPCType("SoulofTrust")) && !NPC.AnyNPCs(mod.NPCType("SoulofTruth"));

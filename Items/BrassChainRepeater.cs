@@ -15,7 +15,6 @@ namespace Tremor.Items
 			item.width = 36;
 			item.height = 24;
 
-
 			item.useTime = 11;
 			item.useAnimation = 11;
 			item.shoot = 1;
@@ -35,7 +34,6 @@ namespace Tremor.Items
 			DisplayName.SetDefault("Brass Chain Repeater");
 			Tooltip.SetDefault("Quickly launches arrows\n25% to shoot a heat ray");
 		}
-
 
 		public override void UpdateInventory(Player player)
 		{

@@ -33,7 +33,6 @@ namespace Tremor.Items
 			Tooltip.SetDefault("Shoots a molten bolt that leaves molten spheres behind\nSpheres home on enemies, explode on contact and set enemies on fire");
 		}
 
-
 		public override void ModifyTooltips(List<TooltipLine> tooltips)
 		{
 			tooltips[0].overrideColor = new Color(238, 194, 73);

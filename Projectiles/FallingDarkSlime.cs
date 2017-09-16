@@ -25,8 +25,6 @@ namespace Tremor.Projectiles
 
 		}
 
-
-
 		public override void AI()
 		{
 			if (projectile.frameCounter < 5)

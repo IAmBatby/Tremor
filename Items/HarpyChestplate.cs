@@ -24,7 +24,6 @@ namespace Tremor.Items
 			Tooltip.SetDefault("Increases jump height");
 		}
 
-
 		public override void UpdateEquip(Player player)
 		{
 			player.jumpBoost = true;

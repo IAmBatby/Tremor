@@ -13,7 +13,6 @@ namespace Tremor.Items
 			item.width = 44;
 			item.height = 48;
 
-
 			item.useTime = 30;
 			item.useAnimation = 30;
 			item.useStyle = 4;
@@ -31,7 +30,6 @@ namespace Tremor.Items
 			DisplayName.SetDefault("Unstable Crystal");
 			Tooltip.SetDefault("Teleports you to a random location\n'Be careful! It can take you to a very dangerous place!'");
 		}
-
 
 		public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
 		{

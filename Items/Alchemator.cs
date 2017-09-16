@@ -29,7 +29,6 @@ namespace Tremor.Items
 			Tooltip.SetDefault("Allows you to create and use Jellyxir");
 		}
 
-
 		public override void AddRecipes()
 		{
 			ModRecipe recipe = new ModRecipe(mod);

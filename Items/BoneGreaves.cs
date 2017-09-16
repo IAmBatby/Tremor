@@ -8,11 +8,8 @@ namespace Tremor.Items
 	public class BoneGreaves : ModItem
 	{
 
-
 		public override void SetDefaults()
 		{
-
-
 
 			item.defense = 8;
 			item.width = 22;
@@ -26,7 +23,6 @@ namespace Tremor.Items
 			DisplayName.SetDefault("Bone Greaves");
 			Tooltip.SetDefault("20% increased throwing critical strike chance\n6% increased ranged damage");
 		}
-
 
 		public override void UpdateEquip(Player p)
 		{

@@ -6,8 +6,6 @@ namespace Tremor.Items
 	public class AncientDragonMask : ModItem
 	{
 
-
-
 		public override void SetDefaults()
 		{
 

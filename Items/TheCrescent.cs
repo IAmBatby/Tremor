@@ -34,7 +34,6 @@ namespace Tremor.Items
 			Tooltip.SetDefault("");
 		}
 
-
 		public override bool ConsumeAmmo(Player p)
 		{
 			return Main.rand.Next(2) == 0;

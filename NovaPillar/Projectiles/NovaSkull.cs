@@ -20,8 +20,6 @@ namespace Tremor.NovaPillar.Projectiles
 			Main.projFrames[projectile.type] = 15;
 		}
 
-
-
 		public override Color? GetAlpha(Color lightColor)
 		{
 			return Color.White;

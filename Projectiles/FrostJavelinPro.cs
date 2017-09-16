@@ -24,7 +24,6 @@ namespace Tremor.Projectiles
 
 		}
 
-
 		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
 		{
 			if (Main.rand.Next(3) == 0)
@@ -49,7 +48,6 @@ namespace Tremor.Projectiles
 			}
 			Main.PlaySound(0, (int)projectile.position.X, (int)projectile.position.Y, 0);
 		}
-
 
 	}
 }
