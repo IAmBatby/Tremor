@@ -194,6 +194,8 @@ namespace Tremor.NPCs.AndasBoss
 
 		public override void NPCLoot()
 		{
+			TremorWorld.Boss.Andas.Downed();
+
 			if (Main.expertMode)
 			{
 				npc.DropBossBags();

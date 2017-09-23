@@ -31,6 +31,7 @@ Thanks to Eldrazi for many contributions for this patch.
 - Bosses
 -- Fixed Wall of Shadows not being able to spawn (huzzah)
 -- Fixed detached clampers (from the Motherboard fight) having incorrect life values
+-- Fixed killing (True) Andas not registering as kill
 
 - Mod source
 -- Merged certain ModPlayer files, this possibly improves mod load speed
