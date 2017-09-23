@@ -758,6 +758,8 @@ namespace Tremor.NPCs
 
 		public override void NPCLoot()
 		{
+			TremorWorld.Boss.WallOfShadow.Downed();
+
 			if (Main.expertMode)
 			{
 				npc.DropBossBags();

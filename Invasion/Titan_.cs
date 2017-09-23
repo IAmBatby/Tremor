@@ -121,5 +121,10 @@ namespace Tremor.Invasion
 				//NetMessage.SendData(27, -1, -1, "", proj);
 			}
 		}
+
+		public override void NPCLoot()
+		{
+			TremorWorld.Boss.ParadoxTitan.Downed();
+		}
 	}
 }

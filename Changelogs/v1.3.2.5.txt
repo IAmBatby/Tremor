@@ -1,0 +1,4 @@
+Changelogs for v1.3.2.5:
+
+Bosses:
+- Fixed Paradox Titan (Titan Soul) and Wall of Shadows not registering as kill
