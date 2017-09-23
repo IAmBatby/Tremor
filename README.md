@@ -8,44 +8,45 @@ Thanks to all the collaborators, Tremor will remain available and bugs will be f
 
 # Latest changelogs
 
-## Changelogs for v1.3.2.3
-Please note that the Tremor wiki (by gamepedia) will no longer be endorsed by me, or anyone involving Tremor's development. By no means should this wiki be considered official, and I will advise against using it. I do not deem this wiki a reputable source of information anymore, and neither should you: if you have a question, you can ask me and I will give you an honest answer. 
+## Changelogs for v1.3.2.4
+Thanks to Eldrazi for many contributions for this patch.
 
+- Misc
+-- Glacier ice wall can now only spread to other ice or snow, this should prevent the entire world from getting covered in it (as reported)
 
-Fixes:
- - Improved/fixed mod unload (thanks jopojelly)
- - Fixed missing banner assignments (prep for future tml release) (thanks jopojelly)
- - Fixed glowmask related errors for servers (thanks Rartrin)
- - Bosss Heater of Worlds and Ancient Dragon no longer take knockback
- - Now only Ancient dragon head shows in cheat sheet UI and not the other segments
- - Fixed Tremor removing a recipe for Super Healing Potion
- - Fixed Startrooper not being able to get the name 'Parker' and 'Lambert'
- - Fixed Undertaker not being able to get the name 'Spots' and 'Hargon'
- - (hopefully:silent changes) Fixed Startrooper and Undertaker allegedly moving in without having killed the required bosses
- - Fixed the Glass Potion buff not resetting defense to 0
+- Alchemist class
+-- Improved certain tooltips for alchemist class related items (please note I still probably missed many)
+-- Fixed certain tooltips still saying 'alchemic', changed to say 'alchemical'
+-- Fixed certain alchemist items not granting the right amount of increased damage or critical strike chance. Please note that this change can only affect your characters positively. Because if a tooltip showed a lesser increase than was actually given, I updated the tooltip to display the bigger increase. If a tooltip displayed a higher value than was actually given, I updated the given value to match the tooltip.
+-- Improved Nova alchemist flask shadow trail opacity
+-- Improved Shadow cloud opacity and added fade-out (many alchemist clouds need this)
+-- Special note: for tML v0.10.1 I added a hook to adjust crit, but unfortunately (BECAUSE IM FOOKIN STOOPID) it doesn't work properly. No worries though! With a few workarounds, special crit for the alchemist class is still functional with some work-around code. This just means that whenever tML updates, I can remove all that extra code.
+-- To add to the special note, this patch features a rather major buff for the alchemist class. I have abstracted alchemist specific code into it's own classes. With this work comes the change that alchemist projectiles (clouds, bursts, blasts.. you name it) will now also inherit the crit chance of your alchemist item, where this was previously not the case. This means that your alchemist related projectiles will crit more often, especially if you can get to increase your critical strike chance!
+-- Also fixed critical chance not showing for certain items
 
-Other or specific notes:
- - I added hooks to tML to allow for custom crit chance. This mean alchemical crit chance will be a thing when tML updates
- - Glowmasks now support useStyle 5 (thanks Rartrin)
- - Improved the Glass Potion (and buff) tooltip
+- Items
+-- Items that grant movement speed now also increase the player's maximum run speed by that amount, this ensures the movement speed bonus actually has effect when at capped speed
+-- Certain tooltips have been improved to match the style of wording from vanilla
+-- Improved and buffed Phantablast
+-- All treasure bag tooltips 'right click to open' will now translate properly
 
- - Robotic Dead Head and Dead Head
- -- Fixed Dead Head accessory not granting throwing crit chance, and not granting alchemical damage and crit chance
- -- Fixed Robotic Dead Head accessory nto granting throwing crit chance, and not granting alchemical damage and crit chance
- -- Improved the tooltips for both Robotic Dead Head and Dead Head
+- NPCs
+-- Improved certain npc framing to update based on velocity
+-- You will now see certain names and chats appear more often than others for town NPCs
+-- Fixed many town NPCs not being able to receive their last 2 possible names
+-- Fixed certain town NPCs their shops
+-- Fixed certain town NPCs 'can spawns', some may not have been able to spawn before when they should have been able to
 
-Motherboard improvements!
- The code for Motherboards has been refactored and worked on.
- Hopefully this means there are no more multiplayer issues, or at least less. Please let me know if you encounter any.
- In addition to improvements, I have repurposed a lot of DD2 event sound effects in the boss fight to really improve on it. (thanks Skiphs for helping!)
- You will see for yourself, the additions and changes to both visual and auditive effects during the fight.
+- Bosses
+-- Fixed Wall of Shadows not being able to spawn (huzzah)
+-- Fixed detached clampers (from the Motherboard fight) having incorrect life values
 
- - Fight changes
- -- Signal drones' AI is improved. They will target a nearby player and home in on them in a grid like fashion. This works together with their attack. Because of this change, the drones themselves have a hefty cooldown for hitting players with a body attack.
- -- The laser beams Motherboard shoots in her first phase now more accurately target the player, instead of random places
-
- - Known issues
- -- When Motherboard her two super laser beams in phase 2 have a long distance from the ground, it is known that this causes a hit on FPS. Try to fight her closer to the ground to avoid this issue, I hope I will be able to find the cause of this.
+- Mod source
+-- Merged certain ModPlayer files, this possibly improves mod load speed
+-- Certain code was shortened, possibly reducing the mod size
+-- Removed certain drop code for items that don't exist in the mod
+-- Removed many npc expert scaling that did not actually scale anything. Please leave a suggestion when you find an appropiate scaling for an npc
+-- Many magic formatting has been done
 
 # Report bugs
 Please make an [issue](https://github.com/Jofairden/Tremor/issues) to report the bug you found. Please check first if the mod has already been reported.
