@@ -1,9 +1,8 @@
-﻿using Terraria;
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 
 namespace Tremor.CogLord.NPCs
 {
@@ -30,8 +29,9 @@ namespace Tremor.CogLord.NPCs
 			npc.value = Item.buyPrice(0, 1, 0, 0);
 		}
 
-		int ShootRate = 4;
-		int TimeToShoot = 4;
+		private int _shootRate = 4;
+		private int _timeToShoot = 4;
+
 		public override void AI()
 		{
 			npc.position += npc.velocity * 1.7f;
@@ -40,12 +40,12 @@ namespace Tremor.CogLord.NPCs
 			{
 				npc.Center = Main.npc[(int)npc.ai[0]].Center;
 			}
-			if (--TimeToShoot <= 0)
+			if (--_timeToShoot <= 0)
 			{
-				TimeToShoot = ShootRate;
+				_timeToShoot = _shootRate;
 				NPC parent = Main.npc[NPC.FindFirstNPC(mod.NPCType("CogLord"))];
-				Vector2 Velocity = Helper.VelocityToPoint(npc.Center, parent.Center, 20);
-				int k = Projectile.NewProjectile(npc.Center.X, npc.Center.Y, Velocity.X, Velocity.Y, mod.ProjectileType("CogLordLaser"), 100, 1f);
+				Vector2 velocity = Helper.VelocityToPoint(npc.Center, parent.Center, 20);
+				int k = Projectile.NewProjectile(npc.Center.X, npc.Center.Y, velocity.X, velocity.Y, mod.ProjectileType("CogLordLaser"), 100, 1f);
 				Main.projectile[k].friendly = false;
 				Main.projectile[k].tileCollide = false;
 				Main.projectile[k].hostile = true;

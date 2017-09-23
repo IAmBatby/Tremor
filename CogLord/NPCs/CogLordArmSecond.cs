@@ -1,63 +1,78 @@
-﻿using Terraria;
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-
-using Microsoft.Xna.Framework;
 
 namespace Tremor.CogLord.NPCs
 {
 	public class CogLordArmSecond : ModNPC
 	{
-		/// <summary>The Hand (end) of the corresponding arm side. Found using npc.ai[0]</summary>
-		NPC targetHand => Main.npc[(int)npc.ai[0]];
-		/// <summary>The Upper Arm npc for the corresponding arm side. Found using npc.ai[1]</summary>
-		NPC upperArm => Main.npc[(int)npc.ai[1]];
-
 		public override void SetStaticDefaults()
 		{
 			Main.npcFrameCount[npc.type] = 2;
 		}
 
+		//Int variables
+		private int _animationRate = 6;
+
+		private int _currentFrame;
+		private int _timeToAnimation = 6;
+
+		//Float variables
+		private float _dist = 150;
+
 		public override void SetDefaults()
 		{
-			npc.width = 112;
-			npc.height = 34;
-
 			npc.lifeMax = 1;
 			npc.knockBackResist = 0.5f;
-
-			npc.aiStyle = -1;
-
+			npc.width = 112;
+			npc.height = 34;
+			npc.aiStyle = 0;
 			npc.noGravity = true;
 			npc.noTileCollide = true;
 			npc.dontTakeDamage = true;
-			
 			npc.HitSound = SoundID.NPCHit1;
 			npc.DeathSound = SoundID.NPCDeath1;
+			npc.value = Item.buyPrice(0, 0, 5, 0);
 		}
 
-		public override bool PreAI()
+		public override void AI()
 		{
-			if (targetHand.active && (targetHand.type == mod.NPCType<CogLordGun>() || targetHand.type == mod.NPCType<CogLordHand>()))
+			if (--_timeToAnimation <= 0)
 			{
-				npc.Center = Vector2.Lerp(npc.Center, Helper.CenterPoint(Helper.CenterPoint(upperArm.Center, targetHand.Center), targetHand.Center), 0.2F);
-				npc.rotation = MathHelper.Lerp(npc.rotation, Helper.rotateBetween2Points(upperArm.Center, targetHand.Center), 0.2F);
+				if (++_currentFrame > 2)
+					_currentFrame = 1;
+				_timeToAnimation = _animationRate;
+				npc.frame = GetFrame(_currentFrame);
+			}
+
+			if ((Main.npc[(int)npc.ai[0]].type == mod.NPCType("CogLordGun") || Main.npc[(int)npc.ai[0]].type == mod.NPCType("CogLordHand")) && Main.npc[(int)npc.ai[0]].active)
+			{
+				npc.Center = Helper.CenterPoint(Helper.CenterPoint(Main.npc[(int)npc.ai[3]].Center, Main.npc[(int)npc.ai[0]].Center), Main.npc[(int)npc.ai[0]].Center);
+				npc.rotation = Helper.rotateBetween2Points(Main.npc[(int)npc.ai[3]].Center, Main.npc[(int)npc.ai[0]].Center);
+				if (npc.ai[1] == 0) npc.spriteDirection = -1;
+				else npc.spriteDirection = 1;
 			}
 			else
-				npc.active = false;
-
-			return false;
+				npc.life = -1;
 		}
 
-		public override void FindFrame(int frameHeight)
+		private Rectangle GetFrame(int number)
 		{
-			if (npc.frameCounter++ >= 15)
-			{
-				npc.frame.Y = (npc.frame.Y + frameHeight) % (Main.npcFrameCount[npc.type] * frameHeight);
-				npc.frameCounter = 0;
-			}
+			return new Rectangle(0, npc.frame.Height * (number - 1), npc.frame.Width, npc.frame.Height);
+		}
 
-			npc.spriteDirection = npc.direction;
+		public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)
+		{
+			Texture2D drawTexture = Main.npcTexture[npc.type];
+			Vector2 origin = new Vector2((drawTexture.Width / 2) * 0.5F, (drawTexture.Height / Main.npcFrameCount[npc.type]) * 0.5F);
+			Vector2 drawPos = new Vector2(
+				npc.position.X - Main.screenPosition.X + (npc.width / 2) - (Main.npcTexture[npc.type].Width / 2) * npc.scale / 2f + origin.X * npc.scale,
+				npc.position.Y - Main.screenPosition.Y + npc.height - Main.npcTexture[npc.type].Height * npc.scale / Main.npcFrameCount[npc.type] + 4f + origin.Y * npc.scale + npc.gfxOffY);
+			SpriteEffects effects = npc.spriteDirection == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally;
+			spriteBatch.Draw(drawTexture, drawPos, npc.frame, Color.White, npc.rotation, origin, npc.scale, effects, 0);
+			return false;
 		}
 	}
 }
