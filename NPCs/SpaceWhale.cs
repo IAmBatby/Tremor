@@ -789,13 +789,13 @@ namespace Tremor.NPCs
 				if (!TremorWorld.Boss.SpaceWhale.IsDowned())
 				{
 					Main.NewText("A comet has struck the ground!", 117, 187, 253);
-					TremorWorld.dropComet();
+					TremorWorld.DropComet();
 					//return;
 				}
 				if (TremorWorld.Boss.SpaceWhale.IsDowned() && Main.rand.Next(3) == 0)
 				{
 					Main.NewText("A comet has struck the ground!", 117, 187, 253);
-					TremorWorld.dropComet();
+					TremorWorld.DropComet();
 					//return;
 				}
 				TremorWorld.Boss.SpaceWhale.Downed();

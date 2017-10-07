@@ -32,6 +32,21 @@ namespace Tremor
 
 	public static class TremorUtils
 	{
+		public static bool AddItem(this Chest chest, int type, int? stack = null)
+		{
+			foreach (var item in chest.item)
+			{
+				if (item.IsAir)
+				{
+					item.SetDefaults(type);
+					if (stack.HasValue)
+						item.stack = stack.Value;
+					return true;
+				}
+			}
+			return false;
+		}
+
 		public static string NamespaceToPath(this Type type)
 			=> type.Namespace?.Replace('.', '/');
 

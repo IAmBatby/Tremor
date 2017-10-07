@@ -7,12 +7,10 @@ namespace Tremor.Items
 	{
 		public override void SetDefaults()
 		{
-
 			item.width = 36;
 			item.height = 44;
 			item.value = 1000;
 			item.rare = 4;
-
 			item.accessory = true;
 		}
 

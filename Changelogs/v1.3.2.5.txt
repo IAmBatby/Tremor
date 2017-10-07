@@ -1,4 +1,22 @@
 Changelogs for v1.3.2.5:
 
+Note:
+- Update to Fargo's Mod version v13.0 to fix the shop from breaking
+
 Bosses:
 - Fixed Paradox Titan (Titan Soul) and Wall of Shadows not registering as kill
+
+Worldgen:
+- Removed many (read: at least a dozen) redundant loops iterating world chests (should speed up WorldGen)
+- Removed code trying to find a recently placed chest with random coords, with no purpose. (should speed up WorldGen)
+- Note: entirety of WorldGen still needs a proper look at. But after some small fixes, I am no longer surprised Tremor breaks WorldGen.
+
+WorldGen Chests:
+- Fixed chests replacing contents in the chest, chests now properly add to the contents
+- Fixed chests containing Flying Carpet or Sandstorm In A Bottle having content replaced
+- Fixed chests containing Pharaoh's Mask having content replaced
+- Fixed Ruin Chest generation and having content replaced
+- Fixed Ice Chest generation and having content replaced
+
+Code:
+- Flags hideCode, hideResources and includeSource are no longer blocking unpacking. Unpack now to get the Tremor.dll
