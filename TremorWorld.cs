@@ -58,10 +58,10 @@ namespace Tremor
 			if (downedBoss == null)
 			{
 				downedBoss = new Dictionary<Boss, bool>();
-				foreach (Boss boss in Enum.GetValues(typeof(Boss)).Cast<Boss>())
-				{
-					downedBoss[boss] = false;
-				}
+			}
+			foreach (Boss boss in Enum.GetValues(typeof(Boss)).Cast<Boss>())
+			{
+				downedBoss[boss] = false;
 			}
 		}
 
