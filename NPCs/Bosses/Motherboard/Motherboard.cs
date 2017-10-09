@@ -31,12 +31,12 @@ namespace Tremor.NPCs.Bosses.Motherboard
 		protected int _timeToAnimation = 6; // Animation rate
 
 		protected const int LaserYOffset = 95; // Laser spawn offset by Y value
-		protected const int LaserDamage = 40; // Laser damage
+		protected const int LaserDamage = 25; // Laser damage
 		protected const float LaserKb = 1; // Laser knockback
 
 		protected const int SecondShootCount = 3;
 		protected const float SecondShootSpeed = 15f;
-		protected const int SecondShootDamage = 30;
+		protected const int SecondShootDamage = 35;
 		protected const float SecondShootKn = 1.0f;
 		protected const int SecondShootRate = 60; // The rate of fire of the motherboard's 3 laser shot
 		protected const int SecondShootSpread = 35; // The random spread of motherboard's 3 laser shot
@@ -467,7 +467,7 @@ namespace Tremor.NPCs.Bosses.Motherboard
 			npc.lifeMax = 45000;
 			npc.damage = 30;
 			npc.knockBackResist = 0f;
-			npc.defense = 70;
+			npc.defense = 30;
 			npc.width = 170;
 			npc.height = 160;
 			npc.aiStyle = 2;

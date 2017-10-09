@@ -19,7 +19,7 @@ namespace Tremor.NPCs.Bosses.Motherboard
 			npc.noTileCollide = true;
 			npc.noGravity = true;
 			npc.lifeMax = 1500;
-			npc.damage = 75;
+			npc.damage = 65;
 			npc.defense = 18;
 			npc.knockBackResist = 0.5f;
 			npc.width = 90;
@@ -36,7 +36,7 @@ namespace Tremor.NPCs.Bosses.Motherboard
 				var signalDrone = drone.modNPC as SignalDrone;
 				if (signalDrone != null)
 				{
-					signalDrone._immuneTime = 180;
+					signalDrone._immuneTime = 240;
 					signalDrone.npc.netUpdate = true;
 				}
 			}
@@ -136,7 +136,7 @@ namespace Tremor.NPCs.Bosses.Motherboard
 
 			float velocityMultiplier = 
 				(target as NPC) != null
-				? 16f : 10f; // 16f is pretty much as fast as the player
+				? 12f : 10f; // 16f is pretty much as fast as the player
 
 			Vector2 distanceToTarget = target.Center - npc.Center + new Vector2(0f, -20f);
 

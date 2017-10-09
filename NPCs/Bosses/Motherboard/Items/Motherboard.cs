@@ -28,7 +28,8 @@ namespace Tremor.NPCs.Bosses.Motherboard.Items
 
 		public override bool UseItem(Player player)
 		{
-			summonWallOfShadows(player);
+			Main.dayTime = false;
+			//summonWallOfShadows(player);
 			//NPC.SpawnOnPlayer(player.whoAmI, mod.NPCType("CogLord"));
 			return true;
 		}

@@ -13,6 +13,12 @@ Bosses:
 - Boss Checklist noted that Eye of Cthulhu had to be beaten for using Mysterious Drum, this is false
 - Storm Jelly did not say any requirements, but it is required that eye of Cthulhu has been slain
 - Fungus Beetle appeared after Heater of Worlds in Boss Checklist, however Fungus Beetle comes after Heater of Worlds in terms of progression, this has been fixed
+- Lowered Motherboard's defense from 70 to 30
+- Lowered Signal Drone's damage from 75 to 30
+- Increased Signal Drone's immune time from 180 (~3 seconds) to 240 (~4 seconds)
+- Lowered Signal Drone's speed multiplier from 16 to 12
+- Lowered Signal Drone's interdrone laser damage from 40 to 25
+- Increased Motherboard's triple beam laser damage from 30 to 35
 
 Worldgen:
 - Removed many (read: at least a dozen) redundant loops iterating world chests (should speed up WorldGen)
