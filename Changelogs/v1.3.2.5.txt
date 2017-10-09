@@ -5,6 +5,7 @@ Note:
 
 Bosses:
 - Fixed Paradox Titan (Titan Soul) and Wall of Shadows not registering as kill
+- Fixed bosses being seen as defeated for new worlds
 
 Worldgen:
 - Removed many (read: at least a dozen) redundant loops iterating world chests (should speed up WorldGen)
@@ -17,6 +18,9 @@ WorldGen Chests:
 - Fixed chests containing Pharaoh's Mask having content replaced
 - Fixed Ruin Chest generation and having content replaced
 - Fixed Ice Chest generation and having content replaced
+
+Other:
+- Fixed silently Caught Exception: Index was outside the bounds of the array.   at Tremor.NPCs.Bosses.CogLord.CogLordProbe.AI()
 
 Code:
 - Flags hideCode, hideResources and includeSource are no longer blocking unpacking. Unpack now to get the Tremor.dll

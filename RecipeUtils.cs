@@ -5,7 +5,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Tremor.Items;
-using Tremor.NovaPillar.Items;
+using Tremor.NPCs.Bosses.NovaPillar.Items;
 using Tremor.Tiles;
 
 namespace Tremor

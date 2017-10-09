@@ -1,7 +1,7 @@
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ModLoader;
-using Tremor.NovaPillar;
+using Tremor.NPCs.Bosses.NovaPillar;
 
 namespace Tremor.Projectiles
 {

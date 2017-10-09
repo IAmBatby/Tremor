@@ -12,7 +12,7 @@ using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.UI;
 using Tremor.Invasion;
-using Tremor.NovaPillar;
+using Tremor.NPCs.Bosses.NovaPillar;
 using Tremor.ZombieEvent;
 
 namespace Tremor
@@ -235,7 +235,7 @@ namespace Tremor
 				}
 
 				GameShaders.Armor.BindShader(ItemType("NovaDye"), new ArmorShaderData(Main.PixelShaderRef, "ArmorSolar")).UseColor(0.8f, 0.7f, 0.3f).UseSecondaryColor(0.8f, 0.7f, 0.3f);
-				NovaSky.PlanetTexture = GetTexture("NovaPillar/NovaPlanet");
+				NovaSky.PlanetTexture = GetTexture("NPCs/Bosses/NovaPillar/NovaPlanet");
 				Filters.Scene["Tremor:Nova"] = new Filter(new NovaData("FilterMiniTower").UseColor(0.8f, 0.7f, 0.3f).UseOpacity(0.82f), EffectPriority.VeryHigh);
 				SkyManager.Instance["Tremor:Nova"] = new NovaSky();
 
