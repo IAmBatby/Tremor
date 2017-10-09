@@ -11,7 +11,6 @@ namespace Tremor.Items
 
 		public override void SetDefaults()
 		{
-
 			item.width = 26;
 			item.height = 28;
 			item.maxStack = 20;
@@ -21,13 +20,17 @@ namespace Tremor.Items
 			item.useTime = 15;
 			item.useStyle = 4;
 			item.consumable = true;
-
 		}
 
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Cosmic Krill");
-			Tooltip.SetDefault("Summons the Space Whale");
+			Tooltip.SetDefault("Summons the Space Whale\nRequires Tremode");
+		}
+
+		public override bool CanUseItem(Player player)
+		{
+			return NPC.downedMoonlord && !NPC.AnyNPCs(mod.NPCType("SpaceWhale"));
 		}
 
 		public override bool UseItem(Player player)
@@ -39,11 +42,6 @@ namespace Tremor.Items
 				NPC.NewNPC((int)player.Center.X + XOffset, (int)player.Center.Y + YOffset, mod.NPCType("SpaceWhale"));
 			}
 			return true;
-		}
-
-		public override bool CanUseItem(Player player)
-		{
-			return NPC.downedMoonlord && !NPC.AnyNPCs(mod.NPCType("SpaceWhale"));
 		}
 
 		public override void AddRecipes()

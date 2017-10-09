@@ -6,10 +6,8 @@ namespace Tremor.Items
 {
 	public class RoyalEgg : ModItem
 	{
-
 		public override void SetDefaults()
 		{
-
 			item.width = 30;
 			item.height = 34;
 			item.maxStack = 20;
@@ -25,7 +23,7 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Royal Egg");
-			Tooltip.SetDefault("Summons the Brutallisk");
+			Tooltip.SetDefault("Summons the Brutallisk\nRequires the desert biome and Tremode");
 		}
 
 		public override bool CanUseItem(Player player)

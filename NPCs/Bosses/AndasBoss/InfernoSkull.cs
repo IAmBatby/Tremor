@@ -18,6 +18,7 @@ namespace Tremor.NPCs.Bosses.AndasBoss
 		const int ShootDamage = 55;
 		const float ShootKnockback = 2f;
 		const int ShootDirection = 7;
+
 		public override void SetDefaults()
 		{
 			projectile.width = 26;

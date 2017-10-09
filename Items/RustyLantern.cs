@@ -11,7 +11,6 @@ namespace Tremor.Items
 
 		public override void SetDefaults()
 		{
-
 			item.width = 14;
 			item.height = 30;
 			item.maxStack = 1;
@@ -28,7 +27,7 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Rusty Lantern");
-			Tooltip.SetDefault("Summons Ancient Dragon\nCan be only used near Ruin Altar");
+			Tooltip.SetDefault("Summons Ancient Dragon\nRequires the Ruin Powers buff and a Ruin Altar nearby");
 		}
 
 		public override bool CanUseItem(Player player)

@@ -8,10 +8,8 @@ namespace Tremor.Items
 {
 	public class InfernoSkull : ModItem
 	{
-
 		public override void SetDefaults()
 		{
-
 			item.width = 26;
 			item.height = 28;
 			item.maxStack = 20;
@@ -21,23 +19,22 @@ namespace Tremor.Items
 			item.useTime = 15;
 			item.useStyle = 4;
 			item.consumable = true;
-
 		}
 
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Inferno Skull");
-			Tooltip.SetDefault("Summons the Andas");
-		}
-
-		public override void ModifyTooltips(List<TooltipLine> tooltips)
-		{
-			tooltips[0].overrideColor = new Color(238, 194, 73);
+			Tooltip.SetDefault("Summons the Andas\nRequires the hell biome and The Trinity to have been downed");
 		}
 
 		public override bool CanUseItem(Player player)
 		{
 			return player.position.Y / 16f > Main.maxTilesY - 200 && TremorWorld.Boss.Trinity.IsDowned() && !NPC.AnyNPCs(mod.NPCType("Andas"));
+		}
+
+		public override void ModifyTooltips(List<TooltipLine> tooltips)
+		{
+			tooltips[0].overrideColor = new Color(238, 194, 73);
 		}
 
 		public override void AddRecipes()

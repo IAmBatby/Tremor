@@ -27,7 +27,7 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Artifact Engine");
-			Tooltip.SetDefault("Summons Cog Lord");
+			Tooltip.SetDefault("Summons Cog Lord\nRequires any mech. boss to have been slain, hardmode and night time");
 		}
 
 		public override bool CanUseItem(Player player)

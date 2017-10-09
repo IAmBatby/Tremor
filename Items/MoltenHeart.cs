@@ -27,7 +27,7 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Molten Heart");
-			Tooltip.SetDefault("Summons Heater of Worlds");
+			Tooltip.SetDefault("Summons Heater of Worlds\nRequires the hell biome");
 		}
 
 		public override bool CanUseItem(Player player)

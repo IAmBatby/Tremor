@@ -159,26 +159,40 @@ namespace Tremor
 			Mod bossChecklist = ModLoader.GetMod("BossChecklist");
 			if (bossChecklist != null)
 			{
-				bossChecklist.Call("AddBossWithInfo", "Rukh", 2.7f, (Func<bool>)(() => TremorWorld.Boss.Rukh.IsDowned()), "Use a [i:" + ItemType("DesertCrown") + "] in Desert");
-				bossChecklist.Call("AddBossWithInfo", "Tiki Totem", 3.3f, (Func<bool>)(() => TremorWorld.Boss.TikiTotem.IsDowned()), "Use a [i:" + ItemType("MysteriousDrum") + "] in Jungle at night after beating Eye of Cthulhu");
-				bossChecklist.Call("AddBossWithInfo", "Evil Corn", 3.4f, (Func<bool>)(() => TremorWorld.Boss.EvilCorn.IsDowned()), "Use a [i:" + ItemType("CursedPopcorn") + "] at night");
+				//SlimeKing = 1f;
+				//EyeOfCthulhu = 2f;
+				//EaterOfWorlds = 3f;
+				//QueenBee = 4f;
+				//Skeletron = 5f;
+				//WallOfFlesh = 6f;
+				//TheTwins = 7f;
+				//TheDestroyer = 8f;
+				//SkeletronPrime = 9f;
+				//Plantera = 10f;
+				//Golem = 11f;
+				//DukeFishron = 12f;
+				//LunaticCultist = 13f;
+				//Moonlord = 14f;
+				bossChecklist.Call("AddBossWithInfo", "Rukh", 2.7f, (Func<bool>)(() => TremorWorld.Boss.Rukh.IsDowned()), "Use a [i:" + ItemType("DesertCrown") + "]");// in Desert
+				bossChecklist.Call("AddBossWithInfo", "Tiki Totem", 3.3f, (Func<bool>)(() => TremorWorld.Boss.TikiTotem.IsDowned()), "Use a [i:" + ItemType("MysteriousDrum") + "]");//in Jungle at night after beating Eye of Cthulhu
+				bossChecklist.Call("AddBossWithInfo", "Evil Corn", 3.4f, (Func<bool>)(() => TremorWorld.Boss.EvilCorn.IsDowned()), "Use a [i:" + ItemType("CursedPopcorn") + "]");// at night
 				bossChecklist.Call("AddBossWithInfo", "Storm Jellyfish", 3.5f, (Func<bool>)(() => TremorWorld.Boss.StormJellyfish.IsDowned()), "Use a [i:" + ItemType("StormJelly") + "]");
-				bossChecklist.Call("AddBossWithInfo", "Ancient Dragon", 3.6f, (Func<bool>)(() => TremorWorld.Boss.AncientDragon.IsDowned()), "Use a [i:" + ItemType("RustyLantern") + "] in Ruins after pressing with RMB on Ruin Altar and getting Ruin Powers buff");
-				bossChecklist.Call("AddBossWithInfo", "Fungus Beetle", 5.5f, (Func<bool>)(() => TremorWorld.Boss.FungusBeetle.IsDowned()), "Use a [i:" + ItemType("MushroomCrystal") + "]");
-				bossChecklist.Call("AddBossWithInfo", "Heater of Worlds", 5.6f, (Func<bool>)(() => TremorWorld.Boss.HeaterofWorlds.IsDowned()), "Use a [i:" + ItemType("MoltenHeart") + "] in Underworld");
-				bossChecklist.Call("AddBossWithInfo", "Alchemaster", 6.5f, (Func<bool>)(() => TremorWorld.Boss.Alchemaster.IsDowned()), "Use a [i:" + ItemType("AncientMosaic") + "] at night");
-				bossChecklist.Call("AddBossWithInfo", "Motherboard (Destroyer alt)", 8.01f, (Func<bool>)(() => TremorWorld.Boss.Motherboard.IsDowned()), "Use a [i:" + ItemType("MechanicalBrain") + "] at night");
-				bossChecklist.Call("AddBossWithInfo", "Pixie Queen", 9.6f, (Func<bool>)(() => TremorWorld.Boss.PixieQueen.IsDowned()), "Use a [i:" + ItemType("PixieinaJar") + "] in Hallow at night");
-				bossChecklist.Call("AddBossWithInfo", "Wall of Shadows", 10.7f, (Func<bool>)(() => TremorWorld.Boss.WallOfShadow.IsDowned()), "Throw a [i:" + ItemType("ShadowRelic") + "] into lava in Underworld after beating Plantera and having the Dryad alive ");
-				bossChecklist.Call("AddBossWithInfo", "Frost King", 10.6f, (Func<bool>)(() => TremorWorld.Boss.FrostKing.IsDowned()), "Use a [i:" + ItemType("FrostCrown") + "] in Snow");
-				bossChecklist.Call("AddBossWithInfo", "Cog Lord", 11.4f, (Func<bool>)(() => TremorWorld.Boss.CogLord.IsDowned()), "Use a [i:" + ItemType("ArtifactEngine") + "] at night");
-				bossChecklist.Call("AddBossWithInfo", "Cyber King", 11.5f, (Func<bool>)(() => TremorWorld.Boss.CyberKing.IsDowned()), "Use a [i:" + ItemType("AdvancedCircuit") + "] at night to summon a Mothership which will spawn Cyber King on death");
-				bossChecklist.Call("AddBossWithInfo", "Nova Pillar", 13.5f, (Func<bool>)(() => TremorWorld.Boss.NovaPillar.IsDowned()), "Kill the Lunatic Cultist outside the dungeon post-Golem");
+				bossChecklist.Call("AddBossWithInfo", "Ancient Dragon", 3.6f, (Func<bool>)(() => TremorWorld.Boss.AncientDragon.IsDowned()), "Use a [i:" + ItemType("RustyLantern") + "]");//in Ruins after pressing with RMB on Ruin Altar and getting Ruin Powers buff
+				bossChecklist.Call("AddBossWithInfo", "Fungus Beetle", 5.6f, (Func<bool>)(() => TremorWorld.Boss.FungusBeetle.IsDowned()), "Use a [i:" + ItemType("MushroomCrystal") + "]");
+				bossChecklist.Call("AddBossWithInfo", "Heater of Worlds", 5.5f, (Func<bool>)(() => TremorWorld.Boss.HeaterofWorlds.IsDowned()), "Use a [i:" + ItemType("MoltenHeart") + "]");// in Underworld
+				bossChecklist.Call("AddBossWithInfo", "Alchemaster", 6.5f, (Func<bool>)(() => TremorWorld.Boss.Alchemaster.IsDowned()), "Use a [i:" + ItemType("AncientMosaic") + "]");// at night
+				bossChecklist.Call("AddBossWithInfo", "Motherboard (Destroyer alt)", 8.01f, (Func<bool>)(() => TremorWorld.Boss.Motherboard.IsDowned()), "Use a [i:" + ItemType("MechanicalBrain") + "]");//at night
+				bossChecklist.Call("AddBossWithInfo", "Pixie Queen", 9.6f, (Func<bool>)(() => TremorWorld.Boss.PixieQueen.IsDowned()), "Use a [i:" + ItemType("PixieinaJar") + "]");// in Hallow at night
+				bossChecklist.Call("AddBossWithInfo", "Wall of Shadows", 10.7f, (Func<bool>)(() => TremorWorld.Boss.WallOfShadow.IsDowned()), "Throw a [i:" + ItemType("ShadowRelic") + "]");//into lava in Underworld after beating Plantera and having the Dryad alive
+				bossChecklist.Call("AddBossWithInfo", "Frost King", 10.6f, (Func<bool>)(() => TremorWorld.Boss.FrostKing.IsDowned()), "Use a [i:" + ItemType("FrostCrown") + "]");//in Snow
+				bossChecklist.Call("AddBossWithInfo", "Cog Lord", 11.4f, (Func<bool>)(() => TremorWorld.Boss.CogLord.IsDowned()), "Use a [i:" + ItemType("ArtifactEngine") + "]");//at night
+				bossChecklist.Call("AddBossWithInfo", "Mothership and Cyber King", 11.5f, (Func<bool>)(() => TremorWorld.Boss.CyberKing.IsDowned()), "Use a [i:" + ItemType("AdvancedCircuit") + "], Cyber King spawns after defeating the Mothership");//Cyber King spawns after defeating the Mothership
+				bossChecklist.Call("AddBossWithInfo", "Nova Pillar", 13.5f, (Func<bool>)(() => TremorWorld.Boss.NovaPillar.IsDowned()), "Kill the Lunatic Cultist outside the dungeon");
 				bossChecklist.Call("AddBossWithInfo", "The Dark Emperor", 14.4f, (Func<bool>)(() => TremorWorld.Boss.DarkEmperor.IsDowned()), "Use a [i:" + ItemType("EmperorCrown") + "]");
-				bossChecklist.Call("AddBossWithInfo", "Brutallisk", 14.5f, (Func<bool>)(() => TremorWorld.Boss.Brutallisk.IsDowned()), "Use a [i:" + ItemType("RoyalEgg") + "] in Desert");
+				bossChecklist.Call("AddBossWithInfo", "Brutallisk", 14.5f, (Func<bool>)(() => TremorWorld.Boss.Brutallisk.IsDowned()), "Use a [i:" + ItemType("RoyalEgg") + "]");// in Desert
 				bossChecklist.Call("AddBossWithInfo", "Space Whale", 14.6f, (Func<bool>)(() => TremorWorld.Boss.SpaceWhale.IsDowned()), "Use a [i:" + ItemType("CosmicKrill") + "]");
-				bossChecklist.Call("AddBossWithInfo", "The Trinity", 14.7f, (Func<bool>)(() => TremorWorld.Boss.Trinity.IsDowned()), "Use a [i:" + ItemType("StoneofKnowledge") + "] at night");
-				bossChecklist.Call("AddBossWithInfo", "Andas", 14.8f, (Func<bool>)(() => TremorWorld.Boss.Andas.IsDowned()), "Use a [i:" + ItemType("InfernoSkull") + "] at Underworld");
+				bossChecklist.Call("AddBossWithInfo", "The Trinity", 14.7f, (Func<bool>)(() => TremorWorld.Boss.Trinity.IsDowned()), "Use a [i:" + ItemType("StoneofKnowledge") + "]");//at night
+				bossChecklist.Call("AddBossWithInfo", "Andas", 14.8f, (Func<bool>)(() => TremorWorld.Boss.Andas.IsDowned()), "Use a [i:" + ItemType("InfernoSkull") + "]");//at Underworld
 			}
 		}
 

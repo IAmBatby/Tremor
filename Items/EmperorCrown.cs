@@ -6,10 +6,8 @@ namespace Tremor.Items
 {
 	public class EmperorCrown : ModItem
 	{
-
 		public override void SetDefaults()
 		{
-
 			item.width = 26;
 			item.height = 28;
 			item.maxStack = 20;
@@ -19,13 +17,12 @@ namespace Tremor.Items
 			item.useTime = 15;
 			item.useStyle = 4;
 			item.consumable = true;
-
 		}
 
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Emperor Crown");
-			Tooltip.SetDefault("Summons the Dark Emperor");
+			Tooltip.SetDefault("Summons the Dark Emperor\nRequires Tremode");
 		}
 
 		public override bool CanUseItem(Player player)

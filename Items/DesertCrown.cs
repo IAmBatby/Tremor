@@ -4,12 +4,10 @@ using Terraria.ModLoader;
 
 namespace Tremor.Items
 {
-
 	public class DesertCrown : ModItem
 	{
 		public override void SetDefaults()
 		{
-
 			item.width = 24;
 			item.height = 16;
 			item.maxStack = 20;
@@ -25,7 +23,7 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Desert Crown");
-			Tooltip.SetDefault("Summons the Rukh");
+			Tooltip.SetDefault("Summons the Rukh\nRequires the desert biome");
 		}
 
 		public override bool CanUseItem(Player player)

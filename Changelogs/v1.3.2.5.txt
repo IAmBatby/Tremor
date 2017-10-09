@@ -2,10 +2,17 @@ Changelogs for v1.3.2.5:
 
 Note:
 - Update to Fargo's Mod version v13.0 to fix the shop from breaking
+- Tested killing Andas and Nova Pillar, both are fully functional to me. If you are reporting they are not, please tell me you're in multiplayer or not
 
 Bosses:
 - Fixed Paradox Titan (Titan Soul) and Wall of Shadows not registering as kill
 - Fixed bosses being seen as defeated for new worlds
+- All boss summon items show the summon requirements in their tooltip
+- Additional info for summons have been removed from Boss Checklist, as they are now available in the tooltip
+- The requirements were checked for all items, the following things were found:
+- Boss Checklist noted that Eye of Cthulhu had to be beaten for using Mysterious Drum, this is false
+- Storm Jelly did not say any requirements, but it is required that eye of Cthulhu has been slain
+- Fungus Beetle appeared after Heater of Worlds in Boss Checklist, however Fungus Beetle comes after Heater of Worlds in terms of progression, this has been fixed
 
 Worldgen:
 - Removed many (read: at least a dozen) redundant loops iterating world chests (should speed up WorldGen)

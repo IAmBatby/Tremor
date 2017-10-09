@@ -24,12 +24,12 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Advanced Circuit");
-			Tooltip.SetDefault("Summons the Mothership");
+			Tooltip.SetDefault("Summons the Mothership\nRequires Plantera to have been slain and night time");
 		}
 
 		public override bool CanUseItem(Player player)
 		{
-			return !NPC.AnyNPCs(mod.NPCType("Mothership")) && NPC.downedPlantBoss && !Main.dayTime && Main.netMode != 1;
+			return !NPC.AnyNPCs(mod.NPCType("Mothership")) && NPC.downedPlantBoss && !Main.dayTime;
 		}
 
 		public override bool UseItem(Player player)

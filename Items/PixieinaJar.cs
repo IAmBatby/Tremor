@@ -25,7 +25,7 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Pixie in a Jar");
-			Tooltip.SetDefault("Summons the Pixie Queen\n'I think something wants to get out of the jar...'");
+			Tooltip.SetDefault("Summons the Pixie Queen\nRequires any mech. boss to have been slain, the the hallow biome and night time\n'I think something wants to get out of the jar...'");
 		}
 
 		public override bool CanUseItem(Player player)
