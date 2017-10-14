@@ -36,6 +36,7 @@ namespace Tremor.Items
 
 		public override void UpdateInventory(Player player)
 		{
+			MPlayer modPlayer = MPlayer.GetModPlayer(player);
 			if (player.FindBuffIndex(mod.BuffType("LongFuseBuff")) != -1)
 			{
 				item.shootSpeed = 11f;
@@ -44,7 +45,7 @@ namespace Tremor.Items
 			{
 				item.shootSpeed = 9f;
 			}
-			if (player.FindBuffIndex(mod.BuffType("FlaskCoreBuff")) != -1)
+			if (modPlayer.core)
 			{
 				item.autoReuse = true;
 			}

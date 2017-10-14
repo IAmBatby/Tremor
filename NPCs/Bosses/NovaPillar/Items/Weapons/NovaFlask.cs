@@ -36,7 +36,7 @@ namespace Tremor.NPCs.Bosses.NovaPillar.Items.Weapons
 
 		public override void UpdateInventory(Player player)
 		{
-			MPlayer modPlayer = player.GetModPlayer<MPlayer>(mod);
+			MPlayer modPlayer = MPlayer.GetModPlayer(player);
 			if (modPlayer.novaHelmet)
 			{
 				item.autoReuse = true;
@@ -54,7 +54,7 @@ namespace Tremor.NPCs.Bosses.NovaPillar.Items.Weapons
 			{
 				item.shootSpeed = 13f;
 			}
-			if (player.FindBuffIndex(mod.BuffType("FlaskCoreBuff")) != -1)
+			if (modPlayer.core)
 			{
 				item.autoReuse = true;
 			}

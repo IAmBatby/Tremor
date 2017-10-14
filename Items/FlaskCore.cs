@@ -20,7 +20,6 @@ namespace Tremor.Items
 
 		public override void SetDefaults()
 		{
-
 			item.width = 22;
 			item.height = 24;
 
@@ -37,9 +36,7 @@ namespace Tremor.Items
 
 		public override void UpdateAccessory(Player player, bool hideVisual)
 		{
-			MPlayer modPlayer = (MPlayer)player.GetModPlayer(mod, "MPlayer");
 			player.AddBuff(mod.BuffType("FlaskCoreBuff"), 2);
-			modPlayer.core = true;
 		}
 	}
 }

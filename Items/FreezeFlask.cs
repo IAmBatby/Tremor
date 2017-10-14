@@ -43,7 +43,7 @@ namespace Tremor.Items
 
 		public override void UpdateInventory(Player player)
 		{
-			MPlayer modPlayer = player.GetModPlayer<MPlayer>(mod);
+			MPlayer modPlayer = MPlayer.GetModPlayer(player);
 			if (modPlayer.novaHelmet)
 			{
 				item.autoReuse = true;
@@ -61,7 +61,7 @@ namespace Tremor.Items
 			{
 				item.shootSpeed = 8f;
 			}
-			if (player.FindBuffIndex(mod.BuffType("FlaskCoreBuff")) != -1)
+			if (modPlayer.core)
 			{
 				item.autoReuse = true;
 			}

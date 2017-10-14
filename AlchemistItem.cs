@@ -43,7 +43,7 @@ namespace Tremor
 
 		public override void GetWeaponKnockback(Player player, ref float knockback)
 		{
-			MPlayer modPlayer = player.GetModPlayer<MPlayer>(mod);
+			MPlayer modPlayer = MPlayer.GetModPlayer(player);
 			knockback += modPlayer.alchemicalKbAddition;
 			knockback *= modPlayer.alchemicalKbMult;
 		}
@@ -51,13 +51,13 @@ namespace Tremor
 		// todo: borked, tml requires update, manual work still needed
 		public override void GetWeaponCrit(Player player, ref int crit)
 		{
-			MPlayer modPlayer = player.GetModPlayer<MPlayer>(mod);
+			MPlayer modPlayer = MPlayer.GetModPlayer(player);
 			crit += modPlayer.alchemicalCrit;
 		}
 
 		public override void GetWeaponDamage(Player player, ref int damage)
 		{
-			MPlayer modPlayer = player.GetModPlayer<MPlayer>(mod);
+			MPlayer modPlayer = MPlayer.GetModPlayer(player);
 			// We want to multiply the damage we do by our alchemicalDamage modifier.
 			// todo: ? do we want magic damage to also have effect here?
 			damage = (int)(damage * modPlayer.alchemicalDamage + 5E-06f);
@@ -106,7 +106,7 @@ namespace Tremor
 
 		public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
 		{
-			MPlayer modPlayer = player.GetModPlayer<MPlayer>(mod);
+			MPlayer modPlayer = MPlayer.GetModPlayer(player);
 			if (modPlayer.glove)
 			{
 				for (int i = 0; i < 1; ++i)

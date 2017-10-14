@@ -7,7 +7,7 @@ namespace Tremor
 	{
 		public override bool ConsumeItem(Item item, Player player)
 		{
-			MPlayer modPlayer = player.GetModPlayer<MPlayer>(mod);
+			MPlayer modPlayer = MPlayer.GetModPlayer(player);
 			if (modPlayer.novaChestplate)
 			{
 				if (player.FindBuffIndex(mod.BuffType("SuperFlask")) != -1)

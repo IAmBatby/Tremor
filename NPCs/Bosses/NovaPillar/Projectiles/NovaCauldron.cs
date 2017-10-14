@@ -41,7 +41,7 @@ namespace Tremor.NPCs.Bosses.NovaPillar.Projectiles
 			}
 			bool Flag1 = projectile.type == mod.ProjectileType("NovaCauldron");
 			Player player = Main.player[projectile.owner];
-			MPlayer modPlayer = player.GetModPlayer<MPlayer>(mod);
+			MPlayer modPlayer = MPlayer.GetModPlayer(player);
 			if (Flag1)
 			{
 				if (player.dead)

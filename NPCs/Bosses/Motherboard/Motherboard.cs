@@ -26,9 +26,9 @@ namespace Tremor.NPCs.Bosses.Motherboard
 
 		public int GetStateTime => appearingTime + disappearingTime + followPlayerTime;
 
-		protected const int AnimationRate = 6; // Animation rate
 		protected int _currentFrame; // Current frame
 		protected int _timeToAnimation = 6; // Animation rate
+		protected const int AnimationRate = 6; // Animation rate
 
 		protected const int LaserYOffset = 95; // Laser spawn offset by Y value
 		protected const int LaserDamage = 25; // Laser damage

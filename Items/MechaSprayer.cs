@@ -57,7 +57,8 @@ namespace Tremor.Items
 
 		public override void UpdateInventory(Player player)
 		{
-			if (player.FindBuffIndex(mod.BuffType("FlaskCoreBuff")) != -1)
+			MPlayer modPlayer = MPlayer.GetModPlayer(player);
+			if (modPlayer.core)
 			{
 				item.autoReuse = true;
 			}
@@ -77,7 +78,7 @@ namespace Tremor.Items
 
 		public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
 		{
-			MPlayer modPlayer = player.GetModPlayer<MPlayer>(mod);
+			MPlayer modPlayer = MPlayer.GetModPlayer(player);
 			if (modPlayer.glove)
 			{
 				for (int i = 0; i < 1; ++i)
