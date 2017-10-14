@@ -173,6 +173,255 @@ namespace Tremor
 		public static int IceTiles;
 		public static int RuinsTiles;
 
+		private void GenArgite(GenerationProgress progress)
+		{
+			progress.Message = "Generating argite";
+
+			for (int k = 0; k < (int)((double)(Main.maxTilesX * Main.maxTilesY) * 6E-05); k++)
+			{
+				int i2 = WorldGen.genRand.Next(0, Main.maxTilesX);
+				int j2 = WorldGen.genRand.Next((int)(Main.maxTilesY * .3f), (int)(Main.maxTilesY * .45f));
+				WorldGen.OreRunner(i2, j2, WorldGen.genRand.Next(3, 4), WorldGen.genRand.Next(3, 8), (ushort)mod.TileType("ArgiteOre"));
+			}
+		}
+
+		private void GenGlacier(GenerationProgress progress)
+		{
+			progress.Message = "Generating glacier...";
+			IL_19:
+			int startPositionX = WorldGen.genRand.Next(0, Main.maxTilesX - 2);
+			int startPositionY = (int)Main.worldSurface;
+			int size = 0;
+			// unused?
+			//int[] BlockNums = { 23, 25, 147, 161, 163, 164, 200, 0, 2 };
+			//int[] OreNums = { 6, 7, 8, 9, 221, 222, 223, 204, 166, 167, 168, 169, 107, 108, 111, 22 };
+			if (Main.maxTilesX == 4200 && Main.maxTilesY == 1200)
+			{
+				size = 105;
+			}
+			if (Main.maxTilesX == 6300 && Main.maxTilesY == 1800)
+			{
+				size = 198;
+			}
+			if (Main.maxTilesX == 8400 && Main.maxTilesY == 2400)
+			{
+				size = 270;
+			}
+			if (Main.tile[startPositionX, startPositionY].type == TileID.SnowBlock)
+			{
+				var startX = startPositionX;
+				var startY = startPositionY;
+				startX = startX - 100;
+				startY = startY - 100;
+				startY++;
+				for (int x = startX - size; x <= startX + size; x++)
+				{
+					for (int y = startY - size; y <= startY + size; y++)
+					{
+						if (Vector2.Distance(new Vector2(startX, startY), new Vector2(x, y)) <= size)
+						{
+							if (Main.tile[x, y].wall == 40 || Main.tile[x, y].wall == 71)
+							{
+								Main.tile[x, y].wall = (ushort)mod.WallType("IceWall");
+							}
+							if (Main.tile[x, y].type == 23 || Main.tile[x, y].type == 147 || Main.tile[x, y].type == 161 || Main.tile[x, y].type == 25 || Main.tile[x, y].type == 163 || Main.tile[x, y].type == 164 || Main.tile[x, y].type == 200 || Main.tile[x, y].type == 0 || Main.tile[x, y].type == 2 || Main.tile[x, y].type == TileID.Stone || Main.tile[x, y].type == TileID.Sand)
+							{
+								Main.tile[x, y].type = (ushort)mod.TileType("IceBlock");
+							}
+							if (Main.tile[x, y].liquid == 3)
+							{
+								WorldGen.PlaceTile(x, y, 162);
+							}
+							if (Main.tile[x, y].type == 6 || Main.tile[x, y].type == 7 || Main.tile[x, y].type == 8 || Main.tile[x, y].type == 9 || Main.tile[x, y].type == 221 || Main.tile[x, y].type == 222 || Main.tile[x, y].type == 223 || Main.tile[x, y].type == 204 || Main.tile[x, y].type == 166 || Main.tile[x, y].type == 167 || Main.tile[x, y].type == 168 || Main.tile[x, y].type == 169 || Main.tile[x, y].type == 221 || Main.tile[x, y].type == 107 || Main.tile[x, y].type == 108 || Main.tile[x, y].type == 22 || Main.tile[x, y].type == 111 || Main.tile[x, y].type == 123 || Main.tile[x, y].type == 224 || Main.tile[x, y].type == 40 || Main.tile[x, y].type == 59)
+							{
+								Main.tile[x, y].type = (ushort)mod.TileType("IceOre");
+							}
+						}
+					}
+				}
+				for (int k = 0; k < 1000; k++)
+				{
+					int positionX = WorldGen.genRand.Next(0, Main.maxTilesX);
+					int positionY = WorldGen.genRand.Next(0, Main.maxTilesY);
+					if (Main.tile[positionX, positionY].type == mod.TileType("IceBlock"))
+					{
+						WorldGen.TileRunner(positionX, positionY, WorldGen.genRand.Next(2, 8), WorldGen.genRand.Next(2, 8), (ushort)mod.TileType("IceOre"), false, 0f, 0f, false, true);
+					}
+				}
+				for (int k = 0; k < Main.maxTilesX; k++)
+				{
+					for (int i = 0; i < Main.maxTilesY; i++)
+					{
+						if (Main.tile[k, i].type == mod.TileType("IceBlock"))
+						{
+							if (Main.tile[k + 1, i].active() && Main.tile[k, i - 1].active() && Main.tile[k - 1, i].active() && Main.tile[k, i + 1].active())
+							{
+							}
+							else
+							{
+								Main.tile[k, i].type = (ushort)mod.TileType("VeryVeryIce");
+							}
+						}
+					}
+				}
+
+				while (!Main.tile[startX, startY].active() && startY < Main.worldSurface)
+				{
+					startY++;
+				}
+				for (int k = 0; k < 16; k++)
+				{
+					for (int l = 0; l < 10; l++)
+					{
+						WorldGen.KillTile(startX - k, startY - l, false, false, true);
+					}
+				}
+				for (int k = 0; k < 14; k++)
+				{
+					for (int l = 0; l < 8; l++)
+					{
+						WorldGen.KillWall(startX - 1 - k, startY - 1 - l, false);
+						WorldGen.PlaceWall(startX - 1 - k, startY - 1 - l, (ushort)mod.WallType("DungeonWall"));
+					}
+				}
+				for (int l = 0; l < 15; l++)
+					WorldGen.PlaceTile(startX - l, startY, (ushort)mod.TileType("DungeonBlock"));
+				for (int l = 0; l < 9; l++)
+					WorldGen.PlaceTile(startX, startY - l, (ushort)mod.TileType("DungeonBlock"));
+				for (int l = 0; l < 9; l++)
+					WorldGen.PlaceTile(startX - 15, startY - l, (ushort)mod.TileType("DungeonBlock"));
+				for (int k = 0; k < 3; k++)
+					WorldGen.PlaceTile(startX - k, startY - 4, (ushort)mod.TileType("DungeonBlock"));
+				for (int k = 0; k < 3; k++)
+					WorldGen.PlaceTile(startX - 15 + k, startY - 4, (ushort)mod.TileType("DungeonBlock"));
+				for (int k = 0; k < 5; k++)
+					WorldGen.PlaceTile(startX - 6 - k, startY - 4, (ushort)mod.TileType("DungeonBlock"));
+				for (int l = 0; l < 2; l++)
+					WorldGen.PlaceTile(startX - 2, startY - 7 - l, (ushort)mod.TileType("DungeonBlock"));
+				for (int l = 0; l < 2; l++)
+					WorldGen.PlaceTile(startX - 3, startY - 8 - l, (ushort)mod.TileType("DungeonBlock"));
+				for (int k = 0; k < 3; k++)
+					WorldGen.PlaceTile(startX - 4 - k, startY - 9, (ushort)mod.TileType("DungeonBlock"));
+				for (int l = 0; l < 2; l++)
+					WorldGen.PlaceTile(startX - 14, startY - 7 - l, (ushort)mod.TileType("DungeonBlock"));
+				for (int l = 0; l < 2; l++)
+					WorldGen.PlaceTile(startX - 13, startY - 8 - l, (ushort)mod.TileType("DungeonBlock"));
+				for (int l = 0; l < 3; l++)
+					WorldGen.PlaceTile(startX - 12 + l, startY - 9, (ushort)mod.TileType("DungeonBlock"));
+				WorldGen.PlaceTile(startX + 1, startY - 4, (ushort)mod.TileType("DungeonBlock"));
+				WorldGen.PlaceTile(startX - 16, startY - 4, (ushort)mod.TileType("DungeonBlock"));
+				WorldGen.PlaceChest(startX - 13, startY - 5, (ushort)mod.TileType("IceChest"), false, 2);
+				WorldGen.PlaceChest(startX - 7, startY - 5, (ushort)mod.TileType("IceChest"), false, 2);
+				//----------------
+				startX = startPositionX - 42;
+				startY = startPositionY - 21;
+				for (int k = 0; k < 16; k++)
+				{
+					for (int l = 0; l < 10; l++)
+					{
+						WorldGen.KillTile(startX - k, startY - l, false, false, true);
+					}
+				}
+				for (int k = 0; k < 14; k++)
+				{
+					for (int l = 0; l < 8; l++)
+					{
+						WorldGen.KillWall(startX - 1 - k, startY - 1 - l, false);
+						WorldGen.PlaceWall(startX - 1 - k, startY - 1 - l, (ushort)mod.WallType("DungeonWall"));
+					}
+				}
+				for (int k = 0; k < 15; k++)
+					WorldGen.PlaceTile(startX - k, startY, (ushort)mod.TileType("DungeonBlock"));
+				for (int l = 0; l < 9; l++)
+					WorldGen.PlaceTile(startX, startY - l, (ushort)mod.TileType("DungeonBlock"));
+				for (int l = 0; l < 9; l++)
+					WorldGen.PlaceTile(startX - 15, startY - l, (ushort)mod.TileType("DungeonBlock"));
+				for (int k = 0; k < 3; k++)
+					WorldGen.PlaceTile(startX - k, startY - 4, (ushort)mod.TileType("DungeonBlock"));
+				for (int k = 0; k < 3; k++)
+					WorldGen.PlaceTile(startX - 15 + k, startY - 4, (ushort)mod.TileType("DungeonBlock"));
+				for (int k = 0; k < 5; k++)
+					WorldGen.PlaceTile(startX - 6 - k, startY - 4, (ushort)mod.TileType("DungeonBlock"));
+				for (int l = 0; l < 2; l++)
+					WorldGen.PlaceTile(startX - 2, startY - 7 - l, (ushort)mod.TileType("DungeonBlock"));
+				for (int l = 0; l < 2; l++)
+					WorldGen.PlaceTile(startX - 3, startY - 8 - l, (ushort)mod.TileType("DungeonBlock"));
+				for (int k = 0; k < 3; k++)
+					WorldGen.PlaceTile(startX - 4 - k, startY - 9, (ushort)mod.TileType("DungeonBlock"));
+				for (int l = 0; l < 2; l++)
+					WorldGen.PlaceTile(startX - 14, startY - 7 - l, (ushort)mod.TileType("DungeonBlock"));
+				for (int l = 0; l < 2; l++)
+					WorldGen.PlaceTile(startX - 13, startY - 8 - l, (ushort)mod.TileType("DungeonBlock"));
+				for (int k = 0; k < 3; k++)
+					WorldGen.PlaceTile(startX - 12 + k, startY - 9, (ushort)mod.TileType("DungeonBlock"));
+				WorldGen.PlaceTile(startX + 1, startY - 4, (ushort)mod.TileType("DungeonBlock"));
+				WorldGen.PlaceTile(startX - 16, startY - 4, (ushort)mod.TileType("DungeonBlock"));
+				WorldGen.PlaceChest(startX - 13, startY - 5, (ushort)mod.TileType("IceChest"), false, 2);
+				WorldGen.PlaceChest(startX - 7, startY - 5, (ushort)mod.TileType("IceChest"), false, 2);
+				//-------------------------
+				startX = startPositionX - 120;
+				startY = startPositionY + 50;
+				for (int k = 0; k < 16; k++)
+				{
+					for (int l = 0; l < 10; l++)
+					{
+						WorldGen.KillTile(startX - k, startY - l, false, false, true);
+					}
+				}
+				for (int k = 0; k < 14; k++)
+				{
+					for (int l = 0; l < 8; l++)
+					{
+						WorldGen.KillWall(startX - 1 - k, startY - 1 - l, false);
+						WorldGen.PlaceWall(startX - 1 - k, startY - 1 - l, (ushort)mod.WallType("DungeonWall"));
+					}
+				}
+				for (int k = 0; k < 15; k++)
+					WorldGen.PlaceTile(startX - k, startY, (ushort)mod.TileType("DungeonBlock"));
+				for (int l = 0; l < 9; l++)
+					WorldGen.PlaceTile(startX, startY - l, (ushort)mod.TileType("DungeonBlock"));
+				for (int l = 0; l < 9; l++)
+					WorldGen.PlaceTile(startX - 15, startY - l, (ushort)mod.TileType("DungeonBlock"));
+				for (int k = 0; k < 3; k++)
+					WorldGen.PlaceTile(startX - k, startY - 4, (ushort)mod.TileType("DungeonBlock"));
+				for (int k = 0; k < 3; k++)
+					WorldGen.PlaceTile(startX - 15 + k, startY - 4, (ushort)mod.TileType("DungeonBlock"));
+				for (int k = 0; k < 5; k++)
+					WorldGen.PlaceTile(startX - 6 - k, startY - 4, (ushort)mod.TileType("DungeonBlock"));
+				for (int l = 0; l < 2; l++)
+					WorldGen.PlaceTile(startX - 2, startY - 7 - l, (ushort)mod.TileType("DungeonBlock"));
+				for (int l = 0; l < 2; l++)
+					WorldGen.PlaceTile(startX - 3, startY - 8 - l, (ushort)mod.TileType("DungeonBlock"));
+				for (int k = 0; k < 3; k++)
+					WorldGen.PlaceTile(startX - 4 - k, startY - 9, (ushort)mod.TileType("DungeonBlock"));
+				for (int l = 0; l < 2; l++)
+					WorldGen.PlaceTile(startX - 14, startY - 7 - l, (ushort)mod.TileType("DungeonBlock"));
+				for (int l = 0; l < 2; l++)
+					WorldGen.PlaceTile(startX - 13, startY - 8 - l, (ushort)mod.TileType("DungeonBlock"));
+				for (int k = 0; k < 3; k++)
+					WorldGen.PlaceTile(startX - 12 + k, startY - 9, (ushort)mod.TileType("DungeonBlock"));
+				WorldGen.PlaceTile(startX + 1, startY - 4, (ushort)mod.TileType("DungeonBlock"));
+				WorldGen.PlaceTile(startX - 16, startY - 4, (ushort)mod.TileType("DungeonBlock"));
+				WorldGen.PlaceChest(startX - 13, startY - 5, (ushort)mod.TileType("IceChest"), false, 2);
+				WorldGen.PlaceChest(startX - 7, startY - 5, (ushort)mod.TileType("IceChest"), false, 2);
+			}
+			else
+				goto IL_19;
+		}
+
+		private void GenChests(GenerationProgress progress)
+		{
+			progress.Message = "Placing dungeon chest";
+
+			//WorldGen.PlaceChest(Main.dungeonX, Main.dungeonY - 1, (ushort)mod.TileType("IceChest"), false, 2);
+			//int chestIndex = Chest.FindChest(Main.dungeonX, Main.dungeonY - 2);
+			for (int c = 0; c < 2; c++)
+			{
+				WorldGen.PlaceChest(Main.dungeonX + WorldGen.genRand.Next(100, 1000), Main.dungeonY + WorldGen.genRand.Next(100, 1000), (ushort)mod.TileType("IceChest"), false, 2);
+				//int chestIndex = Chest.FindChest(Main.dungeonX + WorldGen.genRand.Next(100, 1000), Main.dungeonY + WorldGen.genRand.Next(100, 1000));
+			}
+		}
+
 		// todo:
 		public override void ModifyWorldGenTasks(List<GenPass> tasks, ref float totalWeight)
 		{
@@ -182,280 +431,30 @@ namespace Tremor
 				return;
 			}
 
-			tasks.Insert(shiniesIndex + 4, new PassLegacy("Generating argite", delegate (GenerationProgress progress)
-			{
-				progress.Message = "Generating argite";
-
-				for (int k = 0; k < (int)((double)(Main.maxTilesX * Main.maxTilesY) * 6E-05); k++)
-				{
-					int i2 = WorldGen.genRand.Next(0, Main.maxTilesX);
-					int j2 = WorldGen.genRand.Next((int)(Main.maxTilesY * .3f), (int)(Main.maxTilesY * .45f));
-					WorldGen.OreRunner(i2, j2, WorldGen.genRand.Next(3, 4), WorldGen.genRand.Next(3, 8), (ushort)mod.TileType("ArgiteOre"));
-				}
-			}));
-
-			tasks.Insert(shiniesIndex + 8, new PassLegacy("Mod Biomes", delegate (GenerationProgress progress)
-			{
-				progress.Message = "Generating glacier...";
-				IL_19:
-				int startPositionX = WorldGen.genRand.Next(0, Main.maxTilesX - 2);
-				int startPositionY = (int)Main.worldSurface;
-				int size = 0;
-				// unused?
-				//int[] BlockNums = { 23, 25, 147, 161, 163, 164, 200, 0, 2 };
-				//int[] OreNums = { 6, 7, 8, 9, 221, 222, 223, 204, 166, 167, 168, 169, 107, 108, 111, 22 };
-				if (Main.maxTilesX == 4200 && Main.maxTilesY == 1200)
-				{
-					size = 105;
-				}
-				if (Main.maxTilesX == 6300 && Main.maxTilesY == 1800)
-				{
-					size = 198;
-				}
-				if (Main.maxTilesX == 8400 && Main.maxTilesY == 2400)
-				{
-					size = 270;
-				}
-				if (Main.tile[startPositionX, startPositionY].type == TileID.SnowBlock)
-				{
-					var startX = startPositionX;
-					var startY = startPositionY;
-					startX = startX - 100;
-					startY = startY - 100;
-					startY++;
-					for (int x = startX - size; x <= startX + size; x++)
-					{
-						for (int y = startY - size; y <= startY + size; y++)
-						{
-							if (Vector2.Distance(new Vector2(startX, startY), new Vector2(x, y)) <= size)
-							{
-								if (Main.tile[x, y].wall == 40 || Main.tile[x, y].wall == 71)
-								{
-									Main.tile[x, y].wall = (ushort)mod.WallType("IceWall");
-								}
-								if (Main.tile[x, y].type == 23 || Main.tile[x, y].type == 147 || Main.tile[x, y].type == 161 || Main.tile[x, y].type == 25 || Main.tile[x, y].type == 163 || Main.tile[x, y].type == 164 || Main.tile[x, y].type == 200 || Main.tile[x, y].type == 0 || Main.tile[x, y].type == 2 || Main.tile[x, y].type == TileID.Stone || Main.tile[x, y].type == TileID.Sand)
-								{
-									Main.tile[x, y].type = (ushort)mod.TileType("IceBlock");
-								}
-								if (Main.tile[x, y].liquid == 3)
-								{
-									WorldGen.PlaceTile(x, y, 162);
-								}
-								if (Main.tile[x, y].type == 6 || Main.tile[x, y].type == 7 || Main.tile[x, y].type == 8 || Main.tile[x, y].type == 9 || Main.tile[x, y].type == 221 || Main.tile[x, y].type == 222 || Main.tile[x, y].type == 223 || Main.tile[x, y].type == 204 || Main.tile[x, y].type == 166 || Main.tile[x, y].type == 167 || Main.tile[x, y].type == 168 || Main.tile[x, y].type == 169 || Main.tile[x, y].type == 221 || Main.tile[x, y].type == 107 || Main.tile[x, y].type == 108 || Main.tile[x, y].type == 22 || Main.tile[x, y].type == 111 || Main.tile[x, y].type == 123 || Main.tile[x, y].type == 224 || Main.tile[x, y].type == 40 || Main.tile[x, y].type == 59)
-								{
-									Main.tile[x, y].type = (ushort)mod.TileType("IceOre");
-								}
-							}
-						}
-					}
-					for (int k = 0; k < 1000; k++)
-					{
-						int positionX = WorldGen.genRand.Next(0, Main.maxTilesX);
-						int positionY = WorldGen.genRand.Next(0, Main.maxTilesY);
-						if (Main.tile[positionX, positionY].type == mod.TileType("IceBlock"))
-						{
-							WorldGen.TileRunner(positionX, positionY, WorldGen.genRand.Next(2, 8), WorldGen.genRand.Next(2, 8), (ushort)mod.TileType("IceOre"), false, 0f, 0f, false, true);
-						}
-					}
-					for (int k = 0; k < Main.maxTilesX; k++)
-					{
-						for (int i = 0; i < Main.maxTilesY; i++)
-						{
-							if (Main.tile[k, i].type == mod.TileType("IceBlock"))
-							{
-								if (Main.tile[k + 1, i].active() && Main.tile[k, i - 1].active() && Main.tile[k - 1, i].active() && Main.tile[k, i + 1].active())
-								{
-								}
-								else
-								{
-									Main.tile[k, i].type = (ushort)mod.TileType("VeryVeryIce");
-								}
-							}
-						}
-					}
-
-					while (!Main.tile[startX, startY].active() && startY < Main.worldSurface)
-					{
-						startY++;
-					}
-					for (int k = 0; k < 16; k++)
-					{
-						for (int l = 0; l < 10; l++)
-						{
-							WorldGen.KillTile(startX - k, startY - l, false, false, true);
-						}
-					}
-					for (int k = 0; k < 14; k++)
-					{
-						for (int l = 0; l < 8; l++)
-						{
-							WorldGen.KillWall(startX - 1 - k, startY - 1 - l, false);
-							WorldGen.PlaceWall(startX - 1 - k, startY - 1 - l, (ushort)mod.WallType("DungeonWall"));
-						}
-					}
-					for (int l = 0; l < 15; l++)
-						WorldGen.PlaceTile(startX - l, startY, (ushort)mod.TileType("DungeonBlock"));
-					for (int l = 0; l < 9; l++)
-						WorldGen.PlaceTile(startX, startY - l, (ushort)mod.TileType("DungeonBlock"));
-					for (int l = 0; l < 9; l++)
-						WorldGen.PlaceTile(startX - 15, startY - l, (ushort)mod.TileType("DungeonBlock"));
-					for (int k = 0; k < 3; k++)
-						WorldGen.PlaceTile(startX - k, startY - 4, (ushort)mod.TileType("DungeonBlock"));
-					for (int k = 0; k < 3; k++)
-						WorldGen.PlaceTile(startX - 15 + k, startY - 4, (ushort)mod.TileType("DungeonBlock"));
-					for (int k = 0; k < 5; k++)
-						WorldGen.PlaceTile(startX - 6 - k, startY - 4, (ushort)mod.TileType("DungeonBlock"));
-					for (int l = 0; l < 2; l++)
-						WorldGen.PlaceTile(startX - 2, startY - 7 - l, (ushort)mod.TileType("DungeonBlock"));
-					for (int l = 0; l < 2; l++)
-						WorldGen.PlaceTile(startX - 3, startY - 8 - l, (ushort)mod.TileType("DungeonBlock"));
-					for (int k = 0; k < 3; k++)
-						WorldGen.PlaceTile(startX - 4 - k, startY - 9, (ushort)mod.TileType("DungeonBlock"));
-					for (int l = 0; l < 2; l++)
-						WorldGen.PlaceTile(startX - 14, startY - 7 - l, (ushort)mod.TileType("DungeonBlock"));
-					for (int l = 0; l < 2; l++)
-						WorldGen.PlaceTile(startX - 13, startY - 8 - l, (ushort)mod.TileType("DungeonBlock"));
-					for (int l = 0; l < 3; l++)
-						WorldGen.PlaceTile(startX - 12 + l, startY - 9, (ushort)mod.TileType("DungeonBlock"));
-					WorldGen.PlaceTile(startX + 1, startY - 4, (ushort)mod.TileType("DungeonBlock"));
-					WorldGen.PlaceTile(startX - 16, startY - 4, (ushort)mod.TileType("DungeonBlock"));
-					WorldGen.PlaceChest(startX - 13, startY - 5, (ushort)mod.TileType("IceChest"), false, 2);
-					WorldGen.PlaceChest(startX - 7, startY - 5, (ushort)mod.TileType("IceChest"), false, 2);
-					//----------------
-					startX = startPositionX - 42;
-					startY = startPositionY - 21;
-					for (int k = 0; k < 16; k++)
-					{
-						for (int l = 0; l < 10; l++)
-						{
-							WorldGen.KillTile(startX - k, startY - l, false, false, true);
-						}
-					}
-					for (int k = 0; k < 14; k++)
-					{
-						for (int l = 0; l < 8; l++)
-						{
-							WorldGen.KillWall(startX - 1 - k, startY - 1 - l, false);
-							WorldGen.PlaceWall(startX - 1 - k, startY - 1 - l, (ushort)mod.WallType("DungeonWall"));
-						}
-					}
-					for (int k = 0; k < 15; k++)
-						WorldGen.PlaceTile(startX - k, startY, (ushort)mod.TileType("DungeonBlock"));
-					for (int l = 0; l < 9; l++)
-						WorldGen.PlaceTile(startX, startY - l, (ushort)mod.TileType("DungeonBlock"));
-					for (int l = 0; l < 9; l++)
-						WorldGen.PlaceTile(startX - 15, startY - l, (ushort)mod.TileType("DungeonBlock"));
-					for (int k = 0; k < 3; k++)
-						WorldGen.PlaceTile(startX - k, startY - 4, (ushort)mod.TileType("DungeonBlock"));
-					for (int k = 0; k < 3; k++)
-						WorldGen.PlaceTile(startX - 15 + k, startY - 4, (ushort)mod.TileType("DungeonBlock"));
-					for (int k = 0; k < 5; k++)
-						WorldGen.PlaceTile(startX - 6 - k, startY - 4, (ushort)mod.TileType("DungeonBlock"));
-					for (int l = 0; l < 2; l++)
-						WorldGen.PlaceTile(startX - 2, startY - 7 - l, (ushort)mod.TileType("DungeonBlock"));
-					for (int l = 0; l < 2; l++)
-						WorldGen.PlaceTile(startX - 3, startY - 8 - l, (ushort)mod.TileType("DungeonBlock"));
-					for (int k = 0; k < 3; k++)
-						WorldGen.PlaceTile(startX - 4 - k, startY - 9, (ushort)mod.TileType("DungeonBlock"));
-					for (int l = 0; l < 2; l++)
-						WorldGen.PlaceTile(startX - 14, startY - 7 - l, (ushort)mod.TileType("DungeonBlock"));
-					for (int l = 0; l < 2; l++)
-						WorldGen.PlaceTile(startX - 13, startY - 8 - l, (ushort)mod.TileType("DungeonBlock"));
-					for (int k = 0; k < 3; k++)
-						WorldGen.PlaceTile(startX - 12 + k, startY - 9, (ushort)mod.TileType("DungeonBlock"));
-					WorldGen.PlaceTile(startX + 1, startY - 4, (ushort)mod.TileType("DungeonBlock"));
-					WorldGen.PlaceTile(startX - 16, startY - 4, (ushort)mod.TileType("DungeonBlock"));
-					WorldGen.PlaceChest(startX - 13, startY - 5, (ushort)mod.TileType("IceChest"), false, 2);
-					WorldGen.PlaceChest(startX - 7, startY - 5, (ushort)mod.TileType("IceChest"), false, 2);
-					//-------------------------
-					startX = startPositionX - 120;
-					startY = startPositionY + 50;
-					for (int k = 0; k < 16; k++)
-					{
-						for (int l = 0; l < 10; l++)
-						{
-							WorldGen.KillTile(startX - k, startY - l, false, false, true);
-						}
-					}
-					for (int k = 0; k < 14; k++)
-					{
-						for (int l = 0; l < 8; l++)
-						{
-							WorldGen.KillWall(startX - 1 - k, startY - 1 - l, false);
-							WorldGen.PlaceWall(startX - 1 - k, startY - 1 - l, (ushort)mod.WallType("DungeonWall"));
-						}
-					}
-					for (int k = 0; k < 15; k++)
-						WorldGen.PlaceTile(startX - k, startY, (ushort)mod.TileType("DungeonBlock"));
-					for (int l = 0; l < 9; l++)
-						WorldGen.PlaceTile(startX, startY - l, (ushort)mod.TileType("DungeonBlock"));
-					for (int l = 0; l < 9; l++)
-						WorldGen.PlaceTile(startX - 15, startY - l, (ushort)mod.TileType("DungeonBlock"));
-					for (int k = 0; k < 3; k++)
-						WorldGen.PlaceTile(startX - k, startY - 4, (ushort)mod.TileType("DungeonBlock"));
-					for (int k = 0; k < 3; k++)
-						WorldGen.PlaceTile(startX - 15 + k, startY - 4, (ushort)mod.TileType("DungeonBlock"));
-					for (int k = 0; k < 5; k++)
-						WorldGen.PlaceTile(startX - 6 - k, startY - 4, (ushort)mod.TileType("DungeonBlock"));
-					for (int l = 0; l < 2; l++)
-						WorldGen.PlaceTile(startX - 2, startY - 7 - l, (ushort)mod.TileType("DungeonBlock"));
-					for (int l = 0; l < 2; l++)
-						WorldGen.PlaceTile(startX - 3, startY - 8 - l, (ushort)mod.TileType("DungeonBlock"));
-					for (int k = 0; k < 3; k++)
-						WorldGen.PlaceTile(startX - 4 - k, startY - 9, (ushort)mod.TileType("DungeonBlock"));
-					for (int l = 0; l < 2; l++)
-						WorldGen.PlaceTile(startX - 14, startY - 7 - l, (ushort)mod.TileType("DungeonBlock"));
-					for (int l = 0; l < 2; l++)
-						WorldGen.PlaceTile(startX - 13, startY - 8 - l, (ushort)mod.TileType("DungeonBlock"));
-					for (int k = 0; k < 3; k++)
-						WorldGen.PlaceTile(startX - 12 + k, startY - 9, (ushort)mod.TileType("DungeonBlock"));
-					WorldGen.PlaceTile(startX + 1, startY - 4, (ushort)mod.TileType("DungeonBlock"));
-					WorldGen.PlaceTile(startX - 16, startY - 4, (ushort)mod.TileType("DungeonBlock"));
-					WorldGen.PlaceChest(startX - 13, startY - 5, (ushort)mod.TileType("IceChest"), false, 2);
-					WorldGen.PlaceChest(startX - 7, startY - 5, (ushort)mod.TileType("IceChest"), false, 2);
-				}
-				else
-					goto IL_19;
-			}));
-
-			tasks.Insert(shiniesIndex + 10, new PassLegacy("Generating dungeon chest", delegate (GenerationProgress progress)
-			{
-				progress.Message = "Placing dungeon chest";
-
-				//WorldGen.PlaceChest(Main.dungeonX, Main.dungeonY - 1, (ushort)mod.TileType("IceChest"), false, 2);
-				//int chestIndex = Chest.FindChest(Main.dungeonX, Main.dungeonY - 2);
-				for (int c = 0; c < 2; c++)
-				{
-					WorldGen.PlaceChest(Main.dungeonX + WorldGen.genRand.Next(100, 1000), Main.dungeonY + WorldGen.genRand.Next(100, 1000), (ushort)mod.TileType("IceChest"), false, 2);
-					//int chestIndex = Chest.FindChest(Main.dungeonX + WorldGen.genRand.Next(100, 1000), Main.dungeonY + WorldGen.genRand.Next(100, 1000));
-				}
-			}));
+			tasks.Insert(shiniesIndex + 4, new PassLegacy("Generating argite", GenArgite));
+			tasks.Insert(shiniesIndex + 8, new PassLegacy("Mod Biomes", GenGlacier));
+			tasks.Insert(shiniesIndex + 10, new PassLegacy("Generating dungeon chest", GenChests));
 		}
 
-		public static bool PlaceIceChest(int x, int y, ushort type = 21, bool notNearOtherChests = false, int style = 0)
-		{
-			int num = -1;
-			TileObject toBePlaced;
-			if (TileObject.CanPlace(x, y, type, style, 1, out toBePlaced, false))
-			{
-				bool flag = !(notNearOtherChests && Chest.NearOtherChests(x - 1, y - 1));
-				if (flag)
-				{
-					TileObject.Place(toBePlaced);
-					num = Chest.CreateChest(toBePlaced.xCoord, toBePlaced.yCoord, -1);
-				}
-			}
-			else
-			{
-				num = -1;
-			}
-			// todo:
-			// if (num != -1 && Main.netMode == 1)
-			// {
-			//     NetMessage.SendData(34, -1, -1, "", 0, (float)x, (float)y, (float)style, 0, 0, 0);
-			// }
-			return true;
-		}
+		// @ todo: not even called anywhere?
+		//public static bool PlaceIceChest(int x, int y, ushort type = 21, bool notNearOtherChests = false, int style = 0)
+		//{
+		//	bool b = false;
+		//	TileObject toBePlaced;
+		//	if (TileObject.CanPlace(x, y, type, style, 1, out toBePlaced, false))
+		//	{
+		//		bool flag = !(notNearOtherChests && Chest.NearOtherChests(x - 1, y - 1));
+		//		if (flag)
+		//		{
+		//			b = TileObject.Place(toBePlaced);
+		//			if (b)
+		//			{
+		//				Chest.CreateChest(toBePlaced.xCoord, toBePlaced.yCoord, -1);
+		//			}
+		//		}
+		//	}
+		//	return b;
+		//}
 
 		public override void PostWorldGen()
 		{

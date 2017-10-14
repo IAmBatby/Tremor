@@ -183,7 +183,7 @@ namespace Tremor
 				bossChecklist.Call("AddBossWithInfo", "Alchemaster", 6.5f, (Func<bool>)(() => TremorWorld.Boss.Alchemaster.IsDowned()), "Use a [i:" + ItemType("AncientMosaic") + "]");// at night
 				bossChecklist.Call("AddBossWithInfo", "Motherboard (Destroyer alt)", 8.01f, (Func<bool>)(() => TremorWorld.Boss.Motherboard.IsDowned()), "Use a [i:" + ItemType("MechanicalBrain") + "]");//at night
 				bossChecklist.Call("AddBossWithInfo", "Pixie Queen", 9.6f, (Func<bool>)(() => TremorWorld.Boss.PixieQueen.IsDowned()), "Use a [i:" + ItemType("PixieinaJar") + "]");// in Hallow at night
-				bossChecklist.Call("AddBossWithInfo", "Wall of Shadows", 10.7f, (Func<bool>)(() => TremorWorld.Boss.WallOfShadow.IsDowned()), "Throw a [i:" + ItemType("ShadowRelic") + "]");//into lava in Underworld after beating Plantera and having the Dryad alive
+				bossChecklist.Call("AddBossWithInfo", "Wall of Shadows", 10.7f, (Func<bool>)(() => TremorWorld.Boss.WallOfShadow.IsDowned()), "Use a [i:" + ItemType("ShadowRelic") + "]");//into lava in Underworld after beating Plantera and having the Dryad alive
 				bossChecklist.Call("AddBossWithInfo", "Frost King", 10.6f, (Func<bool>)(() => TremorWorld.Boss.FrostKing.IsDowned()), "Use a [i:" + ItemType("FrostCrown") + "]");//in Snow
 				bossChecklist.Call("AddBossWithInfo", "Cog Lord", 11.4f, (Func<bool>)(() => TremorWorld.Boss.CogLord.IsDowned()), "Use a [i:" + ItemType("ArtifactEngine") + "]");//at night
 				bossChecklist.Call("AddBossWithInfo", "Mothership and Cyber King", 11.5f, (Func<bool>)(() => TremorWorld.Boss.CyberKing.IsDowned()), "Use a [i:" + ItemType("AdvancedCircuit") + "], Cyber King spawns after defeating the Mothership");//Cyber King spawns after defeating the Mothership
