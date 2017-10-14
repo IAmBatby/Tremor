@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -237,11 +238,12 @@ namespace Tremor
 			return From + ((To - From) / Smooth);
 		}
 
+		// @todo this shit weird af
 		public static float DistortFloat(float Float, float Percent)
 		{
 			float DistortNumber = Float * Percent;
 			int Counter = 0;
-			while (DistortNumber.ToString().Split(',').Length > 1)
+			while (DistortNumber.ToString(CultureInfo.InvariantCulture).Split(',').Length > 1)
 			{
 				DistortNumber *= 10;
 				Counter++;
