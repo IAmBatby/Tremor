@@ -1,3 +1,4 @@
+using System.Linq;
 using Terraria;
 using Terraria.ModLoader;
 
@@ -6,17 +7,7 @@ namespace Tremor.Items
 	public class FlaskCore : ModItem
 	{
 		public override bool CanEquipAccessory(Player player, int slot)
-		{
-			for (int i = 0; i < player.armor.Length; i++)
-			{
-				MPlayer modPlayer = (MPlayer)player.GetModPlayer(mod, "MPlayer");
-				if (modPlayer.core)
-				{
-					return false;
-				}
-			}
-			return true;
-		}
+			=> !MPlayer.GetModPlayer(player).core;
 
 		public override void SetDefaults()
 		{

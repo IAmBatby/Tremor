@@ -6,7 +6,6 @@ namespace Tremor.Items
 {
 	public class BasicFlask : AlchemistItem
 	{
-
 		public override void SetDefaults()
 		{
 			item.crit = 4;
