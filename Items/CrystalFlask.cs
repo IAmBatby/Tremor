@@ -65,7 +65,7 @@ namespace Tremor.Items
 			{
 				item.autoReuse = true;
 			}
-			if (player.FindBuffIndex(mod.BuffType("FlaskCoreBuff")) < 1)
+			if (!modPlayer.core)
 			{
 				item.autoReuse = false;
 			}

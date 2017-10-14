@@ -51,7 +51,7 @@ namespace Tremor.NPCs.Bosses.NovaPillar.Items.Weapons
 			{
 				item.autoReuse = true;
 			}
-			if (player.FindBuffIndex(mod.BuffType("FlaskCoreBuff")) < 1)
+			if (!modPlayer.core)
 			{
 				item.autoReuse = false;
 			}
