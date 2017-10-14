@@ -35,7 +35,7 @@ namespace Tremor.Items
 
 		public override void UpdateInventory(Player player)
 		{
-			if (Main.player[Main.myPlayer].buffType.Contains(mod.BuffType("SteamSwordBuff")))
+			if (player.HasBuff(mod.BuffType("SteamSwordBuff")))
 			{
 				item.damage = 80;
 				item.useTime = 15;

@@ -91,7 +91,7 @@ namespace Tremor.Items
 		{
 			if (player.altFunctionUse == 2)
 			{
-				if (Main.player[Main.myPlayer].buffType.Contains(mod.BuffType("SteamMageBuff")))
+				if (player.HasBuff(mod.BuffType("SteamMageBuff")))
 				{
 					item.damage = 100;
 				}
@@ -102,7 +102,7 @@ namespace Tremor.Items
 			}
 			else
 			{
-				if (Main.player[Main.myPlayer].buffType.Contains(mod.BuffType("SteamMageBuff")))
+				if (player.HasBuff(mod.BuffType("SteamMageBuff")))
 				{
 					item.damage = 80;
 				}

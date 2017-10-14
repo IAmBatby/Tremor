@@ -32,6 +32,9 @@ namespace Tremor
 
 	public static class TremorUtils
 	{
+		public static bool HasBuff(this Player player, int buffType)
+			=> player.FindBuffIndex(buffType) != -1;
+
 		public static bool AddItem(this Chest chest, int type, int? stack = null)
 		{
 			foreach (var item in chest.item)

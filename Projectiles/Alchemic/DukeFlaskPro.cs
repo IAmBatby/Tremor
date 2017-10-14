@@ -23,7 +23,7 @@ namespace Tremor.Projectiles.Alchemic
 			projectile.aiStyle = 2;
 			projectile.penetrate = 1;
 			// todo: move
-			if (Main.player[Main.myPlayer].buffType.Contains(mod.BuffType("BouncingCasingBuff")))
+			if (Main.LocalPlayer.HasBuff(mod.BuffType("BouncingCasingBuff")))
 			{
 				projectile.penetrate = 3;
 			}
@@ -35,7 +35,7 @@ namespace Tremor.Projectiles.Alchemic
 
 		public override void AI()
 		{
-			if (Main.player[Main.myPlayer].buffType.Contains(mod.BuffType("TheCadenceBuff")))
+			if (Main.LocalPlayer.HasBuff(mod.BuffType("TheCadenceBuff")))
 			{
 				int[] array = new int[20];
 				int num428 = 0;
@@ -89,7 +89,7 @@ namespace Tremor.Projectiles.Alchemic
 
 		public override bool OnTileCollide(Vector2 oldVelocity)
 		{
-			if (Main.player[Main.myPlayer].buffType.Contains(mod.BuffType("BouncingCasingBuff")))
+			if (Main.LocalPlayer.HasBuff(mod.BuffType("BouncingCasingBuff")))
 			{
 				projectile.penetrate--;
 				if (projectile.penetrate <= 0)
@@ -130,7 +130,7 @@ namespace Tremor.Projectiles.Alchemic
 			Main.PlaySound(29, (int)projectile.position.X, (int)projectile.position.Y, 20);
 			Gore.NewGore(projectile.position, -projectile.oldVelocity * 0.2f, 704, 1f);
 			Gore.NewGore(projectile.position, -projectile.oldVelocity * 0.2f, 705, 1f);
-			if (Main.player[Main.myPlayer].buffType.Contains(mod.BuffType("BrassChipBuff")))
+			if (player.HasBuff(mod.BuffType("BrassChipBuff")))
 			{
 				for (int i = 0; i < 5; i++)
 				{
@@ -140,7 +140,7 @@ namespace Tremor.Projectiles.Alchemic
 					Main.projectile[a].friendly = true;
 				}
 			}
-			if (Main.player[Main.myPlayer].buffType.Contains(mod.BuffType("ChaosElementBuff")))
+			if (player.HasBuff(mod.BuffType("ChaosElementBuff")))
 			{
 				int num220 = Main.rand.Next(3, 6);
 				for (int num221 = 0; num221 < num220; num221++)

@@ -37,7 +37,7 @@ namespace Tremor.Items
 
 		public override void UpdateInventory(Player player)
 		{
-			if (Main.player[Main.myPlayer].buffType.Contains(mod.BuffType("SteamRangerBuff")))
+			if (player.HasBuff(mod.BuffType("SteamRangerBuff")))
 			{
 				item.damage = 45;
 			}

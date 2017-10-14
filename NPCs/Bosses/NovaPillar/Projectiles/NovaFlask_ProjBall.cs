@@ -17,7 +17,7 @@ namespace Tremor.NPCs.Bosses.NovaPillar.Projectiles
 			projectile.width = 20;
 			Main.projFrames[projectile.type] = 3;
 			projectile.height = 20;
-			if (Main.player[Main.myPlayer].buffType.Contains(mod.BuffType("BouncingCasingBuff")))
+			if (Main.LocalPlayer.HasBuff(mod.BuffType("BouncingCasingBuff")))
 			{
 				projectile.scale = 3f;
 			}
@@ -61,13 +61,13 @@ namespace Tremor.NPCs.Bosses.NovaPillar.Projectiles
 
 			if (projectile.owner == Main.myPlayer)
 			{
-				if (Main.player[Main.myPlayer].buffType.Contains(mod.BuffType("PyroBuff")) && !modPlayer.nitro)
+				if (player.HasBuff(mod.BuffType("PyroBuff")) && !modPlayer.nitro)
 				{
 					Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 62);
 					int a = Projectile.NewProjectile(projectile.position.X, projectile.position.Y, 0, 0, mod.ProjectileType("NovaBlast"), projectile.damage * 2, 1.5f, projectile.owner);
 					Main.projectile[a].scale = 1.5f;
 				}
-				if (Main.player[Main.myPlayer].buffType.Contains(mod.BuffType("ChemikazeBuff")) && !modPlayer.nitro)
+				if (player.HasBuff(mod.BuffType("ChemikazeBuff")) && !modPlayer.nitro)
 				{
 					Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 62);
 					int a = Projectile.NewProjectile(projectile.position.X, projectile.position.Y, 0, 0, mod.ProjectileType("NovaBlast"), projectile.damage * 2, 1.25f, projectile.owner);
@@ -77,7 +77,7 @@ namespace Tremor.NPCs.Bosses.NovaPillar.Projectiles
 					int d = Projectile.NewProjectile(projectile.position.X, projectile.position.Y + 32, 0, 0, mod.ProjectileType("NovaBlast"), projectile.damage * 2, 1f, projectile.owner);
 					int e = Projectile.NewProjectile(projectile.position.X, projectile.position.Y - 32, 0, 0, mod.ProjectileType("NovaBlast"), projectile.damage * 2, 1f, projectile.owner);
 				}
-				if (Main.player[Main.myPlayer].buffType.Contains(mod.BuffType("CrossBlastBuff")) && !modPlayer.nitro)
+				if (player.HasBuff(mod.BuffType("CrossBlastBuff")) && !modPlayer.nitro)
 				{
 					Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 62);
 					int a = Projectile.NewProjectile(projectile.position.X, projectile.position.Y, 0, 0, mod.ProjectileType("NovaBlast"), projectile.damage * 2, 1.25f, projectile.owner);
@@ -103,7 +103,7 @@ namespace Tremor.NPCs.Bosses.NovaPillar.Projectiles
 					int m = Projectile.NewProjectile(projectile.position.X, projectile.position.Y - 70, 0, 0, mod.ProjectileType("NovaBlast"), projectile.damage * 2, 0.5f, projectile.owner);
 					Main.projectile[m].scale = 0.8f;
 				}
-				if (Main.player[Main.myPlayer].buffType.Contains(mod.BuffType("RoundBlastBuff")) && !modPlayer.nitro)
+				if (player.HasBuff(mod.BuffType("RoundBlastBuff")) && !modPlayer.nitro)
 				{
 					Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 62);
 					int a = Projectile.NewProjectile(projectile.position.X + 60, projectile.position.Y, 0, 0, mod.ProjectileType("NovaBlast"), projectile.damage * 2, 1f, projectile.owner);
@@ -116,7 +116,7 @@ namespace Tremor.NPCs.Bosses.NovaPillar.Projectiles
 					int h = Projectile.NewProjectile(projectile.position.X - 40, projectile.position.Y - 40, 0, 0, mod.ProjectileType("NovaBlast"), projectile.damage * 2, 1f, projectile.owner);
 				}
 
-				if (Main.player[Main.myPlayer].buffType.Contains(mod.BuffType("SquareBlastBuff")) && !modPlayer.nitro)
+				if (player.HasBuff(mod.BuffType("SquareBlastBuff")) && !modPlayer.nitro)
 				{
 					Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 62);
 					int a = Projectile.NewProjectile(projectile.position.X + 70, projectile.position.Y, 0, 0, mod.ProjectileType("NovaBlast"), projectile.damage * 2, 1f, projectile.owner);
@@ -129,13 +129,13 @@ namespace Tremor.NPCs.Bosses.NovaPillar.Projectiles
 					int h = Projectile.NewProjectile(projectile.position.X - 70, projectile.position.Y - 70, 0, 0, mod.ProjectileType("NovaBlast"), projectile.damage * 2, 1f, projectile.owner);
 				}
 
-				if (Main.player[Main.myPlayer].buffType.Contains(mod.BuffType("NitroBuff")) && !modPlayer.pyro)
+				if (player.HasBuff(mod.BuffType("NitroBuff")) && !modPlayer.pyro)
 				{
 					Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 100);
 					int a = Projectile.NewProjectile(projectile.position.X, projectile.position.Y, 0, 0, mod.ProjectileType("NovaBurst"), projectile.damage, 1f, projectile.owner);
 				}
 
-				if (Main.player[Main.myPlayer].buffType.Contains(mod.BuffType("ReinforcedBurstBuff")) && !modPlayer.pyro)
+				if (player.HasBuff(mod.BuffType("ReinforcedBurstBuff")) && !modPlayer.pyro)
 				{
 					Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 100);
 					int a = Projectile.NewProjectile(projectile.position.X, projectile.position.Y, 0, 0, mod.ProjectileType("NovaBurst"), projectile.damage, 1f, projectile.owner);
@@ -143,7 +143,7 @@ namespace Tremor.NPCs.Bosses.NovaPillar.Projectiles
 					int c = Projectile.NewProjectile(projectile.position.X - 50, projectile.position.Y, 0, 0, mod.ProjectileType("NovaBurst"), projectile.damage, 1f, projectile.owner);
 				}
 
-				if (Main.player[Main.myPlayer].buffType.Contains(mod.BuffType("LinearBurstBuff")) && !modPlayer.pyro)
+				if (player.HasBuff(mod.BuffType("LinearBurstBuff")) && !modPlayer.pyro)
 				{
 					Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 100);
 					int a = Projectile.NewProjectile(projectile.position.X, projectile.position.Y, 0, 0, mod.ProjectileType("NovaBurst"), projectile.damage, 1f, projectile.owner);
@@ -153,7 +153,7 @@ namespace Tremor.NPCs.Bosses.NovaPillar.Projectiles
 					int e = Projectile.NewProjectile(projectile.position.X - 100, projectile.position.Y, 0, 0, mod.ProjectileType("NovaBurst"), projectile.damage, 1f, projectile.owner);
 				}
 
-				if (Main.player[Main.myPlayer].buffType.Contains(mod.BuffType("NitroBuff")) && Main.player[Main.myPlayer].buffType.Contains(mod.BuffType("PyroBuff")))
+				if (player.HasBuff(mod.BuffType("NitroBuff")) && player.HasBuff(mod.BuffType("PyroBuff")))
 				{
 					Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 42);
 					int a = Projectile.NewProjectile(projectile.position.X, projectile.position.Y, 0, 0, mod.ProjectileType("NovaBlast"), projectile.damage * 2, 1.5f, projectile.owner);
@@ -162,7 +162,7 @@ namespace Tremor.NPCs.Bosses.NovaPillar.Projectiles
 					int c = Projectile.NewProjectile(projectile.position.X - 20, projectile.position.Y, -5, 0, mod.ProjectileType("NovaSkull"), projectile.damage, 1f, projectile.owner);
 				}
 
-				if (Main.player[Main.myPlayer].buffType.Contains(mod.BuffType("ReinforcedBurstBuff")) && Main.player[Main.myPlayer].buffType.Contains(mod.BuffType("PyroBuff")))
+				if (player.HasBuff(mod.BuffType("ReinforcedBurstBuff")) && player.HasBuff(mod.BuffType("PyroBuff")))
 				{
 					Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 42);
 					int a = Projectile.NewProjectile(projectile.position.X, projectile.position.Y, 0, 0, mod.ProjectileType("NovaBlast"), projectile.damage * 2, 1.5f, projectile.owner);
@@ -173,7 +173,7 @@ namespace Tremor.NPCs.Bosses.NovaPillar.Projectiles
 					int e = Projectile.NewProjectile(projectile.position.X - 40, projectile.position.Y + 10, -4, 0, mod.ProjectileType("NovaSkull"), projectile.damage, 1f, projectile.owner);
 				}
 
-				if (Main.player[Main.myPlayer].buffType.Contains(mod.BuffType("LinearBurstBuff")) && Main.player[Main.myPlayer].buffType.Contains(mod.BuffType("PyroBuff")))
+				if (player.HasBuff(mod.BuffType("LinearBurstBuff")) && player.HasBuff(mod.BuffType("PyroBuff")))
 				{
 					Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 42);
 					int a = Projectile.NewProjectile(projectile.position.X, projectile.position.Y, 0, 0, mod.ProjectileType("NovaBlast"), projectile.damage * 2, 1.5f, projectile.owner);
@@ -186,7 +186,7 @@ namespace Tremor.NPCs.Bosses.NovaPillar.Projectiles
 					int g = Projectile.NewProjectile(projectile.position.X - 70, projectile.position.Y + 15, -4, 0, mod.ProjectileType("NovaSkull"), projectile.damage, 1f, projectile.owner);
 				}
 
-				if (Main.player[Main.myPlayer].buffType.Contains(mod.BuffType("RoundBlastBuff")) && Main.player[Main.myPlayer].buffType.Contains(mod.BuffType("NitroBuff")))
+				if (player.HasBuff(mod.BuffType("RoundBlastBuff")) && player.HasBuff(mod.BuffType("NitroBuff")))
 				{
 					Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 62);
 					int z = Projectile.NewProjectile(projectile.position.X, projectile.position.Y, 0, 0, mod.ProjectileType("NovaBlast"), projectile.damage * 2, 1.5f, projectile.owner);
@@ -205,7 +205,7 @@ namespace Tremor.NPCs.Bosses.NovaPillar.Projectiles
 					Main.projectile[h].scale = 0.8f;
 				}
 
-				if (Main.player[Main.myPlayer].buffType.Contains(mod.BuffType("RoundBlastBuff")) && Main.player[Main.myPlayer].buffType.Contains(mod.BuffType("ReinforcedBurstBuff")))
+				if (player.HasBuff(mod.BuffType("RoundBlastBuff")) && player.HasBuff(mod.BuffType("ReinforcedBurstBuff")))
 				{
 					Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 62);
 					int z = Projectile.NewProjectile(projectile.position.X, projectile.position.Y, 0, 0, mod.ProjectileType("NovaBlast"), projectile.damage * 2, 1.5f, projectile.owner);
@@ -224,7 +224,7 @@ namespace Tremor.NPCs.Bosses.NovaPillar.Projectiles
 					Main.projectile[h].scale = 1.2f;
 				}
 
-				if (Main.player[Main.myPlayer].buffType.Contains(mod.BuffType("RoundBlastBuff")) && Main.player[Main.myPlayer].buffType.Contains(mod.BuffType("LinearBurstBuff")))
+				if (player.HasBuff(mod.BuffType("RoundBlastBuff")) && player.HasBuff(mod.BuffType("LinearBurstBuff")))
 				{
 					Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 62);
 					int z = Projectile.NewProjectile(projectile.position.X, projectile.position.Y, 0, 0, mod.ProjectileType("NovaBlast"), projectile.damage * 2, 1.5f, projectile.owner);
@@ -251,7 +251,7 @@ namespace Tremor.NPCs.Bosses.NovaPillar.Projectiles
 					Main.projectile[m].scale = 0.6f;
 				}
 
-				if (Main.player[Main.myPlayer].buffType.Contains(mod.BuffType("SquareBlastBuff")) && Main.player[Main.myPlayer].buffType.Contains(mod.BuffType("NitroBuff")))
+				if (player.HasBuff(mod.BuffType("SquareBlastBuff")) && player.HasBuff(mod.BuffType("NitroBuff")))
 				{
 					Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 62);
 					int d = Projectile.NewProjectile(projectile.position.X, projectile.position.Y, 0, 0, mod.ProjectileType("NovaBlast"), projectile.damage * 2, 1f, projectile.owner);
@@ -262,7 +262,7 @@ namespace Tremor.NPCs.Bosses.NovaPillar.Projectiles
 					int h = Projectile.NewProjectile(projectile.position.X - 30, projectile.position.Y - 30, -3, -3, mod.ProjectileType("NovaSkull"), projectile.damage * 2, 1f, projectile.owner);
 				}
 
-				if (Main.player[Main.myPlayer].buffType.Contains(mod.BuffType("SquareBlastBuff")) && Main.player[Main.myPlayer].buffType.Contains(mod.BuffType("ReinforcedBurstBuff")))
+				if (player.HasBuff(mod.BuffType("SquareBlastBuff")) && player.HasBuff(mod.BuffType("ReinforcedBurstBuff")))
 				{
 					Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 62);
 					int d = Projectile.NewProjectile(projectile.position.X, projectile.position.Y, 0, 0, mod.ProjectileType("NovaBlast"), projectile.damage * 2, 1f, projectile.owner);
@@ -285,7 +285,7 @@ namespace Tremor.NPCs.Bosses.NovaPillar.Projectiles
 					Main.projectile[l].scale = 0.75f;
 				}
 
-				if (Main.player[Main.myPlayer].buffType.Contains(mod.BuffType("SquareBlastBuff")) && Main.player[Main.myPlayer].buffType.Contains(mod.BuffType("LinearBurstBuff")))
+				if (player.HasBuff(mod.BuffType("SquareBlastBuff")) && player.HasBuff(mod.BuffType("LinearBurstBuff")))
 				{
 					Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 62);
 					int d = Projectile.NewProjectile(projectile.position.X, projectile.position.Y, 0, 0, mod.ProjectileType("NovaBlast"), projectile.damage * 2, 1f, projectile.owner);
@@ -316,14 +316,14 @@ namespace Tremor.NPCs.Bosses.NovaPillar.Projectiles
 					Main.projectile[p].scale = 0.7f;
 				}
 
-				if (Main.player[Main.myPlayer].buffType.Contains(mod.BuffType("NitroBuff")) && Main.player[Main.myPlayer].buffType.Contains(mod.BuffType("ChemikazeBuff")))
+				if (player.HasBuff(mod.BuffType("NitroBuff")) && player.HasBuff(mod.BuffType("ChemikazeBuff")))
 				{
 					Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 100);
 					Projectile.NewProjectile(projectile.position.X - 30, projectile.position.Y, -2, 0, mod.ProjectileType("NovaBurst"), projectile.damage, 1f, projectile.owner);
 					Projectile.NewProjectile(projectile.position.X + 30, projectile.position.Y, +2, 0, mod.ProjectileType("NovaBurst"), projectile.damage, 1f, projectile.owner);
 				}
 
-				if (Main.player[Main.myPlayer].buffType.Contains(mod.BuffType("ReinforcedBurstBuff")) && Main.player[Main.myPlayer].buffType.Contains(mod.BuffType("ChemikazeBuff")))
+				if (player.HasBuff(mod.BuffType("ReinforcedBurstBuff")) && player.HasBuff(mod.BuffType("ChemikazeBuff")))
 				{
 					Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 100);
 					Projectile.NewProjectile(projectile.position.X - 40, projectile.position.Y, -2, 0, mod.ProjectileType("NovaBurst"), projectile.damage, 1f, projectile.owner);
@@ -332,7 +332,7 @@ namespace Tremor.NPCs.Bosses.NovaPillar.Projectiles
 					Projectile.NewProjectile(projectile.position.X + 60, projectile.position.Y, +3, 0, mod.ProjectileType("NovaBurst"), projectile.damage, 1f, projectile.owner);
 				}
 
-				if (Main.player[Main.myPlayer].buffType.Contains(mod.BuffType("LinearBurstBuff")) && Main.player[Main.myPlayer].buffType.Contains(mod.BuffType("ChemikazeBuff")))
+				if (player.HasBuff(mod.BuffType("LinearBurstBuff")) && player.HasBuff(mod.BuffType("ChemikazeBuff")))
 				{
 					Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 100);
 					Projectile.NewProjectile(projectile.position.X - 40, projectile.position.Y, -2, 0, mod.ProjectileType("NovaBurst"), projectile.damage, 1f, projectile.owner);
@@ -343,7 +343,7 @@ namespace Tremor.NPCs.Bosses.NovaPillar.Projectiles
 					Projectile.NewProjectile(projectile.position.X + 80, projectile.position.Y, +4, 0, mod.ProjectileType("NovaBurst"), projectile.damage, 1f, projectile.owner);
 				}
 
-				if (Main.player[Main.myPlayer].buffType.Contains(mod.BuffType("CrossBlastBuff")) && Main.player[Main.myPlayer].buffType.Contains(mod.BuffType("NitroBuff")))
+				if (player.HasBuff(mod.BuffType("CrossBlastBuff")) && player.HasBuff(mod.BuffType("NitroBuff")))
 				{
 					Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 62);
 					int a = Projectile.NewProjectile(projectile.position.X, projectile.position.Y, 4, 0, mod.ProjectileType("NovaSkullburst"), projectile.damage * 1, 1f, projectile.owner);
@@ -356,7 +356,7 @@ namespace Tremor.NPCs.Bosses.NovaPillar.Projectiles
 					int h = Projectile.NewProjectile(projectile.position.X, projectile.position.Y - 60, 0, 4, mod.ProjectileType("NovaSkullburst"), projectile.damage * 1, 1f, projectile.owner);
 				}
 
-				if (Main.player[Main.myPlayer].buffType.Contains(mod.BuffType("CrossBlastBuff")) && Main.player[Main.myPlayer].buffType.Contains(mod.BuffType("ReinforcedBurstBuff")))
+				if (player.HasBuff(mod.BuffType("CrossBlastBuff")) && player.HasBuff(mod.BuffType("ReinforcedBurstBuff")))
 				{
 					Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 62);
 					int a = Projectile.NewProjectile(projectile.position.X, projectile.position.Y, 6, 0, mod.ProjectileType("NovaSkullburst"), projectile.damage * 1, 1f, projectile.owner);
@@ -369,7 +369,7 @@ namespace Tremor.NPCs.Bosses.NovaPillar.Projectiles
 					int h = Projectile.NewProjectile(projectile.position.X, projectile.position.Y - 60, 0, 6, mod.ProjectileType("NovaSkullburst"), projectile.damage * 1, 1f, projectile.owner);
 				}
 
-				if (Main.player[Main.myPlayer].buffType.Contains(mod.BuffType("CrossBlastBuff")) && Main.player[Main.myPlayer].buffType.Contains(mod.BuffType("LinearBurstBuff")))
+				if (player.HasBuff(mod.BuffType("CrossBlastBuff")) && player.HasBuff(mod.BuffType("LinearBurstBuff")))
 				{
 					Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 62);
 					int a = Projectile.NewProjectile(projectile.position.X, projectile.position.Y, 8, 0, mod.ProjectileType("NovaSkullburst"), projectile.damage * 1, 1f, projectile.owner);

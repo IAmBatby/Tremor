@@ -41,7 +41,7 @@ namespace Tremor.Projectiles.Alchemic.Blasts
 
 		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
 		{
-			if (Main.player[Main.myPlayer].buffType.Contains(mod.BuffType("ConcentratedTinctureBuff")))
+			if (Main.LocalPlayer.HasBuff(mod.BuffType("ConcentratedTinctureBuff")))
 			{
 				int newLife = 2;
 				Main.player[projectile.owner].statLife += newLife;

@@ -23,7 +23,7 @@ namespace Tremor.NPCs.Bosses.NovaPillar.Projectiles
 			projectile.friendly = true;
 			projectile.aiStyle = 2;
 			projectile.timeLeft = 1200;
-			if (Main.player[Main.myPlayer].buffType.Contains(mod.BuffType("BouncingCasingBuff")))
+			if (Main.LocalPlayer.HasBuff(mod.BuffType("BouncingCasingBuff")))
 			{
 				projectile.penetrate = 3;
 			}
@@ -38,7 +38,7 @@ namespace Tremor.NPCs.Bosses.NovaPillar.Projectiles
 
 		public override bool OnTileCollide(Vector2 oldVelocity)
 		{
-			if (Main.player[Main.myPlayer].buffType.Contains(mod.BuffType("BouncingCasingBuff")))
+			if (Main.LocalPlayer.HasBuff(mod.BuffType("BouncingCasingBuff")))
 			{
 				projectile.penetrate--;
 				if (projectile.penetrate <= 0)
@@ -68,7 +68,7 @@ namespace Tremor.NPCs.Bosses.NovaPillar.Projectiles
 
 		public override void AI()
 		{
-			if (Main.player[Main.myPlayer].buffType.Contains(mod.BuffType("TheCadenceBuff")))
+			if (Main.LocalPlayer.HasBuff(mod.BuffType("TheCadenceBuff")))
 			{
 				int[] array = new int[20];
 				int num428 = 0;
@@ -141,7 +141,7 @@ namespace Tremor.NPCs.Bosses.NovaPillar.Projectiles
 				}
 			}
 
-			if (Main.player[Main.myPlayer].buffType.Contains(mod.BuffType("BrassChipBuff")))
+			if (player.HasBuff(mod.BuffType("BrassChipBuff")))
 			{
 				for (int i = 0; i < 5; i++)
 				{
@@ -151,7 +151,7 @@ namespace Tremor.NPCs.Bosses.NovaPillar.Projectiles
 					Main.projectile[a].friendly = true;
 				}
 			}
-			if (Main.player[Main.myPlayer].buffType.Contains(mod.BuffType("ChaosElementBuff")))
+			if (player.HasBuff(mod.BuffType("ChaosElementBuff")))
 			{
 				int num220 = Main.rand.Next(3, 6);
 				for (int num221 = 0; num221 < num220; num221++)

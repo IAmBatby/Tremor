@@ -25,7 +25,7 @@ namespace Tremor.Projectiles.Alchemic
 
 		public override void Kill(int timeLeft)
 		{
-			if (Main.player[Main.myPlayer].buffType.Contains(mod.BuffType("DesertEmperorSetBuff")))
+			if (Main.LocalPlayer.HasBuff(mod.BuffType("DesertEmperorSetBuff")))
 			{
 				int a = Projectile.NewProjectile(projectile.position.X, projectile.position.Y, 0, 0, mod.ProjectileType("FlaskWasp"), projectile.damage * 2, 1.5f, projectile.owner);
 				int b = Projectile.NewProjectile(projectile.position.X, projectile.position.Y, 0, 0, mod.ProjectileType("FlaskWasp"), projectile.damage * 2, 1.5f, projectile.owner);
