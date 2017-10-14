@@ -14,40 +14,40 @@ namespace Tremor.NPCs
 	[AutoloadBossHead]
 	public class WallOfShadow : ModNPC
 	{
-
-		private const int AnimationRate = 8;
-		private const int FrameCount = 4;
+		//private const int AnimationRate = 8;
+		//private const int FrameCount = 4;
 
 		private const int ShootRate = 70;
 		private const int ShootDamage = 15;
-		private int ShootType;
+		//private int _shootType;
 		private const float ShootKnockback = 1;
-		private float ShootSpeed = 20;
+		private float _shootSpeed = 20;
 
 		private const float DistortPercent = 0.15f; // 1 == 100%
 
-		private const int MinionsID = 61;
-		private const int MinionsCount = 4; 
+		//private const int MinionsId = 61;
+		//private const int MinionsCount = 4; 
 
-		private const int StateTime_Flying = 600;
-		private const int StateTime_Minions = 120;
+		//private const int StateTimeFlying = 600;
+		//private const int StateTimeMinions = 120;
 
-		private const int FlyingAI = 2;
-		private const int MinionsAI = 0;
+		//private const int FlyingAi = 2;
+		//private const int MinionsAi = 0;
 
-		private const float MinionsState_XDeaccelerationPower = 0.05f;
-		private const float MinionsState_YMaxSpeed = 2.80f;
-		private const float MinionsStete_YSpeedStep = 0.02f;
+		//private const float MinionsStateXDeaccelerationPower = 0.05f;
+		//private const float MinionsStateYMaxSpeed = 2.80f;
+		//private const float MinionsSteteYSpeedStep = 0.02f;
 
-		private const int States = 2;
+		//private const int States = 2;
 
-		private int TimeToAnimation = AnimationRate;
-		private int Frame = 0;
-		private bool Shoots = true;
-		private int TimeToShoot = ShootRate;
-		private int State = 0;
-		private int TimeToState = StateTime_Flying;
-		private bool runAway = false;
+		//private int _timeToAnimation = AnimationRate;
+		//private int _frame = 0;
+		private const bool Shoots = true;
+
+		private int _timeToShoot = ShootRate;
+		//private int _state = 0;
+		//private int _timeToState = StateTimeFlying;
+		//private bool _runAway = false;
 
 		private int MagicBoltCooldown
 		{
@@ -114,7 +114,7 @@ namespace Tremor.NPCs
 				var shootVel = targetPos - shootPos + new Vector2(Main.rand.NextFloat(-inaccuracy, inaccuracy), Main.rand.NextFloat(-inaccuracy, inaccuracy));
 				shootVel.Normalize();
 				shootVel *= 10f;
-				int proj = Projectile.NewProjectile(shootPos, shootVel, 290, npc.damage, 5f, Main.myPlayer);
+				Projectile.NewProjectile(shootPos, shootVel, 290, npc.damage, 5f, Main.myPlayer);
 			}
 			if (MagicBoltCooldown <= 0)
 			{
@@ -124,20 +124,18 @@ namespace Tremor.NPCs
 
 		private void Shoot()
 		{
-			if (!Shoots && npc.target < 0) //если не время для не стрельбы, то вырубаем автоматом
+			if (--_timeToShoot > 0) //если таймер меньше нуля, то вырубаем автоматом
 				return;
-			if (--TimeToShoot > 0) //если таймер меньше нуля, то вырубаем автоматом
-				return;
-			TimeToShoot = (int)Helper.DistortFloat(ShootRate, DistortPercent); //устанавливаем частоту выстрела
+			_timeToShoot = (int)Helper.DistortFloat(ShootRate, DistortPercent); //устанавливаем частоту выстрела
 			for (int i = 0; i < ((Main.expertMode) ? 3 : 1); i++) //в цикле указываем кол-во перьев при выстреле
 			{
 				if (Main.expertMode)
 				{
-					ShootSpeed = 25;
+					_shootSpeed = 25;
 				}
-				Vector2 Velocity = Helper.VelocityToPoint(npc.Center, Helper.RandomPointInArea(new Vector2(Main.player[npc.target].Center.X - 10, Main.player[npc.target].Center.Y - 10), new Vector2(Main.player[npc.target].Center.X + 20, Main.player[npc.target].Center.Y + 20)), ShootSpeed); //здесь устанавливаем позиции (здесь от перса в плеера)
-				int Proj = Projectile.NewProjectile(npc.Center.X, npc.Center.Y, Velocity.X, Velocity.Y, 83, (int)Helper.DistortFloat(ShootDamage, DistortPercent), Helper.DistortFloat(ShootKnockback, DistortPercent)); //подтверждаем все выше действие: от перса к мобу, от моба к персу (второе выстрел)
-				Main.projectile[Proj].Center = npc.Center;
+				Vector2 velocity = Helper.VelocityToPoint(npc.Center, Helper.RandomPointInArea(new Vector2(Main.player[npc.target].Center.X - 10, Main.player[npc.target].Center.Y - 10), new Vector2(Main.player[npc.target].Center.X + 20, Main.player[npc.target].Center.Y + 20)), _shootSpeed); //здесь устанавливаем позиции (здесь от перса в плеера)
+				int proj = Projectile.NewProjectile(npc.Center.X, npc.Center.Y, velocity.X, velocity.Y, 83, (int)Helper.DistortFloat(ShootDamage, DistortPercent), Helper.DistortFloat(ShootKnockback, DistortPercent)); //подтверждаем все выше действие: от перса к мобу, от моба к персу (второе выстрел)
+				Main.projectile[proj].Center = npc.Center;
 			}
 		}
 
@@ -146,9 +144,9 @@ namespace Tremor.NPCs
 			LaserCooldown--;
 			if (LaserCooldown <= 60 && LaserCooldown % ((Main.expertMode) ? 4 : 7) == 0 && Main.netMode != 1)
 			{
-				Vector2 Velocity = Helper.VelocityToPoint(npc.Center, Helper.RandomPointInArea(new Vector2(Main.player[npc.target].Center.X - 100, Main.player[npc.target].Center.Y - 100), new Vector2(Main.player[npc.target].Center.X + 20, Main.player[npc.target].Center.Y + 20)), ((Main.expertMode) ? 20 : 15)); //здесь устанавливаем позиции (здесь от перса в плеера)
-				int Proj = Projectile.NewProjectile(npc.Center.X, npc.Center.Y, Velocity.X, Velocity.Y, 83, (int)Helper.DistortFloat(ShootDamage, DistortPercent), Helper.DistortFloat(ShootKnockback, DistortPercent)); //подтверждаем все выше действие: от перса к мобу, от моба к персу (второе выстрел)
-				Main.projectile[Proj].Center = npc.Center;
+				Vector2 velocity = Helper.VelocityToPoint(npc.Center, Helper.RandomPointInArea(new Vector2(Main.player[npc.target].Center.X - 100, Main.player[npc.target].Center.Y - 100), new Vector2(Main.player[npc.target].Center.X + 20, Main.player[npc.target].Center.Y + 20)), ((Main.expertMode) ? 20 : 15)); //здесь устанавливаем позиции (здесь от перса в плеера)
+				int proj = Projectile.NewProjectile(npc.Center.X, npc.Center.Y, velocity.X, velocity.Y, 83, (int)Helper.DistortFloat(ShootDamage, DistortPercent), Helper.DistortFloat(ShootKnockback, DistortPercent)); //подтверждаем все выше действие: от перса к мобу, от моба к персу (второе выстрел)
+				Main.projectile[proj].Center = npc.Center;
 			}
 			if (LaserCooldown <= 0)
 			{
@@ -158,540 +156,540 @@ namespace Tremor.NPCs
 
 		public override bool PreAI()
 		{
-				npc.TargetClosest(false);
-				if (npc.target != -1)
+			npc.TargetClosest(false);
+			if (npc.target != -1)
+			{
+				Player player = Main.player[npc.target];
+				npc.position.Y = player.position.Y;
+				player.AddBuff(22, 1);
+				if (player.dead)
 				{
-					Player player = Main.player[npc.target];
-					npc.position.Y = player.position.Y;
-					player.AddBuff(22, 1);
-					if (player.dead)
+					npc.TargetClosest(false);
+					npc.velocity.Y = npc.velocity.Y + 1f;
+					if (npc.position.Y > Main.worldSurface * 16.0)
 					{
-						npc.TargetClosest(false);
 						npc.velocity.Y = npc.velocity.Y + 1f;
-						if (npc.position.Y > Main.worldSurface * 16.0)
+					}
+					if (npc.position.Y > Main.rockLayer * 16.0)
+					{
+						for (int num957 = 0; num957 < 200; num957++)
 						{
-							npc.velocity.Y = npc.velocity.Y + 1f;
-						}
-						if (npc.position.Y > Main.rockLayer * 16.0)
-						{
-							for (int num957 = 0; num957 < 200; num957++)
+							if (Main.npc[num957].aiStyle == npc.aiStyle)
 							{
-								if (Main.npc[num957].aiStyle == npc.aiStyle)
-								{
-									Main.npc[num957].active = false;
-								}
+								Main.npc[num957].active = false;
 							}
 						}
 					}
 				}
+			}
 
-				ShootBall();
-				ShootSuper();
-				if (npc.life < npc.lifeMax * 0.5f)
+			ShootBall();
+			ShootSuper();
+			if (npc.life < npc.lifeMax * 0.5f)
+			{
+				Main.npcHeadBossTexture[NPCID.Sets.BossHeadTextures[npc.type]] = mod.GetTexture("NPCs/WallOfShadow_Head_Boss1");
+				Shoot();
+
+				if ((int)(Main.time % 360) == 0)
 				{
-					Main.npcHeadBossTexture[NPCID.Sets.BossHeadTextures[npc.type]] = mod.GetTexture("NPCs/WallOfShadow_Head_Boss1");
-					Shoot();
-
-					if ((int) (Main.time % 360) == 0)
-					{
-						int index = NPC.NewNPC((int) (npc.position.X + (npc.width / 2)), (int) (npc.position.Y + (npc.height / 2) + 20.0),
-							mod.NPCType("ShadowSteed"), 1, 0.0f, 0.0f, 0.0f, 0.0f, byte.MaxValue);
-						Main.npc[index].velocity.X = npc.direction * 6;
-					}
-
-					if (npc.localAI[0] == 0.0)
-					{
-						npc.localAI[0] = 1f;
-						Main.wofB = -1;
-						Main.wofT = -1;
-					}
-
-					npc.ai[1]++;
-					if (npc.ai[2] == 0)
-					{
-						if (npc.life < npc.lifeMax * 0.5F)
-							npc.ai[1]++;
-						if (npc.life < npc.lifeMax * 0.2F)
-							npc.ai[1]++;
-						if (npc.ai[1] > 2700.0)
-							npc.ai[2] = 1f;
-					}
-					if (npc.ai[2] > 0 && npc.ai[1] > 60)
-					{
-						int spawnCooldown = 3;
-						if (npc.life < npc.lifeMax * 0.3)
-							++spawnCooldown;
-						npc.ai[2]++;
-						npc.ai[1] = 0;
-						if (npc.ai[2] > spawnCooldown)
-							npc.ai[2] = 0;
-
-						if (Main.netMode != 1)
-						{
-							// Spawn... a Shadow Steed?
-							//int index = NPC.NewNPC((int)(npc.position.X + (npc.width / 2)), (int)(npc.position.Y + (npc.height / 2) + 20.0), mod.NPCType("ShadowSteed"), 1, 0.0f, 0.0f, 0.0f, 0.0f, (int)byte.MaxValue);
-							//int index2 = NPC.NewNPC((int)(npc.position.X + (npc.width / 2)), (int)(npc.position.Y + (npc.height / 2) + 20.0), mod.NPCType("ShadowSteed"), 1, 0.0f, 0.0f, 0.0f, 0.0f, (int)byte.MaxValue);
-							//NPC.NewNPC((int)(npc.position.X + (npc.width / 2)), (int)(npc.position.Y + (npc.height / 2) + 10.0), mod.NPCType("ShadowSteed"), 1, 0.0f, 0.0f, 0.0f, 0.0f, (int)byte.MaxValue);
-							//NPC.NewNPC((int)(npc.position.X + (npc.width / 2)), (int)(npc.position.Y + (npc.height / 2) + 30.0), mod.NPCType("ShadowSteed"), 1, 0.0f, 0.0f, 0.0f, 0.0f, (int)byte.MaxValue);
-							//Main.npc[index].velocity.X = npc.direction * 6;
-							//Main.npc[index2].velocity.X = npc.direction * 6;
-						}
-					}
-
-					Main.wof = npc.whoAmI;
-					int npcTileX = (int) (npc.position.X / 16);
-					int npcRightXTile = (int) ((npc.position.X + npc.width) / 16);
-					int npcCenterYTile = (int) ((npc.position.Y + (npc.height / 2)) / 16);
-					int solidTiles = 0;
-					int npcBottom = npcCenterYTile + 7;
-					while (solidTiles < 15 && npcBottom > Main.maxTilesY - 200)
-					{
-						++npcBottom;
-						for (int i = npcTileX; i <= npcRightXTile; ++i)
-						{
-							try
-							{
-								if (!WorldGen.SolidTile(i, npcBottom))
-								{
-									if (Main.tile[i, npcBottom].liquid <= 0)
-										continue;
-								}
-								++solidTiles;
-							}
-							catch
-							{
-								solidTiles += 15;
-							}
-						}
-					}
-					int num5 = npcBottom + 4;
-					if (Main.wofB == -1)
-						Main.wofB = num5 * 16;
-					else if (Main.wofB > num5 * 16)
-					{
-						--Main.wofB;
-						if (Main.wofB < num5 * 16)
-							Main.wofB = num5 * 16;
-					}
-					else if (Main.wofB < num5 * 16)
-					{
-						++Main.wofB;
-						if (Main.wofB > num5 * 16)
-							Main.wofB = num5 * 16;
-					}
-
-					int num6 = 0;
-					int j2 = npcCenterYTile - 7;
-					while (num6 < 15 && j2 < Main.maxTilesY - 10)
-					{
-						--j2;
-						for (int i = npcTileX; i <= npcRightXTile; ++i)
-						{
-							try
-							{
-								if (!WorldGen.SolidTile(i, j2))
-								{
-									if (Main.tile[i, j2].liquid <= 0)
-										continue;
-								}
-								++num6;
-							}
-							catch
-							{
-								num6 += 15;
-							}
-						}
-					}
-					int num7 = j2 - 4;
-					if (Main.wofT == -1)
-						Main.wofT = num7 * 16;
-					else if (Main.wofT > num7 * 16)
-					{
-						--Main.wofT;
-						if (Main.wofT < num7 * 16)
-							Main.wofT = num7 * 16;
-					}
-					else if (Main.wofT < num7 * 16)
-					{
-						++Main.wofT;
-						if (Main.wofT > num7 * 16)
-							Main.wofT = num7 * 16;
-					}
-
-					#region Movement
-
-					float num8 = ((Main.wofB + Main.wofT) / 2 - npc.height / 2);
-					if (npc.position.Y > num8 + 1.0)
-						npc.velocity.Y = -1f;
-					else if (npc.position.Y < num8 - 1.0)
-						npc.velocity.Y = 1f;
-					npc.velocity.Y = 0.0f;
-					npc.position.Y = num8;
-					float speed = 1.5f;
-					if (npc.life < npc.lifeMax * 0.75)
-						speed += 0.25f;
-					if (npc.life < npc.lifeMax * 0.5)
-						speed += 0.4f;
-					if (npc.life < npc.lifeMax * 0.25)
-						speed += 0.5f;
-					if (npc.life < npc.lifeMax * 0.1)
-						speed += 0.6f;
-					if (npc.life < npc.lifeMax * 0.66 && Main.expertMode)
-						speed += 0.3f;
-					if (npc.life < npc.lifeMax * 0.33 && Main.expertMode)
-						speed += 0.3f;
-					if (npc.life < npc.lifeMax * 0.05 && Main.expertMode)
-						speed += 0.6f;
-					if (npc.life < npc.lifeMax * 0.035 && Main.expertMode)
-						speed += 0.6f;
-					if (npc.life < npc.lifeMax * 0.025 && Main.expertMode)
-						speed += 0.6f;
-					if (Main.expertMode)
-						speed = speed * 1.35f + 0.35f;
-					if (npc.velocity.X == 0.0)
-					{
-						npc.TargetClosest(true);
-						npc.velocity.X = npc.direction;
-					}
-					if (npc.velocity.X < 0.0)
-					{
-						npc.velocity.X = -speed;
-						npc.direction = -1;
-					}
-					else
-					{
-						npc.velocity.X = speed;
-						npc.direction = 1;
-					}
-
-					#endregion
-
-					#region Mouth Rotation
-
-					npc.spriteDirection = npc.direction;
-					Vector2 vector2 = new Vector2(npc.position.X + npc.width * 0.5f, npc.position.Y + npc.height * 0.5f);
-					float num10 = Main.player[npc.target].position.X + (Main.player[npc.target].width / 2) - vector2.X;
-					float num11 = Main.player[npc.target].position.Y + (Main.player[npc.target].height / 2) - vector2.Y;
-					float num12 = (float) Math.Sqrt(num10 * num10 + num11 * num11);
-					float num13 = num10 * num12;
-					float num14 = num11 * num12;
-					npc.rotation = npc.direction <= 0
-						? (Main.player[npc.target].position.X + (Main.player[npc.target].width / 2) >= npc.position.X + (npc.width / 2)
-							? 0
-							: (float) Math.Atan2(num14, num13) + 3.14f)
-						: (Main.player[npc.target].position.X + (Main.player[npc.target].width / 2) <= npc.position.X + (npc.width / 2)
-							? 0
-							: (float) Math.Atan2(-num14, -num13) + 3.14f);
-
-					#endregion
-
-					for (int i = 0; i < 255; ++i)
-					{
-						if (Main.player[i].active && !Main.player[i].dead)
-						{
-							if (Main.player[i].Center.X > npc.Center.X && Main.player[i].direction == -1 && npc.direction == -1 &&
-							    Vector2.Distance(Main.player[i].Center, npc.Center) <= 480f)
-							{
-								Main.player[i].AddBuff(BuffID.TheTongue, 600);
-							}
-						}
-					}
-
-					for (int i = 0; i < 255; ++i)
-					{
-						if (Main.player[i].active && !Main.player[i].dead)
-						{
-							if (Main.player[i].Center.X < npc.Center.X && Main.player[i].direction == 1 && npc.direction == 1 &&
-							    Vector2.Distance(Main.player[i].Center, npc.Center) <= 480f)
-							{
-								Main.player[i].AddBuff(BuffID.TheTongue, 600);
-							}
-						}
-					}
-
-					if (npc.localAI[0] != 1.0 || Main.netMode == 1)
-						return false;
-					npc.localAI[0] = 2f;
+					int index = NPC.NewNPC((int)(npc.position.X + (npc.width / 2)), (int)(npc.position.Y + (npc.height / 2) + 20.0),
+						mod.NPCType("ShadowSteed"), 1, 0.0f, 0.0f, 0.0f, 0.0f, byte.MaxValue);
+					Main.npc[index].velocity.X = npc.direction * 6;
 				}
 
-				if (npc.life > npc.lifeMax * 0.5f)
+				if (npc.localAI[0] == 0.0)
 				{
-					Main.npcHeadBossTexture[NPCID.Sets.BossHeadTextures[npc.type]] = mod.GetTexture("NPCs/WallOfShadow_Head_Boss");
-					Shoot();
-					if (npc.position.X < 160 || npc.position.X > (Main.maxTilesX - 10) * 16)
-						npc.active = false;
-					if (npc.localAI[0] == 0.0)
-					{
-						npc.localAI[0] = 1f;
-						Main.wofB = -1;
-						Main.wofT = -1;
-					}
+					npc.localAI[0] = 1f;
+					Main.wofB = -1;
+					Main.wofT = -1;
+				}
 
-					npc.ai[1]++;
-					if (npc.ai[2] == 0)
-					{
-						if (npc.life < npc.lifeMax * 0.5F)
-							npc.ai[1]++;
-						if (npc.life < npc.lifeMax * 0.2F)
-							npc.ai[1]++;
-						if (npc.ai[1] > 2700.0)
-							npc.ai[2] = 1f;
-					}
-					if (npc.ai[2] > 0 && npc.ai[1] > 60)
-					{
-						int spawnCooldown = 3;
-						if (npc.life < npc.lifeMax * 0.3)
-							++spawnCooldown;
-						npc.ai[2]++;
-						npc.ai[1] = 0;
-						if (npc.ai[2] > spawnCooldown)
-							npc.ai[2] = 0;
+				npc.ai[1]++;
+				if (npc.ai[2] == 0)
+				{
+					if (npc.life < npc.lifeMax * 0.5F)
+						npc.ai[1]++;
+					if (npc.life < npc.lifeMax * 0.2F)
+						npc.ai[1]++;
+					if (npc.ai[1] > 2700.0)
+						npc.ai[2] = 1f;
+				}
+				if (npc.ai[2] > 0 && npc.ai[1] > 60)
+				{
+					int spawnCooldown = 3;
+					if (npc.life < npc.lifeMax * 0.3)
+						++spawnCooldown;
+					npc.ai[2]++;
+					npc.ai[1] = 0;
+					if (npc.ai[2] > spawnCooldown)
+						npc.ai[2] = 0;
 
-						if (Main.netMode != 1)
+					if (Main.netMode != 1)
+					{
+						// Spawn... a Shadow Steed?
+						//int index = NPC.NewNPC((int)(npc.position.X + (npc.width / 2)), (int)(npc.position.Y + (npc.height / 2) + 20.0), mod.NPCType("ShadowSteed"), 1, 0.0f, 0.0f, 0.0f, 0.0f, (int)byte.MaxValue);
+						//int index2 = NPC.NewNPC((int)(npc.position.X + (npc.width / 2)), (int)(npc.position.Y + (npc.height / 2) + 20.0), mod.NPCType("ShadowSteed"), 1, 0.0f, 0.0f, 0.0f, 0.0f, (int)byte.MaxValue);
+						//NPC.NewNPC((int)(npc.position.X + (npc.width / 2)), (int)(npc.position.Y + (npc.height / 2) + 10.0), mod.NPCType("ShadowSteed"), 1, 0.0f, 0.0f, 0.0f, 0.0f, (int)byte.MaxValue);
+						//NPC.NewNPC((int)(npc.position.X + (npc.width / 2)), (int)(npc.position.Y + (npc.height / 2) + 30.0), mod.NPCType("ShadowSteed"), 1, 0.0f, 0.0f, 0.0f, 0.0f, (int)byte.MaxValue);
+						//Main.npc[index].velocity.X = npc.direction * 6;
+						//Main.npc[index2].velocity.X = npc.direction * 6;
+					}
+				}
+
+				Main.wof = npc.whoAmI;
+				int npcTileX = (int)(npc.position.X / 16);
+				int npcRightXTile = (int)((npc.position.X + npc.width) / 16);
+				int npcCenterYTile = (int)((npc.position.Y + (npc.height / 2)) / 16);
+				int solidTiles = 0;
+				int npcBottom = npcCenterYTile + 7;
+				while (solidTiles < 15 && npcBottom > Main.maxTilesY - 200)
+				{
+					++npcBottom;
+					for (int i = npcTileX; i <= npcRightXTile; ++i)
+					{
+						try
 						{
-
+							if (!WorldGen.SolidTile(i, npcBottom))
+							{
+								if (Main.tile[i, npcBottom].liquid <= 0)
+									continue;
+							}
+							++solidTiles;
+						}
+						catch
+						{
+							solidTiles += 15;
 						}
 					}
-
-					Main.wof = npc.whoAmI;
-					int npcTileX = (int) (npc.position.X / 16);
-					int npcRightXTile = (int) ((npc.position.X + npc.width) / 16);
-					int npcCenterYTile = (int) ((npc.position.Y + (npc.height / 2)) / 16);
-					int solidTiles = 0;
-					int npcBottom = npcCenterYTile + 7;
-					while (solidTiles < 15 && npcBottom > Main.maxTilesY - 200)
-					{
-						++npcBottom;
-						for (int i = npcTileX; i <= npcRightXTile; ++i)
-						{
-							try
-							{
-								if (!WorldGen.SolidTile(i, npcBottom))
-								{
-									if (Main.tile[i, npcBottom].liquid <= 0)
-										continue;
-								}
-								++solidTiles;
-							}
-							catch
-							{
-								solidTiles += 15;
-							}
-						}
-					}
-					int num5 = npcBottom + 4;
-					if (Main.wofB == -1)
+				}
+				int num5 = npcBottom + 4;
+				if (Main.wofB == -1)
+					Main.wofB = num5 * 16;
+				else if (Main.wofB > num5 * 16)
+				{
+					--Main.wofB;
+					if (Main.wofB < num5 * 16)
 						Main.wofB = num5 * 16;
-					else if (Main.wofB > num5 * 16)
-					{
-						--Main.wofB;
-						if (Main.wofB < num5 * 16)
-							Main.wofB = num5 * 16;
-					}
-					else if (Main.wofB < num5 * 16)
-					{
-						++Main.wofB;
-						if (Main.wofB > num5 * 16)
-							Main.wofB = num5 * 16;
-					}
+				}
+				else if (Main.wofB < num5 * 16)
+				{
+					++Main.wofB;
+					if (Main.wofB > num5 * 16)
+						Main.wofB = num5 * 16;
+				}
 
-					int num6 = 0;
-					int j2 = npcCenterYTile - 7;
-					while (num6 < 15 && j2 < Main.maxTilesY - 10)
+				int num6 = 0;
+				int j2 = npcCenterYTile - 7;
+				while (num6 < 15 && j2 < Main.maxTilesY - 10)
+				{
+					--j2;
+					for (int i = npcTileX; i <= npcRightXTile; ++i)
 					{
-						--j2;
-						for (int i = npcTileX; i <= npcRightXTile; ++i)
+						try
 						{
-							try
+							if (!WorldGen.SolidTile(i, j2))
 							{
-								if (!WorldGen.SolidTile(i, j2))
-								{
-									if (Main.tile[i, j2].liquid <= 0)
-										continue;
-								}
-								++num6;
+								if (Main.tile[i, j2].liquid <= 0)
+									continue;
 							}
-							catch
-							{
-								num6 += 15;
-							}
+							++num6;
+						}
+						catch
+						{
+							num6 += 15;
 						}
 					}
-					int num7 = j2 - 4;
-					if (Main.wofT == -1)
+				}
+				int num7 = j2 - 4;
+				if (Main.wofT == -1)
+					Main.wofT = num7 * 16;
+				else if (Main.wofT > num7 * 16)
+				{
+					--Main.wofT;
+					if (Main.wofT < num7 * 16)
 						Main.wofT = num7 * 16;
-					else if (Main.wofT > num7 * 16)
+				}
+				else if (Main.wofT < num7 * 16)
+				{
+					++Main.wofT;
+					if (Main.wofT > num7 * 16)
+						Main.wofT = num7 * 16;
+				}
+
+				#region Movement
+
+				float num8 = ((Main.wofB + Main.wofT) / 2 - npc.height / 2);
+				if (npc.position.Y > num8 + 1.0)
+					npc.velocity.Y = -1f;
+				else if (npc.position.Y < num8 - 1.0)
+					npc.velocity.Y = 1f;
+				npc.velocity.Y = 0.0f;
+				npc.position.Y = num8;
+				float speed = 1.5f;
+				if (npc.life < npc.lifeMax * 0.75)
+					speed += 0.25f;
+				if (npc.life < npc.lifeMax * 0.5)
+					speed += 0.4f;
+				if (npc.life < npc.lifeMax * 0.25)
+					speed += 0.5f;
+				if (npc.life < npc.lifeMax * 0.1)
+					speed += 0.6f;
+				if (npc.life < npc.lifeMax * 0.66 && Main.expertMode)
+					speed += 0.3f;
+				if (npc.life < npc.lifeMax * 0.33 && Main.expertMode)
+					speed += 0.3f;
+				if (npc.life < npc.lifeMax * 0.05 && Main.expertMode)
+					speed += 0.6f;
+				if (npc.life < npc.lifeMax * 0.035 && Main.expertMode)
+					speed += 0.6f;
+				if (npc.life < npc.lifeMax * 0.025 && Main.expertMode)
+					speed += 0.6f;
+				if (Main.expertMode)
+					speed = speed * 1.35f + 0.35f;
+				if (npc.velocity.X == 0.0)
+				{
+					npc.TargetClosest(true);
+					npc.velocity.X = npc.direction;
+				}
+				if (npc.velocity.X < 0.0)
+				{
+					npc.velocity.X = -speed;
+					npc.direction = -1;
+				}
+				else
+				{
+					npc.velocity.X = speed;
+					npc.direction = 1;
+				}
+
+				#endregion
+
+				#region Mouth Rotation
+
+				npc.spriteDirection = npc.direction;
+				Vector2 vector2 = new Vector2(npc.position.X + npc.width * 0.5f, npc.position.Y + npc.height * 0.5f);
+				float num10 = Main.player[npc.target].position.X + (Main.player[npc.target].width / 2) - vector2.X;
+				float num11 = Main.player[npc.target].position.Y + (Main.player[npc.target].height / 2) - vector2.Y;
+				float num12 = (float)Math.Sqrt(num10 * num10 + num11 * num11);
+				float num13 = num10 * num12;
+				float num14 = num11 * num12;
+				npc.rotation = npc.direction <= 0
+					? (Main.player[npc.target].position.X + (Main.player[npc.target].width / 2) >= npc.position.X + (npc.width / 2)
+						? 0
+						: (float)Math.Atan2(num14, num13) + 3.14f)
+					: (Main.player[npc.target].position.X + (Main.player[npc.target].width / 2) <= npc.position.X + (npc.width / 2)
+						? 0
+						: (float)Math.Atan2(-num14, -num13) + 3.14f);
+
+				#endregion
+
+				for (int i = 0; i < 255; ++i)
+				{
+					if (Main.player[i].active && !Main.player[i].dead)
 					{
-						--Main.wofT;
-						if (Main.wofT < num7 * 16)
-							Main.wofT = num7 * 16;
-					}
-					else if (Main.wofT < num7 * 16)
-					{
-						++Main.wofT;
-						if (Main.wofT > num7 * 16)
-							Main.wofT = num7 * 16;
-					}
-
-					#region Movement
-
-					float num8 = ((Main.wofB + Main.wofT) / 2 - npc.height / 2);
-					if (npc.position.Y > num8 + 1.0)
-						npc.velocity.Y = -1f;
-					else if (npc.position.Y < num8 - 1.0)
-						npc.velocity.Y = 1f;
-					npc.velocity.Y = 0.0f;
-					npc.position.Y = num8;
-					float speed = 1.5f;
-					if (npc.life < npc.lifeMax * 0.75)
-						speed += 0.25f;
-					if (npc.life < npc.lifeMax * 0.5)
-						speed += 0.4f;
-					if (npc.life < npc.lifeMax * 0.25)
-						speed += 0.5f;
-					if (npc.life < npc.lifeMax * 0.1)
-						speed += 0.6f;
-					if (npc.life < npc.lifeMax * 0.66 && Main.expertMode)
-						speed += 0.3f;
-					if (npc.life < npc.lifeMax * 0.33 && Main.expertMode)
-						speed += 0.3f;
-					if (npc.life < npc.lifeMax * 0.05 && Main.expertMode)
-						speed += 0.6f;
-					if (npc.life < npc.lifeMax * 0.035 && Main.expertMode)
-						speed += 0.6f;
-					if (npc.life < npc.lifeMax * 0.025 && Main.expertMode)
-						speed += 0.6f;
-					if (Main.expertMode)
-						speed = speed * 1.35f + 0.35f;
-					if (npc.velocity.X == 0.0)
-					{
-						npc.TargetClosest(true);
-						npc.velocity.X = npc.direction;
-					}
-					if (npc.velocity.X < 0.0)
-					{
-						npc.velocity.X = -speed;
-						npc.direction = -1;
-					}
-					else
-					{
-						npc.velocity.X = speed;
-						npc.direction = 1;
-					}
-
-					#endregion
-
-					#region Mouth Rotation
-
-					npc.spriteDirection = npc.direction;
-					Vector2 vector2 = new Vector2(npc.position.X + npc.width * 0.5f, npc.position.Y + npc.height * 0.5f);
-					float num10 = Main.player[npc.target].position.X + (Main.player[npc.target].width / 2) - vector2.X;
-					float num11 = Main.player[npc.target].position.Y + (Main.player[npc.target].height / 2) - vector2.Y;
-					float num12 = (float) Math.Sqrt(num10 * num10 + num11 * num11);
-					float num13 = num10 * num12;
-					float num14 = num11 * num12;
-					npc.rotation = npc.direction <= 0
-						? (Main.player[npc.target].position.X + (Main.player[npc.target].width / 2) >= npc.position.X + (npc.width / 2)
-							? 0
-							: (float) Math.Atan2(num14, num13) + 3.14f)
-						: (Main.player[npc.target].position.X + (Main.player[npc.target].width / 2) <= npc.position.X + (npc.width / 2)
-							? 0
-							: (float) Math.Atan2(-num14, -num13) + 3.14f);
-
-					#endregion
-
-					for (int i = 0; i < 255; ++i)
-					{
-						if (Main.player[i].active && !Main.player[i].dead)
+						if (Main.player[i].Center.X > npc.Center.X && Main.player[i].direction == -1 && npc.direction == -1 &&
+							Vector2.Distance(Main.player[i].Center, npc.Center) <= 480f)
 						{
-							if (Main.player[i].Center.X > npc.Center.X && Main.player[i].direction == -1 && npc.direction == -1 &&
-							    Vector2.Distance(Main.player[i].Center, npc.Center) <= 480f)
-							{
-								Main.player[i].AddBuff(BuffID.TheTongue, 600);
-							}
+							Main.player[i].AddBuff(BuffID.TheTongue, 600);
 						}
 					}
+				}
 
-					for (int i = 0; i < 255; ++i)
+				for (int i = 0; i < 255; ++i)
+				{
+					if (Main.player[i].active && !Main.player[i].dead)
 					{
-						if (Main.player[i].active && !Main.player[i].dead)
+						if (Main.player[i].Center.X < npc.Center.X && Main.player[i].direction == 1 && npc.direction == 1 &&
+							Vector2.Distance(Main.player[i].Center, npc.Center) <= 480f)
 						{
-							if (Main.player[i].Center.X < npc.Center.X && Main.player[i].direction == 1 && npc.direction == 1 &&
-							    Vector2.Distance(Main.player[i].Center, npc.Center) <= 480f)
-							{
-								Main.player[i].AddBuff(BuffID.TheTongue, 600);
-							}
+							Main.player[i].AddBuff(BuffID.TheTongue, 600);
 						}
 					}
+				}
 
-					//if (Main.expertMode && Main.netMode != 1)
-					//{
-					int num15 = (int) (1.0 + npc.life / npc.lifeMax * 10.0);
-					int num16 = num15 * num15;
-					if (num16 < 400)
-						num16 = (num16 * 19 + 400) / 20;
-					if (num16 < 60)
-						num16 = (num16 * 3 + 60) / 4;
-					if (num16 < 20)
-						num16 = (num16 + 20) / 2;
-					int maxValue1 = (int) (num16 * 0.7);
-					if (Main.rand.Next(maxValue1) == 0)
+				if (npc.localAI[0] != 1.0 || Main.netMode == 1)
+					return false;
+				npc.localAI[0] = 2f;
+			}
+
+			if (npc.life > npc.lifeMax * 0.5f)
+			{
+				Main.npcHeadBossTexture[NPCID.Sets.BossHeadTextures[npc.type]] = mod.GetTexture("NPCs/WallOfShadow_Head_Boss");
+				Shoot();
+				if (npc.position.X < 160 || npc.position.X > (Main.maxTilesX - 10) * 16)
+					npc.active = false;
+				if (npc.localAI[0] == 0.0)
+				{
+					npc.localAI[0] = 1f;
+					Main.wofB = -1;
+					Main.wofT = -1;
+				}
+
+				npc.ai[1]++;
+				if (npc.ai[2] == 0)
+				{
+					if (npc.life < npc.lifeMax * 0.5F)
+						npc.ai[1]++;
+					if (npc.life < npc.lifeMax * 0.2F)
+						npc.ai[1]++;
+					if (npc.ai[1] > 2700.0)
+						npc.ai[2] = 1f;
+				}
+				if (npc.ai[2] > 0 && npc.ai[1] > 60)
+				{
+					int spawnCooldown = 3;
+					if (npc.life < npc.lifeMax * 0.3)
+						++spawnCooldown;
+					npc.ai[2]++;
+					npc.ai[1] = 0;
+					if (npc.ai[2] > spawnCooldown)
+						npc.ai[2] = 0;
+
+					if (Main.netMode != 1)
 					{
-						int index1 = 0;
-						float[] numArray = new float[10];
-						for (int index2 = 0; index2 < 200; ++index2)
+
+					}
+				}
+
+				Main.wof = npc.whoAmI;
+				int npcTileX = (int)(npc.position.X / 16);
+				int npcRightXTile = (int)((npc.position.X + npc.width) / 16);
+				int npcCenterYTile = (int)((npc.position.Y + (npc.height / 2)) / 16);
+				int solidTiles = 0;
+				int npcBottom = npcCenterYTile + 7;
+				while (solidTiles < 15 && npcBottom > Main.maxTilesY - 200)
+				{
+					++npcBottom;
+					for (int i = npcTileX; i <= npcRightXTile; ++i)
+					{
+						try
 						{
-							if (index1 < 10 && Main.npc[index2].active && Main.npc[index2].type == mod.NPCType("ShadowHand"))
+							if (!WorldGen.SolidTile(i, npcBottom))
 							{
-								numArray[index1] = Main.npc[index2].ai[0];
-								++index1;
+								if (Main.tile[i, npcBottom].liquid <= 0)
+									continue;
 							}
+							++solidTiles;
 						}
-						int maxValue2 = 1 + index1 * 2;
-						if (index1 < 10 && Main.rand.Next(maxValue2) <= 1)
+						catch
 						{
-							int num17 = -1;
-							for (int index2 = 0; index2 < 1000; ++index2)
+							solidTiles += 15;
+						}
+					}
+				}
+				int num5 = npcBottom + 4;
+				if (Main.wofB == -1)
+					Main.wofB = num5 * 16;
+				else if (Main.wofB > num5 * 16)
+				{
+					--Main.wofB;
+					if (Main.wofB < num5 * 16)
+						Main.wofB = num5 * 16;
+				}
+				else if (Main.wofB < num5 * 16)
+				{
+					++Main.wofB;
+					if (Main.wofB > num5 * 16)
+						Main.wofB = num5 * 16;
+				}
+
+				int num6 = 0;
+				int j2 = npcCenterYTile - 7;
+				while (num6 < 15 && j2 < Main.maxTilesY - 10)
+				{
+					--j2;
+					for (int i = npcTileX; i <= npcRightXTile; ++i)
+					{
+						try
+						{
+							if (!WorldGen.SolidTile(i, j2))
 							{
-								int num18 = Main.rand.Next(20);
-								float num19 = (float) (num18 * 0.100000001490116 - 0.0500000007450581);
-								bool flag = true;
-								for (int index3 = 0; index3 < index1; ++index3)
+								if (Main.tile[i, j2].liquid <= 0)
+									continue;
+							}
+							++num6;
+						}
+						catch
+						{
+							num6 += 15;
+						}
+					}
+				}
+				int num7 = j2 - 4;
+				if (Main.wofT == -1)
+					Main.wofT = num7 * 16;
+				else if (Main.wofT > num7 * 16)
+				{
+					--Main.wofT;
+					if (Main.wofT < num7 * 16)
+						Main.wofT = num7 * 16;
+				}
+				else if (Main.wofT < num7 * 16)
+				{
+					++Main.wofT;
+					if (Main.wofT > num7 * 16)
+						Main.wofT = num7 * 16;
+				}
+
+				#region Movement
+
+				float num8 = ((Main.wofB + Main.wofT) / 2 - npc.height / 2);
+				if (npc.position.Y > num8 + 1.0)
+					npc.velocity.Y = -1f;
+				else if (npc.position.Y < num8 - 1.0)
+					npc.velocity.Y = 1f;
+				npc.velocity.Y = 0.0f;
+				npc.position.Y = num8;
+				float speed = 1.5f;
+				if (npc.life < npc.lifeMax * 0.75)
+					speed += 0.25f;
+				if (npc.life < npc.lifeMax * 0.5)
+					speed += 0.4f;
+				if (npc.life < npc.lifeMax * 0.25)
+					speed += 0.5f;
+				if (npc.life < npc.lifeMax * 0.1)
+					speed += 0.6f;
+				if (npc.life < npc.lifeMax * 0.66 && Main.expertMode)
+					speed += 0.3f;
+				if (npc.life < npc.lifeMax * 0.33 && Main.expertMode)
+					speed += 0.3f;
+				if (npc.life < npc.lifeMax * 0.05 && Main.expertMode)
+					speed += 0.6f;
+				if (npc.life < npc.lifeMax * 0.035 && Main.expertMode)
+					speed += 0.6f;
+				if (npc.life < npc.lifeMax * 0.025 && Main.expertMode)
+					speed += 0.6f;
+				if (Main.expertMode)
+					speed = speed * 1.35f + 0.35f;
+				if (npc.velocity.X == 0.0)
+				{
+					npc.TargetClosest(true);
+					npc.velocity.X = npc.direction;
+				}
+				if (npc.velocity.X < 0.0)
+				{
+					npc.velocity.X = -speed;
+					npc.direction = -1;
+				}
+				else
+				{
+					npc.velocity.X = speed;
+					npc.direction = 1;
+				}
+
+				#endregion
+
+				#region Mouth Rotation
+
+				npc.spriteDirection = npc.direction;
+				Vector2 vector2 = new Vector2(npc.position.X + npc.width * 0.5f, npc.position.Y + npc.height * 0.5f);
+				float num10 = Main.player[npc.target].position.X + (Main.player[npc.target].width / 2) - vector2.X;
+				float num11 = Main.player[npc.target].position.Y + (Main.player[npc.target].height / 2) - vector2.Y;
+				float num12 = (float)Math.Sqrt(num10 * num10 + num11 * num11);
+				float num13 = num10 * num12;
+				float num14 = num11 * num12;
+				npc.rotation = npc.direction <= 0
+					? (Main.player[npc.target].position.X + (Main.player[npc.target].width / 2) >= npc.position.X + (npc.width / 2)
+						? 0
+						: (float)Math.Atan2(num14, num13) + 3.14f)
+					: (Main.player[npc.target].position.X + (Main.player[npc.target].width / 2) <= npc.position.X + (npc.width / 2)
+						? 0
+						: (float)Math.Atan2(-num14, -num13) + 3.14f);
+
+				#endregion
+
+				for (int i = 0; i < 255; ++i)
+				{
+					if (Main.player[i].active && !Main.player[i].dead)
+					{
+						if (Main.player[i].Center.X > npc.Center.X && Main.player[i].direction == -1 && npc.direction == -1 &&
+							Vector2.Distance(Main.player[i].Center, npc.Center) <= 480f)
+						{
+							Main.player[i].AddBuff(BuffID.TheTongue, 600);
+						}
+					}
+				}
+
+				for (int i = 0; i < 255; ++i)
+				{
+					if (Main.player[i].active && !Main.player[i].dead)
+					{
+						if (Main.player[i].Center.X < npc.Center.X && Main.player[i].direction == 1 && npc.direction == 1 &&
+							Vector2.Distance(Main.player[i].Center, npc.Center) <= 480f)
+						{
+							Main.player[i].AddBuff(BuffID.TheTongue, 600);
+						}
+					}
+				}
+
+				//if (Main.expertMode && Main.netMode != 1)
+				//{
+				int num15 = (int)(1.0 + npc.life / npc.lifeMax * 10.0);
+				int num16 = num15 * num15;
+				if (num16 < 400)
+					num16 = (num16 * 19 + 400) / 20;
+				if (num16 < 60)
+					num16 = (num16 * 3 + 60) / 4;
+				if (num16 < 20)
+					num16 = (num16 + 20) / 2;
+				int maxValue1 = (int)(num16 * 0.7);
+				if (Main.rand.Next(maxValue1) == 0)
+				{
+					int index1 = 0;
+					float[] numArray = new float[10];
+					for (int index2 = 0; index2 < 200; ++index2)
+					{
+						if (index1 < 10 && Main.npc[index2].active && Main.npc[index2].type == mod.NPCType("ShadowHand"))
+						{
+							numArray[index1] = Main.npc[index2].ai[0];
+							++index1;
+						}
+					}
+					int maxValue2 = 1 + index1 * 2;
+					if (index1 < 10 && Main.rand.Next(maxValue2) <= 1)
+					{
+						int num17 = -1;
+						for (int index2 = 0; index2 < 1000; ++index2)
+						{
+							int num18 = Main.rand.Next(20);
+							float num19 = (float)(num18 * 0.100000001490116 - 0.0500000007450581);
+							bool flag = true;
+							for (int index3 = 0; index3 < index1; ++index3)
+							{
+								if (num19 == (double)numArray[index3])
 								{
-									if (num19 == (double) numArray[index3])
-									{
-										flag = false;
-										break;
-									}
-								}
-								if (flag)
-								{
-									num17 = num18;
+									flag = false;
 									break;
 								}
 							}
-							if (num17 >= 0)
+							if (flag)
 							{
-								int index2 = NPC.NewNPC((int) npc.position.X, (int) num8, mod.NPCType("ShadowHand"), npc.whoAmI, 0.0f, 0.0f,
-									0.0f, 0.0f, 255);
-								Main.npc[index2].ai[0] = (num17 * 0.100000001490116F - 0.0500000007450581F);
+								num17 = num18;
+								break;
 							}
 						}
+						if (num17 >= 0)
+						{
+							int index2 = NPC.NewNPC((int)npc.position.X, (int)num8, mod.NPCType("ShadowHand"), npc.whoAmI, 0.0f, 0.0f,
+								0.0f, 0.0f, 255);
+							Main.npc[index2].ai[0] = (num17 * 0.100000001490116F - 0.0500000007450581F);
+						}
 					}
-					//}
-					if (npc.localAI[0] != 1.0 || Main.netMode == 1)
-						return false;
-					npc.localAI[0] = 2f;
-
-					float num20 = ((((Main.wofB + Main.wofT) / 2) + Main.wofB) / 2.0F);
-					for (int index1 = 0; index1 < 11; ++index1)
-					{
-						int index2 = NPC.NewNPC((int) npc.position.X, (int) num20, mod.NPCType("ShadowHand"), npc.whoAmI, 0.0f, 0.0f,
-							0.0f, 0.0f, 255);
-						Main.npc[index2].ai[0] = (index1 * 0.100000001490116F - 0.0500000007450581F);
-					}
-
 				}
+				//}
+				if (npc.localAI[0] != 1.0 || Main.netMode == 1)
+					return false;
+				npc.localAI[0] = 2f;
+
+				float num20 = ((((Main.wofB + Main.wofT) / 2) + Main.wofB) / 2.0F);
+				for (int index1 = 0; index1 < 11; ++index1)
+				{
+					int index2 = NPC.NewNPC((int)npc.position.X, (int)num20, mod.NPCType("ShadowHand"), npc.whoAmI, 0.0f, 0.0f,
+						0.0f, 0.0f, 255);
+					Main.npc[index2].ai[0] = (index1 * 0.100000001490116F - 0.0500000007450581F);
+				}
+
+			}
 
 			return false;
 		}
@@ -739,9 +737,9 @@ namespace Tremor.NPCs
 			{
 				for (int i = 1; i <= 27; i++)
 				{
-					float x = 
-						  i <= 2  ? 1f
-						: i <= 8  ? 2f
+					float x =
+						  i <= 2 ? 1f
+						: i <= 8 ? 2f
 						: i <= 18 ? 3f
 						: i <= 26 ? 4f
 						: 5f;
