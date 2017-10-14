@@ -9,7 +9,6 @@ namespace Tremor.Items
 	{
 		public override void SetDefaults()
 		{
-
 			item.damage = 312;
 			item.ranged = true;
 			item.width = 78;
@@ -26,7 +25,6 @@ namespace Tremor.Items
 			item.shoot = 10;
 			item.shootSpeed = 5f;
 			item.useAmmo = AmmoID.Bullet;
-
 		}
 
 		public override void SetStaticDefaults()

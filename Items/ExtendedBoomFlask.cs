@@ -27,7 +27,6 @@ namespace Tremor.Items
 			item.value = 145;
 			item.rare = 2;
 			item.autoReuse = false;
-
 		}
 
 		public override void SetStaticDefaults()
@@ -46,6 +45,8 @@ namespace Tremor.Items
 			{
 				item.shootSpeed = 8f;
 			}
+
+			item.autoReuse = MPlayer.GetModPlayer(player).core;
 		}
 
 		public override void AddRecipes()
