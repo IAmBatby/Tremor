@@ -21,9 +21,10 @@ Bosses:
 - Increased Motherboard's triple beam laser damage from 30 to 35
 
 Worldgen:
-- Removed many (read: at least a dozen) redundant loops iterating world chests (should speed up WorldGen)
-- Removed code trying to find a recently placed chest with random coords, with no purpose. (should speed up WorldGen)
-- Note: entirety of WorldGen still needs a proper look at. But after some small fixes, I am no longer surprised Tremor breaks WorldGen.
+- Worldgen should work better now, please try
+- Removed many (read: at least a dozen) redundant loops iterating world chests (each 1000 iterations)
+- Removed code trying to find a recently placed chest with random coords, with no purpose
+- Organized some of the worldgen code
 
 WorldGen Chests:
 - Fixed chests replacing contents in the chest, chests now properly add to the contents
@@ -31,6 +32,9 @@ WorldGen Chests:
 - Fixed chests containing Pharaoh's Mask having content replaced
 - Fixed Ruin Chest generation and having content replaced
 - Fixed Ice Chest generation and having content replaced
+
+Items:
+- Fixed Extended Boom Flask not benefitting from the Flask Core effect
 
 Other:
 - Fixed silently Caught Exception: Index was outside the bounds of the array.   at Tremor.NPCs.Bosses.CogLord.CogLordProbe.AI()
