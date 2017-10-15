@@ -55,9 +55,12 @@ Items:
 - Leather armor is now craftable with leather using workbench or heavy workbench
 - Chainmail armor is now sold by the Knight town npc after defeating EoC
 - Leather armor is now sold by the ARcher town npc after defeating EoC
+- More tooltips have been changed to match vanilla's style
 
 Other:
 - Fixed silently Caught Exception: Index was outside the bounds of the array.   at Tremor.NPCs.Bosses.CogLord.CogLordProbe.AI()
+- Removed some borked comments (broken russian)
+- More code formatting
 
 Code:
 - Flags hideCode, hideResources and includeSource are no longer blocking unpacking. Unpack now to get the Tremor.dll
