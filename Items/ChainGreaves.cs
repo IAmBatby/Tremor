@@ -28,6 +28,7 @@ namespace Tremor.Items
 			recipe.AddIngredient(ItemID.IronBar, 20);
 			recipe.AddIngredient(mod.ItemType<InvarBar>());
 			recipe.AddIngredient(ItemID.Chain);
+			recipe.AddTile(TileID.Anvils);
 			recipe.anyIronBar = true;
 			recipe.SetResult(this);
 		}

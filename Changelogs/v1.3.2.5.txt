@@ -48,6 +48,13 @@ Items:
 - Invar Helmet now grants +1 defense as its own bonus, and +2 defense as its set bonus
 - Invar Headgear now grants 6% melee damage as its set bonus
 - Invar Hat now grants 10% melee speed as its set bonus
+- The Invar armor pieces will craft into new sets in the near future
+- The Red Steel items have been made unavailable and the items will find a new purpose in the near future. The changes will be applied retroactively. This means if you have Red Steel gear right now it will still be functional in game right now, and when they find a new purpose they will automatically be updated
+- The Thief mob no longer drops Chainmail and Leather armor items directly
+- Chainmail armor is now craftable with iron/lead bars, chains and invar bars using anvil
+- Leather armor is now craftable with leather using workbench or heavy workbench
+- Chainmail armor is now sold by the Knight town npc after defeating EoC
+- Leather armor is now sold by the ARcher town npc after defeating EoC
 
 Other:
 - Fixed silently Caught Exception: Index was outside the bounds of the array.   at Tremor.NPCs.Bosses.CogLord.CogLordProbe.AI()
