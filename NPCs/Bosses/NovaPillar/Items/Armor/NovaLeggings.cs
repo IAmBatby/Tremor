@@ -18,7 +18,8 @@ namespace Tremor.NPCs.Bosses.NovaPillar.Items.Armor
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Nova Leggings");
-			Tooltip.SetDefault("18% increased alchemical damage and critical strike chance by 12%\n" +
+			Tooltip.SetDefault("18% increased alchemical damage\n" + 
+"12% increased alchemical critical strike chance\n" +
 "14% increased movement speed");
 		}
 
