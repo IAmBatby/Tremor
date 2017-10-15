@@ -13,7 +13,7 @@ namespace Tremor.ZombieEvent.Mobs
 			Main.npcFrameCount[npc.type] = 4;
 		}
 
-		const int SpeedMulti = 3; // �����⥫� ᪮���
+		const int SpeedMulti = 3; 
 
 		public override void SetDefaults()
 		{

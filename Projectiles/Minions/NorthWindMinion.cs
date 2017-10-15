@@ -7,12 +7,12 @@ namespace Tremor.Projectiles.Minions
 	public class NorthWindMinion : Minion
 	{
 
-        const int ShootRate = 30; // ������� �������� (1 ������� = 60��.)
-        const float ShootDistance = 300f; // ��������� ��������
-        const float ShootSpeed = 12f; // �������� �������
-        const int ShootDamage = 20; // ���� �������
-        const float ShootKnockback = 2; // ������ �������
-        int ShootType = 118; // ��� �������� (���� �� ��������� �����)
+        const int ShootRate = 30; 
+        const float ShootDistance = 300f; 
+        const float ShootSpeed = 12f; 
+        const int ShootDamage = 20; 
+        const float ShootKnockback = 2; 
+        int ShootType = 118; 
         int TimeToShoot = ShootRate;
 
 		public override void SetDefaults()

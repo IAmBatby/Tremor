@@ -8,14 +8,14 @@ namespace Tremor.ZombieEvent.Items
 	public class PoisonousPhylactery : ModItem
 	{
 
-		const int ShootType = 95; // ��� ����५�
-		const float ShootRange = 600.0f; // ���쭮��� ����५�
-		const float ShootKN = 1.0f; // ����뢠��� 
-		const int ShootRate = 120; // ����� ����५� (60 - 1 ᥪ㭤�)
-		const int ShootCount = 1; // ����஢ �� ����५
-		const float ShootSpeed = 30f; // ������� ����५� (��� ����� - ���쭮���)
-		const int spread = 45; // ������
-		const float spreadMult = 0.045f; // ����䨪��� ࠧ���
+		const int ShootType = 95; 
+		const float ShootRange = 600.0f; 
+		const float ShootKN = 1.0f; 
+		const int ShootRate = 120; 
+		const int ShootCount = 1; 
+		const float ShootSpeed = 30f; 
+		const int spread = 45; 
+		const float spreadMult = 0.045f; 
 		int TimeToShoot = ShootRate;
 
 		public override void SetDefaults()

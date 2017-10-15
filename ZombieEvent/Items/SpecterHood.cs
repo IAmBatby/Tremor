@@ -8,14 +8,14 @@ namespace Tremor.ZombieEvent.Items
 	[AutoloadEquip(EquipType.Head)]
 	public class SpecterHood : ModItem
 	{
-		const int ShootType = ProjectileID.HeatRay; // ��� ��������
-		const float ShootRange = 600.0f; // ��������� ��������
-		const float ShootKN = 1.0f; // ������������ 
-		const int ShootRate = 120; // ������� �������� (60 - 1 �������)
-		const int ShootCount = 2; // ������� �� �������
-		const float ShootSpeed = 20f; // �������� �������� (��� ������ - ���������)
-		const int spread = 45; // �������
-		const float spreadMult = 0.045f; // ����������� ��������
+		const int ShootType = ProjectileID.HeatRay; 
+		const float ShootRange = 600.0f; 
+		const float ShootKN = 1.0f; 
+		const int ShootRate = 120; 
+		const int ShootCount = 2; 
+		const float ShootSpeed = 20f; 
+		const int spread = 45; 
+		const float spreadMult = 0.045f; 
 
 		int TimeToShoot = ShootRate;
 

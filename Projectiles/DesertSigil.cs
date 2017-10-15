@@ -6,12 +6,12 @@ namespace Tremor.Projectiles
 {
 	public class DesertSigil : ModProjectile
 	{
-		const int ShootRate = 22; // ����� ����५� (1 ᥪ㭤� = 60��.)
-		const float ShootDistance = 300f; // ���쭮��� ��५��
-		const float ShootSpeed = 25f; // ������� ᭠�鸞
-		const int ShootDamage = 38; // �஭ ᭠�鸞
-		const float ShootKnockback = 10; // ���� ᭠�鸞
-		int ShootType = 122; // ��� ����५� (�᫨ �� �����쭮� �ન)
+		const int ShootRate = 22; 
+		const float ShootDistance = 300f; 
+		const float ShootSpeed = 25f; 
+		const int ShootDamage = 38; 
+		const float ShootKnockback = 10; 
+		int ShootType = 122; 
 		int TimeToShoot = ShootRate;
 
 		public override void SetDefaults()
