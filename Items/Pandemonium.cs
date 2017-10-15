@@ -32,7 +32,9 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Pandemonium");
-			Tooltip.SetDefault("Shoots a burst of bullets\nBullets explode into firebals\n75% chance not to consume ammo");
+			Tooltip.SetDefault("Shoots a burst of bullets\n" +
+"Bullets explode into firebals\n" +
+"75% chance not to consume ammo");
 		}
 
 		public override void ModifyTooltips(List<TooltipLine> tooltips)

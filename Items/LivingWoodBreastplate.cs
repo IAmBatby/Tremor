@@ -22,7 +22,8 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Living Wood Breastplate");
-			Tooltip.SetDefault("Increases minion damage by 4%\nIncreases your max number of minions");
+			Tooltip.SetDefault("Increases minion damage by 4%\n" +
+"Increases your max number of minions");
 		}
 
 		public override void UpdateEquip(Player player)

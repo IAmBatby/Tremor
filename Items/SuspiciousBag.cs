@@ -20,7 +20,8 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Suspicious Bag");
-			Tooltip.SetDefault("Right click to open\n'Contains powerful treasures'");
+			Tooltip.SetDefault("Right click to open\n" +
+"'Contains powerful treasures'");
 		}
 
 		public override bool CanRightClick()

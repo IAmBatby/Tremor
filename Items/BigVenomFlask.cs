@@ -34,7 +34,8 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Big Venom Flask");
-			Tooltip.SetDefault("Throws a flask that explodes into venom clouds\nClouds deal damage to enemies and poison them");
+			Tooltip.SetDefault("Throws a flask that explodes into venom clouds\n" +
+"Clouds deal damage to enemies and poison them");
 		}
 
 		public override void PickAmmo(Player player, ref int type, ref float speed, ref int damage, ref float knockback)

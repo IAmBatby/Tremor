@@ -21,7 +21,8 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Bone Greaves");
-			Tooltip.SetDefault("20% increased throwing critical strike chance\n6% increased ranged damage");
+			Tooltip.SetDefault("20% increased throwing critical strike chance\n" +
+"6% increased ranged damage");
 		}
 
 		public override void UpdateEquip(Player p)

@@ -24,7 +24,8 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Deadly Treats");
-			Tooltip.SetDefault("Increases life regeneration\nLowers visibilty");
+			Tooltip.SetDefault("Increases life regeneration\n" +
+"Lowers visibilty");
 		}
 
 		public override bool UseItem(Player player)

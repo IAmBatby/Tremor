@@ -23,7 +23,8 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Health Stim Pack");
-			Tooltip.SetDefault("Restores 50 health\nHas no cooldown");
+			Tooltip.SetDefault("Restores 50 health\n" +
+"Has no cooldown");
 		}
 
 		public override bool ConsumeItem(Player player) => true;

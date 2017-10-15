@@ -21,7 +21,8 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Enchanted Shield");
-			Tooltip.SetDefault("Increases maximum mana by 40\n10% decreased magic damage");
+			Tooltip.SetDefault("Increases maximum mana by 40\n" +
+"10% decreased magic damage");
 		}
 
 		public override void UpdateEquip(Player player)

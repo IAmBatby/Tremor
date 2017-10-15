@@ -19,7 +19,9 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Nebula Ring ");
-			Tooltip.SetDefault("20% increased magic damage\nIncreases magic critical strike chance by 15\nIncreases maximum mana by 80");
+			Tooltip.SetDefault("20% increased magic damage\n" +
+"Increases magic critical strike chance by 15\n" +
+"Increases maximum mana by 80");
 		}
 
 		public override void UpdateAccessory(Player player, bool hideVisual)

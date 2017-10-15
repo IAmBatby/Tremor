@@ -21,7 +21,10 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Aegis of Darkness");
-			Tooltip.SetDefault("Increases minion damage by 10%\nIncreases magic critical strike chance by 10\n8% decreased magic damage\nIncreases maximum mana by 40");
+			Tooltip.SetDefault("Increases minion damage by 10%\n" +
+"Increases magic critical strike chance by 10\n" +
+"8% decreased magic damage\n" +
+"Increases maximum mana by 40");
 		}
 
 		public override void UpdateEquip(Player player)

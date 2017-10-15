@@ -32,7 +32,8 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("The Tide");
-			Tooltip.SetDefault("Shoots fast moving water bolts\nUses bullets as ammo");
+			Tooltip.SetDefault("Shoots fast moving water bolts\n" +
+"Uses bullets as ammo");
 		}
 
 		public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)

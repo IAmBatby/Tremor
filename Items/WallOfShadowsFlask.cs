@@ -32,7 +32,8 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Flask of Shadows");
-			Tooltip.SetDefault("Casts shadow flask at nearby enemies\nThe less health, the more count of flasks");
+			Tooltip.SetDefault("Casts shadow flask at nearby enemies\n" +
+"The less health, the more count of flasks");
 		}
 
 		public override void UpdateAccessory(Player player, bool hideVisual)

@@ -23,7 +23,8 @@ namespace Tremor.Items
 		{
 			Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(6, 4));
 			DisplayName.SetDefault("Warrior Spark");
-			Tooltip.SetDefault("3% increased melee damage\nIncreases melee critical strike chance by 8");
+			Tooltip.SetDefault("3% increased melee damage\n" +
+"Increases melee critical strike chance by 8");
 		}
 
 		public override void UpdateAccessory(Player player, bool hideVisual)

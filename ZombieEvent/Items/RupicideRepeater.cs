@@ -31,7 +31,8 @@ namespace Tremor.ZombieEvent.Items
     public override void SetStaticDefaults()
     {
       DisplayName.SetDefault("Rupicide Repeater");
-      Tooltip.SetDefault("Quickly launches arrows\n20% to shoot a fiery burst");
+      Tooltip.SetDefault("Quickly launches arrows\n" +
+"20% to shoot a fiery burst");
     }
 
     public override void AddRecipes()

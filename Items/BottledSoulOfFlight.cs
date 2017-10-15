@@ -28,7 +28,8 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Bottled Soul of Flight");
-			Tooltip.SetDefault("Grants Shiny Red Baloon effect if worn\n20% increased jump height if placed");
+			Tooltip.SetDefault("Grants Shiny Red Baloon effect if worn\n" +
+"20% increased jump height if placed");
 		}
 
 		public override void AddRecipes()

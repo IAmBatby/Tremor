@@ -21,7 +21,8 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Alchemist Soul");
-			Tooltip.SetDefault("12% increased alchemical damage\n15% increased alchemical critical strike chance");
+			Tooltip.SetDefault("12% increased alchemical damage\n" +
+"15% increased alchemical critical strike chance");
 			Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(6, 6));
 		}
 

@@ -23,7 +23,8 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Omnikron Greaves");
-			Tooltip.SetDefault("50% increased movement speed\nIncreases all critical strike chances by 15");
+			Tooltip.SetDefault("50% increased movement speed\n" +
+"Increases all critical strike chances by 15");
 		}
 
 		public override void ModifyTooltips(List<TooltipLine> tooltips)

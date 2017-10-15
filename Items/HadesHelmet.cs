@@ -23,7 +23,9 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Hades Helmet");
-			Tooltip.SetDefault("Melee attacks inflict fire damage\n30% decreased mana cost\nIncreases maximum life by 150");
+			Tooltip.SetDefault("Melee attacks inflict fire damage\n" +
+"30% decreased mana cost\n" +
+"Increases maximum life by 150");
 		}
 
 		public override void AddRecipes()

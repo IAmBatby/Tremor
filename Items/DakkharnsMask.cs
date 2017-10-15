@@ -21,7 +21,8 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Dakkharn Mask");
-			Tooltip.SetDefault("Summons and ancient predator to defend you from foes\nPredator attacks enemies and inflicts curses");
+			Tooltip.SetDefault("Summons and ancient predator to defend you from foes\n" +
+"Predator attacks enemies and inflicts curses");
 		}
 
 		public override void UpdateEquip(Player player)

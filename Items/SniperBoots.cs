@@ -21,7 +21,8 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Sniper Boots");
-			Tooltip.SetDefault("15% increased ranged damage\n20% decreased movement speed");
+			Tooltip.SetDefault("15% increased ranged damage\n" +
+"20% decreased movement speed");
 		}
 
 		public override void UpdateEquip(Player player)

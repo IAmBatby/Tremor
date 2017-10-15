@@ -24,7 +24,8 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Frost Crown");
-			Tooltip.SetDefault("Summons the Frost King\nRequires any mech. boss to have been slan and the snow or glacier biome");
+			Tooltip.SetDefault("Summons the Frost King\n" +
+"Requires any mech. boss to have been slan and the snow or glacier biome");
 		}
 
 		public override bool CanUseItem(Player player)

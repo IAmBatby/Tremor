@@ -21,7 +21,8 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Magium Breastplate");
-			Tooltip.SetDefault("10% increased magic damage\nIncreases maximum mana by 40");
+			Tooltip.SetDefault("10% increased magic damage\n" +
+"Increases maximum mana by 40");
 		}
 
 		public override void UpdateEquip(Player player)

@@ -22,7 +22,8 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Raven Breastplate");
-			Tooltip.SetDefault("8% increased melee damage\nIncreases melee critical strike chance by 5");
+			Tooltip.SetDefault("8% increased melee damage\n" +
+"Increases melee critical strike chance by 5");
 		}
 
 		public override void UpdateEquip(Player player)

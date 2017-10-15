@@ -30,7 +30,8 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("The Ultimate Boomstick");
-			Tooltip.SetDefault("Has a chance to shoot moon flames\n'What can be better than a giant shotgun!?'");
+			Tooltip.SetDefault("Has a chance to shoot moon flames\n" +
+"'What can be better than a giant shotgun!?'");
 		}
 
 		public override Vector2? HoldoutOffset()

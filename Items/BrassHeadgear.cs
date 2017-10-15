@@ -22,7 +22,8 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Brass Headgear");
-			Tooltip.SetDefault("10% increased magical damage\nIncreases magical critical strike chance by 8");
+			Tooltip.SetDefault("10% increased magical damage\n" +
+"Increases magical critical strike chance by 8");
 		}
 
 		public override void UpdateEquip(Player player)

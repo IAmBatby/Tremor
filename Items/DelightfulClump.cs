@@ -18,7 +18,8 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Delightful Clump");
-			Tooltip.SetDefault("Increases maximum life by 100\n15% increased critical strike chance");
+			Tooltip.SetDefault("Increases maximum life by 100\n" +
+"15% increased critical strike chance");
 		}
 
 		public override void UpdateAccessory(Player player, bool hideVisual)

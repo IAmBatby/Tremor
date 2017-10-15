@@ -35,7 +35,8 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Abyss Headgear");
-			Tooltip.SetDefault("14% increased minion damage\nIncreases maximum health by 40");
+			Tooltip.SetDefault("14% increased minion damage\n" +
+"Increases maximum health by 40");
 		}
 
 		public override void UpdateEquip(Player player)
@@ -52,7 +53,9 @@ namespace Tremor.Items
 
 		public override void UpdateArmorSet(Player player)
 		{
-			player.setBonus = "Allows to see hazards\nSummons abyss magic to attack nearby enemies\nYour Shadow Arms has 33% chance to inflict Shadowflame on enemies";
+			player.setBonus = "Allows to see hazards\n" +
+"Summons abyss magic to attack nearby enemies\n" +
+"Your Shadow Arms has 33% chance to inflict Shadowflame on enemies";
 			TremorPlayer modPlayer = player.GetModPlayer<TremorPlayer>(mod);
 			modPlayer.shadowArmSF = true;
 			player.dangerSense = false;

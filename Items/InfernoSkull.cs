@@ -24,7 +24,8 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Inferno Skull");
-			Tooltip.SetDefault("Summons the Andas\nRequires the hell biome and The Trinity to have been downed");
+			Tooltip.SetDefault("Summons the Andas\n" +
+"Requires the hell biome and The Trinity to have been downed");
 		}
 
 		public override bool CanUseItem(Player player)

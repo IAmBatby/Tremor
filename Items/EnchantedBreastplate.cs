@@ -20,7 +20,8 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Enchanted Breastplate");
-			Tooltip.SetDefault("Increases maximum mana by 20\nIncreases maximum health by 20");
+			Tooltip.SetDefault("Increases maximum mana by 20\n" +
+"Increases maximum health by 20");
 		}
 
 		public override void UpdateEquip(Player player)

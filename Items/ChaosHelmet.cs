@@ -21,7 +21,8 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Chaos Helmet");
-			Tooltip.SetDefault("Increases maximum life by 25\nImmune to most debuffs!");
+			Tooltip.SetDefault("Increases maximum life by 25\n" +
+"Immune to most debuffs!");
 		}
 
 		public override void UpdateEquip(Player p)

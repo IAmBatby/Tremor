@@ -20,7 +20,10 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("White Master Greaves");
-			Tooltip.SetDefault("Massively increases alchemical critical chance as health lowers\n10% increased alchemical critical strike chance\nIncreases life regeneration while moving\n35% increased movement speed");
+			Tooltip.SetDefault("Massively increases alchemical critical chance as health lowers\n" +
+"10% increased alchemical critical strike chance\n" +
+"Increases life regeneration while moving\n" +
+"35% increased movement speed");
 		}
 
 		public override void UpdateEquip(Player player)

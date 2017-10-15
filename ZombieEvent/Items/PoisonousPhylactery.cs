@@ -32,7 +32,8 @@ namespace Tremor.ZombieEvent.Items
     public override void SetStaticDefaults()
     {
       DisplayName.SetDefault("Poisonous Phylactery");
-      Tooltip.SetDefault("Melee attacks inflicts poison on enemies\nShoots out poison bolts at enemies");
+      Tooltip.SetDefault("Melee attacks inflicts poison on enemies\n" +
+"Shoots out poison bolts at enemies");
       Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(6, 4));
     }
 

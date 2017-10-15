@@ -15,7 +15,8 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Uncharged Band");
-			Tooltip.SetDefault("Can be charged with fragments\nCharged band summons a pet");
+			Tooltip.SetDefault("Can be charged with fragments\n" +
+"Charged band summons a pet");
 		}
 
 	}

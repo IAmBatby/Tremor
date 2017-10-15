@@ -21,7 +21,8 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Necromancer Armor");
-			Tooltip.SetDefault("18% increased minion damage\n20% increased minion knockback");
+			Tooltip.SetDefault("18% increased minion damage\n" +
+"20% increased minion knockback");
 		}
 
 		public override void UpdateEquip(Player player)

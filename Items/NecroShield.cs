@@ -21,7 +21,8 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Necro Shield");
-			Tooltip.SetDefault("Increases minion damage by 10%\nIncreases magic critical strike chance by 10");
+			Tooltip.SetDefault("Increases minion damage by 10%\n" +
+"Increases magic critical strike chance by 10");
 		}
 
 		public override void UpdateEquip(Player player)

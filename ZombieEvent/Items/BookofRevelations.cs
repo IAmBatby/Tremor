@@ -26,7 +26,8 @@ namespace Tremor.ZombieEvent.Items
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Book of Revelations");
-            Tooltip.SetDefault("Drops 4 hearts and 4 mana stars\nHas 20 seconds cooldown");
+            Tooltip.SetDefault("Drops 4 hearts and 4 mana stars\n" +
+"Has 20 seconds cooldown");
         }
 
     public override void AddRecipes()

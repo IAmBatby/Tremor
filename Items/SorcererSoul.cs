@@ -21,7 +21,9 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Sorcerer Soul");
-			Tooltip.SetDefault("10% increased magic damage\nIncreases magic critical strike chance by 15\nIncreases maximum mana by 60");
+			Tooltip.SetDefault("10% increased magic damage\n" +
+"Increases magic critical strike chance by 15\n" +
+"Increases maximum mana by 60");
 			Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(6, 6));
 		}
 

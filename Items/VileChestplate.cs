@@ -20,7 +20,8 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Vile Chestplate");
-			Tooltip.SetDefault("8% increased minion damage\nIncreases your max number of minions");
+			Tooltip.SetDefault("8% increased minion damage\n" +
+"Increases your max number of minions");
 		}
 
 		public override void UpdateEquip(Player player)

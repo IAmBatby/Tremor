@@ -23,7 +23,8 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Headgear of Darkness");
-			Tooltip.SetDefault("Increases life regeneration\n20% chance not consume ammo");
+			Tooltip.SetDefault("Increases life regeneration\n" +
+"20% chance not consume ammo");
 		}
 
 		public override bool IsArmorSet(Item head, Item body, Item legs)

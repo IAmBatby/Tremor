@@ -26,7 +26,8 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Cursed Popcorn");
-			Tooltip.SetDefault("Summons the Evil Corn\nRequires night time");
+			Tooltip.SetDefault("Summons the Evil Corn\n" +
+"Requires night time");
 		}
 
 		public override bool CanUseItem(Player player)

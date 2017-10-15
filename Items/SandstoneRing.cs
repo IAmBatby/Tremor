@@ -21,7 +21,8 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Sandstone Ring ");
-			Tooltip.SetDefault("5% increased melee damage\nIncreases melee critical strike chance by 5");
+			Tooltip.SetDefault("5% increased melee damage\n" +
+"Increases melee critical strike chance by 5");
 		}
 
 		public override void UpdateAccessory(Player player, bool hideVisual)

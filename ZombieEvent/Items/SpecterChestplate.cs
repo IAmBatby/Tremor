@@ -21,7 +21,8 @@ public class SpecterChestplate : ModItem
     public override void SetStaticDefaults()
     {
       DisplayName.SetDefault("Specter Chestplate");
-      Tooltip.SetDefault("Increases melee damage by 12%\nIncreases maximum number of minions by 2");
+      Tooltip.SetDefault("Increases melee damage by 12%\n" +
+"Increases maximum number of minions by 2");
     }
 
     public override void UpdateEquip(Player player)

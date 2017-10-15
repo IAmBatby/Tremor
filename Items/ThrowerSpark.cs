@@ -21,7 +21,8 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Thrower Spark");
-			Tooltip.SetDefault("3% increased thrown damage\nIncreases thrown critical strike chance by 8");
+			Tooltip.SetDefault("3% increased thrown damage\n" +
+"Increases thrown critical strike chance by 8");
 			Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(6, 4));
 		}
 

@@ -31,7 +31,8 @@ namespace Tremor.NPCs.Bosses.NovaPillar.Items.Weapons
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Nova Sprayer");
-			Tooltip.SetDefault("Shoots a burst of nova balls which explode into flames when hit enemy or after some time,\n flames explode into damaging bursts when hit enemy or after some time.");
+			Tooltip.SetDefault("Shoots a burst of nova balls which explode into flames when hit enemy or after some time,\n" +
+" flames explode into damaging bursts when hit enemy or after some time.");
 		}
 
 		public override Vector2? HoldoutOffset()

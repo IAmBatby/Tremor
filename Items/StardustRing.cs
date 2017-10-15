@@ -19,7 +19,8 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Stardust Ring ");
-			Tooltip.SetDefault("20% increased minion damage\nIncreases your maximum number of minions");
+			Tooltip.SetDefault("20% increased minion damage\n" +
+"Increases your maximum number of minions");
 		}
 
 		public override void UpdateAccessory(Player player, bool hideVisual)

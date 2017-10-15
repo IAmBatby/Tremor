@@ -33,7 +33,8 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Phantom Flask");
-			Tooltip.SetDefault("Throws a flask that explodes into clouds\nClouds deal damage to enemies and burn them with shadowflames");
+			Tooltip.SetDefault("Throws a flask that explodes into clouds\n" +
+"Clouds deal damage to enemies and burn them with shadowflames");
 		}
 
 		public override void PickAmmo(Player player, ref int type, ref float speed, ref int damage, ref float knockback)

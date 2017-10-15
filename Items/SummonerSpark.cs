@@ -21,7 +21,8 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Summoner Spark");
-			Tooltip.SetDefault("Increases minion damage by 5%\nIncreases your max number of minions");
+			Tooltip.SetDefault("Increases minion damage by 5%\n" +
+"Increases your max number of minions");
 			Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(6, 4));
 		}
 

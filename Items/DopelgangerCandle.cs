@@ -19,7 +19,8 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Dopelganger Candle");
-			Tooltip.SetDefault("'Takes a piece of your soul in return for additional minion'\n6% increased minion damage");
+			Tooltip.SetDefault("'Takes a piece of your soul in return for additional minion'\n" +
+"6% increased minion damage");
 			Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(10, 4));
 		}
 

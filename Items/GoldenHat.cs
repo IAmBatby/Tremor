@@ -21,7 +21,8 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Golden Hat");
-			Tooltip.SetDefault("5% decreased magic damage\nIncreases magic critical strike chance by 6%");
+			Tooltip.SetDefault("5% decreased magic damage\n" +
+"Increases magic critical strike chance by 6%");
 		}
 
 		public override void UpdateEquip(Player player)

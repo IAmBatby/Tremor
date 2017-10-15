@@ -19,7 +19,9 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Robotic Dead Head");
-			Tooltip.SetDefault("15% increased damage\n12% increased critical strike chance\n25% increased movement speed");
+			Tooltip.SetDefault("15% increased damage\n" +
+"12% increased critical strike chance\n" +
+"25% increased movement speed");
 		}
 
 		public override void UpdateAccessory(Player player, bool hideVisual)

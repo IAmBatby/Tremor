@@ -21,7 +21,8 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Nano Breastplate");
-			Tooltip.SetDefault("8% increased damage\n10% increased melee speed");
+			Tooltip.SetDefault("8% increased damage\n" +
+"10% increased melee speed");
 		}
 
 		public override void UpdateEquip(Player player)

@@ -37,7 +37,8 @@ namespace Tremor.Items
 
 		public override void UpdateArmorSet(Player player)
 		{
-			player.setBonus = "Flower petals will fall on your target for extra damage\n16% increased alchemical critical strike chance";
+			player.setBonus = "Flower petals will fall on your target for extra damage\n" +
+"16% increased alchemical critical strike chance";
 			player.GetModPlayer<MPlayer>(mod).alchemicalCrit += 16;
 			player.onHitPetal = true;
 		}

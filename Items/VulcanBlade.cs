@@ -30,7 +30,8 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Vulcan Blade");
-			Tooltip.SetDefault("Shoots a molten bolt that leaves molten spheres behind\nSpheres home on enemies, explode on contact and set enemies on fire");
+			Tooltip.SetDefault("Shoots a molten bolt that leaves molten spheres behind\n" +
+"Spheres home on enemies, explode on contact and set enemies on fire");
 		}
 
 		public override void ModifyTooltips(List<TooltipLine> tooltips)

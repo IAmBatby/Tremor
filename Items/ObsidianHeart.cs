@@ -21,7 +21,8 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Obsidian Heart");
-			Tooltip.SetDefault("Increases life regeneration\nGrants immunity to fire blocks");
+			Tooltip.SetDefault("Increases life regeneration\n" +
+"Grants immunity to fire blocks");
 		}
 
 		public override void UpdateAccessory(Player player, bool hideVisual)

@@ -31,7 +31,8 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Phoenix Shotgun");
-			Tooltip.SetDefault("Uses bullets as ammo\nTransforms bullets into fireballs");
+			Tooltip.SetDefault("Uses bullets as ammo\n" +
+"Transforms bullets into fireballs");
 		}
 
 		public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)

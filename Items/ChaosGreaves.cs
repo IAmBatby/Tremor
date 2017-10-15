@@ -21,7 +21,8 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Chaos Greaves");
-			Tooltip.SetDefault("Increased life max by 25\nIncreased wing time");
+			Tooltip.SetDefault("Increased life max by 25\n" +
+"Increased wing time");
 		}
 
 		public override void UpdateEquip(Player p)

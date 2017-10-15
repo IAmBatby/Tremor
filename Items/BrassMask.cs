@@ -22,7 +22,8 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Brass Mask");
-			Tooltip.SetDefault("10% increased ranged damage\nIncreases ranged critical strike chance by 8");
+			Tooltip.SetDefault("10% increased ranged damage\n" +
+"Increases ranged critical strike chance by 8");
 		}
 
 		public override void UpdateEquip(Player player)

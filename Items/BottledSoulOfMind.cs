@@ -28,7 +28,8 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Bottled Soul of Mind");
-			Tooltip.SetDefault("Shows the location of enemies if worn\nShows the location of treasure and ore if placed");
+			Tooltip.SetDefault("Shows the location of enemies if worn\n" +
+"Shows the location of treasure and ore if placed");
 		}
 
 		public override void AddRecipes()

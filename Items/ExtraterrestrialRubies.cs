@@ -18,7 +18,8 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Extraterrestrial Rubies");
-			Tooltip.SetDefault("Increases maximum life by 100\nGreatly increases life regeneration");
+			Tooltip.SetDefault("Increases maximum life by 100\n" +
+"Greatly increases life regeneration");
 		}
 
 		public override void UpdateAccessory(Player player, bool hideVisual)

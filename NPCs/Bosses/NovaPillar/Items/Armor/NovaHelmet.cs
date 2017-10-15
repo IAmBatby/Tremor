@@ -18,7 +18,8 @@ namespace Tremor.NPCs.Bosses.NovaPillar.Items.Armor
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Nova Helmet");
-			Tooltip.SetDefault("Increases alchemical damage and critical strike chance by 12%\nEnemies are more likely to target you");
+			Tooltip.SetDefault("Increases alchemical damage and critical strike chance by 12%\n" +
+"Enemies are more likely to target you");
 		}
 
 		public override void UpdateEquip(Player player)

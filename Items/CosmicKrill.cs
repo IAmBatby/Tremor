@@ -25,7 +25,8 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Cosmic Krill");
-			Tooltip.SetDefault("Summons the Space Whale\nRequires Tremode");
+			Tooltip.SetDefault("Summons the Space Whale\n" +
+"Requires Tremode");
 		}
 
 		public override bool CanUseItem(Player player)

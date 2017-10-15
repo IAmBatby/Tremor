@@ -31,7 +31,8 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Shadow Master Hood");
-			Tooltip.SetDefault("20% increased alchemical damage\n25% increased throwing damage");
+			Tooltip.SetDefault("20% increased alchemical damage\n" +
+"25% increased throwing damage");
 		}
 
 		public override void UpdateEquip(Player player)
@@ -47,7 +48,8 @@ namespace Tremor.Items
 
 		public override void UpdateArmorSet(Player player)
 		{
-			player.setBonus = "Creates dangerous alchemical bubbles\n35% increased alchemical critical strike chance";
+			player.setBonus = "Creates dangerous alchemical bubbles\n" +
+"35% increased alchemical critical strike chance";
 			player.GetModPlayer<MPlayer>(mod).alchemicalCrit += 35;
 
 			if (--TimeToShoot <= 0)

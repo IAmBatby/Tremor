@@ -21,7 +21,10 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Power Shield");
-			Tooltip.SetDefault("Grants immunity to most debuffs\nGrants immunity to knockback and fire blocks\nProlonged after hit invicibility\nGives health when in Corruption or Crimson");
+			Tooltip.SetDefault("Grants immunity to most debuffs\n" +
+"Grants immunity to knockback and fire blocks\n" +
+"Prolonged after hit invicibility\n" +
+"Gives health when in Corruption or Crimson");
 		}
 
 		public override void UpdateEquip(Player p)

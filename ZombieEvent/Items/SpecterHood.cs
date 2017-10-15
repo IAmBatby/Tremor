@@ -33,7 +33,8 @@ public class SpecterHood : ModItem
     public override void SetStaticDefaults()
     {
       DisplayName.SetDefault("Specter Hood");
-      Tooltip.SetDefault("Increases melee damage by 10%\nIncreases minion damage by 10%");
+      Tooltip.SetDefault("Increases melee damage by 10%\n" +
+"Increases minion damage by 10%");
     }
 
     public override void UpdateEquip(Player player)

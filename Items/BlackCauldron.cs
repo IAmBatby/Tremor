@@ -20,7 +20,8 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Black Cauldron");
-			Tooltip.SetDefault("Increased alchemical damage by 12%\nAlchemical weapons confuse your enemies");
+			Tooltip.SetDefault("Increased alchemical damage by 12%\n" +
+"Alchemical weapons confuse your enemies");
 			Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(8, 4));
 		}
 

@@ -28,7 +28,8 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Unstable Crystal");
-			Tooltip.SetDefault("Teleports you to a random location\n'Be careful! It can take you to a very dangerous place!'");
+			Tooltip.SetDefault("Teleports you to a random location\n" +
+"'Be careful! It can take you to a very dangerous place!'");
 		}
 
 		public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)

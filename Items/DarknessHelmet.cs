@@ -23,7 +23,8 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Helmet of Darkness");
-			Tooltip.SetDefault("5% increased life regeneration\n25% increased melee speed");
+			Tooltip.SetDefault("5% increased life regeneration\n" +
+"25% increased melee speed");
 		}
 
 		public override bool IsArmorSet(Item head, Item body, Item legs)

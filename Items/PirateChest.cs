@@ -20,7 +20,8 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Pirate Chest");
-			Tooltip.SetDefault("Right click to open\n'Contains precious things'");
+			Tooltip.SetDefault("Right click to open\n" +
+"'Contains precious things'");
 		}
 
 		public override bool CanRightClick()

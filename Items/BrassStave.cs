@@ -32,7 +32,8 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Brass Stave");
-			Tooltip.SetDefault("Shoots fast thin bolts\nPress RMB for powerful attack");
+			Tooltip.SetDefault("Shoots fast thin bolts\n" +
+"Press RMB for powerful attack");
 		}
 
 		public override bool AltFunctionUse(Player player)

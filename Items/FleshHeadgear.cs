@@ -21,7 +21,8 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Flesh Headgear");
-			Tooltip.SetDefault("9% increased minion damage\nIncreases your max number of minions");
+			Tooltip.SetDefault("9% increased minion damage\n" +
+"Increases your max number of minions");
 		}
 
 		public override void UpdateEquip(Player player)

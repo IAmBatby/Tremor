@@ -22,7 +22,8 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Mask of Darkness");
-			Tooltip.SetDefault("Increases life regeneration\nIncreases maximum amount of minions");
+			Tooltip.SetDefault("Increases life regeneration\n" +
+"Increases maximum amount of minions");
 		}
 
 		public override bool IsArmorSet(Item head, Item body, Item legs)

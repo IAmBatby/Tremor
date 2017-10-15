@@ -22,7 +22,8 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Raven Greaves");
-			Tooltip.SetDefault("5% increased melee damage\nIncreases melee critical strike chance by 5");
+			Tooltip.SetDefault("5% increased melee damage\n" +
+"Increases melee critical strike chance by 5");
 		}
 
 		public override void UpdateEquip(Player player)

@@ -22,7 +22,8 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Bone Shell");
-			Tooltip.SetDefault("25% increased thrown damage\n6% increased ranged damage");
+			Tooltip.SetDefault("25% increased thrown damage\n" +
+"6% increased ranged damage");
 		}
 
 		public override void UpdateEquip(Player p)

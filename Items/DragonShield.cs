@@ -20,7 +20,9 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Dragon Shield");
-			Tooltip.SetDefault("Allows to dash\nDouble tap a direction\n60% increased movement speed");
+			Tooltip.SetDefault("Allows to dash\n" +
+"Double tap a direction\n" +
+"60% increased movement speed");
 		}
 
 		public override void UpdateEquip(Player player)

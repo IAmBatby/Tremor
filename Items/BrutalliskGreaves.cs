@@ -20,7 +20,10 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Brutallisk Greaves");
-			Tooltip.SetDefault("Increases maximum life by 40\n15% increased melee speed\n90% increased movement speed\nGreatly increases jump height");
+			Tooltip.SetDefault("Increases maximum life by 40\n" +
+"15% increased melee speed\n" +
+"90% increased movement speed\n" +
+"Greatly increases jump height");
 		}
 
 		public override void UpdateEquip(Player player)

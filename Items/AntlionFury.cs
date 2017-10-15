@@ -30,7 +30,8 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Antlion Fury");
-			Tooltip.SetDefault("Quickly shoots sand blocks\nUses sand blocks as ammo");
+			Tooltip.SetDefault("Quickly shoots sand blocks\n" +
+"Uses sand blocks as ammo");
 		}
 
 		public override Vector2? HoldoutOffset()

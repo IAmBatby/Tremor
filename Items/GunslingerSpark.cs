@@ -21,7 +21,8 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Gunslinger Spark");
-			Tooltip.SetDefault("3% increased ranged damage\nIncreases ranged critical strike chance by 8");
+			Tooltip.SetDefault("3% increased ranged damage\n" +
+"Increases ranged critical strike chance by 8");
 			Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(6, 4));
 		}
 

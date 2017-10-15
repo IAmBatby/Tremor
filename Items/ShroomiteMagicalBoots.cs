@@ -20,7 +20,8 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Shroomite Magical Boots");
-			Tooltip.SetDefault("The less mana, the more defense...\nThe less health, the more speed...");
+			Tooltip.SetDefault("The less mana, the more defense...\n" +
+"The less health, the more speed...");
 		}
 
 		public override void UpdateAccessory(Player player, bool hideVisual)

@@ -32,7 +32,8 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Mana Support Flask");
-			Tooltip.SetDefault("Throws a flask that explodes into clouds\nClouds restore mana of your allies");
+			Tooltip.SetDefault("Throws a flask that explodes into clouds\n" +
+"Clouds restore mana of your allies");
 		}
 
 		public override void PickAmmo(Player player, ref int type, ref float speed, ref int damage, ref float knockback)

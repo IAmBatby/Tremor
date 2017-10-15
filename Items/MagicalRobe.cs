@@ -21,7 +21,8 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Theurgic Mantle");
-			Tooltip.SetDefault("4% increased magic damage\nIncreases maximum mana by 20");
+			Tooltip.SetDefault("4% increased magic damage\n" +
+"Increases maximum mana by 20");
 		}
 
 		public override void UpdateEquip(Player player)

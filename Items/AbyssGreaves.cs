@@ -22,7 +22,8 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Abyss Greaves");
-			Tooltip.SetDefault("14% increased minion damage\nIncreases your max number of minions");
+			Tooltip.SetDefault("14% increased minion damage\n" +
+"Increases your max number of minions");
 		}
 
 		public override void UpdateEquip(Player player)

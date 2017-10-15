@@ -22,7 +22,8 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Brass Helmet");
-			Tooltip.SetDefault("10% increased melee damage\nIncreases melee critical strike chance by 8");
+			Tooltip.SetDefault("10% increased melee damage\n" +
+"Increases melee critical strike chance by 8");
 		}
 
 		public override void UpdateEquip(Player player)

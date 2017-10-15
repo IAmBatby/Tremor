@@ -37,7 +37,8 @@ namespace Tremor.Items
 
 		public override void UpdateArmorSet(Player player)
 		{
-			player.setBonus = "Summons a powerful leaf crystal to shoot at nearby enemies\n25% increased alchemical critical strike chance";
+			player.setBonus = "Summons a powerful leaf crystal to shoot at nearby enemies\n" +
+"25% increased alchemical critical strike chance";
 			player.GetModPlayer<MPlayer>(mod).alchemicalCrit += 25;
 			player.AddBuff(60, 60, true);
 		}

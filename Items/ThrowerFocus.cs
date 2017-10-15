@@ -22,7 +22,8 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Thrower Focus");
-			Tooltip.SetDefault("6% increased thrown  damage\nIncreases thrown critical strike chance by 12");
+			Tooltip.SetDefault("6% increased thrown  damage\n" +
+"Increases thrown critical strike chance by 12");
 			Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(6, 4));
 		}
 

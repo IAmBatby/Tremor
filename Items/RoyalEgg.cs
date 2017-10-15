@@ -23,7 +23,8 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Royal Egg");
-			Tooltip.SetDefault("Summons the Brutallisk\nRequires the desert biome and Tremode");
+			Tooltip.SetDefault("Summons the Brutallisk\n" +
+"Requires the desert biome and Tremode");
 		}
 
 		public override bool CanUseItem(Player player)

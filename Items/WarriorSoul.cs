@@ -24,7 +24,8 @@ namespace Tremor.Items
 		{
 			Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(6, 6));
 			DisplayName.SetDefault("Warrior Soul");
-			Tooltip.SetDefault("10% increased melee damage\nIncreases melee critical strike chance by 15");
+			Tooltip.SetDefault("10% increased melee damage\n" +
+"Increases melee critical strike chance by 15");
 		}
 
 		public override void UpdateAccessory(Player player, bool hideVisual)

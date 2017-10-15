@@ -22,7 +22,8 @@ namespace Tremor.NPCs.Bosses.Motherboard.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Mechanical Brain");
-			Tooltip.SetDefault("Summons the Motherboard\nRequires hardmode and night time");
+			Tooltip.SetDefault("Summons the Motherboard\n" +
+"Requires hardmode and night time");
 		}
 
 		public override bool CanUseItem(Player player)

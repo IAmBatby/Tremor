@@ -22,7 +22,8 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Beetle Shield");
-			Tooltip.SetDefault("The less health, the more defense\nMaximum life increased by 50");
+			Tooltip.SetDefault("The less health, the more defense\n" +
+"Maximum life increased by 50");
 		}
 
 		public override void UpdateAccessory(Player player, bool hideVisual)

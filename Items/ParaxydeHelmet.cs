@@ -21,7 +21,8 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Paraxyde Helmet");
-			Tooltip.SetDefault("Increases magic damage by 12%\nIncreases melee damage by 16%");
+			Tooltip.SetDefault("Increases magic damage by 12%\n" +
+"Increases melee damage by 16%");
 		}
 
 		public override void UpdateEquip(Player player)

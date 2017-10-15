@@ -25,7 +25,8 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Mushroom Crystal");
-			Tooltip.SetDefault("Summons Fungus Beetle\nRequires EoW or BoC to have been slain");
+			Tooltip.SetDefault("Summons Fungus Beetle\n" +
+"Requires EoW or BoC to have been slain");
 		}
 
 		public override bool CanUseItem(Player player)

@@ -22,7 +22,9 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Hero Shield");
-			Tooltip.SetDefault("Grants immunity to most debuffs\nGrants immunity to knockback and fire blocks\nProlonged after hit invicibility");
+			Tooltip.SetDefault("Grants immunity to most debuffs\n" +
+"Grants immunity to knockback and fire blocks\n" +
+"Prolonged after hit invicibility");
 		}
 
 		public override void UpdateEquip(Player p)

@@ -28,7 +28,8 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Bottled Soul of Light");
-			Tooltip.SetDefault("50% increased movement speed if worn\n20% increased movement speed if placed");
+			Tooltip.SetDefault("50% increased movement speed if worn\n" +
+"20% increased movement speed if placed");
 		}
 
 		public override void AddRecipes()

@@ -33,7 +33,8 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Basic Sprayer");
-			Tooltip.SetDefault("Uses flasks as ammo\nSprays alchemical clouds");
+			Tooltip.SetDefault("Uses flasks as ammo\n" +
+"Sprays alchemical clouds");
 		}
 
 		public override void AddRecipes()

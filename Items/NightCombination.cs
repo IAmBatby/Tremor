@@ -19,7 +19,8 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Nightly Combination");
-			Tooltip.SetDefault("Increases life regeneration, melee damage\nMakes you glow during night");
+			Tooltip.SetDefault("Increases life regeneration, melee damage\n" +
+"Makes you glow during night");
 		}
 
 		public override void UpdateAccessory(Player player, bool hideVisual)

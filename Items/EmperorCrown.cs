@@ -22,7 +22,8 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Emperor Crown");
-			Tooltip.SetDefault("Summons the Dark Emperor\nRequires Tremode");
+			Tooltip.SetDefault("Summons the Dark Emperor\n" +
+"Requires Tremode");
 		}
 
 		public override bool CanUseItem(Player player)

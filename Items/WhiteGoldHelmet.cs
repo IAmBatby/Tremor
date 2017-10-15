@@ -33,7 +33,8 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("White Gold Helmet");
-			Tooltip.SetDefault("Increases ranged damage by 20%\nIncreases melee damage by 20%");
+			Tooltip.SetDefault("Increases ranged damage by 20%\n" +
+"Increases melee damage by 20%");
 		}
 
 		public override void UpdateEquip(Player player)

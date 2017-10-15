@@ -34,7 +34,8 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Lesser Healing Flask");
-			Tooltip.SetDefault("Throws a flask that explodes into clouds\nClouds deal damage to enemies and heal player hit enemy");
+			Tooltip.SetDefault("Throws a flask that explodes into clouds\n" +
+"Clouds deal damage to enemies and heal player hit enemy");
 		}
 
 		public override void PickAmmo(Player player, ref int type, ref float speed, ref int damage, ref float knockback)

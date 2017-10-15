@@ -22,7 +22,8 @@ namespace Tremor.ZombieEvent.Items
     public override void SetStaticDefaults()
     {
       DisplayName.SetDefault("Scary Cloak");
-      Tooltip.SetDefault("Makes the player invisible\nIncreases magic and summon damage and critical strike chanse by 8");
+      Tooltip.SetDefault("Makes the player invisible\n" +
+"Increases magic and summon damage and critical strike chanse by 8");
     }
 
     public override void UpdateAccessory(Player player, bool hideVisual)

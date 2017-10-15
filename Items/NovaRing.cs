@@ -17,7 +17,8 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Nova Ring");
-			Tooltip.SetDefault("20% increased alchemical damage\n14 increased alchemical critical strike chance");
+			Tooltip.SetDefault("20% increased alchemical damage\n" +
+"14 increased alchemical critical strike chance");
 		}
 
 		public override void UpdateAccessory(Player player, bool hideVisual)

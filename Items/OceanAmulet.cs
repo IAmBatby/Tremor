@@ -20,7 +20,8 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Ocean Amulet");
-			Tooltip.SetDefault("Extends underwater breathing\nIncreases fishing skill by 12 and allows to detect catched fish");
+			Tooltip.SetDefault("Extends underwater breathing\n" +
+"Increases fishing skill by 12 and allows to detect catched fish");
 		}
 
 		public override void UpdateAccessory(Player player, bool hideVisual)

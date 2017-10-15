@@ -52,7 +52,8 @@ namespace Tremor.Items
 		public override void SafeStaticDefaults()
 		{
 			DisplayName.SetDefault("Reinforced Invar Hat");
-			Tooltip.SetDefault(Tooltip.GetDefault() + "\nReinforced to grant +1 defense");
+			Tooltip.SetDefault(Tooltip.GetDefault() + "\n" +
+"Reinforced to grant +1 defense");
 		}
 
 		public override void AddRecipes()

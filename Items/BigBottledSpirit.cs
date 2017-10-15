@@ -34,7 +34,8 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Big Bottled Spirit");
-			Tooltip.SetDefault("Using flask also spawns four homing souls\nDamage of the souls scales on flask damage");
+			Tooltip.SetDefault("Using flask also spawns four homing souls\n" +
+"Damage of the souls scales on flask damage");
 		}
 
 		public override void UpdateAccessory(Player player, bool hideVisual)

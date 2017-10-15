@@ -22,7 +22,8 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Gunslinger Focus");
-			Tooltip.SetDefault("6% increased ranged damage\nIncreases ranged critical strike chance by 12");
+			Tooltip.SetDefault("6% increased ranged damage\n" +
+"Increases ranged critical strike chance by 12");
 			Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(6, 4));
 		}
 

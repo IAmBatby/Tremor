@@ -20,7 +20,8 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("The Creator");
-			Tooltip.SetDefault("15% increased damage and crit\nIncreases maximum mana and health by 100");
+			Tooltip.SetDefault("15% increased damage and crit\n" +
+"Increases maximum mana and health by 100");
 		}
 
 		public override void UpdateAccessory(Player player, bool hideVisual)

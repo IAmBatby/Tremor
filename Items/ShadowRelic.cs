@@ -19,7 +19,8 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Shadow Relic");
-			Tooltip.SetDefault("Summons Wall of Shadows\n'Can be used in ritual of shadows if thrown into lava in underground and the Dryad is alive...'");
+			Tooltip.SetDefault("Summons Wall of Shadows\n" +
+"'Can be used in ritual of shadows if thrown into lava in underground and the Dryad is alive...'");
 		}
 
 		public override void AddRecipes()

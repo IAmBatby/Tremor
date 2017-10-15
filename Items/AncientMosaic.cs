@@ -25,7 +25,8 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Ancient Mosaic");
-			Tooltip.SetDefault("Summons the Alchemaster\nRequires hardmode and night time");
+			Tooltip.SetDefault("Summons the Alchemaster\n" +
+"Requires hardmode and night time");
 		}
 
 		public override bool CanUseItem(Player player)

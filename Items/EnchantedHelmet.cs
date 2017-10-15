@@ -21,7 +21,8 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Enchanted Helmet");
-			Tooltip.SetDefault("Increases maximum mana by 20\nIncreases maximum health by 15");
+			Tooltip.SetDefault("Increases maximum mana by 20\n" +
+"Increases maximum health by 15");
 		}
 
 		public override void UpdateEquip(Player player)

@@ -20,7 +20,8 @@ namespace Tremor.Invasion
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Paradox Boots");
-			Tooltip.SetDefault("Allows you to control gravity\nIncreases speed and regeneration, increases maximum health by 50");
+			Tooltip.SetDefault("Allows you to control gravity\n" +
+"Increases speed and regeneration, increases maximum health by 50");
 		}
 
 		public override void UpdateEquip(Player player)

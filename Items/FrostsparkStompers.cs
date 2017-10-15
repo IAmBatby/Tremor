@@ -20,7 +20,8 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Frostspark Stompers");
-			Tooltip.SetDefault("Increases movement speed by 10% and increases knockback effect\nAllows flight, super fast running, and extra mobility on ice");
+			Tooltip.SetDefault("Increases movement speed by 10% and increases knockback effect\n" +
+"Allows flight, super fast running, and extra mobility on ice");
 		}
 
 		public override void UpdateAccessory(Player player, bool hideVisual)

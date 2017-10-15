@@ -21,7 +21,8 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Wolf Leggings");
-			Tooltip.SetDefault("6% increased minion damage\nIncreases movement speed");
+			Tooltip.SetDefault("6% increased minion damage\n" +
+"Increases movement speed");
 		}
 
 		public override void UpdateEquip(Player player)

@@ -28,7 +28,8 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Bottled Soul of Night");
-			Tooltip.SetDefault("15% increased melee speed if worn\n8% increased melee speed if placed");
+			Tooltip.SetDefault("15% increased melee speed if worn\n" +
+"8% increased melee speed if placed");
 		}
 
 		public override void AddRecipes()

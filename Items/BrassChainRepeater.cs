@@ -32,7 +32,8 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Brass Chain Repeater");
-			Tooltip.SetDefault("Quickly launches arrows\n25% to shoot a heat ray");
+			Tooltip.SetDefault("Quickly launches arrows\n" +
+"25% to shoot a heat ray");
 		}
 
 		public override void UpdateInventory(Player player)

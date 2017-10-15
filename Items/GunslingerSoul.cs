@@ -22,7 +22,8 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Gunslinger Soul");
-			Tooltip.SetDefault("10% increased ranged damage\nIncreases ranged critical strike chance by 15");
+			Tooltip.SetDefault("10% increased ranged damage\n" +
+"Increases ranged critical strike chance by 15");
 			Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(6, 6));
 		}
 

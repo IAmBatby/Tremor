@@ -28,7 +28,8 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Bottled Soul of Might");
-			Tooltip.SetDefault("12% increased damage if worn\n5% increased damage if placed");
+			Tooltip.SetDefault("12% increased damage if worn\n" +
+"5% increased damage if placed");
 		}
 
 		public override void AddRecipes()

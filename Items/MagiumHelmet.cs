@@ -21,7 +21,8 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Magium Helmet");
-			Tooltip.SetDefault("9% increased magic critical strike chance\nIncreases maximum mana by 40");
+			Tooltip.SetDefault("9% increased magic critical strike chance\n" +
+"Increases maximum mana by 40");
 		}
 
 		public override void UpdateEquip(Player player)

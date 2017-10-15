@@ -31,7 +31,8 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Duke Flask");
-			Tooltip.SetDefault("Throws a flask that explodes into water tornados\nTornados deal damage to enemies");
+			Tooltip.SetDefault("Throws a flask that explodes into water tornados\n" +
+"Tornados deal damage to enemies");
 		}
 
 		public override void UpdateInventory(Player player)

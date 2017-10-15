@@ -34,7 +34,8 @@ namespace Tremor.Items
 
 		public override void UpdateArmorSet(Player player)
 		{
-			player.setBonus = "Greatly increases life regeneration after striking an enemy\n12% increased alchemical critical strike chance";
+			player.setBonus = "Greatly increases life regeneration after striking an enemy\n" +
+"12% increased alchemical critical strike chance";
 			player.GetModPlayer<MPlayer>(mod).alchemicalCrit += 12;
 			player.onHitRegen = true;
 		}

@@ -28,7 +28,8 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Bottled Soul of Sight");
-			Tooltip.SetDefault("Makes you shine if worn\nShows the location of enemies if placed");
+			Tooltip.SetDefault("Makes you shine if worn\n" +
+"Shows the location of enemies if placed");
 		}
 
 		public override void AddRecipes()

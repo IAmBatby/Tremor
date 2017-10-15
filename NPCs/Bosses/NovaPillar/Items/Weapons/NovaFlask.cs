@@ -31,7 +31,9 @@ namespace Tremor.NPCs.Bosses.NovaPillar.Items.Weapons
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Nova Flask");
-			Tooltip.SetDefault("Shoots out a nova flask that explodes into two balls\nBalls explode into flames after some time or when they hit enemy\nFlames explode into damagin bursts after some time or when they hit enemy");
+			Tooltip.SetDefault("Shoots out a nova flask that explodes into two balls\n" +
+"Balls explode into flames after some time or when they hit enemy\n" +
+"Flames explode into damagin bursts after some time or when they hit enemy");
 		}
 
 		public override void UpdateInventory(Player player)

@@ -20,7 +20,9 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Dimensional Top Hat");
-			Tooltip.SetDefault("Grants clairvoyance\n25% increased magic and minion damage\nGreatly increases mana regeneration");
+			Tooltip.SetDefault("Grants clairvoyance\n" +
+"25% increased magic and minion damage\n" +
+"Greatly increases mana regeneration");
 		}
 
 		public override void UpdateEquip(Player player)

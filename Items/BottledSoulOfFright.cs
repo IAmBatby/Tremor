@@ -28,7 +28,8 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Bottled Soul of Fright");
-			Tooltip.SetDefault("Increases critical strike chance by 6 if worn\nIncreased critical strike chance by 2 if placed");
+			Tooltip.SetDefault("Increases critical strike chance by 6 if worn\n" +
+"Increased critical strike chance by 2 if placed");
 		}
 
 		public override void AddRecipes()

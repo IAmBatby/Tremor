@@ -19,7 +19,8 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Magmonium Greaves");
-			Tooltip.SetDefault("10% increased melee speed\n10% reduced mana usage");
+			Tooltip.SetDefault("10% increased melee speed\n" +
+"10% reduced mana usage");
 		}
 
 		public override void UpdateEquip(Player player)

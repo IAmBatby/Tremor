@@ -33,7 +33,8 @@ namespace Tremor.Invasion
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Paradox Drill");
-			Tooltip.SetDefault("Press LMB to use drill\nPress RMB to use axe and hammer");
+			Tooltip.SetDefault("Press LMB to use drill\n" +
+"Press RMB to use axe and hammer");
 		}
 
 		public override bool AltFunctionUse(Player player)

@@ -23,7 +23,8 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Hat of Darkness");
-			Tooltip.SetDefault("Increases life regeneration\nIncreases maximum mana by 80");
+			Tooltip.SetDefault("Increases life regeneration\n" +
+"Increases maximum mana by 80");
 		}
 
 		public override bool IsArmorSet(Item head, Item body, Item legs)

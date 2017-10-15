@@ -20,7 +20,8 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("True Night's Watch");
-			Tooltip.SetDefault("12% increased melee, magic, minion, ranged damage and crit\nIncreases maximum mana and health by 80");
+			Tooltip.SetDefault("12% increased melee, magic, minion, ranged damage and crit\n" +
+"Increases maximum mana and health by 80");
 		}
 
 		public override void UpdateAccessory(Player player, bool hideVisual)

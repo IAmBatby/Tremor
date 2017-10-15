@@ -21,7 +21,8 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Golden Star");
-			Tooltip.SetDefault("The less health, the more alchemical damage\n'Rare alchemical artifact'");
+			Tooltip.SetDefault("The less health, the more alchemical damage\n" +
+"'Rare alchemical artifact'");
 		}
 
 		public override void UpdateAccessory(Player player, bool hideVisual)

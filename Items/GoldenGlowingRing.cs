@@ -20,7 +20,8 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Golden Glowing Ring");
-			Tooltip.SetDefault("Summons two blades to protect you\nBlue has a chance to inflict confusion on enemy, yellow can inflict midas.");
+			Tooltip.SetDefault("Summons two blades to protect you\n" +
+"Blue has a chance to inflict confusion on enemy, yellow can inflict midas.");
 		}
 
 		public override void UpdateEquip(Player player)

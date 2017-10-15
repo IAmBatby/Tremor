@@ -22,7 +22,8 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Frozen Turtle Shield");
-			Tooltip.SetDefault("The less health, the more defense\nGrants 25% damage reduction");
+			Tooltip.SetDefault("The less health, the more defense\n" +
+"Grants 25% damage reduction");
 		}
 
 		public override void UpdateAccessory(Player player, bool hideVisual)

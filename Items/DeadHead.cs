@@ -20,7 +20,8 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Dead Head");
-			Tooltip.SetDefault("4% increased damage and critical strike chance\n15% increased movement speed");
+			Tooltip.SetDefault("4% increased damage and critical strike chance\n" +
+"15% increased movement speed");
 		}
 
 		public override void UpdateAccessory(Player player, bool hideVisual)

@@ -21,7 +21,8 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Afterlife Leggings");
-			Tooltip.SetDefault("Higher jump height\nIncreases movement speed");
+			Tooltip.SetDefault("Higher jump height\n" +
+"Increases movement speed");
 		}
 
 		public override void UpdateEquip(Player player)

@@ -33,7 +33,8 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Phantablast");
-			Tooltip.SetDefault("Fires your ammo in a blast\n50% chance to not consume ammo");
+			Tooltip.SetDefault("Fires your ammo in a blast\n" +
+"50% chance to not consume ammo");
 		}
 
 		public override Vector2? HoldoutOffset()

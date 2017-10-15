@@ -24,7 +24,8 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Advanced Circuit");
-			Tooltip.SetDefault("Summons the Mothership\nRequires Plantera to have been slain and night time");
+			Tooltip.SetDefault("Summons the Mothership\n" +
+"Requires Plantera to have been slain and night time");
 		}
 
 		public override bool CanUseItem(Player player)

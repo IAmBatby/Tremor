@@ -20,7 +20,8 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Bottled Cthulhu Blood");
-			Tooltip.SetDefault("Increased life regeneration\nIncreased alchemical damage and critical strike chance by 25%");
+			Tooltip.SetDefault("Increased life regeneration\n" +
+"Increased alchemical damage and critical strike chance by 25%");
 		}
 
 		public override void UpdateAccessory(Player player, bool hideVisual)

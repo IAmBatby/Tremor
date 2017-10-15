@@ -23,7 +23,8 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Desert Crown");
-			Tooltip.SetDefault("Summons the Rukh\nRequires the desert biome");
+			Tooltip.SetDefault("Summons the Rukh\n" +
+"Requires the desert biome");
 		}
 
 		public override bool CanUseItem(Player player)

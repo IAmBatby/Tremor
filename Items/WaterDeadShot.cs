@@ -31,7 +31,8 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Water Dead Shot");
-			Tooltip.SetDefault("Shoots water streams\nUses arrows as ammo");
+			Tooltip.SetDefault("Shoots water streams\n" +
+"Uses arrows as ammo");
 		}
 
 		public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)

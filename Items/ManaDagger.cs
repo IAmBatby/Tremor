@@ -30,7 +30,8 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Mana Dagger");
-			Tooltip.SetDefault("A magical returning dagger\nGives mana after hitting an enemy and returning");
+			Tooltip.SetDefault("A magical returning dagger\n" +
+"Gives mana after hitting an enemy and returning");
 		}
 
 	}

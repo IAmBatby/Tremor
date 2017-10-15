@@ -21,7 +21,8 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Sniper Breastplate");
-			Tooltip.SetDefault("20% increased ranged damage\n20% decreased movement speed");
+			Tooltip.SetDefault("20% increased ranged damage\n" +
+"20% decreased movement speed");
 		}
 
 		public override void UpdateEquip(Player player)

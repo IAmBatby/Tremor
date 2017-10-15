@@ -34,7 +34,8 @@ namespace Tremor.Items
 
 		public override void UpdateArmorSet(Player player)
 		{
-			player.setBonus = "Become invulnerable after striking an enemy\n20% increased alchemical critical strike chance";
+			player.setBonus = "Become invulnerable after striking an enemy\n" +
+"20% increased alchemical critical strike chance";
 			player.GetModPlayer<MPlayer>(mod).alchemicalCrit += 20;
 			player.onHitDodge = true;
 		}

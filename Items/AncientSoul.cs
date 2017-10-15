@@ -22,7 +22,8 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Ancient Soul");
-			Tooltip.SetDefault("Creates a shield of souls to protect you\nMore souls appear after some time and each soul disappear after second hit of enemy");
+			Tooltip.SetDefault("Creates a shield of souls to protect you\n" +
+"More souls appear after some time and each soul disappear after second hit of enemy");
 			Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(6, 3));
 		}
 

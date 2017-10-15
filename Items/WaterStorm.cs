@@ -20,7 +20,8 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Water Storm");
-			Tooltip.SetDefault("Increases magic critical strike chance by 10%\nIncreases maximum mana by 40");
+			Tooltip.SetDefault("Increases magic critical strike chance by 10%\n" +
+"Increases maximum mana by 40");
 		}
 
 		public override void UpdateAccessory(Player player, bool hideVisual)
