@@ -21,7 +21,7 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Samurai Legguards");
-			Tooltip.SetDefault("Increases movement speed by 50%");
+			Tooltip.SetDefault("50% increased movement speed");
 		}
 
 		public override void UpdateEquip(Player player)

@@ -22,7 +22,7 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Omnikron Breastplate");
-			Tooltip.SetDefault("Increases all damage by 20%");
+			Tooltip.SetDefault("20% increased damage");
 		}
 
 		public override void ModifyTooltips(List<TooltipLine> tooltips)

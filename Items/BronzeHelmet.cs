@@ -36,7 +36,7 @@ namespace Tremor.Items
 
 		public override void UpdateArmorSet(Player player)
 		{
-			player.setBonus = "8% increased all damage";
+			player.setBonus = "8% increased damage";
 			player.meleeDamage += 0.08f;
 			player.magicDamage += 0.08f;
 			player.rangedDamage += 0.08f;

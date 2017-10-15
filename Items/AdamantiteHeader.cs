@@ -21,7 +21,7 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Adamantite Header");
-			Tooltip.SetDefault("Increases thrown damage by 24%");
+			Tooltip.SetDefault("24% increased thrown damage");
 		}
 
 		public override void UpdateEquip(Player player)

@@ -26,7 +26,7 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Tattered Banner");
-			Tooltip.SetDefault("25% increased all damage if placed");
+			Tooltip.SetDefault("25% increased damage if placed");
 		}
 
 		public override void AddRecipes()

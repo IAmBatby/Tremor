@@ -20,7 +20,7 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Heavy Necklace");
-			Tooltip.SetDefault("5% increased all damage");
+			Tooltip.SetDefault("5% increased damage");
 		}
 
 		public override void UpdateAccessory(Player player, bool hideVisual)

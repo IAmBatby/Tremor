@@ -22,7 +22,7 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Mythril Visage");
-			Tooltip.SetDefault("Increases alchemical damage by 20%");
+			Tooltip.SetDefault("20% increased alchemical damage");
 		}
 
 		public override void UpdateEquip(Player player)

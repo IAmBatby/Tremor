@@ -20,7 +20,7 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Brutallisk Chestplate");
-			Tooltip.SetDefault("Increases maximum life by 40\n15% increased melee speed\n25% increased all damage");
+			Tooltip.SetDefault("Increases maximum life by 40\n15% increased melee speed\n25% increased damage");
 		}
 
 		public override void UpdateEquip(Player player)

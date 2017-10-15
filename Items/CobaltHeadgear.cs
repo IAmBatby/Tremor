@@ -22,7 +22,7 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Cobalt Headgear");
-			Tooltip.SetDefault("Increases minion damage by 18%");
+			Tooltip.SetDefault("18% increased minion damage");
 		}
 
 		public override void UpdateEquip(Player player)

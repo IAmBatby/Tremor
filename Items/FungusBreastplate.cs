@@ -22,7 +22,7 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Fungus Breastplate");
-			Tooltip.SetDefault("13% increased all damage");
+			Tooltip.SetDefault("13% increased damage");
 		}
 
 		public override void UpdateEquip(Player player)

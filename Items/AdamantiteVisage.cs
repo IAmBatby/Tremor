@@ -21,7 +21,7 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Adamantite Visage");
-			Tooltip.SetDefault("Increases alchemical damage by 24%");
+			Tooltip.SetDefault("24% increased alchemical damage");
 		}
 
 		public override void UpdateEquip(Player player)

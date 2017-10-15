@@ -24,7 +24,7 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Hades Breastplate");
-			Tooltip.SetDefault("Increases maximum life by 50\nIncreases defense when under 100 health\n45% increased all damage");
+			Tooltip.SetDefault("Increases maximum life by 50\nIncreases defense when under 100 health\n45% increased damage");
 		}
 
 		public override void AddRecipes()

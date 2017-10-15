@@ -8,7 +8,7 @@ namespace Tremor.Buffs
 		public override void SetDefaults()
 		{
 			DisplayName.SetDefault("The Tattered Banner");
-			Description.SetDefault("25% increased all damage");
+			Description.SetDefault("25% increased damage");
 			Main.buffNoSave[Type] = true;
 			Main.buffNoTimeDisplay[Type] = true;
 		}

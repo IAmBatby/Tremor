@@ -21,7 +21,7 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Afterlife Breastplate");
-			Tooltip.SetDefault("9% increased all damage\nIncreases your max number of minions");
+			Tooltip.SetDefault("9% increased damage\nIncreases your max number of minions");
 		}
 
 		public override void UpdateEquip(Player player)

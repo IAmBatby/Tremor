@@ -19,7 +19,7 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Nightingale Chestplate");
-			Tooltip.SetDefault("5% increased all damage");
+			Tooltip.SetDefault("5% increased damage");
 		}
 
 		public override void UpdateEquip(Player player)

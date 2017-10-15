@@ -5,10 +5,8 @@ namespace Tremor.Items
 {
 	public class HazardousChemicals : ModItem
 	{
-
 		public override void SetDefaults()
 		{
-
 			item.width = 22;
 			item.height = 44;
 
@@ -21,7 +19,7 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Hazardous Chemicals");
-			Tooltip.SetDefault("Increases alchemical damage by 5%");
+			Tooltip.SetDefault("5% increased alchemical damage");
 		}
 
 		public override void UpdateAccessory(Player player, bool hideVisual)

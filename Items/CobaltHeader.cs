@@ -22,7 +22,7 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Cobalt Header");
-			Tooltip.SetDefault("Increases thrown damage by 18%");
+			Tooltip.SetDefault("18% increased thrown damage");
 		}
 
 		public override void UpdateEquip(Player player)

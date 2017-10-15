@@ -22,7 +22,7 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Plague Helmet");
-			Tooltip.SetDefault("Increases alchemical damage by 10%");
+			Tooltip.SetDefault("10% increased alchemical damage");
 		}
 
 		public override void UpdateEquip(Player player)

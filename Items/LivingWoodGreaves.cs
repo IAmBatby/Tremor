@@ -22,7 +22,7 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Living Wood Greaves");
-			Tooltip.SetDefault("Increases minion damage by 4%");
+			Tooltip.SetDefault("4% increased minion damage");
 		}
 
 		public override void UpdateEquip(Player player)

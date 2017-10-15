@@ -24,7 +24,7 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Omnikron Mask");
-			Tooltip.SetDefault("20% increased all damage");
+			Tooltip.SetDefault("20% increased damage");
 		}
 
 		public override void ModifyTooltips(List<TooltipLine> tooltips)

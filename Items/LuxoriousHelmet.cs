@@ -20,7 +20,7 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Luxorious Helmet");
-			Tooltip.SetDefault("Increases mining speed by 12%");
+			Tooltip.SetDefault("12% increased mining speed");
 		}
 
 		public override void UpdateEquip(Player player)

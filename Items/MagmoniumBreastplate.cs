@@ -20,7 +20,7 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Magmonium Breastplate");
-			Tooltip.SetDefault("12% increased all damage");
+			Tooltip.SetDefault("12% increased damage");
 		}
 
 		public override void UpdateEquip(Player player)

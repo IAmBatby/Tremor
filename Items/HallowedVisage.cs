@@ -22,7 +22,7 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Hallowed Visage");
-			Tooltip.SetDefault("Increases alchemical damage by 27%");
+			Tooltip.SetDefault("27% increased alchemical damage");
 		}
 
 		public override void UpdateEquip(Player player)

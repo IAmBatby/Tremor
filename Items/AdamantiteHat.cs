@@ -21,7 +21,7 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Adamantite Hat");
-			Tooltip.SetDefault("Increases minion damage by 24%");
+			Tooltip.SetDefault("24% increased minion damage");
 		}
 
 		public override void UpdateEquip(Player player)

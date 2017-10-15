@@ -20,7 +20,7 @@ namespace Tremor.Ice.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Blue Quartz");
-			Tooltip.SetDefault("Increases maximum health by 50 \n6% increased all damage if in Glacier or Snow biome");
+			Tooltip.SetDefault("Increases maximum health by 50 \n6% increased damage if in Glacier or Snow biome");
 			Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(6, 4));
 		}
 

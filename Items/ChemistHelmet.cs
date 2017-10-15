@@ -22,7 +22,7 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Chemist Helmet");
-			Tooltip.SetDefault("Increases alchemical damage by 6%");
+			Tooltip.SetDefault("6% increased alchemical damage");
 		}
 
 		public override void UpdateEquip(Player player)

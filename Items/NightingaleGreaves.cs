@@ -19,7 +19,7 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Nightingale Greaves");
-			Tooltip.SetDefault("Increases movement speed by 10%");
+			Tooltip.SetDefault("10% increased movement speed");
 		}
 
 		public override void UpdateEquip(Player player)
