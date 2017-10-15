@@ -8,7 +8,6 @@ namespace Tremor.Items
 	{
 		public override void SetDefaults()
 		{
-
 			item.damage = 16;
 			item.melee = true;
 			item.width = 34;
@@ -40,13 +39,12 @@ namespace Tremor.Items
 
 		public override void AddRecipes()
 		{
-			ModRecipe recipe = new ModRecipe(mod);
-			recipe.AddIngredient(null, "ChippyRedSteelSword", 1);
-			recipe.AddIngredient(null, "RedSteelBar", 11);
-			recipe.SetResult(this);
-			recipe.AddTile(16);
-			recipe.AddRecipe();
+			//ModRecipe recipe = new ModRecipe(mod);
+			//recipe.AddIngredient(null, "ChippyRedSteelSword", 1);
+			//recipe.AddIngredient(null, "RedSteelBar", 11);
+			//recipe.SetResult(this);
+			//recipe.AddTile(16);
+			//recipe.AddRecipe();
 		}
-
 	}
 }

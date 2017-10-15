@@ -6,7 +6,6 @@ namespace Tremor.Items
 	{
 		public override void SetDefaults()
 		{
-
 			item.width = 30;
 			item.height = 24;
 			item.maxStack = 99;
@@ -29,23 +28,23 @@ namespace Tremor.Items
 
 		public override void AddRecipes()
 		{
-			ModRecipe recipe = new ModRecipe(mod);
-			recipe.AddIngredient(null, "ChippyRedSteelSword");
-			recipe.SetResult(this, 2);
-			recipe.AddTile(17);
-			recipe.AddRecipe();
+			//ModRecipe recipe = new ModRecipe(mod);
+			//recipe.AddIngredient(null, "ChippyRedSteelSword");
+			//recipe.SetResult(this, 2);
+			//recipe.AddTile(17);
+			//recipe.AddRecipe();
 
-			recipe = new ModRecipe(mod);
-			recipe.AddIngredient(null, "FaultyRedSteelShield");
-			recipe.SetResult(this, 3);
-			recipe.AddTile(17);
-			recipe.AddRecipe();
+			//recipe = new ModRecipe(mod);
+			//recipe.AddIngredient(null, "FaultyRedSteelShield");
+			//recipe.SetResult(this, 3);
+			//recipe.AddTile(17);
+			//recipe.AddRecipe();
 
-			recipe = new ModRecipe(mod);
-			recipe.AddIngredient(null, "RedSteelArmorPiece");
-			recipe.SetResult(this, 2);
-			recipe.AddTile(17);
-			recipe.AddRecipe();
+			//recipe = new ModRecipe(mod);
+			//recipe.AddIngredient(null, "RedSteelArmorPiece");
+			//recipe.SetResult(this, 2);
+			//recipe.AddTile(17);
+			//recipe.AddRecipe();
 		}
 	}
 }

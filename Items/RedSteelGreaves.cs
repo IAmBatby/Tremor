@@ -6,14 +6,11 @@ namespace Tremor.Items
 	[AutoloadEquip(EquipType.Legs)]
 	public class RedSteelGreaves : ModItem
 	{
-
 		public override void SetDefaults()
 		{
-
 			item.width = 22;
 			item.height = 18;
 			item.value = 360;
-
 			item.rare = 2;
 			item.defense = 5;
 		}
@@ -31,12 +28,12 @@ namespace Tremor.Items
 
 		public override void AddRecipes()
 		{
-			ModRecipe recipe = new ModRecipe(mod);
-			recipe.AddIngredient(null, "RedSteelArmorPiece", 5);
-			recipe.AddIngredient(null, "RedSteelBar", 6);
-			recipe.SetResult(this);
-			recipe.AddTile(16);
-			recipe.AddRecipe();
+			//ModRecipe recipe = new ModRecipe(mod);
+			//recipe.AddIngredient(null, "RedSteelArmorPiece", 5);
+			//recipe.AddIngredient(null, "RedSteelBar", 6);
+			//recipe.SetResult(this);
+			//recipe.AddTile(16);
+			//recipe.AddRecipe();
 		}
 
 	}

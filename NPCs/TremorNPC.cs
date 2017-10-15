@@ -577,32 +577,32 @@ namespace Tremor.NPCs
 					mod.ItemType("CarbonSteel"), Main.rand.Next(6, 12));
 			}
 
-			if ((npc.type == 21 || npc.type == 449 || npc.type == 450 || npc.type == 451 || npc.type == 452 ||
-				 npc.type == 322 || npc.type == 323 || npc.type == 324 || npc.type == 294 || npc.type == 295 ||
-				 npc.type == 296 || npc.type == 201 || npc.type == 202 || npc.type == 20 || npc.type == 450 ||
-				 npc.type == 451 || npc.type == 452) && WorldGen.shadowOrbSmashed && Main.rand.Next(8) == 0)
-			{
-				Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height,
-					mod.ItemType("RedSteelArmorPiece"));
-			}
+			//if ((npc.type == 21 || npc.type == 449 || npc.type == 450 || npc.type == 451 || npc.type == 452 ||
+			//	 npc.type == 322 || npc.type == 323 || npc.type == 324 || npc.type == 294 || npc.type == 295 ||
+			//	 npc.type == 296 || npc.type == 201 || npc.type == 202 || npc.type == 20 || npc.type == 450 ||
+			//	 npc.type == 451 || npc.type == 452) && WorldGen.shadowOrbSmashed && Main.rand.Next(8) == 0)
+			//{
+			//	Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height,
+			//		mod.ItemType("RedSteelArmorPiece"));
+			//}
 
-			if ((npc.type == 21 || npc.type == 449 || npc.type == 450 || npc.type == 451 || npc.type == 452 ||
-				 npc.type == 322 || npc.type == 323 || npc.type == 324 || npc.type == 294 || npc.type == 295 ||
-				 npc.type == 296 || npc.type == 201 || npc.type == 202 || npc.type == 20 || npc.type == 450 ||
-				 npc.type == 451 || npc.type == 452) && WorldGen.shadowOrbSmashed && Main.rand.Next(8) == 0)
-			{
-				Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height,
-					mod.ItemType("FaultyRedSteelShield"));
-			}
+			//if ((npc.type == 21 || npc.type == 449 || npc.type == 450 || npc.type == 451 || npc.type == 452 ||
+			//	 npc.type == 322 || npc.type == 323 || npc.type == 324 || npc.type == 294 || npc.type == 295 ||
+			//	 npc.type == 296 || npc.type == 201 || npc.type == 202 || npc.type == 20 || npc.type == 450 ||
+			//	 npc.type == 451 || npc.type == 452) && WorldGen.shadowOrbSmashed && Main.rand.Next(8) == 0)
+			//{
+			//	Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height,
+			//		mod.ItemType("FaultyRedSteelShield"));
+			//}
 
-			if ((npc.type == 21 || npc.type == 449 || npc.type == 450 || npc.type == 451 || npc.type == 452 ||
-				 npc.type == 322 || npc.type == 323 || npc.type == 324 || npc.type == 294 || npc.type == 295 ||
-				 npc.type == 296 || npc.type == 201 || npc.type == 202 || npc.type == 20 || npc.type == 450 ||
-				 npc.type == 451 || npc.type == 452) && WorldGen.shadowOrbSmashed && Main.rand.Next(8) == 0)
-			{
-				Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height,
-					mod.ItemType("ChippyRedSteelSword"));
-			}
+			//if ((npc.type == 21 || npc.type == 449 || npc.type == 450 || npc.type == 451 || npc.type == 452 ||
+			//	 npc.type == 322 || npc.type == 323 || npc.type == 324 || npc.type == 294 || npc.type == 295 ||
+			//	 npc.type == 296 || npc.type == 201 || npc.type == 202 || npc.type == 20 || npc.type == 450 ||
+			//	 npc.type == 451 || npc.type == 452) && WorldGen.shadowOrbSmashed && Main.rand.Next(8) == 0)
+			//{
+			//	Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height,
+			//		mod.ItemType("ChippyRedSteelSword"));
+			//}
 
 			if ((npc.type == 489) && Main.rand.Next(24) == 0)
 			{

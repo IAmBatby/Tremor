@@ -6,7 +6,6 @@ namespace Tremor.Items
 	{
 		public override void SetDefaults()
 		{
-
 			item.width = 30;
 			item.height = 28;
 			item.maxStack = 99;
@@ -19,6 +18,5 @@ namespace Tremor.Items
 			DisplayName.SetDefault("Faulty Red Steel Shield");
 			Tooltip.SetDefault("");
 		}
-
 	}
 }

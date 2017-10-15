@@ -6,15 +6,12 @@ namespace Tremor.Items
 	[AutoloadEquip(EquipType.Head)]
 	public class RedSteelHeadgear : ModItem
 	{
-
 		public override void SetDefaults()
 		{
-
 			item.width = 26;
 			item.height = 20;
 			item.value = 200;
 			item.rare = 1;
-
 			item.defense = 8;
 		}
 
@@ -42,12 +39,12 @@ namespace Tremor.Items
 
 		public override void AddRecipes()
 		{
-			ModRecipe recipe = new ModRecipe(mod);
-			recipe.AddIngredient(null, "RedSteelArmorPiece", 5);
-			recipe.AddIngredient(null, "RedSteelBar", 7);
-			recipe.SetResult(this);
-			recipe.AddTile(16);
-			recipe.AddRecipe();
+			//ModRecipe recipe = new ModRecipe(mod);
+			//recipe.AddIngredient(null, "RedSteelArmorPiece", 5);
+			//recipe.AddIngredient(null, "RedSteelBar", 7);
+			//recipe.SetResult(this);
+			//recipe.AddTile(16);
+			//recipe.AddRecipe();
 		}
 	}
 }

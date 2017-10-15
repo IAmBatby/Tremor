@@ -6,7 +6,6 @@ namespace Tremor.Items
 	{
 		public override void SetDefaults()
 		{
-
 			item.width = 20;
 			item.height = 20;
 			item.maxStack = 99;
@@ -19,6 +18,5 @@ namespace Tremor.Items
 			DisplayName.SetDefault("Chippy Red Steel Sword");
 			Tooltip.SetDefault("");
 		}
-
 	}
 }
