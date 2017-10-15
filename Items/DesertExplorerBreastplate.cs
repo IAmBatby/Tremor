@@ -21,8 +21,8 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Desert Explorer Breastplate");
-			Tooltip.SetDefault("Increases alchemical damage by 19%\n" +
-"Increases throwing damage by 35%");
+			Tooltip.SetDefault("19% increased alchemical damage\n" +
+"35% increased throwing damage");
 		}
 
 		public override void UpdateEquip(Player player)

@@ -32,8 +32,8 @@ namespace Tremor.ZombieEvent.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Specter Hood");
-			Tooltip.SetDefault("Increases melee damage by 10%\n" +
-			                   "Increases minion damage by 10%");
+			Tooltip.SetDefault("10% increased melee damage\n" +
+			                   "10% increased minion damage");
 		}
 
 		public override void UpdateEquip(Player player)

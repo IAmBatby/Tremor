@@ -24,7 +24,7 @@ namespace Tremor.Items
 		{
 			DisplayName.SetDefault("Nano Helmet");
 			Tooltip.SetDefault("Maximum mana increased by 60\n" +
-"Increases critical strike chance by 8%");
+"8% increased critical strike chance");
 		}
 
 		public override void UpdateEquip(Player player)

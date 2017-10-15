@@ -21,7 +21,7 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Magium Greaves");
-			Tooltip.SetDefault("Increases movement speed by 25%\n" +
+			Tooltip.SetDefault("25% increased movement speed\n" +
 "Increases maximum mana by 40");
 		}
 

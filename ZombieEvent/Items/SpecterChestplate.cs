@@ -21,7 +21,7 @@ namespace Tremor.ZombieEvent.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Specter Chestplate");
-			Tooltip.SetDefault("Increases melee damage by 12%\n" +
+			Tooltip.SetDefault("12% increased melee damage\n" +
 	  "Increases maximum number of minions by 2");
 		}
 

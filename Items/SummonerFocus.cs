@@ -22,7 +22,7 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Summoner Focus");
-			Tooltip.SetDefault("Increases minion damage by 8%\n" +
+			Tooltip.SetDefault("8% increased minion damage\n" +
 "Increases your max number of minions");
 			Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(6, 4));
 		}

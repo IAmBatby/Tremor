@@ -22,7 +22,7 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Summoner Soul");
-			Tooltip.SetDefault("Increases minion damage by 12%\n" +
+			Tooltip.SetDefault("12% increased minion damage\n" +
 "Increases your max number of minions");
 			Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(6, 6));
 		}
