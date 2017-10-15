@@ -32,6 +32,12 @@ namespace Tremor.Items
 		{
 			return body.type == mod.ItemType("InvarBreastplate") && legs.type == mod.ItemType("InvarGreaves");
 		}
+
+		public override void UpdateArmorSet(Player player)
+		{
+			player.setBonus = "+2 defense";
+			player.statDefense += 2;
+		}
 	}
 
 	[AutoloadEquip(EquipType.Head)]

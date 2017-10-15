@@ -35,6 +35,19 @@ WorldGen Chests:
 
 Items:
 - Fixed Extended Boom Flask not benefitting from the Flask Core effect
+- Undead Warriors variants are now named. Savage are more common, Cruel and Relentless less common than Savage
+- Undead Warriors stats changed, they are now properly scaling into hardmode and expert mode. They all have slightly increased defense and knockback resist to match vanilla zombies
+- Undead Warriors gain more life and damage into hardmode. They also gain increased life and damage per player in expert mode
+- Undead Warriors will drop Invar items less frequently, all drops were 20% before and now depend on the variant. Relentless can drop all Invar items, other variants may only drop a certain Invar item. Relentless variant has the highest droprates.
+- The Invar drops now craft into 1 less Invar Bar
+- The Invar drops are now worth however many Invar Bars they craft into
+- Invar Bar is now valued at 1 silver each
+- Melted Invar Sword was renamed to Broken Invar Sword
+- Changed Invar armor pieces prices to match their crafting cost
+- Invar armor pieces are now 'reinforceable' by crafting the reinforced variant at an anvil, which requires the original piece and an additional 2 Invar Bars
+- Invar Helmet now grants +1 defense as its own bonus, and +2 defense as its set bonus
+- Invar Headgear now grants 6% melee damage as its set bonus
+- Invar Hat now grants 10% melee speed as its set bonus
 
 Other:
 - Fixed silently Caught Exception: Index was outside the bounds of the array.   at Tremor.NPCs.Bosses.CogLord.CogLordProbe.AI()
