@@ -33,7 +33,12 @@ namespace Tremor
 	public static class TremorUtils
 	{
 		public static bool HasBuff(this Player player, int buffType)
-			=> player.FindBuffIndex(buffType) != -1;
+		{
+			if (player.whoAmI != -1 || buffType < 0 || buffType >= player.buffImmune.Length)
+				return false;
+
+			return player.FindBuffIndex(buffType) != -1;
+		} 
 
 		public static bool AddItem(this Chest chest, int type, int? stack = null)
 		{
@@ -48,6 +53,15 @@ namespace Tremor
 				}
 			}
 			return false;
+		}
+
+		public static string NamespaceToPathSkipFirst(this Type type)
+		{
+			string input = type.NamespaceToPath();
+			int i = input.IndexOf('.');
+			return i >= 0
+				? input.Substring(input.IndexOf('.') + 1)
+				: input;
 		}
 
 		public static string NamespaceToPath(this Type type)

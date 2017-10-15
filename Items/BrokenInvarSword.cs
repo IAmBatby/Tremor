@@ -4,20 +4,20 @@ using Terraria.ModLoader;
 
 namespace Tremor.Items
 {
-	public class BrokenInvarShield : ModItem
+	public class BrokenInvarSword : ModItem
 	{
 		public override void SetDefaults()
 		{
 			item.width = 28;
 			item.height = 30;
 			item.maxStack = 990;
-			item.value = Item.sellPrice(silver: 2);
+			item.value = Item.sellPrice(silver: 1);
 			item.rare = 1;
 		}
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Broken Invar Shield");
+			DisplayName.SetDefault("Broken Invar Sword");
 			Tooltip.SetDefault("Broken and useless... But its materials could be reused");
 		}
 
@@ -25,7 +25,7 @@ namespace Tremor.Items
 		{
 			ModRecipe recipe = new ModRecipe(mod);
 			recipe.AddIngredient(this);
-			recipe.SetResult(mod.ItemType<InvarBar>(), 2);
+			recipe.SetResult(mod.ItemType<InvarBar>());
 			recipe.AddTile(TileID.Furnaces);
 			recipe.AddRecipe();
 		}

@@ -1,3 +1,4 @@
+using Terraria;
 using Terraria.ModLoader;
 
 namespace Tremor.Items
@@ -6,39 +7,22 @@ namespace Tremor.Items
 	{
 		public override void SetDefaults()
 		{
-
 			item.width = 30;
 			item.height = 24;
-			item.maxStack = 99;
-			item.value = 300;
+			item.maxStack = 999;
+			item.value = Item.sellPrice(silver: 1, copper: 25);
 			item.rare = 1;
 		}
 
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Invar Bar");
-			Tooltip.SetDefault("");
+			Tooltip.SetDefault("Can be used to make Invar equipment at an anvil");
 		}
 
 		public override void AddRecipes()
 		{
-			ModRecipe recipe = new ModRecipe(mod);
-			recipe.AddIngredient(null, "OldInvarPlate");
-			recipe.SetResult(this, 4);
-			recipe.AddTile(17);
-			recipe.AddRecipe();
 
-			recipe = new ModRecipe(mod);
-			recipe.AddIngredient(null, "BrokenInvarShield");
-			recipe.SetResult(this, 3);
-			recipe.AddTile(17);
-			recipe.AddRecipe();
-
-			recipe = new ModRecipe(mod);
-			recipe.AddIngredient(null, "MeltedInvarSword");
-			recipe.SetResult(this, 2);
-			recipe.AddTile(17);
-			recipe.AddRecipe();
 		}
 	}
 }

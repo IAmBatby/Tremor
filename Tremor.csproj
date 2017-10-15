@@ -213,6 +213,7 @@
     <Compile Include="NPCs\TownNPCs\Warlock.cs" />
     <Compile Include="NPCs\TownNPCs\Witch.cs" />
     <Compile Include="RecipeUtils.cs" />
+    <Compile Include="TremorAbstractItem.cs" />
     <Compile Include="TremorGlobalTile.cs" />
     <Compile Include="DungeonGenn\DungeonWorld.cs" />
     <Compile Include="Dusts\Ball.cs" />
@@ -1265,7 +1266,7 @@
     <Compile Include="Items\MechaSprayer.cs" />
     <Compile Include="Items\Megalodon.cs" />
     <Compile Include="Items\Megavolt.cs" />
-    <Compile Include="Items\MeltedInvarSword.cs" />
+    <Compile Include="Items\BrokenInvarSword.cs" />
     <Compile Include="Items\MeteorBlade.cs" />
     <Compile Include="Items\MeteoriteGolemBanner.cs" />
     <Compile Include="Items\MeteorMask.cs" />
@@ -4942,7 +4943,7 @@
     <Content Include="Items\MechaSprayer.png" />
     <Content Include="Items\Megalodon.png" />
     <Content Include="Items\Megavolt.png" />
-    <Content Include="Items\MeltedInvarSword.png" />
+    <Content Include="Items\BrokenInvarSword.png" />
     <Content Include="Items\MeteorBlade.png" />
     <Content Include="Items\MeteoriteGolemBanner.png" />
     <Content Include="Items\MeteorMask.png" />

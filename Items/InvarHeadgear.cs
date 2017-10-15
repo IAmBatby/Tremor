@@ -1,24 +1,23 @@
 using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace Tremor.Items
 {
-	[AutoloadEquip(EquipType.Head)]
-	public class InvarHeadgear : ModItem
+	public abstract class _InvarHeadgear : TremorAbstractItem
 	{
+		public override string Texture => $"{typeof(_InvarHeadgear).NamespaceToPath()}/InvarHeadgear";
 
-		public override void SetDefaults()
+		protected sealed override void Defaults()
 		{
-
 			item.width = 32;
 			item.height = 26;
-			item.value = 400;
-
+			item.value = Item.sellPrice(silver: 9);
 			item.rare = 1;
 			item.defense = 1;
 		}
 
-		public override void SetStaticDefaults()
+		protected sealed override void StaticDefaults()
 		{
 			DisplayName.SetDefault("Invar Headgear");
 			Tooltip.SetDefault("6% increased melee damage");
@@ -36,15 +35,46 @@ namespace Tremor.Items
 
 		public override void UpdateArmorSet(Player player)
 		{
-			player.setBonus = "6% increased melee crit";
-			player.meleeCrit += 6;
+			player.setBonus = "6% increased melee damage";
+			player.meleeDamage += 0.06f;
 		}
+	}
+
+	[AutoloadEquip(EquipType.Head)]
+	public class ReinforcedInvarHeadgear : _InvarHeadgear
+	{
+		public override void SafeDefaults()
+		{
+			item.defense += 1;
+			item.value = Item.sellPrice(silver: 11);
+		}
+
+		public override void SafeStaticDefaults()
+		{
+			DisplayName.SetDefault("Reinforced Invar Headgear");
+			Tooltip.SetDefault(Tooltip.GetDefault() + "\nReinforced to grant +1 defense");
+		}
+
 		public override void AddRecipes()
 		{
 			ModRecipe recipe = new ModRecipe(mod);
-			recipe.AddIngredient(null, "InvarBar", 8);
+			recipe.AddIngredient(mod.ItemType<InvarHeadgear>());
+			recipe.AddIngredient(mod.ItemType<InvarBar>(), 2);
 			recipe.SetResult(this);
-			recipe.AddTile(16);
+			recipe.AddTile(TileID.Anvils);
+			recipe.AddRecipe();
+		}
+	}
+
+	[AutoloadEquip(EquipType.Head)]
+	public class InvarHeadgear : _InvarHeadgear
+	{
+		public override void AddRecipes()
+		{
+			ModRecipe recipe = new ModRecipe(mod);
+			recipe.AddIngredient(mod.ItemType<InvarBar>(), 8);
+			recipe.SetResult(this);
+			recipe.AddTile(TileID.Anvils);
 			recipe.AddRecipe();
 		}
 	}

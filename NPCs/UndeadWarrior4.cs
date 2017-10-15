@@ -13,16 +13,16 @@ namespace Tremor.NPCs
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Undead Warrior");
+			DisplayName.SetDefault("Relentless Undead Warrior");
 			Main.npcFrameCount[npc.type] = 15;
 		}
 
 		public override void SetDefaults()
 		{
-			npc.lifeMax = 80;
-			npc.damage = 16;
-			npc.defense = 4;
-			npc.knockBackResist = 0.3f;
+			npc.lifeMax = Main.hardMode ? 100 : 80;
+			npc.damage = Main.hardMode ? 20 : 40;
+			npc.defense = 6;
+			npc.knockBackResist = 0.5f;
 			npc.width = 36;
 			npc.height = 44;
 			animationType = 21;
@@ -35,15 +35,21 @@ namespace Tremor.NPCs
 			bannerItem = mod.ItemType("UndeadWarriorBanner");
 		}
 
+		public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
+		{
+			npc.lifeMax += 20 + 10 * numPlayers;
+			npc.damage += 2 * numPlayers;
+		}
+
 		public override void NPCLoot()
 		{
-			if (Main.rand.Next(5) == 0)
-				this.NewItem(mod.ItemType<MeltedInvarSword>());
-			if (Main.rand.Next(5) == 0)
+			if (Main.rand.NextBool(10))
+				this.NewItem(mod.ItemType<BrokenInvarSword>());
+			if (Main.rand.NextBool(10))
 				this.NewItem(mod.ItemType<BrokenInvarShield>());
-			if (Main.rand.Next(5) == 0)
+			if (Main.rand.NextBool(10))
 				this.NewItem(mod.ItemType<OldInvarPlate>());
-			if (Main.rand.Next(30) == 0)
+			if (Main.rand.NextBool(30))
 				this.NewItem(mod.ItemType<TornPapyrus>());
 		}
 
@@ -64,6 +70,6 @@ namespace Tremor.NPCs
 		}
 
 		public override float SpawnChance(NPCSpawnInfo spawnInfo)
-			=> Helper.NormalSpawn(spawnInfo) && Helper.NoZoneAllowWater(spawnInfo) && !Main.dayTime && spawnInfo.spawnTileY < Main.worldSurface ? 0.1f : 0f;
+			=> Helper.NormalSpawn(spawnInfo) && Helper.NoZoneAllowWater(spawnInfo) && !Main.dayTime && spawnInfo.spawnTileY < Main.worldSurface ? 0.025f : 0f;
 	}
 }
