@@ -34,7 +34,7 @@ namespace Tremor.Items
 
 			player.rangedDamage += 0.15f;
 			player.rangedCrit += 12;
-			
+
 			player.thrownDamage += 0.15f;
 			player.thrownCrit += 12;
 

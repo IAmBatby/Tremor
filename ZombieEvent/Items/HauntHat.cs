@@ -10,18 +10,18 @@ namespace Tremor.ZombieEvent.Items
 		{
 			item.CloneDefaults(ItemID.Carrot);
 
-                        item.useTime = 25;
-                        item.useAnimation = 25;
+			item.useTime = 25;
+			item.useAnimation = 25;
 
 			item.shoot = mod.ProjectileType("TheHauntPro");
 			item.buffType = mod.BuffType("HauntPetBuff");
 		}
 
-    public override void SetStaticDefaults()
-    {
-      DisplayName.SetDefault("Haunt Hat");
-      Tooltip.SetDefault("Summons a friendly ghost");
-    }
+		public override void SetStaticDefaults()
+		{
+			DisplayName.SetDefault("Haunt Hat");
+			Tooltip.SetDefault("Summons a friendly ghost");
+		}
 
 		public override void UseStyle(Player player)
 		{

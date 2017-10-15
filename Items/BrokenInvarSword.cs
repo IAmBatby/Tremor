@@ -1,11 +1,33 @@
+using System.Reflection;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace Tremor.Items
 {
+	// for legacy loading
+	public class MeltedInvarSword : ModItem
+	{
+		public override string Texture => $"{typeof(BrokenInvarSword).NamespaceToPath()}/BrokenInvarSword";
+
+		public override void SetDefaults()
+		{
+			item.CloneDefaults(mod.ItemType<BrokenInvarSword>());
+			item.type = mod.ItemType<BrokenInvarSword>();
+			typeof(Item).GetField("modItem", BindingFlags.Instance | BindingFlags.NonPublic)?.SetValue(item, new BrokenInvarSword());
+		}
+	}
+
 	public class BrokenInvarSword : ModItem
 	{
+		//public override string Texture => $"{typeof(BrokenInvarSword).NamespaceToPath()}/BrokenInvarSword";
+
+		//public override bool Autoload(ref string name)
+		//{
+		//	name = "MeltedInvarSword";
+		//	return mod.Properties.Autoload;
+		//}
+
 		public override void SetDefaults()
 		{
 			item.width = 28;
