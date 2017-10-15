@@ -30,7 +30,7 @@ namespace Tremor.Items
 
 		public override bool IsArmorSet(Item head, Item body, Item legs)
 		{
-			return body.type == mod.ItemType("InvarBreastplate") && legs.type == mod.ItemType("InvarGreaves");
+			return body.type == mod.ItemType<InvarBreastplate>() && legs.type == mod.ItemType<InvarGreaves>() || body.type == mod.ItemType<ReinforcedInvarBreastplate>() && legs.type == mod.ItemType<ReinforcedInvarGreaves>();
 		}
 
 		public override void UpdateArmorSet(Player player)
