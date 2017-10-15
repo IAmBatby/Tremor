@@ -54,7 +54,7 @@ namespace Tremor.NPCs.TownNPCs
 		}
 
 		public override bool CanTownNPCSpawn(int numTownNPCs, int money)
-			=> Main.player.Any(player => player.dead);
+			=> Main.player.Any(player => !player.dead);
 
 		private readonly WeightedRandom<string> _names = new[]
 		{
@@ -102,7 +102,11 @@ namespace Tremor.NPCs.TownNPCs
 				shop.AddUniqueItem(ref nextSlot, mod.ItemType<Quiver>());
 				shop.AddUniqueItem(ref nextSlot, mod.ItemType<MiniGun>());
 				shop.AddUniqueItem(ref nextSlot, ItemID.JestersArrow);
+				shop.AddUniqueItem(ref nextSlot, mod.ItemType<LeatherHat>());
+				shop.AddUniqueItem(ref nextSlot, mod.ItemType<LeatherShirt>());
+				shop.AddUniqueItem(ref nextSlot, mod.ItemType<LeatherGreaves>());
 			}
+
 			if (NPC.downedBoss2)
 			{
 				shop.AddUniqueItem(ref nextSlot, ItemID.UnholyArrow);

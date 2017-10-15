@@ -37,30 +37,17 @@ namespace Tremor.NPCs
 
 		public override void NPCLoot()
 		{
-			if (Main.rand.Next(20) == 0)
-				this.NewItem(mod.ItemType<LeatherHat>());
-			if (Main.rand.Next(20) == 0)
-				this.NewItem(mod.ItemType<LeatherGreaves>());
-			if (Main.rand.Next(20) == 0)
-				this.NewItem(mod.ItemType<LeatherShirt>());
-			if (Main.rand.Next(20) == 0)
-				this.NewItem(mod.ItemType<ChainCoif>());
-			if (Main.rand.Next(20) == 0)
-				this.NewItem(mod.ItemType<ChainGreaves>());
-			if (Main.rand.Next(20) == 0)
-				this.NewItem(mod.ItemType<Chainmail>());
-
-			if (Main.rand.Next(3) == 0)
+			if (Main.rand.NextBool(3))
 				this.NewItem(ItemID.LesserHealingPotion);
-			if (Main.rand.Next(3) == 0)
+			if (Main.rand.NextBool(3))
 				this.NewItem(ItemID.LesserManaPotion);
-			if (Main.rand.Next(3) == 0)
+			if (Main.rand.NextBool(3))
 				this.NewItem(ItemID.Bottle);
-			if (Main.rand.Next(3) == 0)
+			if (Main.rand.NextBool(3))
 				this.NewItem(ItemID.Torch);
-			if (Main.rand.Next(3) == 0)
+			if (Main.rand.NextBool(3))
 				this.NewItem(ItemID.Chain);
-			if (Main.rand.Next(3) == 0)
+			if (Main.rand.NextBool(3))
 				this.NewItem(ItemID.Leather);
 		}
 

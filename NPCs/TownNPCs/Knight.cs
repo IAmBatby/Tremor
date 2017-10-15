@@ -1,3 +1,4 @@
+using System.Linq;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -49,7 +50,8 @@ namespace Tremor.NPCs.TownNPCs
 			animationType = NPCID.GoblinTinkerer;
 		}
 
-		public override bool CanTownNPCSpawn(int numTownNPCs, int money) => true;
+		public override bool CanTownNPCSpawn(int numTownNPCs, int money)
+			=> Main.player.Any(player => !player.dead);
 
 		private readonly WeightedRandom<string> _names = new[]
 		{
@@ -98,6 +100,9 @@ namespace Tremor.NPCs.TownNPCs
 			{
 				shop.AddUniqueItem(ref nextSlot, mod.ItemType<TombRaider>());
 				shop.AddUniqueItem(ref nextSlot, mod.ItemType<SpikeShield>());
+				shop.AddUniqueItem(ref nextSlot, mod.ItemType<ChainCoif>());
+				shop.AddUniqueItem(ref nextSlot, mod.ItemType<Chainmail>());
+				shop.AddUniqueItem(ref nextSlot, mod.ItemType<ChainGreaves>());
 			}
 			if (NPC.downedBoss2)
 			{

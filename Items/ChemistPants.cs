@@ -6,13 +6,10 @@ namespace Tremor.Items
 	[AutoloadEquip(EquipType.Legs)]
 	public class ChemistPants : ModItem
 	{
-
 		public override void SetDefaults()
 		{
-
 			item.width = 38;
 			item.height = 22;
-
 			item.value = 10000;
 			item.rare = 2;
 			item.defense = 2;

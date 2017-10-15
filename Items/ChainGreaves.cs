@@ -1,3 +1,5 @@
+using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace Tremor.Items
@@ -5,13 +7,11 @@ namespace Tremor.Items
 	[AutoloadEquip(EquipType.Legs)]
 	public class ChainGreaves : ModItem
 	{
-
 		public override void SetDefaults()
 		{
-
 			item.width = 22;
 			item.height = 14;
-			item.value = 600;
+			item.value = Item.sellPrice(silver: 6);
 			item.rare = 1;
 			item.defense = 2;
 		}
@@ -22,5 +22,14 @@ namespace Tremor.Items
 			Tooltip.SetDefault("");
 		}
 
+		public override void AddRecipes()
+		{
+			ModRecipe recipe = new ModRecipe(mod);
+			recipe.AddIngredient(ItemID.IronBar, 20);
+			recipe.AddIngredient(mod.ItemType<InvarBar>());
+			recipe.AddIngredient(ItemID.Chain);
+			recipe.anyIronBar = true;
+			recipe.SetResult(this);
+		}
 	}
 }
