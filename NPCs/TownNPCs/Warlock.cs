@@ -1,3 +1,4 @@
+using System.Linq;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -51,7 +52,7 @@ namespace Tremor.NPCs.TownNPCs
 		}
 
 		public override bool CanTownNPCSpawn(int numTownNPCs, int money)
-			=> NPC.downedBoss2;
+			=> NPC.downedBoss2 && Main.player.Any(player => !player.dead);
 
 		private readonly WeightedRandom<string> _names = new[]
 		{

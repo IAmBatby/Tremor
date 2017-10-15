@@ -49,7 +49,7 @@ namespace Tremor.NPCs.TownNPCs
 		}
 
 		public override bool CanTownNPCSpawn(int numTownNPCs, int money)
-			=> Main.player.Any(player => player.active && player.inventory.Any(item => item != null && item.type == mod.ItemType("SuspiciousLookingPresent")));
+			=> Main.player.Any(player => !player.dead && player.inventory.Any(item => item != null && item.type == mod.ItemType("SuspiciousLookingPresent")));
 
 		private readonly WeightedRandom<string> _names = new[]
 		{

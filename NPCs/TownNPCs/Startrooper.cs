@@ -1,3 +1,4 @@
+using System.Linq;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
@@ -50,7 +51,7 @@ namespace Tremor.NPCs.TownNPCs
 		}
 
 		public override bool CanTownNPCSpawn(int numTownNPCs, int money)
-			=> TremorWorld.Boss.SpaceWhale.IsDowned();
+			=> TremorWorld.Boss.SpaceWhale.IsDowned() && Main.player.Any(player => !player.dead);
 
 		private readonly WeightedRandom<string> _names = new[]
 		{
