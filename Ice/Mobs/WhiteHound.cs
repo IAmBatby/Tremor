@@ -3,10 +3,10 @@ using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Tremor.Ice.Items;
 
 namespace Tremor.Ice.Mobs
 {
-
 	public class WhiteHound : ModNPC
 	{
 		public override void SetStaticDefaults()
@@ -17,10 +17,10 @@ namespace Tremor.Ice.Mobs
 
 		public override void SetDefaults()
 		{
-			npc.lifeMax = 150;
-			npc.damage = 76;
-			npc.defense = 35;
-			npc.knockBackResist = 0.3f;
+			npc.lifeMax = 200;
+			npc.damage = 45;
+			npc.defense = 10;
+			npc.knockBackResist = 0.1f;
 			npc.width = 62;
 			npc.height = 32;
 			animationType = 329;
@@ -28,7 +28,7 @@ namespace Tremor.Ice.Mobs
 			npc.npcSlots = 0.5f;
 			npc.HitSound = SoundID.NPCHit6;
 			npc.DeathSound = SoundID.NPCDeath5;
-			npc.value = Item.buyPrice(0, 0, 5, 3);
+			npc.value = Item.buyPrice(silver: 5, copper: 3);
 		}
 
 		public override void HitEffect(int hitDirection, double damage)
@@ -49,15 +49,38 @@ namespace Tremor.Ice.Mobs
 			}
 		}
 
+		public override void NPCLoot()
+		{
+			// 20% chance to drop a few ice blocks
+			if (Main.rand.NextBool(5))
+			{
+				this.NewItem(mod.ItemType<IceBlockB>(), 2 + Main.rand.Next(4) + (Main.hardMode ? 1 : 0));
+			}
+			// 10% chance to drop a few ice ores
+			if (Main.rand.NextBool(10))
+			{
+				this.NewItem(mod.ItemType<Icicle>(), 2 + Main.rand.Next(3) + (Main.hardMode ? 1 : 0));
+			}
+		}
+
 		public override void ModifyHitPlayer(Player target, ref int damage, ref bool crit)
 		{
-			target.AddBuff(44, 60);
+			if (Main.hardMode || Main.expertMode)
+			{
+				target.AddBuff(BuffID.Frostburn, Main.rand.Next(1, 3) * 60);
+			}
 		}
 
 		public override float SpawnChance(NPCSpawnInfo spawnInfo)
 		{
 			int[] TileArray2 = { mod.TileType("IceOre"), mod.TileType("IceBlock"), mod.TileType("VeryVeryIce"), mod.TileType("DungeonBlock") };
-			return TileArray2.Contains(Main.tile[spawnInfo.spawnTileX, spawnInfo.spawnTileY].type) && Main.hardMode && !NPC.AnyNPCs(422) && !NPC.AnyNPCs(493) && !NPC.AnyNPCs(507) && !NPC.AnyNPCs(517) ? 15f : 0f;
+			return TileArray2.Contains(Main.tile[spawnInfo.spawnTileX, spawnInfo.spawnTileY].type) 
+				&& Main.hardMode
+				&& !NPC.AnyNPCs(NPCID.LunarTowerVortex)
+			    && !NPC.AnyNPCs(NPCID.LunarTowerStardust)
+			    && !NPC.AnyNPCs(NPCID.LunarTowerNebula)
+			    && !NPC.AnyNPCs(NPCID.LunarTowerSolar) 
+				? 15f : 0f;
 		}
 
 	}

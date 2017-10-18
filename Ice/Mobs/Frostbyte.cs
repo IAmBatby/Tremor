@@ -2,7 +2,9 @@ using System;
 using System.Linq;
 using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
+using Tremor.Ice.Items;
 
 namespace Tremor.Ice.Mobs
 {
@@ -16,34 +18,50 @@ namespace Tremor.Ice.Mobs
 
 		public override void SetDefaults()
 		{
-			npc.lifeMax = 50;
-			npc.damage = 13;
-			npc.defense = 12;
-			npc.knockBackResist = 0.6f;
+			npc.lifeMax = Main.hardMode ? 80 : 20;
+			npc.damage = Main.hardMode ? 26 : 4;
+			npc.defense = Main.hardMode ? 12 : 3;
+			npc.knockBackResist = 0.2f;
 			npc.width = 25;
 			npc.height = 20;
 			animationType = 3;
 			npc.aiStyle = -1;
 			npc.npcSlots = 1f;
-			npc.value = Item.buyPrice(0, 0, 10, 5);
+			npc.value = Item.buyPrice(silver: 10, copper : 5);
 		}
 
 		public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
 		{
-			npc.lifeMax = npc.lifeMax * 1;
-			npc.damage = npc.damage * 1;
+			npc.lifeMax += 5 * numPlayers;
+			npc.damage += 2 * numPlayers;
 		}
 
 		public override float SpawnChance(NPCSpawnInfo spawnInfo)
 		{
 			int[] TileArray2 = { mod.TileType("IceOre"), mod.TileType("IceBlock"), mod.TileType("VeryVeryIce"), mod.TileType("DungeonBlock") };
-			return TileArray2.Contains(Main.tile[spawnInfo.spawnTileX, spawnInfo.spawnTileY].type) && !NPC.AnyNPCs(422) && !NPC.AnyNPCs(493) && !NPC.AnyNPCs(507) && !NPC.AnyNPCs(517) ? 15f : 0f;
+			return TileArray2.Contains(Main.tile[spawnInfo.spawnTileX, spawnInfo.spawnTileY].type)
+				&& !NPC.AnyNPCs(NPCID.LunarTowerVortex)
+			    && !NPC.AnyNPCs(NPCID.LunarTowerStardust)
+			    && !NPC.AnyNPCs(NPCID.LunarTowerNebula)
+			    && !NPC.AnyNPCs(NPCID.LunarTowerSolar) 
+				   ? 15f : 0f;
 		}
 
 		public override void NPCLoot()
 		{
 			if (Main.rand.Next(28) == 0)
 				Item.NewItem((int)npc.position.X, (int)npc.position.Y, 12, 12, mod.ItemType("FrostbyteEye"), 1);
+
+			// 10% chance to drop a few ice blocks
+			if (Main.rand.NextBool(10))
+			{
+				this.NewItem(mod.ItemType<IceBlockB>(), 1 + Main.rand.Next(3) + (Main.hardMode ? 1 : 0));
+			}
+			// 5% chance to drop a few ice ores
+			if (Main.rand.NextBool(20))
+			{
+				this.NewItem(mod.ItemType<Icicle>(), 1 + Main.rand.Next() + (Main.hardMode ? 1 : 0));
+			}
 		}
 
 		public override void AI()
@@ -75,7 +93,10 @@ namespace Tremor.Ice.Mobs
 
 		public override void ModifyHitPlayer(Player target, ref int damage, ref bool crit)
 		{
-			target.AddBuff(44, 60);
+			if (Main.hardMode || Main.expertMode)
+			{
+				target.AddBuff(BuffID.Frostburn, Main.rand.Next(1, 3) * 60);
+			}
 		}
 	}
 }
