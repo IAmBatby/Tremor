@@ -54,7 +54,10 @@ namespace Tremor.Items
 				player.QuickSpawnItem(mod.ItemType("AndasMask"));
 			}
 
-			player.TryGettingDevArmor();
+			if (Main.hardMode)
+			{
+				player.TryGettingDevArmor();
+			}
 			player.QuickSpawnItem(mod.ItemType("AndasCore"));
 			player.QuickSpawnItem(3544, Main.rand.Next(10, 25));
 			player.QuickSpawnItem(mod.ItemType("InfernoSoul"), Main.rand.Next(8, 15));

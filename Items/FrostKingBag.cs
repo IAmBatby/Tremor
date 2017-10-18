@@ -37,7 +37,10 @@ namespace Tremor.Items
 			}
 			player.QuickSpawnItem(mod.ItemType("EdgeofFrostKing"));
 			player.QuickSpawnItem(mod.ItemType("FrostoneOre"), Main.rand.Next(24, 42));
-			player.TryGettingDevArmor();
+			if (Main.hardMode)
+			{
+				player.TryGettingDevArmor();
+			}
 		}
 
 	}

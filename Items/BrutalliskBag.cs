@@ -64,6 +64,10 @@ namespace Tremor.Items
 			}
 			player.QuickSpawnItem(mod.ItemType("BrutalliskCrystal"));
 			player.QuickSpawnItem(mod.ItemType("Aquamarine"), Main.rand.Next(10, 18));
+			if (Main.hardMode)
+			{
+				player.TryGettingDevArmor();
+			}
 		}
 	}
 }

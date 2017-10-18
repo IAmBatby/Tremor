@@ -52,6 +52,7 @@ White Walker:
 Bosses:
 - Fixed Paradox Titan (Titan Soul) and Wall of Shadows not registering as kill
 - Fixed bosses being seen as defeated for new worlds
+- Fixed boss bags being able to give dev sets before Hardmode
 - All boss summon items show the summon requirements in their tooltip
 - Additional info for summons have been removed from Boss Checklist, as they are now available in the tooltip
 - The requirements were checked for all items, the following things were found:

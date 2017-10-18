@@ -53,7 +53,10 @@ namespace Tremor.Items
 			{
 				player.QuickSpawnItem(mod.ItemType("BadApple"));
 			}
-			player.TryGettingDevArmor();
+			if (Main.hardMode)
+			{
+				player.TryGettingDevArmor();
+			}
 			player.QuickSpawnItem(mod.ItemType("GoldenStar"));
 			player.QuickSpawnItem(mod.ItemType("LongFuse"));
 		}

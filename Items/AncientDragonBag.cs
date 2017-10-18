@@ -48,7 +48,10 @@ namespace Tremor.Items
 				player.QuickSpawnItem(mod.ItemType("AncientDragonMask"));
 			}
 
-			player.TryGettingDevArmor();
+			if (Main.hardMode)
+			{
+				player.TryGettingDevArmor();
+			}
 			player.QuickSpawnItem(mod.ItemType("AncientSoul"));
 			player.QuickSpawnItem(188, Main.rand.Next(5, 15));
 		}

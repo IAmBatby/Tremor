@@ -42,7 +42,10 @@ namespace Tremor.NPCs.Bosses.Motherboard.Items
 				player.QuickSpawnItem(mod.ItemType<MotherboardMask>());
 			}
 
-			player.TryGettingDevArmor();
+			if (Main.hardMode)
+			{
+				player.TryGettingDevArmor();
+			}
 		}
 
 	}

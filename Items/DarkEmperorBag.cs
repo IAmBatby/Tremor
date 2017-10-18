@@ -7,7 +7,6 @@ namespace Tremor.Items
 	{
 		public override void SetDefaults()
 		{
-
 			item.maxStack = 999;
 			item.consumable = true;
 			item.width = 24;
@@ -51,6 +50,11 @@ namespace Tremor.Items
 			player.QuickSpawnItem(mod.ItemType("SBCCannonballAmmo"), Main.rand.Next(50, 150));
 			player.QuickSpawnItem(mod.ItemType("DarkGel"), Main.rand.Next(50, 100));
 			player.QuickSpawnItem(mod.ItemType("SoulofFight"), Main.rand.Next(20, 30));
+
+			if (Main.hardMode)
+			{
+				player.TryGettingDevArmor();
+			}
 		}
 	}
 }

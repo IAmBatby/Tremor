@@ -50,7 +50,10 @@ namespace Tremor.Items
 				player.QuickSpawnItem(mod.ItemType("DopelgangerCandle"));
 			}
 			player.QuickSpawnItem(mod.ItemType("GlorianaWrath"));
-			player.TryGettingDevArmor();
+			if (Main.hardMode)
+			{
+				player.TryGettingDevArmor();
+			}
 			player.QuickSpawnItem(mod.ItemType("ChaosBar"), Main.rand.Next(15, 25));
 		}
 

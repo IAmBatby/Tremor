@@ -33,7 +33,10 @@ namespace Tremor.Items
 			{
 				player.QuickSpawnItem(mod.ItemType("FungusBeetleMask"));
 			}
-			player.TryGettingDevArmor();
+			if (Main.hardMode)
+			{
+				player.TryGettingDevArmor();
+			}
 			player.QuickSpawnItem(mod.ItemType("GoldenGlowingRing"));
 			player.QuickSpawnItem(mod.ItemType("FungusElement"), Main.rand.Next(10, 32));
 		}

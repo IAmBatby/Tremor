@@ -30,7 +30,10 @@ namespace Tremor.Invasion
 
 		public override void OpenBossBag(Player player)
 		{
-			player.TryGettingDevArmor();
+			if (Main.hardMode)
+			{
+				player.TryGettingDevArmor();
+			}
 			if (Main.rand.Next(7) == 0)
 			{
 				player.QuickSpawnItem(mod.ItemType("ParadoxTitanMask"));

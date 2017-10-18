@@ -50,7 +50,10 @@ namespace Tremor.NPCs.Bosses.CogLord.Items
 			{
 				player.QuickSpawnItem(mod.ItemType("BrassChip"));
 			}
-			player.TryGettingDevArmor();
+			if (Main.hardMode)
+			{
+				player.TryGettingDevArmor();
+			}
 			player.QuickSpawnItem(mod.ItemType("HeatCore"));
 			player.QuickSpawnItem(mod.ItemType("BrassNugget"), Main.rand.Next(18, 32));
 		}

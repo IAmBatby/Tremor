@@ -47,7 +47,10 @@ namespace Tremor.Items
 					player.QuickSpawnItem(mod.ItemType("ShockwaveClaymore"));
 					break;
 			}
-			player.TryGettingDevArmor();
+			if (Main.hardMode)
+			{
+				player.TryGettingDevArmor();
+			}
 			player.QuickSpawnItem(mod.ItemType("CyberStaff"));
 		}
 

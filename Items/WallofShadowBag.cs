@@ -48,7 +48,10 @@ namespace Tremor.Items
 				player.QuickSpawnItem(mod.ItemType("WallofShadowMask"));
 			}
 
-			player.TryGettingDevArmor();
+			if (Main.hardMode)
+			{
+				player.TryGettingDevArmor();
+			}
 			player.QuickSpawnItem(mod.ItemType("WallOfShadowsFlask"));
 			player.QuickSpawnItem(mod.ItemType("DarknessCloth"), Main.rand.Next(8, 15));
 			player.QuickSpawnItem(499, Main.rand.Next(5, 15));
