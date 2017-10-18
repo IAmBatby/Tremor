@@ -72,13 +72,13 @@ namespace Tremor.NPCs
 
 		public override void NPCLoot()
 		{
-			if (Main.rand.Next(2) == 0)
+			if (Main.rand.NextBool(2))
 			{
 				npc.NewItem((short)ItemID.Sapphire, 2);
 				npc.NewItem((short)ItemID.Ruby, 2);
 				npc.NewItem((short)ItemID.Emerald, 2);
 			}
-			if (Main.rand.Next(2) == 0)
+			if (Main.rand.NextBool(2))
 			{
 				npc.NewItem((short)ItemID.Topaz, 2);
 				npc.NewItem((short)ItemID.Amethyst, 2);

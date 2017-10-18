@@ -29,32 +29,32 @@ namespace Tremor.Items
 
 		public override void OpenBossBag(Player player)
 		{
-			if (Main.rand.Next(7) == 0)
+			if (Main.rand.NextBool(7))
 			{
 				player.QuickSpawnItem(mod.ItemType("SpaceWhaleMask"));
 			}
 
-			if (Main.rand.Next(5) == 0)
+			if (Main.rand.NextBool(5))
 			{
 				player.QuickSpawnItem(mod.ItemType("StarLantern"));
 			}
 
-			if (Main.rand.Next(3) == 0)
+			if (Main.rand.NextBool(3))
 			{
 				player.QuickSpawnItem(mod.ItemType("SDL"));
 			}
 
-			if (Main.rand.Next(3) == 0)
+			if (Main.rand.NextBool(3))
 			{
 				player.QuickSpawnItem(mod.ItemType("BlackHoleCannon"));
 			}
 
-			if (Main.rand.Next(3) == 0)
+			if (Main.rand.NextBool(3))
 			{
 				player.QuickSpawnItem(mod.ItemType("HornedWarHammer"));
 			}
 
-			if (Main.rand.Next(8) == 0)
+			if (Main.rand.NextBool(8))
 			{
 				player.QuickSpawnItem(mod.ItemType("WhaleFlippers"));
 			}

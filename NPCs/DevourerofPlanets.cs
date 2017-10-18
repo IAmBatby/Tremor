@@ -43,7 +43,7 @@ namespace Tremor.NPCs
 				npc.NewItem(mod.ItemType<HuskofDusk>(), Main.rand.Next(2, 5));
 			if (Main.rand.Next(10) == 0)
 				npc.NewItem(mod.ItemType<EyeofOblivion>());
-			if (Main.rand.Next(3) == 0)
+			if (Main.rand.NextBool(3))
 				npc.NewItem(mod.ItemType<NightCore>());
 		}
 

@@ -50,7 +50,7 @@ namespace Tremor.NPCs
 
 		public override void NPCLoot()
 		{
-			if (Main.rand.Next(8) == 0)
+			if (Main.rand.NextBool(8))
 				npc.NewItem(mod.ItemType<DarkGel>(), Main.rand.Next(1, 3));
 		}
 	}

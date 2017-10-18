@@ -26,7 +26,7 @@ namespace Tremor.Invasion
 		public override void AI()
 		{
 			projectile.spriteDirection = projectile.direction;
-			if (Main.rand.Next(3) == 1)
+			if (Main.rand.NextBool(3))
 			{
 				int dust2 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, 59, 0f, 0f, 100, default(Color), 1f);
 				Main.dust[dust2].noGravity = true;

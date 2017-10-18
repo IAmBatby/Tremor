@@ -53,7 +53,7 @@ namespace Tremor.Items
 		{
 			//type = 1;
 
-			if (Main.rand.Next(3) == 0)
+			if (Main.rand.NextBool(3))
 			{
 				type = 522;
 			}

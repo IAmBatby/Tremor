@@ -45,9 +45,9 @@ namespace Tremor.NPCs
 
 		public override void NPCLoot()
 		{
-			if (Main.rand.Next(6) == 0)
+			if (Main.rand.NextBool(6))
 				this.NewItem(mod.ItemType<RuinKey>(), 1);
-			if (Main.rand.Next(6) == 0)
+			if (Main.rand.NextBool(6))
 				this.NewItem(mod.ItemType<RustyLantern>(), 1);
 		}
 

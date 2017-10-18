@@ -106,7 +106,7 @@ namespace Tremor.NPCs
 					NetMessage.SendData(78, -1, -1, null, Main.invasionProgress, Main.invasionProgressMax, Main.invasionProgressIcon, 0f, 0, 0, 0);
 			}
 
-			if (Main.rand.Next(2) == 0)
+			if (Main.rand.NextBool(2))
 				npc.NewItem(ItemID.SpikyBall, Main.rand.Next(1, 16));
 			if (Main.rand.Next(200) == 0)
 				npc.NewItem(ItemID.Harpoon);

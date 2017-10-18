@@ -37,7 +37,7 @@ namespace Tremor.NPCs
 
 		public override void NPCLoot()
 		{
-			if (Main.rand.Next(4) == 0)
+			if (Main.rand.NextBool(4))
 				this.NewItem(mod.ItemType<Squorb>(), Main.rand.Next(1, 3));
 			if (Main.rand.NextBool())
 				this.NewItem(ItemID.LunarBar, Main.rand.Next(3, 8));

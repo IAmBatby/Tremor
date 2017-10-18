@@ -36,7 +36,7 @@ namespace Tremor.NPCs
 		{
 			if (Main.rand.NextBool(2))
 				this.NewItem(ItemID.WoodenArrow, Main.rand.Next(2, 6));
-			if (Main.rand.Next(4) == 0)
+			if (Main.rand.NextBool(4))
 				this.NewItem(ItemID.FlamingArrow, Main.rand.Next(2, 6));
 
 			if (Main.rand.Next(15) == 0)
@@ -52,9 +52,9 @@ namespace Tremor.NPCs
 			if (Main.rand.Next(15) == 0)
 				this.NewItem(ItemID.Diamond, Main.rand.Next(1, 3));
 
-			if (Main.rand.Next(3) == 0)
+			if (Main.rand.NextBool(3))
 				this.NewItem(ItemID.ThrowingKnife, Main.rand.Next(2, 6));
-			if (Main.rand.Next(5) == 0)
+			if (Main.rand.NextBool(5))
 				this.NewItem(ItemID.PoisonedKnife, Main.rand.Next(2, 4));
 		}
 

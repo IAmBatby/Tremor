@@ -206,7 +206,7 @@ namespace Tremor.NPCs.Bosses.AndasBoss
 				Helper.DropItems(npc.position, npc.Size, new Drop(mod.ItemType("Inferno"), 1, 1), new Drop(mod.ItemType("GehennaStaff"), 1, 1), new Drop(mod.ItemType("Pandemonium"), 1, 1), new Drop(mod.ItemType("VulcanBlade"), 1, 1), new Drop(mod.ItemType("HellStorm"), 1, 1));
 				Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, 3544, Main.rand.Next(10, 25));
 
-				if (Main.rand.Next(7) == 0)
+				if (Main.rand.NextBool(7))
 				{
 					Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("AndasMask"));
 				}

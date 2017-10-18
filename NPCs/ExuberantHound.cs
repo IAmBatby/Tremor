@@ -112,7 +112,7 @@ namespace Tremor.NPCs
 		{
 			if (Main.rand.NextBool())
 				npc.NewItem(mod.ItemType("ConcentratedEther"), Main.rand.Next(2, 4));
-			if (Main.rand.Next(5) == 0)
+			if (Main.rand.NextBool(5))
 				npc.NewItem(mod.ItemType("ToothofAbraxas"), Main.rand.Next(1, 3));
 		}
 

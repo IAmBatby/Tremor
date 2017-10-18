@@ -36,9 +36,9 @@ namespace Tremor.NPCs
 		{
 			if (Main.rand.NextBool())
 				npc.NewItem(ItemID.Bone, Main.rand.Next(1, 3));
-			if (Main.rand.Next(6) == 0)
+			if (Main.rand.NextBool(6))
 				npc.NewItem(ItemID.HealingPotion, Main.rand.Next(1, 3));
-			if (Main.rand.Next(6) == 0)
+			if (Main.rand.NextBool(6))
 				npc.NewItem(ItemID.ManaPotion, Main.rand.Next(1, 3));
 		}
 

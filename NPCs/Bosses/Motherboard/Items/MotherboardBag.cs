@@ -37,7 +37,7 @@ namespace Tremor.NPCs.Bosses.Motherboard.Items
 			player.QuickSpawnItem(ItemID.GreaterHealingPotion, Main.rand.Next(5, 16));
 			player.QuickSpawnItem(ItemID.HallowedBar, Main.rand.Next(15, 36));
 
-			if (Main.rand.Next(7) == 0)
+			if (Main.rand.NextBool(7))
 			{
 				player.QuickSpawnItem(mod.ItemType<MotherboardMask>());
 			}

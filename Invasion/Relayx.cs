@@ -38,7 +38,7 @@ namespace Tremor.Invasion
 
 		public override void MeleeEffects(Player player, Rectangle hitbox)
 		{
-			if (Main.rand.Next(3) == 0)
+			if (Main.rand.NextBool(3))
 			{
 				int dust = Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, 59);
 			}
@@ -46,9 +46,9 @@ namespace Tremor.Invasion
 
 		public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
 		{
-			if (Main.rand.Next(8) == 0)
+			if (Main.rand.NextBool(8))
 			{
-				if (Main.rand.Next(3) == 0)
+				if (Main.rand.NextBool(3))
 				{
 					Projectile.NewProjectile(position.X, position.Y, speedX, speedY, mod.ProjectileType("RelayxDragonBig"), item.damage + 200, 10, Main.myPlayer);
 				}

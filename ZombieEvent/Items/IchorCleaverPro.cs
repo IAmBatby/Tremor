@@ -22,7 +22,7 @@ namespace Tremor.ZombieEvent.Items
 
 		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
 		{
-			if (Main.rand.Next(6) == 0)
+			if (Main.rand.NextBool(6))
 			{
 				target.AddBuff(69, 500, false);
 			}
@@ -30,7 +30,7 @@ namespace Tremor.ZombieEvent.Items
 
 		public override void OnHitPvp(Player target, int damage, bool crit)
 		{
-			if (Main.rand.Next(6) == 0)
+			if (Main.rand.NextBool(6))
 			{
 				target.AddBuff(69, 500, false);
 			}

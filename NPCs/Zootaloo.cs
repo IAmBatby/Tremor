@@ -36,9 +36,9 @@ namespace Tremor.NPCs
 
 		public override void NPCLoot()
 		{
-			if (Main.rand.Next(3) == 0)
+			if (Main.rand.NextBool(3))
 				this.NewItem(mod.ItemType<LightBulb>(), Main.rand.Next(1, 3));
-			if (Main.rand.Next(2) == 0)
+			if (Main.rand.NextBool(2))
 				this.NewItem(mod.ItemType<Gloomstone>(), Main.rand.Next(5, 13));
 		}
 

@@ -37,7 +37,7 @@ namespace Tremor.NPCs
 
 		public override void NPCLoot()
 		{
-			if (Main.rand.Next(5) == 0)
+			if (Main.rand.NextBool(5))
 				this.NewItem(mod.ItemType<BrokenHeroArmorplate>());
 		}
 

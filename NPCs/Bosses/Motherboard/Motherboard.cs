@@ -536,7 +536,7 @@ namespace Tremor.NPCs.Bosses.Motherboard
 				{
 					this.NewItem(ItemID.HallowedBar, Main.rand.Next(15, 35));
 				}
-				if (Main.rand.Next(7) == 0)
+				if (Main.rand.NextBool(7))
 				{
 					this.NewItem((short)mod.ItemType<MotherboardMask>());
 				}
@@ -546,7 +546,7 @@ namespace Tremor.NPCs.Bosses.Motherboard
 			{
 				this.NewItem((short)mod.ItemType<MotherboardTrophy>());
 			}
-			if (Main.rand.Next(3) == 0)
+			if (Main.rand.NextBool(3))
 			{
 				this.NewItem((short)mod.ItemType<BenderLegs>());
 			}

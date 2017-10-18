@@ -35,7 +35,7 @@ namespace Tremor.NPCs
 
 		public override void NPCLoot()
 		{
-			if (NPC.downedMoonlord && Main.rand.Next(5) == 0)
+			if (NPC.downedMoonlord && Main.rand.NextBool(5))
 				npc.NewItem(mod.ItemType<IceSoul>());
 		}
 

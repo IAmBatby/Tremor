@@ -47,7 +47,7 @@ namespace Tremor.NPCs
 				npc.NewItem(ItemID.IceBlock, 3);
 			if (Main.rand.NextBool(2))
 				npc.NewItem(mod.ItemType<FrostCore>(), 3);
-			if (NPC.downedMoonlord && Main.rand.Next(5) == 0)
+			if (NPC.downedMoonlord && Main.rand.NextBool(5))
 				npc.NewItem(mod.ItemType<IceSoul>());
 		}
 

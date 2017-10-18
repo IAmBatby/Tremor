@@ -30,11 +30,11 @@ namespace Tremor.Items
 			player.QuickSpawnItem(71, Main.rand.Next(70, 98));
 			player.QuickSpawnItem(72, Main.rand.Next(50, 75));
 			player.QuickSpawnItem(73);
-			if (Main.rand.Next(3) == 0)
+			if (Main.rand.NextBool(3))
 			{
 				player.QuickSpawnItem(73, Main.rand.Next(1, 3));
 			}
-			if (Main.rand.Next(5) == 0)
+			if (Main.rand.NextBool(5))
 			{
 				player.QuickSpawnItem(73, Main.rand.Next(5, 7));
 			}

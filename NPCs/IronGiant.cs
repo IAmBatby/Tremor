@@ -39,7 +39,7 @@ namespace Tremor.NPCs
 
 		public override void NPCLoot()
 		{
-			if (Main.rand.Next(8) == 0)
+			if (Main.rand.NextBool(8))
 				this.NewItem(mod.ItemType<ElectricSpear>());
 			if (Main.rand.Next(10) == 0)
 				this.NewItem(ItemID.DepthMeter);

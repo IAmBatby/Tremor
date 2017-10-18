@@ -792,7 +792,7 @@ namespace Tremor.NPCs
 					TremorWorld.DropComet();
 					//return;
 				}
-				if (TremorWorld.Boss.SpaceWhale.IsDowned() && Main.rand.Next(3) == 0)
+				if (TremorWorld.Boss.SpaceWhale.IsDowned() && Main.rand.NextBool(3))
 				{
 					Main.NewText("A comet has struck the ground!", 117, 187, 253);
 					TremorWorld.DropComet();
@@ -800,36 +800,36 @@ namespace Tremor.NPCs
 				}
 				TremorWorld.Boss.SpaceWhale.Downed();
 
-				if (!Main.expertMode && Main.rand.Next(7) == 0)
+				if (!Main.expertMode && Main.rand.NextBool(7))
 				{
 					Item.NewItem((int)npc.Center.X, (int)npc.Center.Y, npc.width, npc.height, mod.ItemType("SpaceWhaleMask"));
 				}
-				if (!Main.expertMode && Main.rand.Next(7) == 0)
+				if (!Main.expertMode && Main.rand.NextBool(7))
 				{
 					Item.NewItem((int)npc.Center.X, (int)npc.Center.Y, npc.width, npc.height, mod.ItemType("SpaceWhaleTrophy"));
 				}
 
-				if (!Main.expertMode && Main.rand.Next(3) == 0)
+				if (!Main.expertMode && Main.rand.NextBool(3))
 				{
 					Item.NewItem((int)npc.Center.X, (int)npc.Center.Y, npc.width, npc.height, mod.ItemType("SDL"));
 				}
 
-				if (!Main.expertMode && Main.rand.Next(3) == 0)
+				if (!Main.expertMode && Main.rand.NextBool(3))
 				{
 					Item.NewItem((int)npc.Center.X, (int)npc.Center.Y, npc.width, npc.height, mod.ItemType("BlackHoleCannon"));
 				}
 
-				if (!Main.expertMode && Main.rand.Next(3) == 0)
+				if (!Main.expertMode && Main.rand.NextBool(3))
 				{
 					Item.NewItem((int)npc.Center.X, (int)npc.Center.Y, npc.width, npc.height, mod.ItemType("HornedWarHammer"));
 				}
 
-				if (!Main.expertMode && Main.rand.Next(5) == 0)
+				if (!Main.expertMode && Main.rand.NextBool(5))
 				{
 					Item.NewItem((int)npc.Center.X, (int)npc.Center.Y, npc.width, npc.height, mod.ItemType("StarLantern"));
 				}
 
-				if (!Main.expertMode && Main.rand.Next(8) == 0)
+				if (!Main.expertMode && Main.rand.NextBool(8))
 				{
 					Item.NewItem((int)npc.Center.X, (int)npc.Center.Y, npc.width, npc.height, mod.ItemType("WhaleFlippers"));
 				}

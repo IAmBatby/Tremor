@@ -56,7 +56,7 @@ namespace Tremor.ZombieEvent.Items
 		{
 			type = 1;
 
-			if (Main.rand.Next(5) == 0)
+			if (Main.rand.NextBool(5))
 			{
 				int proj = Projectile.NewProjectile(position.X, position.Y, speedX, speedY, 686, damage, knockBack, Main.myPlayer);
 				Main.projectile[proj].hostile = false;

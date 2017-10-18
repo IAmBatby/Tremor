@@ -31,7 +31,7 @@ namespace Tremor.Items
 
 		public override void OnHitNPC(Player player, NPC target, int damage, float knockback, bool crit)
 		{
-			if (Main.rand.Next(4) == 0)
+			if (Main.rand.NextBool(4))
 			{
 				target.AddBuff(31, 600);
 			}

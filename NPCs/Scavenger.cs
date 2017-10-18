@@ -85,7 +85,7 @@ namespace Tremor.NPCs
 		{
 			if (!Main.hardMode)
 			{
-				if (Main.rand.Next(2) == 0)
+				if (Main.rand.NextBool(2))
 					this.NewItem(29, Main.rand.Next(1, 3));
 
 				if (Main.rand.NextBool())
@@ -104,7 +104,7 @@ namespace Tremor.NPCs
 					this.NewItem(178, Main.rand.Next(5, 16));
 				if (Main.rand.NextBool())
 					this.NewItem(182, Main.rand.Next(5, 16));
-				if (Main.rand.Next(5) == 0)
+				if (Main.rand.NextBool(5))
 					this.NewItem(mod.ItemType<Opal>(), Main.rand.Next(1, 3));
 				if (Main.rand.NextBool())
 					this.NewItem(227, Main.rand.Next(2, 11));
@@ -115,21 +115,21 @@ namespace Tremor.NPCs
 			}
 			else
 			{
-				if (Main.rand.Next(5) == 0)
+				if (Main.rand.NextBool(5))
 					this.NewItem(2161, Main.rand.Next(1, 3));
-				if (Main.rand.Next(3) == 0)
+				if (Main.rand.NextBool(3))
 					this.NewItem(2351, Main.rand.Next(1, 6));
 				if (Main.rand.Next(10) == 0)
 					this.NewItem(723);
 				if (Main.rand.Next(50) == 0)
 					this.NewItem(855);
-				if (Main.rand.Next(3) == 0)
+				if (Main.rand.NextBool(3))
 					this.NewItem(499, Main.rand.Next(1, 6));
-				if (Main.rand.Next(3) == 0)
+				if (Main.rand.NextBool(3))
 					this.NewItem(500, Main.rand.Next(1, 6));
 				if (Main.rand.Next(15) == 0)
 					this.NewItem(1242);
-				if (Main.rand.Next(3) == 0)
+				if (Main.rand.NextBool(3))
 					this.NewItem(1291, Main.rand.Next(1, 3));
 				if (Main.rand.Next(50) == 0)
 					this.NewItem(1321);
@@ -155,7 +155,7 @@ namespace Tremor.NPCs
 					this.NewItem(3091);
 				if (Main.rand.Next(80) == 0)
 					this.NewItem(3092);
-				if (Main.rand.Next(8) == 0)
+				if (Main.rand.NextBool(8))
 					this.NewItem(2674, Main.rand.Next(1, 6));
 				if (Main.rand.Next(15) == 0)
 					this.NewItem(2675, Main.rand.Next(1, 10));
@@ -173,9 +173,9 @@ namespace Tremor.NPCs
 					this.NewItem(423, Main.rand.Next(1, 10));
 				if (Main.rand.Next(45) == 0)
 					this.NewItem(497);
-				if (Main.rand.Next(3) == 0)
+				if (Main.rand.NextBool(3))
 					this.NewItem(502, Main.rand.Next(1, 10));
-				if (Main.rand.Next(3) == 0)
+				if (Main.rand.NextBool(3))
 					this.NewItem(501, Main.rand.Next(1, 15));
 				if (Main.rand.Next(26) == 0)
 					this.NewItem(507);

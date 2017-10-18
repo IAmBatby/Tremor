@@ -38,7 +38,7 @@ namespace Tremor.NPCs
 		{
 			if (Main.rand.Next(24) == 0)
 				this.NewItem(mod.ItemType<SquidHat>());
-			if (Main.rand.Next(3) == 0)
+			if (Main.rand.NextBool(3))
 				this.NewItem(mod.ItemType<UntreatedFlesh>());
 		}
 

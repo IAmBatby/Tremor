@@ -29,27 +29,27 @@ namespace Tremor.Items
 
 		public override void OpenBossBag(Player player)
 		{
-			if (Main.rand.Next(7) == 0)
+			if (Main.rand.NextBool(7))
 			{
 				player.QuickSpawnItem(mod.ItemType("StormJellyfishMask"));
 			}
-			if (Main.rand.Next(4) == 0)
+			if (Main.rand.NextBool(4))
 			{
 				player.QuickSpawnItem(mod.ItemType("StormBlade"));
 			}
-			if (Main.rand.Next(3) == 0)
+			if (Main.rand.NextBool(3))
 			{
 				player.QuickSpawnItem(mod.ItemType("Poseidon"));
 			}
-			if (Main.rand.Next(3) == 0)
+			if (Main.rand.NextBool(3))
 			{
 				player.QuickSpawnItem(mod.ItemType("JellyfishStaff"));
 			}
-			if (Main.rand.Next(3) == 0)
+			if (Main.rand.NextBool(3))
 			{
 				player.QuickSpawnItem(mod.ItemType("BoltTome"));
 			}
-			if (Main.rand.Next(3) == 0)
+			if (Main.rand.NextBool(3))
 			{
 				player.QuickSpawnItem(mod.ItemType("StickyFlail"));
 			}

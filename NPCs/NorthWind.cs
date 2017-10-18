@@ -41,7 +41,7 @@ namespace Tremor.NPCs
 		{
 			if (Main.rand.NextBool(2))
 				this.NewItem(mod.ItemType<FrostCore>());
-			if (NPC.downedMoonlord && Main.rand.Next(5) == 0)
+			if (NPC.downedMoonlord && Main.rand.NextBool(5))
 				this.NewItem(mod.ItemType<IceSoul>());
 		}
 

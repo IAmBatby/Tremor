@@ -346,19 +346,19 @@ namespace Tremor.NPCs.Bosses.CogLord
 				{
 					Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("BrassChip"));
 				}
-				if (!Main.expertMode && Main.rand.Next(7) == 0)
+				if (!Main.expertMode && Main.rand.NextBool(7))
 				{
 					Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("CogLordMask"));
 				}
-				if (!Main.expertMode && Main.rand.Next(3) == 0)
+				if (!Main.expertMode && Main.rand.NextBool(3))
 				{
 					Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("BrassRapier"));
 				}
-				if (!Main.expertMode && Main.rand.Next(3) == 0)
+				if (!Main.expertMode && Main.rand.NextBool(3))
 				{
 					Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("BrassChainRepeater"));
 				}
-				if (!Main.expertMode && Main.rand.Next(3) == 0)
+				if (!Main.expertMode && Main.rand.NextBool(3))
 				{
 					Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("BrassStave"));
 				}

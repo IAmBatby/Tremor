@@ -162,7 +162,7 @@ namespace Tremor
 			=> rand.Next(total) == 0;
 
 		public static bool NextBool(this UnifiedRandom rand, int chance, int total)
-			=> rand.Next(total) < chance;
+			=> rand.Next(total) <= chance;
 
 		public static void DrawNPCGlowMask(SpriteBatch spriteBatch, NPC npc, Texture2D texture)
 		{

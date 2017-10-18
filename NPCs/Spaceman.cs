@@ -43,9 +43,9 @@ namespace Tremor.NPCs
 
 		public override void NPCLoot()
 		{
-			if (Main.rand.Next(6) == 0)
+			if (Main.rand.NextBool(6))
 				this.NewItem(ItemID.Meteorite, Main.rand.Next(1, 6));
-			if (Main.rand.Next(6) == 0)
+			if (Main.rand.NextBool(6))
 				this.NewItem(ItemID.MeteoriteBar, Main.rand.Next(1, 3));
 			if (Main.rand.Next(46) == 0)
 				this.NewItem(ItemID.SpaceGun, Main.rand.Next(1));

@@ -47,7 +47,7 @@ namespace Tremor.NPCs
 				int centerX = (int)(npc.position.X + npc.width / 2) / 16;
 				int centerY = (int)(npc.position.Y + npc.height / 2) / 16;
 				int halfLength = npc.width / 2 / 16 + 1;
-				if (!Main.expertMode && Main.rand.Next(7) == 0)
+				if (!Main.expertMode && Main.rand.NextBool(7))
 				{
 					Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("FungusBeetleMask"));
 				}
@@ -215,7 +215,7 @@ namespace Tremor.NPCs
 				SecondState = true;
 			}
 
-			if (Main.rand.Next(2) == 0)
+			if (Main.rand.NextBool(2))
 			{
 				int num706 = Dust.NewDust(npc.position, npc.width, npc.height, 67, 0f, 0f, 200, npc.color, 0.5f);
 				Main.dust[num706].velocity *= 0.6f;

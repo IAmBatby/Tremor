@@ -40,11 +40,11 @@ namespace Tremor.ZombieEvent.Mobs
 				int centerX = (int)(npc.position.X + npc.width / 2) / 16;
 				int centerY = (int)(npc.position.Y + npc.height / 2) / 16;
 				int halfLength = npc.width / 2 / 16 + 1;
-				if (Main.rand.Next(5) == 0)
+				if (Main.rand.NextBool(5))
 				{
 					Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, 168, Main.rand.Next(2, 3));
 				}
-				if (Main.rand.Next(5) == 0)
+				if (Main.rand.NextBool(5))
 				{
 					Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, 166, Main.rand.Next(2, 3));
 				}

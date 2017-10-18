@@ -55,7 +55,7 @@ namespace Tremor.Items
 
 		public override bool ConsumeAmmo(Player p)
 		{
-			return Main.rand.Next(3) == 0;
+			return Main.rand.NextBool(3);
 		}
 	}
 }

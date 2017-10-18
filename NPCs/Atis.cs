@@ -58,7 +58,7 @@ namespace Tremor.NPCs
 				npc.NewItem((short)mod.ItemType<HeartofAtis>());
 			if (Main.rand.Next(25) == 0)
 				npc.NewItem((short)mod.ItemType<BoneMask>());
-			//if (Main.hardMode && Main.rand.Next(2) == 0)
+			//if (Main.hardMode && Main.rand.NextBool(2))
 			//	npc.NewItem((short)mod.ItemType("RawMeat"));
 			if (Main.rand.NextBool())
 				npc.NewItem((short)mod.ItemType<AtisBlood>(), Main.rand.Next(1, 2));

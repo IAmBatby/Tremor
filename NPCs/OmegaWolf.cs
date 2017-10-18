@@ -34,7 +34,7 @@ namespace Tremor.NPCs
 
 		public override void NPCLoot()
 		{
-			if (Main.rand.Next(2) == 0)
+			if (Main.rand.NextBool(2))
 				this.NewItem(mod.ItemType<WolfPelt>());
 			if (Main.rand.Next(25) == 0)
 				this.NewItem(mod.ItemType<FurHat>());

@@ -206,7 +206,7 @@ namespace Tremor.NPCs
 
 		void CreateDust()
 		{
-			if (Main.rand.Next(3) == 0)
+			if (Main.rand.NextBool(3))
 				Dust.NewDust(npc.position, npc.width, npc.height, 62);
 		}
 
@@ -335,17 +335,17 @@ namespace Tremor.NPCs
 
 				}
 
-				if (!Main.expertMode && Main.rand.Next(7) == 0)
+				if (!Main.expertMode && Main.rand.NextBool(7))
 				{
 					Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("HopeMask"));
 				}
 
-				if (!Main.expertMode && Main.rand.Next(3) == 0)
+				if (!Main.expertMode && Main.rand.NextBool(3))
 				{
 					Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("Banhammer"));
 				}
 
-				if (!Main.expertMode && Main.rand.Next(3) == 0)
+				if (!Main.expertMode && Main.rand.NextBool(3))
 				{
 					Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("BestNightmare"));
 				}

@@ -54,7 +54,7 @@ namespace Tremor.Invasion
 				}
 
 				CyberWrathInvasion modPlayer = Main.player[Main.myPlayer].GetModPlayer<CyberWrathInvasion>(mod);
-				if (InvasionWorld.CyberWrath && Main.rand.Next(2) == 1)
+				if (InvasionWorld.CyberWrath && Main.rand.NextBool(2))
 				{
 					InvasionWorld.CyberWrathPoints1 += 2;
 					//Main.NewText(("Wave 1: Complete " + TremorWorld.CyberWrathPoints + "%"), 39, 86, 134);
@@ -75,7 +75,7 @@ namespace Tremor.Invasion
 
 		public override void OnHitPlayer(Player player, int damage, bool crit)
 		{
-			if (Main.rand.Next(6) == 0)
+			if (Main.rand.NextBool(6))
 			{
 				player.AddBuff(31, 1000, true);
 			}

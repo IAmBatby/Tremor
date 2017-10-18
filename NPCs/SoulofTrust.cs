@@ -163,7 +163,7 @@ namespace Tremor.NPCs
 				NPC.NewNPC((int)npc.position.X + 100, (int)npc.position.Y - 50, 418);
 			}
 
-			if (Main.rand.Next(2) == 0)
+			if (Main.rand.NextBool(2))
 			{
 				int num706 = Dust.NewDust(npc.position, npc.width, npc.height, 6, 0f, 0f, 200, npc.color, 0.5f);
 				Main.dust[num706].velocity *= 0.6f;
@@ -248,7 +248,7 @@ namespace Tremor.NPCs
 
 		void CreateDust()
 		{
-			if (Main.rand.Next(3) == 0)
+			if (Main.rand.NextBool(3))
 				Dust.NewDust(npc.position, npc.width, npc.height, 6);
 		}
 
@@ -358,17 +358,17 @@ namespace Tremor.NPCs
 
 				}
 
-				if (!Main.expertMode && Main.rand.Next(7) == 0)
+				if (!Main.expertMode && Main.rand.NextBool(7))
 				{
 					Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("ThrustMask"));
 				}
 
-				if (!Main.expertMode && Main.rand.Next(3) == 0)
+				if (!Main.expertMode && Main.rand.NextBool(3))
 				{
 					Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("Volcannon"));
 				}
 
-				if (!Main.expertMode && Main.rand.Next(3) == 0)
+				if (!Main.expertMode && Main.rand.NextBool(3))
 				{
 					Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("HonestBlade"));
 				}

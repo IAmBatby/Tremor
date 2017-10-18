@@ -44,7 +44,7 @@ namespace Tremor.Projectiles
 
 		public override void OnHitPvp(Player target, int damage, bool crit)
 		{
-			if (Main.rand.Next(3) == 0)
+			if (Main.rand.NextBool(3))
 			{
 				target.AddBuff(mod.BuffType("DeathFear"), 480, false);
 			}

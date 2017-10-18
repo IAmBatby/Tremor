@@ -10,12 +10,12 @@ namespace Tremor.Items
 		{
 			if (context == "bossBag")
 			{
-				if (arg == ItemID.DestroyerBossBag && Main.rand.Next(6) == 0)
+				if (arg == ItemID.DestroyerBossBag && Main.rand.NextBool(6))
 				{
 					player.QuickSpawnItem(mod.ItemType("Destructor"));
 				}
 
-				if (arg == ItemID.SkeletronPrimeBossBag && Main.rand.Next(6) == 0)
+				if (arg == ItemID.SkeletronPrimeBossBag && Main.rand.NextBool(6))
 				{
 					player.QuickSpawnItem(mod.ItemType("PrimeBlade"));
 				}
@@ -31,11 +31,11 @@ namespace Tremor.Items
 				{
 					player.QuickSpawnItem(mod.ItemType("GolemCore"));
 				}
-				if (arg == ItemID.EyeOfCthulhuBossBag && Main.rand.Next(5) == 0)
+				if (arg == ItemID.EyeOfCthulhuBossBag && Main.rand.NextBool(5))
 				{
 					player.QuickSpawnItem(mod.ItemType("EyeMonolith"));
 				}
-				if (arg == ItemID.EyeOfCthulhuBossBag && Main.rand.Next(4) == 0)
+				if (arg == ItemID.EyeOfCthulhuBossBag && Main.rand.NextBool(4))
 				{
 					player.QuickSpawnItem(mod.ItemType("MonsterTooth"));
 				}
@@ -45,7 +45,7 @@ namespace Tremor.Items
 					player.QuickSpawnItem(mod.ItemType("EssenseofJungle"), Main.rand.Next(2, 3));
 				}
 
-				if (arg == ItemID.FishronBossBag && Main.rand.Next(6) == 0)
+				if (arg == ItemID.FishronBossBag && Main.rand.NextBool(6))
 				{
 					player.QuickSpawnItem(mod.ItemType("DukeCannon"));
 				}
@@ -60,12 +60,12 @@ namespace Tremor.Items
 					player.QuickSpawnItem(mod.ItemType("TearsofDeath"), Main.rand.Next(1, 3));
 				}
 
-				if (arg == ItemID.QueenBeeBossBag && Main.rand.Next(3) == 0)
+				if (arg == ItemID.QueenBeeBossBag && Main.rand.NextBool(3))
 				{
 					player.QuickSpawnItem(mod.ItemType("YellowPuzzleFragment"));
 				}
 
-				if (arg == ItemID.TwinsBossBag && Main.rand.Next(6) == 0)
+				if (arg == ItemID.TwinsBossBag && Main.rand.NextBool(6))
 				{
 					player.QuickSpawnItem(mod.ItemType("MechaSprayer"));
 				}

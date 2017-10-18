@@ -248,7 +248,7 @@ namespace Tremor
 				DistortNumber *= 10;
 				Counter++;
 			}
-			return Float + ((Main.rand.Next(0, (int)DistortNumber + 1) / (float)(Math.Pow(10, Counter))) * ((Main.rand.Next(2) == 0) ? -1 : 1));
+			return Float + ((Main.rand.Next(0, (int)DistortNumber + 1) / (float)(Math.Pow(10, Counter))) * ((Main.rand.NextBool(2)) ? -1 : 1));
 		}
 
 		public static void Explode(int index, int sizeX, int sizeY, ExtraAction visualAction = null)

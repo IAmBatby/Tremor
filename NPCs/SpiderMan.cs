@@ -34,7 +34,7 @@ namespace Tremor.NPCs
 
 		public override void NPCLoot()
 		{
-			if (Main.rand.Next(2) == 0)
+			if (Main.rand.NextBool(2))
 				this.NewItem(ItemID.SpiderFang, Main.rand.Next(60, 150));
 		}
 

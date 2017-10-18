@@ -35,10 +35,10 @@ namespace Tremor.NPCs
 
 		public override void OnHitPlayer(Player player, int damage, bool crit)
 		{
-			if (Main.rand.Next(3) == 0)
+			if (Main.rand.NextBool(3))
 				player.AddBuff(BuffID.Confused, 1800, true);
 
-			if (Main.rand.Next(2) == 0)
+			if (Main.rand.NextBool(2))
 				player.AddBuff(BuffID.Slow, 1800, true);
 		}
 

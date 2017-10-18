@@ -309,7 +309,7 @@ namespace Tremor.NPCs
 				{
 					int num629 = Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, 31, 0f, 0f, 100, default(Color), 2f);
 					Main.dust[num629].velocity *= 3f;
-					if (Main.rand.Next(2) == 0)
+					if (Main.rand.NextBool(2))
 					{
 						Main.dust[num629].scale = 0.5f;
 						Main.dust[num629].fadeIn = 1f + Main.rand.Next(10) * 0.1f;
@@ -376,7 +376,7 @@ namespace Tremor.NPCs
 					NetMessage.SendData(78, -1, -1, null, Main.invasionProgress, Main.invasionProgressMax, Main.invasionProgressIcon, 0f, 0, 0, 0);
 			}
 
-			if (Main.rand.Next(2) == 0)
+			if (Main.rand.NextBool(2))
 				npc.NewItem(ItemID.SpikyBall, Main.rand.Next(1, 16));
 			if (Main.rand.Next(200) == 0)
 				npc.NewItem(ItemID.Harpoon);

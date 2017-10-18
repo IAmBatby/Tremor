@@ -36,7 +36,7 @@ namespace Tremor.NPCs
 		public override void AI()
 		{
 			npc.position += npc.velocity * 2f;
-			if (Main.rand.Next(6) == 0)
+			if (Main.rand.NextBool(6))
 				Main.dust[Dust.NewDust(npc.position, npc.width, npc.height, 64, 0f, 0f, 200, npc.color, 1f)].velocity *= 0.3F;
 		}
 

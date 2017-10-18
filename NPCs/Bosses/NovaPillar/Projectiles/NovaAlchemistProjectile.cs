@@ -43,10 +43,10 @@ namespace Tremor.NPCs.Bosses.NovaPillar.Projectiles
 			projectile.ai[0] += 1f;
 			if (projectile.ai[0] <= 50f)
 			{
-				if (Main.rand.Next(2) == 0)
+				if (Main.rand.NextBool(2))
 				{
 					Vector2 vector106 = projectile.ai[1].ToRotationVector2();
-					Vector2 vector107 = vector106.RotatedBy(1.5707963705062866, default(Vector2)) * (Main.rand.Next(2) == 0).ToDirectionInt() * Main.rand.Next(10, 21);
+					Vector2 vector107 = vector106.RotatedBy(1.5707963705062866, default(Vector2)) * (Main.rand.NextBool(2)).ToDirectionInt() * Main.rand.Next(10, 21);
 					Vector2 value60 = vector106 * Main.rand.Next(-80, 81);
 					Vector2 vector108 = value60 - vector107;
 					vector108 /= 10f;
@@ -72,7 +72,7 @@ namespace Tremor.NPCs.Bosses.NovaPillar.Projectiles
 				projectile.scale = (projectile.ai[0] - 50f) / 40f;
 				projectile.alpha = 255 - (int)(255f * projectile.scale);
 				Vector2 vector111 = projectile.ai[1].ToRotationVector2();
-				Vector2 value61 = vector111.RotatedBy(1.5707963705062866, default(Vector2)) * (Main.rand.Next(2) == 0).ToDirectionInt() * Main.rand.Next(10, 21);
+				Vector2 value61 = vector111.RotatedBy(1.5707963705062866, default(Vector2)) * (Main.rand.NextBool(2)).ToDirectionInt() * Main.rand.Next(10, 21);
 				vector111 *= (float)Main.rand.Next(-80, 81);
 				Vector2 vector112 = vector111 - value61;
 				vector112 /= 10f;
@@ -130,7 +130,7 @@ namespace Tremor.NPCs.Bosses.NovaPillar.Projectiles
 				}
 				projectile.scale = 1f;
 				projectile.alpha = 0;
-				if (Main.rand.Next(2) == 0)
+				if (Main.rand.NextBool(2))
 				{
 					Vector2 vector116 = Vector2.UnitY.RotatedByRandom(6.2831854820251465);
 					Dust dust20 = Main.dust[Dust.NewDust(projectile.Center - vector116 * 30f, 0, 0, 57, 0f, 0f, 0, default(Color), 1f)];

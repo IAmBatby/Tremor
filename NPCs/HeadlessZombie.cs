@@ -36,7 +36,7 @@ namespace Tremor.NPCs
 
 		public override void NPCLoot()
 		{
-			if (Main.rand.Next(3) == 0)
+			if (Main.rand.NextBool(3))
 				this.NewItem(mod.ItemType<UntreatedFlesh>());
 		}
 

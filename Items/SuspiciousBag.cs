@@ -31,43 +31,43 @@ namespace Tremor.Items
 
 		public override void RightClick(Player player)
 		{
-			if (Main.rand.Next(3) == 0)
+			if (Main.rand.NextBool(3))
 			{
 				player.QuickSpawnItem(mod.ItemType("Doomstone"), Main.rand.Next(2, 5));
 			}
-			if (Main.rand.Next(3) == 0)
+			if (Main.rand.NextBool(3))
 			{
 				player.QuickSpawnItem(mod.ItemType("ConcentratedEther"), Main.rand.Next(3, 10));
 			}
-			if (Main.rand.Next(4) == 0)
+			if (Main.rand.NextBool(4))
 			{
 				player.QuickSpawnItem(mod.ItemType("CandyBar"), Main.rand.Next(2, 6));
 			}
-			if (Main.rand.Next(3) == 0)
+			if (Main.rand.NextBool(3))
 			{
 				player.QuickSpawnItem(mod.ItemType("VoidBar"), Main.rand.Next(2, 7));
 			}
-			if (Main.rand.Next(3) == 0)
+			if (Main.rand.NextBool(3))
 			{
 				player.QuickSpawnItem(mod.ItemType("NightmareBar"), Main.rand.Next(2, 6));
 			}
-			if (Main.rand.Next(5) == 0)
+			if (Main.rand.NextBool(5))
 			{
 				player.QuickSpawnItem(mod.ItemType("Phantaplasm"), Main.rand.Next(3, 6));
 			}
-			if (Main.rand.Next(3) == 0)
+			if (Main.rand.NextBool(3))
 			{
 				player.QuickSpawnItem(mod.ItemType("CarbonSteel"), Main.rand.Next(1, 3));
 			}
-			if (Main.rand.Next(3) == 0)
+			if (Main.rand.NextBool(3))
 			{
 				player.QuickSpawnItem(mod.ItemType("ClusterShard"), Main.rand.Next(3, 36));
 			}
-			if (Main.rand.Next(8) == 0)
+			if (Main.rand.NextBool(8))
 			{
 				player.QuickSpawnItem(mod.ItemType("DeadTissue"), 1);
 			}
-			if (Main.rand.Next(4) == 0)
+			if (Main.rand.NextBool(4))
 			{
 				player.QuickSpawnItem(mod.ItemType("ToothofAbraxas"), Main.rand.Next(2, 4));
 			}

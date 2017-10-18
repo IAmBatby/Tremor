@@ -174,7 +174,7 @@ namespace Tremor.Invasion
 				{
 					npc.TargetClosest(true);
 				}
-				if (!Main.player[npc.target].dead && Main.rand.Next(2) == 0)
+				if (!Main.player[npc.target].dead && Main.rand.NextBool(2))
 				{
 					npc.position.X = Main.player[npc.target].position.X + (float)((600 * Math.Cos(npc.ai[3])) * -1);
 					npc.position.Y = Main.player[npc.target].position.Y + (float)((600 * Math.Sin(npc.ai[3])) * -1);
@@ -203,7 +203,7 @@ namespace Tremor.Invasion
 					npc.TargetClosest(true);
 				}
 
-				if (!Main.player[npc.target].dead && Main.rand.Next(2) == 1)
+				if (!Main.player[npc.target].dead && Main.rand.NextBool(2))
 				{
 					npc.position.X = Main.player[npc.target].position.X + (float)((600 * Math.Cos(npc.ai[3])) * -1);
 					npc.position.Y = Main.player[npc.target].position.Y + (float)((600 * Math.Sin(npc.ai[3])) * -1);
@@ -303,7 +303,7 @@ namespace Tremor.Invasion
 				{
 					npc.DropBossBags();
 				}
-				if (!Main.expertMode && Main.rand.Next(7) == 0)
+				if (!Main.expertMode && Main.rand.NextBool(7))
 				{
 					Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("ParadoxTitanMask"));
 				}

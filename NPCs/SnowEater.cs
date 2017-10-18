@@ -127,14 +127,14 @@ namespace Tremor.NPCs
 				{
 					npc.noGravity = false;
 					npc.noTileCollide = false;
-					if (Main.rand.Next(2) == 0)
+					if (Main.rand.NextBool(2))
 					{
 						int num690 = Dust.NewDust(new Vector2(npc.position.X - 4f, npc.position.Y + npc.height - 8f), npc.width + 8, 24, 80, 0f, npc.velocity.Y / 2f, 0, default(Color), 1f);
 						Dust expr_28A1C_cp_0 = Main.dust[num690];
 						expr_28A1C_cp_0.velocity.X = expr_28A1C_cp_0.velocity.X * 0.4f;
 						Dust expr_28A3C_cp_0 = Main.dust[num690];
 						expr_28A3C_cp_0.velocity.Y = expr_28A3C_cp_0.velocity.Y * -1f;
-						if (Main.rand.Next(2) == 0)
+						if (Main.rand.NextBool(2))
 						{
 							Main.dust[num690].noGravity = true;
 							Main.dust[num690].scale += 0.2f;
@@ -149,9 +149,9 @@ namespace Tremor.NPCs
 
 		public override void NPCLoot()
 		{
-			if (Main.rand.Next(2) == 0)
+			if (Main.rand.NextBool(2))
 				this.NewItem(mod.ItemType<FrostCore>());
-			if (NPC.downedMoonlord && Main.rand.Next(5) == 0)
+			if (NPC.downedMoonlord && Main.rand.NextBool(5))
 				this.NewItem(mod.ItemType<IceSoul>());
 		}
 

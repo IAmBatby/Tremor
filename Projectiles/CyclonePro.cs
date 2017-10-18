@@ -28,7 +28,7 @@ namespace Tremor.Projectiles
 		public override void AI()
 		{
 			projectile.localAI[1] += 1f;
-			if (projectile.localAI[1] > 10f && Main.rand.Next(3) == 0)
+			if (projectile.localAI[1] > 10f && Main.rand.NextBool(3))
 			{
 				int num816 = 6;
 				for (int num817 = 0; num817 < num816; num817++)

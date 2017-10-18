@@ -74,15 +74,15 @@ namespace Tremor.Items
 			num78 *= num80;
 			num79 *= num80;
 			int num146 = 4;
-			if (Main.rand.Next(2) == 0)
+			if (Main.rand.NextBool(2))
 			{
 				num146++;
 			}
-			if (Main.rand.Next(4) == 0)
+			if (Main.rand.NextBool(4))
 			{
 				num146++;
 			}
-			if (Main.rand.Next(8) == 0)
+			if (Main.rand.NextBool(8))
 			{
 				num146++;
 			}

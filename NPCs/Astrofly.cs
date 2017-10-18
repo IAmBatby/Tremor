@@ -41,9 +41,9 @@ namespace Tremor.NPCs
 
 		public override void NPCLoot()
 		{
-			if (Main.rand.Next(2) == 0)
+			if (Main.rand.NextBool(2))
 				npc.NewItem((short)mod.ItemType<CometiteOre>(), Main.rand.Next(2, 5));
-			if (Main.rand.Next(6) == 0)
+			if (Main.rand.NextBool(6))
 				npc.NewItem((short)mod.ItemType<HardCometiteOre>(), Main.rand.Next(1, 3));
 		}
 

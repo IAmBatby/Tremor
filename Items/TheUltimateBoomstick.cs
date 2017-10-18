@@ -44,7 +44,7 @@ namespace Tremor.Items
 
 			type = 638;
 
-			if (Main.rand.Next(4) == 0)
+			if (Main.rand.NextBool(4))
 			{
 				type = 645;
 			}

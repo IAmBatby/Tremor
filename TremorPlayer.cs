@@ -470,7 +470,7 @@ namespace Tremor
 
 		public void OnHit(float x, float y, Entity victim)
 		{
-			if (onHitShadaggers && Main.rand.Next(4) == 0)
+			if (onHitShadaggers && Main.rand.NextBool(4))
 			{
 				player.petalTimer = 20;
 				if (x < player.position.X + player.width / 2)

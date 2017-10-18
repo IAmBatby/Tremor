@@ -45,12 +45,12 @@ namespace Tremor.NPCs.Bosses.AndasBoss
 				}
 				projectile.ai[0] += 1f;
 				int num297 = 6;
-				if (Main.rand.Next(2) == 0)
+				if (Main.rand.NextBool(2))
 				{
 					for (int num298 = 0; num298 < 1; num298++)
 					{
 						int num299 = Dust.NewDust(projectile.position + projectile.velocity, projectile.width, projectile.height, 6, projectile.velocity.X * 0.5f, projectile.velocity.Y * 0.5f);
-						if ((num297 == 6 && Main.rand.Next(3) == 0))
+						if ((num297 == 6 && Main.rand.NextBool(3)))
 						{
 							Main.dust[num299].noGravity = true;
 							Main.dust[num299].scale *= 3f;

@@ -30,15 +30,15 @@ namespace Tremor.Items
 
 		public override void OpenBossBag(Player player)
 		{
-			if (Main.rand.Next(7) == 0)
+			if (Main.rand.NextBool(7))
 			{
 				player.QuickSpawnItem(mod.ItemType("DarkEmperorMask"));
 			}
-			if (Main.rand.Next(5) == 0)
+			if (Main.rand.NextBool(5))
 			{
 				player.QuickSpawnItem(mod.ItemType("DrippingScythe"));
 			}
-			if (Main.rand.Next(5) == 0)
+			if (Main.rand.NextBool(5))
 			{
 				player.QuickSpawnItem(mod.ItemType("DelightfulClump"));
 			}

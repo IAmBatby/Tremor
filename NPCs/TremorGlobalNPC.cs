@@ -40,7 +40,7 @@ namespace Tremor.NPCs
 					dust.noGravity = true;
 					dust.velocity *= 1.8f;
 					dust.velocity.Y -= 0.5f;
-					if (Main.rand.Next(4) == 0)
+					if (Main.rand.NextBool(4))
 					{
 						dust.noGravity = false;
 						dust.scale *= 0.5f;

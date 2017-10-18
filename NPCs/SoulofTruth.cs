@@ -195,13 +195,13 @@ namespace Tremor.NPCs
 				SetStage(true);
 			SetRotation();
 			CreateDust();
-			if (Power && Main.rand.Next(5) == 0)
+			if (Power && Main.rand.NextBool(5))
 				Shoot();
 		}
 
 		void CreateDust()
 		{
-			if (Main.rand.Next(3) == 0)
+			if (Main.rand.NextBool(3))
 				Dust.NewDust(npc.position, npc.width, npc.height, 59);
 		}
 
@@ -333,17 +333,17 @@ namespace Tremor.NPCs
 
 				}
 
-				if (!Main.expertMode && Main.rand.Next(7) == 0)
+				if (!Main.expertMode && Main.rand.NextBool(7))
 				{
 					Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("ThruthMask"));
 				}
 
-				if (!Main.expertMode && Main.rand.Next(3) == 0)
+				if (!Main.expertMode && Main.rand.NextBool(3))
 				{
 					Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("TrebleClef"));
 				}
 
-				if (!Main.expertMode && Main.rand.Next(3) == 0)
+				if (!Main.expertMode && Main.rand.NextBool(3))
 				{
 					Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("Revolwar"));
 				}

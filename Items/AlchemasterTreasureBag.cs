@@ -29,7 +29,7 @@ namespace Tremor.Items
 
 		public override void OpenBossBag(Player player)
 		{
-			if (Main.rand.Next(7) == 0)
+			if (Main.rand.NextBool(7))
 			{
 				player.QuickSpawnItem(mod.ItemType("AlchemasterMask"));
 			}
@@ -45,11 +45,11 @@ namespace Tremor.Items
 			{
 				player.QuickSpawnItem(mod.ItemType("SparkingFlask"), Main.rand.Next(30, 78));
 			}
-			if (Main.rand.Next(3) == 0)
+			if (Main.rand.NextBool(3))
 			{
 				player.QuickSpawnItem(mod.ItemType("TheGlorch"));
 			}
-			if (Main.rand.Next(3) == 0)
+			if (Main.rand.NextBool(3))
 			{
 				player.QuickSpawnItem(mod.ItemType("BadApple"));
 			}

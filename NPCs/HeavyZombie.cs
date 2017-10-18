@@ -36,15 +36,15 @@ namespace Tremor.NPCs
 
 		public override void NPCLoot()
 		{
-			if (Main.rand.Next(3) == 0)
+			if (Main.rand.NextBool(3))
 				npc.NewItem(mod.ItemType<UntreatedFlesh>());
-			if (Main.rand.Next(4) == 0)
+			if (Main.rand.NextBool(4))
 				npc.NewItem(ItemID.SilverBar, Main.rand.Next(2, 4));
-			if (Main.rand.Next(4) == 0)
+			if (Main.rand.NextBool(4))
 				npc.NewItem(ItemID.IronBar, Main.rand.Next(2, 4));
-			if (Main.rand.Next(4) == 0)
+			if (Main.rand.NextBool(4))
 				npc.NewItem(ItemID.LeadBar, Main.rand.Next(2, 4));
-			if (Main.rand.Next(4) == 0)
+			if (Main.rand.NextBool(4))
 				npc.NewItem(ItemID.TungstenBar, Main.rand.Next(2, 4));
 		}
 

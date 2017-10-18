@@ -59,7 +59,7 @@ namespace Tremor.NPCs
 
 		public override void AI()
 		{
-			if (Main.rand.Next(6) == 0)
+			if (Main.rand.NextBool(6))
 				Main.dust[Dust.NewDust(npc.position, npc.width, npc.height, 55, 0f, 0f, 200, npc.color)].velocity *= 0.3f;
 			if (Main.rand.Next(40) == 0)
 				Main.PlaySound(27, (int)npc.position.X, (int)npc.position.Y, 1);

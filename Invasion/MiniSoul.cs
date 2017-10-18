@@ -40,7 +40,7 @@ namespace Tremor.Invasion
 
 		private void SettingNumber()
 		{
-			if (Main.rand.Next(2) == 1)
+			if (Main.rand.NextBool(2))
 			{
 				num++;
 			}
@@ -61,7 +61,7 @@ namespace Tremor.Invasion
 				}
 
 				CyberWrathInvasion modPlayer = Main.player[Main.myPlayer].GetModPlayer<CyberWrathInvasion>(mod);
-				if (InvasionWorld.CyberWrath && Main.rand.Next(4) == 1)
+				if (InvasionWorld.CyberWrath && Main.rand.NextBool(4))
 				{
 					InvasionWorld.CyberWrathPoints1 += 1;
 					//Main.NewText(("Wave 1: Complete " + TremorWorld.CyberWrathPoints + "%"), 39, 86, 134);

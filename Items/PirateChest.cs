@@ -35,7 +35,7 @@ namespace Tremor.Items
 			{
 				player.QuickSpawnItem(2854);
 			}
-			if (Main.rand.Next(5) == 0)
+			if (Main.rand.NextBool(5))
 			{
 				player.QuickSpawnItem(672);
 			}
@@ -55,11 +55,11 @@ namespace Tremor.Items
 			{
 				player.QuickSpawnItem(3033);
 			}
-			if (Main.rand.Next(6) == 0)
+			if (Main.rand.NextBool(6))
 			{
 				player.QuickSpawnItem(mod.ItemType("HandCannon"));
 			}
-			if (Main.rand.Next(6) == 0)
+			if (Main.rand.NextBool(6))
 			{
 				player.QuickSpawnItem(mod.ItemType("PirateFlag"));
 			}
@@ -67,11 +67,11 @@ namespace Tremor.Items
 			{
 				player.QuickSpawnItem(73, Main.rand.Next(9, 18));
 			}
-			if (Main.rand.Next(2) == 0)
+			if (Main.rand.NextBool(2))
 			{
 				player.QuickSpawnItem(19, Main.rand.Next(14, 19)); ;
 			}
-			if (Main.rand.Next(2) == 0)
+			if (Main.rand.NextBool(2))
 			{
 				player.QuickSpawnItem(706, Main.rand.Next(14, 19)); ;
 			}

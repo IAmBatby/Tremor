@@ -65,11 +65,11 @@ namespace Tremor.NPCs
 		{
 			if (Main.rand.Next(20) == 0)
 				npc.NewItem(mod.ItemType<DarkDruidMask>());
-			if (Main.rand.Next(8) == 0)
+			if (Main.rand.NextBool(8))
 				npc.NewItem(ItemID.Ruby);
-			if (Main.rand.Next(8) == 0)
+			if (Main.rand.NextBool(8))
 				npc.NewItem(ItemID.Topaz);
-			if (Main.rand.Next(8) == 0)
+			if (Main.rand.NextBool(8))
 				npc.NewItem(ItemID.Diamond);
 			if (Main.rand.NextBool())
 				npc.NewItem(mod.ItemType<TearsofDeath>(), Main.rand.Next(1, 5));

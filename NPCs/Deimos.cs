@@ -40,7 +40,7 @@ namespace Tremor.NPCs
 
 		public override void AI()
 		{
-			if (Main.rand.Next(6) == 0)
+			if (Main.rand.NextBool(6))
 			{
 				Dust.NewDust(npc.position, npc.width, npc.height, 27, 0f, 0f, 200, npc.color);
 				Dust.NewDust(npc.position, npc.width, npc.height, 70, 0f, 0f, 200, npc.color);

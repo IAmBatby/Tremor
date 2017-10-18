@@ -72,7 +72,7 @@ namespace Tremor.Projectiles.Alchemic
 						num440 = num437 / num440;
 						num438 *= num440;
 						num439 *= num440;
-						if (Main.rand.Next(2) == 0)
+						if (Main.rand.NextBool(2))
 						{
 							Projectile.NewProjectile(value10.X, value10.Y, num438, num439, mod.ProjectileType("TheCadenceProj"), projectile.damage, projectile.knockBack, projectile.owner, 0f, 0f);
 						}

@@ -45,7 +45,7 @@ namespace Tremor.NPCs
 		{
 			if (Main.rand.NextBool())
 				npc.NewItem(mod.ItemType<GiantShell>(), Main.rand.Next(1, 3));
-			if (Main.rand.Next(3) == 0)
+			if (Main.rand.NextBool(3))
 				npc.NewItem(mod.ItemType<LostTurtleKnife>(), Main.rand.Next(10, 55));
 		}
 

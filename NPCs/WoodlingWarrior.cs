@@ -39,7 +39,7 @@ namespace Tremor.NPCs
 		{
 			if (Main.rand.NextBool())
 				this.NewItem(ItemID.Wood, Main.rand.Next(1, 6));
-			if (Main.rand.Next(3) == 0)
+			if (Main.rand.NextBool(3))
 				this.NewItem(mod.ItemType<ManaFruit>(), Main.rand.Next(1, 3));
 		}
 

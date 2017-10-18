@@ -42,7 +42,7 @@ namespace Tremor.Items
 
 		public override bool ConsumeAmmo(Player p)
 		{
-			return Main.rand.Next(3) == 0;
+			return Main.rand.NextBool(3);
 		}
 
 		public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)

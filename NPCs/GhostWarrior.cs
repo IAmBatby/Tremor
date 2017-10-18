@@ -37,7 +37,7 @@ namespace Tremor.NPCs
 
 		public override void NPCLoot()
 		{
-			if (Main.rand.Next(3) == 0)
+			if (Main.rand.NextBool(3))
 				npc.NewItem(mod.ItemType<GoldenClaw>());
 			if (Main.rand.NextBool(2))
 				npc.NewItem(mod.ItemType<LapisLazuli>());

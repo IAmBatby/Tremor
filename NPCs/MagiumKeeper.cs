@@ -215,7 +215,7 @@ namespace Tremor.NPCs
 							int num54 = Dust.NewDust(vector11, 1, 1, 59, 0f, 0f, 0, default(Color), 3f);
 							Main.dust[num54].velocity = -value5 * 0.3f;
 							Main.dust[num54].alpha = 100;
-							if (Main.rand.Next(2) == 0)
+							if (Main.rand.NextBool(2))
 							{
 								Main.dust[num54].noGravity = true;
 								Main.dust[num54].scale += 0.3f;

@@ -29,23 +29,23 @@ namespace Tremor.Items
 
 		public override void OpenBossBag(Player player)
 		{
-			if (Main.rand.Next(7) == 0)
+			if (Main.rand.NextBool(7))
 			{
 				player.QuickSpawnItem(mod.ItemType("PixieQueenMask"));
 			}
-			if (Main.rand.Next(6) == 0)
+			if (Main.rand.NextBool(6))
 			{
 				player.QuickSpawnItem(mod.ItemType("EtherealFeather"));
 			}
-			if (Main.rand.Next(6) == 0)
+			if (Main.rand.NextBool(6))
 			{
 				player.QuickSpawnItem(mod.ItemType("PixiePulse"));
 			}
-			if (Main.rand.Next(6) == 0)
+			if (Main.rand.NextBool(6))
 			{
 				player.QuickSpawnItem(mod.ItemType("HeartMagnet"));
 			}
-			if (Main.rand.Next(6) == 0)
+			if (Main.rand.NextBool(6))
 			{
 				player.QuickSpawnItem(mod.ItemType("DopelgangerCandle"));
 			}
