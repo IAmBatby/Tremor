@@ -18,7 +18,7 @@ namespace Tremor.Items
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Pumfish");
+			DisplayName.SetDefault("Pumpfish");
 			Tooltip.SetDefault("");
 		}
 
