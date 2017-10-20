@@ -6,6 +6,8 @@ using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
 using Terraria.Utilities;
 using Tremor.Items;
+using Tremor.Items.Alchemist;
+using Tremor.Items.Alchemist.Flasks;
 using Tremor.Projectiles.Alchemic;
 
 namespace Tremor.NPCs.TownNPCs

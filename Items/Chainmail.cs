@@ -1,6 +1,7 @@
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Tremor.Items.Invar;
 
 namespace Tremor.Items
 {
