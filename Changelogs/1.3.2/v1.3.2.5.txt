@@ -1,4 +1,4 @@
-Changelogs for TREMOR Beta 3:
+Changelog for v1.3.2.5:
 
 Note:
 - Update to Fargo's Mod version v13.0 to fix the shop from breaking
@@ -15,7 +15,7 @@ Coldtrap:
 - Knockback resist buffed from 0% to 30%
 - Now explodes into 2 to 3 Glaciers on death
 - Now only applies Frostburn in Hardmode or Expert mode, lasting 1 to 3 seconds
-- Note: the Ice Key drop chance IS NOT 33%, the chance is 1 in 25
+- Note: the Ice Key drop chance IS NOT 33%, the chance is 1 in 25 (4%)
 Frostbyte:
 - Life nerfed from 50 to 20, and scales to 80 in Hardmode
 - Damage nerfed from 13 to 4, and scales to 26 in Hardmode
@@ -105,8 +105,5 @@ Items:
 
 Other:
 - Fixed silently Caught Exception: Index was outside the bounds of the array.   at Tremor.NPCs.Bosses.CogLord.CogLordProbe.AI()
-- Removed some borked comments (broken russian)
-- More code formatting
-
-Code:
+- Removed some borked comments (broken russian characters)
 - Flags hideCode, hideResources and includeSource are no longer blocking unpacking. Unpack now to get the Tremor.dll
