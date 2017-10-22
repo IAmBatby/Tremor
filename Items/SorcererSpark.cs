@@ -6,24 +6,22 @@ namespace Tremor.Items
 {
 	public class SorcererSpark : ModItem
 	{
-
-		public override void SetDefaults()
-		{
-
-			item.width = 22;
-			item.height = 22;
-			item.rare = 1;
-			item.accessory = true;
-			item.value = 20000;
-		}
-
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Sorcerer Spark");
 			Tooltip.SetDefault("3% increased magic damage\n" +
-"Increases magic critical strike chance by 8\n" +
-"Increases maximum mana by 20");
+			                   "8% magic critical strike chance\n" +
+			                   "Increases maximum mana by 20");
 			Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(6, 4));
+		}
+
+		public override void SetDefaults()
+		{
+			item.width = 22;
+			item.height = 22;
+			item.rare = 1;
+			item.accessory = true;
+			item.value = Item.buyPrice(silver: 1);
 		}
 
 		public override void UpdateAccessory(Player player, bool hideVisual)
