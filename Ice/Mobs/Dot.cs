@@ -94,7 +94,7 @@ namespace Tremor.Ice.Mobs
 			}
 
 			// Explode into a few glaciers
-			int num = 2 + Main.rand.Next();
+			int num = 2 + Main.rand.Next(2);
 			for (int i = 0; i < num; i++)
 			{
 				NPC.NewNPC((int)npc.position.X, (int)npc.position.Y, mod.NPCType<Glacier>());

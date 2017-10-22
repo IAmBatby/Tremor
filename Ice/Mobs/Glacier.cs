@@ -54,7 +54,7 @@ namespace Tremor.Ice.Mobs
 			// 5% chance to drop a few ice ores
 			if (Main.rand.NextBool(20))
 			{
-				this.NewItem(mod.ItemType<Icicle>(), 1 + Main.rand.Next() + (Main.hardMode ? 1 : 0));
+				this.NewItem(mod.ItemType<Icicle>(), 1 + Main.rand.Next(2) + (Main.hardMode ? 1 : 0));
 			}
 		}
 
