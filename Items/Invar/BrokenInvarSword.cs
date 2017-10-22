@@ -14,6 +14,7 @@ namespace Tremor.Items.Invar
 		{
 			item.CloneDefaults(mod.ItemType<BrokenInvarSword>());
 			item.type = mod.ItemType<BrokenInvarSword>();
+			item.netID = item.type;
 			typeof(Item).GetField("modItem", BindingFlags.Instance | BindingFlags.NonPublic)?.SetValue(item, new BrokenInvarSword());
 			typeof(ModItem).GetField("item", BindingFlags.Instance | BindingFlags.NonPublic)?.SetValue(item.modItem, item);
 		}
