@@ -19,7 +19,7 @@ namespace Tremor.Items
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Chainmail");
+			DisplayName.SetDefault("Chain Mail");
 			Tooltip.SetDefault("");
 		}
 
