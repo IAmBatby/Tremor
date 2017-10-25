@@ -13,7 +13,7 @@ using Tremor.Ice;
 using Tremor.Ice.Items;
 using Tremor.Items;
 using Tremor.Tiles;
-using ArgiteBar = Tremor.Items.ArgiteBar;
+using ArgiteBar = Tremor.Items.Argite.ArgiteBar;
 using BronzeBar = Tremor.Items.Bronze.BronzeBar;
 using SteelBar = Tremor.Items.Steel.SteelBar;
 

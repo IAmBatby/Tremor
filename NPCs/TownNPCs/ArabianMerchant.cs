@@ -6,6 +6,7 @@ using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
 using Terraria.Utilities;
 using Tremor.Items;
+using Tremor.Items.Sandstone;
 using Tremor.Projectiles;
 
 namespace Tremor.NPCs.TownNPCs

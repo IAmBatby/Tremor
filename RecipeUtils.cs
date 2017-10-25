@@ -7,6 +7,7 @@ using Terraria.ModLoader;
 using Tremor.Items;
 using Tremor.NPCs.Bosses.NovaPillar.Items;
 using Tremor.Tiles;
+using SandstonePlatform = Tremor.Items.Sandstone.SandstonePlatform;
 
 namespace Tremor
 {
@@ -244,7 +245,7 @@ namespace Tremor
 			recipe.AddRecipe();
 
 			recipe = new ModRecipe(mod);
-			recipe.AddIngredient(mod.ItemType<Items.SandstonePlatform>(), 2);
+			recipe.AddIngredient(mod.ItemType<SandstonePlatform>(), 2);
 			recipe.SetResult(607);
 			recipe.AddRecipe();
 
