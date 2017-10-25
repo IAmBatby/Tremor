@@ -38,7 +38,6 @@ namespace Tremor.Items.Orcish
 		{
 			player.setBonus = "Increased maximum defense by 2";
 			player.statDefense += 2;
-			player.moveSpeed -= 0.1f;
 		}
 
 	}
