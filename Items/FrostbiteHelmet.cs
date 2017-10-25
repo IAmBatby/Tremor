@@ -7,10 +7,8 @@ namespace Tremor.Items
 	[AutoloadEquip(EquipType.Head)]
 	public class FrostbiteHelmet : ModItem
 	{
-
 		public override void SetDefaults()
 		{
-
 			item.width = 32;
 			item.height = 26;
 			item.value = 100;

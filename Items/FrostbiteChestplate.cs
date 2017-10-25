@@ -6,10 +6,8 @@ namespace Tremor.Items
 	[AutoloadEquip(EquipType.Body)]
 	public class FrostbiteChestplate : ModItem
 	{
-
 		public override void SetDefaults()
 		{
-
 			item.width = 26;
 			item.height = 18;
 			item.value = 600;

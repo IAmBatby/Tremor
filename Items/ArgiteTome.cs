@@ -7,7 +7,6 @@ namespace Tremor.Items
 	{
 		public override void SetDefaults()
 		{
-
 			item.damage = 18;
 			item.melee = false;
 			item.magic = true;
