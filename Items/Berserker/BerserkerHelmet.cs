@@ -36,7 +36,7 @@ namespace Tremor.Items.Berserker
 
 		public override void UpdateArmorSet(Player player)
 		{
-			player.setBonus = "Summons a protective rotating sword!";
+			player.setBonus = "Summons a Rotating Sword to fight for you";
 			player.AddBuff(mod.BuffType("BerserkerBuff"), 2);
 		}
 

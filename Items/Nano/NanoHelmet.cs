@@ -44,7 +44,7 @@ namespace Tremor.Items.Nano
 
 		public override void UpdateArmorSet(Player player)
 		{
-			player.setBonus = "Summons the nano dron will fight for you";
+			player.setBonus = "Summons a Nano Drone to fight for you";
 			player.AddBuff(mod.BuffType("NanoDronBuff"), 2);
 			player.nightVision = true;
 			if (Math.Abs(player.velocity.X) + Math.Abs(player.velocity.Y) > 1f && !player.rocketFrame) // Makes sure the player is actually moving

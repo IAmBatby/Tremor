@@ -41,7 +41,7 @@ namespace Tremor.Items.Brass
 		{
 			player.AddBuff(mod.BuffType("buffSteampunkProbe"), 4);
 			player.AddBuff(mod.BuffType("SteamRangerBuff"), 4);
-			player.setBonus = "Summons a friendly Steampunk Drone to defend you and increases damage of Brass Chain Repeater";
+			player.setBonus = "Summons a Steampunk Drone to fight for you and increases damage of Brass Chain Repeater";
 		}
 
 		public override void ArmorSetShadows(Player player)

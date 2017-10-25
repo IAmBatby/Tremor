@@ -36,7 +36,7 @@ namespace Tremor.Items.Nightingale
 
 		public override void UpdateArmorSet(Player player)
 		{
-			player.setBonus = "Reduced enemy agression";
+			player.setBonus = "Reduced enemy aggression";
 			player.AddBuff(106, 300, true);
 		}
 

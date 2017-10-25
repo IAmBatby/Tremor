@@ -27,6 +27,7 @@ namespace Tremor.Items.Flesh
 
 		public override void UpdateEquip(Player player)
 		{
+			player.maxMinions += 1;
 			player.minionDamage += 0.09f;
 		}
 
