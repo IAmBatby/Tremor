@@ -8,6 +8,7 @@ using Microsoft.Xna.Framework;
 using Terraria.Utilities;
 using Tremor;
 using Tremor.Items;
+using Tremor.Items.Plague;
 using Tremor.Projectiles;
 
 namespace Tremor.NPCs.TownNPCs
