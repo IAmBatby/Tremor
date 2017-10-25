@@ -7,6 +7,7 @@ using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
 using Terraria.Utilities;
 using Tremor.Items;
+using Tremor.Items.Archer;
 
 namespace Tremor.NPCs.TownNPCs
 {

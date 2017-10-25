@@ -23,7 +23,7 @@ public override void KillTile(int i, int j, ref bool fail, ref bool effectOnly, 
     {
         if(Main.tile[i, j].frameX == 0 && Main.tile[i, j].frameY == 0)
         {
-            Item.NewItem(i * 16, j * 16, 48, 48, mod.ItemType<Items.BottledSoulOfSight>());
+            Item.NewItem(i * 16, j * 16, 48, 48, mod.ItemType<Items.Souls.BottledSoulOfSight>());
         }
     }
 

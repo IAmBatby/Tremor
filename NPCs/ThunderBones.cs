@@ -3,6 +3,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 
 using Tremor.Items;
+using Tremor.Items.Bone;
 
 namespace Tremor.NPCs
 {

@@ -7,6 +7,7 @@ using Microsoft.Xna.Framework;
 using Terraria.Utilities;
 using Tremor;
 using Tremor.Items;
+using Tremor.Items.Chain;
 
 namespace Tremor.NPCs.TownNPCs
 {

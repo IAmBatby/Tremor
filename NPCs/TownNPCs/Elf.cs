@@ -4,6 +4,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.Utilities;
 using Tremor.Items;
+using Tremor.Items.Candy;
 
 namespace Tremor.NPCs.TownNPCs
 {

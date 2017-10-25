@@ -7,6 +7,7 @@ using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
 
 using Tremor.Items;
+using Tremor.Items.Souls;
 
 namespace Tremor.NPCs
 {

@@ -8,6 +8,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Terraria.Utilities;
 using Tremor;
 using Tremor.Items;
+using Tremor.Items.Cursed;
 using Tremor.NPCs.TownNPCs;
 
 namespace Tremor.NPCs.TownNPCs

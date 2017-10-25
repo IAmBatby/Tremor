@@ -5,10 +5,8 @@ namespace Tremor.NPCs.Bosses.NovaPillar.Items.Weapons
 {
 	public class NovaPickaxe : ModItem
 	{
-
 		public override void SetDefaults()
 		{
-
 			item.damage = 80;
 			item.melee = true;
 			item.width = 38;
@@ -30,7 +28,7 @@ namespace Tremor.NPCs.Bosses.NovaPillar.Items.Weapons
 		{
 			DisplayName.SetDefault("Nova Pickaxe");
 			Tooltip.SetDefault("");
-			TremorGlowMask.AddGlowMask(item.type, "Tremor/NPCs/Bosses/NovaPillar/Items/Weapons/NovaPickaxe_Glow");
+			TremorGlowMask.AddGlowMask(item.type, $"{typeof(NovaPickaxe).NamespaceToPath()}/NovaPickaxe_Glow");
 		}
 
 		public override void AddRecipes()

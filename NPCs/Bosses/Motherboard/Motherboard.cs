@@ -8,6 +8,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Tremor.Items;
 using Tremor.Items.Alchemist.Flasks;
+using Tremor.Items.Souls;
 using Tremor.NPCs.Bosses.Motherboard.Items;
 
 namespace Tremor.NPCs.Bosses.Motherboard

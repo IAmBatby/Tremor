@@ -2,6 +2,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Tremor.Items;
+using Tremor.Items.Souls;
 
 namespace Tremor.NPCs.Bosses.Motherboard.Items
 {

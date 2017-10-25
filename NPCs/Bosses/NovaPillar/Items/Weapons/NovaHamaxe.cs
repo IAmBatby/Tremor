@@ -30,7 +30,7 @@ namespace Tremor.NPCs.Bosses.NovaPillar.Items.Weapons
 		{
 			DisplayName.SetDefault("Nova Hamaxe");
 			Tooltip.SetDefault("");
-			TremorGlowMask.AddGlowMask(item.type, "Tremor/NPCs/Bosses/NovaPillar/Items/Weapons/NovaHamaxe_Glow");
+			TremorGlowMask.AddGlowMask(item.type, $"{typeof(NovaHamaxe).NamespaceToPath()}/NovaHamaxe_Glow");
 		}
 
 		public override void AddRecipes()

@@ -5,6 +5,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Tremor.Items;
+using Tremor.Items.Souls;
 using Tremor.NPCs.Bosses.NovaPillar.Items;
 using Tremor.Tiles;
 using SandstonePlatform = Tremor.Items.Sandstone.SandstonePlatform;

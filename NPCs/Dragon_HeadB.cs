@@ -5,6 +5,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Tremor.Items;
+using Tremor.Items.Ancient;
 
 namespace Tremor.NPCs
 {
