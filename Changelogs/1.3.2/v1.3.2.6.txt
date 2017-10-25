@@ -1,0 +1,3 @@
+Changelog for v1.3.2.6:
+- Fixed a bug causing way too many icicles to drop, Coldtrap to not explode into Glaciers (or way too many) and getting stuck in the load menu on Recipe browser: Rebuilding Loot Cache Mind you, you will also have to wait for Recipe browser update to fix, if it's not out you have to wait.
+- Mod now also has an icon,  not guaranteed final

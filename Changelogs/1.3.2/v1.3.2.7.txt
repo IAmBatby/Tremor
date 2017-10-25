@@ -1,0 +1,21 @@
+Changelog for v1.3.2.7:
+
+Mr Danny is back:
+`@everyone Alright, so as Jofairden and I have been on good terms already for a good while already, he just proposed to open up the wiki again. The wiki however, is quite a bad source of information as of now, and there are a lot of bad pages. He asked me if I could make this post to ask if anyone right now would want to help out with the wiki, both with cleaning it up and adding new pages. If you want to help out, ping me and I will give you the wiki editor role, giving you access to the #wiki channel where you can ask questions if needed.`
+This means the wiki is back in business and we are looking for editors. Go to the discord for more information.
+
+Items:
+- Berserker set bonus updated to: "Summons a Rotating Sword to fight for you"
+- Brass set bonus updated to: "Summons a Steampunk Drone to fight for you and increases damage of Brass Chain Repeater"
+- Flesh Headgear now actually increases max minions by 1
+- Nano set bonus updated to: "Summons a Nano Drone to fight for you"
+- Nightingale set bonus spelling fix: agression -> aggression
+- Chainmail renamed to Chain Mail by request
+- Updated Stone Armor sell prices to 1 silver per piece
+- Updated Stone Armor pieces' sizes to match the sprites
+- Stone Chestplate now reduces melee speed by 10%
+- Stone Chestplate now costs 45 Stone Block to craft, down from 75
+- Stone Helmet no longer gives 4% melee damage and no longer silently decreases movement speed by 25%
+- Stone Helmet now costs 25 Stone Block to craft, down from 40
+- Stone Leggings now reduce movement speed by 10%
+- Stone Leggings now cost 30 Stone Block to craft, down from 50
