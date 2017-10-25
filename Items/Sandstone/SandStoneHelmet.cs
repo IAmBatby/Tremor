@@ -36,7 +36,7 @@ namespace Tremor.Items.Sandstone
 
 		public override void UpdateArmorSet(Player player)
 		{
-			player.setBonus = "The desert winds call a sandstorm to protect you";
+			player.setBonus = "Summons a Sandstorm to fight for you";
 			player.AddBuff(mod.BuffType("SandstormMinionBuff"), 2);
 		}
 
