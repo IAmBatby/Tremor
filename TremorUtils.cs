@@ -47,7 +47,7 @@ namespace Tremor
 		/// </summary>
 		private static readonly Dictionary<Type, Dictionary<int, string>> NameFromConstCache = new Dictionary<Type, Dictionary<int, string>>();
 		private static readonly Type[] IntTypes = new Type[] { typeof(byte), typeof(sbyte), typeof(ushort), typeof(short), typeof(uint), typeof(int), typeof(ulong), typeof(long) };
-		public static string FindNameByConstant(Type classType, int id)
+		public static string FindNameByConstant(this Type classType, int id)
 		{
 			Dictionary<int, string> cache;
 			if (!NameFromConstCache.ContainsKey(classType))
