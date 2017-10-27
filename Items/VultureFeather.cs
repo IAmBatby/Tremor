@@ -18,13 +18,13 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Vulture Feather");
-			Tooltip.SetDefault("Increases movement speed by 15%");
+			Tooltip.SetDefault("15% increased movement speed");
 		}
-
 
 		public override void UpdateAccessory(Player player, bool hideVisual)
 		{
 			player.moveSpeed += 0.15f;
+			player.maxRunSpeed += 0.15f;
 		}
 	}
 }

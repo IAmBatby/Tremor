@@ -32,7 +32,6 @@ namespace Tremor.Projectiles
 
 		}
 
-
 		public override void AI()
 		{
 			int dustType = 246;
@@ -80,7 +79,7 @@ namespace Tremor.Projectiles
 
 		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
 		{
-			if (Main.rand.Next(5) == 0)
+			if (Main.rand.NextBool(5))
 			{
 				target.AddBuff(72, 500, false);
 			}

@@ -28,7 +28,6 @@ namespace Tremor.Items
 			Tooltip.SetDefault("Increases all stats during night time");
 		}
 
-
 		public override bool UseItem(Player player)
 		{
 			player.AddBuff(mod.BuffType("NightHunting"), 14400);

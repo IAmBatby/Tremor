@@ -1,0 +1,109 @@
+Changelog for v1.3.2.5:
+
+Note:
+- Update to Fargo's Mod version v13.0 to fix the shop from breaking
+- Tested killing Andas and Nova Pillar, both are fully functional to me. If you are reporting they are not, please tell me you're in multiplayer or not
+
+Glacier:
+- All mobs now have a 5% chance to drop Ice Ore (Icicles) with a stack of 1-2 or 2-3 in Hardmode. White Hound and Coldtrap have 10% chance to drop, with a stack of 2-4 or 3-5 in Hardmode
+- All mobs now have a 10% chance to drop Ice Block with a stack of 1-3 or 2-4 in Hardmode. White Hound and Coldtrap have 20% chance to drop, with a stack of 2-5 or 3-6 in Hardmode
+- Adjusted many mob scaling, see below:
+Coldtrap:
+- Life buffed from 20 to 30, and scales to 300 in Hardmode
+- Damage buffed from 0 to 25, and scales to 65 in Hardmode
+- Arm damage unchanged at 15, but scales to 40 in Hardmode
+- Knockback resist buffed from 0% to 30%
+- Now explodes into 2 to 3 Glaciers on death
+- Now only applies Frostburn in Hardmode or Expert mode, lasting 1 to 3 seconds
+- Note: the Ice Key drop chance IS NOT 33%, the chance is 1 in 25 (4%)
+Frostbyte:
+- Life nerfed from 50 to 20, and scales to 80 in Hardmode
+- Damage nerfed from 13 to 4, and scales to 26 in Hardmode
+- Defense nerfed from 12 to 3, and scales to 12 in Hardmode
+- Expert scaling applies 5 life and 2 damage per player
+- Now only applies Frostburn in Hardmode or Expert mode, lasting 1 to 3 seconds
+Glacier:
+- Life nerfed from 50 to 20, and scales to 100 in Hardmode
+- Damage nerfed from 10 to 5, and scales to 32 in Hardmode
+- Defense nerfed from 8 to 2, and scales to 12 in Hardmode
+- Expert scaling applies 10 life and 2 damage per player
+- Now only applies Frostburn in Hardmode or Expert mode, lasting 1 to 3 seconds
+Ice Wolf:
+- Life nerfed from 20 to 12, and scales to 96 in Hardmode
+- Damage nerfed from 6 to 4, and scales to 36 in Hardmode
+- Defense nerfed from 10 to 1, and scales to 12 in Hardmode
+- Expert scaling applies 12 life and 2 damage per player
+- Now only applies Frostburn in Hardmode or Expert mode, lasting 1 to 3 seconds
+White Hound:
+(hardmode only mob)
+- Life buffed from 150 to 200
+- Damage nerfed from 76 to 45
+- Defense nerfed from 35 to 10
+- Knockback resist nerfed from 30% to 10%
+- Frostburn now lasts 1 to 3 seconds down from 1 second
+White Walker:
+- Now requires night time to spawn
+- Life nerfed from 90 to 30, and scales to 300 in Hardmode
+- Damage buffed from 2 to 12, and scales to 55 in Hardmode
+- Defense nerfed from 12 to 2, and scales to 13 in Hardmode
+- Expert scaling applies 10 life and 3 damage per player
+- Now only applies Frostburn in Hardmode or Expert mode, lasting 1 to 3 seconds
+
+Bosses:
+- Fixed Paradox Titan (Titan Soul) and Wall of Shadows not registering as kill
+- Fixed bosses being seen as defeated for new worlds
+- Fixed boss bags being able to give dev sets before Hardmode
+- All boss summon items show the summon requirements in their tooltip
+- Additional info for summons have been removed from Boss Checklist, as they are now available in the tooltip
+- The requirements were checked for all items, the following things were found:
+- Boss Checklist noted that Eye of Cthulhu had to be beaten for using Mysterious Drum, this is false
+- Storm Jelly did not say any requirements, but it is required that Eye of Cthulhu has been slain
+- Fungus Beetle appeared after Heater of Worlds in Boss Checklist, however Fungus Beetle comes after Heater of Worlds in terms of progression, this has been fixed
+- Lowered Motherboard's defense from 70 to 30
+- Lowered Signal Drone's damage from 75 to 30
+- Increased Signal Drone's immune time from 180 (~3 seconds) to 240 (~4 seconds)
+- Lowered Signal Drone's speed multiplier from 16 to 12
+- Lowered Signal Drone's interdrone laser damage from 40 to 25
+- Increased Motherboard's triple beam laser damage from 30 to 35
+
+Worldgen:
+- Worldgen should work better now, please try
+- Removed many (read: at least a dozen) redundant loops iterating world chests (each 1000 iterations)
+- Removed code trying to find a recently placed chest with random coords, with no purpose
+- Organized some of the worldgen code
+
+WorldGen Chests:
+- Fixed chests replacing contents in the chest, chests now properly add to the contents
+- Fixed chests containing Flying Carpet or Sandstorm In A Bottle having content replaced
+- Fixed chests containing Pharaoh's Mask having content replaced
+- Fixed Ruin Chest generation and having content replaced
+- Fixed Ice Chest generation and having content replaced
+
+Items:
+- Fixed Extended Boom Flask not benefitting from the Flask Core effect
+- Undead Warriors variants are now named. Savage are more common, Cruel and Relentless less common than Savage
+- Undead Warriors stats changed, they are now properly scaling into hardmode and expert mode. They all have slightly increased defense and knockback resist to match vanilla zombies
+- Undead Warriors gain more life and damage into hardmode. They also gain increased life and damage per player in expert mode
+- Undead Warriors will drop Invar items less frequently, all drops were 20% before and now depend on the variant. Relentless can drop all Invar items, other variants may only drop a certain Invar item. Relentless variant has the highest droprates.
+- The Invar drops now craft into 1 less Invar Bar
+- The Invar drops are now worth however many Invar Bars they craft into
+- Invar Bar is now valued at 1 silver each
+- Melted Invar Sword was renamed to Broken Invar Sword
+- Changed Invar armor pieces prices to match their crafting cost
+- Invar armor pieces are now 'reinforceable' by crafting the reinforced variant at an anvil, which requires the original piece and an additional 2 Invar Bars
+- Invar Helmet now grants +1 defense as its own bonus, and +2 defense as its set bonus
+- Invar Headgear now grants 6% melee damage as its set bonus
+- Invar Hat now grants 10% melee speed as its set bonus
+- The Invar armor pieces will craft into new sets in the near future
+- The Red Steel items have been made unavailable and the items will find a new purpose in the near future. The changes will be applied retroactively. This means if you have Red Steel gear right now it will still be functional in game right now, and when they find a new purpose they will automatically be updated
+- The Thief mob no longer drops Chainmail and Leather armor items directly
+- Chainmail armor is now craftable with iron/lead bars, chains and invar bars using anvil
+- Leather armor is now craftable with leather using workbench or heavy workbench
+- Chainmail armor is now sold by the Knight town npc after defeating EoC
+- Leather armor is now sold by the Archer town npc after defeating EoC
+- More tooltips have been changed to match vanilla's style
+
+Other:
+- Fixed silently Caught Exception: Index was outside the bounds of the array.   at Tremor.NPCs.Bosses.CogLord.CogLordProbe.AI()
+- Removed some borked comments (broken russian characters)
+- Flags hideCode, hideResources and includeSource are no longer blocking unpacking. Unpack now to get the Tremor.dll

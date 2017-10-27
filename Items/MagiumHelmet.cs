@@ -7,13 +7,11 @@ namespace Tremor.Items
 	public class MagiumHelmet : ModItem
 	{
 
-
 		public override void SetDefaults()
 		{
 
 			item.width = 38;
 			item.height = 22;
-
 
 			item.value = 18000;
 			item.rare = 5;
@@ -23,9 +21,9 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Magium Helmet");
-			Tooltip.SetDefault("9% increased magic critical strike chance\nIncreases maximum mana by 40");
+			Tooltip.SetDefault("9% increased magic critical strike chance\n" +
+"Increases maximum mana by 40");
 		}
-
 
 		public override void UpdateEquip(Player player)
 		{

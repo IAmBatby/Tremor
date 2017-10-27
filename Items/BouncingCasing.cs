@@ -24,7 +24,6 @@ namespace Tremor.Items
 			Tooltip.SetDefault("Alchemical flasks bounce off blocks");
 		}
 
-
 		public override void UpdateAccessory(Player player, bool hideVisual)
 		{
 			player.AddBuff(mod.BuffType("BouncingCasingBuff"), 2);

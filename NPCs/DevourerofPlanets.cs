@@ -1,11 +1,13 @@
-using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
+using Microsoft.Xna.Framework;
+
+using Tremor.Items;
+
 namespace Tremor.NPCs
 {
-
 	public class DevourerofPlanets : ModNPC
 	{
 		public override void SetStaticDefaults()
@@ -13,7 +15,6 @@ namespace Tremor.NPCs
 			DisplayName.SetDefault("Devourer of Planets");
 			Main.npcFrameCount[npc.type] = 2;
 		}
-
 
 		public override void SetDefaults()
 		{
@@ -36,40 +37,14 @@ namespace Tremor.NPCs
 			// Todo: bannerItem = mod.ItemType("DevourerofPlanetsBanner");
 		}
 
-		public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
-		{
-			npc.lifeMax = npc.lifeMax * 1;
-			npc.damage = npc.damage * 1;
-		}
-
 		public override void NPCLoot()
 		{
-			if (Main.netMode != 1)
-			{
-				int centerX = (int)(npc.position.X + npc.width / 2) / 16;
-				int centerY = (int)(npc.position.Y + npc.height / 2) / 16;
-				int halfLength = npc.width / 2 / 16 + 1;
-				if (Main.rand.NextBool())
-				{
-					Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("HuskofDusk"), Main.rand.Next(2, 5));
-				}
-				if (Main.rand.Next(10) == 0)
-				{
-					Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("EyeofOblivion"), Main.rand.Next(1));
-				}
-				if (Main.rand.Next(3) == 0)
-				{
-					Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("NightCore"), Main.rand.Next(1));
-				}
-			}
-		}
-
-		public override float SpawnChance(NPCSpawnInfo spawnInfo)
-		{
-			int x = spawnInfo.spawnTileX;
-			int y = spawnInfo.spawnTileY;
-			int tile = Main.tile[x, y].type;
-			return Main.hardMode && TremorWorld.Boss.Trinity.IsDowned() && !spawnInfo.player.ZoneDungeon && y > Main.rockLayer ? 0.005f : 0f;
+			if (Main.rand.NextBool())
+				npc.NewItem(mod.ItemType<HuskofDusk>(), Main.rand.Next(2, 5));
+			if (Main.rand.Next(10) == 0)
+				npc.NewItem(mod.ItemType<EyeofOblivion>());
+			if (Main.rand.NextBool(3))
+				npc.NewItem(mod.ItemType<NightCore>());
 		}
 
 		public override void HitEffect(int hitDirection, double damage)
@@ -86,9 +61,9 @@ namespace Tremor.NPCs
 					Dust.NewDust(npc.position, npc.width, npc.height, 27, 2.5f * hitDirection, -2.5f, 0, default(Color), 0.7f);
 					Dust.NewDust(npc.position, npc.width, npc.height, 27, 2.5f * hitDirection, -2.5f, 0, default(Color), 0.7f);
 				}
-				Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/DevourerofPlanetsGore1"), 1f);
-				Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/DevourerofPlanetsGore2"), 1f);
-				Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/DevourerofPlanetsGore3"), 1f);
+
+				for(int i = 0; i < 3; ++i)
+					Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot($"Gores/DevourerofPlanetsGore{i+1}"), 1f);
 			}
 			else
 			{
@@ -101,5 +76,7 @@ namespace Tremor.NPCs
 			}
 		}
 
+		public override float SpawnChance(NPCSpawnInfo spawnInfo)
+			=> Main.hardMode && TremorWorld.Boss.Trinity.IsDowned() && !spawnInfo.player.ZoneDungeon && spawnInfo.spawnTileY > Main.rockLayer ? 0.005f : 0f;
 	}
 }

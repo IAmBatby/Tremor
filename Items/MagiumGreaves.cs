@@ -7,13 +7,11 @@ namespace Tremor.Items
 	public class MagiumGreaves : ModItem
 	{
 
-
 		public override void SetDefaults()
 		{
 
 			item.width = 38;
 			item.height = 22;
-
 
 			item.value = 18000;
 			item.rare = 5;
@@ -23,13 +21,14 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Magium Greaves");
-			Tooltip.SetDefault("Increases movement speed by 25%\nIncreases maximum mana by 40");
+			Tooltip.SetDefault("25% increased movement speed\n" +
+"Increases maximum mana by 40");
 		}
-
 
 		public override void UpdateEquip(Player player)
 		{
 			player.moveSpeed += 0.2f;
+			player.maxRunSpeed += 0.2f;
 			player.statManaMax2 += 40;
 		}
 

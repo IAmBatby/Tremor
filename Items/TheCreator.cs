@@ -11,7 +11,6 @@ namespace Tremor.Items
 			item.width = 22;
 			item.height = 44;
 
-
 			item.value = 10000;
 			item.rare = 4;
 			item.defense = 9;
@@ -21,9 +20,9 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("The Creator");
-			Tooltip.SetDefault("15% increased all damage and crit\nIncreases maximum mana and health by 100");
+			Tooltip.SetDefault("15% increased damage and crit\n" +
+"Increases maximum mana and health by 100");
 		}
-
 
 		public override void UpdateAccessory(Player player, bool hideVisual)
 		{
@@ -32,14 +31,14 @@ namespace Tremor.Items
 			player.meleeDamage += 0.15f;
 			player.rangedDamage += 0.15f;
 			player.thrownDamage += 0.15f;
-			player.GetModPlayer<MPlayer>(mod).alchemistDamage += 0.15f;
+			player.GetModPlayer<MPlayer>(mod).alchemicalDamage += 0.15f;
 			player.statManaMax2 += 100;
 			player.statLifeMax2 += 100;
 			player.meleeCrit += 15;
 			player.magicCrit += 15;
 			player.rangedCrit += 15;
 			player.thrownCrit += 15;
-			player.GetModPlayer<MPlayer>(mod).alchemistCrit += 15;
+			player.GetModPlayer<MPlayer>(mod).alchemicalCrit += 15;
 		}
 
 		public override void AddRecipes()

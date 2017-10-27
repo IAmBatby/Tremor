@@ -6,7 +6,6 @@ namespace Tremor.Items
 	public class SpinalMask : ModItem
 	{
 
-
 		public override void SetDefaults()
 		{
 

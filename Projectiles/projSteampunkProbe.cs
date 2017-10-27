@@ -16,9 +16,9 @@ namespace Tremor.Projectiles
 		const int spread = 45;
 		const float spreadMult = 0.045f;
 
-		const int STATIC_DAMAGE = 30; // ���� �� �� ������ ���� ���� ���������� �� �������
+		const int STATIC_DAMAGE = 30; 
 									  // (10 * ((int)Main.player[projectile.owner].magicDamage + (int)Main.player[projectile.owner].meleeDamage + (int)Main.player[projectile.owner].minionDamage + (int)Main.player[projectile.owner].rangedDamage + (int)Main.player[projectile.owner].thrownDamage)) + 15
-									  // �� ����� ���� ����������� ���� �� �����. ���� ��� �� ������ �������, ����� -1.
+									  
 
 		int TimeToShoot = ShootRate;
 
@@ -37,7 +37,6 @@ namespace Tremor.Projectiles
 			DisplayName.SetDefault("Steampunk Probe");
 
 		}
-
 
 		public override void AI()
 		{

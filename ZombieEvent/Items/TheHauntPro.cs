@@ -11,9 +11,9 @@ namespace Tremor.ZombieEvent.Items
 			projectile.CloneDefaults(ProjectileID.ZephyrFish);
 			aiType = ProjectileID.ZephyrFish;
 			Main.projFrames[projectile.type] = 4;
-                        projectile.width = 72;
-                        //projectile.noGravity = true;
-                        projectile.height = 38;
+			projectile.width = 72;
+			//projectile.noGravity = true;
+			projectile.height = 38;
 			Main.projPet[projectile.type] = true;
 		}
 

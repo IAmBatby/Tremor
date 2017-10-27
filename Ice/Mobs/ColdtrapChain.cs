@@ -3,6 +3,7 @@ using System.IO;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace Tremor.Ice.Mobs
@@ -63,12 +64,10 @@ namespace Tremor.Ice.Mobs
 		private const float maxLength = 400f;
 		private const float maxLengthSpeed = 2.5f;
 
-
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Coldtrap");
 		}
-
 
 		public override void SetDefaults()
 		{
@@ -232,7 +231,11 @@ namespace Tremor.Ice.Mobs
 
 		public override void ModifyHitPlayer(Player target, ref int damage, ref bool crit)
 		{
-			target.AddBuff(44, 840);
+			if (Main.hardMode || Main.expertMode)
+			{
+				target.AddBuff(BuffID.Frostburn, Main.rand.Next(1, 4) * 60);
+			}
+			
 			projectile.rotation %= 2f * (float)Math.PI;
 			if (projectile.rotation % (float)Math.PI == 0f)
 			{

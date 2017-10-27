@@ -27,5 +27,4 @@ namespace Tremor.Tiles
 		{
 			Item.NewItem(i * 16, j * 16, 32, 16, mod.ItemType("Ladder"));
 		}
-
 }}

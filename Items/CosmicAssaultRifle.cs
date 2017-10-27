@@ -17,7 +17,6 @@ namespace Tremor.Items
 			item.useTime = 15;
 			item.shoot = 207;
 
-
 			item.shootSpeed = 20f;
 			item.useAnimation = 15;
 			item.useStyle = 5;
@@ -33,7 +32,8 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Cosmic Assault Rifle");
-			Tooltip.SetDefault("Uses bullets as ammo\nShoots homing bullets");
+			Tooltip.SetDefault("Uses bullets as ammo\n" +
+"Shoots homing bullets");
 		}
 
 		public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)

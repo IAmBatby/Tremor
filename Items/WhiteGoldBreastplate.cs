@@ -21,16 +21,14 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("White Gold Breastplate");
-			Tooltip.SetDefault("Increases melee and ranged critical strike chances by 25%");
+			Tooltip.SetDefault("25% increased melee and ranged critical strike chance");
 		}
-
 
 		public override void UpdateEquip(Player player)
 		{
 			player.rangedCrit += 25;
 			player.meleeCrit += 25;
 		}
-
 
 		public override void AddRecipes()
 		{

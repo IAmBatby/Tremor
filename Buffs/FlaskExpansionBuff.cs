@@ -7,7 +7,7 @@ namespace Tremor.Buffs
 		public override void SetDefaults()
 		{
 			DisplayName.SetDefault("Flask Expansion");
-			Description.SetDefault("Increased size of alchemic clouds");
+			Description.SetDefault("Increased size of alchemical clouds");
 		}
 	}
 }

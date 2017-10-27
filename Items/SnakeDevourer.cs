@@ -35,7 +35,6 @@ namespace Tremor.Items
 			Tooltip.SetDefault("Uses bullets as ammo");
 		}
 
-
 		public override Vector2? HoldoutOffset()
 		{
 			return new Vector2(-12, -2);

@@ -7,12 +7,10 @@ namespace Tremor.Items
 	{
 		public override void SetDefaults()
 		{
-
 			item.maxStack = 999;
 			item.consumable = true;
 			item.width = 24;
 			item.height = 24;
-
 			item.rare = 9;
 			item.expert = true;
 			bossBagNPC = mod.NPCType("PixieQueen");
@@ -21,9 +19,8 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Treasure Bag");
-			Tooltip.SetDefault("Right click to open");
+			Tooltip.SetDefault("{$CommonItemTooltip.RightClickToOpen}");
 		}
-
 
 		public override bool CanRightClick()
 		{
@@ -32,28 +29,31 @@ namespace Tremor.Items
 
 		public override void OpenBossBag(Player player)
 		{
-			if (Main.rand.Next(7) == 0)
+			if (Main.rand.NextBool(7))
 			{
 				player.QuickSpawnItem(mod.ItemType("PixieQueenMask"));
 			}
-			if (Main.rand.Next(6) == 0)
+			if (Main.rand.NextBool(6))
 			{
 				player.QuickSpawnItem(mod.ItemType("EtherealFeather"));
 			}
-			if (Main.rand.Next(6) == 0)
+			if (Main.rand.NextBool(6))
 			{
 				player.QuickSpawnItem(mod.ItemType("PixiePulse"));
 			}
-			if (Main.rand.Next(6) == 0)
+			if (Main.rand.NextBool(6))
 			{
 				player.QuickSpawnItem(mod.ItemType("HeartMagnet"));
 			}
-			if (Main.rand.Next(6) == 0)
+			if (Main.rand.NextBool(6))
 			{
 				player.QuickSpawnItem(mod.ItemType("DopelgangerCandle"));
 			}
 			player.QuickSpawnItem(mod.ItemType("GlorianaWrath"));
-			player.TryGettingDevArmor();
+			if (Main.hardMode)
+			{
+				player.TryGettingDevArmor();
+			}
 			player.QuickSpawnItem(mod.ItemType("ChaosBar"), Main.rand.Next(15, 25));
 		}
 

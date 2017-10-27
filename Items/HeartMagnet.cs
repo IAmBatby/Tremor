@@ -22,7 +22,6 @@ namespace Tremor.Items
 			Tooltip.SetDefault("Increased heart pickup range");
 		}
 
-
 		public override void UpdateAccessory(Player player, bool hideVisual)
 		{
 			player.lifeMagnet = true;

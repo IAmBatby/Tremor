@@ -18,6 +18,5 @@ namespace Tremor.Projectiles
 
 		}
 
-
 	}
 }

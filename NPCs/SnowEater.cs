@@ -1,12 +1,19 @@
 using System;
-using Microsoft.Xna.Framework;
+
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
+using Microsoft.Xna.Framework;
+
+using Tremor.Items;
+using Tremor.Items.Souls;
+
 namespace Tremor.NPCs
 {
-
+	/*
+	 * AI could still use some cleaning up.
+	 */
 	public class SnowEater : ModNPC
 	{
 		public override void SetStaticDefaults()
@@ -32,55 +39,6 @@ namespace Tremor.NPCs
 			npc.value = Item.buyPrice(0, 0, 12, 0);
 			// banner = npc.type;
 			// Todo: bannerItem = mod.ItemType("SnowEaterBanner");
-		}
-
-		public override void NPCLoot()
-		{
-			if (Main.netMode != 1)
-			{
-				int centerX = (int)(npc.position.X + npc.width / 2) / 16;
-				int centerY = (int)(npc.position.Y + npc.height / 2) / 16;
-				int halfLength = npc.width / 2 / 16 + 1;
-				if (Main.rand.Next(2) == 0)
-				{
-					Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("FrostCore"));
-				};
-				if (NPC.downedMoonlord && Main.rand.Next(5) == 0)
-				{
-					Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("IceSoul"));
-				}
-			}
-		}
-		public override float SpawnChance(NPCSpawnInfo spawnInfo)
-		{
-			int x = spawnInfo.spawnTileX;
-			int y = spawnInfo.spawnTileY;
-			int tile = Main.tile[x, y].type;
-			return spawnInfo.player.ZoneSnow && y > Main.rockLayer ? 0.01f : 0f;
-		}
-
-		public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
-		{
-			npc.lifeMax = npc.lifeMax * 1;
-			npc.damage = npc.damage * 1;
-		}
-
-		public override void HitEffect(int hitDirection, double damage)
-		{
-			if (npc.life <= 0)
-			{
-				Dust.NewDust(npc.position, npc.width, npc.height, 80, 2.5f * hitDirection, -2.5f, 0, default(Color), 1.7f);
-				Dust.NewDust(npc.position, npc.width, npc.height, 80, 2.5f * hitDirection, -2.5f, 0, default(Color), 2.7f);
-				Dust.NewDust(npc.position, npc.width, npc.height, 80, 2.5f * hitDirection, -2.5f, 0, default(Color), 0.7f);
-				Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/SEGore1"), 1f);
-				Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/SEGore1"), 1f);
-				Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/SEGore2"), 1f);
-				for (int k = 0; k < 20; k++)
-				{
-					Dust.NewDust(npc.position, npc.width, npc.height, 80, 2.5f * hitDirection, -2.5f, 0, default(Color), 1.7f);
-					Dust.NewDust(npc.position, npc.width, npc.height, 80, 2.5f * hitDirection, -2.5f, 0, default(Color), 0.6f);
-				}
-			}
 		}
 
 		public override void AI()
@@ -170,14 +128,14 @@ namespace Tremor.NPCs
 				{
 					npc.noGravity = false;
 					npc.noTileCollide = false;
-					if (Main.rand.Next(2) == 0)
+					if (Main.rand.NextBool(2))
 					{
 						int num690 = Dust.NewDust(new Vector2(npc.position.X - 4f, npc.position.Y + npc.height - 8f), npc.width + 8, 24, 80, 0f, npc.velocity.Y / 2f, 0, default(Color), 1f);
 						Dust expr_28A1C_cp_0 = Main.dust[num690];
 						expr_28A1C_cp_0.velocity.X = expr_28A1C_cp_0.velocity.X * 0.4f;
 						Dust expr_28A3C_cp_0 = Main.dust[num690];
 						expr_28A3C_cp_0.velocity.Y = expr_28A3C_cp_0.velocity.Y * -1f;
-						if (Main.rand.Next(2) == 0)
+						if (Main.rand.NextBool(2))
 						{
 							Main.dust[num690].noGravity = true;
 							Main.dust[num690].scale += 0.2f;
@@ -190,5 +148,35 @@ namespace Tremor.NPCs
 			}
 		}
 
+		public override void NPCLoot()
+		{
+			if (Main.rand.NextBool(2))
+				this.NewItem(mod.ItemType<FrostCore>());
+			if (NPC.downedMoonlord && Main.rand.NextBool(5))
+				this.NewItem(mod.ItemType<IceSoul>());
+		}
+
+		public override void HitEffect(int hitDirection, double damage)
+		{
+			if (npc.life <= 0)
+			{
+				Dust.NewDust(npc.position, npc.width, npc.height, 80, 2.5f * hitDirection, -2.5f, 0, default(Color), 1.7f);
+				Dust.NewDust(npc.position, npc.width, npc.height, 80, 2.5f * hitDirection, -2.5f, 0, default(Color), 2.7f);
+				Dust.NewDust(npc.position, npc.width, npc.height, 80, 2.5f * hitDirection, -2.5f, 0, default(Color), 0.7f);
+				
+				Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/SEGore1"), 1f);
+				Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/SEGore1"), 1f);
+				Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/SEGore2"), 1f);
+
+				for (int k = 0; k < 20; k++)
+				{
+					Dust.NewDust(npc.position, npc.width, npc.height, 80, 2.5f * hitDirection, -2.5f, 0, default(Color), 1.7f);
+					Dust.NewDust(npc.position, npc.width, npc.height, 80, 2.5f * hitDirection, -2.5f, 0, default(Color), 0.6f);
+				}
+			}
+		}
+
+		public override float SpawnChance(NPCSpawnInfo spawnInfo)
+			=> spawnInfo.player.ZoneSnow && spawnInfo.spawnTileY > Main.rockLayer ? 0.01f : 0f;
 	}
 }

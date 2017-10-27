@@ -7,7 +7,6 @@ namespace Tremor.Items
 	public class ReaperGreaves : ModItem
 	{
 
-
 		public override void SetDefaults()
 		{
 
@@ -22,13 +21,12 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Reaper Greaves");
-			Tooltip.SetDefault("Increases alchemic damage by 15%");
+			Tooltip.SetDefault("15% increased alchemical damage");
 		}
-
 
 		public override void UpdateEquip(Player player)
 		{
-			player.GetModPlayer<MPlayer>(mod).alchemistDamage += 0.15f;
+			player.GetModPlayer<MPlayer>(mod).alchemicalDamage += 0.15f;
 		}
 
 	}

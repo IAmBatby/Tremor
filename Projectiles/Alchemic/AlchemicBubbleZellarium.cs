@@ -6,7 +6,7 @@ using Terraria.ModLoader;
 
 namespace Tremor.Projectiles.Alchemic
 {
-	public class AlchemicBubbleZellarium : ModProjectile
+	public class AlchemicBubbleZellarium : AlchemistProjectile
 	{
 		public override void SetDefaults()
 		{
@@ -15,13 +15,13 @@ namespace Tremor.Projectiles.Alchemic
 			projectile.friendly = true;
 			projectile.timeLeft = 150;
 			projectile.light = 0.8f;
-			ProjectileID.Sets.TrailCacheLength[projectile.type] = 5;
-			ProjectileID.Sets.TrailingMode[projectile.type] = 0;
 		}
 
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Zellarium Bubble");
+			ProjectileID.Sets.TrailCacheLength[projectile.type] = 5;
+			ProjectileID.Sets.TrailingMode[projectile.type] = 0;
 		}
 
 		public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)

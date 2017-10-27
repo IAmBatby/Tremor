@@ -14,24 +14,24 @@ namespace Tremor.Items
 			item.value = 110000;
 			item.rare = 3;
 
-
 			item.accessory = true;
 		}
 
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Frostspark Stompers");
-			Tooltip.SetDefault("Increases movement speed by 10% and increases knockback effect\nAllows flight, super fast running, and extra mobility on ice");
+			Tooltip.SetDefault("10% increased movement speed and increases knockback effect\n" +
+"Allows flight, super fast running, and extra mobility on ice");
 		}
-
 
 		public override void UpdateAccessory(Player player, bool hideVisual)
 
 		{
-			player.kbBuff = true;
 			player.accRunSpeed = 6.75f;
 			player.rocketBoots = 3;
 			player.moveSpeed += 0.1f;
+			player.maxRunSpeed += 0.1f;
+			player.kbBuff = true;
 			player.iceSkate = true;
 		}
 

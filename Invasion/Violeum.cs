@@ -46,11 +46,11 @@ namespace Tremor.Invasion
 				{
 					npc.DropBossBags();
 				}
-				if (!Main.expertMode && Main.rand.Next(7) == 0)
+				if (!Main.expertMode && Main.rand.NextBool(7))
 				{
 					Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("VioleumMask"));
 				}
-				if (!Main.expertMode && Main.rand.Next(5) == 0)
+				if (!Main.expertMode && Main.rand.NextBool(5))
 				{
 					Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("Crystyle"));
 				}
@@ -170,7 +170,7 @@ namespace Tremor.Invasion
 				SecondState = true;
 			}
 
-			if (Main.rand.Next(2) == 0)
+			if (Main.rand.NextBool(2))
 			{
 				int num706 = Dust.NewDust(npc.position, npc.width, npc.height, mod.DustType<CyberDust>(), 0f, 0f, 200, npc.color, 0.5f);
 				Main.dust[num706].velocity *= 0.6f;
@@ -287,7 +287,7 @@ namespace Tremor.Invasion
 					}
 				}
 
-				if (Main.rand.Next(2) == 0)
+				if (Main.rand.NextBool(2))
 				{
 
 					float j = 0;

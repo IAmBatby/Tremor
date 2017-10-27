@@ -21,7 +21,6 @@ namespace Tremor.Projectiles
 
 		}
 
-
 		public override bool CanHitPlayer(Player target)
 		{
 			return false;
@@ -31,8 +30,6 @@ namespace Tremor.Projectiles
 		{
 			return (target.friendly) ? false : true;
 		}
-
-
 
 	}
 }

@@ -18,7 +18,6 @@ namespace Tremor.Items
 			item.width = 22;
 			item.height = 46;
 
-
 			item.useTime = 7;
 			item.useAnimation = 30;
 			item.useStyle = 5;
@@ -38,11 +37,9 @@ namespace Tremor.Items
 			Tooltip.SetDefault("Causes red lasers to fall from sky\n");
 		}
 
-
-
 		public override bool ConsumeAmmo(Player p)
 		{
-			return Main.rand.Next(2) == 0;
+			return Main.rand.NextBool(2);
 		}
 
 		public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)

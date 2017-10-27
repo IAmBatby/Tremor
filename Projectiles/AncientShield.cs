@@ -31,7 +31,6 @@ namespace Tremor.Projectiles
 
 		}
 
-
 		public override bool PreAI()
 		{
 			float Num = 4f;

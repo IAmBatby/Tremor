@@ -22,13 +22,12 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Mythril Visage");
-			Tooltip.SetDefault("Increases alchemic damage by 20%");
+			Tooltip.SetDefault("20% increased alchemical damage");
 		}
-
 
 		public override void UpdateEquip(Player player)
 		{
-			player.GetModPlayer<MPlayer>(mod).alchemistDamage += 0.20f;
+			player.GetModPlayer<MPlayer>(mod).alchemicalDamage += 0.20f;
 		}
 
 		public override bool IsArmorSet(Item head, Item body, Item legs)
@@ -38,8 +37,8 @@ namespace Tremor.Items
 
 		public override void UpdateArmorSet(Player player)
 		{
-			player.setBonus = "Increases alchemic critical strike chance by 16%";
-			player.GetModPlayer<MPlayer>(mod).alchemistCrit += 16;
+			player.setBonus = "16% increased alchemical critical strike chance";
+			player.GetModPlayer<MPlayer>(mod).alchemicalCrit += 16;
 		}
 
 		public override void AddRecipes()

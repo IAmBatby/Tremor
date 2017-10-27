@@ -29,7 +29,6 @@ namespace Tremor.Items
 			Tooltip.SetDefault("");
 		}
 
-
 		public override void OnHitNPC(Player player, NPC target, int damage, float knockback, bool crit)
 		{
 			target.AddBuff(120, 60);

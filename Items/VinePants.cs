@@ -8,7 +8,6 @@ namespace Tremor.Items
 	public class VinePants : ModItem
 	{
 
-
 		public override void SetDefaults()
 		{
 
@@ -25,7 +24,6 @@ namespace Tremor.Items
 			DisplayName.SetDefault("Vine Pants");
 			Tooltip.SetDefault("5% increased ranged damage");
 		}
-
 
 		public override void UpdateEquip(Player player)
 		{

@@ -7,7 +7,6 @@ namespace Tremor.Items
 	public class ParaxydeGreaves : ModItem
 	{
 
-
 		public override void SetDefaults()
 		{
 
@@ -24,7 +23,6 @@ namespace Tremor.Items
 			DisplayName.SetDefault("Paraxyde Greaves");
 			Tooltip.SetDefault("Increases maximum mana by 40");
 		}
-
 
 		public override void UpdateEquip(Player player)
 		{

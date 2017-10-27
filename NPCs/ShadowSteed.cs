@@ -34,7 +34,6 @@ namespace Tremor.NPCs
 				target.AddBuff(153, 180);
 		}
 
-
 		public override void HitEffect(int hitDirection, double damage)
 		{
 			if (npc.life <= 0)

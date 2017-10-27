@@ -7,7 +7,6 @@ namespace Tremor.Items
 	public class DogeMask : ModItem
 	{
 
-
 		public override void SetDefaults()
 		{
 
@@ -22,7 +21,6 @@ namespace Tremor.Items
 			DisplayName.SetDefault("Doge Mask");
 			Tooltip.SetDefault("'Let it wow'");
 		}
-
 
 		public override void AddRecipes()
 		{

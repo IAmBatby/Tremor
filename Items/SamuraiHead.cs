@@ -26,9 +26,8 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Samurai Helmet");
-			Tooltip.SetDefault("Increases all damage by 9%");
+			Tooltip.SetDefault("9% increased damage");
 		}
-
 
 		public override void UpdateEquip(Player player)
 		{

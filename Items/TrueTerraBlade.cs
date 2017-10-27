@@ -32,7 +32,6 @@ namespace Tremor.Items
 			Tooltip.SetDefault("'Shining, shimmering, splendid!'");
 		}
 
-
 		public override void AddRecipes()
 		{
 			ModRecipe recipe = new ModRecipe(mod);

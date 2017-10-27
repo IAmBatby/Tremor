@@ -1,12 +1,12 @@
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+
 namespace Tremor.NPCs
 {
-
 	public class PixieQueenGuardian : ModNPC
 	{
 		public override void SetStaticDefaults()
@@ -33,6 +33,14 @@ namespace Tremor.NPCs
 			npc.value = Item.buyPrice(0, 0, 0, 9);
 		}
 
+		public override void OnHitPlayer(Player player, int damage, bool crit)
+		{
+			if (Main.rand.NextBool(3))
+				player.AddBuff(BuffID.Confused, 1800, true);
+
+			if (Main.rand.NextBool(2))
+				player.AddBuff(BuffID.Slow, 1800, true);
+		}
 
 		public override void HitEffect(int hitDirection, double damage)
 		{
@@ -42,32 +50,11 @@ namespace Tremor.NPCs
 				Dust.NewDust(npc.position, npc.width, npc.height, 57, 2.5f * hitDirection, -2.5f, 0, default(Color), 0.7f);
 				Dust.NewDust(npc.position, npc.width, npc.height, 57, 2.5f * hitDirection, -2.5f, 0, default(Color), 0.7f);
 				Dust.NewDust(npc.position, npc.width, npc.height, 57, 2.5f * hitDirection, -2.5f, 0, default(Color), 0.7f);
+
 				for (int k = 0; k < 20; k++)
-				{
 					Dust.NewDust(npc.position, npc.width, npc.height, 57, 2.5f * hitDirection, -2.5f, 0, default(Color), 0.7f);
-				}
 			}
 		}
-
-		public override void OnHitPlayer(Player player, int damage, bool crit)
-		{
-			if (Main.rand.Next(3) == 0)
-			{
-				player.AddBuff(BuffID.Confused, 1800, true);
-			}
-
-			if (Main.rand.Next(2) == 0)
-			{
-				player.AddBuff(BuffID.Slow, 1800, true);
-			}
-		}
-
-		public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
-		{
-			npc.lifeMax = npc.lifeMax * 1;
-			npc.damage = npc.damage * 1;
-		}
-
 
 		public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)
 		{

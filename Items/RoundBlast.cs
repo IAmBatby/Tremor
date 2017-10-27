@@ -36,7 +36,6 @@ namespace Tremor.Items
 			Tooltip.SetDefault("Alchemical projectiles leave explosions in the shape of round");
 		}
 
-
 		public override void AddRecipes()
 		{
 			ModRecipe recipe = new ModRecipe(mod);

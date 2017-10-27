@@ -24,9 +24,9 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Storm Jelly");
-			Tooltip.SetDefault("Summons Storm Jellyfish");
+			Tooltip.SetDefault("Summons Storm Jellyfish\n" +
+"Requires EoC to have been slain");
 		}
-
 
 		public override bool CanUseItem(Player player)
 		{

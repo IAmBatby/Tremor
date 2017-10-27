@@ -26,7 +26,6 @@ namespace Tremor.Items
 			Tooltip.SetDefault("Gives one of three true blades");
 		}
 
-
 		public override void ModifyTooltips(List<TooltipLine> tooltips)
 		{
 			tooltips[0].overrideColor = new Color(238, 194, 73);

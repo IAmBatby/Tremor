@@ -7,7 +7,6 @@ namespace Tremor.Items
 	public class SalamanderLeggings : ModItem
 	{
 
-
 		public override void SetDefaults()
 		{
 
@@ -24,7 +23,6 @@ namespace Tremor.Items
 			DisplayName.SetDefault("Salamander Leggings");
 			Tooltip.SetDefault("Increases movement speed");
 		}
-
 
 		public override void UpdateEquip(Player player)
 		{

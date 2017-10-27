@@ -22,9 +22,8 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Omnikron Breastplate");
-			Tooltip.SetDefault("Increases all damage by 20%");
+			Tooltip.SetDefault("20% increased damage");
 		}
-
 
 		public override void ModifyTooltips(List<TooltipLine> tooltips)
 		{
@@ -38,7 +37,7 @@ namespace Tremor.Items
 			player.meleeDamage += 0.2f;
 			player.rangedDamage += 0.2f;
 			player.thrownDamage += 0.2f;
-			player.GetModPlayer<MPlayer>(mod).alchemistDamage += 0.2f;
+			player.GetModPlayer<MPlayer>(mod).alchemicalDamage += 0.2f;
 		}
 
 		public override void AddRecipes()

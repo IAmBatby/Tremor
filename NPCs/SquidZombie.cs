@@ -1,11 +1,14 @@
-using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
+using Microsoft.Xna.Framework;
+
+using Tremor.Items;
+using Tremor.Items.Flesh;
+
 namespace Tremor.NPCs
 {
-
 	public class SquidZombie : ModNPC
 	{
 		public override void SetStaticDefaults()
@@ -32,14 +35,21 @@ namespace Tremor.NPCs
 			bannerItem = mod.ItemType("SquidZombieBanner");
 		}
 
+		public override void NPCLoot()
+		{
+			if (Main.rand.Next(24) == 0)
+				this.NewItem(mod.ItemType<SquidHat>());
+			if (Main.rand.NextBool(3))
+				this.NewItem(mod.ItemType<UntreatedFlesh>());
+		}
+
 		public override void HitEffect(int hitDirection, double damage)
 		{
 			if (npc.life <= 0)
 			{
 				for (int k = 0; k < 20; k++)
-				{
 					Dust.NewDust(npc.position, npc.width, npc.height, 151, 2.5f * hitDirection, -2.5f, 0, default(Color), 0.7f);
-				}
+
 				Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/ZombieGore1"), 1f);
 				Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/ZombieGore2"), 1f);
 				Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/SquidGore1"), 1f);
@@ -48,36 +58,7 @@ namespace Tremor.NPCs
 			}
 		}
 
-		public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
-		{
-			npc.lifeMax = npc.lifeMax * 1;
-			npc.damage = npc.damage * 1;
-		}
-
-		public override void NPCLoot()
-		{
-			if (Main.netMode != 1)
-			{
-				int centerX = (int)(npc.position.X + npc.width / 2) / 16;
-				int centerY = (int)(npc.position.Y + npc.height / 2) / 16;
-				int halfLength = npc.width / 2 / 16 + 1;
-				if (Main.rand.Next(24) == 0)
-				{
-					Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("SquidHat"), Main.rand.Next(1));
-				};
-				if (Main.rand.Next(3) == 0)
-				{
-					Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("UntreatedFlesh"));
-				};
-			}
-		}
-
 		public override float SpawnChance(NPCSpawnInfo spawnInfo)
-		{
-			int x = spawnInfo.spawnTileX;
-			int y = spawnInfo.spawnTileY;
-			int tile = Main.tile[x, y].type;
-			return (Helper.NormalSpawn(spawnInfo) && (tile == 53 || tile == 112 || tile == 116 || tile == 234) && Helper.NoZoneAllowWater(spawnInfo) && spawnInfo.water) && y < Main.rockLayer && (x < 250 || x > Main.maxTilesX - 250) && !spawnInfo.playerSafe ? 0.01f : 0f;
-		}
+			=> Helper.NormalSpawn(spawnInfo) && Main.tileSand[spawnInfo.spawnTileType] && Helper.NoZoneAllowWater(spawnInfo) && spawnInfo.water && spawnInfo.spawnTileY < Main.rockLayer && (spawnInfo.spawnTileX < 250 || spawnInfo.spawnTileX > Main.maxTilesX - 250) && !spawnInfo.playerSafe ? 0.01f : 0f;
 	}
 }

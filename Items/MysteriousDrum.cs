@@ -25,9 +25,9 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Mysterious Drum");
-			Tooltip.SetDefault("Summons Tiki Totem");
+			Tooltip.SetDefault("Summons Tiki Totem\n" +
+"Requires the jungle biome and night time");
 		}
-
 
 		public override bool CanUseItem(Player player)
 		{

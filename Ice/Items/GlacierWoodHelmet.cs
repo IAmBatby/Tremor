@@ -22,7 +22,6 @@ namespace Tremor.Ice.Items
 			Tooltip.SetDefault("");
 		}
 
-
 		public override bool IsArmorSet(Item head, Item body, Item legs)
 		{
 			return body.type == mod.ItemType("GlacierWoodChestplate") && legs.type == mod.ItemType("GlacierWoodLeggings");

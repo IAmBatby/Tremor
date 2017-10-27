@@ -35,7 +35,6 @@ namespace Tremor.Items
 			Tooltip.SetDefault("Erupts three fire bolts");
 		}
 
-
 		public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
 		{
 			for (int i = 0; i < 1; ++i) // Will shoot 3 bullets.
@@ -49,7 +48,7 @@ namespace Tremor.Items
 
 		public override void MeleeEffects(Player player, Rectangle hitbox)
 		{
-			if (Main.rand.Next(3) == 0)
+			if (Main.rand.NextBool(3))
 			{
 				int dust = Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, 6);
 			}

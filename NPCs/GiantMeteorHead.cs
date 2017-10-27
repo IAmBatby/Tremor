@@ -1,7 +1,10 @@
-using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+
+using Microsoft.Xna.Framework;
+
+using Tremor.Items;
 
 namespace Tremor.NPCs
 {
@@ -34,24 +37,16 @@ namespace Tremor.NPCs
 			bannerItem = mod.ItemType("GiantMeteorHeadBanner");
 		}
 
-		public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
+		public override void AI()
 		{
-			npc.lifeMax = npc.lifeMax * 1;
-			npc.damage = npc.damage * 1;
+			if (Main.rand.NextBool(4))
+				Main.dust[Dust.NewDust(npc.position, npc.width, npc.height, 6, 0f, 0f, 200, npc.color)].velocity *= 0.3f;
 		}
 
 		public override void NPCLoot()
 		{
-			if (Main.netMode != 1)
-			{
-				int centerX = (int)(npc.position.X + npc.width / 2) / 16;
-				int centerY = (int)(npc.position.Y + npc.height / 2) / 16;
-				int halfLength = npc.width / 2 / 16 + 1;
-				if (Main.rand.Next(20) == 0)
-				{
-					Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("MeteorScepter"));
-				};
-			}
+			if (Main.rand.Next(20) == 0)
+				npc.NewItem(mod.ItemType<MeteorScepter>());
 		}
 
 		public override void HitEffect(int hitDirection, double damage)
@@ -61,6 +56,7 @@ namespace Tremor.NPCs
 				Dust.NewDust(npc.position, npc.width, npc.height, 6, 2.5f * hitDirection, -2.5f, 0, default(Color), 1.7f);
 				Dust.NewDust(npc.position, npc.width, npc.height, 6, 2.5f * hitDirection, -2.5f, 0, default(Color), 2.7f);
 				Dust.NewDust(npc.position, npc.width, npc.height, 6, 2.5f * hitDirection, -2.5f, 0, default(Color), 0.7f);
+
 				for (int k = 0; k < 20; k++)
 				{
 					Dust.NewDust(npc.position, npc.width, npc.height, 6, 2.5f * hitDirection, -2.5f, 0, default(Color), 1.7f);
@@ -73,19 +69,7 @@ namespace Tremor.NPCs
 			}
 		}
 
-		public override void AI()
-		{
-			if (Main.rand.Next(4) == 0)
-			{
-				int num706 = Dust.NewDust(npc.position, npc.width, npc.height, 6, 0f, 0f, 200, npc.color, 1f);
-				Main.dust[num706].velocity *= 0.3f;
-			}
-		}
-
 		public override float SpawnChance(NPCSpawnInfo spawnInfo)
-		{
-			return spawnInfo.spawnTileY < Main.rockLayer && spawnInfo.player.ZoneMeteor && NPC.downedBoss3 && Main.dayTime ? 0.01f : 0f;
-		}
-
+			=> spawnInfo.spawnTileY < Main.rockLayer && spawnInfo.player.ZoneMeteor && NPC.downedBoss3 && Main.dayTime ? 0.01f : 0f;
 	}
 }

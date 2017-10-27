@@ -22,7 +22,6 @@ namespace Tremor.Items
 			Tooltip.SetDefault("'Charged with the essence of jungle grass'");
 		}
 
-
 		public override void AddRecipes()
 		{
 			ModRecipe recipe = new ModRecipe(mod);

@@ -27,13 +27,14 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Void Knife");
-			Tooltip.SetDefault("Hitting enemies will spawn an explosion\nIf you are below 50% of life your hits have a chance to heal you");
+			Tooltip.SetDefault("Hitting enemies will spawn an explosion\n" +
+"If you are below 50% of life your hits have a chance to heal you");
 		}
 
 		public override void OnHitNPC(Player player, NPC target, int damage, float knockback, bool crit)
 		{
 			Projectile.NewProjectile(target.Center.X, target.Center.Y, 0f, 0f, mod.ProjectileType("VoidKnifeExplosion"), damage, knockback, Main.myPlayer);
-			if (player.statLife < (player.statLifeMax2 * 0.5f) && Main.rand.Next(4) == 0)
+			if (player.statLife < (player.statLifeMax2 * 0.5f) && Main.rand.NextBool(4))
 			{
 				int NewLife = Main.rand.Next(19, 41);
 				player.statLife += NewLife;

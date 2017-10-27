@@ -30,7 +30,6 @@ namespace Tremor.Invasion
 			Tooltip.SetDefault("Allows you to control the time");
 		}
 
-
 		public override bool UseItem(Player player)
 		{
 			if (player.altFunctionUse == 2)

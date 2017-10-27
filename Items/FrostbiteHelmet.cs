@@ -7,12 +7,8 @@ namespace Tremor.Items
 	[AutoloadEquip(EquipType.Head)]
 	public class FrostbiteHelmet : ModItem
 	{
-
-
-
 		public override void SetDefaults()
 		{
-
 			item.width = 32;
 			item.height = 26;
 			item.value = 100;
@@ -25,7 +21,6 @@ namespace Tremor.Items
 			DisplayName.SetDefault("Frostbite Helmet");
 			Tooltip.SetDefault("");
 		}
-
 
 		public override bool IsArmorSet(Item head, Item body, Item legs)
 		{

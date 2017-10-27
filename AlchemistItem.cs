@@ -1,44 +1,112 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ModLoader;
+using Tremor.Items;
 
 namespace Tremor
 {
+	public abstract class AlchemistProjectile : ModProjectile
+	{
+		// todo: this can PROBABLY be removed when tmodloader updates
+		public override void ModifyHitNPC(NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
+		{
+			Player owner = null;
+			if (projectile.owner != -1)
+				owner = Main.player[projectile.owner];
+			else if (projectile.owner == 255)
+				owner = Main.LocalPlayer;
+
+			ModItem mItem = owner?.HeldItem.modItem;
+			if (mItem != null)
+			{
+				int cc = owner.HeldItem.crit;
+				(mItem as AlchemistItem)?.GetWeaponCrit(owner, ref cc);
+				crit = crit || Main.rand.Next(1, 101) <= cc;
+			}
+		}
+	}
+
 	public abstract class AlchemistItem : ModItem
 	{
+		// make-safe
+		public override void SetDefaults()
+		{
+			item.melee = false;
+			item.ranged = false;
+			item.magic = false;
+			item.thrown = false;
+			item.summon = false;
+			item.crit = 4;
+		}
+
+		public override void GetWeaponKnockback(Player player, ref float knockback)
+		{
+			MPlayer modPlayer = MPlayer.GetModPlayer(player);
+			knockback += modPlayer.alchemicalKbAddition;
+			knockback *= modPlayer.alchemicalKbMult;
+		}
+
+		// todo: borked, tml requires update, manual work still needed
+		public override void GetWeaponCrit(Player player, ref int crit)
+		{
+			MPlayer modPlayer = MPlayer.GetModPlayer(player);
+			crit += modPlayer.alchemicalCrit;
+		}
+
 		public override void GetWeaponDamage(Player player, ref int damage)
 		{
-			MPlayer modPlayer = player.GetModPlayer<MPlayer>(mod);
-			// We want to multiply the damage we do by our alchemistDamage modifier.
+			MPlayer modPlayer = MPlayer.GetModPlayer(player);
+			// We want to multiply the damage we do by our alchemicalDamage modifier.
 			// todo: ? do we want magic damage to also have effect here?
-			damage = (int)(damage * modPlayer.alchemistDamage);
+			damage = (int)(damage * modPlayer.alchemicalDamage + 5E-06f);
+		}
+
+		// todo: this can be removed when tmodloader updates
+		public override void ModifyHitNPC(Player player, NPC target, ref int damage, ref float knockBack, ref bool crit)
+		{
+			int cc = item.crit;
+			GetWeaponCrit(player, ref cc);
+			crit = crit || Main.rand.Next(1, 101) <= cc;
 		}
 
 		public override void ModifyTooltips(List<TooltipLine> tooltips)
 		{
-			MPlayer modPlayer = Main.LocalPlayer.GetModPlayer<MPlayer>(mod);
-
-			foreach (TooltipLine tooltip in tooltips)
+			var tt = tooltips.FirstOrDefault(x => x.Name == "Damage" && x.mod == "Terraria");
+			if (tt != null)
 			{
-				if (tooltip.Name == "Damage")
+				// take reverse for 'damage',  grab translation
+				string[] split = tt.text.Split(' ');
+				// todo: translation alchemical
+				tt.text = split.First() + " alchemical " + split.Last();
+			}
+			
+			// todo: this can be removed when tmodloader updates
+			if (item.crit > 0)
+			{
+				int crit = item.crit;
+				GetWeaponCrit(Main.LocalPlayer, ref crit);
+				tt = tooltips.FirstOrDefault(x => x.Name == "CritChance" && x.mod == "Terraria");
+				if (tt != null)
 				{
-					tooltip.text = (int)(item.damage * modPlayer.alchemistDamage) + " alchemical damage";
+					tt.text = crit + "% " + string.Join(" ", tt.text.Split(' ').Skip(1).ToArray());
 				}
-
-				if (tooltip.Name == "CritChance")
+				else
 				{
-					tooltip.text = item.crit + modPlayer.alchemistCrit + "% critical strike chance";
+					TooltipLine ttl = new TooltipLine(mod, "CritChance", crit + "% critical strike chance");
+					int index = tooltips.FindIndex(x => x.Name == "Damage" && x.mod == "Terraria");
+					if (index != -1)
+					{
+						tooltips.Insert(index + 1, ttl);
+					}
 				}
 			}
-
-			TooltipLine tip = new TooltipLine(mod, "Tremor:Tooltip", (item.crit + modPlayer.alchemistCrit) + "% critical strike chance");
-			tooltips.Insert(2, tip);
 		}
 
 		public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
 		{
-			MPlayer modPlayer = player.GetModPlayer<MPlayer>(mod);
+			MPlayer modPlayer = MPlayer.GetModPlayer(player);
 			if (modPlayer.glove)
 			{
 				for (int i = 0; i < 1; ++i)

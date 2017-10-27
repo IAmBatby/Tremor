@@ -7,7 +7,6 @@ namespace Tremor.Items
 	public class RichMahoganyShield : ModItem
 	{
 
-
 		public override void SetDefaults()
 		{
 
@@ -24,7 +23,6 @@ namespace Tremor.Items
 			DisplayName.SetDefault("Rich Mahogany Shield");
 			Tooltip.SetDefault("");
 		}
-
 
 		public override void AddRecipes()
 		{

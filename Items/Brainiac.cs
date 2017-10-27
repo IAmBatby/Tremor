@@ -33,7 +33,6 @@ namespace Tremor.Items
 			Tooltip.SetDefault("'Shoots mind waves'");
 		}
 
-
 		public override Vector2? HoldoutOffset()
 		{
 			return new Vector2(-10, 0);

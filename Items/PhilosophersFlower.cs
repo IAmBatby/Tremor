@@ -18,9 +18,9 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Philosophers Flower");
-			Tooltip.SetDefault("Reduces the cooldown of healing potions\nAutomatically uses mana potions when needed");
+			Tooltip.SetDefault("Reduces the cooldown of healing potions\n" +
+"Automatically uses mana potions when needed");
 		}
-
 
 		public override void UpdateAccessory(Player player, bool hideVisual)
 		{

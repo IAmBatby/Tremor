@@ -6,11 +6,8 @@ namespace Tremor.Items
 	[AutoloadEquip(EquipType.Head)]
 	public class ReaperHood : ModItem
 	{
-
-
 		public override void SetDefaults()
 		{
-
 			item.width = 38;
 			item.height = 22;
 
@@ -22,13 +19,12 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Reaper Hood");
-			Tooltip.SetDefault("Increases alchemic damage by 15%");
+			Tooltip.SetDefault("15% increased alchemical damage");
 		}
-
 
 		public override void UpdateEquip(Player player)
 		{
-			player.GetModPlayer<MPlayer>(mod).alchemistDamage += 0.15f;
+			player.GetModPlayer<MPlayer>(mod).alchemicalDamage += 0.15f;
 		}
 
 		public override bool IsArmorSet(Item head, Item body, Item legs)
@@ -38,10 +34,8 @@ namespace Tremor.Items
 
 		public override void UpdateArmorSet(Player player)
 		{
-			player.setBonus = "Increases alchemic critical strike chance by 30%";
-			player.GetModPlayer<MPlayer>(mod).alchemistCrit += 30;
+			player.setBonus = "30% increased alchemical critical strike chance";
+			player.GetModPlayer<MPlayer>(mod).alchemicalCrit += 30;
 		}
-
-
 	}
 }

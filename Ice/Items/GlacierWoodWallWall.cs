@@ -12,6 +12,5 @@ namespace Tremor.Ice.Items
 			drop = mod.ItemType("GlacierWoodWall");
 			AddMapEntry(new Color(36, 43, 102));
 		}
-
 	}
 }

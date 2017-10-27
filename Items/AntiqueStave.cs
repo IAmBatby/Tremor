@@ -35,7 +35,6 @@ namespace Tremor.Items
 			Tooltip.SetDefault("Summons a antique spirit to shoot bolts at your enemies");
 		}
 
-
 		public override bool AltFunctionUse(Player player)
 		{
 			return true;
@@ -49,7 +48,6 @@ namespace Tremor.Items
 			}
 			return base.UseItem(player);
 		}
-
 
 		public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
 		{

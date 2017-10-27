@@ -1,11 +1,11 @@
-using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
+using Microsoft.Xna.Framework;
+
 namespace Tremor.NPCs
 {
-
 	public class Hellgron : ModNPC
 	{
 		public override void SetStaticDefaults()
@@ -38,18 +38,10 @@ namespace Tremor.NPCs
 			// Todo: bannerItem = mod.ItemType("HellgronBanner");
 		}
 
-		public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
-		{
-			npc.lifeMax = npc.lifeMax * 1;
-			npc.damage = npc.damage * 1;
-		}
 		public override void AI()
 		{
-			if (Main.rand.Next(4) == 0)
-			{
-				int num706 = Dust.NewDust(npc.position, npc.width, npc.height, 6, 0f, 0f, 200, npc.color, 2f);
-				Main.dust[num706].velocity *= 0.3f;
-			}
+			if (Main.rand.NextBool(4))
+				Main.dust[Dust.NewDust(npc.position, npc.width, npc.height, 6, 0f, 0f, 200, npc.color, 2f)].velocity *= 0.3f;
 		}
 
 		public override void HitEffect(int hitDirection, double damage)
@@ -71,13 +63,7 @@ namespace Tremor.NPCs
 			}
 		}
 
-
 		public override float SpawnChance(NPCSpawnInfo spawnInfo)
-		{
-			int x = spawnInfo.spawnTileX;
-			int y = spawnInfo.spawnTileY;
-			int tile = Main.tile[x, y].type;
-			return (Helper.NormalSpawn(spawnInfo) && Helper.NoZoneAllowWater(spawnInfo)) && spawnInfo.spawnTileY > Main.maxTilesY - 200 ? 0.03f : 0;
-		}
+			=> (Helper.NormalSpawn(spawnInfo) && Helper.NoZoneAllowWater(spawnInfo)) && spawnInfo.spawnTileY > Main.maxTilesY - 200 ? 0.03f : 0;
 	}
 }

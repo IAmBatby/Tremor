@@ -12,7 +12,6 @@ namespace Tremor.Items
 			item.height = 30;
 			item.maxStack = 1;
 
-
 			item.value = 255000;
 			item.rare = 8;
 			item.accessory = true;
@@ -21,16 +20,15 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Bottled Cthulhu Blood");
-			Tooltip.SetDefault("Increased life regeneration\nIncreased alchemical damage and critical strike chance by 25%");
+			Tooltip.SetDefault("Increased life regeneration\n" +
+"Increased alchemical damage and critical strike chance by 25%");
 		}
-
-
 
 		public override void UpdateAccessory(Player player, bool hideVisual)
 		{
 			player.lifeRegen += 3;
-			player.GetModPlayer<MPlayer>(mod).alchemistDamage += 0.25f;
-			player.GetModPlayer<MPlayer>(mod).alchemistCrit += 25;
+			player.GetModPlayer<MPlayer>(mod).alchemicalDamage += 0.25f;
+			player.GetModPlayer<MPlayer>(mod).alchemicalCrit += 25;
 		}
 	}
 }

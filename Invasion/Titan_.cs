@@ -52,12 +52,6 @@ namespace Tremor.Invasion
 			return new Rectangle(0, npc.frame.Height * (Number - 1), npc.frame.Width, npc.frame.Height);
 		}
 
-
-
-
-
-
-
 		public override void HitEffect(int hitDirection, double damage)
 		{
 
@@ -94,7 +88,6 @@ namespace Tremor.Invasion
 				FirstAttack = false;
 			}
 
-
 			if (player.dead)
 			{
 				npc.active = true;
@@ -127,6 +120,11 @@ namespace Tremor.Invasion
 				Main.projectile[proj].localAI[1] = clockwise ? 1 : -1;
 				//NetMessage.SendData(27, -1, -1, "", proj);
 			}
+		}
+
+		public override void NPCLoot()
+		{
+			TremorWorld.Boss.ParadoxTitan.Downed();
 		}
 	}
 }

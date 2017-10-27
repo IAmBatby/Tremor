@@ -21,10 +21,10 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Andas Core");
-			Tooltip.SetDefault("Allows flight\nHas infinite flight time\nHas big flight speed");
+			Tooltip.SetDefault("Allows flight\n" +
+"Has infinite flight time\n" +
+"Has big flight speed");
 		}
-
-
 
 		public override void UpdateAccessory(Player player, bool hideVisual)
 		{

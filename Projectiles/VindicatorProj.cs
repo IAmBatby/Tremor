@@ -29,7 +29,6 @@ namespace Tremor.Projectiles
 
 		}
 
-
 		public override void AI()
 		{
 			Vector2 vector22;

@@ -22,8 +22,6 @@ namespace Tremor.Invasion
 			Tooltip.SetDefault("Allows flight and slow fall");
 		}
 
-
-
 		public override void UpdateAccessory(Player player, bool hideVisual)
 		{
 			player.wingTimeMax = 180;

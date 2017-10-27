@@ -10,22 +10,19 @@ namespace Tremor.Projectiles
 	{
 		public override void SetDefaults()
 		{
-
 			projectile.width = 26;
 			projectile.height = 30;
 			projectile.friendly = true;
 			projectile.aiStyle = 2;
 			projectile.timeLeft = 1200;
-			ProjectileID.Sets.TrailCacheLength[projectile.type] = 5;
-			ProjectileID.Sets.TrailingMode[projectile.type] = 0;
 		}
 
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Flask of Shadows");
-
+			ProjectileID.Sets.TrailCacheLength[projectile.type] = 5;
+			ProjectileID.Sets.TrailingMode[projectile.type] = 0;
 		}
-
 
 		public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)
 		{

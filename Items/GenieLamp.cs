@@ -9,7 +9,6 @@ namespace Tremor.Items
 		public override void SetDefaults()
 		{
 
-
 			item.width = 38;
 			item.height = 20;
 			item.useTime = 20;
@@ -26,7 +25,6 @@ namespace Tremor.Items
 			DisplayName.SetDefault("Genie Lamp");
 			Tooltip.SetDefault("Summons a Genie");
 		}
-
 
 		public override bool UseItem(Player player)
 		{

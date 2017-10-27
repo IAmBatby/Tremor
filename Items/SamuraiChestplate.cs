@@ -21,9 +21,8 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Samurai Fullplate");
-			Tooltip.SetDefault("Increases melee speed by 25%");
+			Tooltip.SetDefault("25% increased melee speed");
 		}
-
 
 		public override void UpdateEquip(Player player)
 		{

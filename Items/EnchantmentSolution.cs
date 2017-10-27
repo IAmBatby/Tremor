@@ -36,7 +36,6 @@ namespace Tremor.Items
 			Tooltip.SetDefault("25% chance not to consume flask");
 		}
 
-
 		public override void AddRecipes()
 		{
 			ModRecipe recipe = new ModRecipe(mod);

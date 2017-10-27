@@ -25,7 +25,6 @@ namespace Tremor.Projectiles
 
 		}
 
-
 		public override Color? GetAlpha(Color lightColor)
 		{
 			return Color.White;
@@ -39,7 +38,6 @@ namespace Tremor.Projectiles
 			}
 			Main.PlaySound(0, (int)projectile.position.X, (int)projectile.position.Y, 0);
 		}
-
 
 		public override void AI()
 		{

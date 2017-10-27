@@ -23,7 +23,6 @@ namespace Tremor.Projectiles
 
 		}
 
-
 		public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)
 		{
 			Texture2D texture = ModLoader.GetTexture("Tremor/Projectiles/DeathHooks_Chain");
@@ -62,7 +61,7 @@ namespace Tremor.Projectiles
 
 		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
 		{
-			if (Main.rand.Next(2) == 0)
+			if (Main.rand.NextBool(2))
 			{
 				target.AddBuff(mod.BuffType("DeathFear"), 480, false);
 			}
@@ -79,7 +78,7 @@ namespace Tremor.Projectiles
 
 		public override void OnHitPvp(Player target, int damage, bool crit)
 		{
-			if (Main.rand.Next(2) == 0)
+			if (Main.rand.NextBool(2))
 			{
 				target.AddBuff(mod.BuffType("DeathFear"), 480, false);
 			}

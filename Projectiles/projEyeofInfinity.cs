@@ -38,7 +38,6 @@ namespace Tremor.Projectiles
 
 		}
 
-
 		void TryToReturn()
 		{
 			if (--TimeToReturn <= 0)

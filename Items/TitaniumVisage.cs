@@ -7,13 +7,10 @@ namespace Tremor.Items
 	[AutoloadEquip(EquipType.Head)]
 	public class TitaniumVisage : ModItem
 	{
-
 		public override void SetDefaults()
 		{
-
 			item.width = 24;
 			item.height = 24;
-
 			item.value = 400;
 			item.rare = 4;
 			item.defense = 9;
@@ -22,13 +19,12 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Titanium Visage");
-			Tooltip.SetDefault("Increases alchemic damage by 24%");
+			Tooltip.SetDefault("24% increased alchemical damage");
 		}
-
 
 		public override void UpdateEquip(Player player)
 		{
-			player.GetModPlayer<MPlayer>(mod).alchemistDamage += 0.24f;
+			player.GetModPlayer<MPlayer>(mod).alchemicalDamage += 0.24f;
 		}
 
 		public override bool IsArmorSet(Item head, Item body, Item legs)
@@ -38,8 +34,9 @@ namespace Tremor.Items
 
 		public override void UpdateArmorSet(Player player)
 		{
-			player.setBonus = "Increases alchemic critical strike chance by 20% and become invulnerable after striking an enemy";
-			player.GetModPlayer<MPlayer>(mod).alchemistCrit += 20;
+			player.setBonus = "Become invulnerable after striking an enemy\n" +
+"20% increased alchemical critical strike chance";
+			player.GetModPlayer<MPlayer>(mod).alchemicalCrit += 20;
 			player.onHitDodge = true;
 		}
 

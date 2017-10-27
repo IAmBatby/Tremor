@@ -1,11 +1,11 @@
-using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
+using Microsoft.Xna.Framework;
+
 namespace Tremor.NPCs
 {
-
 	public class PyramidHead : ModNPC
 	{
 		public override void SetStaticDefaults()
@@ -33,20 +33,13 @@ namespace Tremor.NPCs
 			bannerItem = mod.ItemType("PyramidHeadBanner");
 		}
 
-		public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
-		{
-			npc.lifeMax = npc.lifeMax * 1;
-			npc.damage = npc.damage * 1;
-		}
-
 		public override void HitEffect(int hitDirection, double damage)
 		{
 			if (npc.life <= 0)
 			{
 				for (int k = 0; k < 20; k++)
-				{
 					Dust.NewDust(npc.position, npc.width, npc.height, 151, 2.5f * hitDirection, -2.5f, 0, default(Color), 0.7f);
-				}
+
 				Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/PyramidGore1"), 1f);
 				Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/PyramidGore2"), 1f);
 				Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/PyramidGore3"), 1f);
@@ -55,22 +48,8 @@ namespace Tremor.NPCs
 				Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/PyramidGore4"), 1f);
 			}
 		}
-
-		public override void NPCLoot()
-		{
-			if (Main.netMode != 1)
-			{
-				int centerX = (int)(npc.position.X + npc.width / 2) / 16;
-				int centerY = (int)(npc.position.Y + npc.height / 2) / 16;
-				int halfLength = npc.width / 2 / 16 + 1;
-			}
-		}
+		
 		public override float SpawnChance(NPCSpawnInfo spawnInfo)
-		{
-			int x = spawnInfo.spawnTileX;
-			int y = spawnInfo.spawnTileY;
-			int tile = Main.tile[x, y].type;
-			return (Helper.NormalSpawn(spawnInfo) && Helper.NoZoneAllowWater(spawnInfo)) && spawnInfo.player.ZoneDesert && !Main.dayTime && y < Main.worldSurface ? 0.08f : 0f;
-		}
+			=> Helper.NormalSpawn(spawnInfo) && Helper.NoZoneAllowWater(spawnInfo) && spawnInfo.player.ZoneDesert && !Main.dayTime && spawnInfo.spawnTileY < Main.worldSurface ? 0.08f : 0f;
 	}
 }

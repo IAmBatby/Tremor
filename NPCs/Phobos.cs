@@ -1,11 +1,13 @@
-using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
+using Microsoft.Xna.Framework;
+
+using Tremor.Items;
+
 namespace Tremor.NPCs
 {
-
 	public class Phobos : ModNPC
 	{
 		public override void SetStaticDefaults()
@@ -37,47 +39,21 @@ namespace Tremor.NPCs
 
 		public override void AI()
 		{
-			if (Main.rand.Next(6) == 0)
+			if (Main.rand.NextBool(6))
 			{
 				Dust.NewDust(npc.position, npc.width, npc.height, 27, 0f, 0f, 200, npc.color, 1f);
 				Dust.NewDust(npc.position, npc.width, npc.height, 70, 0f, 0f, 200, npc.color, 1f);
 			}
 		}
 
-		public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
-		{
-			npc.lifeMax = npc.lifeMax * 1;
-			npc.damage = npc.damage * 1;
-		}
-
-		public override float SpawnChance(NPCSpawnInfo spawnInfo)
-		{
-			int x = spawnInfo.spawnTileX;
-			int y = spawnInfo.spawnTileY;
-			int tile = Main.tile[x, y].type;
-			return (Helper.NormalSpawn(spawnInfo) && Helper.NoZoneAllowWater(spawnInfo)) && NPC.downedMoonlord && Main.hardMode && !Main.dayTime && y < Main.worldSurface ? 0.05f : 0f;
-		}
-
 		public override void NPCLoot()
 		{
-			if (Main.netMode != 1)
-			{
-				int centerX = (int)(npc.position.X + npc.width / 2) / 16;
-				int centerY = (int)(npc.position.Y + npc.height / 2) / 16;
-				int halfLength = npc.width / 2 / 16 + 1;
-				if (Main.rand.NextBool())
-				{
-					Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("EyeofOblivion"));
-				}
-				if (Main.rand.NextBool())
-				{
-					Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("CarbonSteel"), Main.rand.Next(2, 15));
-				}
-				if (Main.rand.NextBool())
-				{
-					Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("ToothofAbraxas"), Main.rand.Next(2, 16));
-				}
-			}
+			if (Main.rand.NextBool())
+				Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType<EyeofOblivion>());
+			if (Main.rand.NextBool())
+				Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType<CarbonSteel>(), Main.rand.Next(2, 15));
+			if (Main.rand.NextBool())
+				Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType<ToothofAbraxas>(), Main.rand.Next(2, 16));
 		}
 
 		public override void HitEffect(int hitDirection, double damage)
@@ -91,9 +67,8 @@ namespace Tremor.NPCs
 					Dust.NewDust(npc.position, npc.width, npc.height, 27, 2.5f * hitDirection, -2.5f, 0, default(Color), 1.7f);
 				}
 				for (int k = 0; k < 20; k++)
-				{
 					Dust.NewDust(npc.position, npc.width, npc.height, 27, 2.5f * hitDirection, -2.5f, 0, default(Color), 2.7f);
-				}
+
 				Dust.NewDust(npc.position, npc.width, npc.height, 27, 2.5f * hitDirection, -2.5f, 0, default(Color), 3.7f);
 				Dust.NewDust(npc.position, npc.width, npc.height, 70, 2.5f * hitDirection, -2.5f, 0, default(Color), 2.7f);
 				Dust.NewDust(npc.position, npc.width, npc.height, 27, 2.5f * hitDirection, -2.5f, 0, default(Color), 3.7f);
@@ -105,11 +80,12 @@ namespace Tremor.NPCs
 			}
 			else
 			{
-				for (int k = 0; k < damage / npc.lifeMax * 50.0; k++)
-				{
+				for (int k = 0; k < damage / npc.lifeMax * 50; k++)
 					Dust.NewDust(npc.position, npc.width, npc.height, 27, 2.5f * hitDirection, -2.5f, 0, default(Color), 1.7f);
-				}
 			}
 		}
+
+		public override float SpawnChance(NPCSpawnInfo spawnInfo)
+			=> Helper.NormalSpawn(spawnInfo) && Helper.NoZoneAllowWater(spawnInfo) && NPC.downedMoonlord && Main.hardMode && !Main.dayTime && spawnInfo.spawnTileY < Main.worldSurface ? 0.05f : 0f;
 	}
 }

@@ -6,8 +6,6 @@ namespace Tremor.Items
 	public class IndifferentTotemMask : ModItem
 	{
 
-
-
 		public override void SetDefaults()
 		{
 

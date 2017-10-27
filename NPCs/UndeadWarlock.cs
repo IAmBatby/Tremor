@@ -1,12 +1,11 @@
-using System;
-using Microsoft.Xna.Framework;
-using Terraria;
+я╗┐using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
+using Microsoft.Xna.Framework;
+
 namespace Tremor.NPCs
 {
-
 	public class UndeadWarlock : ModNPC
 	{
 		public override void SetStaticDefaults()
@@ -15,14 +14,12 @@ namespace Tremor.NPCs
 			Main.npcFrameCount[npc.type] = 15;
 		}
 
+		const int ShootRate = 250;
+		const int ShootDamage = 20;
+		const float ShootKN = 1.0f;
+		const float ShootSpeed = 4;
 
-		const int ShootRate = 250; // Частота выстрела
-		const int ShootDamage = 20; // Урон от лазера.
-		const float ShootKN = 1.0f; // Отбрасывание
-		const int ShootType = 96; // Тип проджектайла которым будет произведён выстрел.
-		const float ShootSpeed = 4; // Это, я так понимаю, влияет на дальность выстрела
-
-		int TimeToShoot = ShootRate; // Время до выстрела.
+		int TimeToShoot = 0;
 
 		public override void SetDefaults()
 		{
@@ -38,38 +35,26 @@ namespace Tremor.NPCs
 			npc.aiStyle = 3;
 			aiType = 524;
 			animationType = 21;
+
+			TimeToShoot = 0;
 		}
 
 		public override void AI()
 		{
-			if (--TimeToShoot <= 0 && npc.target != -1) Shoot(); // В этой строке из переменной TimeToShot отнимается 1, и если TimeToShot < или = 0, то вызывается метод Shoot()
-
-			if (Main.rand.Next(210) == 0)
+			if (Main.netMode != 1 && TimeToShoot++ >= ShootRate && npc.target != -1)
 			{
-				NPC.NewNPC((int)npc.position.X + 50, (int)npc.position.Y, 34);
+				Vector2 velocity = Vector2.Normalize(Main.player[npc.target].Center - npc.Center) * ShootSpeed;
+				Projectile.NewProjectile(npc.Center.X, npc.Center.Y, velocity.X, velocity.Y, ProjectileID.CursedFlameHostile, ShootDamage, ShootKN);
+
+				TimeToShoot = 0;
 			}
 
-			for (int num74 = npc.oldPos.Length - 1; num74 > 0; num74--)
-			{
-				npc.oldPos[num74] = npc.oldPos[num74 - 1];
-			}
+			if (Main.netMode != 1 && Main.rand.Next(210) == 0)
+				NPC.NewNPC((int)npc.position.X + 50, (int)npc.position.Y, NPCID.CursedSkull);
+
+			for (int i = npc.oldPos.Length - 1; i > 0; i--)
+				npc.oldPos[i] = npc.oldPos[i - 1];
 			npc.oldPos[0] = npc.position;
-		}
-
-		void Shoot()
-		{
-			TimeToShoot = ShootRate; // Устанавливаем кулдаун выстрелу
-			Vector2 velocity = VelocityFPTP(npc.Center, Main.player[npc.target].Center, ShootSpeed); // Тут мы получим нужную velocity (пояснение аргументов ниже)
-																									 // 1 аргумент - позиция из которой будет вылетать выстрел
-																									 // 2 аргумент - позиция в которую он должен полететь 
-																									 // 3 аргумент - скорость выстрела
-			Projectile.NewProjectile(npc.Center.X, npc.Center.Y, velocity.X, velocity.Y, ShootType, ShootDamage, ShootKN);
-		}
-
-		Vector2 VelocityFPTP(Vector2 pos1, Vector2 pos2, float speed)
-		{
-			Vector2 move = pos2 - pos1;
-			return move * (speed / (float)Math.Sqrt(move.X * move.X + move.Y * move.Y));
 		}
 
 		public override void HitEffect(int hitDirection, double damage)
@@ -77,9 +62,8 @@ namespace Tremor.NPCs
 			if (npc.life <= 0)
 			{
 				for (int k = 0; k < 20; k++)
-				{
 					Dust.NewDust(npc.position, npc.width, npc.height, 151, 2.5f * hitDirection, -2.5f, 0, default(Color), 0.7f);
-				}
+
 				Dust.NewDust(npc.position, npc.width, npc.height, 151, 2.5f * hitDirection, -2.5f, 0, default(Color), 0.7f);
 				Dust.NewDust(npc.position, npc.width, npc.height, 151, 2.5f * hitDirection, -2.5f, 0, default(Color), 0.7f);
 				Dust.NewDust(npc.position, npc.width, npc.height, 151, 2.5f * hitDirection, -2.5f, 0, default(Color), 0.7f);
@@ -91,13 +75,7 @@ namespace Tremor.NPCs
 			}
 		}
 
-
 		public override float SpawnChance(NPCSpawnInfo spawnInfo)
-		{
-			int x = spawnInfo.spawnTileX;
-			int y = spawnInfo.spawnTileY;
-			int tile = Main.tile[x, y].type;
-			return (Helper.NormalSpawn(spawnInfo) && Helper.NoZoneAllowWater(spawnInfo)) && NPC.downedBoss3 && !Main.dayTime && y < Main.worldSurface ? 0.008f : 0f;
-		}
+			=> Helper.NormalSpawn(spawnInfo) && Helper.NoZoneAllowWater(spawnInfo) && NPC.downedBoss3 && !Main.dayTime && spawnInfo.spawnTileY < Main.worldSurface ? 0.008f : 0f;
 	}
 }

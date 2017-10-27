@@ -22,8 +22,6 @@ namespace Tremor.Items
 			Tooltip.SetDefault("Alchemically important ingredient");
 		}
 
-
-
 		public override void AddRecipes()
 		{
 			ModRecipe recipe = new ModRecipe(mod);

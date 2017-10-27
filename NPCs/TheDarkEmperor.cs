@@ -15,8 +15,6 @@ namespace Tremor.NPCs
 			Main.npcFrameCount[npc.type] = 14;
 		}
 
-
-
 		public override void SetDefaults()
 		{
 			npc.width = 126;

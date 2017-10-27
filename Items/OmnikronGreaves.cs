@@ -9,13 +9,11 @@ namespace Tremor.Items
 	public class OmnikronGreaves : ModItem
 	{
 
-
 		public override void SetDefaults()
 		{
 
 			item.width = 38;
 			item.height = 22;
-
 
 			item.value = 0;
 			item.rare = 0;
@@ -25,9 +23,9 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Omnikron Greaves");
-			Tooltip.SetDefault("50% increased movement speed\nIncreases all critical strike chances by 15");
+			Tooltip.SetDefault("50% increased movement speed\n" +
+"Increases all critical strike chances by 15");
 		}
-
 
 		public override void ModifyTooltips(List<TooltipLine> tooltips)
 		{
@@ -40,7 +38,7 @@ namespace Tremor.Items
 			player.magicCrit += 15;
 			player.rangedCrit += 15;
 			player.thrownCrit += 15;
-			player.GetModPlayer<MPlayer>(mod).alchemistCrit += 15;
+			player.GetModPlayer<MPlayer>(mod).alchemicalCrit += 15;
 		}
 
 		public override void AddRecipes()

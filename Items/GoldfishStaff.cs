@@ -36,7 +36,6 @@ namespace Tremor.Items
 			Tooltip.SetDefault("Causes goldfishes to fall from the sky");
 		}
 
-
 		public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
 		{
 			type = mod.ProjectileType("GoldFishPro");
@@ -52,7 +51,6 @@ namespace Tremor.Items
 			recipe.AddTile(18);
 			recipe.SetResult(this);
 			recipe.AddRecipe();
-
 
 			recipe = new ModRecipe(mod);
 			recipe.AddIngredient(ItemID.Wood, 16);

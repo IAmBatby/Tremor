@@ -6,8 +6,14 @@ using Terraria.ModLoader;
 
 namespace Tremor.Projectiles.Alchemic
 {
-	public class HealthSupportFlaskPro : ModProjectile
+	public class HealthSupportFlaskPro : AlchemistProjectile
 	{
+		public override void SetStaticDefaults()
+		{
+			ProjectileID.Sets.TrailCacheLength[projectile.type] = 5;
+			ProjectileID.Sets.TrailingMode[projectile.type] = 2;
+		}
+
 		public override void SetDefaults()
 		{
 			projectile.width = 18;
@@ -15,21 +21,11 @@ namespace Tremor.Projectiles.Alchemic
 			projectile.friendly = true;
 			projectile.aiStyle = 2;
 			projectile.timeLeft = 1200;
-			ProjectileID.Sets.TrailCacheLength[projectile.type] = 5;
-			ProjectileID.Sets.TrailingMode[projectile.type] = 2;
-		}
-
-		public override void ModifyHitNPC(NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
-		{
-			if (Main.rand.Next(1, 101) <= Main.player[projectile.owner].GetModPlayer<MPlayer>(mod).alchemistCrit)
-			{
-				crit = true;
-			}
 		}
 
 		public override void Kill(int timeLeft)
 		{
-			if (Main.player[Main.myPlayer].buffType.Contains(mod.BuffType("DesertEmperorSetBuff")))
+			if (Main.LocalPlayer.HasBuff(mod.BuffType("DesertEmperorSetBuff")))
 			{
 				int a = Projectile.NewProjectile(projectile.position.X, projectile.position.Y, 0, 0, mod.ProjectileType("FlaskWasp"), projectile.damage * 2, 1.5f, projectile.owner);
 				int b = Projectile.NewProjectile(projectile.position.X, projectile.position.Y, 0, 0, mod.ProjectileType("FlaskWasp"), projectile.damage * 2, 1.5f, projectile.owner);
@@ -49,7 +45,6 @@ namespace Tremor.Projectiles.Alchemic
 				}
 			}
 		}
-
 
 	}
 }

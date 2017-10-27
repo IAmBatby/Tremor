@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Tremor.Items.Brass;
 
 namespace Tremor.Items
 {
@@ -25,7 +26,8 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Mana Stim Pack");
-			Tooltip.SetDefault("Restores 20 mana\nHas no cooldown");
+			Tooltip.SetDefault("Restores 20 mana\n" +
+"Has no cooldown");
 		}
 
 		public override bool UseItem(Player player)

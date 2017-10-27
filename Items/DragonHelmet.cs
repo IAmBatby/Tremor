@@ -7,7 +7,6 @@ namespace Tremor.Items
 	public class DragonHelmet : ModItem
 	{
 
-
 		public override void SetDefaults()
 		{
 
@@ -24,7 +23,6 @@ namespace Tremor.Items
 			DisplayName.SetDefault("Dragon Helmet");
 			Tooltip.SetDefault("Increases arrow speed and damage");
 		}
-
 
 		public override void UpdateEquip(Player player)
 		{

@@ -36,7 +36,6 @@ namespace Tremor.Invasion
 			Tooltip.SetDefault("Summons a cyber stray to fight for you");
 		}
 
-
 		public override bool AltFunctionUse(Player player)
 		{
 			return true;

@@ -22,6 +22,5 @@ namespace Tremor.Items
 			Tooltip.SetDefault("'Infinity energy!'");
 		}
 
-
 	}
 }

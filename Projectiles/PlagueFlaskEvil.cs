@@ -25,7 +25,6 @@ namespace Tremor.Projectiles
 
 		}
 
-
 		public override void Kill(int timeLeft)
 		{
 			Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 107);
@@ -43,7 +42,6 @@ namespace Tremor.Projectiles
 			}
 			//}
 		}
-
 
 	}
 }

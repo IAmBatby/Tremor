@@ -24,7 +24,6 @@ namespace Tremor.Items
 			Tooltip.SetDefault("30% increased melee speed");
 		}
 
-
 		public override void UpdateEquip(Player player)
 		{
 			player.meleeSpeed += 0.30f;

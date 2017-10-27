@@ -26,7 +26,6 @@ namespace Tremor.Projectiles
 
 		}
 
-
 		public override void AI()
 		{
 			if (projectile.ai[1] != -1f && projectile.position.Y > projectile.ai[1])

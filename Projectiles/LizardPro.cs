@@ -25,8 +25,6 @@ namespace Tremor.Projectiles
 
 		}
 
-
-
 		public override bool OnTileCollide(Vector2 oldVelocity)
 		{
 			projectile.penetrate--;
@@ -52,7 +50,6 @@ namespace Tremor.Projectiles
 		{
 			NPC.NewNPC((int)projectile.Center.X, (int)projectile.Center.Y, mod.NPCType("Lizard"));
 		}
-
 
 	}
 }

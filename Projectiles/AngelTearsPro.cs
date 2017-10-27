@@ -25,7 +25,6 @@ namespace Tremor.Projectiles
 
 		}
 
-
 		public override void AI()
 		{
 			Lighting.AddLight(projectile.Center, ((255 - projectile.alpha) * 0.45f) / 255f, ((255 - projectile.alpha) * 0.2f) / 255f, ((255 - projectile.alpha) * 0.1f) / 255f);
@@ -43,7 +42,7 @@ namespace Tremor.Projectiles
 				Dust expr_4815_cp_0 = Main.dust[num96];
 				expr_4815_cp_0.position.Y = expr_4815_cp_0.position.Y - num94;
 			}
-			if (Main.rand.Next(5) == 0)
+			if (Main.rand.NextBool(5))
 			{
 				int num97 = 4;
 				int num98 = Dust.NewDust(new Vector2(projectile.position.X + num97, projectile.position.Y + num97), projectile.width - num97 * 2, projectile.height - num97 * 2, 174, 0f, 0f, 100, default(Color), 0.6f);

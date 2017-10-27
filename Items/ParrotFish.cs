@@ -21,7 +21,6 @@ namespace Tremor.Items
 			Tooltip.SetDefault("");
 		}
 
-
 		public override bool IsQuestFish()
 		{
 			return true;

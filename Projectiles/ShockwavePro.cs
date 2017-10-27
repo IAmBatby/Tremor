@@ -10,7 +10,6 @@ namespace Tremor.Projectiles
 		{
 			projectile.CloneDefaults(348);
 
-
 			projectile.timeLeft = 120;
 			aiType = 348;
 		}
@@ -20,7 +19,6 @@ namespace Tremor.Projectiles
 			DisplayName.SetDefault("ShockwavePro");
 
 		}
-
 
 		public override void AI()
 		{

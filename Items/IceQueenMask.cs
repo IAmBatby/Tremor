@@ -6,8 +6,6 @@ namespace Tremor.Items
 	public class IceQueenMask : ModItem
 	{
 
-
-
 		public override void SetDefaults()
 		{
 

@@ -6,7 +6,6 @@ namespace Tremor.Items
 	public class KnightGreaves : ModItem
 	{
 
-
 		public override void SetDefaults()
 		{
 

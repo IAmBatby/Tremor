@@ -1,5 +1,7 @@
+using System.Linq;
 using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace Tremor.Ice
@@ -38,13 +40,23 @@ namespace Tremor.Ice
 			}
 		}
 
+		// Ice is allowed to spreado on these tiles
+		private readonly ushort[] _allowedSpreadTiles = new ushort[]
+		{
+			TileID.IceBlock,
+			TileID.CorruptIce,
+			TileID.HallowedIce,
+			TileID.SnowBlock
+		};
+
 		public bool CanGrow(int i, int j)
 		{
 			bool flag = false;
 			for (int x = 0; x < 3; x++)
 				for (int y = 0; y < 3; y++)
 				{
-					if (!Main.tile[i - 1 + x, j - 1 + y].active())
+					Tile tile = Main.tile[i - 1 + x, j - 1 + y];
+					if (!tile.active() && _allowedSpreadTiles.Contains(tile.type))
 						flag = true;
 				}
 			return flag;

@@ -6,7 +6,6 @@ namespace Tremor.Items
 	public class PossessedGreaves : ModItem
 	{
 
-
 		public override void SetDefaults()
 		{
 

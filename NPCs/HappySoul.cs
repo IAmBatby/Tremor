@@ -1,7 +1,8 @@
-using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+
+using Microsoft.Xna.Framework;
 
 namespace Tremor.NPCs
 {
@@ -32,14 +33,12 @@ namespace Tremor.NPCs
 			npc.DeathSound = SoundID.NPCDeath6;
 			npc.value = Item.buyPrice(0, 2, 0, 9);
 		}
+
 		public override void AI()
 		{
 			npc.position += npc.velocity * 2f;
-			if (Main.rand.Next(6) == 0)
-			{
-				int num706 = Dust.NewDust(npc.position, npc.width, npc.height, 62, 0f, 0f, 200, npc.color, 1f);
-				Main.dust[num706].velocity *= 0.3f;
-			}
+			if (Main.rand.NextBool(6))
+				Main.dust[Dust.NewDust(npc.position, npc.width, npc.height, 62, 0f, 0f, 200, npc.color)].velocity *= 0.3f;
 		}
 
 		public override void HitEffect(int hitDirection, double damage)

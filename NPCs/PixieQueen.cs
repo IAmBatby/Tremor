@@ -55,13 +55,11 @@ namespace Tremor.NPCs
 		public static bool phase2;
 		public static bool phase3;
 
-
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Pixie Queen");
 			Main.npcFrameCount[npc.type] = 8;
 		}
-
 
 		public override void SetDefaults()
 		{
@@ -493,7 +491,7 @@ namespace Tremor.NPCs
 						if (Main.netMode != 1)
 						{
 							int num1061;
-							if (Main.rand.Next(4) == 0)
+							if (Main.rand.NextBool(4))
 							{
 								num1061 = mod.NPCType("AquaticAberration"); //Aquatic entity spawns
 							}
@@ -591,7 +589,7 @@ namespace Tremor.NPCs
 				}
 				if (npc.ai[1] >= 280 && npc.ai[1] < 320)
 				{
-					if (Main.rand.Next(5) == 0)
+					if (Main.rand.NextBool(5))
 					{
 						npc.velocity.X *= 10.00f;
 						npc.velocity.Y *= 10.00f;
@@ -633,7 +631,7 @@ namespace Tremor.NPCs
 				player.AddBuff(BuffID.Slow, 60, true);
 			}
 
-			if (Main.rand.Next(3) == 0)
+			if (Main.rand.NextBool(3))
 			{
 				player.AddBuff(BuffID.Cursed, 60, true);
 			}
@@ -762,23 +760,23 @@ namespace Tremor.NPCs
 				int centerY = (int)(npc.position.Y + npc.height / 2) / 16;
 				int halfLength = npc.width / 2 / 16 + 1;
 
-				if (!Main.expertMode && Main.rand.Next(7) == 0)
+				if (!Main.expertMode && Main.rand.NextBool(7))
 				{
 					Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("PixieQueenMask"));
 				}
-				if (!Main.expertMode && Main.rand.Next(6) == 0)
+				if (!Main.expertMode && Main.rand.NextBool(6))
 				{
 					Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("EtherealFeather"));
 				}
-				if (!Main.expertMode && Main.rand.Next(6) == 0)
+				if (!Main.expertMode && Main.rand.NextBool(6))
 				{
 					Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("PixiePulse"));
 				}
-				if (!Main.expertMode && Main.rand.Next(6) == 0)
+				if (!Main.expertMode && Main.rand.NextBool(6))
 				{
 					Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("HeartMagnet"));
 				}
-				if (!Main.expertMode && Main.rand.Next(6) == 0)
+				if (!Main.expertMode && Main.rand.NextBool(6))
 				{
 					Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("DopelgangerCandle"));
 				}

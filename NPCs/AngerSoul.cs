@@ -1,12 +1,12 @@
-using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
+using Microsoft.Xna.Framework;
+
 namespace Tremor.NPCs
 {
 	[AutoloadBossHead]
-
 	public class AngerSoul : ModNPC
 	{
 		public override void SetStaticDefaults()
@@ -32,19 +32,12 @@ namespace Tremor.NPCs
 			npc.DeathSound = SoundID.NPCDeath6;
 			npc.value = Item.buyPrice(0, 2, 0, 9);
 		}
+
 		public override void AI()
 		{
 			npc.position += npc.velocity * 2f;
-			if (Main.rand.Next(6) == 0)
-			{
-				int num706 = Dust.NewDust(npc.position, npc.width, npc.height, 64, 0f, 0f, 200, npc.color, 1f);
-				Main.dust[num706].velocity *= 0.3f;
-			}
-		}
-		public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
-		{
-			npc.lifeMax = npc.lifeMax * 1;
-			npc.damage = npc.damage * 1;
+			if (Main.rand.NextBool(6))
+				Main.dust[Dust.NewDust(npc.position, npc.width, npc.height, 64, 0f, 0f, 200, npc.color, 1f)].velocity *= 0.3F;
 		}
 
 		public override void HitEffect(int hitDirection, double damage)
@@ -56,6 +49,7 @@ namespace Tremor.NPCs
 				Dust.NewDust(npc.position, npc.width, npc.height, 64, 2.5f * hitDirection, -2.5f, 0, default(Color), 0.7f);
 				Dust.NewDust(npc.position, npc.width, npc.height, 64, 2.5f * hitDirection, -2.5f, 0, default(Color), 2.7f);
 				Dust.NewDust(npc.position, npc.width, npc.height, 64, 2.5f * hitDirection, -2.5f, 0, default(Color), 0.7f);
+
 				for (int k = 0; k < 20; k++)
 				{
 					Dust.NewDust(npc.position, npc.width, npc.height, 64, 2.5f * hitDirection, -2.5f, 0, default(Color), 1.7f);
@@ -65,6 +59,5 @@ namespace Tremor.NPCs
 				}
 			}
 		}
-
 	}
 }

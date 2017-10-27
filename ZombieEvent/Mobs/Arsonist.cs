@@ -40,7 +40,7 @@ namespace Tremor.ZombieEvent.Mobs
 
 		public override void AI()
 		{
-			if (Main.rand.Next(4) == 0)
+			if (Main.rand.NextBool(4))
 			{
 				int num706 = Dust.NewDust(npc.position, npc.width, npc.height, 6, 0f, 0f, 200, npc.color, 1f);
 				Main.dust[num706].velocity *= 0.3f;
@@ -78,7 +78,7 @@ namespace Tremor.ZombieEvent.Mobs
 				int centerX = (int)(npc.position.X + npc.width / 2) / 16;
 				int centerY = (int)(npc.position.Y + npc.height / 2) / 16;
 				int halfLength = npc.width / 2 / 16 + 1;
-				if (Main.rand.Next(2) == 0)
+				if (Main.rand.NextBool(2))
 				{
 					Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, 8, Main.rand.Next(1, 2));
 				};

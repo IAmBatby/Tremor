@@ -25,9 +25,9 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Stone of Knowledge");
-			Tooltip.SetDefault("Summons the Trinity");
+			Tooltip.SetDefault("Summons the Trinity\n" +
+"Requires any mech. boss to have been slain, hardmode and night time");
 		}
-
 
 		public override bool CanUseItem(Player player)
 		{

@@ -39,7 +39,8 @@ namespace Tremor.Items
 
 		public override void UpdateArmorSet(Player player)
 		{
-			player.setBonus = "Creates alchemical bubbles to attack enemies\nBubbles heal you";
+			player.setBonus = "Creates alchemical bubbles to attack enemies\n" +
+"Bubbles heal you";
 			if (--TimeToShoot <= 0)
 			{
 				TimeToShoot = ShootRate;

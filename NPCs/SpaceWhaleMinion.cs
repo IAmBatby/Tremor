@@ -1,7 +1,8 @@
-using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+
+using Microsoft.Xna.Framework;
 
 namespace Tremor.NPCs
 {
@@ -32,12 +33,11 @@ namespace Tremor.NPCs
 			animationType = 23;
 		}
 
-		public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
+		public override void AI()
 		{
-			npc.lifeMax = npc.lifeMax * 1;
-			npc.damage = npc.damage * 1;
+			if (Main.rand.NextBool(4))
+				Main.dust[Dust.NewDust(npc.position, npc.width, npc.height, 6, 0f, 0f, 200, npc.color, 2f)].velocity *= 0.3f;
 		}
-
 
 		public override void HitEffect(int hitDirection, double damage)
 		{
@@ -46,6 +46,7 @@ namespace Tremor.NPCs
 				Dust.NewDust(npc.position, npc.width, npc.height, 6, 2.5f * hitDirection, -2.5f, 0, default(Color), 1.7f);
 				Dust.NewDust(npc.position, npc.width, npc.height, 6, 2.5f * hitDirection, -2.5f, 0, default(Color), 2.7f);
 				Dust.NewDust(npc.position, npc.width, npc.height, 6, 2.5f * hitDirection, -2.5f, 0, default(Color), 2.7f);
+
 				for (int k = 0; k < 20; k++)
 				{
 					Dust.NewDust(npc.position, npc.width, npc.height, 6, 2.5f * hitDirection, -2.5f, 0, default(Color), 2.7f);
@@ -55,19 +56,9 @@ namespace Tremor.NPCs
 					Dust.NewDust(npc.position, npc.width, npc.height, 6, 2.5f * hitDirection, -2.5f, 0, default(Color), 2.7f);
 					Dust.NewDust(npc.position, npc.width, npc.height, 6, 2.5f * hitDirection, -2.5f, 0, default(Color), 2.6f);
 				}
+
 				Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/SpaceWhaleMinionGore"), 1f);
 			}
 		}
-
-		public override void AI()
-		{
-			if (Main.rand.Next(4) == 0)
-			{
-				int num706 = Dust.NewDust(npc.position, npc.width, npc.height, 6, 0f, 0f, 200, npc.color, 2f);
-				Main.dust[num706].velocity *= 0.3f;
-			}
-		}
-
-
 	}
 }

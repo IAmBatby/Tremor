@@ -42,7 +42,6 @@ namespace Tremor.Projectiles
 
 		}
 
-
 		public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)
 		{
 			if (Charge == MAX_CHARGE)
@@ -176,7 +175,6 @@ namespace Tremor.Projectiles
 			}
 			#endregion
 
-
 			#region Set laser tail position and dusts
 			if (Charge < MAX_CHARGE) return;
 			Vector2 start = player.Center;
@@ -196,7 +194,7 @@ namespace Tremor.Projectiles
 			//Imported dust code from source because I'm lazy
 			for (int i = 0; i < 2; ++i)
 			{
-				float num1 = projectile.velocity.ToRotation() + (Main.rand.Next(2) == 1 ? -1.0f : 1.0f) * 1.57f;
+				float num1 = projectile.velocity.ToRotation() + (Main.rand.NextBool(2) ? -1.0f : 1.0f) * 1.57f;
 				float num2 = (float)(Main.rand.NextDouble() * 0.8f + 1.0f);
 				Vector2 dustVel = new Vector2((float)Math.Cos(num1) * num2, (float)Math.Sin(num1) * num2);
 				Dust dust = Main.dust[Dust.NewDust(dustPos, 0, 0, 64, dustVel.X, dustVel.Y, 0, new Color(), 1f)];
@@ -208,7 +206,7 @@ namespace Tremor.Projectiles
 				//dust.noGravity = true;
 				//dust.scale = 0.88f;
 			}
-			if (Main.rand.Next(5) == 0)
+			if (Main.rand.NextBool(5))
 			{
 				Vector2 offset = projectile.velocity.RotatedBy(1.57f, new Vector2()) * ((float)Main.rand.NextDouble() - 0.5f) * projectile.width;
 				//Dust dust = Main.dust[Dust.NewDust(dustPos + offset - Vector2.One * 4f, 8, 8, 31, 0.0f, 0.0f, 100, new Color(), 1.5f)];

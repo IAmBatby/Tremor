@@ -19,9 +19,10 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Vortex Ring ");
-			Tooltip.SetDefault("20% increased ranged damage\nIncreases ranged critical strike chance by 15\n25% chance not to consume ammo");
+			Tooltip.SetDefault("20% increased ranged damage\n" +
+"Increases ranged critical strike chance by 15\n" +
+"25% chance not to consume ammo");
 		}
-
 
 		public override void UpdateAccessory(Player player, bool hideVisual)
 		{

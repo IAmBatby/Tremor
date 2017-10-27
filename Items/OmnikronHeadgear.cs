@@ -10,7 +10,6 @@ namespace Tremor.Items
 	public class OmnikronHeadgear : ModItem
 	{
 
-
 		public override void SetDefaults()
 		{
 
@@ -27,7 +26,6 @@ namespace Tremor.Items
 			DisplayName.SetDefault("Omnikron Headgear");
 			Tooltip.SetDefault("Increases max health and mana by 100");
 		}
-
 
 		public override void ModifyTooltips(List<TooltipLine> tooltips)
 		{
@@ -66,8 +64,6 @@ namespace Tremor.Items
 			player.statLifeMax2 += 100;
 			player.statManaMax2 += 100;
 		}
-
-
 
 		public override void AddRecipes()
 		{

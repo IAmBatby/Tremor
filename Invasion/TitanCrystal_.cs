@@ -66,7 +66,7 @@ namespace Tremor.Invasion
 		{
 			for (int k = 0; k < Player.maxBuffs; k++)
 			{
-				if (target.buffType[k] > 0 && target.buffTime[k] > 0 && BuffLoader.CanBeCleared(target.buffType[k]) && Main.rand.Next(2) == 0)
+				if (target.buffType[k] > 0 && target.buffTime[k] > 0 && BuffLoader.CanBeCleared(target.buffType[k]) && Main.rand.NextBool(2))
 				{
 					target.DelBuff(k);
 					k--;

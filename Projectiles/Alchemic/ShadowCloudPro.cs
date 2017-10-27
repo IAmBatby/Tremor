@@ -1,49 +1,44 @@
+using System;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ModLoader;
 
 namespace Tremor.Projectiles.Alchemic
 {
-	public class ShadowCloudPro : ModProjectile
+	public class ShadowCloudPro : AlchemistProjectile
 	{
 		public override void SetDefaults()
 		{
-  			projectile.width = 48;
+			projectile.width = 48;
 			projectile.height = 48;
 			projectile.magic = true;
 			projectile.penetrate = 8;
-                        projectile.aiStyle = 92;
-                        projectile.friendly = true;
+			projectile.aiStyle = 92;
+			projectile.friendly = true;
 			projectile.timeLeft = 600;
-                        projectile.light = 1.0f;
+			projectile.light = 1.0f;
 		}
 
-		public override Color? GetAlpha(Color lightColor)
+		public override bool PreAI()
 		{
-			return Color.White;
+			if (projectile.timeLeft == 600)
+				projectile.alpha = 255;
+
+			return true;
 		}
-		
-		        public override void ModifyHitNPC(NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
-        {
-            if (Main.rand.Next(1, 101) <= Main.player[projectile.owner].GetModPlayer<MPlayer>(mod).alchemistCrit)
-            {
-                crit = true;
-            }
-        }
 
-        public override void AI()
-        {
-            projectile.rotation = 0f;
-        }
+		public override void AI()
+		{
+			projectile.rotation = 0f;
+		}
 
-
-    public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
-    {
-        if(Main.rand.Next(5) == 0)
-        {
-            target.AddBuff(153, 180, false);
-        }
-    }
+		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		{
+			if (Main.rand.NextBool(5))
+			{
+				target.AddBuff(153, 180, false);
+			}
+		}
 
 	}
 }

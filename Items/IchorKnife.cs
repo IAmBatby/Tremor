@@ -30,7 +30,6 @@ namespace Tremor.Items
 			Tooltip.SetDefault("");
 		}
 
-
 		public override void OnHitNPC(Player player, NPC target, int damage, float knockback, bool crit)
 		{
 			target.AddBuff(69, 60);
@@ -48,7 +47,7 @@ namespace Tremor.Items
 
 		public override void MeleeEffects(Player player, Rectangle hitbox)
 		{
-			if (Main.rand.Next(3) == 0)
+			if (Main.rand.NextBool(3))
 			{
 				int dust = Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, 57);
 			}

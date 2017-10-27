@@ -1,7 +1,10 @@
-using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+
+using Microsoft.Xna.Framework;
+
+using Tremor.Items;
 
 namespace Tremor.NPCs
 {
@@ -33,25 +36,15 @@ namespace Tremor.NPCs
 		public override void AI()
 		{
 			if (npc.frame.Y <= 204)
-			{
 				npc.width = 30;
-			}
 			if (npc.frame.Y > 204)
-			{
 				npc.width = 70;
-			}
 		}
 
-
-		public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
+		public override void NPCLoot()
 		{
-			npc.lifeMax = npc.lifeMax * 1;
-			npc.damage = npc.damage * 1;
-		}
-
-		public override float SpawnChance(NPCSpawnInfo spawnInfo)
-		{
-			return spawnInfo.spawnTileY < Main.rockLayer && !Main.dayTime ? 0.01f : 0f;
+			if (Main.rand.Next(25) == 0)
+				this.NewItem(mod.ItemType<KnightHelmet>());
 		}
 
 		public override void HitEffect(int hitDirection, double damage)
@@ -59,9 +52,8 @@ namespace Tremor.NPCs
 			if (npc.life <= 0)
 			{
 				for (int k = 0; k < 20; k++)
-				{
 					Dust.NewDust(npc.position, npc.width, npc.height, 151, 2.5f * hitDirection, -2.5f, 0, default(Color), 0.7f);
-				}
+
 				Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/ZombieGore1"), 1f);
 				Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/ZombieGore2"), 1f);
 				Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/KnightZombieGore1"), 1f);
@@ -70,20 +62,7 @@ namespace Tremor.NPCs
 			}
 		}
 
-
-		public override void NPCLoot()
-		{
-			if (Main.netMode != 1)
-			{
-				int centerX = (int)(npc.position.X + npc.width / 2) / 16;
-				int centerY = (int)(npc.position.Y + npc.height / 2) / 16;
-				int halfLength = npc.width / 2 / 16 + 1;
-				if (Main.rand.Next(25) == 0)
-				{
-					Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("KnightHelmet"));
-				};
-			}
-		}
-
+		public override float SpawnChance(NPCSpawnInfo spawnInfo)
+			=> spawnInfo.spawnTileY < Main.rockLayer && !Main.dayTime ? 0.01f : 0f;
 	}
 }

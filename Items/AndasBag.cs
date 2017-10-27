@@ -7,7 +7,6 @@ namespace Tremor.Items
 	{
 		public override void SetDefaults()
 		{
-
 			item.maxStack = 999;
 			item.consumable = true;
 			item.width = 24;
@@ -21,9 +20,8 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Treasure Bag");
-			Tooltip.SetDefault("Right click to open");
+			Tooltip.SetDefault("{$CommonItemTooltip.RightClickToOpen}");
 		}
-
 
 		public override bool CanRightClick()
 		{
@@ -51,17 +49,18 @@ namespace Tremor.Items
 					break;
 			}
 
-			if (Main.rand.Next(7) == 0)
+			if (Main.rand.NextBool(7))
 			{
 				player.QuickSpawnItem(mod.ItemType("AndasMask"));
 			}
 
-			player.TryGettingDevArmor();
+			if (Main.hardMode)
+			{
+				player.TryGettingDevArmor();
+			}
 			player.QuickSpawnItem(mod.ItemType("AndasCore"));
 			player.QuickSpawnItem(3544, Main.rand.Next(10, 25));
 			player.QuickSpawnItem(mod.ItemType("InfernoSoul"), Main.rand.Next(8, 15));
-
 		}
-
 	}
 }

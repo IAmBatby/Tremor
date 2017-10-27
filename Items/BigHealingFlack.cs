@@ -28,16 +28,15 @@ namespace Tremor.Items
 			item.rare = 4;
 			item.autoReuse = false;
 
-
 			item.ammo = mod.ItemType("BoomFlask");
 		}
 
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Big Healing Flask");
-			Tooltip.SetDefault("Throws a flask that explodes into clouds\nClouds deal damage to enemies and heal player if hit enemy");
+			Tooltip.SetDefault("Throws a flask that explodes into clouds\n" +
+"Clouds deal damage to enemies and heal player if hit enemy");
 		}
-
 
 		public override void PickAmmo(Player player, ref int type, ref float speed, ref int damage, ref float knockback)
 		{
@@ -46,7 +45,7 @@ namespace Tremor.Items
 
 		public override void UpdateInventory(Player player)
 		{
-			MPlayer modPlayer = player.GetModPlayer<MPlayer>(mod);
+			MPlayer modPlayer = MPlayer.GetModPlayer(player);
 			if (modPlayer.novaHelmet)
 			{
 				item.autoReuse = true;
@@ -64,11 +63,11 @@ namespace Tremor.Items
 			{
 				item.shootSpeed = 8f;
 			}
-			if (player.FindBuffIndex(mod.BuffType("FlaskCoreBuff")) != -1)
+			if (modPlayer.core)
 			{
 				item.autoReuse = true;
 			}
-			if (player.FindBuffIndex(mod.BuffType("FlaskCoreBuff")) < 1)
+			if (!modPlayer.core)
 			{
 				item.autoReuse = false;
 			}

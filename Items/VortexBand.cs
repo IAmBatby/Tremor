@@ -25,7 +25,6 @@ namespace Tremor.Items
 			Tooltip.SetDefault("Summons a vortex bee");
 		}
 
-
 		public override void UseStyle(Player player)
 		{
 			if (player.whoAmI == Main.myPlayer && player.itemTime == 0)

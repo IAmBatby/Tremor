@@ -25,7 +25,6 @@ namespace Tremor.Items
 			Tooltip.SetDefault("The less mana, the more defense...");
 		}
 
-
 		public override void UpdateAccessory(Player player, bool hideVisual)
 
 		{

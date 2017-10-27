@@ -51,7 +51,6 @@ namespace Tremor.ZombieEvent.Mobs
 			}
 		}
 
-
 		public override void NPCLoot()
 		{
 			if (Main.rand.NextBool())
@@ -59,7 +58,7 @@ namespace Tremor.ZombieEvent.Mobs
 				Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType<Rupicide>(), Main.rand.Next(1, 3));
 			};
 
-			if (Main.rand.Next(5) == 0)
+			if (Main.rand.NextBool(5))
 			{
 				Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType<StoneDice>());
 			};

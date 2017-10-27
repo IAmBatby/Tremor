@@ -25,7 +25,6 @@ namespace Tremor.Items
 			Tooltip.SetDefault("Summons a nebula jellyfish");
 		}
 
-
 		public override void UseStyle(Player player)
 		{
 			if (player.whoAmI == Main.myPlayer && player.itemTime == 0)

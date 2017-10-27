@@ -21,9 +21,8 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Candent");
-			Tooltip.SetDefault("Increases melee damage and critical strike chance by 7%");
+			Tooltip.SetDefault("7% increased melee damage and critical strike chance");
 		}
-
 
 		public override void UpdateAccessory(Player player, bool hideVisual)
 		{

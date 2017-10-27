@@ -33,7 +33,8 @@ namespace Tremor.Invasion
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("The Endless Pain");
-			Tooltip.SetDefault("Shoots a shadowflame orb\nOrb shoots shadowflames at nearby enemies");
+			Tooltip.SetDefault("Shoots a shadowflame orb\n" +
+"Orb shoots shadowflames at nearby enemies");
 			Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(5, 4));
 		}
 

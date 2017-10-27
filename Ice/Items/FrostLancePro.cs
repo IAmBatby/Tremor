@@ -15,6 +15,5 @@ namespace Tremor.Ice.Items
 			DisplayName.SetDefault("Frost Lance");
 		}
 
-
 	}
 }

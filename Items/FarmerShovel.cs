@@ -9,7 +9,8 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Farmer's Shovel");
-			Tooltip.SetDefault("''She wants to get it back..''\nAllows the Farmer to move in");
+			Tooltip.SetDefault("''She wants to get it back..''\n" +
+"Allows the Farmer to move in");
 		}
 
 		public override void SetDefaults()

@@ -23,7 +23,6 @@ namespace Tremor.Items
 			Tooltip.SetDefault("");
 		}
 
-
 		public override void GrabRange(Player player, ref int grabRange)
 		{
 			grabRange = (int)(grabRange * grabRangeMulti);

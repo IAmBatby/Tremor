@@ -32,7 +32,6 @@ namespace Tremor.Items
 			Tooltip.SetDefault("");
 		}
 
-
 		public override bool CanUseItem(Player player)
 		{
 			for (int i = 0; i < 1000; ++i)

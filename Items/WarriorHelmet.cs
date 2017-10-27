@@ -6,7 +6,6 @@ namespace Tremor.Items
 	public class WarriorHelmet : ModItem
 	{
 
-
 		public override void SetDefaults()
 		{
 

@@ -31,7 +31,6 @@ namespace Tremor.Projectiles.Minions
        
     }
 
-
 		public override bool OnTileCollide(Vector2 oldVelocity)
 		{
 				if (projectile.velocity.X != oldVelocity.X)

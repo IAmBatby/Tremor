@@ -33,7 +33,6 @@ namespace Tremor.Items
 			Tooltip.SetDefault("");
 		}
 
-
 		public override Vector2? HoldoutOffset()
 		{
 			return new Vector2(-18, -4);
@@ -41,7 +40,7 @@ namespace Tremor.Items
 
 		public override bool ConsumeAmmo(Player p)
 		{
-			return Main.rand.Next(3) == 0;
+			return Main.rand.NextBool(3);
 		}
 
 		public override void AddRecipes()

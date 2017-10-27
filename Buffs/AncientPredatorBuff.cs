@@ -16,7 +16,6 @@ namespace Tremor.Buffs
 			Main.buffNoTimeDisplay[Type] = true;
 		}
 
-
 		public override void Update(Player player, ref int buffIndex)
 		{
 			if (MinionType == -1)

@@ -32,7 +32,6 @@ namespace Tremor.Items
 			Tooltip.SetDefault("");
 		}
 
-
 		public override void HoldItem(Player player)
 		{
 			if (Main.rand.Next(player.itemAnimation > 0 ? 40 : 80) == 0)

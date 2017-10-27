@@ -68,7 +68,6 @@ namespace Tremor.NPCs
 			npc.damage = (int)(npc.damage * 0.6f);
 		}
 
-
 		public override void HitEffect(int hitDirection, double damage)
 		{
 			if (npc.life <= 0)
@@ -108,6 +107,13 @@ namespace Tremor.NPCs
 				timer3 = 0;
 				timer4 = 0;
 			}
+
+			// Boss Minion spawning.
+			int XOffset = 1200;
+			int YOffset = 1200;
+			if (Main.rand.Next(190) == 0)
+				NPC.NewNPC((int)player.Center.X + XOffset, (int)player.Center.Y - YOffset, mod.NPCType<Quetzalcoatl>());
+
 			timer++;
 			if (timer <= 1000)
 			{
@@ -494,7 +500,6 @@ namespace Tremor.NPCs
 				NPC.NewNPC((int)npc.position.Y + 100, (int)npc.position.Y, mod.NPCType("Quetzalcoatl"));
 			}
 
-
 		}
 
 		Vector2 VelocityFPTP(Vector2 pos1, Vector2 pos2, float speed)
@@ -517,23 +522,23 @@ namespace Tremor.NPCs
 				int centerY = (int)(npc.position.Y + npc.height / 2) / 16;
 				int halfLength = npc.width / 2 / 16 + 1;
 
-				if (!Main.expertMode && Main.rand.Next(4) == 0)
+				if (!Main.expertMode && Main.rand.NextBool(4))
 				{
 					Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("SnakeDevourer"));
 				}
-				if (!Main.expertMode && Main.rand.Next(4) == 0)
+				if (!Main.expertMode && Main.rand.NextBool(4))
 				{
 					Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("Awakening"));
 				}
-				if (!Main.expertMode && Main.rand.Next(4) == 0)
+				if (!Main.expertMode && Main.rand.NextBool(4))
 				{
 					Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("LightningStaff"));
 				}
-				if (!Main.expertMode && Main.rand.Next(4) == 0)
+				if (!Main.expertMode && Main.rand.NextBool(4))
 				{
 					Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("QuetzalcoatlStave"));
 				}
-				if (!Main.expertMode && Main.rand.Next(4) == 0)
+				if (!Main.expertMode && Main.rand.NextBool(4))
 				{
 					Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("TreasureGlaive"));
 				}
@@ -553,7 +558,7 @@ namespace Tremor.NPCs
 				{
 					Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("BrutalliskTrophy"));
 				}
-				if (!Main.expertMode && Main.rand.Next(7) == 0)
+				if (!Main.expertMode && Main.rand.NextBool(7))
 				{
 					Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("BrutalliskMask"));
 				}

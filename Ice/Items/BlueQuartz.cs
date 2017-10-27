@@ -20,7 +20,8 @@ namespace Tremor.Ice.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Blue Quartz");
-			Tooltip.SetDefault("Increases maximum health by 50 \n6% increased all damage if in Glacier or Snow biome");
+			Tooltip.SetDefault("Increases maximum health by 50 \n" +
+"6% increased damage if in Glacier or Snow biome");
 			Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(6, 4));
 		}
 
@@ -33,7 +34,7 @@ namespace Tremor.Ice.Items
 				player.rangedDamage += 0.06f;
 				player.magicDamage += 0.06f;
 				player.thrownDamage += 0.06f;
-				player.GetModPlayer<MPlayer>(mod).alchemistDamage += 0.06f;
+				player.GetModPlayer<MPlayer>(mod).alchemicalDamage += 0.06f;
 			}
 		}
 	}

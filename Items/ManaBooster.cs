@@ -26,7 +26,6 @@ namespace Tremor.Items
 			Tooltip.SetDefault("Regenerates mana every minute");
 		}
 
-
 		public override void UseStyle(Player player)
 		{
 			if (player.whoAmI == Main.myPlayer && player.itemTime == 0)

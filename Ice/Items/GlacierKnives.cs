@@ -60,7 +60,6 @@ namespace Tremor.Ice.Items
 
 				Projectile.NewProjectile(vector2.X, vector2.Y, vX, vY, mod.ProjectileType("GlacierKnivesProj"), damage, knockBack, Main.myPlayer);
 
-
 			}
 			return false;
 		}

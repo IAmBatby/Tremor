@@ -25,7 +25,6 @@ namespace Tremor.Items
 			Tooltip.SetDefault("The wings made of red feathers.");
 		}
 
-
 		public override void UpdateAccessory(Player player, bool hideVisual)
 		{
 			player.wingTimeMax = 140;

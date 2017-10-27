@@ -25,7 +25,7 @@ namespace Tremor.Invasion
 		public override void OnHitNPC(NPC target1, int damage, float knockback, bool crit)
 		{
 			Player target = Main.player[Main.myPlayer];
-			if (Main.rand.Next(2) == 0)
+			if (Main.rand.NextBool(2))
 				target.AddBuff(mod.BuffType("Light"), 300);
 		}
 

@@ -6,7 +6,6 @@ namespace Tremor.Items
 	public class MusketeerHat : ModItem
 	{
 
-
 		public override void SetDefaults()
 		{
 

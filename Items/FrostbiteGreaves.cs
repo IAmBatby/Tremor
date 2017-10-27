@@ -7,7 +7,6 @@ namespace Tremor.Items
 	public class FrostbiteGreaves : ModItem
 	{
 
-
 		public override void SetDefaults()
 		{
 
@@ -23,7 +22,6 @@ namespace Tremor.Items
 			DisplayName.SetDefault("Frostbite Greaves");
 			Tooltip.SetDefault("");
 		}
-
 
 		public override void AddRecipes()
 		{

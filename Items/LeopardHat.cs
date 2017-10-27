@@ -6,7 +6,6 @@ namespace Tremor.Items
 	public class LeopardHat : ModItem
 	{
 
-
 		public override void SetDefaults()
 		{
 
@@ -22,7 +21,6 @@ namespace Tremor.Items
 			DisplayName.SetDefault("Leopard Hat");
 			Tooltip.SetDefault("");
 		}
-
 
 		public override void AddRecipes()
 		{

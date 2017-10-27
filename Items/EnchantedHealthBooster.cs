@@ -26,7 +26,6 @@ namespace Tremor.Items
 			Tooltip.SetDefault("Regenerates heatlh every 45 seconds");
 		}
 
-
 		public override void UseStyle(Player player)
 		{
 			if (player.whoAmI == Main.myPlayer && player.itemTime == 0)

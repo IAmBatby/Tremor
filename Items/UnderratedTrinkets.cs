@@ -6,7 +6,6 @@ namespace Tremor.Items
 	public class UnderratedTrinkets : ModItem
 	{
 
-
 		public override void SetDefaults()
 		{
 
@@ -23,7 +22,6 @@ namespace Tremor.Items
 			DisplayName.SetDefault("Underrated Trinkets");
 			Tooltip.SetDefault("The less health, the more stats bonuses you gain");
 		}
-
 
 		public override void UpdateAccessory(Player player, bool hideVisual)
 
@@ -97,7 +95,6 @@ namespace Tremor.Items
 				player.rangedDamage += 0.05f;
 			}
 		}
-
 
 		public override void AddRecipes()
 		{

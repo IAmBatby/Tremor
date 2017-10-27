@@ -35,7 +35,6 @@ namespace Tremor.Items
 			Tooltip.SetDefault("Casts flames to burn your enemies!");
 		}
 
-
 		public override void AddRecipes()
 		{
 			ModRecipe recipe = new ModRecipe(mod);

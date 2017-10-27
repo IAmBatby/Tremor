@@ -35,7 +35,6 @@ namespace Tremor.Items
 			Tooltip.SetDefault("Summons a zombat to fight for you.");
 		}
 
-
 		public override bool AltFunctionUse(Player player)
 		{
 			return true;

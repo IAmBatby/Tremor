@@ -7,14 +7,14 @@ namespace Tremor.Items
 {
 	public class Skullheart : ModItem
 	{
-		const int ShootType = 270; // ��� ����५�
-		const float ShootRange = 600.0f; // ���쭮��� ����५�
-		const float ShootKN = 1.0f; // ����뢠��� 
-		const int ShootRate = 40; // ����� ����५� (60 - 1 ᥪ㭤�)
-		const int ShootCount = 1; // ����஢ �� ����५
-		const float ShootSpeed = 30f; // ������� ����५� (��� ����� - ���쭮���)
-		const int spread = 45; // ������
-		const float spreadMult = 0.045f; // ����䨪��� ࠧ���
+		const int ShootType = 270; 
+		const float ShootRange = 600.0f; 
+		const float ShootKN = 1.0f; 
+		const int ShootRate = 40; 
+		const int ShootCount = 1; 
+		const float ShootSpeed = 30f; 
+		const int spread = 45; 
+		const float spreadMult = 0.045f; 
 
 		int TimeToShoot = ShootRate;
 
@@ -35,7 +35,6 @@ namespace Tremor.Items
 			Tooltip.SetDefault("Shoots skulls at nearby enemies");
 			Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(8, 4));
 		}
-
 
 		public override void UpdateAccessory(Player player, bool hideVisual)
 		{

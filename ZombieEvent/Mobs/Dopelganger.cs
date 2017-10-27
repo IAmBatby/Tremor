@@ -49,7 +49,7 @@ namespace Tremor.ZombieEvent.Mobs
 				{
 					Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("IchorCleaver"));
 				};
-				if (Main.rand.Next(3) == 0)
+				if (Main.rand.NextBool(3))
 				{
 					Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("CursedCloth"), Main.rand.Next(1, 3));
 				};
@@ -58,12 +58,12 @@ namespace Tremor.ZombieEvent.Mobs
 
 		public override void OnHitPlayer(Player player, int damage, bool crit)
 		{
-			if (Main.rand.Next(5) == 0)
+			if (Main.rand.NextBool(5))
 			{
 				player.AddBuff(39, 600, true);
 			}
 
-			if (Main.rand.Next(5) == 0)
+			if (Main.rand.NextBool(5))
 			{
 				player.AddBuff(69, 600, true);
 			}

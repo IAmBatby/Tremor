@@ -34,7 +34,6 @@ namespace Tremor.Projectiles.Minions
        
     }
 
-
 		public override bool OnTileCollide(Vector2 oldVelocity)
 		{
 				if (projectile.velocity.X != oldVelocity.X)
@@ -51,7 +50,7 @@ namespace Tremor.Projectiles.Minions
     public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
     {
 			TremorPlayer modPlayer = Main.player[projectile.owner].GetModPlayer<TremorPlayer>(mod);
-            if(modPlayer.shadowArmSF && Main.rand.Next(3) == 0)
+            if(modPlayer.shadowArmSF && Main.rand.NextBool(3))
 			{
                   target.AddBuff(153, 180, false);
 			}

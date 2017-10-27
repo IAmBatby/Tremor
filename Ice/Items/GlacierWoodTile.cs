@@ -1,5 +1,6 @@
 using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace Tremor.Ice.Items
@@ -16,11 +17,11 @@ namespace Tremor.Ice.Items
 			AddMapEntry(new Color(0, 191, 255));
 			drop = mod.ItemType("GlacierWood");
 			Main.tileMerge[Type][mod.TileType("IceBlock")] = true;
-			Main.tileMerge[Type][161] = true;
-			Main.tileMerge[Type][162] = true;
-			Main.tileMerge[Type][163] = true;
-			Main.tileMerge[Type][164] = true;
-			Main.tileMerge[Type][147] = true;
+			Main.tileMerge[Type][TileID.IceBlock] = true; // normal ice
+			Main.tileMerge[Type][TileID.BreakableIce] = true; // thin ice
+			Main.tileMerge[Type][TileID.CorruptIce] = true; // purple ice
+			Main.tileMerge[Type][TileID.HallowedIce] = true; // pink ice
+			Main.tileMerge[Type][TileID.SnowBlock] = true; // snow
 		}
 
 	}

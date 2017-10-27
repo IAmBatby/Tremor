@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.ModLoader;
+using Tremor.Invasion;
 
 //using Terraria.Content.Fonts;
 

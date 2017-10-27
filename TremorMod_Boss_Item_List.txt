@@ -1,0 +1,39 @@
+Missing weapons from TremorMod bosses:
+
+PreHardmode:
+
+-The Rukh 			| 3/6 Weapons Dropped 	| Missing Summoning, Alchemy and Throwing
+-Tiki Totem 		| 1/6 Weapons Dropped 	| Missing Summoning, Alchemy, Ranged, Throwing and Magic
+-Evil Corn 			| 3/6 Weapons Dropped 	| Missing Summoning, Alchemy and Magic
+-Storm Jellyfish 	| 4/6 Weapons Dropped 	| Missing Alchemy and Throwing
+-Ancient Dragon 	| 2/6 Weapons Dropped 	| Missing Summoning, Alchemy, Ranged and Throwing
+-Heater of Worlds 	| 3/6 Weapons Dropped 	| Missing Summoning, Alchemy and Throwing
+-Fungus Bettle 		| 1/6 Weapons Dropped 	| Missing Summoning, Alchemy, Ranged, Throwing and Magic
+
+Hardmode:
+
+-Alchemaster 		| 2/6 Weapons Dropped 	| Missing Summonning, Ranged, Throwing and Magic
+-Pixie Queen 		| 2/6 Weapons Dropped 	| Missing Summoning, Alchemy, Ranged and Throwing
+-Frost King 		| 2/6 Weapons Dropped 	| Missing Summoning, Alchemy, Ranged and Throwing
+-Wall of Shadows 	| 5/6 Weapons Dropped 	| Missing Throwing 
+-Cog Lord 			| 3/6 Weapons Dropped 	| Missing Summoning, Alchemist and Throwing
+-Cyber King 		| 4/6 Weapons Dropped 	| Missing Alchemist and Throwing
+
+Tremode:
+
+-Dark Emperor 		| 3/6 Weapons Dropped 	| Missing Summoning, Alchemist and Magic
+-Brutallisk 		| 5/6 Weapons Dropped 	| Missing Alchemist
+-Space Whale 		| 4/6 Weapons Dropped 	| Missing Summoning and Alchemist
+-The Trinity 		| 4/6 Weapons Dropped 	| Missing Summoning and Alchemist
+-Andas 				| 3/6 Weapons Dropped 	| Missing Summoning, Alchemist and Throwing
+
+-Paradox Titan 		| 3/6 Weapons Dropped 	| Missing Summoning, Alchemist and Throwing
+
+
+
+
+
+
+
+
+

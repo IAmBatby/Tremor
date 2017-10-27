@@ -7,7 +7,6 @@ namespace Tremor.Items
 	public class LuxoriousLeggings : ModItem
 	{
 
-
 		public override void SetDefaults()
 		{
 			item.defense = 15;
@@ -20,9 +19,8 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Luxorious Leggings");
-			Tooltip.SetDefault("Increases mining speed by 12%");
+			Tooltip.SetDefault("12% increased mining speed");
 		}
-
 
 		public override void UpdateEquip(Player player)
 		{

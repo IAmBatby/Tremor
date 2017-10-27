@@ -12,7 +12,6 @@ namespace Tremor.Items
 			item.width = 30;
 			item.height = 26;
 
-
 			item.value = 35000;
 			item.rare = 11;
 			item.defense = 29;
@@ -21,9 +20,9 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Dragon Breastplate");
-			Tooltip.SetDefault("50% increased ranged damage\nIncreased ranged critical strike chance by 34");
+			Tooltip.SetDefault("50% increased ranged damage\n" +
+"Increased ranged critical strike chance by 34");
 		}
-
 
 		public override void UpdateEquip(Player player)
 		{

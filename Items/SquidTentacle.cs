@@ -36,7 +36,6 @@ namespace Tremor.Items
 			projectile.CloneDefaults(ProjectileID.GemHookAmethyst);
 		}
 
-
 		// Use this hook for hooks that can have multiple hooks midflight: Dual Hook, Web Slinger, Fish Hook, Static Hook, Lunar Hook
 		/*
 				public override bool? CanUseGrapple(Player player)

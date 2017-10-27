@@ -1,11 +1,13 @@
-using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
+using Microsoft.Xna.Framework;
+
+using Tremor.Items;
+
 namespace Tremor.NPCs
 {
-
 	public class Geerd : ModNPC
 	{
 		public override void SetStaticDefaults()
@@ -34,27 +36,8 @@ namespace Tremor.NPCs
 
 		public override void NPCLoot()
 		{
-			if (Main.netMode != 1)
-			{
-				int centerX = (int)(npc.position.X + npc.width / 2) / 16;
-				int centerY = (int)(npc.position.Y + npc.height / 2) / 16;
-				int halfLength = npc.width / 2 / 16 + 1;
-				if (Main.rand.Next(25) == 0)
-				{
-					Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("GreenPuzzleFragment"));
-				}
-			}
-		}
-
-		public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
-		{
-			npc.lifeMax = npc.lifeMax * 1;
-			npc.damage = npc.damage * 1;
-		}
-
-		public override float SpawnChance(NPCSpawnInfo spawnInfo)
-		{
-			return spawnInfo.spawnTileY < Main.rockLayer && NPC.downedBoss3 && Main.dayTime ? 0.005f : 0f;
+			if (Main.rand.Next(25) == 0)
+				npc.NewItem(mod.ItemType<GreenPuzzleFragment>());
 		}
 
 		public override void HitEffect(int hitDirection, double damage)
@@ -62,9 +45,8 @@ namespace Tremor.NPCs
 			if (npc.life <= 0)
 			{
 				for (int k = 0; k < 60; k++)
-				{
 					Dust.NewDust(npc.position, npc.width, npc.height, 5, 2.5f * hitDirection, -2.5f, 0, default(Color), 0.7f);
-				}
+
 				Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/GeerdGore1"), 1f);
 				Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/GrudGore2"), 1f);
 				Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/GrudGore2"), 1f);
@@ -79,5 +61,8 @@ namespace Tremor.NPCs
 				}
 			}
 		}
+
+		public override float SpawnChance(NPCSpawnInfo spawnInfo)
+			=> spawnInfo.spawnTileY < Main.rockLayer && NPC.downedBoss3 && Main.dayTime ? 0.005f : 0f;
 	}
 }

@@ -42,7 +42,6 @@ namespace Tremor.Invasion
 			CyberWrathPoints1 = tag.GetAsInt("CyberWrathPoints1");
 		}
 
-
 		public override void NetSend(BinaryWriter writer)
 		{
 			writer.Write(CyberWrath);
@@ -54,7 +53,6 @@ namespace Tremor.Invasion
 			CyberWrath = reader.ReadBoolean();
 			CyberWrathPoints1 = reader.ReadInt32();
 		}
-
 
 		public override void LoadLegacy(BinaryReader reader)
 		{

@@ -32,9 +32,10 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Pandemonium");
-			Tooltip.SetDefault("Shoots a burst of bullets\nBullets explode into firebals\n75% chance not to consume ammo");
+			Tooltip.SetDefault("Shoots a burst of bullets\n" +
+"Bullets explode into firebals\n" +
+"75% chance not to consume ammo");
 		}
-
 
 		public override void ModifyTooltips(List<TooltipLine> tooltips)
 		{
@@ -53,7 +54,7 @@ namespace Tremor.Items
 			float SpeedX = speedX + Main.rand.Next(-15, 16) * 0.05f;
 			float SpeedY = speedY + Main.rand.Next(-15, 16) * 0.05f;
 			Projectile.NewProjectile(position.X, position.Y, SpeedX, SpeedY, type, damage, knockBack, player.whoAmI, 0.0f, 0.0f);
-			if (Main.rand.Next(2) == 0)
+			if (Main.rand.NextBool(2))
 				Projectile.NewProjectile(position.X, position.Y, SpeedX, SpeedY, mod.ProjectileType("PandemoniumBullet"), damage, knockBack, player.whoAmI, 0.0f, 0.0f);
 			return false;
 		}

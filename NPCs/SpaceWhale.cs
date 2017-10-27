@@ -15,8 +15,6 @@ namespace Tremor.NPCs
 			Main.npcFrameCount[npc.type] = 8;
 		}
 
-
-
 		public override void SetDefaults()
 		{
 			npc.width = 500;
@@ -36,7 +34,6 @@ namespace Tremor.NPCs
 			animationType = 370;
 			bossBag = mod.ItemType("SpaceWhaleTreasureBag");
 		}
-
 
 		public override void HitEffect(int hitDirection, double damage)
 		{
@@ -789,51 +786,50 @@ namespace Tremor.NPCs
 				int CenterY = (int)(npc.Center.Y + npc.height / 2) / 16;
 				int halfLength = npc.width / 2 / 16 + 1;
 
-
 				if (!TremorWorld.Boss.SpaceWhale.IsDowned())
 				{
 					Main.NewText("A comet has struck the ground!", 117, 187, 253);
-					TremorWorld.dropComet();
+					TremorWorld.DropComet();
 					//return;
 				}
-				if (TremorWorld.Boss.SpaceWhale.IsDowned() && Main.rand.Next(3) == 0)
+				if (TremorWorld.Boss.SpaceWhale.IsDowned() && Main.rand.NextBool(3))
 				{
 					Main.NewText("A comet has struck the ground!", 117, 187, 253);
-					TremorWorld.dropComet();
+					TremorWorld.DropComet();
 					//return;
 				}
 				TremorWorld.Boss.SpaceWhale.Downed();
 
-				if (!Main.expertMode && Main.rand.Next(7) == 0)
+				if (!Main.expertMode && Main.rand.NextBool(7))
 				{
 					Item.NewItem((int)npc.Center.X, (int)npc.Center.Y, npc.width, npc.height, mod.ItemType("SpaceWhaleMask"));
 				}
-				if (!Main.expertMode && Main.rand.Next(7) == 0)
+				if (!Main.expertMode && Main.rand.NextBool(7))
 				{
 					Item.NewItem((int)npc.Center.X, (int)npc.Center.Y, npc.width, npc.height, mod.ItemType("SpaceWhaleTrophy"));
 				}
 
-				if (!Main.expertMode && Main.rand.Next(3) == 0)
+				if (!Main.expertMode && Main.rand.NextBool(3))
 				{
 					Item.NewItem((int)npc.Center.X, (int)npc.Center.Y, npc.width, npc.height, mod.ItemType("SDL"));
 				}
 
-				if (!Main.expertMode && Main.rand.Next(3) == 0)
+				if (!Main.expertMode && Main.rand.NextBool(3))
 				{
 					Item.NewItem((int)npc.Center.X, (int)npc.Center.Y, npc.width, npc.height, mod.ItemType("BlackHoleCannon"));
 				}
 
-				if (!Main.expertMode && Main.rand.Next(3) == 0)
+				if (!Main.expertMode && Main.rand.NextBool(3))
 				{
 					Item.NewItem((int)npc.Center.X, (int)npc.Center.Y, npc.width, npc.height, mod.ItemType("HornedWarHammer"));
 				}
 
-				if (!Main.expertMode && Main.rand.Next(5) == 0)
+				if (!Main.expertMode && Main.rand.NextBool(5))
 				{
 					Item.NewItem((int)npc.Center.X, (int)npc.Center.Y, npc.width, npc.height, mod.ItemType("StarLantern"));
 				}
 
-				if (!Main.expertMode && Main.rand.Next(8) == 0)
+				if (!Main.expertMode && Main.rand.NextBool(8))
 				{
 					Item.NewItem((int)npc.Center.X, (int)npc.Center.Y, npc.width, npc.height, mod.ItemType("WhaleFlippers"));
 				}

@@ -28,7 +28,6 @@ namespace Tremor.Projectiles
 			DisplayName.SetDefault("Berserker Sword");
 		}
 
-
 		public override void AI()
 		{
 			Rotation += RotationSpeed;

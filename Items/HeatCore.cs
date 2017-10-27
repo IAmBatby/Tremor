@@ -36,7 +36,6 @@ namespace Tremor.Items
 			Tooltip.SetDefault("Shoots rays at nearby enemies");
 		}
 
-
 		public override void UpdateAccessory(Player player, bool hideVisual)
 		{
 			if (--TimeToShoot <= 0)

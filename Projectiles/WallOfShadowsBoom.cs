@@ -7,7 +7,6 @@ namespace Tremor.Projectiles
 	{
 		public override void SetDefaults()
 		{
-
 			projectile.width = 52;
 			projectile.height = 52;
 			projectile.penetrate = -1;
@@ -23,7 +22,6 @@ namespace Tremor.Projectiles
 			DisplayName.SetDefault("Wall Of Shadows Boom");
 
 		}
-
 
 		public override bool PreAI()
 		{
@@ -44,14 +42,6 @@ namespace Tremor.Projectiles
 				}
 			}
 			return false;
-		}
-
-		public override void ModifyHitNPC(NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
-		{
-			if (Main.rand.Next(1, 101) <= Main.player[projectile.owner].GetModPlayer<MPlayer>(mod).alchemistCrit)
-			{
-				crit = true;
-			}
 		}
 
 		public override void AI()

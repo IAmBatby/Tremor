@@ -28,15 +28,14 @@ namespace Tremor.Items
 			item.crit = 4;
 			item.useAmmo = mod.ItemType("BoomFlask");
 
-
 		}
 
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Basic Sprayer");
-			Tooltip.SetDefault("Uses flasks as ammo\nSprays alchemical clouds");
+			Tooltip.SetDefault("Uses flasks as ammo\n" +
+"Sprays alchemical clouds");
 		}
-
 
 		public override void AddRecipes()
 		{
@@ -99,11 +98,12 @@ namespace Tremor.Items
 
 		public override void UpdateInventory(Player player)
 		{
-			if (player.FindBuffIndex(mod.BuffType("FlaskCoreBuff")) != -1)
+			MPlayer modPlayer = MPlayer.GetModPlayer(player);
+			if (modPlayer.core)
 			{
 				item.autoReuse = true;
 			}
-			if (player.FindBuffIndex(mod.BuffType("FlaskCoreBuff")) < 1)
+			if (!modPlayer.core)
 			{
 				item.autoReuse = false;
 			}
@@ -119,7 +119,7 @@ namespace Tremor.Items
 
 		public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
 		{
-			MPlayer modPlayer = player.GetModPlayer<MPlayer>(mod);
+			MPlayer modPlayer = MPlayer.GetModPlayer(player);
 			if (modPlayer.glove)
 			{
 				for (int i = 0; i < 1; ++i)

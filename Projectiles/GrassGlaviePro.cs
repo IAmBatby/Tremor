@@ -19,10 +19,9 @@ namespace Tremor.Projectiles
 
 		}
 
-
 		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
 		{
-			if (Main.rand.Next(2) == 0)
+			if (Main.rand.NextBool(2))
 			{
 				target.AddBuff(20, 180, false);
 			}
@@ -31,7 +30,7 @@ namespace Tremor.Projectiles
 
 		public override void AI()
 		{
-			if (Main.rand.Next(3) == 0)
+			if (Main.rand.NextBool(3))
 			{
 				Dust.NewDust(projectile.position + projectile.velocity, projectile.width, projectile.height, 44, projectile.velocity.X * 0.5f, projectile.velocity.Y * 0.5f);
 			}

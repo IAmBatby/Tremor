@@ -35,7 +35,6 @@ namespace Tremor.Items
 			Tooltip.SetDefault("'Flail from grass and leaves'");
 		}
 
-
 		public override void AddRecipes()
 		{
 			ModRecipe recipe = new ModRecipe(mod);

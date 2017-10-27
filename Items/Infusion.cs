@@ -27,6 +27,5 @@ namespace Tremor.Items
 			Tooltip.SetDefault("Eternal potion");
 		}
 
-
 	}
 }

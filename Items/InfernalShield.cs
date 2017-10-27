@@ -7,17 +7,16 @@ namespace Tremor.Items
 	[AutoloadEquip(EquipType.Shield)]
 	public class InfernalShield : ModItem
 	{
-		const int ShootType = 376; // ��� ����५�
-		const float ShootRange = 600.0f; // ���쭮��� ����५�
-		const float ShootKN = 1.0f; // ����뢠��� 
-		const int ShootRate = 60; // ����� ����५� (60 - 1 ᥪ㭤�)
-		const int ShootCount = 3; // ����஢ �� ����५
-		const float ShootSpeed = 15f; // ������� ����५� (��� ����� - ���쭮���)
-		const int spread = 45; // ������
-		const float spreadMult = 0.045f; // ����䨪��� ࠧ���
+		const int ShootType = 376; 
+		const float ShootRange = 600.0f; 
+		const float ShootKN = 1.0f; 
+		const int ShootRate = 60; 
+		const int ShootCount = 3; 
+		const float ShootSpeed = 15f; 
+		const int spread = 45; 
+		const float spreadMult = 0.045f; 
 
 		int TimeToShoot = ShootRate;
-
 
 		public override void SetDefaults()
 		{
@@ -36,7 +35,6 @@ namespace Tremor.Items
 			DisplayName.SetDefault("Infernal Shield");
 			Tooltip.SetDefault("Casts fireballs at nearby enemies");
 		}
-
 
 		public override void UpdateAccessory(Player player, bool hideVisual)
 		{

@@ -22,7 +22,6 @@ namespace Tremor.Items
 			Tooltip.SetDefault("Maximum life increased by 50");
 		}
 
-
 		public override void UpdateAccessory(Player player, bool hideVisual)
 		{
 			player.statLifeMax2 += 50;

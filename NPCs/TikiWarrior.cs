@@ -1,11 +1,14 @@
-using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
+using Microsoft.Xna.Framework;
+
+using Tremor.Items;
+using Tremor.Items.Wood;
+
 namespace Tremor.NPCs
 {
-
 	public class TikiWarrior : ModNPC
 	{
 		public override void SetStaticDefaults()
@@ -31,25 +34,10 @@ namespace Tremor.NPCs
 			npc.value = Item.buyPrice(0, 0, 0, 0);
 		}
 
-		public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
-		{
-			npc.lifeMax = npc.lifeMax * 1;
-			npc.damage = npc.damage * 1;
-		}
-
 		public override void NPCLoot()
 		{
-			if (Main.netMode != 1)
-			{
-				int centerX = (int)(npc.position.X + npc.width / 2) / 16;
-				int centerY = (int)(npc.position.Y + npc.height / 2) / 16;
-				int halfLength = npc.width / 2 / 16 + 1;
-
-				if (Main.rand.Next(45) == 0)
-				{
-					Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("WoodenFrame"));
-				};
-			}
+			if (Main.rand.Next(45) == 0)
+				this.NewItem(mod.ItemType<WoodenFrame>());
 		}
 
 		public override void HitEffect(int hitDirection, double damage)

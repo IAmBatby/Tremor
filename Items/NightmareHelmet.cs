@@ -23,7 +23,6 @@ namespace Tremor.Items
 			Tooltip.SetDefault("");
 		}
 
-
 		public override bool IsArmorSet(Item head, Item body, Item legs)
 		{
 			return body.type == mod.ItemType("NightmareBreastplate") && legs.type == mod.ItemType("NightmarePants");
@@ -42,7 +41,6 @@ namespace Tremor.Items
 		{
 			player.armorEffectDrawShadowLokis = true;
 		}
-
 
 		public override void AddRecipes()
 		{

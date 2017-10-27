@@ -11,20 +11,20 @@ namespace Tremor.NPCs
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Wall of Shadows");
+			NPCID.Sets.TechnicallyABoss[npc.type] = true;
 		}
 
 		public override void SetDefaults()
 		{
 			npc.width = 100;
 			npc.height = 100;
-			npc.value = Item.buyPrice(0, 0, 0, 0);
 
 			npc.damage = 78;
 			npc.defense = 40;
 			npc.lifeMax = 8000;
 			npc.knockBackResist = 0f;
 
-			npc.boss = true;
+			//npc.boss = true;
 			npc.noGravity = true;
 			npc.lavaImmune = true;
 			npc.behindTiles = true;

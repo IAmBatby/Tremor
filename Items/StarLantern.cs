@@ -19,9 +19,9 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Star Lantern");
-			Tooltip.SetDefault("25% increased magic damage\nEmits aura of light");
+			Tooltip.SetDefault("25% increased magic damage\n" +
+"Emits aura of light");
 		}
-
 
 		public override void UpdateAccessory(Player player, bool hideVisual)
 		{

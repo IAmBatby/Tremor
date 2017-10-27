@@ -19,7 +19,6 @@ namespace Tremor.Projectiles
 
 		}
 
-
 		public override void Kill(int timeLeft)
 		{
 			Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 62);
@@ -33,7 +32,7 @@ namespace Tremor.Projectiles
 			{
 				int num629 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, 31, 0f, 0f, 100, default(Color), 2f);
 				Main.dust[num629].velocity *= 3f;
-				if (Main.rand.Next(2) == 0)
+				if (Main.rand.NextBool(2))
 				{
 					Main.dust[num629].scale = 0.5f;
 					Main.dust[num629].fadeIn = 1f + Main.rand.Next(10) * 0.1f;

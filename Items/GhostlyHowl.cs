@@ -35,8 +35,6 @@ namespace Tremor.Items
 			Tooltip.SetDefault("Shoots the ghostly arrows");
 		}
 
-
-
 		public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
 		{
 			int i = Main.myPlayer;
@@ -69,15 +67,15 @@ namespace Tremor.Items
 			num78 *= num80;
 			num79 *= num80;
 			int num146 = 4;
-			if (Main.rand.Next(2) == 0)
+			if (Main.rand.NextBool(2))
 			{
 				num146++;
 			}
-			if (Main.rand.Next(4) == 0)
+			if (Main.rand.NextBool(4))
 			{
 				num146++;
 			}
-			if (Main.rand.Next(8) == 0)
+			if (Main.rand.NextBool(8))
 			{
 				num146++;
 			}

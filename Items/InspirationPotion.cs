@@ -28,7 +28,6 @@ namespace Tremor.Items
 			Tooltip.SetDefault("Increases maximum mana");
 		}
 
-
 		public override bool UseItem(Player player)
 		{
 			player.AddBuff(mod.BuffType("MaximumCharge"), 14400);

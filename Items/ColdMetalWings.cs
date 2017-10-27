@@ -26,7 +26,6 @@ namespace Tremor.Items
 			Tooltip.SetDefault("Allows flight and slow fall");
 		}
 
-
 		public override void UpdateAccessory(Player player, bool hideVisual)
 		{
 			player.wingTimeMax = 200;
@@ -48,7 +47,6 @@ namespace Tremor.Items
 			speed = 15f;
 			acceleration *= 2.5f;
 		}
-
 
 		public override void AddRecipes()
 		{

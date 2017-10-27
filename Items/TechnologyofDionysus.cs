@@ -24,7 +24,6 @@ namespace Tremor.Items
 			Tooltip.SetDefault("Enemies are less likely to target you");
 		}
 
-
 		public override void UpdateAccessory(Player player, bool hideVisual)
 
 		{

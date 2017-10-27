@@ -7,8 +7,6 @@ namespace Tremor.Items
 	public class BenderHead : ModItem
 	{
 
-
-
 		public override void SetDefaults()
 		{
 
@@ -24,7 +22,6 @@ namespace Tremor.Items
 			DisplayName.SetDefault("Bender Head");
 			Tooltip.SetDefault("");
 		}
-
 
 		public override bool IsArmorSet(Item head, Item body, Item legs)
 		{

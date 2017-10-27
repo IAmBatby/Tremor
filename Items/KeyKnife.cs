@@ -30,6 +30,5 @@ namespace Tremor.Items
 			Tooltip.SetDefault("'Half key, half knife, completely awe.. oh.'");
 		}
 
-
 	}
 }

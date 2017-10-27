@@ -7,7 +7,6 @@ namespace Tremor.Items
 	public class HorseMask : ModItem
 	{
 
-
 		public override void SetDefaults()
 		{
 
@@ -21,7 +20,6 @@ namespace Tremor.Items
 			DisplayName.SetDefault("Horse Mask");
 			Tooltip.SetDefault("");
 		}
-
 
 		public override void AddRecipes()
 		{

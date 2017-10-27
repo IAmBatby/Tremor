@@ -1,13 +1,18 @@
-using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
+using Microsoft.Xna.Framework;
+
 namespace Tremor.NPCs
 {
-
 	public class Cybermite : ModNPC
 	{
+		public Vector2 bossCenter
+		{
+			get { return npc.Center; }
+			set { npc.position = value - new Vector2(npc.width / 2, npc.height / 2); }
+		}
 
 		public override void SetStaticDefaults()
 		{
@@ -30,20 +35,6 @@ namespace Tremor.NPCs
 			npc.DeathSound = SoundID.NPCDeath6;
 		}
 
-		public override void HitEffect(int hitDirection, double damage)
-		{
-			if (npc.life <= 0)
-			{
-				Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/CybermiteGore"), 1f);
-			}
-		}
-
-		public Vector2 bossCenter
-		{
-			get { return npc.Center; }
-			set { npc.position = value - new Vector2(npc.width / 2, npc.height / 2); }
-		}
-
 		public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
 		{
 			npc.lifeMax = (int)(npc.lifeMax * 0.625f * bossLifeScale);
@@ -53,6 +44,12 @@ namespace Tremor.NPCs
 		public override void AI()
 		{
 			Lighting.AddLight(bossCenter, 1f, 0.3f, 0.3f);
+		}
+
+		public override void HitEffect(int hitDirection, double damage)
+		{
+			if (npc.life <= 0)
+				Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/CybermiteGore"), 1f);
 		}
 	}
 }

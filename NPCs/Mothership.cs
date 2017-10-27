@@ -15,7 +15,6 @@ namespace Tremor.NPCs
 			Main.npcFrameCount[npc.type] = 8;
 		}
 
-
 		private float timeToNextFrame;
 		public int frame;
 
@@ -44,8 +43,6 @@ namespace Tremor.NPCs
 		private float lifeTime;
 		private bool Rage;
 
-
-
 		public Vector2 bossCenter
 		{
 			get { return npc.Center; }
@@ -68,7 +65,6 @@ namespace Tremor.NPCs
 				Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/CKMotherGore3"), 1f);
 			}
 		}
-
 
 		public override void AI()
 		{

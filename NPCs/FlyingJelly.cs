@@ -1,11 +1,11 @@
-using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
+using Microsoft.Xna.Framework;
+
 namespace Tremor.NPCs
 {
-
 	public class FlyingJelly : ModNPC
 	{
 		public override void SetStaticDefaults()
@@ -13,7 +13,6 @@ namespace Tremor.NPCs
 			DisplayName.SetDefault("Flying Jelly");
 			Main.npcFrameCount[npc.type] = 6;
 		}
-
 
 		public override void SetDefaults()
 		{
@@ -44,20 +43,12 @@ namespace Tremor.NPCs
 			}
 			else
 			{
-
-				for (int k = 0; k < damage / npc.lifeMax * 50.0; k++)
+				for (int k = 0; k < damage / npc.lifeMax * 50; k++)
 				{
 					Dust.NewDust(npc.position, npc.width, npc.height, 226, hitDirection, -2f, 0, default(Color), 0.7f);
 					Dust.NewDust(npc.position, npc.width, npc.height, 27, hitDirection, -1f, 0, default(Color), 0.7f);
 				}
 			}
 		}
-
-		public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
-		{
-			npc.lifeMax = npc.lifeMax * 1;
-			npc.damage = npc.damage * 1;
-		}
-
 	}
 }

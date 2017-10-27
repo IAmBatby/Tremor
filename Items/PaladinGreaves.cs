@@ -24,12 +24,9 @@ namespace Tremor.Items
 			Tooltip.SetDefault("22% increased melee damage");
 		}
 
-
 		public override void UpdateEquip(Player player)
 		{
 			player.meleeDamage += 0.22f;
 		}
 	}
-
-
 }

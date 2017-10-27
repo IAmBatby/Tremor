@@ -22,13 +22,12 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Hallowed Visage");
-			Tooltip.SetDefault("Increases alchemic damage by 27%");
+			Tooltip.SetDefault("27% increased alchemical damage");
 		}
-
 
 		public override void UpdateEquip(Player player)
 		{
-			player.GetModPlayer<MPlayer>(mod).alchemistDamage += 0.27f;
+			player.GetModPlayer<MPlayer>(mod).alchemicalDamage += 0.27f;
 		}
 
 		public override bool IsArmorSet(Item head, Item body, Item legs)
@@ -38,8 +37,8 @@ namespace Tremor.Items
 
 		public override void UpdateArmorSet(Player player)
 		{
-			player.setBonus = "Increases alchemic critical chance by 23%";
-			player.GetModPlayer<MPlayer>(mod).alchemistCrit += 23;
+			player.setBonus = "23% increased alchemical critical strike chance";
+			player.GetModPlayer<MPlayer>(mod).alchemicalCrit += 23;
 		}
 
 		public override void ArmorSetShadows(Player player)

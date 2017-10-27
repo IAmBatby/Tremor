@@ -15,7 +15,6 @@ namespace Tremor.Items
 			item.height = 18;
 			item.value = 10000;
 
-
 			item.rare = 4;
 			item.defense = 10;
 		}
@@ -23,9 +22,9 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Raven Breastplate");
-			Tooltip.SetDefault("8% increased melee damage\nIncreases melee critical strike chance by 5");
+			Tooltip.SetDefault("8% increased melee damage\n" +
+"Increases melee critical strike chance by 5");
 		}
-
 
 		public override void UpdateEquip(Player player)
 		{

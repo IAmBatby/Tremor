@@ -6,7 +6,6 @@ namespace Tremor.Items
 	public class BenderLegs : ModItem
 	{
 
-
 		public override void SetDefaults()
 		{
 

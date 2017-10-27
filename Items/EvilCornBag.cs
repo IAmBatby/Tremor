@@ -21,9 +21,8 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Treasure Bag");
-			Tooltip.SetDefault("Right click to open");
+			Tooltip.SetDefault("{$CommonItemTooltip.RightClickToOpen}");
 		}
-
 
 		public override bool CanRightClick()
 		{
@@ -32,7 +31,7 @@ namespace Tremor.Items
 
 		public override void OpenBossBag(Player player)
 		{
-			if (Main.rand.Next(7) == 0)
+			if (Main.rand.NextBool(7))
 			{
 				player.QuickSpawnItem(mod.ItemType("EvilCornMask"));
 			}
@@ -44,19 +43,19 @@ namespace Tremor.Items
 			{
 				player.QuickSpawnItem(mod.ItemType("CornHeater"));
 			}
-			if (Main.rand.Next(2) == 0)
+			if (Main.rand.NextBool(2))
 			{
 				player.QuickSpawnItem(mod.ItemType("GrayKnightHelmet"));
 			}
-			if (Main.rand.Next(2) == 0)
+			if (Main.rand.NextBool(2))
 			{
 				player.QuickSpawnItem(mod.ItemType("GrayKnightBreastplate"));
 			}
-			if (Main.rand.Next(2) == 0)
+			if (Main.rand.NextBool(2))
 			{
 				player.QuickSpawnItem(mod.ItemType("KnightGreaves"));
 			}
-			if (Main.rand.Next(3) == 0)
+			if (Main.rand.NextBool(3))
 			{
 				player.QuickSpawnItem(mod.ItemType("CornSword"));
 			}

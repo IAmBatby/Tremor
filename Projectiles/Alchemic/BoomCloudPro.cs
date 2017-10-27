@@ -3,7 +3,7 @@ using Terraria.ModLoader;
 
 namespace Tremor.Projectiles.Alchemic
 {
-	public class BoomCloudPro : ModProjectile
+	public class BoomCloudPro : AlchemistProjectile
 	{
 		public override void SetDefaults()
 		{
@@ -15,19 +15,10 @@ namespace Tremor.Projectiles.Alchemic
 			projectile.friendly = true;
 			projectile.timeLeft = 600;
 		}
-
-		public override void ModifyHitNPC(NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
-		{
-			if (Main.rand.Next(1, 101) <= Main.player[projectile.owner].GetModPlayer<MPlayer>(mod).alchemistCrit)
-			{
-				crit = true;
-			}
-		}
-
+		
 		public override void AI()
 		{
 			projectile.rotation = 0f;
 		}
-
 	}
 }

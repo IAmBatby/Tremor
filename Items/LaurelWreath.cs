@@ -7,7 +7,6 @@ namespace Tremor.Items
 	public class LaurelWreath : ModItem
 	{
 
-
 		public override void SetDefaults()
 		{
 
@@ -22,7 +21,6 @@ namespace Tremor.Items
 			DisplayName.SetDefault("Laurel Wreath");
 			Tooltip.SetDefault("'The latest fashion trend'");
 		}
-
 
 		public override void DrawHair(ref bool drawHair, ref bool drawAltHair)
 		{

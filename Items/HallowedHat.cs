@@ -8,8 +8,6 @@ namespace Tremor.Items
 	public class HallowedHat : ModItem
 	{
 
-
-
 		public override void SetDefaults()
 		{
 
@@ -24,9 +22,8 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Hallowed Hat");
-			Tooltip.SetDefault("Increases minion damage by 25%");
+			Tooltip.SetDefault("25% increased minion damage");
 		}
-
 
 		public override void UpdateEquip(Player player)
 		{

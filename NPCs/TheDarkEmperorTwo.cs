@@ -26,7 +26,6 @@ namespace Tremor.NPCs
 			Main.npcFrameCount[npc.type] = 6;
 		}
 
-
 		public override void SetDefaults()
 		{
 			npc.aiStyle = -1;
@@ -52,7 +51,6 @@ namespace Tremor.NPCs
 			npc.npcSlots = 10f;
 		}
 
-
 		public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
 		{
 			npc.lifeMax = (int)(npc.lifeMax * 0.625f * bossLifeScale);
@@ -63,7 +61,6 @@ namespace Tremor.NPCs
 		{
 
 			Lighting.AddLight(npc.position, 1f, 0.3f, 0.3f);
-
 
 			bool allDead = false;
 			for (int i = 0; i < Main.player.Length; i++)
@@ -398,8 +395,7 @@ namespace Tremor.NPCs
 				int centerY = (int)(npc.position.Y + npc.height / 2) / 16;
 				int halfLength = npc.width / 2 / 16 + 1;
 
-
-				if (!Main.expertMode && Main.rand.Next(7) == 0)
+				if (!Main.expertMode && Main.rand.NextBool(7))
 				{
 					Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("DarkEmperorMask"));
 				}
@@ -407,11 +403,11 @@ namespace Tremor.NPCs
 				{
 					Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("DarkEmperorTrophy"));
 				}
-				if (!Main.expertMode && Main.rand.Next(5) == 0)
+				if (!Main.expertMode && Main.rand.NextBool(5))
 				{
 					Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("DrippingScythe"));
 				}
-				if (!Main.expertMode && Main.rand.Next(5) == 0)
+				if (!Main.expertMode && Main.rand.NextBool(5))
 				{
 					Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("DelightfulClump"));
 				}

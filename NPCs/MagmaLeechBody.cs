@@ -1,18 +1,19 @@
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace Tremor.NPCs
 {
 	public class MagmaLeechBody : ModNPC
 	{
-
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Magma Leech");
 		}
+
 		public override void SetDefaults()
 		{
 			npc.lifeMax = 250;
@@ -34,15 +35,12 @@ namespace Tremor.NPCs
 		public override void OnHitPlayer(Player player, int damage, bool crit)
 		{
 			if (Main.rand.NextBool())
-			{
-				player.AddBuff(24, 180, true);
-			}
+				player.AddBuff(BuffID.OnFire, 180, true);
 		}
 
 		public override void AI()
 		{
-
-			if (Main.rand.Next(3) == 0)
+			if (Main.rand.NextBool(3))
 			{
 				Dust.NewDust(npc.position, npc.width, npc.height, 6, 0f, 0f, 200, npc.color, 1f);
 				Dust.NewDust(npc.position, npc.width, npc.height, 6, 0f, 0f, 200, npc.color, 1f);
@@ -56,6 +54,7 @@ namespace Tremor.NPCs
 				npc.active = false;
 			}
 		}
+
 		public override bool CheckActive()
 		{
 			return false;
@@ -64,6 +63,7 @@ namespace Tremor.NPCs
 		{
 			return false;
 		}
+
 		public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)
 		{
 			Texture2D drawTexture = Main.npcTexture[npc.type];

@@ -1,12 +1,12 @@
-﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using Terraria;
+﻿using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+
 namespace Tremor.NPCs
 {
-
 	public class DragonMini : ModNPC
 	{
 		public override void SetStaticDefaults()
@@ -35,7 +35,7 @@ namespace Tremor.NPCs
 		public override void ModifyHitPlayer(Player target, ref int damage, ref bool crit)
 		{
 			if (Main.expertMode)
-				target.AddBuff(156, 180);
+				target.AddBuff(BuffID.Stoned, 180);
 		}
 
 		public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)

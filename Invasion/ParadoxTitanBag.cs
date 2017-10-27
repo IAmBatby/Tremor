@@ -7,7 +7,6 @@ namespace Tremor.Invasion
 	{
 		public override void SetDefaults()
 		{
-
 			item.maxStack = 999;
 			item.consumable = true;
 			item.width = 24;
@@ -21,9 +20,8 @@ namespace Tremor.Invasion
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Treasure Bag");
-			Tooltip.SetDefault("Right click to open");
+			Tooltip.SetDefault("{$CommonItemTooltip.RightClickToOpen}");
 		}
-
 
 		public override bool CanRightClick()
 		{
@@ -32,8 +30,11 @@ namespace Tremor.Invasion
 
 		public override void OpenBossBag(Player player)
 		{
-			player.TryGettingDevArmor();
-			if (Main.rand.Next(7) == 0)
+			if (Main.hardMode)
+			{
+				player.TryGettingDevArmor();
+			}
+			if (Main.rand.NextBool(7))
 			{
 				player.QuickSpawnItem(mod.ItemType("ParadoxTitanMask"));
 			}

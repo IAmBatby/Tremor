@@ -31,13 +31,12 @@ namespace Tremor.Projectiles
 
 		}
 
-
 		public override void Kill(int timeLeft)
 		{
 			for (int num158 = 0; num158 < 20; num158++)
 			{
 				int num159 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, 226, projectile.velocity.X * 0.1f, projectile.velocity.Y * 0.1f, 0, default(Color), 1.5f);
-				if (Main.rand.Next(3) == 0)
+				if (Main.rand.NextBool(3))
 				{
 					Main.dust[num159].fadeIn = 1.1f + Main.rand.Next(-10, 11) * 0.01f;
 					Main.dust[num159].scale = 0.35f + Main.rand.Next(-10, 11) * 0.01f;
@@ -119,8 +118,6 @@ namespace Tremor.Projectiles
 				Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, vector64.X, vector64.Y, mod.ProjectileType("VoidRingPro"), projectile.damage / 2, projectile.knockBack, projectile.owner, -10f, 0f);
 			}
 		}
-
-
 
 		public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)
 		{

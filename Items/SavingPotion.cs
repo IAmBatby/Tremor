@@ -28,7 +28,6 @@ namespace Tremor.Items
 			Tooltip.SetDefault("Greatly reduces mana cost");
 		}
 
-
 		public override bool UseItem(Player player)
 		{
 			player.AddBuff(mod.BuffType("ManaSaving"), 14400);

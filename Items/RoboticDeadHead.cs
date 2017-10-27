@@ -19,9 +19,10 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Robotic Dead Head");
-			Tooltip.SetDefault("15% increased damage\n12% increased critical strike chance\n25% increased movement speed");
+			Tooltip.SetDefault("15% increased damage\n" +
+"12% increased critical strike chance\n" +
+"25% increased movement speed");
 		}
-
 
 		public override void UpdateAccessory(Player player, bool hideVisual)
 		{
@@ -33,7 +34,7 @@ namespace Tremor.Items
 
 			player.rangedDamage += 0.15f;
 			player.rangedCrit += 12;
-			
+
 			player.thrownDamage += 0.15f;
 			player.thrownCrit += 12;
 
@@ -43,8 +44,8 @@ namespace Tremor.Items
 			player.maxRunSpeed += 0.25f;
 
 			MPlayer modPlayer = Main.LocalPlayer.GetModPlayer<MPlayer>(mod);
-			modPlayer.alchemistDamage += 0.15f;
-			modPlayer.alchemistCrit += 12;
+			modPlayer.alchemicalDamage += 0.15f;
+			modPlayer.alchemicalCrit += 12;
 		}
 
 		public override void AddRecipes()

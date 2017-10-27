@@ -26,7 +26,6 @@ namespace Tremor.Projectiles
 
 		}
 
-
 		public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)
 		{
 			Texture2D texture = ModLoader.GetTexture("Tremor/Projectiles/DragonHead_Chain");
@@ -66,7 +65,7 @@ namespace Tremor.Projectiles
 
 		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
 		{
-			if (Main.rand.Next(3) == 0)
+			if (Main.rand.NextBool(3))
 			{
 				Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, 0f, 0f, 400, projectile.damage, projectile.knockBack, projectile.owner, 0f, 0f);
 			}

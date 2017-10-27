@@ -3,6 +3,7 @@ using System.Linq;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Tremor.Ice.Items;
 
 namespace Tremor.Ice.Mobs
 {
@@ -13,14 +14,13 @@ namespace Tremor.Ice.Mobs
 			DisplayName.SetDefault("Coldtrap");
 		}
 
-
 		public override void SetDefaults()
 		{
-			npc.lifeMax = 20;
-			npc.damage = 0;
+			npc.lifeMax = Main.hardMode ? 300 : 30;
+			npc.damage = Main.hardMode ? 65 : 25;
 			//Main.npcFrameCount[npc.type] = 4;
 			npc.defense = 0;
-			npc.knockBackResist = 0f;
+			npc.knockBackResist = 0.3f;
 			npc.width = 78;
 			npc.height = 54;
 			//animationType = 3;
@@ -40,14 +40,19 @@ namespace Tremor.Ice.Mobs
 		public override float SpawnChance(NPCSpawnInfo spawnInfo)
 		{
 			int[] TileArray2 = { mod.TileType("IceOre"), mod.TileType("IceBlock"), mod.TileType("VeryVeryIce"), mod.TileType("DungeonBlock") };
-			return TileArray2.Contains(Main.tile[spawnInfo.spawnTileX, spawnInfo.spawnTileY].type) && !NPC.AnyNPCs(422) && !NPC.AnyNPCs(493) && !NPC.AnyNPCs(507) && !NPC.AnyNPCs(517) ? 15f : 0f;
+			return TileArray2.Contains(Main.tile[spawnInfo.spawnTileX, spawnInfo.spawnTileY].type)
+				&& !NPC.AnyNPCs(NPCID.LunarTowerVortex)
+			    && !NPC.AnyNPCs(NPCID.LunarTowerStardust)
+			    && !NPC.AnyNPCs(NPCID.LunarTowerNebula)
+			    && !NPC.AnyNPCs(NPCID.LunarTowerSolar) 
+				? 15f : 0f;
 		}
 
 		public override void AI()
 		{
 			if (npc.localAI[0] == 0f)
 			{
-				int damage = 15;
+				int damage = Main.hardMode ? 40 : 15;
 
 				for (int k = 1; k < 5; k++)
 				{
@@ -76,11 +81,32 @@ namespace Tremor.Ice.Mobs
 		{
 			if (Main.rand.Next(25) == 0)
 				Item.NewItem((int)npc.position.X, (int)npc.position.Y, 12, 12, mod.ItemType("IceKey"), 1);
+
+			// 20% chance to drop a few ice blocks
+			if (Main.rand.NextBool(5))
+			{
+				this.NewItem(mod.ItemType<IceBlockB>(), 2 + Main.rand.Next(4) + (Main.hardMode ? 1 : 0));
+			}
+			// 10% chance to drop a few ice ores
+			if (Main.rand.NextBool(10))
+			{
+				this.NewItem(mod.ItemType<Icicle>(), 2 + Main.rand.Next(3) + (Main.hardMode ? 1 : 0));
+			}
+
+			// Explode into a few glaciers
+			int num = 2 + Main.rand.Next(2);
+			for (int i = 0; i < num; i++)
+			{
+				NPC.NewNPC((int)npc.position.X, (int)npc.position.Y, mod.NPCType<Glacier>());
+			}
 		}
 
 		public override void ModifyHitPlayer(Player target, ref int damage, ref bool crit)
 		{
-			target.AddBuff(44, 60);
+			if (Main.hardMode || Main.expertMode)
+			{
+				target.AddBuff(BuffID.Frostburn, Main.rand.Next(1, 3) * 60);
+			}
 		}
 	}
 }

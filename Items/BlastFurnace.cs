@@ -27,7 +27,6 @@ namespace Tremor.Items
 			Tooltip.SetDefault("Used to craft alloys");
 		}
 
-
 		public override void AddRecipes()
 		{
 			ModRecipe recipe = new ModRecipe(mod);

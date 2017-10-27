@@ -5,49 +5,38 @@ using Terraria.ModLoader;
 
 namespace Tremor.Projectiles.Alchemic.Bursts
 {
-	public class FieryBurst : ModProjectile
-    {
-    	
-        public override void SetDefaults()
-        {
-              projectile.width = 52;
-            projectile.height = 52;
-            projectile.friendly = true;
-            projectile.tileCollide = false;
-            projectile.ignoreWater = true;
-            projectile.penetrate = -1;
-            projectile.alpha = 255;
-            projectile.timeLeft = 420;
-            Main.projFrames[projectile.type] = 20;
-        }
+	public class FieryBurst : AlchemistProjectile
+	{
 
+		public override void SetDefaults()
+		{
+			projectile.width = 52;
+			projectile.height = 52;
+			projectile.friendly = true;
+			projectile.tileCollide = false;
+			projectile.ignoreWater = true;
+			projectile.penetrate = -1;
+			projectile.alpha = 255;
+			projectile.timeLeft = 420;
+			Main.projFrames[projectile.type] = 20;
+		}
 
 		public override Color? GetAlpha(Color lightColor)
 		{
 			return Color.White;
 		}
-		
-				public override void ModifyHitNPC(NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
-        {
-            if (Main.rand.Next(1, 101) <= Main.player[projectile.owner].GetModPlayer<MPlayer>(mod).alchemistCrit)
-            {
-                crit = true;
-            }
-        }
 
-        
-    public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
-    {
-        if(Main.rand.Next(2) == 0)
-        {
-            target.AddBuff(24, 180, false);
-        }
-    }
-        public override void AI()
-        {					
+		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		{
+			if (Main.rand.NextBool(2))
+			{
+				target.AddBuff(24, 180, false);
+			}
+		}
+		public override void AI()
+		{
 
-
-        	int num613 = 10;
+			int num613 = 10;
 			int num614 = 15;
 			float num615 = 1f;
 			int num616 = 150;
@@ -63,7 +52,7 @@ namespace Tremor.Projectiles.Alchemic.Bursts
 				projectile.frameCounter = 0;
 			}
 			if (projectile.frame >= 20)
-                        {projectile.Kill();}
+			{ projectile.Kill(); }
 			if (!Collision.SolidCollision(projectile.position, projectile.width, projectile.height))
 			{
 				projectile.alpha -= 30;
@@ -81,8 +70,6 @@ namespace Tremor.Projectiles.Alchemic.Bursts
 				}
 			}
 
-
-
-        }
-    }
+		}
+	}
 }

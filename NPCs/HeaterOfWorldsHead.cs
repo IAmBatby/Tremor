@@ -140,7 +140,7 @@ namespace Tremor.NPCs
 					? 430
 					: 490;
 
-			if (Helper.Chance(odds))
+			if (Main.rand.NextBool(odds))
 			{
 				NPC.NewNPC((int)npc.Center.X - 70, (int)npc.Center.Y, mod.NPCType<MagmaLeechHead>());
 			}
@@ -236,20 +236,20 @@ namespace Tremor.NPCs
 			else
 			{
 				if (Main.rand.NextBool())
-					npc.SpawnItem((short)mod.ItemType<MoltenParts>());
+					npc.NewItem((short)mod.ItemType<MoltenParts>());
 
 				if (Main.rand.NextBool())
-					npc.SpawnItem(ItemID.HealingPotion, Main.rand.Next(6, 18));
+					npc.NewItem(ItemID.HealingPotion, Main.rand.Next(6, 18));
 
 				if (Main.rand.NextBool())
-					npc.SpawnItem(ItemID.ManaPotion, Main.rand.Next(6, 18));
+					npc.NewItem(ItemID.ManaPotion, Main.rand.Next(6, 18));
 
 				if (Main.rand.NextBool(7))
-					npc.SpawnItem((short)mod.ItemType<HeaterOfWorldsMask>());
+					npc.NewItem((short)mod.ItemType<HeaterOfWorldsMask>());
 			}
 			
 			if (Main.rand.NextBool(10))
-				npc.SpawnItem((short)mod.ItemType<HeaterOfWorldsTrophy>());
+				npc.NewItem((short)mod.ItemType<HeaterOfWorldsTrophy>());
 
 			TremorWorld.Boss.HeaterofWorlds.Downed();
 		}

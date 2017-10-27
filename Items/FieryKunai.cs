@@ -34,7 +34,6 @@ namespace Tremor.Items
 			Tooltip.SetDefault("50% chance to set enemy on fire");
 		}
 
-
 		public override void AddRecipes()
 		{
 			ModRecipe recipe = new ModRecipe(mod);

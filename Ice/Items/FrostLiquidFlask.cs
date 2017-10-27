@@ -4,10 +4,8 @@ namespace Tremor.Ice.Items
 {
 	public class FrostLiquidFlask : AlchemistItem
 	{
-
 		public override void SetDefaults()
 		{
-
 			item.damage = 10;
 			//item.thrown = true;
 			item.width = 26;
@@ -33,6 +31,5 @@ namespace Tremor.Ice.Items
 			DisplayName.SetDefault("Frost Liquid Flask");
 			Tooltip.SetDefault("Throws a flask that explodes into frost bolts");
 		}
-
 	}
 }

@@ -6,7 +6,6 @@ namespace Tremor.Items
 	public class ShroomiteMagicalBoots : ModItem
 	{
 
-
 		public override void SetDefaults()
 		{
 
@@ -15,16 +14,15 @@ namespace Tremor.Items
 			item.value = 11000;
 			item.rare = 9;
 
-
 			item.accessory = true;
 		}
 
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Shroomite Magical Boots");
-			Tooltip.SetDefault("The less mana, the more defense...\nThe less health, the more speed...");
+			Tooltip.SetDefault("The less mana, the more defense...\n" +
+"The less health, the more speed...");
 		}
-
 
 		public override void UpdateAccessory(Player player, bool hideVisual)
 
@@ -62,7 +60,6 @@ namespace Tremor.Items
 				player.moveSpeed += 0.5f;
 			}
 		}
-
 
 		public override void AddRecipes()
 		{

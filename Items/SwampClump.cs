@@ -18,9 +18,10 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Swamp Clump");
-			Tooltip.SetDefault("Greatly reduces movement speed\nProlonged after hit invicibility\nGreatly increases life regeneration");
+			Tooltip.SetDefault("Greatly reduces movement speed\n" +
+"Prolonged after hit invicibility\n" +
+"Greatly increases life regeneration");
 		}
-
 
 		public override void UpdateAccessory(Player player, bool hideVisual)
 		{

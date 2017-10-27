@@ -30,7 +30,8 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Transistor");
-			Tooltip.SetDefault("'Crash() everyone!'\nSends energy waves in different directions on swing");
+			Tooltip.SetDefault("'Crash() everyone!'\n" +
+"Sends energy waves in different directions on swing");
 		}
 		public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
 		{

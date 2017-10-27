@@ -21,9 +21,9 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Enforcer's Shield");
-			Tooltip.SetDefault("Increases melee damage and speed as health lowers\nIncreased invincibility after taking damage");
+			Tooltip.SetDefault("Increases melee damage and speed as health lowers\n" +
+"Increased invincibility after taking damage");
 		}
-
 
 		public override void UpdateAccessory(Player player, bool hideVisual)
 

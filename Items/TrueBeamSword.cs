@@ -31,7 +31,6 @@ namespace Tremor.Items
 			Tooltip.SetDefault("Shoots a beam of light");
 		}
 
-
 		public override void AddRecipes()
 		{
 			ModRecipe recipe = new ModRecipe(mod);

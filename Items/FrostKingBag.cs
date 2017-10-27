@@ -21,9 +21,8 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Treasure Bag");
-			Tooltip.SetDefault("Right click to open");
+			Tooltip.SetDefault("{$CommonItemTooltip.RightClickToOpen}");
 		}
-
 
 		public override bool CanRightClick()
 		{
@@ -32,13 +31,16 @@ namespace Tremor.Items
 
 		public override void OpenBossBag(Player player)
 		{
-			if (Main.rand.Next(7) == 0)
+			if (Main.rand.NextBool(7))
 			{
 				player.QuickSpawnItem(mod.ItemType("FrostKingMask"));
 			}
 			player.QuickSpawnItem(mod.ItemType("EdgeofFrostKing"));
 			player.QuickSpawnItem(mod.ItemType("FrostoneOre"), Main.rand.Next(24, 42));
-			player.TryGettingDevArmor();
+			if (Main.hardMode)
+			{
+				player.TryGettingDevArmor();
+			}
 		}
 
 	}

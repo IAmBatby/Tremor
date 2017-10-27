@@ -17,7 +17,6 @@ namespace Tremor.Items
 			item.useAnimation = 25;
 			item.useStyle = 1;
 
-
 			item.knockBack = 4;
 			item.value = 10000;
 			item.rare = 3;
@@ -28,9 +27,9 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Pharaoh Blade");
-			Tooltip.SetDefault("Allows you to get more coins for killing enemies\n'More gold for God of gold!'");
+			Tooltip.SetDefault("Allows you to get more coins for killing enemies\n" +
+"'More gold for God of gold!'");
 		}
-
 
 		public override void OnHitNPC(Player player, NPC target, int damage, float knockback, bool crit)
 		{

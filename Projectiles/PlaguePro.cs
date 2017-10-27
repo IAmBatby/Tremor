@@ -23,12 +23,10 @@ namespace Tremor.Projectiles
 
 		}
 
-
 		public override Color? GetAlpha(Color lightColor)
 		{
 			return Color.White;
 		}
-
 
 		public override void Kill(int timeLeft)
 		{
@@ -46,7 +44,6 @@ namespace Tremor.Projectiles
 			}
 			if (projectile.frame >= 4)
 			{ projectile.frame = 0; }
-
 
 		}
 	}

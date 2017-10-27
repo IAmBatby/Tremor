@@ -23,7 +23,6 @@ namespace Tremor.Items
 			Tooltip.SetDefault("You gain more power during night");
 		}
 
-
 		public override void UpdateAccessory(Player player, bool hideVisual)
 
 		{

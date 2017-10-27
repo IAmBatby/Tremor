@@ -23,7 +23,6 @@ namespace Tremor.Items
 			Tooltip.SetDefault("Grants a spinning ball around the player");
 		}
 
-
 		public override void UpdateAccessory(Player player, bool hideVisual)
 		{
 			player.AddBuff(mod.BuffType("BrainSmasherBuff"), 2);

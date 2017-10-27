@@ -19,7 +19,10 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("White Master Chestplate");
-			Tooltip.SetDefault("Massively increases alchemic damage as health lowers\nIncreases alchemic damage by 30%\nEnemy attacks have 10% chance to do no damage to you\nImmune to cursed inferno, lava, and can move through liquids");
+			Tooltip.SetDefault("Massively increases alchemical damage as health lowers\n" +
+"30% increased alchemical damage\n" +
+"Enemy attacks have 10% chance to do no damage to you\n" +
+"Immune to cursed inferno, lava, and can move through liquids");
 		}
 
 		public override void UpdateEquip(Player player)
@@ -28,23 +31,23 @@ namespace Tremor.Items
 			modPlayer.zellariumBody = true;
 			player.lavaImmune = true;
 			player.ignoreWater = true;
-			player.GetModPlayer<MPlayer>(mod).alchemistDamage += 0.3f;
+			player.GetModPlayer<MPlayer>(mod).alchemicalDamage += 0.3f;
 			player.buffImmune[BuffID.CursedInferno] = true;
 			if (player.statLife <= player.statLifeMax2)
 			{
-				player.GetModPlayer<MPlayer>(mod).alchemistDamage += 0.3f;
+				player.GetModPlayer<MPlayer>(mod).alchemicalDamage += 0.3f;
 			}
 			if (player.statLife <= 400)
 			{
-				player.GetModPlayer<MPlayer>(mod).alchemistDamage += 0.4f;
+				player.GetModPlayer<MPlayer>(mod).alchemicalDamage += 0.4f;
 			}
 			if (player.statLife <= 300)
 			{
-				player.GetModPlayer<MPlayer>(mod).alchemistDamage += 0.5f;
+				player.GetModPlayer<MPlayer>(mod).alchemicalDamage += 0.5f;
 			}
 			if (player.statLife <= 200)
 			{
-				player.GetModPlayer<MPlayer>(mod).alchemistDamage += 0.6f;
+				player.GetModPlayer<MPlayer>(mod).alchemicalDamage += 0.6f;
 			}
 		}
 

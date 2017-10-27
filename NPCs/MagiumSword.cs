@@ -1,11 +1,11 @@
-using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
+using Microsoft.Xna.Framework;
+
 namespace Tremor.NPCs
 {
-
 	public class MagiumSword : ModNPC
 	{
 		public override void SetStaticDefaults()
@@ -32,20 +32,10 @@ namespace Tremor.NPCs
 			npc.value = Item.buyPrice(0, 0, 0, 0);
 		}
 
-
 		public override void AI()
 		{
-			if (Main.rand.Next(6) == 0)
-			{
-				int num706 = Dust.NewDust(npc.position, npc.width, npc.height, 59, 0f, 0f, 200, npc.color, 2f);
-				Main.dust[num706].velocity *= 0.3f;
-			}
-		}
-
-		public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
-		{
-			npc.lifeMax = npc.lifeMax * 1;
-			npc.damage = npc.damage * 1;
+			if (Main.rand.NextBool(6))
+				Main.dust[Dust.NewDust(npc.position, npc.width, npc.height, 59, 0f, 0f, 200, npc.color, 2f)].velocity *= 0.3f;
 		}
 
 		public override void HitEffect(int hitDirection, double damage)
@@ -53,13 +43,8 @@ namespace Tremor.NPCs
 			if (npc.life <= 0)
 			{
 				for (int k = 0; k < 20; k++)
-				{
 					Dust.NewDust(npc.position, npc.width, npc.height, 59, 2.5f * hitDirection, -2.5f, 0, default(Color), 0.7f);
-				}
 			}
 		}
-
-
-
 	}
 }

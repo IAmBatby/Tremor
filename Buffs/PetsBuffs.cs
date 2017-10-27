@@ -148,7 +148,7 @@ namespace Tremor.Buffs
 					}
 					if (type == 61)
 					{
-						tip = "Increases all damage by 8%";
+						tip = "8% increased damage";
 					}
 					if (type == 65)
 					{
@@ -168,7 +168,7 @@ namespace Tremor.Buffs
 					}
 					if (type == 85)
 					{
-						tip = "Increases all crit chanse by 8%";
+						tip = "8% increased all crit chanse";
 					}
 					if (type == 91)
 					{

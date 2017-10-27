@@ -44,6 +44,5 @@ namespace Tremor.Invasion
 			return false;
 		}
 
-
 	}
 }

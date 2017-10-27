@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -149,7 +150,6 @@ namespace Tremor
 			return NearestPlayer;
 		}
 
-
 		/// <summary>
 		/// *Используется для вычислиения инерции от точки до точки с заданой скоростью*
 		/// </summary>
@@ -225,15 +225,6 @@ namespace Tremor
 			return returnedValue;
 		}
 
-		public static bool Chance(int chance)
-			=> Main.rand.Next(chance) == 0;
-
-		/// <summary>*Вычисления того, произойдёт ли событие с заданым шансом в этот раз, или нет*</summary>
-		/// <param name="chance">Шанс события</param>
-		/// <returns>Произойдёт ли событие с заданым шансом, или нет</returns>
-		public static bool Chance(float chance)
-			=> Main.rand.NextFloat() <= chance;
-
 		/// <summary>
 		/// *Используется для плавного перехода одного вектора в другой*
 		/// Добавляет во входящий вектор From разницу To и From делённую на Smooth
@@ -247,16 +238,17 @@ namespace Tremor
 			return From + ((To - From) / Smooth);
 		}
 
+		// @todo this shit weird af
 		public static float DistortFloat(float Float, float Percent)
 		{
 			float DistortNumber = Float * Percent;
 			int Counter = 0;
-			while (DistortNumber.ToString().Split(',').Length > 1)
+			while (DistortNumber.ToString(CultureInfo.InvariantCulture).Split(',').Length > 1)
 			{
 				DistortNumber *= 10;
 				Counter++;
 			}
-			return Float + ((Main.rand.Next(0, (int)DistortNumber + 1) / (float)(Math.Pow(10, Counter))) * ((Main.rand.Next(2) == 0) ? -1 : 1));
+			return Float + ((Main.rand.Next(0, (int)DistortNumber + 1) / (float)(Math.Pow(10, Counter))) * ((Main.rand.NextBool(2)) ? -1 : 1));
 		}
 
 		public static void Explode(int index, int sizeX, int sizeY, ExtraAction visualAction = null)

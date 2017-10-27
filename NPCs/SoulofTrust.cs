@@ -163,12 +163,11 @@ namespace Tremor.NPCs
 				NPC.NewNPC((int)npc.position.X + 100, (int)npc.position.Y - 50, 418);
 			}
 
-			if (Main.rand.Next(2) == 0)
+			if (Main.rand.NextBool(2))
 			{
 				int num706 = Dust.NewDust(npc.position, npc.width, npc.height, 6, 0f, 0f, 200, npc.color, 0.5f);
 				Main.dust[num706].velocity *= 0.6f;
 			}
-
 
 			if (npc.target != -1 && !RunAway) //если(пнс.цель не варно -1 И не убегать)
 				if (!Main.player[npc.target].active) //если (не мой.игрок[нпс.цель].активный)
@@ -249,7 +248,7 @@ namespace Tremor.NPCs
 
 		void CreateDust()
 		{
-			if (Main.rand.Next(3) == 0)
+			if (Main.rand.NextBool(3))
 				Dust.NewDust(npc.position, npc.width, npc.height, 6);
 		}
 
@@ -327,9 +326,6 @@ namespace Tremor.NPCs
 				int centerY = (int)(npc.position.Y + npc.height / 2) / 16;
 				int halfLength = npc.width / 2 / 16 + 1;
 
-
-
-
 				if (!NPC.AnyNPCs(mod.NPCType("SoulofHope")) && !NPC.AnyNPCs(mod.NPCType("SoulofTruth")))
 				{
 
@@ -362,18 +358,17 @@ namespace Tremor.NPCs
 
 				}
 
-
-				if (!Main.expertMode && Main.rand.Next(7) == 0)
+				if (!Main.expertMode && Main.rand.NextBool(7))
 				{
 					Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("ThrustMask"));
 				}
 
-				if (!Main.expertMode && Main.rand.Next(3) == 0)
+				if (!Main.expertMode && Main.rand.NextBool(3))
 				{
 					Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("Volcannon"));
 				}
 
-				if (!Main.expertMode && Main.rand.Next(3) == 0)
+				if (!Main.expertMode && Main.rand.NextBool(3))
 				{
 					Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("HonestBlade"));
 				}

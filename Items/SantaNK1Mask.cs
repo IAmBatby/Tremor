@@ -6,8 +6,6 @@ namespace Tremor.Items
 	public class SantaNK1Mask : ModItem
 	{
 
-
-
 		public override void SetDefaults()
 		{
 

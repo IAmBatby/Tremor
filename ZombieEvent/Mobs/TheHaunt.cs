@@ -13,7 +13,7 @@ namespace Tremor.ZombieEvent.Mobs
 			Main.npcFrameCount[npc.type] = 4;
 		}
 
-		const int SpeedMulti = 3; // �����⥫� ᪮���
+		const int SpeedMulti = 3; 
 
 		public override void SetDefaults()
 		{
@@ -36,7 +36,6 @@ namespace Tremor.ZombieEvent.Mobs
 			// Todo: bannerItem = mod.ItemType("TheHauntBanner");
 		}
 
-
 		public override void AI()
 		{
 			if (NPC.AnyNPCs(mod.NPCType("Cryptomage")))
@@ -52,7 +51,7 @@ namespace Tremor.ZombieEvent.Mobs
 				int centerX = (int)(npc.position.X + npc.width / 2) / 16;
 				int centerY = (int)(npc.position.Y + npc.height / 2) / 16;
 				int halfLength = npc.width / 2 / 16 + 1;
-				if (Main.rand.Next(4) == 0)
+				if (Main.rand.NextBool(4))
 				{
 					Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("CursedInk"));
 				}

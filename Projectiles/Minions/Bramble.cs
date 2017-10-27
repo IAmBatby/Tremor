@@ -11,7 +11,6 @@ namespace Tremor.Projectiles.Minions
  
         public override void SetDefaults()
         {
- 
 
             projectile.width = 48;
             projectile.height = 44;  
@@ -33,7 +32,6 @@ namespace Tremor.Projectiles.Minions
        
     }
 
- 
         public override void AI()
         {
             for (int i = 0; i < 200; i++)

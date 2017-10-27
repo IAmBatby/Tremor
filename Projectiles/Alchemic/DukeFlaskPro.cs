@@ -7,8 +7,14 @@ using Terraria.ModLoader;
 
 namespace Tremor.Projectiles.Alchemic
 {
-	public class DukeFlaskPro : ModProjectile
+	public class DukeFlaskPro : AlchemistProjectile
 	{
+		public override void SetStaticDefaults()
+		{
+			ProjectileID.Sets.TrailCacheLength[projectile.type] = 5;
+			ProjectileID.Sets.TrailingMode[projectile.type] = 2;
+		}
+
 		public override void SetDefaults()
 		{
 			projectile.width = 18;
@@ -16,7 +22,8 @@ namespace Tremor.Projectiles.Alchemic
 			projectile.friendly = true;
 			projectile.aiStyle = 2;
 			projectile.penetrate = 1;
-			if (Main.player[Main.myPlayer].buffType.Contains(mod.BuffType("BouncingCasingBuff")))
+			// todo: move
+			if (Main.LocalPlayer.HasBuff(mod.BuffType("BouncingCasingBuff")))
 			{
 				projectile.penetrate = 3;
 			}
@@ -24,21 +31,11 @@ namespace Tremor.Projectiles.Alchemic
 				projectile.penetrate = 1;
 			projectile.timeLeft = 1200;
 			projectile.scale = 1f;
-			ProjectileID.Sets.TrailCacheLength[projectile.type] = 5;
-			ProjectileID.Sets.TrailingMode[projectile.type] = 2;
-		}
-
-		public override void ModifyHitNPC(NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
-		{
-			if (Main.rand.Next(1, 101) <= Main.player[projectile.owner].GetModPlayer<MPlayer>(mod).alchemistCrit)
-			{
-				crit = true;
-			}
 		}
 
 		public override void AI()
 		{
-			if (Main.player[Main.myPlayer].buffType.Contains(mod.BuffType("TheCadenceBuff")))
+			if (Main.LocalPlayer.HasBuff(mod.BuffType("TheCadenceBuff")))
 			{
 				int[] array = new int[20];
 				int num428 = 0;
@@ -81,7 +78,7 @@ namespace Tremor.Projectiles.Alchemic
 						num440 = num437 / num440;
 						num438 *= num440;
 						num439 *= num440;
-						if (Main.rand.Next(2) == 0)
+						if (Main.rand.NextBool(2))
 						{
 							Projectile.NewProjectile(value10.X, value10.Y, num438, num439, mod.ProjectileType("TheCadenceProj"), projectile.damage, projectile.knockBack, projectile.owner, 0f, 0f);
 						}
@@ -92,7 +89,7 @@ namespace Tremor.Projectiles.Alchemic
 
 		public override bool OnTileCollide(Vector2 oldVelocity)
 		{
-			if (Main.player[Main.myPlayer].buffType.Contains(mod.BuffType("BouncingCasingBuff")))
+			if (Main.LocalPlayer.HasBuff(mod.BuffType("BouncingCasingBuff")))
 			{
 				projectile.penetrate--;
 				if (projectile.penetrate <= 0)
@@ -133,7 +130,7 @@ namespace Tremor.Projectiles.Alchemic
 			Main.PlaySound(29, (int)projectile.position.X, (int)projectile.position.Y, 20);
 			Gore.NewGore(projectile.position, -projectile.oldVelocity * 0.2f, 704, 1f);
 			Gore.NewGore(projectile.position, -projectile.oldVelocity * 0.2f, 705, 1f);
-			if (Main.player[Main.myPlayer].buffType.Contains(mod.BuffType("BrassChipBuff")))
+			if (player.HasBuff(mod.BuffType("BrassChipBuff")))
 			{
 				for (int i = 0; i < 5; i++)
 				{
@@ -143,7 +140,7 @@ namespace Tremor.Projectiles.Alchemic
 					Main.projectile[a].friendly = true;
 				}
 			}
-			if (Main.player[Main.myPlayer].buffType.Contains(mod.BuffType("ChaosElementBuff")))
+			if (player.HasBuff(mod.BuffType("ChaosElementBuff")))
 			{
 				int num220 = Main.rand.Next(3, 6);
 				for (int num221 = 0; num221 < num220; num221++)

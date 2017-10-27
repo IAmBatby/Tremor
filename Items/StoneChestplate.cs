@@ -7,14 +7,11 @@ namespace Tremor.Items
 	[AutoloadEquip(EquipType.Body)]
 	public class StoneChestplate : ModItem
 	{
-
 		public override void SetDefaults()
 		{
-
-			item.width = 26;
-			item.height = 18;
-
-			item.value = 0;
+			item.width = 34;
+			item.height = 22;
+			item.value = Item.sellPrice(silver: 1);
 			item.rare = 1;
 			item.defense = 3;
 		}
@@ -22,21 +19,20 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Stone Chestplate");
-			Tooltip.SetDefault("4% increased melee damage");
+			Tooltip.SetDefault("10% reduced melee speed\nThe stone protects you, but makes you slower");
 		}
-
 
 		public override void UpdateEquip(Player player)
 		{
-			player.meleeDamage += 0.04f;
+			player.meleeSpeed -= 0.1f;
 		}
 
 		public override void AddRecipes()
 		{
 			ModRecipe recipe = new ModRecipe(mod);
-			recipe.AddIngredient(ItemID.StoneBlock, 75);
+			recipe.AddIngredient(ItemID.StoneBlock, 45);
 			recipe.SetResult(this);
-			recipe.AddTile(16);
+			recipe.AddTile(TileID.Anvils);
 			recipe.AddRecipe();
 		}
 

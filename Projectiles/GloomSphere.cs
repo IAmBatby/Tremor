@@ -28,11 +28,10 @@ namespace Tremor.Projectiles
 
 		}
 
-
 		public override void AI()
 		{
 			projectile.velocity.Y += projectile.ai[0];
-			if (Main.rand.Next(2) == 0)
+			if (Main.rand.NextBool(2))
 			{
 				Dust.NewDust(projectile.position + projectile.velocity, projectile.width, projectile.height, 27, projectile.velocity.X * 0.5f, projectile.velocity.Y * 0.5f);
 			}

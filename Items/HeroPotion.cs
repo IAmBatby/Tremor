@@ -25,9 +25,12 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Hero Potion");
-			Tooltip.SetDefault("Grants 10000 defense\nGrants immunity to all debuffs\nIncreases movement speed\nMakes you priority target for enemies\n'Feel like a real hero! At least for 15 seconds.'");
+			Tooltip.SetDefault("Grants 10000 defense\n" +
+"Grants immunity to all debuffs\n" +
+"Increases movement speed\n" +
+"Makes you priority target for enemies\n" +
+"'Feel like a real hero! At least for 15 seconds.'");
 		}
-
 
 		public override bool UseItem(Player player)
 		{

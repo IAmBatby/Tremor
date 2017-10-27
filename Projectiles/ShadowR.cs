@@ -27,7 +27,6 @@ namespace Tremor.Projectiles
 
 		}
 
-
 		int time2 = 6;
 		int time = 6;
 
@@ -79,7 +78,7 @@ namespace Tremor.Projectiles
 
 		public void CreateDust()
 		{
-			if (Main.rand.Next(2) == 1)
+			if (Main.rand.NextBool(2))
 			{
 				int dust = Dust.NewDust(projectile.position, projectile.width, projectile.height, mod.DustType<Dusts.DustV>());
 				Main.dust[dust].scale = 0.9f;

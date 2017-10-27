@@ -6,7 +6,6 @@ namespace Tremor.Items
 	public class GuardianGreaves : ModItem
 	{
 
-
 		public override void SetDefaults()
 		{
 
@@ -22,7 +21,6 @@ namespace Tremor.Items
 			DisplayName.SetDefault("Guardian Greaves");
 			Tooltip.SetDefault("");
 		}
-
 
 		public override void AddRecipes()
 		{

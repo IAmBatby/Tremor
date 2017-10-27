@@ -32,13 +32,10 @@ namespace Tremor.Items
 			Tooltip.SetDefault("");
 		}
 
-
-
 		public override void MeleeEffects(Player player, Rectangle hitbox)
 		{
 			int dust = Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, 246);
 		}
-
 
 	}
 }

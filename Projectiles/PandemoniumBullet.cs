@@ -30,7 +30,6 @@ namespace Tremor.Projectiles
 
 		}
 
-
 		const int ShootDirection = 7;
 		public override void Kill(int timeLeft)
 		{

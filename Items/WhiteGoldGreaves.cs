@@ -7,7 +7,6 @@ namespace Tremor.Items
 	public class WhiteGoldGreaves : ModItem
 	{
 
-
 		public override void SetDefaults()
 		{
 
@@ -24,7 +23,6 @@ namespace Tremor.Items
 			DisplayName.SetDefault("White Gold Greaves");
 			Tooltip.SetDefault("50% increased movement speed");
 		}
-
 
 		public override void UpdateEquip(Player player)
 		{

@@ -5,8 +5,14 @@ using Terraria.ModLoader;
 
 namespace Tremor.Projectiles.Alchemic
 {
-	public class DepressionFlaskPro : ModProjectile
+	public class DepressionFlaskPro : AlchemistProjectile
 	{
+		public override void SetStaticDefaults()
+		{
+			ProjectileID.Sets.TrailCacheLength[projectile.type] = 5;
+			ProjectileID.Sets.TrailingMode[projectile.type] = 2;
+		}
+
 		public override void SetDefaults()
 		{
 			projectile.width = 18;
@@ -14,16 +20,7 @@ namespace Tremor.Projectiles.Alchemic
 			projectile.friendly = true;
 			projectile.aiStyle = 2;
 			projectile.timeLeft = 1200;
-			ProjectileID.Sets.TrailCacheLength[projectile.type] = 5;
-			ProjectileID.Sets.TrailingMode[projectile.type] = 2;
-		}
-
-		public override void ModifyHitNPC(NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
-		{
-			if (Main.rand.Next(1, 101) <= Main.player[projectile.owner].GetModPlayer<MPlayer>(mod).alchemistCrit)
-			{
-				crit = true;
-			}
+			
 		}
 
 		public override void Kill(int timeLeft)
@@ -43,7 +40,5 @@ namespace Tremor.Projectiles.Alchemic
 				}
 			}
 		}
-
-
 	}
 }

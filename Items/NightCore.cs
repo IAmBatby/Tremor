@@ -24,7 +24,6 @@ namespace Tremor.Items
 			Tooltip.SetDefault("");
 		}
 
-
 		public override Color? GetAlpha(Color lightColor)
 		{
 			return Color.Purple;

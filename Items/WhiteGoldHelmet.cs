@@ -8,25 +8,22 @@ namespace Tremor.Items
 	[AutoloadEquip(EquipType.Head)]
 	public class WhiteGoldHelmet : ModItem
 	{
-		const int ShootType = ProjectileID.HeatRay; // ��� ��������
-		const float ShootRange = 600.0f; // ��������� ��������
-		const float ShootKN = 1.0f; // ������������ 
-		const int ShootRate = 120; // ������� �������� (60 - 1 �������)
-		const int ShootCount = 2; // ������� �� �������
-		const float ShootSpeed = 20f; // �������� �������� (��� ������ - ���������)
-		const int spread = 45; // �������
-		const float spreadMult = 0.045f; // ����������� ��������
+		const int ShootType = ProjectileID.HeatRay; 
+		const float ShootRange = 600.0f; 
+		const float ShootKN = 1.0f; 
+		const int ShootRate = 120; 
+		const int ShootCount = 2; 
+		const float ShootSpeed = 20f; 
+		const int spread = 45; 
+		const float spreadMult = 0.045f; 
 
 		int TimeToShoot = ShootRate;
-
-
 
 		public override void SetDefaults()
 		{
 
 			item.width = 38;
 			item.height = 22;
-
 
 			item.value = 10000;
 			item.rare = 11;
@@ -36,9 +33,9 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("White Gold Helmet");
-			Tooltip.SetDefault("Increases ranged damage by 20%\nIncreases melee damage by 20%");
+			Tooltip.SetDefault("20% increased ranged damage\n" +
+"20% increased melee damage");
 		}
-
 
 		public override void UpdateEquip(Player player)
 		{

@@ -21,7 +21,9 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Sorcerer Focus");
-			Tooltip.SetDefault("6% increased magic damage\nIncreases magic critical strike chance by 12\nIncreases maximum mana by 40");
+			Tooltip.SetDefault("6% increased magic damage\n" +
+"Increases magic critical strike chance by 12\n" +
+"Increases maximum mana by 40");
 			Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(6, 4));
 		}
 

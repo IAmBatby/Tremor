@@ -1,7 +1,10 @@
 using System.Linq;
+
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+
+using Tremor.Items;
 
 namespace Tremor.NPCs
 {
@@ -34,10 +37,10 @@ namespace Tremor.NPCs
 			npc.lavaImmune = true;
 		}
 
-		public override float SpawnChance(NPCSpawnInfo spawnInfo)
+		public override void NPCLoot()
 		{
-			int[] TileArray2 = { mod.TileType("RuinAltar"), mod.TileType("RuinChest"), 120 };
-			return TileArray2.Contains(Main.tile[spawnInfo.spawnTileX, spawnInfo.spawnTileY].type) && TremorWorld.Boss.TikiTotem.IsDowned() ? 45f : 0f;
+			if (Main.rand.Next(33) == 0)
+				this.NewItem(mod.ItemType<RuinKey>());
 		}
 
 		public override void HitEffect(int hitDirection, double damage)
@@ -49,10 +52,11 @@ namespace Tremor.NPCs
 				Gore.NewGore(npc.position, npc.velocity, 11);
 			}
 		}
-		public override void NPCLoot()
+
+		public override float SpawnChance(NPCSpawnInfo spawnInfo)
 		{
-			if (Main.rand.Next(33) == 0)
-				Item.NewItem((int)npc.position.X, (int)npc.position.Y, 12, 12, mod.ItemType("RuinKey"), 1);
+			int[] TileArray2 = { mod.TileType("RuinAltar"), mod.TileType("RuinChest"), TileID.Mudstone };
+			return TileArray2.Contains(Main.tile[spawnInfo.spawnTileX, spawnInfo.spawnTileY].type) && TremorWorld.Boss.TikiTotem.IsDowned() ? 45f : 0f;
 		}
 	}
 }

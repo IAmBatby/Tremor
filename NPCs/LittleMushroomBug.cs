@@ -1,7 +1,8 @@
-using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+
+using Microsoft.Xna.Framework;
 
 namespace Tremor.NPCs
 {
@@ -32,31 +33,19 @@ namespace Tremor.NPCs
 			npc.DeathSound = SoundID.NPCDeath57;
 		}
 
-		public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
-		{
-			npc.lifeMax = npc.lifeMax * 1;
-			npc.damage = npc.damage * 1;
-		}
-
 		public override void HitEffect(int hitDirection, double damage)
 		{
 			if (npc.life <= 0)
 			{
 				for (int k = 0; k < 60; k++)
-				{
 					Dust.NewDust(npc.position, npc.width, npc.height, 67, 2.5f * hitDirection, -2.5f, 0, default(Color), 0.7f);
-				}
 				for (int k = 0; k < 20; k++)
-				{
 					Dust.NewDust(npc.position, npc.width, npc.height, 67, 2.5f * hitDirection, -2.5f, 0, default(Color), 0.7f);
-				}
 			}
 			else
 			{
-				for (int k = 0; k < damage / npc.lifeMax * 50.0; k++)
-				{
+				for (int k = 0; k < damage / npc.lifeMax * 50; k++)
 					Dust.NewDust(npc.position, npc.width, npc.height, 67, 2.5f * hitDirection, -2.5f, 0, default(Color), 0.7f);
-				}
 			}
 		}
 	}

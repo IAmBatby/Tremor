@@ -7,12 +7,10 @@ namespace Tremor.Items
 	{
 		public override void SetDefaults()
 		{
-
 			item.maxStack = 999;
 			item.consumable = true;
 			item.width = 24;
 			item.height = 24;
-
 			item.rare = 9;
 			item.expert = true;
 			bossBagNPC = mod.NPCType("SoulofTruth");
@@ -21,9 +19,8 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Treasure Bag");
-			Tooltip.SetDefault("Right click to open");
+			Tooltip.SetDefault("{$CommonItemTooltip.RightClickToOpen}");
 		}
-
 
 		public override bool CanRightClick()
 		{
@@ -32,39 +29,39 @@ namespace Tremor.Items
 
 		public override void OpenBossBag(Player player)
 		{
-			if (Main.rand.Next(7) == 0)
+			if (Main.rand.NextBool(7))
 			{
 				player.QuickSpawnItem(mod.ItemType("HopeMask"));
 			}
-			if (Main.rand.Next(7) == 0)
+			if (Main.rand.NextBool(7))
 			{
 				player.QuickSpawnItem(mod.ItemType("TrustMask"));
 			}
-			if (Main.rand.Next(7) == 0)
+			if (Main.rand.NextBool(7))
 			{
 				player.QuickSpawnItem(mod.ItemType("TruthMask"));
 			}
-			if (Main.rand.Next(3) == 0)
+			if (Main.rand.NextBool(3))
 			{
 				player.QuickSpawnItem(mod.ItemType("Banhammer"));
 			}
-			if (Main.rand.Next(3) == 0)
+			if (Main.rand.NextBool(3))
 			{
 				player.QuickSpawnItem(mod.ItemType("BestNightmare"));
 			}
-			if (Main.rand.Next(3) == 0)
+			if (Main.rand.NextBool(3))
 			{
 				player.QuickSpawnItem(mod.ItemType("HonestBlade"));
 			}
-			if (Main.rand.Next(3) == 0)
+			if (Main.rand.NextBool(3))
 			{
 				player.QuickSpawnItem(mod.ItemType("Volcannon"));
 			}
-			if (Main.rand.Next(3) == 0)
+			if (Main.rand.NextBool(3))
 			{
 				player.QuickSpawnItem(mod.ItemType("TrebleClef"));
 			}
-			if (Main.rand.Next(3) == 0)
+			if (Main.rand.NextBool(3))
 			{
 				player.QuickSpawnItem(mod.ItemType("Revolwar"));
 			}

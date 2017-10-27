@@ -18,9 +18,10 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Conglomeration");
-			Tooltip.SetDefault("Prolonged after hit invincibility\nGreatly increased life regeneration\nIncreases maximum life by 140");
+			Tooltip.SetDefault("Prolonged after hit invincibility\n" +
+"Greatly increased life regeneration\n" +
+"Increases maximum life by 140");
 		}
-
 
 		public override void UpdateAccessory(Player player, bool hideVisual)
 		{

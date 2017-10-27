@@ -28,7 +28,6 @@ namespace Tremor.Items
 			Tooltip.SetDefault("Allows you to create scientific-magical things");
 		}
 
-
 		public override void AddRecipes()
 		{
 			ModRecipe recipe = new ModRecipe(mod);

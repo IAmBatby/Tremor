@@ -46,7 +46,7 @@ namespace Tremor.Invasion
 
 		public override void OnHitPlayer(Player player, int damage, bool crit)
 		{
-			if (Main.rand.Next(3) == 0)
+			if (Main.rand.NextBool(3))
 			{
 				player.AddBuff(164, 1000, true);
 			}
@@ -62,7 +62,7 @@ namespace Tremor.Invasion
 				}
 
 				CyberWrathInvasion modPlayer = Main.player[Main.myPlayer].GetModPlayer<CyberWrathInvasion>(mod);
-				if (InvasionWorld.CyberWrath && Main.rand.Next(3) == 1)
+				if (InvasionWorld.CyberWrath && Main.rand.NextBool(3))
 				{
 					InvasionWorld.CyberWrathPoints1 += 3;
 					//Main.NewText(("Wave 1: Complete " + TremorWorld.CyberWrathPoints + "%"), 39, 86, 134);
@@ -82,7 +82,7 @@ namespace Tremor.Invasion
 				int centerX = (int)(npc.position.X + npc.width / 2) / 16;
 				int centerY = (int)(npc.position.Y + npc.height / 2) / 16;
 				int halfLength = npc.width / 2 / 16 + 1;
-				if (Main.rand.Next(3) == 0)
+				if (Main.rand.NextBool(3))
 				{
 					Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("ParadoxElement"), Main.rand.Next(5, 7));
 				}
@@ -113,7 +113,7 @@ namespace Tremor.Invasion
 				SecondState = true;
 			}
 
-			if (Main.rand.Next(2) == 0)
+			if (Main.rand.NextBool(2))
 			{
 				int num706 = Dust.NewDust(npc.position, npc.width, npc.height, mod.DustType<CyberDust>(), 0f, 0f, 200, npc.color, 0.5f);
 				Main.dust[num706].velocity *= 0.6f;

@@ -24,8 +24,6 @@ namespace Tremor.Projectiles
 
 		}
 
-
-
 		public override void AI()
 		{
 			if (projectile.ai[1] == 0f)
@@ -39,7 +37,6 @@ namespace Tremor.Projectiles
 				Dust.NewDust(projectile.position + projectile.velocity, projectile.width, projectile.height, 60, projectile.velocity.X * 0.9f, projectile.velocity.Y * 0.9f);
 			}
 		}
-
 
 	}
 }

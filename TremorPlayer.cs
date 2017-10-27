@@ -8,6 +8,9 @@ using Terraria;
 using Terraria.DataStructures;
 using Terraria.Graphics.Shaders;
 using Terraria.ModLoader;
+using Terraria.ID;
+using Tremor.Items;
+using Tremor.NPCs;
 
 namespace Tremor
 {
@@ -70,6 +73,8 @@ namespace Tremor
 		public bool ZoneTowerNova;
 		public bool NovaMonolith = false;
 
+		public int LastChest;
+
 		public override void UpdateDead()
 		{
 			zellariumBody = false;
@@ -79,6 +84,19 @@ namespace Tremor
 		public int zellariumHit;
 		public int zellariumDash;
 		public int zellariumCooldown;
+		public override void PreUpdateBuffs()
+		{
+			if (Main.netMode != 1)
+			{
+				if (player.chest == -1 && LastChest >= 0 && Main.chest[LastChest] != null)
+				{
+					int x2 = Main.chest[LastChest].x;
+					int y2 = Main.chest[LastChest].y;
+					ChestItemSummonCheck(x2, y2, mod);
+				}
+				LastChest = player.chest;
+			}
+		}
 		public override void PostUpdateEquips()
 		{
 			if (zellariumHead)
@@ -99,7 +117,7 @@ namespace Tremor
 							Rectangle rect = npc.getRect();
 							if (rectangle.Intersects(rect) && (npc.noTileCollide || Collision.CanHit(player.position, player.width, player.height, npc.position, npc.width, npc.height)))
 							{
-								float damage = 2f * player.GetModPlayer<MPlayer>(mod).alchemistDamage;
+								float damage = 2f * player.GetModPlayer<MPlayer>(mod).alchemicalDamage;
 								float knockback = 3f;
 								bool crit = false;
 
@@ -452,7 +470,7 @@ namespace Tremor
 
 		public void OnHit(float x, float y, Entity victim)
 		{
-			if (onHitShadaggers && Main.rand.Next(4) == 0)
+			if (onHitShadaggers && Main.rand.NextBool(4))
 			{
 				player.petalTimer = 20;
 				if (x < player.position.X + player.width / 2)
@@ -573,6 +591,144 @@ namespace Tremor
 					}
 				}
 			}
+		}
+
+		// Straight up copy from removed `DesertMimicSummon` class.
+		public static bool ChestItemSummonCheck(int x, int y, Mod mod)
+		{
+			if (Main.netMode == 1) return false;
+
+			int num = Chest.FindChest(x, y);
+			if (num < 0) return false;
+
+			int numberDesertKey = 0;
+			int numberJungleKey = 0;
+			int numberOceanKey = 0;
+			int numberOtherItems = 0;
+
+			ushort tileType = Main.tile[Main.chest[num].x, Main.chest[num].y].type;
+			int tileStyle = Main.tile[Main.chest[num].x, Main.chest[num].y].frameX / 36;
+			if (TileID.Sets.BasicChest[tileType] && (tileStyle < 5 || tileStyle > 6))
+			{
+				for (int i = 0; i < 40; i++)
+				{
+					if (Main.chest[num].item[i] != null && Main.chest[num].item[i].type > 0)
+					{
+						if (Main.chest[num].item[i].type == mod.ItemType<KeyofSands>())
+							numberDesertKey += Main.chest[num].item[i].stack;
+						else if (Main.chest[num].item[i].type == mod.ItemType<KeyofTwilight>())
+							numberJungleKey += Main.chest[num].item[i].stack;
+						else if (Main.chest[num].item[i].type == mod.ItemType<KeyofOcean>())
+							numberOceanKey += Main.chest[num].item[i].stack;
+						else
+							numberOtherItems++;
+					}
+				}
+			}
+			if (numberOtherItems == 0 && numberDesertKey == 1)
+			{
+				if (TileID.Sets.BasicChest[Main.tile[x, y].type])
+				{
+					if (Main.tile[x, y].frameX % 36 != 0)
+						x--;
+					if (Main.tile[x, y].frameY % 36 != 0)
+						y--;
+					int number = Chest.FindChest(x, y);
+					for (int j = x; j <= x + 1; j++)
+					{
+						for (int k = y; k <= y + 1; k++)
+						{
+							if (Main.tile[j, k].type == TileID.Containers)
+								Main.tile[j, k].active(false);
+						}
+					}
+					for (int l = 0; l < 40; l++)
+						Main.chest[num].item[l] = new Item();
+					Chest.DestroyChest(x, y);
+					NetMessage.SendData(34, -1, -1, null, 1, x, y, 0f, number, 0, 0);
+					NetMessage.SendTileSquare(-1, x, y, 3);
+				}
+				int npcToSpawn = mod.NPCType<DesertMimic>();
+				int npcIndex = NPC.NewNPC(x * 16 + 16, y * 16 + 32, npcToSpawn, 0, 0f, 0f, 0f, 0f, 255);
+				Main.npc[npcIndex].whoAmI = npcIndex;
+				NetMessage.SendData(23, -1, -1, null, npcIndex, 0f, 0f, 0f, 0, 0, 0);
+				Main.npc[npcIndex].BigMimicSpawnSmoke();
+			}
+			else if (numberOtherItems == 0 && numberJungleKey == 1)
+			{
+				if (TileID.Sets.BasicChest[Main.tile[x, y].type])
+				{
+					if (Main.tile[x, y].frameX % 36 != 0)
+					{
+						x--;
+					}
+					if (Main.tile[x, y].frameY % 36 != 0)
+					{
+						y--;
+					}
+					int number = Chest.FindChest(x, y);
+					for (int j = x; j <= x + 1; j++)
+					{
+						for (int k = y; k <= y + 1; k++)
+						{
+							if (Main.tile[j, k].type == 21)
+							{
+								Main.tile[j, k].active(false);
+							}
+						}
+					}
+					for (int l = 0; l < 40; l++)
+					{
+						Main.chest[num].item[l] = new Item();
+					}
+					Chest.DestroyChest(x, y);
+					NetMessage.SendData(34, -1, -1, null, 1, x, y, 0f, number, 0, 0);
+					NetMessage.SendTileSquare(-1, x, y, 3);
+				}
+				int npcToSpawn = mod.NPCType("JungleMimic");
+				int npcIndex = NPC.NewNPC(x * 16 + 16, y * 16 + 32, npcToSpawn, 0, 0f, 0f, 0f, 0f, 255);
+				Main.npc[npcIndex].whoAmI = npcIndex;
+				NetMessage.SendData(23, -1, -1, null, npcIndex, 0f, 0f, 0f, 0, 0, 0);
+				Main.npc[npcIndex].BigMimicSpawnSmoke();
+			}
+			else if (numberOtherItems == 0 && numberOceanKey == 1)
+			{
+				if (TileID.Sets.BasicChest[Main.tile[x, y].type])
+				{
+					if (Main.tile[x, y].frameX % 36 != 0)
+					{
+						x--;
+					}
+					if (Main.tile[x, y].frameY % 36 != 0)
+					{
+						y--;
+					}
+					int number = Chest.FindChest(x, y);
+					for (int j = x; j <= x + 1; j++)
+					{
+						for (int k = y; k <= y + 1; k++)
+						{
+							if (Main.tile[j, k].type == 21)
+							{
+								Main.tile[j, k].active(false);
+							}
+						}
+					}
+					for (int l = 0; l < 40; l++)
+					{
+						Main.chest[num].item[l] = new Item();
+					}
+					Chest.DestroyChest(x, y);
+					NetMessage.SendData(34, -1, -1, null, 1, x, y, 0f, number, 0, 0);
+					NetMessage.SendTileSquare(-1, x, y, 3);
+				}
+				int npcToSpawn = mod.NPCType("OceanMimic");
+				int npcIndex = NPC.NewNPC(x * 16 + 16, y * 16 + 32, npcToSpawn, 0, 0f, 0f, 0f, 0f, 255);
+				Main.npc[npcIndex].whoAmI = npcIndex;
+				NetMessage.SendData(23, -1, -1, null, npcIndex, 0f, 0f, 0f, 0, 0, 0);
+				Main.npc[npcIndex].BigMimicSpawnSmoke();
+			}
+			return false;
 		}
 	}
 }

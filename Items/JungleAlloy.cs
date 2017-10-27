@@ -7,7 +7,8 @@ namespace Tremor.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Jungle Alloy");
-			Tooltip.SetDefault("''Forge Master will be interested in this''\nAllows Forge Master to move in");
+			Tooltip.SetDefault("''Forge Master will be interested in this''\n" +
+"Allows Forge Master to move in");
 		}
 
 		public override void SetDefaults()

@@ -37,5 +37,4 @@ namespace Tremor.Tiles
             player.AddBuff(87, 60, true);
         }
     }
-
 }}

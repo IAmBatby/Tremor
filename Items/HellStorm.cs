@@ -28,16 +28,15 @@ namespace Tremor.Items
 			item.shoot = mod.ProjectileType("HellStormProj");
 			item.shootSpeed = 20f;
 
-
 			item.useAmmo = AmmoID.Arrow;
 		}
 
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Hell Storm");
-			Tooltip.SetDefault("Shoots out homing hell arrows\nThe amount of arrows shot increases when used for longer time");
+			Tooltip.SetDefault("Shoots out homing hell arrows\n" +
+"The amount of arrows shot increases when used for longer time");
 		}
-
 
 		public override void ModifyTooltips(List<TooltipLine> tooltips)
 		{

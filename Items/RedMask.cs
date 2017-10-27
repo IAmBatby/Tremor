@@ -6,7 +6,6 @@ namespace Tremor.Items
 	public class RedMask : ModItem
 	{
 
-
 		public override void SetDefaults()
 		{
 
