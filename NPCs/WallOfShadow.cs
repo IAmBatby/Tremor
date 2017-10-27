@@ -764,7 +764,7 @@ namespace Tremor.NPCs
 			}
 			else
 			{
-				Helper.DropItems(npc.position, npc.Size, new Drop(mod.ItemType("HeavyBeamCannon"), 1, 1), new Drop(mod.ItemType("Bolter"), 1, 1), new Drop(mod.ItemType("StrikerBlade"), 1, 1), new Drop(0, 0, 0));
+				Helper.DropItems(npc.position, npc.Size, new Drop(mod.ItemType("HeavyBeamCannon"), 1, 1), new Drop(mod.ItemType("Bolter"), 1, 1), new Drop(mod.ItemType("StrikerBlade"), 1, 1));
 				Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, 499, Main.rand.Next(5, 15));
 				Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("DarknessCloth"), Main.rand.Next(8, 15));
 				if (Main.rand.NextBool(7))
