@@ -53,7 +53,7 @@ namespace Tremor
 
 		public static Dictionary<Boss, bool> downedBoss;
 
-		private void Init()
+		public static void Init()
 		{
 			if (downedBoss == null)
 			{

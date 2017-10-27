@@ -225,6 +225,7 @@ namespace Tremor
 
 			// Init
 			NPCDrops.Init();
+			TremorWorld.Init();
 
 			if (!Main.dedServ)
 			{
