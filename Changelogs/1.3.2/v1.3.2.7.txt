@@ -20,3 +20,10 @@ Items:
 - Stone Leggings now reduce movement speed by 10%
 - Stone Leggings now cost 30 Stone Block to craft, down from 50
 - Orcish set bonus no longer silently reduces movement speed
+- You can now see your face when wearing Harpy Helmet or Harpy Hood
+
+Wiki:
+- Armor page updated. Now has stats, effects, sprites and recipes on all sets. 
+- Knight shop updated.
+- Archer shop updated.
+- Pre-Hardmode Enemies page updated.
