@@ -4,6 +4,19 @@ Mr Danny is back:
 `@everyone Alright, so as Jofairden and I have been on good terms already for a good while already, he just proposed to open up the wiki again. The wiki however, is quite a bad source of information as of now, and there are a lot of bad pages. He asked me if I could make this post to ask if anyone right now would want to help out with the wiki, both with cleaning it up and adding new pages. If you want to help out, ping me and I will give you the wiki editor role, giving you access to the #wiki channel where you can ask questions if needed.`
 This means the wiki is back in business and we are looking for editors. Go to the discord for more information.
 
+Major:
+- Fixed Lunar Roots bad worldgen code
+- Removed a bad drop
+- Fixed people getting stuck on: "Recipe Browser: Building Loot Cache - Tremor"
+
+NPCs:
+- I found in patch 1.3.1.13: "Desert Princess now drops only 1 of 3 Desert Explorer set items", however, this wasn't the case. So now Desert Queen can drop one piece at a time, and they all have 50% drop chance. I added smart code to ensure you don't always end up getting the same item.
+- Desert Princess now spawns in the Desert Biome after Plantera is defeated
+- Lowered Desert Princess life to 8000 down from 22000
+- Lowered Desert Princess defense to 40 down from 45
+- Lowered Desert Princess damage to 65 down from 110
+- Both Desert Queen and Desert Wasp are no longer immune to all debuffs, but only immune to Venom, Poison and Confused
+
 Items:
 - Berserker set bonus updated to: "Summons a Rotating Sword to fight for you"
 - Brass set bonus updated to: "Summons a Steampunk Drone to fight for you and increases damage of Brass Chain Repeater"
@@ -19,6 +32,7 @@ Items:
 - Stone Helmet now costs 25 Stone Block to craft, down from 40
 - Stone Leggings now reduce movement speed by 10%
 - Stone Leggings now cost 30 Stone Block to craft, down from 50
+- The idea for the stone set is to provide heavy defense, but at the cost of being slower because stone is heavy.
 - Orcish set bonus no longer silently reduces movement speed
 - You can now see your face when wearing Harpy Helmet or Harpy Hood
 

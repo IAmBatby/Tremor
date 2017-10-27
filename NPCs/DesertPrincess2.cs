@@ -25,10 +25,11 @@ namespace Tremor.NPCs
 			npc.defense = 45;
 			npc.lifeMax = 2500;
 			npc.knockBackResist = 0f;
-			for (int k = 0; k < npc.buffImmune.Length; k++)
-			{
-				npc.buffImmune[k] = true;
-			}
+
+			npc.buffImmune[BuffID.Poisoned] = true;
+			npc.buffImmune[BuffID.Venom] = true;
+			npc.buffImmune[BuffID.Confused] = true;
+
 			npc.lavaImmune = true;
 			npc.noGravity = true;
 			npc.HitSound = SoundID.NPCHit45;
@@ -503,6 +504,11 @@ namespace Tremor.NPCs
 		{
 			npc.lifeMax = (int)(npc.lifeMax * 0.6f * bossLifeScale);
 			npc.damage = (int)(npc.damage * 0.6f);
+		}
+
+		public override float SpawnChance(NPCSpawnInfo spawnInfo)
+		{
+			return 0f;
 		}
 	}
 }

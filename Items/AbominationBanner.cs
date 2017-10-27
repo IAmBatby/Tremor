@@ -7,7 +7,6 @@ namespace Tremor.Items
 	{
 		public override void SetDefaults()
 		{
-
 			item.width = 10;
 			item.height = 24;
 			item.maxStack = 99;
@@ -28,6 +27,5 @@ namespace Tremor.Items
 			DisplayName.SetDefault("Abomination Banner");
 			Tooltip.SetDefault("");
 		}
-
 	}
 }
