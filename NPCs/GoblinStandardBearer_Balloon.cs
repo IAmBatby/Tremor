@@ -20,7 +20,7 @@ namespace Tremor.NPCs
 
 		public override void SetDefaults()
 		{
-			npc.lifeMax = 50;
+			npc.lifeMax = 100;
 			npc.damage = 34;
 			npc.defense = 14;
 			npc.knockBackResist = 0.1f;

@@ -1,13 +1,19 @@
 Changelog for v1.3.2.7:
 
-Mr Danny is back:
+IMPORTANT! Uncle Danny:
 `@everyone Alright, so as Jofairden and I have been on good terms already for a good while already, he just proposed to open up the wiki again. The wiki however, is quite a bad source of information as of now, and there are a lot of bad pages. He asked me if I could make this post to ask if anyone right now would want to help out with the wiki, both with cleaning it up and adding new pages. If you want to help out, ping me and I will give you the wiki editor role, giving you access to the #wiki channel where you can ask questions if needed.`
-This means the wiki is back in business and we are looking for editors. Go to the discord for more information.
+- This means the wiki is back in business and we are looking for editors. Go to the discord for more information.
 
 Major:
 - Fixed Lunar Roots bad worldgen code
 - Removed a bad drop
 - Fixed people getting stuck on: "Recipe Browser: Building Loot Cache - Tremor"
+
+Goblin Army:
+- Everyone reports it's bugged, but I cleared the goblin army in 3 different scenarios without any issues. Even Yoraiz0r says the code is fine.. If you have this issue, please tell me your entire modlist and MP or non MP
+- Buffed Goblin Assasin life from 90 to 200
+- Buffed Goblin Standard Bearer demounted life to 175 from 75, and mounted to 100 from 50
+- Buffed Goblin Bomber life to 90 from 45
 
 NPCs:
 - I found in patch 1.3.1.13: "Desert Princess now drops only 1 of 3 Desert Explorer set items", however, this wasn't the case. So now Desert Queen can drop one piece at a time, and they all have 50% drop chance. I added smart code to ensure you don't always end up getting the same item.
@@ -41,3 +47,6 @@ Wiki:
 - Knight shop updated.
 - Archer shop updated.
 - Pre-Hardmode Enemies page updated.
+
+Note:
+- Massive resprites comin, BOII
