@@ -17,11 +17,11 @@ namespace Tremor.NPCs.Bosses.NovaPillar.Projectiles
 			projectile.width = 20;
 			Main.projFrames[projectile.type] = 3;
 			projectile.height = 20;
-			if (Main.LocalPlayer.HasBuff(mod.BuffType("BouncingCasingBuff")))
-			{
-				projectile.scale = 3f;
-			}
-			else
+			//if (Main.LocalPlayer.HasBuff(mod.BuffType("BouncingCasingBuff")))
+			//{
+			//	projectile.scale = 3f;
+			//}
+			//else
 				projectile.scale = 1f;
 		}
 

@@ -22,11 +22,11 @@ namespace Tremor.Projectiles.Alchemic
 			projectile.friendly = true;
 			projectile.aiStyle = 2;
 			projectile.penetrate = 1;
-			if (Main.LocalPlayer.HasBuff(mod.BuffType("BouncingCasingBuff")))
-			{
-				projectile.penetrate = 3;
-			}
-			else
+			//if (Main.LocalPlayer.HasBuff(mod.BuffType("BouncingCasingBuff")))
+			//{
+			//	projectile.penetrate = 3;
+			//}
+			//else
 				projectile.penetrate = 1;
 			projectile.timeLeft = 1200;
 		}

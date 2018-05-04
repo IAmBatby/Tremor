@@ -1,17 +1,14 @@
-﻿using Microsoft.Xna.Framework;
+﻿using System;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using static Tremor.NPCs.Bosses.CogLord.CogLord;
 
 namespace Tremor.NPCs.Bosses.CogLord
 {
-	/*
-	 * npc.ai[0] = Index of the Cog Lord boss in the Main.npc array.
-	 * npc.ai[1] = State manager.
-	 * npc.ai[2] = (Shoot) timer.
-	 */
-	public class CogLordGun : ModNPC
+	public class CogLordGun : HandAI
 	{
 		public override void SetStaticDefaults()
 		{
@@ -28,8 +25,6 @@ namespace Tremor.NPCs.Bosses.CogLord
 		private const float SpreadMult = 0.045f;
 		private const float MaxDist = 250f;
 
-		private int _timeToShoot = ShootRate;
-
 		public override void SetDefaults()
 		{
 			npc.lifeMax = 20000;
@@ -38,7 +33,7 @@ namespace Tremor.NPCs.Bosses.CogLord
 			npc.knockBackResist = 0f;
 			npc.width = 88;
 			npc.height = 46;
-			npc.aiStyle = 12;
+			npc.aiStyle = -1;
 			npc.noGravity = true;
 			npc.noTileCollide = true;
 			npc.HitSound = SoundID.NPCHit4;
@@ -51,74 +46,44 @@ namespace Tremor.NPCs.Bosses.CogLord
 			if (npc.life <= 0)
 			{
 				Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/CogLordGun"), 1f);
-
 			}
 		}
 
-		private bool _firstAi = true;
+		float ShootTimer
+		{
+			get { return npc.localAI[0]; }
+			set { npc.localAI[0] = value; }
+		}
+
 		public override void AI()
 		{
-			if (_firstAi)
-			{
-				_firstAi = false;
-				MakeArms();
-			}
-			if (Main.npc[(int)npc.ai[1]].type == mod.NPCType("CogLord") && Main.npc[(int)npc.ai[1]].active)
-				if (Main.player[Main.npc[(int)npc.ai[1]].target].active)
-				{
-					if (npc.localAI[3] == 0f)
-					{
-						npc.rotation = Helper.rotateBetween2Points(npc.Center, Main.player[Main.npc[(int)npc.ai[1]].target].Center);
-						if (--_timeToShoot <= 0) Shoot();
-					}
-				}
-			if (NPC.AnyNPCs(mod.NPCType("CogLordProbe")))
-			{
-				npc.dontTakeDamage = true;
-			}
-			else
-			{
-				npc.dontTakeDamage = false;
-			}
-			Vector2 cogLordCenter = Main.npc[(int)npc.ai[1]].Center;
-			Vector2 distance = npc.Center - cogLordCenter;
-			if (distance.Length() >= MaxDist)
-			{
-				distance.Normalize();
-				distance *= MaxDist;
-				npc.Center = cogLordCenter + distance;
-			}
-		}
+			base.AI();
 
-		private void MakeArms()
-		{
-			int arm = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("CogLordArm"), 0, 9999, 1, 1, npc.ai[1]);
-			int arm2 = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("CogLordArmSecond"), 0, npc.whoAmI, 0, 1, arm);
-			Main.npc[arm].ai[0] = arm2;
+			if (Boss.active && Boss.type == mod.NPCType<CogLord>())
+			{
+				if (Main.netMode != NetmodeID.MultiplayerClient && Main.player[Boss.target].active && npc.localAI[3] == 0)
+				{
+					npc.rotation = Helper.rotateBetween2Points(npc.Center, Main.player[Boss.target].Center);
+					if (ShootTimer++ > ShootRate)
+						Shoot();
+				}
+			}
+
+			npc.dontTakeDamage = NPC.AnyNPCs(mod.NPCType<CogLordProbe>());
 		}
 
 		private void Shoot()
 		{
-			_timeToShoot = ShootRate;
-			if (Main.npc[(int)npc.ai[1]].target != -1)
+			ShootTimer = 0;
+			Vector2 velocity = Helper.VelocityToPoint(npc.Center, Main.player[Boss.target].Center, ShootSpeed);
+			for (int i = 0; i < 2; i++)
 			{
-				Vector2 velocity = Helper.VelocityToPoint(npc.Center, Main.player[Main.npc[(int)npc.ai[1]].target].Center, ShootSpeed);
-				for (int l = 0; l < 2; l++)
-				{
-					velocity.X = velocity.X + Main.rand.Next(-Spread, Spread + 1) * SpreadMult;
-					velocity.Y = velocity.Y + Main.rand.Next(-Spread, Spread + 1) * SpreadMult;
-					int i = Projectile.NewProjectile(npc.Center.X, npc.Center.Y, velocity.X, velocity.Y, ShootType, ShootDamage, ShootKn);
-					Main.projectile[i].hostile = true;
-					Main.projectile[i].friendly = false;
-				}
+				velocity.X = velocity.X + Main.rand.Next(-Spread, Spread + 1) * SpreadMult;
+				velocity.Y = velocity.Y + Main.rand.Next(-Spread, Spread + 1) * SpreadMult;
+				int index = Projectile.NewProjectile(npc.Center.X, npc.Center.Y, velocity.X, velocity.Y, ShootType, ShootDamage, ShootKn);
+				Main.projectile[index].hostile = true;
+				Main.projectile[index].friendly = false;
 			}
-		}
-
-		public override bool PreNPCLoot()
-		{
-			npc.aiStyle = -1;
-			npc.ai[1] = -1;
-			return false;
 		}
 
 		public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)

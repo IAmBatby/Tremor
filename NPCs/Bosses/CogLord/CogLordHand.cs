@@ -6,13 +6,7 @@ using Terraria.ModLoader;
 
 namespace Tremor.NPCs.Bosses.CogLord
 {
-	/*
-	 * npc.ai[0] = Index of the Cog Lord boss in the Main.npc array.
-	 * npc.ai[1] = State manager.
-	 * npc.ai[2] = Timer.
-	 */
-
-	public class CogLordHand : ModNPC
+	public class CogLordHand : HandAI
 	{
 		public override void SetStaticDefaults()
 		{
@@ -28,7 +22,7 @@ namespace Tremor.NPCs.Bosses.CogLord
 			npc.knockBackResist = 0f;
 			npc.width = 44;
 			npc.height = 84;
-			npc.aiStyle = 12;
+			npc.aiStyle = -1;
 			npc.noGravity = true;
 			npc.noTileCollide = true;
 			npc.HitSound = SoundID.NPCHit4;
@@ -36,47 +30,29 @@ namespace Tremor.NPCs.Bosses.CogLord
 			npc.value = Item.buyPrice(0, 0, 5, 0);
 		}
 
-		private const float MaxDist = 250f;
-		private bool _firstAi = true;
-		private int _timer;
+		const float MaxDist = 250f;
 
 		public override void AI()
 		{
-			_timer++;
-			if (_firstAi)
-			{
-				_firstAi = false;
-				MakeArms();
-			}
-			if (NPC.AnyNPCs(mod.NPCType("CogLordProbe")))
-			{
-				npc.dontTakeDamage = true;
-			}
+			base.AI();
+
+			npc.dontTakeDamage = NPC.AnyNPCs(mod.NPCType<CogLordProbe>());
+
+			if (++npc.frameCounter < 1000)
+				npc.damage = npc.defDamage;
 			else
-				npc.dontTakeDamage = false;
-			if (_timer < 1000)
 			{
-				npc.frame = GetFrame(1);
-				npc.damage = 80;
-			}
-			if (_timer >= 1000 && _timer < 1500)
-			{
-				npc.frame = GetFrame(2);
 				npc.dontTakeDamage = true;
-				npc.damage = 120;
+				npc.damage = (int)(npc.defDamage * 1.5f);
 			}
-			if (_timer > 1500)
-			{
-				_timer = 0;
-			}
-			Vector2 cogLordCenter = Main.npc[(int)npc.ai[1]].Center;
-			Vector2 distance = npc.Center - cogLordCenter;
-			if (distance.Length() >= MaxDist)
-			{
-				distance.Normalize();
-				distance *= MaxDist;
-				npc.Center = cogLordCenter + distance;
-			}
+
+			if (npc.frameCounter > 1500)
+				npc.frameCounter = 0;
+		}
+
+		public override void FindFrame(int frameHeight)
+		{
+			npc.frame = GetFrame(npc.frameCounter < 1000 ? 1 : 2);
 		}
 
 		private Rectangle GetFrame(int number)
@@ -90,20 +66,6 @@ namespace Tremor.NPCs.Bosses.CogLord
 			{
 				Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/CogLordHand"), 1f);
 			}
-		}
-
-		private void MakeArms()
-		{
-			int arm = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("CogLordArm"), 0, 9999, 1, 1, npc.ai[1]);
-			int arm2 = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("CogLordArmSecond"), 0, npc.whoAmI, 0, 1, arm);
-			Main.npc[arm].ai[0] = arm2;
-		}
-
-		public override bool PreNPCLoot()
-		{
-			npc.aiStyle = -1;
-			npc.ai[1] = -1;
-			return false;
 		}
 
 		public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)

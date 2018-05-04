@@ -195,7 +195,7 @@ namespace Tremor
 					},
 				};
 
-				ErrorLogger.ClearLog();
+				ErrorLogger.ClearLogs();
 
 				foreach (var armor in armors)
 				{

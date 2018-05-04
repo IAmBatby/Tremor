@@ -23,7 +23,7 @@ namespace Tremor.NPCs.Bosses.NovaPillar.Projectiles
 			projectile.friendly = true;
 			projectile.aiStyle = 2;
 			projectile.timeLeft = 1200;
-			projectile.penetrate = Main.LocalPlayer.HasBuff(mod.BuffType("BouncingCasingBuff")) ? 3 : 1;
+			projectile.penetrate = 1; // Main.LocalPlayer.HasBuff(mod.BuffType("BouncingCasingBuff")) ? 3 : 1;
 		}
 
 		public override Color? GetAlpha(Color lightColor)
