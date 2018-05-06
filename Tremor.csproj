@@ -265,14 +265,14 @@
     <Compile Include="Items\Wolf\WolfPelt.cs" />
     <Compile Include="Items\Wolf\WolfToothNecklace.cs" />
     <Compile Include="NPCs\Bosses\CogLord\CogLord.cs" />
-    <Compile Include="NPCs\Bosses\CogLord\CogLordArm.cs" />
-    <Compile Include="NPCs\Bosses\CogLord\CogLordArmSecond.cs" />
-    <Compile Include="NPCs\Bosses\CogLord\CogLordCog.cs" />
+    <Compile Include="NPCs\Bosses\CogLord\Projectiles\CogLordCog.cs" />
     <Compile Include="NPCs\Bosses\CogLord\CogLordGun.cs" />
     <Compile Include="NPCs\Bosses\CogLord\CogLordHand.cs" />
     <Compile Include="NPCs\Bosses\CogLord\CogLordProbe.cs" />
     <Compile Include="CustomDrop.cs" />
     <Compile Include="NPCs\Bosses\CogLord\HandAI.cs" />
+    <Compile Include="NPCs\Bosses\CogLord\Projectiles\ClockworkLaserCutter.cs" />
+    <Compile Include="NPCs\Bosses\CogLord\Projectiles\CogLordProbeLaser.cs" />
     <Compile Include="NPCs\TownNPCs\Alchemist.cs" />
     <Compile Include="NPCs\TownNPCs\ArabianMerchant.cs" />
     <Compile Include="NPCs\TownNPCs\Archer.cs" />
@@ -2051,7 +2051,6 @@
     <Compile Include="NPCs\GoblinBomber.cs" />
     <Compile Include="NPCs\GoblinStandardBearer.cs" />
     <Compile Include="NPCs\GoblinStandardBearer_Balloon.cs" />
-    <Compile Include="NPCs\Bosses\CogLord\GogLordGog.cs" />
     <Compile Include="NPCs\GoplitArcher.cs" />
     <Compile Include="NPCs\GoplitOfficer.cs" />
     <Compile Include="NPCs\GraniteBeetle.cs" />
@@ -2354,7 +2353,6 @@
     <Compile Include="Projectiles\ClusterSpearPro.cs" />
     <Compile Include="Projectiles\CobaltBolt.cs" />
     <Compile Include="Projectiles\CobaltDiscPro.cs" />
-    <Compile Include="Projectiles\CogLordLaser.cs" />
     <Compile Include="Projectiles\CopperSpearPro.cs" />
     <Compile Include="Projectiles\CorfirePro.cs" />
     <Compile Include="Projectiles\CornJavelinPro.cs" />
@@ -3012,6 +3010,7 @@
     <Content Include="Items\Wolf\WolfLeggings_Legs.png" />
     <Content Include="Items\Wolf\WolfPelt.png" />
     <Content Include="Items\Wolf\WolfToothNecklace.png" />
+    <Content Include="NPCs\Bosses\CogLord\Projectiles\ClockworkLaserCutter.png" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSHARP.Targets" />

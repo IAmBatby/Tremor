@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Tremor.NPCs.Bosses.CogLord.Projectiles;
 
 namespace Tremor.NPCs.Bosses.CogLord
 {
@@ -16,57 +17,128 @@ namespace Tremor.NPCs.Bosses.CogLord
 		public override void SetDefaults()
 		{
 			npc.lifeMax = 4500;
-			//npc.damage = 250;
 			npc.defense = 10;
 			npc.knockBackResist = 0f;
 			npc.width = 42;
 			npc.height = 42;
-			npc.aiStyle = 14;
 			npc.noGravity = true;
 			npc.noTileCollide = true;
 			npc.HitSound = SoundID.NPCHit4;
 			npc.DeathSound = SoundID.NPCDeath10;
-			npc.value = Item.buyPrice(0, 1, 0, 0);
+			npc.value = Item.buyPrice(0, 1);
 		}
 
-		private int _shootRate = 4;
-		private int _timeToShoot = 4;
+		protected NPC Boss => Main.npc[(int)npc.ai[0]];
+		
+		bool ShootLaser
+		{
+			get { return npc.localAI[0] == 0; }
+			set { npc.localAI[0] = value ? 0 : 1; }
+		}
 
 		public override void AI()
 		{
-			if (!NPC.AnyNPCs(mod.NPCType("CogLord")))
+			if (!Boss.active || Boss.type != mod.NPCType<CogLord>())
 			{
 				npc.active = false;
 				return;
 			}
 
-			npc.position += npc.velocity * 1.7f;
-			npc.rotation = Helper.rotateBetween2Points(npc.Center, Main.npc[(int)npc.ai[0]].Center);
-			while (npc.Distance(Main.npc[(int)npc.ai[0]].position) > 1000)
+			npc.TargetClosest(true);
+			Player target = Main.player[npc.target];
+
+			if (npc.direction == -1 && npc.velocity.X > -4f)
 			{
-				npc.Center = Main.npc[(int)npc.ai[0]].Center;
+				npc.velocity.X -= 0.1f;
+				if (npc.velocity.X > 4f)
+					npc.velocity.X -= 0.1f;
+				else if (npc.velocity.X > 0f)
+					npc.velocity.X += 0.05f;
+				if (npc.velocity.X < -4f)
+					npc.velocity.X = -4f;
 			}
-			if (--_timeToShoot <= 0)
+			else if (npc.direction == 1 && npc.velocity.X < 4f)
 			{
-				_timeToShoot = _shootRate;
-				NPC parent = Main.npc[NPC.FindFirstNPC(mod.NPCType("CogLord"))];
-				Vector2 velocity = Helper.VelocityToPoint(npc.Center, parent.Center, 20);
-				int k = Projectile.NewProjectile(npc.Center.X, npc.Center.Y, velocity.X, velocity.Y, mod.ProjectileType("CogLordLaser"), 100, 1f);
-				Main.projectile[k].friendly = false;
-				Main.projectile[k].tileCollide = false;
-				Main.projectile[k].hostile = true;
+				npc.velocity.X += 0.1f;
+				if (npc.velocity.X < -4f)
+					npc.velocity.X += 0.1f;
+				else if (npc.velocity.X < 0f)
+					npc.velocity.X -= 0.05f;
+				if (npc.velocity.X > 4f)
+					npc.velocity.X = 4f;
+			}
+			if (npc.directionY == -1 && npc.velocity.Y > -1.5f)
+			{
+				npc.velocity.Y -= 0.04f;
+				if (npc.velocity.Y > 1.5f)
+					npc.velocity.Y -= 0.05f;
+				else if (npc.velocity.Y > 0f)
+					npc.velocity.Y += 0.03f;
+				if (npc.velocity.Y < -1.5f)
+					npc.velocity.Y = -1.5f;
+			}
+			else if (npc.directionY == 1 && npc.velocity.Y < 1.5f)
+			{
+				npc.velocity.Y += 0.04f;
+				if (npc.velocity.Y < -1.5f)
+					npc.velocity.Y += 0.05f;
+				else if (npc.velocity.Y < 0f)
+					npc.velocity.Y -= 0.03f;
+				if (npc.velocity.Y > 1.5f)
+					npc.velocity.Y = 1.5f;
+			}
+
+			if (++npc.ai[1] > 200f)
+			{
+				if (!target.wet && Collision.CanHit(npc.position, npc.width, npc.height, target.position, target.width, target.height))
+				{
+					npc.ai[1] = 0f;
+				}
+				float accelX = 0.2f;
+				float accelY = 0.1f;
+				float maxSpeedX = 4f;
+				float maxSpeedY = 1.5f;
+
+				if (npc.ai[1] > 1000f)
+					npc.ai[1] = 0f;
+
+				if (++npc.ai[2] > 0f)
+				{
+					if (npc.velocity.Y < maxSpeedY)
+						npc.velocity.Y += accelY;
+				}
+				else if (npc.velocity.Y > -maxSpeedY)
+					npc.velocity.Y -= accelY;
+				if (npc.ai[2] < -150f || npc.ai[2] > 150f)
+				{
+					if (npc.velocity.X < maxSpeedX)
+						npc.velocity.X += accelX;
+				}
+				else if (npc.velocity.X > -maxSpeedX)
+					npc.velocity.X -= accelX;
+				if (npc.ai[2] > 300f)
+					npc.ai[2] = -300f;
+			}
+
+			npc.position += npc.velocity * 1.7f;
+			npc.rotation = Helper.rotateBetween2Points(npc.Center, Boss.Center);
+			if (npc.Distance(Boss.Center) > 1000)
+				npc.Center = Boss.Center;
+
+			if (ShootLaser && Main.netMode != NetmodeID.MultiplayerClient)
+			{
+				Projectile.NewProjectile(npc.Center, Vector2.Zero, mod.ProjectileType<CogLordProbeLaser>(), 30, 1f, Main.myPlayer, npc.whoAmI, Boss.whoAmI);
+				ShootLaser = false;
 			}
 		}
 
 		public override bool PreDraw(SpriteBatch spriteBatch, Color drawColor)
 		{
 			Texture2D drawTexture = Main.npcTexture[npc.type];
-			Vector2 origin = new Vector2((drawTexture.Width / 2) * 0.5F, (drawTexture.Height / Main.npcFrameCount[npc.type]) * 0.5F);
-			Vector2 drawPos = new Vector2(
-				npc.position.X - Main.screenPosition.X + (npc.width / 2) - (Main.npcTexture[npc.type].Width / 2) * npc.scale / 2f + origin.X * npc.scale,
-				npc.position.Y - Main.screenPosition.Y + npc.height - Main.npcTexture[npc.type].Height * npc.scale / Main.npcFrameCount[npc.type] + 4f + origin.Y * npc.scale + npc.gfxOffY);
+			Vector2 origin = npc.frame.Size() * 0.5f;
+			Vector2 drawPos = npc.Center - Main.screenPosition;
 			SpriteEffects effects = npc.spriteDirection == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally;
-			spriteBatch.Draw(drawTexture, drawPos, npc.frame, Color.White, npc.rotation, origin, npc.scale, effects, 0);
+			spriteBatch.Draw(drawTexture, drawPos, npc.frame, Color.White, npc.rotation, origin * npc.scale, npc.scale, effects, 0);
 			return false;
 		}
 	}

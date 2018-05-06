@@ -6,6 +6,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Tremor.Items.Brass;
 using Tremor.NPCs.Bosses.CogLord.Items;
+using Tremor.NPCs.Bosses.CogLord.Projectiles;
 
 namespace Tremor.NPCs.Bosses.CogLord
 {
@@ -13,13 +14,6 @@ namespace Tremor.NPCs.Bosses.CogLord
 	[AutoloadBossHead]
 	public class CogLord : ModNPC
 	{
-		//Bool variables
-		private bool Ramming => ((LeftHandIndex == -1 && RightHandIndex == -1) || CurrentState == CogLordAIState.Ramming);
-
-		//Int variables
-		private int GetLaserDamage => 30;
-		private int _shootType = ProjectileID.HeatRay;
-		
 		public override void SetDefaults()
 		{
 			npc.lifeMax = 45000;
@@ -52,33 +46,22 @@ namespace Tremor.NPCs.Bosses.CogLord
 
 		public override bool PreDraw(SpriteBatch spriteBatch, Color drawColor)
 		{
-			//spriteBatch.Draw(mod.GetTexture("NPCs/Bosses/CogLord/CogLordBody"), npc.Center - Main.screenPosition, null, Color.White, 0f, new Vector2(44, -18), 1f, SpriteEffects.None, 0f);
-			//Texture2D drawTexture = Main.npcTexture[npc.type];
-			//Vector2 origin = new Vector2((drawTexture.Width / 2) * 0.5F, (drawTexture.Height / Main.npcFrameCount[npc.type]) * 0.5F);
-			//Vector2 drawPos = new Vector2(
-			//	npc.position.X - Main.screenPosition.X + (npc.width / 2) - (Main.npcTexture[npc.type].Width / 2) * npc.scale / 2f + origin.X * npc.scale,
-			//	npc.position.Y - Main.screenPosition.Y + npc.height - Main.npcTexture[npc.type].Height * npc.scale / Main.npcFrameCount[npc.type] + 4f + origin.Y * npc.scale + npc.gfxOffY);
-			//SpriteEffects effects = npc.spriteDirection == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally;
-			//spriteBatch.Draw(drawTexture, drawPos, npc.frame, Color.White, npc.rotation, origin, npc.scale, effects, 0);
+			Texture2D texture = mod.GetTexture("NPCs/Bosses/CogLord/CogLordBody");
+			spriteBatch.Draw(texture, npc.Center - new Vector2(texture.Width / 2, -12) - Main.screenPosition, npc.dontTakeDamage ? Color.Yellow : Color.White);
 			return true;
 		}
 
 		int LeftHandType => mod.NPCType<CogLordHand>();
 		int RightHandType => mod.NPCType<CogLordGun>();
-
-		int laserRate = 4;
+		bool Ramming => ((LeftHandIndex == -1 && RightHandIndex == -1) || CurrentState == CogLordAIState.Ramming);
+		
 		int animationRate = 6;
+		int GetLaserDamage = 30;
 
-		float TimerA
+		CogLordAIState CurrentState
 		{
-			get { return npc.ai[1]; }
-			set { npc.ai[1] = value; }
-		}
-
-		float TimerB
-		{
-			get { return npc.ai[2]; }
-			set { npc.ai[2] = value; }
+			get { return (CogLordAIState)((int)npc.ai[0] & 15); }
+			set { npc.ai[0] = (int)npc.ai[0] & 1048560 | (byte)value; }
 		}
 
 		int LeftHandIndex
@@ -93,10 +76,22 @@ namespace Tremor.NPCs.Bosses.CogLord
 			set { npc.ai[0] = (int)npc.ai[0] & 4095 | value + 1 << 12; }
 		}
 
-		CogLordAIState CurrentState
+		float TimerA
 		{
-			get { return (CogLordAIState)((int)npc.ai[0] & 15); }
-			set { npc.ai[0] = (int)npc.ai[0] & 1048560 | (byte)value; }
+			get { return npc.ai[1]; }
+			set { npc.ai[1] = value; }
+		}
+
+		float TimerB
+		{
+			get { return npc.ai[2]; }
+			set { npc.ai[2] = value; }
+		}
+
+		float LaserRotation
+		{
+			get { return npc.ai[3]; }
+			set { npc.ai[3] = value; }
 		}
 
 		float DroneLaunches
@@ -111,16 +106,16 @@ namespace Tremor.NPCs.Bosses.CogLord
 			set { npc.localAI[1] = value ? 1 : 0; }
 		}
 
-		float AttackTimer
+		int AttackTimer
 		{
-			get { return npc.localAI[2]; }
+			get { return (int)npc.localAI[2]; }
 			set { npc.localAI[2] = value; }
 		}
 
-		float LaserRotation
+		bool ShootLasers
 		{
-			get { return npc.localAI[3]; }
-			set { npc.localAI[3] = value; }
+			get { return npc.localAI[3] != 0; }
+			set { npc.localAI[3] = value ? 1 : 0; }
 		}
 
 		public override void AI()
@@ -134,6 +129,9 @@ namespace Tremor.NPCs.Bosses.CogLord
 			}
 
 			Player target = Main.player[npc.target];
+
+			float deaccMult = 0.97f;
+			float accMult = 1.3f;
 
 			if (target.dead || Vector2.DistanceSquared(target.Center, npc.Center) > 2000 * 2000)
 			{
@@ -167,9 +165,10 @@ namespace Tremor.NPCs.Bosses.CogLord
 					TimerA = 0;
 					CurrentState = CogLordAIState.Ramming;
 					npc.TargetClosest(true);
+					target = Main.player[npc.target];
 					npc.netUpdate = true;
 				}
-				npc.rotation = npc.velocity.X / 15f;
+				npc.rotation = npc.velocity.X / 12f / accMult;
 				float accelerationY = 0.02f;
 				float maxSpeedY = 2f;
 				float accelerationX = 0.05f;
@@ -181,35 +180,41 @@ namespace Tremor.NPCs.Bosses.CogLord
 					accelerationX = 0.07f;
 					maxSpeedX = 9.5f;
 				}
+
+				accelerationX *= accMult;
+				accelerationY *= accMult;
+				maxSpeedX *= accMult;
+				maxSpeedY *= accMult;
+
 				if (npc.position.Y > target.position.Y - 250f)
 				{
 					if (npc.velocity.Y > 0f)
-						npc.velocity.Y = npc.velocity.Y * 0.98f;
-					npc.velocity.Y = npc.velocity.Y - accelerationY;
+						npc.velocity.Y *= deaccMult;
+					npc.velocity.Y -= accelerationY;
 					if (npc.velocity.Y > maxSpeedY)
 						npc.velocity.Y = maxSpeedY;
 				}
 				else if (npc.position.Y < target.position.Y - 250f)
 				{
 					if (npc.velocity.Y < 0f)
-						npc.velocity.Y = npc.velocity.Y * 0.98f;
-					npc.velocity.Y = npc.velocity.Y + accelerationY;
+						npc.velocity.Y *= deaccMult;
+					npc.velocity.Y += accelerationY;
 					if (npc.velocity.Y < -maxSpeedY)
 						npc.velocity.Y = -maxSpeedY;
 				}
 				if (npc.Center.X > target.Center.X)
 				{
 					if (npc.velocity.X > 0f)
-						npc.velocity.X = npc.velocity.X * 0.98f;
-					npc.velocity.X = npc.velocity.X - accelerationX;
+						npc.velocity.X *= deaccMult;
+					npc.velocity.X -= accelerationX;
 					if (npc.velocity.X > maxSpeedX)
 						npc.velocity.X = maxSpeedX;
 				}
 				if (npc.Center.X < target.Center.X)
 				{
 					if (npc.velocity.X < 0f)
-						npc.velocity.X = npc.velocity.X * 0.98f;
-					npc.velocity.X = npc.velocity.X + accelerationX;
+						npc.velocity.X *= deaccMult;
+					npc.velocity.X += accelerationX;
 					if (npc.velocity.X < -maxSpeedX)
 						npc.velocity.X = -maxSpeedX;
 				}
@@ -225,16 +230,17 @@ namespace Tremor.NPCs.Bosses.CogLord
 					TimerA = 0;
 					CurrentState = CogLordAIState.Idle;
 				}
-				npc.rotation += npc.direction * 0.3f;
+
+				npc.rotation = npc.velocity.X / 12f / accMult;
 
 				Vector2 direction = target.Center - npc.Center;
 				float distance = direction.Length();
-				float speedMult = 1.5f;
+				float speedMult = 2f;
 
 				if (Main.expertMode)
 				{
 					npc.damage = (int)(npc.defDamage * 1.3f);
-					speedMult = 4f;
+					speedMult = 5f;
 					if (distance > 150f)
 						speedMult *= 1.05f;
 
@@ -249,26 +255,26 @@ namespace Tremor.NPCs.Bosses.CogLord
 					else if (liveHands == 1)
 						speedMult *= 1.1f;
 				}
-				distance = speedMult / distance;
+				distance = speedMult * accMult / distance;
 				npc.velocity = direction * distance;
 			}
 			else if (CurrentState == CogLordAIState.Enraged)
 			{
 				npc.damage = 1000;
 				npc.defense = 9999;
-				npc.rotation += npc.direction * 0.3f;
+				npc.rotation = npc.velocity.X / 12f / accMult;
 				Vector2 direction = target.Center - npc.Center;
 				float distance = direction.Length();
 				float speedMult = 8f;
-				distance = speedMult / distance;
+				distance = speedMult * accMult / distance;
 				npc.velocity = direction * distance;
 			}
 			else if (CurrentState == CogLordAIState.Leaving)
 			{
 				npc.velocity.Y = npc.velocity.Y + 0.1f;
 				if (npc.velocity.Y < 0f)
-					npc.velocity.Y = npc.velocity.Y * 0.95f;
-				npc.velocity.X = npc.velocity.X * 0.95f;
+					npc.velocity.Y = npc.velocity.Y * deaccMult;
+				npc.velocity.X = npc.velocity.X * deaccMult;
 				if (npc.timeLeft > 50)
 					npc.timeLeft = 50;
 			}
@@ -276,7 +282,7 @@ namespace Tremor.NPCs.Bosses.CogLord
 			npc.dontTakeDamage = NPC.AnyNPCs(mod.NPCType<CogLordProbe>());
 			TimerB++;
 
-			if (++AttackTimer >= 2000)
+			if (++AttackTimer >= 3000)
 				AttackTimer = 0;
 
 			LaunchDrones:
@@ -293,14 +299,8 @@ namespace Tremor.NPCs.Bosses.CogLord
 				if (DroneLaunches <= 2)
 					goto LaunchDrones;
 			}
-
-			if (!Ramming)
-			{
-				CheckHands();
-				if (RightHandIndex != -1)
-					Main.npc[RightHandIndex].localAI[3] = 0;
-			}
-			else
+			
+			if (Ramming)
 			{
 				if (ShootRockets)
 				{
@@ -308,70 +308,52 @@ namespace Tremor.NPCs.Bosses.CogLord
 					CogMessage("Protocol 10 is activated: Preparing for rocket storm.");
 				}
 
-				if (Main.netMode != NetmodeID.MultiplayerClient && (int)(Main.time % 120) == 0) // ++TimerC == 120
+				if (Main.netMode != NetmodeID.MultiplayerClient && AttackTimer % 120 == 0)
 				{
 					for (int i = 0; i < ((Main.expertMode) ? 2 : 1); i++)
 					{
 						Vector2 velocity = Helper.VelocityToPoint(npc.Center, Helper.RandomPointInArea(target.Center - new Vector2(20), target.Center + new Vector2(20)), 20);
-						int index = Projectile.NewProjectile(npc.Center, velocity, 134, GetLaserDamage * ((Main.expertMode) ? 3 : 2), 1f);
-						Main.projectile[index].hostile = true;
-						Main.projectile[index].tileCollide = true;
-						Main.projectile[index].friendly = false;
+						int index = Projectile.NewProjectile(npc.Center, velocity, ProjectileID.RocketSkeleton, GetLaserDamage * ((Main.expertMode) ? 3 : 2), 0f, Main.myPlayer);
 					}
 				}
-
-				CheckHands();
-				if (RightHandIndex != -1)
-					Main.npc[RightHandIndex].localAI[3] = 0;
 			}
+
+			CheckHands();
+			if (RightHandIndex != -1)
+				Main.npc[RightHandIndex].localAI[3] = 0;
+
 			if (TimerB == 400)
 			{
 				CogMessage("Protocol 11 is activated: Clockwork laser cutter is being enabled.");
+				ShootLasers = true;
 			}
 			if (TimerB >= 500 && TimerB < 800)
 			{
-				if (Main.netMode != NetmodeID.Server)
+				LaserRotation += 0.01f;
+				if (Main.netMode != NetmodeID.MultiplayerClient && ShootLasers)
 				{
-					LaserRotation += 0.01f;
-					if (++AttackTimer % laserRate == 0)
-					{
-						Vector2 shootOffset = Vector2.UnitY.RotatedBy(LaserRotation);
-						for (int i = 0; i < 4; i++)
-						{
-							shootOffset = shootOffset.RotatedBy(MathHelper.PiOver2);
-							Vector2 shootPos = npc.Center + shootOffset * 17;
-							Vector2 shootVel = shootOffset * 7;
-							int index = Projectile.NewProjectile(shootPos, shootVel, _shootType, GetLaserDamage, 1f);
-							Main.projectile[index].hostile = true;
-							Main.projectile[index].tileCollide = false;
-						}
-					}
+					for (int i = 0; i < 4; i++)
+						Projectile.NewProjectile(npc.Center, Vector2.Zero, mod.ProjectileType<ClockworkLaserCutter>(), GetLaserDamage, 0, Main.myPlayer, npc.whoAmI, i);
+					ShootLasers = false;
 				}
 			}
 			if (TimerB == 1100)
 			{
 				CogMessage("Protocol 12 is activated: Summoning gears.");
 			}
-			if (TimerB > 1200 && TimerB < 1700)
+			if (Main.netMode != NetmodeID.MultiplayerClient && TimerB > 1200 && TimerB < 1700 && AttackTimer % 15 == 0)
 			{
-				if ((int)(Main.time % 15) == 0)
-					NPC.NewNPC((int)(target.position.X - 500 + Main.rand.Next(1000)), (int)(target.position.Y - 500 + Main.rand.Next(1000)), mod.NPCType("GogLordGog"));
+				Projectile.NewProjectile(target.Center + new Vector2(Main.rand.Next(-500, 501), Main.rand.Next(-500, 501)), Vector2.Zero, mod.ProjectileType<CogLordCog>(), 50, 0, Main.myPlayer);
 			}
 			if (TimerB == 1600)
 			{
 				CogMessage("Protocol 13 is activated: Rocket attack incoming.");
 			}
-			if (TimerB >= 1700 && TimerB < 1775)
+			if (Main.netMode != NetmodeID.MultiplayerClient && TimerB >= 1700 && TimerB < 1775 && Main.rand.NextBool(3))
 			{
-				if (Main.netMode != NetmodeID.MultiplayerClient &&  Main.rand.NextBool(3))
-				{
-					var shootPos = target.position + new Vector2(Main.rand.Next(-1000, 1000), -1000);
-					var shootVel = new Vector2(Main.rand.NextFloat(-3f, 3f), Main.rand.NextFloat(15f, 20f));
-					int i = Projectile.NewProjectile(shootPos, shootVel, 134, GetLaserDamage * ((Main.expertMode) ? 3 : 2), 1f);
-					Main.projectile[i].hostile = true;
-					Main.projectile[i].tileCollide = true;
-					Main.projectile[i].friendly = false;
-				}
+				var shootPos = target.Center + new Vector2(Main.rand.Next(-1000, 1001), -1000);
+				var shootVel = new Vector2(Main.rand.NextFloat(-3f, 3f), Main.rand.NextFloat(15f, 20f));
+				Projectile.NewProjectile(shootPos, shootVel, ProjectileID.RocketSkeleton, GetLaserDamage * ((Main.expertMode) ? 3 : 2), 0, Main.myPlayer);
 			}
 			if (TimerB > 1775)
 			{
@@ -432,6 +414,9 @@ namespace Tremor.NPCs.Bosses.CogLord
 				Main.NewText("[CL-AI]: " + message, 208, 137, 55);
 		}
 
+		public override Color? GetAlpha(Color drawColor) => npc.dontTakeDamage ? Color.Yellow : Color.White;
+		public override void BossLoot(ref string name, ref int potionType) => potionType = ItemID.GreaterHealingPotion;
+
 		public override void NPCLoot()
 		{
 			TremorWorld.Boss.CogLord.Downed();
@@ -457,11 +442,6 @@ namespace Tremor.NPCs.Bosses.CogLord
 				int[] choises = new int[] { mod.ItemType<BrassRapier>(), mod.ItemType<BrassChainRepeater>(), mod.ItemType<BrassStave>() };
 				Item.NewItem(npc.getRect(), Main.rand.Next(choises));
 			}
-		}
-
-		public override void BossLoot(ref string name, ref int potionType)
-		{
-			potionType = ItemID.GreaterHealingPotion;
 		}
 	}
 }
